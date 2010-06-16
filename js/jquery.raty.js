@@ -24,6 +24,14 @@
  *		starOff:     'star-off.png',                                  // The image of the off star.
  *		starOn:      'star-on.png'                                    // The image of the on star.
  *	});
+ *
+ *  There is also an option to call a callback function when one of stars is clicked:
+ *  
+ *  $('div#star').raty({
+ *    callBack:  function (clickedValue) {
+ *      // Do anything with clickedValue
+ *    }
+ *  });
  *  
  *  <div id="star"></div>
  */
