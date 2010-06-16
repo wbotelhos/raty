@@ -3,6 +3,9 @@
  * --------------------------------------------------------------------------
  *
  * 15.06.2010
+ *      - Added onClick function that enable a callback when a star is clicked.
+ *
+ * 15.06.2010
  *      - Change the path of images;
  *      - Change the name image files;
  *      - Choose the number of stars that will be presented;

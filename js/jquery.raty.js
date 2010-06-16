@@ -22,16 +22,9 @@
  *		scoreName:   'score',                                         // The name of target score.
  *		start:       0,                                               // Start with a score value.
  *		starOff:     'star-off.png',                                  // The image of the off star.
- *		starOn:      'star-on.png'                                    // The image of the on star.
+ *		starOn:      'star-on.png',                                   // The image of the on star.
+ *      //onClick:   function() { alert('clicked!'); }                // A default function can to be setted here.
  *	});
- *
- *  There is also an option to call a callback function when one of stars is clicked:
- *  
- *  $('div#star').raty({
- *    callBack:  function (clickedValue) {
- *      // Do anything with clickedValue
- *    }
- *  });
  *  
  *  <div id="star"></div>
  */
@@ -50,7 +43,7 @@
 		if (this.attr('id') == undefined) {																				// If the script is invalid then the script stops and write the error in the console.
 			debug('Invalid selector!'); return;
 		}
-		
+
 		$this = $(this);																								// Keep the container in a global variable for public functions. Global!
 
 		if (options.number > 30) {																						// A safe value to prevent malicious code.
@@ -61,20 +54,25 @@
 			options.path += '/';
 		}
 		
-		var start = 0;
-		if (!isNaN(options.start) && options.start > 0) {																// Start with a default value.
-			start = (options.start > options.number) ? options.number : options.start;									// Make sure the start value is not bigger than number of stars.
-		}
-
-		// TODO: Using var for values that will be used into a function to keep the current value.
+		// TODO: Using var for values that will be used into a function later, to keep the current value and not the last one. Why, Mr. Anderson? Why? 
 		var containerId = $this.attr('id');																				// Used in all components because the ID of the container in theory not be repeated.
 		var path = options.path;
 		var starOff = options.starOff;
 		var starOn = options.starOn;
+		var onClick = options.onClick;
+
+		var start = 0;
+		if (!isNaN(options.start) && options.start > 0) {																// Start with a default value.
+			start = (options.start > options.number) ? options.number : options.start;									// Make sure the start value is not bigger than number of stars.
+			
+			if (options.onClick) {																						// If onClick is enabled, it is called automatic when start value is setted.
+				options.onClick(start);
+			}
+		}
 
 		var hint = '';
-		for (var i = 1; i <= options.number; i++) {																		// Append the img stars into container.
-			hint = (i <= options.hintList.length && options.hintList[i - 1] != null) ? options.hintList[i - 1] : i;		// Avoids a nonexistent index (undefined) and Ensures that the hint is to be applied, it means to be different from null. Otherwise applies the current number.
+		for (var i = 1; i <= options.number; i++) {																					// Append the img stars into container.
+			hint = (options.number <= options.hintList.length && options.hintList[i - 1] != null) ? options.hintList[i - 1] : i;	// Avoids a nonexistent index (undefined) and Ensures that the hint is to be applied, it means to be different from null. Otherwise applies the current number.
 
 			starFile = (start >= i) ? options.starOn : options.starOff;
 
@@ -106,11 +104,10 @@
 			
 			$('img.' + containerId).live('click', function() {															// When mouseclick i keep the score of clicked star into a hidden field with name container.id + -score.
 				$('input#' + containerId + '-score').val(this.alt);														// Put de current score into hidden input. The class name of the star selected is equals ID container.
-        
-        // Calling the onclick callback
-        if (options.onClick) { 
-          options.onClick(this.alt);
-        };
+
+				if (onClick) {																							// If onClick is activated, the callback funtion of it is called. 
+		          onClick(this.alt);
+		        }
 			});
 
 			$this.live('mouseleave', function() {																		// When mouseleave container, i get the score value and set the star. I used mouseleave for avoid childrens take off the focus. 
@@ -141,12 +138,12 @@
 		start:			0,																								// Start with a score value.
 		starOff:		'star-off.png',																					// The image of the off star.
 		starOn:			'star-on.png',																					// The image of the on star.
-    callBack:   null
+		//onClick:		function() { alert('clicked!'); }																// A default function can to be setted here.
 	};
 
 	$.fn.raty.readOnly = function(boo) {																				// Public function to start a rating read only or not.
 		if (boo) {
-			$('img.' + $this.attr('id')).die();																				// Unbind all functions of the stars.
+			$('img.' + $this.attr('id')).die();																			// Unbind all functions of the stars.
 			$this.css('cursor', 'default').die();																		// Unbind all functions of the container.
 		} else {																										// Otherwise rebind that functions. 
 			liveEnter();
@@ -162,7 +159,7 @@
 		return $.fn.raty;
 	};
 	
-	// TODO: functions are repeated on purpose for now! Because options.xxx works as current value here, even inside a live, but in main body above not.
+	// TODO: functions are repeated on purpose for now! Because options.xxx should be used here and works as current value, unlike the function body. Why, Mr. Anderson? Why?
 	function liveEnter() {
 		var id = $this.attr('id');
 		$('img.' + id).live('mouseenter', function() {																	// When mouseover. I used mouseenter for avoid childrens take off the focus.
@@ -197,7 +194,11 @@
 	function liveClick() {
 		var id = $this.attr('id');
 		$('img.' + id).live('click', function() {																		// When mouseclick i keep the score of clicked star into a hidden field with name container.id + -score.
-    $('input#' + id + '-score').val(this.alt);																	// Put de current score into hidden input. The class name of the star selected is equals ID container.
+			$('input#' + id + '-score').val(this.alt);																	// Put de current score into hidden input. The class name of the star selected is equals ID container.
+
+			if (options.onClick) {																						// If onClick is activated, the callback funtion of it is called. 
+				options.onClick(this.alt);
+			}
 		});
 	};
 

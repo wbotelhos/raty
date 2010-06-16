@@ -100,16 +100,16 @@
 				});
 
 			   $('div#target').raty({
-					hintList:	['a', '', null, 'd'],
+					hintList:	['a', '', null, 'd', '5'],
 				   	starOn:		'medal-on.png',
 				   	starOff:	'medal-off.png'
 				});
 
-         $('div#star_callback').raty({
-            onClick : function (value) {
-              alert('Clicked value: ' + value);
-            }
-         });
+				$('div#onclick').raty({
+					onClick: function(score) {
+						alert('score: ' + score);
+					}
+				});
 
 			});
 		</script>
@@ -154,16 +154,22 @@
 
 		<div class="source">
 		 	$('div#target').raty({<br/>
-			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd'],<br/>
+			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
 			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
 			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
 			});
 		</div>
 
-		<div class="session">"onClick" callback:</div>
-		<div id="star_callback"></div>
+		<div class="session">Using onClick function:</div>
+		<div id="onclick"></div>
 
-		<div class="source">$('div#star').raty();</div>
+		<div class="source">
+		 	$('div#onclick').raty({<br/>
+			&nbsp;&nbsp;onClick: function(score) {<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
+			&nbsp;&nbsp;}<br/>
+			});
+		</div>
 
 		<div class="session">Default options:</div>
 		
@@ -175,7 +181,8 @@
 			scoreName:&nbsp;&nbsp;'score'<br/>
 			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
 			starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
-			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'
+			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
+			onClick:&nbsp;&nbsp;&nbsp;&nbsp;function() { alert('clicked!'); }
 		</div>
 
 		<div class="session">Public functions: *</div>
