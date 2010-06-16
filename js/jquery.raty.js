@@ -24,6 +24,14 @@
  *		starOff:     'star-off.png',                                  // The image of the off star.
  *		starOn:      'star-on.png'                                    // The image of the on star.
  *	});
+ *
+ *  There is also an option to call a callback function when one of stars is clicked:
+ *  
+ *  $('div#star').raty({
+ *    callBack:  function (clickedValue) {
+ *      // Do anything with clickedValue
+ *    }
+ *  });
  *  
  *  <div id="star"></div>
  */
@@ -98,6 +106,11 @@
 			
 			$('img.' + containerId).live('click', function() {															// When mouseclick i keep the score of clicked star into a hidden field with name container.id + -score.
 				$('input#' + containerId + '-score').val(this.alt);														// Put de current score into hidden input. The class name of the star selected is equals ID container.
+        
+        // Calling the onclick callback
+        if (options.onClick) { 
+          options.onClick(this.alt);
+        };
 			});
 
 			$this.live('mouseleave', function() {																		// When mouseleave container, i get the score value and set the star. I used mouseleave for avoid childrens take off the focus. 
@@ -127,7 +140,8 @@
 		scoreName:		'score',																						// The name of target score.
 		start:			0,																								// Start with a score value.
 		starOff:		'star-off.png',																					// The image of the off star.
-		starOn:			'star-on.png'																					// The image of the on star.
+		starOn:			'star-on.png',																					// The image of the on star.
+    callBack:   null
 	};
 
 	$.fn.raty.readOnly = function(boo) {																				// Public function to start a rating read only or not.
@@ -183,7 +197,7 @@
 	function liveClick() {
 		var id = $this.attr('id');
 		$('img.' + id).live('click', function() {																		// When mouseclick i keep the score of clicked star into a hidden field with name container.id + -score.
-			$('input#' + id + '-score').val(this.alt);																	// Put de current score into hidden input. The class name of the star selected is equals ID container.
+    $('input#' + id + '-score').val(this.alt);																	// Put de current score into hidden input. The class name of the star selected is equals ID container.
 		});
 	};
 

@@ -105,6 +105,12 @@
 				   	starOff:	'medal-off.png'
 				});
 
+         $('div#star_callback').raty({
+            onClick : function (value) {
+              alert('Clicked value: ' + value);
+            }
+         });
+
 			});
 		</script>
 	</head>
@@ -153,6 +159,11 @@
 			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
 			});
 		</div>
+
+		<div class="session">"onClick" callback:</div>
+		<div id="star_callback"></div>
+
+		<div class="source">$('div#star').raty();</div>
 
 		<div class="session">Default options:</div>
 		
