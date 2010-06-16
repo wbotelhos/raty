@@ -1,0 +1,34 @@
+/**
+ * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
+ * --------------------------------------------------------------------------
+ *
+ * Licensed under The MIT License
+ * 
+ * @version     0.1
+ * @since       11.06.2010
+ * @author      Washington Botelho dos Santos
+ * @link        http://wbotelhos.com/raty
+ * @twitter     http://twitter.com/wbotelhos
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT 
+ * @package     jQuery Plugins
+ * 
+ * Thanks to:
+ * --------------------------------------------------------------------------
+ * @glbenz
+ * @franciscosouza
+ * 
+ * Usage (default values):
+ * --------------------------------------------------------------------------
+ *	$('div#star').raty({
+ *		hintList:    ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
+ *		number:      5,                                               // Number of star.
+ *		path:        'img,                                            // Path of images.
+ *		readOnly:    false,                                           // read-only or not.
+ *		scoreName:   'score',                                         // The name of target score.
+ *		start:       0,                                               // Start with a score value.
+ *		starOff:     'star-off.png',                                  // The image of the off star.
+ *		starOn:      'star-on.png'                                    // The image of the on star.
+ *	});
+ *  
+ *  <div id="star"></div>
+ */

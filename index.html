@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jQuery Raty - A Star Rating Plugin</title>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+
+		<style type="text/css">
+			a {
+				color: #EA9C00;
+				font: bold 10px verdana;
+				letter-spacing: .9px;
+				text-decoration: none;
+			}
+			
+			a:hover {
+				color: #DC5;
+				font: bold 10px verdana;
+				letter-spacing: .9px;
+				text-decoration: underline;
+			}
+
+			div.description {
+				font: 10px verdana;
+				color: #555;
+				letter-spacing: .1px;
+				margin-bottom: 10px;
+				text-indent: 7px;
+				text-align: left;
+				width: 99%;
+			}
+
+			div#link {
+				font: 10px verdana;
+				color: #AB9927;
+				text-indent: 7px;
+			}
+
+			div.notice {
+				font: 9px verdana;
+				color: #777;
+				letter-spacing: .1px;
+				margin-bottom: 10px;
+				text-indent: 7px;
+				text-align: left;
+				width: 99%;
+			}
+
+			div.session {
+				font: bold 13px verdana;
+				border-bottom: 1px solid #EFEFEF;
+				color: #444;
+				letter-spacing: .7px;
+				margin-bottom: 10px;
+				margin-top: 24px;
+				text-align: left;
+				width: 99%;
+			}
+
+			div.source {
+				background: #F8F8FF;
+				border: 1px solid #EFEFEF;
+				border-left: 3px solid #CCC;
+				color: #444;
+				font: 12px monospace;
+				letter-spacing: .1px;
+				margin-bottom: 7px;
+				margin-top: 5px;
+				padding: 7px;
+				width: 99%;
+			}
+			
+			div.titulo {
+				font: bold 17px verdana;
+				color: #269;
+				letter-spacing: .7px;
+				margin-bottom: 20px;
+				margin-top: 5px;
+				text-align: left;
+				width: 99%;
+			}
+		</style>
+
+		<script type="text/javascript">
+			$(function() {
+
+			   $('div#star').raty();
+
+			   $('div#fixed').raty({
+					readOnly:	true,
+					start:		2
+			   });
+
+			   $('div#custom').raty({
+					scoreName:	'entity.score',
+					number:		10
+				});
+
+			   $('div#target').raty({
+					hintList:	['a', '', null, 'd'],
+				   	starOn:		'medal-on.png',
+				   	starOff:	'medal-off.png'
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<div class="titulo">jQuery Raty - A Star Rating Plugin</div>
+
+		<div id="link">
+			| <a href="http://wbotelhos.com/raty/jquery.raty.zip" target="_blank">Download</a> |
+			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
+			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
+			<a href="http://wbotelhos.com/raty/README" target="_blank">Readme</a> |
+		</div>
+
+		<div class="session">With default options:</div>
+		<div id="star"></div>
+
+		<div class="source">$('div#star').raty();</div>
+
+		<div class="session">Started with a score and read only value:</div>
+		<div id="fixed"></div>
+
+		<div class="source">
+		 	$('div#fixed').raty({
+				readOnly:	true,
+				start:		2
+		   });
+		</div>
+
+		<div class="session">With a custom score name and a number of stars:</div>
+		<div id="custom"></div>
+		
+		<div class="source">
+		 	$('div#custom').raty({
+				scoreName:	'entity.score',
+				number:		10
+			});
+		</div>
+
+		<div class="session">With a custom hint and icons:</div>
+		<div id="target"></div>
+
+		<div class="source">
+		 	$('div#target').raty({<br/>
+			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd'],<br/>
+			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
+			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
+			});
+		</div>
+
+		<div class="session">Default options:</div>
+		
+		<div class="source">
+		 	hintList:&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
+			number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/>
+			path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'img/'<br/>
+			readOnly:&nbsp;&nbsp;&nbsp;false<br/>
+			scoreName:&nbsp;&nbsp;null<br/>
+			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
+			starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
+			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'
+		</div>
+
+		<div class="session">Public functions: *</div>
+		
+		<div class="source">$.fn.raty.start(3);</div>
+		<div class="description">Starting the rating with 3 stars later.</div>
+
+		<div class="source">$.fn.raty.readOnly(true);</div>
+		<div class="description">Adjusts the rating for read-only later.</div>
+		
+		 <div class="notice">* Should come after the current raty and before the anothers one. Because it takes the last called raty.</div>
+	</body>
+</html>

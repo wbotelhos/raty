@@ -1,0 +1,14 @@
+/**
+ * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
+ * --------------------------------------------------------------------------
+ *
+ * 15.06.2010
+ *      - Change the path of images;
+ *      - Change the name image files;
+ *      - Choose the number of stars that will be presented;
+ *      - Choose a hint information of each star;
+ *      - Start with a default score;
+ *      - Set the stars read-only;
+ *      - Choose the name of the hidden score field.
+ *
+ */
