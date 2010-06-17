@@ -4,7 +4,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     0.1
+ * @version     0.2
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -32,4 +32,13 @@
  *	});
  *  
  *  <div id="star"></div>
+ *
+ * Public functions:
+ * --------------------------------------------------------------------------
+ * $.fn.raty.start(3);                                                // Starting the rating with 3 stars later.
+ * $.fn.raty.readOnly(true);                                          // Adjusts the rating for read-only later.
+ * $.fn.raty.click(2);                                                // Click in a star later.
+ *
+ * Should come after the current raty and before the anothers one. Because it takes the last called raty.
+ *
  */

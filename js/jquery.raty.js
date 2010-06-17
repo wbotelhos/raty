@@ -4,7 +4,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     0.1
+ * @version     0.2
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -26,7 +26,16 @@
  *      //onClick:   function() { alert('clicked!'); }                // A default function can to be setted here.
  *	});
  *  
- *  <div id="star"></div>
+ *	<div id="star"></div>
+ *  
+ * Public functions:
+ * --------------------------------------------------------------------------
+ *	$.fn.raty.start(3);                                                // Starting the rating with 3 stars later.
+ *	$.fn.raty.readOnly(true);                                          // Adjusts the rating for read-only later.
+ *	$.fn.raty.click(2);                                                // Click in a star later.
+ *
+ *	Should come after the current raty and before the anothers one. Because it takes the last called raty.
+ *
  */
 
 (function($) {
@@ -64,10 +73,6 @@
 		var start = 0;
 		if (!isNaN(options.start) && options.start > 0) {																// Start with a default value.
 			start = (options.start > options.number) ? options.number : options.start;									// Make sure the start value is not bigger than number of stars.
-			
-			if (options.onClick) {																						// If onClick is enabled, it is called automatic when start value is setted.
-				options.onClick(start);
-			}
 		}
 
 		var hint = '';
@@ -158,6 +163,17 @@
 		initialize(start)
 		return $.fn.raty;
 	};
+
+	$.fn.raty.click = function(score) {																					// Public function to click in a star.
+		var star = (score >= options.number) ? options.number : score;
+		initialize(star)
+		if (options.onClick) {																							// If onClick is enabled, it is called automatic when start value is setted.
+			options.onClick(star);
+		} else {
+			debug('You should add the "onClick: function() {}" option.');
+		}
+		return $.fn.raty;
+	};
 	
 	// TODO: functions are repeated on purpose for now! Because options.xxx should be used here and works as current value, unlike the function body. Why, Mr. Anderson? Why?
 	function liveEnter() {
@@ -195,10 +211,6 @@
 		var id = $this.attr('id');
 		$('img.' + id).live('click', function() {																		// When mouseclick i keep the score of clicked star into a hidden field with name container.id + -score.
 			$('input#' + id + '-score').val(this.alt);																	// Put de current score into hidden input. The class name of the star selected is equals ID container.
-
-			if (options.onClick) {																						// If onClick is activated, the callback funtion of it is called. 
-				options.onClick(this.alt);
-			}
 		});
 	};
 

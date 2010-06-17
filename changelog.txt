@@ -2,7 +2,9 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
- * 15.06.2010
+ * 16.06.2010
+ *      - Added the public function click, that do the click on a star; 
+ *      - Was removed the execution of the onClick when used the function start;
  *      - Added onClick function that enable a callback when a star is clicked.
  *
  * 15.06.2010

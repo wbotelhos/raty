@@ -112,6 +112,16 @@
 				});
 
 			});
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-17006803-1']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
 		</script>
 	</head>
 	<body>
@@ -182,7 +192,7 @@
 			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
 			starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
 			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
-			onClick:&nbsp;&nbsp;&nbsp;&nbsp;function() { alert('clicked!'); }
+			//onClick:&nbsp;&nbsp;&nbsp;&nbsp;function() { alert('clicked!'); }
 		</div>
 
 		<div class="session">Public functions: *</div>
@@ -192,6 +202,9 @@
 
 		<div class="source">$.fn.raty.readOnly(true);</div>
 		<div class="description">Adjusts the rating for read-only later.</div>
+
+		<div class="source">$.fn.raty.click(2);</div>
+		<div class="description">Click in the star number 2 later.</div>
 		
 		 <div class="notice">* Should come after the current raty and before the anothers one. Because it takes the last called raty.</div>
 	</body>
