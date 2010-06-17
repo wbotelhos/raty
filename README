@@ -28,7 +28,7 @@
  *		start:       0,                                               // Start with a score value.
  *		starOff:     'star-off.png',                                  // The image of the off star.
  *		starOn:      'star-on.png',                                   // The image of the on star.
- *      //onClick:   function() { alert('clicked!'); }                // A default function can to be setted here.
+ *    //onClick:     function() { alert('clicked!'); }                // A default function can to be setted here.
  *	});
  *  
  *  <div id="star"></div>
