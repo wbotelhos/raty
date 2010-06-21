@@ -15,15 +15,15 @@
  * Usage (default values):
  * --------------------------------------------------------------------------
  *	$('div#star').raty({
- *		hintList:    ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
- *		number:      5,                                               // Number of star.
- *		path:        'img,                                            // Path of images.
- *		readOnly:    false,                                           // read-only or not.
- *		scoreName:   'score',                                         // The name of target score.
- *		start:       0,                                               // Start with a score value.
- *		starOff:     'star-off.png',                                  // The image of the off star.
- *		starOn:      'star-on.png',                                   // The image of the on star.
- *      //onClick:   function() { alert('clicked!'); }                // A default function can to be setted here.
+ *		hintList:    ['bad', 'poor', 'regular', 'good', 'gorgeous'],	// A hint information for default 5 stars.
+ *		number:      5,													// Number of star.
+ *		path:        'img',												// Path of images.
+ *		readOnly:    false,												// read-only or not.
+ *		scoreName:   'score',											// The name of target score.
+ *		start:       0,													// Start with a score value.
+ *		starOff:     'star-off.png',									// The image of the off star.
+ *		starOn:      'star-on.png',										// The image of the on star.
+ *      //onClick:   function() { alert('clicked!'); }					// A default function can to be setted here.
  *	});
  *  
  *	<div id="star"></div>
@@ -49,7 +49,7 @@
 	$.fn.raty = function(settings) {
 		options = $.extend({}, $.fn.raty.defaults, settings);															// Merge (no deep) the default with settings, without alter the default. Global!
 
-		if (this.attr('id') == undefined) {																				// If the script is invalid then the script stops and write the error in the console.
+		if (this.attr('id') === undefined) {																				// If the script is invalid then the script stops and write the error in the console.
 			debug('Invalid selector!'); return;
 		}
 
@@ -77,7 +77,7 @@
 
 		var hint = '';
 		for (var i = 1; i <= options.number; i++) {																					// Append the img stars into container.
-			hint = (options.number <= options.hintList.length && options.hintList[i - 1] != null) ? options.hintList[i - 1] : i;	// Avoids a nonexistent index (undefined) and Ensures that the hint is to be applied, it means to be different from null. Otherwise applies the current number.
+			hint = (options.number <= options.hintList.length && options.hintList[i - 1] !== null) ? options.hintList[i - 1] : i;	// Avoids a nonexistent index (undefined) and Ensures that the hint is to be applied, it means to be different from null. Otherwise applies the current number.
 
 			starFile = (start >= i) ? options.starOn : options.starOff;
 
@@ -142,7 +142,7 @@
 		scoreName:		'score',																						// The name of target score.
 		start:			0,																								// Start with a score value.
 		starOff:		'star-off.png',																					// The image of the off star.
-		starOn:			'star-on.png',																					// The image of the on star.
+		starOn:			'star-on.png'																					// The image of the on star.
 		//onClick:		function() { alert('clicked!'); }																// A default function can to be setted here.
 	};
 
@@ -160,13 +160,13 @@
 	};
 
 	$.fn.raty.start = function(start) {																					// Public function to initialize with a default value.
-		initialize(start)
+		initialize(start);
 		return $.fn.raty;
 	};
 
 	$.fn.raty.click = function(score) {																					// Public function to click in a star.
 		var star = (score >= options.number) ? options.number : score;
-		initialize(star)
+		initialize(star);
 		if (options.onClick) {																							// If onClick is enabled, it is called automatic when start value is setted.
 			options.onClick(star);
 		} else {
