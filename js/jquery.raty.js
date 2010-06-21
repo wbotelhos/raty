@@ -4,7 +4,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     0.2
+ * @version     0.3
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -14,16 +14,16 @@
  * 
  * Usage (default values):
  * --------------------------------------------------------------------------
- *	$('div#star').raty({
- *		hintList:    ['bad', 'poor', 'regular', 'good', 'gorgeous'],	// A hint information for default 5 stars.
- *		number:      5,													// Number of star.
- *		path:        'img',												// Path of images.
- *		readOnly:    false,												// read-only or not.
- *		scoreName:   'score',											// The name of target score.
- *		start:       0,													// Start with a score value.
- *		starOff:     'star-off.png',									// The image of the off star.
- *		starOn:      'star-on.png',										// The image of the on star.
- *      //onClick:   function() { alert('clicked!'); }					// A default function can to be setted here.
+  *	$('div#star').raty({
+ *		hintList:    ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
+ *		number:      5,                                               // Number of star.
+ *		path:        'img,                                            // Path of images.
+ *		readOnly:    false,                                           // read-only or not.
+ *		scoreName:   'score',                                         // The name of target score.
+ *		start:       0,                                               // Start with a score value.
+ *		starOff:     'star-off.png',                                  // The image of the off star.
+ *		starOn:      'star-on.png'                                    // The image of the on star.
+ *      //onClick:   function() { alert('clicked!'); }                // A default function can to be setted here.
  *	});
  *  
  *	<div id="star"></div>
@@ -82,8 +82,8 @@
 			starFile = (start >= i) ? options.starOn : options.starOff;
 
 			$this
-			.append('<img id="' + containerId + '-' + i + '" src="' + options.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + containerId + '"/>')
-			.append((i < options.number) ? '&nbsp;' : '');
+			.append('<img id="' + containerId + '-' + i + '" src="' + options.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + containerId + '"/>');
+			//.append((i < options.number) ? '&nbsp;' : '');
 		}
 		
 		$this

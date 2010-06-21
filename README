@@ -4,7 +4,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     0.2
+ * @version     0.3
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -27,8 +27,8 @@
  *		scoreName:   'score',                                         // The name of target score.
  *		start:       0,                                               // Start with a score value.
  *		starOff:     'star-off.png',                                  // The image of the off star.
- *		starOn:      'star-on.png',                                   // The image of the on star.
- *    //onClick:     function() { alert('clicked!'); }                // A default function can to be setted here.
+ *		starOn:      'star-on.png'                                    // The image of the on star.
+ *    //onClick:    function() { alert('clicked!'); }                // A default function can to be setted here.
  *	});
  *  
  *  <div id="star"></div>

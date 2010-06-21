@@ -1,2 +1,5 @@
 *.zip
 .DS_Store
+.project
+.settings
+annotations.txt
