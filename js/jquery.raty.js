@@ -82,8 +82,8 @@
 			starFile = (start >= i) ? options.starOn : options.starOff;
 
 			$this
-			.append('<img id="' + containerId + '-' + i + '" src="' + options.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + containerId + '"/>');
-			//.append((i < options.number) ? '&nbsp;' : '');
+			.append('<img id="' + containerId + '-' + i + '" src="' + options.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + containerId + '"/>')
+			.append((i < options.number) ? '&nbsp;' : '');
 		}
 		
 		$this
