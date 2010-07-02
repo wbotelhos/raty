@@ -12,6 +12,15 @@
 		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
 
 		<style type="text/css">
+		
+			a#coffee-link, div#coffee-container {
+				border-radius: 4px;
+				-khtml-border-radius: 4px;
+				-moz-border-radius: 4px;
+				-opera-border-radius: 4px;
+				-webkit-border-radius: 4px;
+			}
+
 			a {
 				color: #EA9C00;
 				font: bold 10px verdana;
@@ -24,6 +33,26 @@
 				font: bold 10px verdana;
 				letter-spacing: .9px;
 				text-decoration: underline;
+			}
+
+			a#coffee-link {
+				background: url('img/coffee.png') 6px 2px no-repeat;
+				border: 1px solid #D9C640;
+				color: #FFF;
+				display: block;
+				padding: 4px 5px 4px 26px;
+			}
+
+			div#adsense {
+				font: 10px verdana;
+				color: #AB9927;
+				text-indent: 7px;
+			}
+
+			div#coffee-container {
+				background-color: #DC5;
+				float: right;
+				margin-right: 15px;
 			}
 
 			div.description {
@@ -75,8 +104,19 @@
 				padding: 7px;
 				width: 99%;
 			}
-			
-			div.titulo {
+
+			div.text {
+				font: 10px verdana;
+				color: #555;
+				letter-spacing: .1px;
+				margin-bottom: 20px;
+				margin-top: 5px;
+				text-align: left;
+				text-indent: 7px;
+				width: 99%;
+			}
+
+			div.title {
 				font: bold 17px verdana;
 				color: #269;
 				letter-spacing: .7px;
@@ -108,10 +148,15 @@
 				   	starOff:	'medal-off.png'
 				});
 
-				$('div#onclick').raty({
+			   $('div#click').raty({
 					onClick: function(score) {
 						alert('score: ' + score);
 					}
+				});
+
+			   $('div#half').raty({
+					start: 3.3,
+					showHalf: true
 				});
 
 			});
@@ -128,38 +173,62 @@
 		</script>
 	</head>
 	<body>
-		<div class="titulo">jQuery Raty - A Star Rating Plugin</div>
+		<div class="title">jQuery Raty - A Star Rating Plugin</div>
+
+		<div id="adsense">
+			<script type="text/javascript">
+				google_ad_client = "pub-2416130166150078";
+				google_ad_slot = "1875587110";
+				google_ad_width = 468;
+				google_ad_height = 15;
+			</script>
+			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+		</div>
+		
+		<div id="coffee-container">
+			<a id="coffee-link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=wbotelhos@gmail.com" target="_blank">buy me a coffee</a>
+		</div><br/>
 
 		<div id="link">
-			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.3.zip" target="_blank">Download</a> |
+			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.4.zip" target="_blank">Download</a> |
 			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
 			<a href="http://wbotelhos.com/raty/README" target="_blank">Readme</a> |
-		</div>
+		</div><br/>
+
+		<div class="text">jQuery <b>Raty</b> is a plugin that generates a customizable star rating automatically.</div>
 
 		<div class="session">With default options:</div>
 		<div id="star"></div>
 
-		<div class="source">$('div#star').raty();</div>
+		<div class="source">
+			$('div#star').raty();<br/><br/>
+			
+			&lt;div id="fixed"&gt;&lt;/div&gt;
+		</div>
 
 		<div class="session">Started with a score and read only value:</div>
 		<div id="fixed"></div>
 
 		<div class="source">
-		 	$('div#fixed').raty({
-				readOnly:	true,
-				start:		2
-		   });
+		 	$('div#fixed').raty({<br/>
+			&nbsp;&nbsp;readOnly: true,<br/>
+			&nbsp;&nbsp;start: 2<br/>
+		   });<br/><br/>
+		   
+		   &lt;div id="fixed"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">With a custom score name and a number of stars:</div>
 		<div id="custom"></div>
 		
 		<div class="source">
-		 	$('div#custom').raty({
-				scoreName:	'entity.score',
-				number:		10
-			});
+		 	$('div#custom').raty({<br/>
+			&nbsp;&nbsp;scoreName: 'entity.score',<br/>
+			&nbsp;&nbsp;number: 10<br/>
+			});<br/><br/>
+		   
+		   &lt;div id="custom"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">With a custom hint and icons:</div>
@@ -170,18 +239,34 @@
 			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
 			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
 			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
-			});
+			});<br/><br/>
+		   
+		   &lt;div id="target"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">Using onClick function:</div>
-		<div id="onclick"></div>
+		<div id="click"></div>
 
 		<div class="source">
-		 	$('div#onclick').raty({<br/>
+		 	$('div#click').raty({<br/>
 			&nbsp;&nbsp;onClick: function(score) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
 			&nbsp;&nbsp;}<br/>
-			});
+			});<br/><br/>
+		   
+		   &lt;div id="click"&gt;&lt;/div&gt;
+		</div>
+		
+		<div class="session">Displaying half star:</div>
+		<div id="half"></div>
+
+		<div class="source">
+		 	$('div#half').raty({<br/>
+			&nbsp;&nbsp;start: 3.3,<br/>
+			&nbsp;&nbsp;showHalf: true<br/>
+			});<br/><br/>
+		   
+		   &lt;div id="half"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">Default options:</div>
@@ -192,6 +277,8 @@
 			path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'img/'<br/>
 			readOnly:&nbsp;&nbsp;&nbsp;false<br/>
 			scoreName:&nbsp;&nbsp;'score'<br/>
+			showHalf:&nbsp;&nbsp;&nbsp;false,<br/>
+ 			starHalf:&nbsp;&nbsp;&nbsp;'star-half.png',<br/>
 			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
 			starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
 			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
@@ -201,7 +288,7 @@
 		<div class="session">Public functions: *</div>
 		
 		<div class="source">$.fn.raty.start(3);</div>
-		<div class="description">Starting the rating with 3 stars later.</div>
+		<div class="description">Starting the rating with 3 stars later. Half star not supported.</div>
 
 		<div class="source">$.fn.raty.readOnly(true);</div>
 		<div class="description">Adjusts the rating for read-only later.</div>

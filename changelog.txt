@@ -2,15 +2,18 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
- * 21.06.2010
+ * 07.02.2010
+ *      - Added support to display half star.
+ *
+ * 06.21.2010
  *      - Fixed some mistakes to work on IE browser. 
  *
- * 16.06.2010
+ * 06.16.2010
  *      - Added the public function click, that do the click on a star; 
  *      - Was removed the execution of the onClick when used the function start;
  *      - Added onClick function that enable a callback when a star is clicked.
  *
- * 15.06.2010
+ * 06.15.2010
  *      - Change the path of images;
  *      - Change the name image files;
  *      - Choose the number of stars that will be presented;

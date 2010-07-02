@@ -4,7 +4,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     0.3
+ * @version     0.4
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -25,6 +25,8 @@
  *		path:        'img,                                            // Path of images.
  *		readOnly:    false,                                           // read-only or not.
  *		scoreName:   'score',                                         // The name of target score.
+ *      showHalf:    false,                                           // Active the half star.
+ *      starHalf:    'star-half.png',                                 // The image of the half star.
  *		start:       0,                                               // Start with a score value.
  *		starOff:     'star-off.png',                                  // The image of the off star.
  *		starOn:      'star-on.png'                                    // The image of the on star.
