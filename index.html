@@ -12,7 +12,6 @@
 		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
 
 		<style type="text/css">
-		
 			a#coffee-link, div#coffee-container {
 				border-radius: 4px;
 				-khtml-border-radius: 4px;
@@ -21,14 +20,14 @@
 				-webkit-border-radius: 4px;
 			}
 
-			a {
+			div#link a {
 				color: #EA9C00;
 				font: bold 10px verdana;
 				letter-spacing: .9px;
 				text-decoration: none;
 			}
 			
-			a:hover {
+			div#link a:hover {
 				color: #DC5;
 				font: bold 10px verdana;
 				letter-spacing: .9px;
@@ -40,7 +39,14 @@
 				border: 1px solid #D9C640;
 				color: #FFF;
 				display: block;
+				font: bold 10px verdana;
+				letter-spacing: .9px;
 				padding: 4px 5px 4px 26px;
+				text-decoration: none;
+			}
+
+			a#coffee-link:hover {
+				text-decoration: underline;
 			}
 
 			div#adsense {
@@ -175,25 +181,15 @@
 	<body>
 		<div class="title">jQuery Raty - A Star Rating Plugin</div>
 
-		<div id="adsense">
-			<script type="text/javascript">
-				google_ad_client = "pub-2416130166150078";
-				google_ad_slot = "1875587110";
-				google_ad_width = 468;
-				google_ad_height = 15;
-			</script>
-			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
-		</div>
-		
-		<div id="coffee-container">
-			<a id="coffee-link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=wbotelhos@gmail.com" target="_blank">buy me a coffee</a>
-		</div><br/>
-
 		<div id="link">
 			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.4.zip" target="_blank">Download</a> |
 			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
 			<a href="http://wbotelhos.com/raty/README" target="_blank">Readme</a> |
+		</div>
+		
+				<div id="coffee-container">
+			<a id="coffee-link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=wbotelhos@gmail.com" target="_blank">buy me a coffee</a>
 		</div><br/>
 
 		<div class="text">jQuery <b>Raty</b> is a plugin that generates a customizable star rating automatically.</div>
@@ -202,7 +198,7 @@
 		<div id="star"></div>
 
 		<div class="source">
-			$('div#star').raty();<br/><br/>
+			$('#star').raty();<br/><br/>
 			
 			&lt;div id="fixed"&gt;&lt;/div&gt;
 		</div>
@@ -211,7 +207,7 @@
 		<div id="fixed"></div>
 
 		<div class="source">
-		 	$('div#fixed').raty({<br/>
+		 	$('#fixed').raty({<br/>
 			&nbsp;&nbsp;readOnly: true,<br/>
 			&nbsp;&nbsp;start: 2<br/>
 		   });<br/><br/>
@@ -223,7 +219,7 @@
 		<div id="custom"></div>
 		
 		<div class="source">
-		 	$('div#custom').raty({<br/>
+		 	$('#custom').raty({<br/>
 			&nbsp;&nbsp;scoreName: 'entity.score',<br/>
 			&nbsp;&nbsp;number: 10<br/>
 			});<br/><br/>
@@ -235,7 +231,7 @@
 		<div id="target"></div>
 
 		<div class="source">
-		 	$('div#target').raty({<br/>
+		 	$('#target').raty({<br/>
 			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
 			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
 			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
@@ -248,7 +244,7 @@
 		<div id="click"></div>
 
 		<div class="source">
-		 	$('div#click').raty({<br/>
+		 	$('#click').raty({<br/>
 			&nbsp;&nbsp;onClick: function(score) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
 			&nbsp;&nbsp;}<br/>
@@ -261,7 +257,7 @@
 		<div id="half"></div>
 
 		<div class="source">
-		 	$('div#half').raty({<br/>
+		 	$('#half').raty({<br/>
 			&nbsp;&nbsp;start: 3.3,<br/>
 			&nbsp;&nbsp;showHalf: true<br/>
 			});<br/><br/>
@@ -296,6 +292,16 @@
 		<div class="source">$.fn.raty.click(2);</div>
 		<div class="description">Click in the star number 2 later.</div>
 		
-		 <div class="notice">* Should come after the current raty and before the anothers one. Because it takes the last called raty.</div>
+		 <div class="notice">* Should come after the current raty and before the anothers one. Because it takes the last called raty.</div><br/>
+		 
+		 <div id="adsense">
+			<script type="text/javascript">
+				google_ad_client = "pub-2416130166150078";
+				google_ad_slot = "1875587110";
+				google_ad_width = 468;
+				google_ad_height = 15;
+			</script>
+			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+		</div>
 	</body>
 </html>
