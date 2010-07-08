@@ -2,6 +2,13 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 07.08.2010
+ *      - Now you can put a cancel button to cancel your rating;
+ *		- Choose the cancel image off;
+ *		- Choose the cancel image on;
+ *		- Choose de left or right side position for the cancel button;
+ *		- Change de hint of the cancel button.
+ *
  * 07.02.2010
  *      - Added support to display half star.
  *

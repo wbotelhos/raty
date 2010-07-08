@@ -6,10 +6,9 @@
 		<meta http-equiv="Pragma" content="no-cache"/>
 		<meta http-equiv="Expires" content="-1"/>
 		<title>jQuery Raty - A Star Rating Plugin</title>
-		
-		
+
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.js"></script>
 
 		<style type="text/css">
 			a#coffee-link, div#coffee-container {
@@ -81,7 +80,7 @@
 				font: 9px verdana;
 				color: #777;
 				letter-spacing: .1px;
-				margin-bottom: 10px;
+				margin-bottom: 3px;
 				text-indent: 7px;
 				text-align: left;
 				width: 99%;
@@ -131,64 +130,40 @@
 				text-align: left;
 				width: 99%;
 			}
-		</style>
-
-		<script type="text/javascript">
-			$(function() {
-
-			   $('div#star').raty();
-
-			   $('div#fixed').raty({
-					readOnly:	true,
-					start:		2
-			   });
-
-			   $('div#custom').raty({
-					scoreName:	'entity.score',
-					number:		10
-				});
-
-			   $('div#target').raty({
-					hintList:	['a', '', null, 'd', '5'],
-				   	starOn:		'medal-on.png',
-				   	starOff:	'medal-off.png'
-				});
-
-			   $('div#click').raty({
-					onClick: function(score) {
-						alert('score: ' + score);
-					}
-				});
-
-			   $('div#half').raty({
-					start: 3.3,
-					showHalf: true
-				});
-
-			});
-
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-17006803-1']);
-			_gaq.push(['_trackPageview']);
 			
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
+			span.comment-html, span.comment-script {
+				font: 12px monospace;
+				letter-spacing: .1px;
+				margin-bottom: 7px;
+				margin-top: 5px;
+			}
+
+			span.comment-html {
+				color: #5e85de;
+			}
+
+			span.comment-script {
+				color: #578F73;
+			}
+
+			span#version {
+				color: #777;
+				font: 10px verdana;
+			}
+		</style>
 	</head>
 	<body>
-		<div class="title">jQuery Raty - A Star Rating Plugin</div>
+		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 0.5)</span></div>
 
 		<div id="link">
-			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.4.zip" target="_blank">Download</a> |
+			| <a href="http://github.com/wbotelhos/raty/downloads" target="_blank">Download</a> |
 			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
-			<a href="http://wbotelhos.com/raty/README" target="_blank">Readme</a> |
+			<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
+			<a href="http://wbotelhos.com/raty/LICENSE.txt" target="_blank">Licence</a> |
 		</div>
 		
-				<div id="coffee-container">
+		<div id="coffee-container">
 			<a id="coffee-link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=wbotelhos@gmail.com" target="_blank">buy me a coffee</a>
 		</div><br/>
 
@@ -200,7 +175,7 @@
 		<div class="source">
 			$('#star').raty();<br/><br/>
 			
-			&lt;div id="fixed"&gt;&lt;/div&gt;
+			&lt;div id="star"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">Started with a score and read only value:</div>
@@ -208,8 +183,8 @@
 
 		<div class="source">
 		 	$('#fixed').raty({<br/>
-			&nbsp;&nbsp;readOnly: true,<br/>
-			&nbsp;&nbsp;start: 2<br/>
+			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/>
 		   });<br/><br/>
 		   
 		   &lt;div id="fixed"&gt;&lt;/div&gt;
@@ -220,8 +195,8 @@
 		
 		<div class="source">
 		 	$('#custom').raty({<br/>
-			&nbsp;&nbsp;scoreName: 'entity.score',<br/>
-			&nbsp;&nbsp;number: 10<br/>
+			&nbsp;&nbsp;scoreName:&nbsp;&nbsp;'entity.score',<br/>
+			&nbsp;&nbsp;number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10<br/>
 			});<br/><br/>
 		   
 		   &lt;div id="custom"&gt;&lt;/div&gt;
@@ -258,27 +233,72 @@
 
 		<div class="source">
 		 	$('#half').raty({<br/>
-			&nbsp;&nbsp;start: 3.3,<br/>
-			&nbsp;&nbsp;showHalf: true<br/>
+			&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3,<br/>
+			&nbsp;&nbsp;showHalf:&nbsp;&nbsp;true<br/>
 			});<br/><br/>
 		   
 		   &lt;div id="half"&gt;&lt;/div&gt;
 		</div>
 
+		<div class="session">With a default cancel button:</div>
+		<div id="cancel"></div>
+
+		<div class="source">
+		 	$('#cancel').raty({<br/>
+			&nbsp;&nbsp;showCancel: true<br/>
+			});<br/><br/>
+		   
+		   &lt;div id="cancel"&gt;&lt;/div&gt;
+		</div>
+
+		<div class="session">With a custom cancel button:</div>
+		<div id="cancel-custom"></div>
+
+		<div class="source">
+		 	$('#cancel-custom').raty({<br/>
+			&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'remove my rating!',<br/>
+			&nbsp;&nbsp;cancelPlace:&nbsp;&nbsp;'right',<br/>
+			&nbsp;&nbsp;showCancel:&nbsp;&nbsp;&nbsp;true<br/>
+			});<br/><br/>
+		   
+		   &lt;div id="cancel-custom"&gt;&lt;/div&gt;
+		</div>
+
 		<div class="session">Default options:</div>
 		
 		<div class="source">
-		 	hintList:&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
-			number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/>
-			path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'img/'<br/>
-			readOnly:&nbsp;&nbsp;&nbsp;false<br/>
-			scoreName:&nbsp;&nbsp;'score'<br/>
-			showHalf:&nbsp;&nbsp;&nbsp;false,<br/>
- 			starHalf:&nbsp;&nbsp;&nbsp;'star-half.png',<br/>
-			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
-			starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
-			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
-			//onClick:&nbsp;&nbsp;&nbsp;&nbsp;function() { alert('clicked!'); }
+		 	cancelHint:&nbsp;&nbsp;&nbsp;'cancel this rating!'<br/>
+		 	<div class="notice">The hint information.</div>
+		 	cancelOff:&nbsp;&nbsp;&nbsp;&nbsp;'cancel-off.png'<br/>
+		 	<div class="notice">Name of the cancel image off.</div>
+		 	cancelOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'cancel-on.png'<br/>
+		 	<div class="notice">Name of the cancel image on.</div>
+		 	cancelPlace:&nbsp;&nbsp;'left'<br/>
+		 	<div class="notice">Position of the cancel button.</div>
+		 	hintList:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
+		 	<div class="notice">List of names that will be used as a hint on each star.</div>
+			number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/>
+		 	<div class="notice">Number of stars that will be presented.</div>
+			path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'img/'<br/>
+		 	<div class="notice">Path where are the images of the stars.</div>
+			readOnly:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
+		 	<div class="notice">If the stars will be read-only.</div>
+			scoreName:&nbsp;&nbsp;&nbsp;&nbsp;'score'<br/>
+		 	<div class="notice">Name of the hidden field that holds the score value.</div>
+		 	showCancel:&nbsp;&nbsp;&nbsp;false<br/>
+		 	<div class="notice">If will be showed a button to cancel the rating.</div>
+			showHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
+		 	<div class="notice">If will show half star if come a float number as score.</div>
+ 			starHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-half.png'<br/>
+		 	<div class="notice">The name of the half star image.</div>
+			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
+		 	<div class="notice">Number of stars to be selected.</div>
+			starOff:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
+		 	<div class="notice">Name of the star image off.</div>
+			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
+		 	<div class="notice">Name of the star image on.</div>
+			<span class="comment-script">//onClick:&nbsp;&nbsp;&nbsp;&nbsp;function() { alert('clicked!'); }</span>
+		 	<div class="notice">Function that returns the selected value.</div>
 		</div>
 
 		<div class="session">Public functions: *</div>
@@ -304,4 +324,59 @@
 			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
 		</div>
 	</body>
+	
+	<script type="text/javascript">
+		$(function() {
+
+		   $('div#star').raty();
+
+			$('div#fixed').raty({
+				readOnly:	true,
+				start:		2
+		   });
+
+			$('div#custom').raty({
+				scoreName:	'entity.score',
+				number:		10
+			});
+
+			$('div#target').raty({
+				hintList:	['a', '', null, 'd', '5'],
+			   	starOn:		'medal-on.png',
+			   	starOff:	'medal-off.png'
+			});
+
+			$('div#click').raty({
+				onClick: function(score) {
+					alert('score: ' + score);
+				}
+			});
+
+			$('div#half').raty({
+				start: 3.3,
+				showHalf: true
+			});
+
+		   $('div#cancel').raty({
+				showCancel: true
+			});
+
+		   $('div#cancel-custom').raty({
+				cancelHint: 'remove my rating!',
+				cancelPlace: 'right',
+				showCancel: true
+			});
+
+		});
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-17006803-1']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 </html>
