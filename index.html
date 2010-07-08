@@ -8,7 +8,7 @@
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
 
 		<style type="text/css">
 			a#coffee-link, div#coffee-container {
@@ -259,6 +259,9 @@
 			&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'remove my rating!',<br/>
 			&nbsp;&nbsp;cancelPlace:&nbsp;&nbsp;'right',<br/>
 			&nbsp;&nbsp;showCancel:&nbsp;&nbsp;&nbsp;true<br/>
+			&nbsp;&nbsp;onClick: function(score) {<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
+			&nbsp;&nbsp;}<br/>
 			});<br/><br/>
 		   
 		   &lt;div id="cancel-custom"&gt;&lt;/div&gt;
@@ -364,7 +367,10 @@
 		   $('div#cancel-custom').raty({
 				cancelHint: 'remove my rating!',
 				cancelPlace: 'right',
-				showCancel: true
+				showCancel: true,
+				onClick: function(score) {
+					alert('score: ' + score);
+				}
 			});
 
 		});

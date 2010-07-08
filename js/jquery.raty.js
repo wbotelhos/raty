@@ -138,7 +138,7 @@
 				.live('click', function() {
 					$('input#' + containerId + '-score').val(0);
 					if (onClick) { 
-			          onClick(this.alt);
+			          onClick(0);
 			        }
 				});
 			} else {
