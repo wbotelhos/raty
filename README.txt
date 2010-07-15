@@ -22,7 +22,7 @@
  * Usage (default values):
  * --------------------------------------------------------------------------
  *	$('div#star').raty({
- *		cancelHint:   'cancel this rate!',                             // The hint information.
+ *		cancelHint:   'cancel this rating!',                           // The hint information.
  *		cancelOff:    'cancel-off.png'                                 // Name of the cancel image off.
  *		cancelOn:     'cancel-on.png'                                  // Name of the cancel image on.
  *		cancelPlace:  'left',                                          // Position of the cancel button.
@@ -31,7 +31,7 @@
  *		path:         'img,                                            // Path of images.
  *		readOnly:     false,                                           // read-only or not.
  *		scoreName:    'score',                                         // The name of target score.
- *		showCancel:   false,                                           // If will be showed a button to cancel the rate.
+ *		showCancel:   false,                                           // If will be showed a button to cancel the rating.
  *		showHalf:     false,                                           // Active the half star.
  *		starHalf:     'star-half.png',                                 // The image of the half star.
  *		start:        0,                                               // Start with a score value.

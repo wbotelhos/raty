@@ -2,25 +2,29 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
- * 07.08.2010
+ * 0.6 beta
+ *
+ *		- When the stars are read-only, all titles are transformed in the title corresponding to the score. 
+ *
+ * 0.5
  *      - Now you can put a cancel button to cancel your rating;
  *		- Choose the cancel image off;
  *		- Choose the cancel image on;
- *		- Choose de left or right side position for the cancel button;
- *		- Change de hint of the cancel button.
+ *		- Choose the left or right side position for the cancel button;
+ *		- Change the hint of the cancel button.
  *
- * 07.02.2010
+ * 0.4
  *      - Added support to display half star.
  *
- * 06.21.2010
+ * 0.3
  *      - Fixed some mistakes to work on IE browser. 
  *
- * 06.16.2010
+ * 0.2
  *      - Added the public function click, that do the click on a star; 
  *      - Was removed the execution of the onClick when used the function start;
  *      - Added onClick function that enable a callback when a star is clicked.
  *
- * 06.15.2010
+ * 0.1
  *      - Change the path of images;
  *      - Change the name image files;
  *      - Choose the number of stars that will be presented;

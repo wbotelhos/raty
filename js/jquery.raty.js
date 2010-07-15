@@ -7,7 +7,7 @@
  * Licensed under The MIT License
  * 
  * @version     0.5
- * @since       11.06.2010
+ * @since       06.11.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
  * @twitter     http://twitter.com/wbotelhos
@@ -47,7 +47,7 @@
  *
  */
 
-(function($) {
+;(function($) {
 
 	// TODO: How to handle a particular container from a public function?
 
@@ -62,6 +62,8 @@
 
 		if (options.number > 20) {
 			options.number = 20;
+		} else if (options.number < 0) {
+			options.number = 0;
 		}
 
 		if (options.path.substring(options.path.length - 1, options.path.length) != '/') {
@@ -189,7 +191,10 @@
 				}
 			}).css('cursor', 'pointer');
 		} else {
-			$this.css('cursor', 'default');
+			hint = (options.number <= options.hintList.length && options.hintList[start - 1] !== null) ? options.hintList[start - 1] : start;
+			$this
+			.css('cursor', 'default').attr('title', hint)
+			.children('img').attr('title', hint);
 		}
 
 		return $this;

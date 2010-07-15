@@ -156,7 +156,7 @@
 		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 0.5)</span></div>
 
 		<div id="link">
-			| <a href="http://github.com/wbotelhos/raty/downloads" target="_blank">Download</a> |
+			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.5.zip" target="_blank">Download</a> |
 			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
 			<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
@@ -170,12 +170,12 @@
 		<div class="text">jQuery <b>Raty</b> is a plugin that generates a customizable star rating automatically.</div>
 
 		<div class="session">With default options:</div>
-		<div id="star"></div>
+		<div id="default"></div>
 
 		<div class="source">
-			$('#star').raty();<br/><br/>
+			$('#default').raty();<br/><br/>
 			
-			&lt;div id="star"&gt;&lt;/div&gt;
+			&lt;div id="default"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">Started with a score and read only value:</div>
@@ -191,28 +191,28 @@
 		</div>
 
 		<div class="session">With a custom score name and a number of stars:</div>
-		<div id="custom"></div>
+		<div id="number"></div>
 		
 		<div class="source">
-		 	$('#custom').raty({<br/>
+		 	$('#number').raty({<br/>
 			&nbsp;&nbsp;scoreName:&nbsp;&nbsp;'entity.score',<br/>
 			&nbsp;&nbsp;number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10<br/>
 			});<br/><br/>
 		   
-		   &lt;div id="custom"&gt;&lt;/div&gt;
+		   &lt;div id="number"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">With a custom hint and icons:</div>
-		<div id="target"></div>
+		<div id="icon"></div>
 
 		<div class="source">
-		 	$('#target').raty({<br/>
+		 	$('#icon').raty({<br/>
 			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
 			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
 			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
 			});<br/><br/>
 		   
-		   &lt;div id="target"&gt;&lt;/div&gt;
+		   &lt;div id="icon"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">Using onClick function:</div>
@@ -331,19 +331,19 @@
 	<script type="text/javascript">
 		$(function() {
 
-		   $('div#star').raty();
+		   $('div#default').raty();
 
 			$('div#fixed').raty({
 				readOnly:	true,
 				start:		2
-		   });
+			});
 
-			$('div#custom').raty({
+			$('div#number').raty({
 				scoreName:	'entity.score',
 				number:		10
 			});
 
-			$('div#target').raty({
+			$('div#icon').raty({
 				hintList:	['a', '', null, 'd', '5'],
 			   	starOn:		'medal-on.png',
 			   	starOff:	'medal-off.png'
