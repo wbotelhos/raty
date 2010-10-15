@@ -49,16 +49,12 @@
 
 ;(function($) {
 
-	// TODO: How to handle a particular container from a public function?
-
 	$.fn.raty = function(settings) {
 		options = $.extend({}, $.fn.raty.defaults, settings);
 
 		if (this.attr('id') === undefined) {
 			debug('Invalid selector!'); return;
 		}
-
-		$this = $(this);
 
 		if (options.number > 20) {
 			options.number = 20;
@@ -70,18 +66,22 @@
 			options.path += '/';
 		}
 
-		// TODO: Using var for values that will be used into a function later (live/bind), to keep the current value and not the last one. Why, Mr. Anderson? Why? 
-		var containerId = $this.attr('id'),
-			path = options.path,
-			cancelOff = options.cancelOff,
-			cancelOn = options.cancelOn,
-			showHalf = options.showHalf,
-			starHalf = options.starHalf,
-			starOff = options.starOff,
-			starOn = options.starOn,
-			onClick = options.onClick,
-			start = 0,
-			hint = '';
+		// The public functions need a global variable to keep de context.
+		$global = $(this);
+
+		// Local variables to keep the current value and not the last one. Why, Mr. Anderson? Why? 
+		var $this			= $global,
+			containerId		= $this.attr('id'),
+			path			= options.path,
+			cancelOff		= options.cancelOff,
+			cancelOn		= options.cancelOn,
+			showHalf		= options.showHalf,
+			starHalf		= options.starHalf,
+			starOff			= options.starOff,
+			starOn			= options.starOn,
+			onClick			= options.onClick,
+			start			= 0,
+			hint			= '';
 
 		if (!isNaN(options.start) && options.start > 0) {
 			start = (options.start > options.number) ? options.number : options.start;
@@ -167,7 +167,9 @@
 			});
 
 			$this.live('mouseleave', function() {
-				var id = $(this).attr('id'), qtyStar = $('img.' + id).length, score = $('input#' + id + '-score').val();
+				var id = $(this).attr('id'),
+					qtyStar = $('img.' + id).length,
+					score = $('input#' + id + '-score').val();
 
 				for (var i = 1; i <= qtyStar; i++) {
 					if (i <= score) {
@@ -178,7 +180,9 @@
 				}
 
 				if (showHalf) {
-					var score = $('input#' + id + '-score').val(), rounded = Math.ceil(score), diff = (rounded - score).toFixed(1);
+					var score = $('input#' + id + '-score').val(),
+						rounded = Math.ceil(score),
+						diff = (rounded - score).toFixed(1);
 
 					if (diff >= 0.3 && diff <= 0.7) {
 						rounded = rounded - 0.5;
@@ -192,6 +196,7 @@
 			}).css('cursor', 'pointer');
 		} else {
 			hint = (options.number <= options.hintList.length && options.hintList[start - 1] !== null) ? options.hintList[start - 1] : start;
+
 			$this
 			.css('cursor', 'default').attr('title', hint)
 			.children('img').attr('title', hint);
@@ -221,13 +226,13 @@
 
 	$.fn.raty.readOnly = function(boo) {
 		if (boo) {
-			$('img.' + $this.attr('id')).die();
-			$this.css('cursor', 'default').die();
+			$('img.' + $global.attr('id')).die();
+			$global.css('cursor', 'default').die();
 		} else { 
 			liveEnter();
 			liveLeave();
 			liveClick();
-			$this.css('cursor', 'pointer');
+			$global.css('cursor', 'pointer');
 		}
 		return $.fn.raty;
 	};
@@ -239,7 +244,9 @@
 
 	$.fn.raty.click = function(score) {
 		var star = (score >= options.number) ? options.number : score;
+
 		initialize(star);
+
 		if (options.onClick) {
 			options.onClick(star);
 		} else {
@@ -248,9 +255,10 @@
 		return $.fn.raty;
 	};
 	
-	// TODO: Repeated on purpose for now! Because options.x here works as current value, unlike in the function body. Why, Mr. Anderson? Why?
+	// Repeated on purpose for now! Because options.x here works as current value, unlike in the function body. Why, Mr. Anderson? Why?
 	function liveEnter() {
-		var id = $this.attr('id');
+		var id = $global.attr('id');
+
 		$('img.' + id).live('mouseenter', function() {
 			var qtyStar = $('img.' + id).length;
 
@@ -265,10 +273,10 @@
 	};
 	
 	function liveLeave() {
-		$this.live('mouseleave', function() { 
-			var id  = $(this).attr('id');
-			var qtyStar = $('img.' + id).length;
-			var score = $('input#' + id + '-score').val();
+		$global.live('mouseleave', function() { 
+			var id = $(this).attr('id'),
+				qtyStar = $('img.' + id).length,
+				score = $('input#' + id + '-score').val();
 
 			for (var i = 1; i <= qtyStar; i++) {
 				if (i <= score) {
@@ -281,15 +289,16 @@
 	};
 
 	function liveClick() {
-		var id = $this.attr('id');
+		var id = $global.attr('id');
 		$('img.' + id).live('click', function() {
 			$('input#' + id + '-score').val(this.alt);
 		});
 	};
 
 	function initialize(start) {
-		var id = $this.attr('id'),
+		var id = $global.attr('id'),
 			qtyStar = $('img.' + id).length;
+
 		$('input#' + id + '-score').val(start);
 
 		for (var i = 1; i <= qtyStar; i++) {
