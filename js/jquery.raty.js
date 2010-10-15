@@ -32,7 +32,7 @@
  *		start:        0,                                               // Start with a score value.
  *		starOff:      'star-off.png',                                  // The image of the off star.
  *		starOn:       'star-on.png'                                    // The image of the on star.
- *      //onClick:    function() { alert('clicked!'); }                // A default function can to be setted here.
+ *      //onClick:    function() { alert('clicked!'); }                // A default function can to be setted here. "this" in the onClick handler is the star element itself.
  *	});
  *  
  *  <div id="star"></div>
@@ -71,7 +71,7 @@
 
 		// Local variables to keep the current value and not the last one. Why, Mr. Anderson? Why? 
 		var $this			= $global,
-			containerId		= $this.attr('id'),
+			containerId		= $global.attr('id'),
 			path			= options.path,
 			cancelOff		= options.cancelOff,
 			cancelOn		= options.cancelOn,
@@ -140,7 +140,7 @@
 				.live('click', function() {
 					$('input#' + containerId + '-score').val(0);
 					if (onClick) { 
-			          onClick(0);
+			          onClick.apply($this, [0]);
 			        }
 				});
 			} else {
@@ -162,7 +162,7 @@
 			.live('click', function() {
 				$('input#' + containerId + '-score').val(this.alt);
 				if (onClick) { 
-		          onClick(this.alt);
+		          onClick.apply($this, [this.alt]);
 		        }
 			});
 
@@ -248,7 +248,7 @@
 		initialize(star);
 
 		if (options.onClick) {
-			options.onClick(star);
+			options.onClick.apply($this, [star]);
 		} else {
 			debug('You should add the "onClick: function() {}" option.');
 		}
