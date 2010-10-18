@@ -6,7 +6,7 @@
  * 
  * Licensed under The MIT License
  * 
- * @version     0.5
+ * @version     0.6
  * @since       06.11.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -32,7 +32,7 @@
  *		start:        0,                                               // Start with a score value.
  *		starOff:      'star-off.png',                                  // The image of the off star.
  *		starOn:       'star-on.png'                                    // The image of the on star.
- *      //onClick:    function() { alert('clicked!'); }                // A default function can to be setted here. "this" in the onClick handler is the star element itself.
+ *      //onClick:    function() { alert('clicked!'); }                // Default onClick function. "this" is the star element itself.
  *	});
  *  
  *  <div id="star"></div>

@@ -48,12 +48,6 @@
 				text-decoration: underline;
 			}
 
-			div#adsense {
-				font: 10px verdana;
-				color: #AB9927;
-				text-indent: 7px;
-			}
-
 			div#coffee-container {
 				background-color: #DC5;
 				float: right;
@@ -151,16 +145,29 @@
 				font: 10px verdana;
 			}
 		</style>
+		
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-17006803-3']);
+				_gaq.push(['_trackPageview']);
+			
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
 	</head>
 	<body>
-		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 0.5)</span></div>
+		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 0.6)</span></div>
 
 		<div id="link">
-			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.5.zip" target="_blank">Download</a> |
+			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.6.zip" target="_blank">Download</a> |
 			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
 			<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
 			<a href="http://wbotelhos.com/raty/LICENSE.txt" target="_blank">Licence</a> |
+			<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin/" target="_blank">Article</a> |
 		</div>
 		
 		<div id="coffee-container">
@@ -300,8 +307,8 @@
 		 	<div class="notice">Name of the star image off.</div>
 			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
 		 	<div class="notice">Name of the star image on.</div>
-			<span class="comment-script">//onClick:&nbsp;&nbsp;&nbsp;&nbsp;function() { alert('clicked!'); }</span>
-		 	<div class="notice">Function that returns the selected value.</div>
+			<span class="comment-script">//onClick:&nbsp;&nbsp;&nbsp;&nbsp;function(score) { alert('score: ' + score); }</span>
+		 	<div class="notice">Function that returns the selected value. "this" is the star element itself.</div>
 		</div>
 
 		<div class="session">Public functions: *</div>
@@ -315,17 +322,7 @@
 		<div class="source">$.fn.raty.click(2);</div>
 		<div class="description">Click in the star number 2 later.</div>
 		
-		 <div class="notice">* Should come after the current raty and before the anothers one. Because it takes the last called raty.</div><br/>
-		 
-		 <div id="adsense">
-			<script type="text/javascript">
-				google_ad_client = "pub-2416130166150078";
-				google_ad_slot = "1875587110";
-				google_ad_width = 468;
-				google_ad_height = 15;
-			</script>
-			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
-		</div>
+		 <div class="notice">* Should come after the current raty and before the anothers one. Because it takes the last called raty.</div>
 	</body>
 	
 	<script type="text/javascript">
@@ -374,15 +371,5 @@
 			});
 
 		});
-
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-17006803-1']);
-		_gaq.push(['_trackPageview']);
-		
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
 	</script>
 </html>

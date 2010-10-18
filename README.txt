@@ -1,12 +1,12 @@
 /**
- * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
+ * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com
  * --------------------------------------------------------------------------
  *
  * jQuery Raty is a plugin that generates a customizable star rating automatically.
  *
  * Licensed under The MIT License
  * 
- * @version     0.5
+ * @version     0.6
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -18,27 +18,28 @@
  * --------------------------------------------------------------------------
  * @glbenz
  * @franciscosouza
- * 
+ * @olleolleolle
+ *
  * Usage (default values):
  * --------------------------------------------------------------------------
- *	$('div#star').raty({
- *		cancelHint:   'cancel this rating!',                           // The hint information.
- *		cancelOff:    'cancel-off.png'                                 // Name of the cancel image off.
- *		cancelOn:     'cancel-on.png'                                  // Name of the cancel image on.
- *		cancelPlace:  'left',                                          // Position of the cancel button.
- *		hintList:     ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
- *		number:       5,                                               // Number of star.
- *		path:         'img,                                            // Path of images.
- *		readOnly:     false,                                           // read-only or not.
- *		scoreName:    'score',                                         // The name of target score.
- *		showCancel:   false,                                           // If will be showed a button to cancel the rating.
- *		showHalf:     false,                                           // Active the half star.
- *		starHalf:     'star-half.png',                                 // The image of the half star.
- *		start:        0,                                               // Start with a score value.
- *		starOff:      'star-off.png',                                  // Name of the star image on.
- *		starOn:       'star-on.png'                                    // Name of the star image on.
- *    //onClick:    function() { alert('clicked!'); }                // A default function can to be setted here.
- *	});
+ * $('div#star').raty({
+ *	cancelHint:   'cancel this rating!',                           // The hint information.
+ *	cancelOff:    'cancel-off.png'                                 // Name of the cancel image off.
+ *	cancelOn:     'cancel-on.png'                                  // Name of the cancel image on.
+ *	cancelPlace:  'left',                                          // Position of the cancel button.
+ *	hintList:     ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
+ *	number:       5,                                               // Number of star.
+ *	path:         'img,                                            // Path of images.
+ *	readOnly:     false,                                           // read-only or not.
+ *	scoreName:    'score',                                         // The name of target score.
+ *	showCancel:   false,                                           // Show a button to cancel the rating or not.   
+ *	showHalf:     false,                                           // Active the half star.
+ *	starHalf:     'star-half.png',                                 // The image of the half star.
+ *	start:        0,                                               // Start with a score value.
+ *	starOff:      'star-off.png',                                  // Name of the star image on.
+ *	starOn:       'star-on.png'                                    // Name of the star image on.
+ *	//onClick:    function() { alert('clicked!'); }                // Default onClick function.
+ * });
  *  
  *  <div id="star"></div>
  *

@@ -2,9 +2,12 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
- * 0.6 beta
- *
- *		- When the stars are read-only, all titles are transformed in the title corresponding to the score. 
+ * 0.6
+ *		- Now you can use the key "this" to refer the star element itself in the onClick handler;
+ *		- Fixed the reference context when using public functions or local functions;
+ *		- When the stars are read-only, all titles are transformed in the corresponding title score;
+ *		- Avoided negative star number;
+ *		- Avoided more than 20 star. But it's can be changed in the script if you need.
  *
  * 0.5
  *      - Now you can put a cancel button to cancel your rating;
