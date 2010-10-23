@@ -221,7 +221,7 @@
 		start:			0,
 		starOff:		'star-off.png',
 		starOn:			'star-on.png'
-		//onClick:		function() { alert('clicked!'); }
+		//onClick:		function(score) { alert('score: ' + score); }
 	};
 
 	$.fn.raty.readOnly = function(boo) {
@@ -306,6 +306,20 @@
 				$('img#' + id + '-' + i).attr('src', options.path + options.starOn);
 			} else {
 				$('img#' + id + '-' + i).attr('src', options.path + options.starOff);
+			}
+		}
+
+		if (options.showHalf) {
+			var rounded = Math.ceil(start),
+				diff = (rounded - start).toFixed(1);
+
+			if (diff >= 0.3 && diff <= 0.7) {
+				rounded = rounded - 0.5;
+				$('img#' + id + '-' + Math.ceil(rounded)).attr('src', options.path + options.starHalf);
+			} else if (diff >= 0.8) {
+				rounded--;
+			} else {
+				$('img#' + id + '-' + rounded).attr('src', options.path + options.starOn);
 			}
 		}
 	};
