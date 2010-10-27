@@ -1,49 +1,24 @@
 /**
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
- * --------------------------------------------------------------------------
+ * ---------------------------------------------------------------------------------
  *
  * jQuery Raty is a plugin that generates a customizable star rating automatically.
  * 
  * Licensed under The MIT License
  * 
- * @version     0.6
+ * @version     0.7
  * @since       06.11.2010
  * @author      Washington Botelho dos Santos
- * @link        http://wbotelhos.com/raty
- * @twitter     http://twitter.com/wbotelhos
- * @license     http://www.opensource.org/licenses/mit-license.php MIT 
+ * @link        wbotelhos.com/raty
+ * @twitter     twitter.com/wbotelhos
+ * @license     opensource.org/licenses/mit-license.php MIT
  * @package     jQuery Plugins
  * 
- * Usage (default values):
- * --------------------------------------------------------------------------
-*	$('div#star').raty({
- *		cancelHint:   'cancel this rating!',                           // The hint information.
- *		cancelOff:    'cancel-off.png'                                 // The image of the off cancel.
- *		cancelOn:     'cancel-on.png'                                  // The image of the on cancel.
- *		cancelPlace:  'left',                                          // Position of the cancel button.
- *		hintList:     ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
- *		number:       5,                                               // Number of star.
- *		path:         'img,                                            // Path of images.
- *		readOnly:     false,                                           // read-only or not.
- *		scoreName:    'score',                                         // The name of target score.
- *		showCancel:   false,                                           // If will be showed a button to cancel the rating.
- *		showHalf:     false,                                           // Active the half star.
- *		starHalf:     'star-half.png',                                 // The image of the half star.
- *		start:        0,                                               // Start with a score value.
- *		starOff:      'star-off.png',                                  // The image of the off star.
- *		starOn:       'star-on.png'                                    // The image of the on star.
- *      //onClick:    function(score) { alert('score: ' + score); }    // Default onClick function. "this" is the star element itself.
- *	});
+ * Usage with default values:
+ * ---------------------------------------------------------------------------------
+ *	$('div#star').raty();
  *  
  *  <div id="star"></div>
- *
- * Public functions:
- * --------------------------------------------------------------------------
- *  $.fn.raty.start(3);                                              // Starting the rating with 3 stars later.
- *  $.fn.raty.readOnly(true);                                        // Adjusts the rating for read-only later.
- *  $.fn.raty.click(2);                                              // Click in a star later.
- *
- *  Should come after the current raty and before the anothers one. Because it takes the last called raty.
  *
  */
 
@@ -109,10 +84,10 @@
 				}
 
 				$('#' + id + ' img.button-cancel').live('mouseenter', function() {
-					this.attr('src', options.path + options.cancelOn);
+					$(this).attr('src', options.path + options.cancelOn);
 					star.attr('src', options.path + options.starOff);
 				}).live('mouseleave', function() {
-					this.attr('src', options.path + options.cancelOff);
+					$(this).attr('src', options.path + options.cancelOff);
 					star.trigger('mouseout');
 				}).live('click', function() {
 					$('input#' + id + '-score').val(0);
@@ -142,6 +117,7 @@
 		cancelOn:		'cancel-on.png',
 		cancelPlace:	'left',
 		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
+		noRatedMsg:		'not rated yet',
 		number:			5,
 		path:			'img/',
 		readOnly:		false,
@@ -172,14 +148,12 @@
 	};
 
 	$.fn.raty.click = function(score) {
-		score = (score >= options.number) ? options.number : score;
-
 		initialize($global, score, options);
 
 		if (options.onClick) {
 			options.onClick.apply($global, [star]);
 		} else {
-			debug('You should add the "onClick: function() {}" option.');
+			debug('You should add the "onClick: function(score) { }" option.');
 		}
 		return $.fn.raty;
 	};
@@ -233,8 +207,8 @@
 		if (options.showHalf) {
 			splitStar(context, score, options);
 		}
-		
-		if (options.readOnly) {
+
+		if (options.readOnly || context.css('cursor') == 'default') {
 			fixHint(context, score, options);
 		}
 	};
@@ -255,8 +229,12 @@
 	};
 
 	function fixHint(context, score, options) {
-		score = parseInt(score);
-		hint = (score > 0 && options.number <= options.hintList.length && options.hintList[score - 1] !== null) ? options.hintList[score - 1] : score;
+		if (score != 0) {
+			score = parseInt(score);
+			hint = (score > 0 && options.number <= options.hintList.length && options.hintList[score - 1] !== null) ? options.hintList[score - 1] : score;
+		} else {
+			hint = options.noRatedMsg;
+		}
 
 		context.attr('title', hint).children('img').attr('title', hint);		
 	};
