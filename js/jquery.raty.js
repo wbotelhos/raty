@@ -16,9 +16,9 @@
  * 
  * Usage with default values:
  * ---------------------------------------------------------------------------------
- *	$('div#star').raty();
+ * $('div#star').raty();
  *  
- *  <div id="star"></div>
+ * <div id="star"></div>
  *
  */
 
@@ -41,7 +41,7 @@
 			options.path += '/';
 		}
 
-		// The public functions need a global variable to keep de context.
+		// Public functions need a global variable to keep de context.
 		$global = $(this);
 
 		// Local variables to keep the current value and not the last one. Why, Mr. Anderson? Why? 
@@ -151,7 +151,7 @@
 		initialize($global, score, options);
 
 		if (options.onClick) {
-			options.onClick.apply($global, [star]);
+			options.onClick.apply($global, [score]);
 		} else {
 			debug('You should add the "onClick: function(score) { }" option.');
 		}
