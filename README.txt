@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     0.6
+ * @version     0.7
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -28,6 +28,7 @@
  *	cancelOn:     'cancel-on.png'                                  // Name of the cancel image on.
  *	cancelPlace:  'left',                                          // Position of the cancel button.
  *	hintList:     ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
+ *	noRatedMsg:   'not rated yet',                                 // A hint for no rated elements when it's read-only.
  *	number:       5,                                               // Number of star.
  *	path:         'img,                                            // Path of images.
  *	readOnly:     false,                                           // read-only or not.
@@ -38,7 +39,7 @@
  *	start:        0,                                               // Start with a score value.
  *	starOff:      'star-off.png',                                  // Name of the star image on.
  *	starOn:       'star-on.png'                                    // Name of the star image on.
- *	//onClick:    function() { alert('clicked!'); }                // Default onClick function.
+ *	//onClick:    function(score) { alert('score: ' + score); }    // Default onClick function.
  * });
  *  
  *  <div id="star"></div>

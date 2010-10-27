@@ -147,6 +147,7 @@
 		</style>
 		
 		<script type="text/javascript">
+			// This code below does not belong the plugin. See the example code at the bottom of this page.
 			var _gaq = _gaq || [];
 				_gaq.push(['_setAccount', 'UA-17006803-3']);
 				_gaq.push(['_trackPageview']);
@@ -159,10 +160,10 @@
 		</script>
 	</head>
 	<body>
-		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 0.6)</span></div>
+		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 0.7)</span></div>
 
 		<div id="link">
-			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.6.zip" target="_blank">Download</a> |
+			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.7.zip" target="_blank">Download</a> |
 			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
 			<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
@@ -192,9 +193,21 @@
 		 	$('#fixed').raty({<br/>
 			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;true,<br/>
 			&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/>
-		   });<br/><br/>
+			});<br/><br/>
+			
+			&lt;div id="fixed"&gt;&lt;/div&gt;
+		</div>
+
+		<div class="session">A hint for no rated elements when it's read-only:</div>
+		<div id="anyone"></div>
+
+		<div class="source">
+		 	$('div#anyone').raty({<br/>
+			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
+			});<br/><br/>
 		   
-		   &lt;div id="fixed"&gt;&lt;/div&gt;
+			&lt;div id="anyone"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">With a custom score name and a number of stars:</div>
@@ -206,7 +219,7 @@
 			&nbsp;&nbsp;number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10<br/>
 			});<br/><br/>
 		   
-		   &lt;div id="number"&gt;&lt;/div&gt;
+			&lt;div id="number"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">With a custom hint and icons:</div>
@@ -219,7 +232,7 @@
 			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
 			});<br/><br/>
 		   
-		   &lt;div id="icon"&gt;&lt;/div&gt;
+			&lt;div id="icon"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">Using onClick function:</div>
@@ -232,7 +245,7 @@
 			&nbsp;&nbsp;}<br/>
 			});<br/><br/>
 		   
-		   &lt;div id="click"&gt;&lt;/div&gt;
+			&lt;div id="click"&gt;&lt;/div&gt;
 		</div>
 		
 		<div class="session">Displaying half star:</div>
@@ -244,7 +257,7 @@
 			&nbsp;&nbsp;showHalf:&nbsp;&nbsp;true<br/>
 			});<br/><br/>
 		   
-		   &lt;div id="half"&gt;&lt;/div&gt;
+			&lt;div id="half"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">With a default cancel button:</div>
@@ -255,7 +268,7 @@
 			&nbsp;&nbsp;showCancel: true<br/>
 			});<br/><br/>
 		   
-		   &lt;div id="cancel"&gt;&lt;/div&gt;
+			&lt;div id="cancel"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">With a custom cancel button:</div>
@@ -271,7 +284,7 @@
 			&nbsp;&nbsp;}<br/>
 			});<br/><br/>
 		   
-		   &lt;div id="cancel-custom"&gt;&lt;/div&gt;
+			&lt;div id="cancel-custom"&gt;&lt;/div&gt;
 		</div>
 
 		<div class="session">Default options:</div>
@@ -287,6 +300,8 @@
 		 	<div class="notice">Position of the cancel button.</div>
 		 	hintList:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
 		 	<div class="notice">List of names that will be used as a hint on each star.</div>
+			noRatedMsg:&nbsp;&nbsp;&nbsp;'not rated yet'<br/>
+		 	<div class="notice">A hint for no rated elements when it's read-only.</div>
 			number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/>
 		 	<div class="notice">Number of stars that will be presented.</div>
 			path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'img/'<br/>
@@ -328,11 +343,16 @@
 	<script type="text/javascript">
 		$(function() {
 
-		   $('div#default').raty();
+			$('div#default').raty();
 
 			$('div#fixed').raty({
 				readOnly:	true,
 				start:		2
+			});
+
+			$('div#anyone').raty({
+				readOnly:	true,
+				noRatedMsg:	'anyone rated this product yet!'
 			});
 
 			$('div#number').raty({
@@ -357,11 +377,11 @@
 				showHalf: true
 			});
 
-		   $('div#cancel').raty({
+			$('div#cancel').raty({
 				showCancel: true
 			});
 
-		   $('div#cancel-custom').raty({
+			$('div#cancel-custom').raty({
 				cancelHint: 'remove my rating!',
 				cancelPlace: 'right',
 				showCancel: true,

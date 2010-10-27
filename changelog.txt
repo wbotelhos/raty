@@ -2,38 +2,45 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 0.7
+ *		- Added noRatedMsg attribute. A hint for no rated elements when it's read-only;
+ *		- Avoided negative star number in public function start;
+ *		- Avoided a number bigger than the number of star in public function start;
+ *		- Fixed the public function start when the star are read-only and is not passed a start value;
+ *		- Fixed the half star function on it is made by public function start;
+ *
  * 0.6
  *		- Now you can use the key "this" to refer the star element itself in the onClick handler;
  *		- Fixed the reference context when using public functions or local functions;
  *		- When the stars are read-only, all titles are transformed in the corresponding title score;
  *		- Avoided negative star number;
- *		- Avoided more than 20 star. But it's can be changed in the script if you need.
+ *		- Avoided more than 20 stars. But it's can be changed in the script if you need.
  *
  * 0.5
- *      - Now you can put a cancel button to cancel your rating;
+ *		- Now you can put a cancel button to cancel your rating;
  *		- Choose the cancel image off;
  *		- Choose the cancel image on;
  *		- Choose the left or right side position for the cancel button;
  *		- Change the hint of the cancel button.
  *
  * 0.4
- *      - Added support to display half star.
+ *		- Added support to display half star.
  *
  * 0.3
- *      - Fixed some mistakes to work on IE browser. 
+ *		- Fixed some mistakes to work on IE browser. 
  *
  * 0.2
- *      - Added the public function click, that do the click on a star; 
- *      - Was removed the execution of the onClick when used the function start;
- *      - Added onClick function that enable a callback when a star is clicked.
+ *		- Added the public function click, that do the click on a star; 
+ *		- Was removed the execution of the onClick when used the function start;
+ *		- Added onClick function that enable a callback when a star is clicked.
  *
  * 0.1
- *      - Change the path of images;
- *      - Change the name image files;
- *      - Choose the number of stars that will be presented;
- *      - Choose a hint information of each star;
- *      - Start with a default score;
- *      - Set the stars read-only;
- *      - Choose the name of the hidden score field.
+ *		- Change the path of images;
+ *		- Change the name image files;
+ *		- Choose the number of stars that will be presented;
+ *		- Choose a hint information of each star;
+ *		- Start with a default score;
+ *		- Set the stars read-only;
+ *		- Choose the name of the hidden score field.
  *
  */

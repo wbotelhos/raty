@@ -3,21 +3,21 @@
  * ---------------------------------------------------------------------------------
  *
  * jQuery Raty is a plugin that generates a customizable star rating automatically.
- * 
+ *
  * Licensed under The MIT License
- * 
- * @version     0.7
- * @since       06.11.2010
- * @author      Washington Botelho dos Santos
- * @link        wbotelhos.com/raty
- * @twitter     twitter.com/wbotelhos
- * @license     opensource.org/licenses/mit-license.php MIT
- * @package     jQuery Plugins
- * 
+ *
+ * @version			0.7
+ * @since			06.11.2010
+ * @author			Washington Botelho dos Santos
+ * @documentation	wbotelhos.com/raty
+ * @twitter			twitter.com/wbotelhos
+ * @license			opensource.org/licenses/mit-license.php MIT
+ * @package			jQuery Plugins
+ *
  * Usage with default values:
  * ---------------------------------------------------------------------------------
  * $('div#star').raty();
- *  
+ *
  * <div id="star"></div>
  *
  */
