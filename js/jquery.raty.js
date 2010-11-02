@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version			0.7
+ * @version			0.8
  * @since			06.11.2010
  * @author			Washington Botelho dos Santos
  * @documentation	wbotelhos.com/raty
@@ -25,6 +25,7 @@
 ;(function($) {
 
 	$.fn.raty = function(settings) {
+		// Public functions need a global variable to use the last element raty. In functions this not happen because it's become a static value as parameter.
 		options = $.extend({}, $.fn.raty.defaults, settings);
 
 		if (this.attr('id') === undefined) {
@@ -41,12 +42,11 @@
 			options.path += '/';
 		}
 
-		// Public functions need a global variable to keep de context.
+		// Public functions need a global variable to use the last element raty.
 		$global = $(this);
 
 		// Local variables to keep the current value and not the last one. Why, Mr. Anderson? Why? 
-		var $this		= $global,
-			id			= $this.attr('id'),
+		var id			= this.attr('id'),
 			start		= 0,
 			starFile	= options.starOn,
 			hint		= '';
@@ -60,55 +60,59 @@
 
 			hint = (options.number <= options.hintList.length && options.hintList[i - 1] !== null) ? options.hintList[i - 1] : i;	// Avoids a nonexistent index (undefined) and ensures that the hint will be applied, it means different from null. Otherwise applies the current number.
 
-			$this
+			$global
 			.append('<img id="' + id + '-' + i + '" src="' + options.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>')
 			.append((i < options.number) ? '&nbsp;' : '');
 		}
 
-		$('<input id="' + id + '-score" type="hidden" name="' + options.scoreName + '"/>').appendTo($this).val(start);
+		$('<input id="' + id + '-score" type="hidden" name="' + options.scoreName + '"/>').appendTo($global).val(start);
 
 		if (options.showHalf) {
 			var score = $('input#' + id + '-score').val();
-			splitStar($this, score, options);
+			splitStar($global, score, options);
 		}
 
 		if (!options.readOnly) {
 			if (options.showCancel) {
 				var star	= $('img.' + id),
-					cancel	= '<img src="' + options.path + options.cancelOff + '" alt="x" title="' + options.cancelHint + '" class="button-cancel"/>'; 
+					cancel	= '<img src="' + options.path + options.cancelOff + '" alt="x" title="' + options.cancelHint + '" class="button-cancel"/>',
 
-				if (options.cancelPlace == 'left') {
-					$this.prepend(cancel + '&nbsp;');
+					// Local variables to keep the current value and not the last one in the live functions.
+					opt		= options,
+					$this	= $global;
+
+				if (opt.cancelPlace == 'left') {
+					$global.prepend(cancel + '&nbsp;');
 				} else {
-					$this.append('&nbsp;').append(cancel);
+					$global.append('&nbsp;').append(cancel);
 				}
 
 				$('#' + id + ' img.button-cancel').live('mouseenter', function() {
-					$(this).attr('src', options.path + options.cancelOn);
-					star.attr('src', options.path + options.starOff);
+					$(this).attr('src', opt.path + opt.cancelOn);
+					star.attr('src', opt.path + opt.starOff);
 				}).live('mouseleave', function() {
-					$(this).attr('src', options.path + options.cancelOff);
+					$(this).attr('src', opt.path + opt.cancelOff);
 					star.trigger('mouseout');
 				}).live('click', function() {
 					$('input#' + id + '-score').val(0);
-					if (options.onClick) { 
-			          options.onClick.apply($this, [0]);
+					if (opt.onClick) { 
+			          opt.onClick.apply($this, [0]);
 			        }
 				});
 
-				$this.css('width', options.number * 20 + 20);
+				$global.css('width', opt.number * 20 + 20);
 			} else {
-				$this.css('width', options.number * 20);
+				$global.css('width', options.number * 20);
 			}
 
-			$this.css('cursor', 'pointer');
-			bindAll($this, options);
+			$global.css('cursor', 'pointer');
+			bindAll($global, options);
 		} else {
-			$this.css('cursor', 'default');
-			fixHint($this, start, options);
+			$global.css('cursor', 'default');
+			fixHint($global, start, options);
 		}
 
-		return $this;
+		return $global;
 	};
 	
 	$.fn.raty.defaults = {
@@ -120,6 +124,7 @@
 		noRatedMsg:		'not rated yet',
 		number:			5,
 		path:			'img/',
+		iconRange:		[],
 		readOnly:		false,
 		scoreName:		'score',
 		showCancel:		false,
@@ -127,8 +132,19 @@
 		starHalf:		'star-half.png',
 		start:			0,
 		starOff:		'star-off.png',
-		starOn:			'star-on.png'
-		//onClick:		function(score) { alert('score: ' + score); }
+		starOn:			'star-on.png',
+		onClick:		null
+	};
+
+	$.fn.raty.click = function(score) {
+		initialize($global, score, options);
+		
+		if (options.onClick) {
+			options.onClick.apply($global, [score]);
+		} else {
+			debug('You should add the "onClick: function(score) { }" option.');
+		}
+		return $.fn.raty;
 	};
 
 	$.fn.raty.readOnly = function(boo) {
@@ -147,17 +163,6 @@
 		return $.fn.raty;
 	};
 
-	$.fn.raty.click = function(score) {
-		initialize($global, score, options);
-
-		if (options.onClick) {
-			options.onClick.apply($global, [score]);
-		} else {
-			debug('You should add the "onClick: function(score) { }" option.');
-		}
-		return $.fn.raty;
-	};
-
 	function bindAll(context, options) {
 		var id		= context.attr('id'),
 			score	= $('input#' + id + '-score'),
@@ -169,13 +174,7 @@
 
 		$('img.' + id)
 		.live('mouseenter', function() {
-			for (var i = 1; i <= qtyStar; i++) {
-				if (i <= this.alt) {
-					$('img#' + id + '-' + i).attr('src', options.path + options.starOn);
-				} else {
-					$('img#' + id + '-' + i).attr('src', options.path + options.starOff);
-				}
-			}
+			fillStar(id, this.alt, options);
 		}).live('click', function() {
 			score.val(this.alt);
 			if (options.onClick) {
@@ -184,9 +183,57 @@
 		});
 	};
 
+	function debug(message) {
+		if (window.console && window.console.log) {
+			window.console.log(message);
+		}
+	};
+
+	function fillStar(id, score, options) {
+		var qtyStar	= $('img.' + id).length,
+			item	= 0,
+			range	= 0,
+			star,
+			starOn;
+
+		for (var i = 1; i <= qtyStar; i++) {
+			star = $('img#' + id + '-' + i);
+
+			if (i <= score) {
+				if (options.iconRange && options.iconRange.length > item) {
+
+					starOn = options.iconRange[item][0];
+					range = options.iconRange[item][1];
+
+					if (i <= range) {
+						star.attr('src', options.path + starOn);
+					}
+
+					if (i == range) {
+						item++;
+					}
+				} else {
+					star.attr('src', options.path + options.starOn);
+				}
+			} else {
+				star.attr('src', options.path + options.starOff);
+			}
+		}
+	};
+
+	function fixHint(context, score, options) {
+		if (score != 0) {
+			score = parseInt(score);
+			hint = (score > 0 && options.number <= options.hintList.length && options.hintList[score - 1] !== null) ? options.hintList[score - 1] : score;
+		} else {
+			hint = options.noRatedMsg;
+		}
+
+		context.attr('title', hint).children('img').attr('title', hint);
+	};
+
 	function initialize(context, score, options) {
-		var id		= context.attr('id'),
-			qtyStar	= $('img.' + id).length;
+		var id = context.attr('id');
 
 		if (score < 0 || isNaN(score)) {
 			score = 0;
@@ -196,13 +243,7 @@
 
 		$('input#' + id + '-score').val(score);
 
-		for (var i = 1; i <= qtyStar; i++) {
-			if (i <= score) {
-				$('img#' + id + '-' + i).attr('src', options.path + options.starOn);
-			} else {
-				$('img#' + id + '-' + i).attr('src', options.path + options.starOff);
-			}
-		}
+		fillStar(id, score, options);
 
 		if (options.showHalf) {
 			splitStar(context, score, options);
@@ -225,23 +266,6 @@
 			rounded--;
 		} else {
 			$('img#' + id + '-' + rounded).attr('src', options.path + options.starOn);
-		}
-	};
-
-	function fixHint(context, score, options) {
-		if (score != 0) {
-			score = parseInt(score);
-			hint = (score > 0 && options.number <= options.hintList.length && options.hintList[score - 1] !== null) ? options.hintList[score - 1] : score;
-		} else {
-			hint = options.noRatedMsg;
-		}
-
-		context.attr('title', hint).children('img').attr('title', hint);		
-	};
-
-	function debug(message) {
-		if (window.console && window.console.log) {
-			window.console.log(message);
 		}
 	};
 
