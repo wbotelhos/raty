@@ -148,6 +148,12 @@
 	};
 
 	$.fn.raty.readOnly = function(boo) {
+		var cancel = $global.find('img.button-cancel');
+
+		if (cancel.length > 0) {
+			(boo) ? cancel.hide() : cancel.show();
+		}
+
 		if (boo) {
 			$('img.' + $global.attr('id')).die();
 			$global.css('cursor', 'default').die();
