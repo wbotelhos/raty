@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     0.7
+ * @version     0.8
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -31,6 +31,7 @@
  *	noRatedMsg:   'not rated yet',                                 // A hint for no rated elements when it's read-only.
  *	number:       5,                                               // Number of star.
  *	path:         'img,                                            // Path of images.
+ *	iconRange:    []                                               // A range of custom icons that you can set.
  *	readOnly:     false,                                           // read-only or not.
  *	scoreName:    'score',                                         // The name of target score.
  *	showCancel:   false,                                           // Show a button to cancel the rating or not.   
@@ -39,9 +40,9 @@
  *	start:        0,                                               // Start with a score value.
  *	starOff:      'star-off.png',                                  // Name of the star image on.
  *	starOn:       'star-on.png'                                    // Name of the star image on.
- *	//onClick:    function(score) { alert('score: ' + score); }    // Default onClick function.
+ *	onClick:      null                                             // Default onClick function.
  * });
- *  
+ *
  *  <div id="star"></div>
  *
  * Public functions:

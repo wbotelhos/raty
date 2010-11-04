@@ -11,6 +11,10 @@
 		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
 
 		<style type="text/css">
+			body {
+				font: 10px verdana;
+			}
+
 			a#coffee-link, div#coffee-container {
 				border-radius: 4px;
 				-khtml-border-radius: 4px;
@@ -28,7 +32,7 @@
 			
 			div#link a:hover {
 				color: #DC5;
-				font: bold 10px verdana;
+				font-weight: bold;
 				letter-spacing: .9px;
 				text-decoration: underline;
 			}
@@ -38,7 +42,7 @@
 				border: 1px solid #D9C640;
 				color: #FFF;
 				display: block;
-				font: bold 10px verdana;
+				font-weight: bold;
 				letter-spacing: .9px;
 				padding: 4px 5px 4px 26px;
 				text-decoration: none;
@@ -55,7 +59,6 @@
 			}
 
 			div.description {
-				font: 10px verdana;
 				color: #555;
 				letter-spacing: .1px;
 				margin-bottom: 10px;
@@ -65,7 +68,6 @@
 			}
 
 			div#link {
-				font: 10px verdana;
 				color: #AB9927;
 				text-indent: 7px;
 			}
@@ -105,7 +107,6 @@
 			}
 
 			div.text {
-				font: 10px verdana;
 				color: #555;
 				letter-spacing: .1px;
 				margin-bottom: 20px;
@@ -147,10 +148,10 @@
 		</style>
 		
 		<script type="text/javascript">
-			// This code below does not belong the plugin. See the example code at the bottom of this page.
+			// This code does NOT belong the plugin. See the example code at the bottom of this page.
 			var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-17006803-3']);
-				_gaq.push(['_trackPageview']);
+			_gaq.push(['_setAccount', 'UA-19499234-1']);
+			_gaq.push(['_trackPageview']);
 			
 			(function() {
 				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -160,10 +161,10 @@
 		</script>
 	</head>
 	<body>
-		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 0.7)</span></div>
+		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 0.8)</span></div>
 
 		<div id="link">
-			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.7.zip" target="_blank">Download</a> |
+			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-0.8.zip" target="_blank">Download</a> |
 			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
 			<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
@@ -222,19 +223,6 @@
 			&lt;div id="number"&gt;&lt;/div&gt;
 		</div>
 
-		<div class="session">With a custom hint and icons:</div>
-		<div id="icon"></div>
-
-		<div class="source">
-		 	$('#icon').raty({<br/>
-			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
-			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
-			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
-			});<br/><br/>
-		   
-			&lt;div id="icon"&gt;&lt;/div&gt;
-		</div>
-
 		<div class="session">Using onClick function:</div>
 		<div id="click"></div>
 
@@ -246,7 +234,12 @@
 			});<br/><br/>
 		   
 			&lt;div id="click"&gt;&lt;/div&gt;
-		</div>
+		</div><br/>
+
+		<span class="comment-script">
+			 - The argument score is the selected value;<br/>
+			 - In the function you can mension the star element itself using "this".<br/>
+		</span>
 		
 		<div class="session">Displaying half star:</div>
 		<div id="half"></div>
@@ -258,7 +251,14 @@
 			});<br/><br/>
 		   
 			&lt;div id="half"&gt;&lt;/div&gt;
-		</div>
+		</div><br/>
+
+		<span class="comment-script">
+			The interval can be:<br/>
+			- Rounded down: [x.00 ... x.25]<br/>
+			- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
+			- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
+		</span>
 
 		<div class="session">With a default cancel button:</div>
 		<div id="cancel"></div>
@@ -269,7 +269,11 @@
 			});<br/><br/>
 		   
 			&lt;div id="cancel"&gt;&lt;/div&gt;
-		</div>
+		</div><br/>
+
+		<span class="comment-script">
+			 - The score for the click on cancel button is 0 (zero).<br/>
+		</span>
 
 		<div class="session">With a custom cancel button:</div>
 		<div id="cancel-custom"></div>
@@ -286,6 +290,37 @@
 		   
 			&lt;div id="cancel-custom"&gt;&lt;/div&gt;
 		</div>
+
+		<div class="session">With a custom hint and icons:</div>
+		<div id="icon"></div>
+
+		<div class="source">
+		 	$('#icon').raty({<br/>
+			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
+			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
+			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
+			});<br/><br/>
+		   
+			&lt;div id="icon"&gt;&lt;/div&gt;
+		</div>
+
+		<div class="session">With a range of custom icons:</div>
+		<div id="range"></div>
+
+		<div class="source">
+		 	$('#range').raty({<br/>
+		 	&nbsp;&nbsp;iconRange:&nbsp;[['face-a.png', 2], ['face-b.png', 3], ['face-c.png', 4], ['face-d.png', 5]],<br/>
+			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'face-off.png'<br/>
+			});<br/><br/>
+		   
+			&lt;div id="range"&gt;&lt;/div&gt;
+		</div><br/>
+
+		<span class="comment-script">
+			- It's a array of array where each inner array represents a custom icon;<br/>
+			- The second parameter is until where this icon will be displayed;<br/>
+			- The sequence of the range interval should be in a ascending order.
+		</span>
 
 		<div class="session">Default options:</div>
 		
@@ -305,6 +340,8 @@
 			number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/>
 		 	<div class="notice">Number of stars that will be presented.</div>
 			path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'img/'<br/>
+		 	<div class="notice">A range of custom icons that you can set.</div>
+			iconRange:&nbsp;&nbsp;&nbsp;&nbsp;[]<br/>
 		 	<div class="notice">Path where are the images of the stars.</div>
 			readOnly:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
 		 	<div class="notice">If the stars will be read-only.</div>
@@ -322,8 +359,8 @@
 		 	<div class="notice">Name of the star image off.</div>
 			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
 		 	<div class="notice">Name of the star image on.</div>
-			<span class="comment-script">//onClick:&nbsp;&nbsp;&nbsp;&nbsp;function(score) { alert('score: ' + score); }</span>
-		 	<div class="notice">Function that returns the selected value. "this" is the star element itself.</div>
+			onClick:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
+		 	<div class="notice">Function that returns the selected value.</div>
 		</div>
 
 		<div class="session">Public functions: *</div>
@@ -360,15 +397,9 @@
 				number:		10
 			});
 
-			$('div#icon').raty({
-				hintList:	['a', '', null, 'd', '5'],
-			   	starOn:		'medal-on.png',
-			   	starOff:	'medal-off.png'
-			});
-
 			$('div#click').raty({
 				onClick: function(score) {
-					alert('score: ' + score);
+					alert('ID: ' + this.attr('id') + '\nscore: ' + score);
 				}
 			});
 
@@ -390,6 +421,16 @@
 				}
 			});
 
+			$('div#icon').raty({
+				hintList:	['a', '', null, 'd', '5'],
+			   	starOn:		'medal-on.png',
+			   	starOff:	'medal-off.png'
+			});
+
+			$('div#range').raty({
+				iconRange:	[['face-a.png', 2], ['face-b.png', 3], ['face-c.png', 4], ['face-d.png', 5]],
+				starOff:	'face-off.png'
+			});
 		});
 	</script>
 </html>

@@ -68,8 +68,7 @@
 		$('<input id="' + id + '-score" type="hidden" name="' + options.scoreName + '"/>').appendTo($global).val(start);
 
 		if (options.showHalf) {
-			var score = $('input#' + id + '-score').val();
-			splitStar($global, score, options);
+			splitStar($global, $('input#' + id + '-score').val(), options);
 		}
 
 		if (!options.readOnly) {
