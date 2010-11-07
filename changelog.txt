@@ -2,6 +2,10 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 0.9
+ *		- Improved the selector to accept bind by class name;
+ *		- Now the hint list will be applied even if the quantity are less than the stars.
+ *
  * 0.8
  *		- Added iconRange attribute. Now you can set custom icons for especific ranges;
  *		- Fixed the cancel button that didn't hidden when using the public function readOnly.

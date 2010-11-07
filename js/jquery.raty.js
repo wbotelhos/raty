@@ -28,8 +28,13 @@
 		// Public functions need a global variable to use the last element raty. In functions this not happen because it's become a static value as parameter.
 		options = $.extend({}, $.fn.raty.defaults, settings);
 
-		if (this.attr('id') === undefined) {
-			debug('Invalid selector!'); return;
+		if (this.length == 0) {
+			debug('Invalid selector!');
+			return;
+		} else if (this.length > 1) {
+			return this.each(function() {
+				$.fn.raty.apply($(this), [settings]);
+			});
 		}
 
 		if (options.number > 20) {
@@ -58,7 +63,7 @@
 		for (var i = 1; i <= options.number; i++) {
 			starFile = (start >= i) ? options.starOn : options.starOff;
 
-			hint = (options.number <= options.hintList.length && options.hintList[i - 1] !== null) ? options.hintList[i - 1] : i;	// Avoids a nonexistent index (undefined) and ensures that the hint will be applied, it means different from null. Otherwise applies the current number.
+			hint = (i <= options.hintList.length && options.hintList[i - 1] !== null) ? options.hintList[i - 1] : i;
 
 			$global
 			.append('<img id="' + id + '-' + i + '" src="' + options.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>')
@@ -173,7 +178,8 @@
 			score	= $('input#' + id + '-score'),
 			qtyStar	= $('img.' + id).length;
 
-		context.live('mouseleave', function() { 
+		// context.
+		$('#' + id).live('mouseleave', function() { 
 			initialize(context, score.val(), options);
 		});
 
@@ -234,7 +240,7 @@
 			hint = options.noRatedMsg;
 		}
 
-		context.attr('title', hint).children('img').attr('title', hint);
+		$('#' + context.attr('id')).attr('title', hint).children('img').attr('title', hint);
 	};
 
 	function initialize(context, score, options) {

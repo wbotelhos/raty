@@ -8,7 +8,7 @@
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.js"></script>
 
 		<style type="text/css">
 			body {
@@ -203,7 +203,7 @@
 		<div id="anyone"></div>
 
 		<div class="source">
-		 	$('div#anyone').raty({<br/>
+		 	$('#anyone').raty({<br/>
 			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
 			&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
 			});<br/><br/>
@@ -322,6 +322,23 @@
 			- The sequence of the range interval should be in a ascending order.
 		</span>
 
+		<div class="session">With a group of elements:</div>
+		<div id="item-1" class="group"></div>
+		<div id="item-2" class="group"></div>
+		<div id="item-3" class="group"></div>
+
+		<div class="source">
+			$('.group').raty();<br/><br/>
+
+			&lt;div id="item-1" class="group"&gt;&lt;/div&gt;<br/>
+			&lt;div id="item-2" class="group"&gt;&lt;/div&gt;<br/>
+			&lt;div id="item-3" class="group"&gt;&lt;/div&gt;
+		</div><br/>
+
+		<span class="comment-script">
+			- The ID is mandatory and must be unique.
+		</span>
+
 		<div class="session">Default options:</div>
 		
 		<div class="source">
@@ -380,39 +397,39 @@
 	<script type="text/javascript">
 		$(function() {
 
-			$('div#default').raty();
+			$('#default').raty();
 
-			$('div#fixed').raty({
+			$('#fixed').raty({
 				readOnly:	true,
 				start:		2
 			});
 
-			$('div#anyone').raty({
+			$('#anyone').raty({
 				readOnly:	true,
 				noRatedMsg:	'anyone rated this product yet!'
 			});
 
-			$('div#number').raty({
+			$('#number').raty({
 				scoreName:	'entity.score',
 				number:		10
 			});
 
-			$('div#click').raty({
+			$('#click').raty({
 				onClick: function(score) {
 					alert('ID: ' + this.attr('id') + '\nscore: ' + score);
 				}
 			});
 
-			$('div#half').raty({
+			$('#half').raty({
 				start: 3.3,
 				showHalf: true
 			});
 
-			$('div#cancel').raty({
+			$('#cancel').raty({
 				showCancel: true
 			});
 
-			$('div#cancel-custom').raty({
+			$('#cancel-custom').raty({
 				cancelHint: 'remove my rating!',
 				cancelPlace: 'right',
 				showCancel: true,
@@ -421,16 +438,18 @@
 				}
 			});
 
-			$('div#icon').raty({
+			$('#icon').raty({
 				hintList:	['a', '', null, 'd', '5'],
 			   	starOn:		'medal-on.png',
 			   	starOff:	'medal-off.png'
 			});
 
-			$('div#range').raty({
+			$('#range').raty({
 				iconRange:	[['face-a.png', 2], ['face-b.png', 3], ['face-c.png', 4], ['face-d.png', 5]],
 				starOff:	'face-off.png'
 			});
+
+			$('.group').raty();
 		});
 	</script>
 </html>
