@@ -56,6 +56,11 @@
 			starFile	= options.starOn,
 			hint		= '';
 
+		if (id == '') {
+			id = 'raty-' + new Date().getMilliseconds();
+			$global.attr('id', id);
+		}
+
 		if (!isNaN(options.start) && options.start > 0) {
 			start = (options.start > options.number) ? options.number : options.start;
 		}
