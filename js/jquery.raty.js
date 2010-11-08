@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version			0.8
+ * @version			0.9
  * @since			06.11.2010
  * @author			Washington Botelho dos Santos
  * @documentation	wbotelhos.com/raty
@@ -16,9 +16,16 @@
  *
  * Usage with default values:
  * ---------------------------------------------------------------------------------
- * $('div#star').raty();
+ * $('#star').raty();
  *
  * <div id="star"></div>
+ *
+ *
+ * $('.group').raty();
+ *
+ * <div class="group"></div>
+ * <div class="group"></div>
+ * <div class="group"></div>
  *
  */
 
@@ -96,13 +103,13 @@
 					$global.append('&nbsp;').append(cancel);
 				}
 
-				$('#' + id + ' img.button-cancel').live('mouseenter', function() {
+				$('#' + id + ' img.button-cancel').mouseenter(function() {
 					$(this).attr('src', opt.path + opt.cancelOn);
 					star.attr('src', opt.path + opt.starOff);
-				}).live('mouseleave', function() {
+				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
-					star.trigger('mouseout');
-				}).live('click', function() {
+					star.mouseout();
+				}).click(function() {
 					$('input#' + id + '-score').val(0);
 					if (opt.onClick) { 
 			          opt.onClick.apply($this, [0]);
@@ -139,9 +146,9 @@
 		showCancel:		false,
 		showHalf:		false,
 		starHalf:		'star-half.png',
-		start:			0,
 		starOff:		'star-off.png',
 		starOn:			'star-on.png',
+		start:			0,
 		onClick:		null
 	};
 
@@ -184,14 +191,14 @@
 			qtyStar	= $('img.' + id).length;
 
 		// context.
-		$('#' + id).live('mouseleave', function() { 
+		$('#' + id).mouseleave(function() { 
 			initialize(context, score.val(), options);
 		});
 
 		$('img.' + id)
-		.live('mouseenter', function() {
+		.mouseenter(function() {
 			fillStar(id, this.alt, options);
-		}).live('click', function() {
+		}).click(function() {
 			score.val(this.alt);
 			if (options.onClick) {
 				options.onClick.apply(context, [this.alt]);
