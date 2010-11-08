@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     0.8
+ * @version     0.9
  * @since       11.06.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -20,37 +20,49 @@
  * @franciscosouza
  * @olleolleolle
  *
- * Usage (default values):
+ * Default values:
  * --------------------------------------------------------------------------
- * $('div#star').raty({
- *	cancelHint:   'cancel this rating!',                           // The hint information.
- *	cancelOff:    'cancel-off.png'                                 // Name of the cancel image off.
- *	cancelOn:     'cancel-on.png'                                  // Name of the cancel image on.
- *	cancelPlace:  'left',                                          // Position of the cancel button.
- *	hintList:     ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
- *	noRatedMsg:   'not rated yet',                                 // A hint for no rated elements when it's read-only.
- *	number:       5,                                               // Number of star.
- *	path:         'img,                                            // Path of images.
- *	iconRange:    []                                               // A range of custom icons that you can set.
- *	readOnly:     false,                                           // read-only or not.
- *	scoreName:    'score',                                         // The name of target score.
- *	showCancel:   false,                                           // Show a button to cancel the rating or not.   
- *	showHalf:     false,                                           // Active the half star.
- *	starHalf:     'star-half.png',                                 // The image of the half star.
- *	start:        0,                                               // Start with a score value.
- *	starOff:      'star-off.png',                                  // Name of the star image on.
- *	starOn:       'star-on.png'                                    // Name of the star image on.
- *	onClick:      null                                             // Default onClick function.
- * });
+ * cancelHint:   'cancel this rating!',                           // The hint information.
+ * cancelOff:    'cancel-off.png'                                 // Name of the cancel image off.
+ * cancelOn:     'cancel-on.png'                                  // Name of the cancel image on.
+ * cancelPlace:  'left',                                          // Position of the cancel button.
+ * hintList:     ['bad', 'poor', 'regular', 'good', 'gorgeous'],  // A hint information for default 5 stars.
+ * iconRange:    []                                               // A range of custom icons that you can set.
+ * noRatedMsg:   'not rated yet',                                 // A hint for no rated elements when it's read-only.
+ * number:       5,                                               // Number of star.
+ * path:         'img,                                            // Path of images.
+ * readOnly:     false,                                           // read-only or not.
+ * scoreName:    'score',                                         // The name of target score.
+ * showCancel:   false,                                           // Show a button to cancel the rating or not.   
+ * showHalf:     false,                                           // Active the half star.
+ * starHalf:     'star-half.png',                                 // The image of the half star.
+ * starOff:      'star-off.png',                                  // Name of the star image on.
+ * starOn:       'star-on.png'                                    // Name of the star image on.
+ * start:        0,                                               // Start with a score value.
+ * onClick:      null                                             // Default onClick function.
  *
- *  <div id="star"></div>
+ *
+ * Usage with default values:
+ * --------------------------------------------------------------------------
+ *
+ * $('#star').raty();
+ *
+ * <div id="star"></div>
+ *
+ *
+ * $('.group').raty();
+ *
+ * <div class="group"></div>
+ * <div class="group"></div>
+ * <div class="group"></div>
+ *
  *
  * Public functions:
  * --------------------------------------------------------------------------
- *  $.fn.raty.start(3);                                              // Starting the rating with 3 stars later.
- *  $.fn.raty.readOnly(true);                                        // Adjusts the rating for read-only later.
- *  $.fn.raty.click(2);                                              // Click in a star later.
+ * $.fn.raty.start(3);                                                // Starting the rating with 3 stars later.
+ * $.fn.raty.readOnly(true);                                          // Adjusts the rating for read-only later.
+ * $.fn.raty.click(2);                                                // Click in a star later.
  *
- *  Should come after the current raty and before the anothers one. Because it takes the last called raty.
+ * Should come after the current raty and before the another one. Because it takes the last one called.
  *
  */

@@ -4,6 +4,7 @@
  *
  * 0.9
  *		- Improved the selector to accept bind by class name;
+ *		- Now if you don't pass a ID for the element, then it will be created;
  *		- Now the hint list will be applied even if the quantity are less than the stars.
  *
  * 0.8
