@@ -6,12 +6,12 @@
  *
  * Licensed under The MIT License
  *
- * @version			0.9
+ * @version			1.0.0
  * @since			06.11.2010
  * @author			Washington Botelho dos Santos
- * @documentation	wbotelhos.com/raty
- * @twitter			twitter.com/wbotelhos
- * @license			opensource.org/licenses/mit-license.php MIT
+ * @documentation	http://wbotelhos.com/raty
+ * @twitter			http://twitter.com/wbotelhos
+ * @license			http://opensource.org/licenses/mit-license.php
  * @package			jQuery Plugins
  *
  * Usage with default values:
@@ -152,36 +152,41 @@
 		onClick:		null
 	};
 
-	$.fn.raty.click = function(score) {
-		initialize($global, score, options);
-		
+	$.fn.raty.click = function(score, id) {
+		var context = getContext(score, id, 'click');
+
+		initialize(context, score, options);
+
 		if (options.onClick) {
-			options.onClick.apply($global, [score]);
+			options.onClick.apply(context, [score]);
 		} else {
-			debug('You should add the "onClick: function(score) { }" option.');
+			debug('You must add the "onClick: function(score) { }" option.');
 		}
 		return $.fn.raty;
 	};
 
-	$.fn.raty.readOnly = function(boo) {
-		var cancel = $global.find('img.button-cancel');
+	$.fn.raty.readOnly = function(boo, id) {
+		var context	= getContext(boo, id, 'readOnly'),
+			cancel	= context.children('img.button-cancel');
 
-		if (cancel.length > 0) {
+		if (cancel[0]) {
 			(boo) ? cancel.hide() : cancel.show();
 		}
 
+		console.log(boo);
 		if (boo) {
-			$('img.' + $global.attr('id')).die();
-			$global.css('cursor', 'default').die();
+			console.log(context);
+			$('img.' + context.attr('id')).unbind();
+			context.css('cursor', 'default').unbind();
 		} else { 
-			bindAll($global, options);
-			$global.css('cursor', 'pointer');
+			bindAll(context, options);
+			context.css('cursor', 'pointer');
 		}
 		return $.fn.raty;
 	};
 
-	$.fn.raty.start = function(score) {
-		initialize($global, score, options);
+	$.fn.raty.start = function(score, id) {
+		initialize(getContext(score, id, 'start'), score, options);
 		return $.fn.raty;
 	};
 
@@ -204,6 +209,37 @@
 				options.onClick.apply(context, [this.alt]);
 			}
 		});
+	};
+
+	function getContext(value, id, name) {
+		var context = $global;
+
+		if (id) {
+			if (id.indexOf('.') == 0) {
+				var idEach;
+
+				return $(id).each(function() {
+					idEach = '#' + $(this).attr('id');
+
+					if (name == 'start') {
+						$.fn.raty.start(value, idEach);
+					} else if (name == 'click') {
+						$.fn.raty.click(value, idEach);
+					} else if (name == 'readOnly') {
+						$.fn.raty.readOnly(value, idEach);
+					}
+				});
+			}
+
+			context	= $(id);
+
+			if (!context[0]) {
+				debug('"' + id + '" is a invalid ID for the public funtion $.fn.raty.' + name + '().');
+				return;
+			}
+		}
+
+		return context;
 	};
 
 	function debug(message) {
