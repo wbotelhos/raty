@@ -4,7 +4,7 @@
  *
  * 1.0.0
  *   - Now you can pass a optionally ID or a class to be the target of the public function's actions;
- *   - Fixed the read-only that wasn't being applied by the public function readOnly.
+ *   - Fixed the read-only that wasn't begin applied by the public function readOnly.
  *
  * 0.9
  *   - Improved the selector to accept bind by class name;
