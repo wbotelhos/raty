@@ -82,7 +82,12 @@
 			.append((i < options.number) ? '&nbsp;' : '');
 		}
 
-		$('<input id="' + id + '-score" type="hidden" name="' + options.scoreName + '"/>').appendTo($global).val(start);
+		$('<input/>', {
+			id:		id + '-score',
+			type:	'hidden',
+			name:	options.scoreName
+		})
+		.appendTo($global).val(start);
 
 		if (options.showHalf) {
 			splitStar($global, $('input#' + id + '-score').val(), options);
@@ -173,9 +178,7 @@
 			(boo) ? cancel.hide() : cancel.show();
 		}
 
-		console.log(boo);
 		if (boo) {
-			console.log(context);
 			$('img.' + context.attr('id')).unbind();
 			context.css('cursor', 'default').unbind();
 		} else { 
@@ -243,8 +246,8 @@
 	};
 
 	function debug(message) {
-		if (window.console && window.console.log) {
-			window.console.log(message);
+		if (console && console.log) {
+			console.log(message);
 		}
 	};
 
