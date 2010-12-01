@@ -2,6 +2,9 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 1.0.1
+ *   - Fixed the ID's auto generation to work in IE6 and IE7.
+ *
  * 1.0.0
  *   - Now you can pass a optionally ID or a class to be the target of the public function's actions;
  *   - Fixed the read-only that wasn't begin applied by the public function readOnly.
