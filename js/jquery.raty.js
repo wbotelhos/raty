@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version			1.0.0
+ * @version			1.0.1
  * @since			06.11.2010
  * @author			Washington Botelho dos Santos
  * @documentation	http://wbotelhos.com/raty
@@ -64,7 +64,7 @@
 			hint		= '';
 
 		if (id == '') {
-			id = 'raty-' + new Date().getMilliseconds();
+			id = 'raty-' + $global.index();
 			$global.attr('id', id);
 		}
 
@@ -140,7 +140,7 @@
 		cancelHint:		'cancel this rating!',
 		cancelOff:		'cancel-off.png',
 		cancelOn:		'cancel-on.png',
-		cancelPlace:	'left',
+		cancelPlace:		'left',
 		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
 		noRatedMsg:		'not rated yet',
 		number:			5,
@@ -236,7 +236,7 @@
 
 			context	= $(id);
 
-			if (!context[0]) {
+			if (!context.length) {
 				debug('"' + id + '" is a invalid ID for the public funtion $.fn.raty.' + name + '().');
 				return;
 			}
