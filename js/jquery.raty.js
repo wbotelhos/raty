@@ -36,7 +36,7 @@
 		options = $.extend({}, $.fn.raty.defaults, settings);
 
 		if (this.length == 0) {
-			debug('Invalid selector!');
+			debug('Selector invalid or missing!');
 			return;
 		} else if (this.length > 1) {
 			return this.each(function() {
