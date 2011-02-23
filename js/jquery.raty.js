@@ -160,7 +160,7 @@
 		if (options.onClick) {
 			options.onClick.apply(context, [score]);
 		} else {
-			debug('You must add the "onClick: function(score) { }" option.');
+			debug('You must add the "click: function(score) { }" callback.');
 		}
 		return $.fn.raty;
 	};
