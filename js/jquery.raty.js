@@ -32,7 +32,6 @@
 ;(function($) {
 
 	$.fn.raty = function(settings) {
-		// Public functions need a global variable to use the last element raty. In functions this not happen because it's become a static value as parameter.
 		options = $.extend({}, $.fn.raty.defaults, settings);
 
 		if (this.length == 0) {
@@ -54,10 +53,8 @@
 			options.path += '/';
 		}
 
-		// Public functions need a global variable to use the last element raty.
 		$global = $(this);
 
-		// Local variables to keep the current value and not the last one. Why, Mr. Anderson? Why? 
 		var id			= this.attr('id'),
 			start		= 0,
 			starFile	= options.starOn,
@@ -97,8 +94,6 @@
 			if (options.showCancel) {
 				var star	= $('img.' + id),
 					cancel	= '<img src="' + options.path + options.cancelOff + '" alt="x" title="' + options.cancelHint + '" class="button-cancel"/>',
-
-					// Local variables to keep the current value and not the last one in the live functions.
 					opt		= options,
 					$this	= $global;
 
