@@ -147,12 +147,25 @@
 				font: 10px verdana;
 			}
 		</style>
+
+		<script type="text/javascript">
+			// This code does NOT belong the plugin. See the example code at the bottom of this page.
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-194992347-3']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
 	</head>
 	<body>
-		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 1.0.1)</span></div>
+		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 1.2.0)</span></div>
 
 		<div id="link">
-			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-1.0.1.zip" target="_blank">Download</a> |
+			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-1.2.0.zip" target="_blank">Download</a> |
 			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
 			<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
@@ -187,18 +200,6 @@
 			&lt;div id="fixed"&gt;&lt;/div&gt;
 		</div>
 
-		<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
-		<div id="anyone"></div>
-
-		<div class="source">
-		 	$('#anyone').raty({<br/>
-			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
-			});<br/><br/>
-		   
-			&lt;div id="anyone"&gt;&lt;/div&gt;
-		</div>
-
 		<div id="number-demo" class="session">With a custom score name and a number of stars:</div>
 		<div id="number"></div>
 		
@@ -211,12 +212,12 @@
 			&lt;div id="number"&gt;&lt;/div&gt;
 		</div>
 
-		<div id="click-demo" class="session">Using onClick function:</div>
+		<div id="click-demo" class="session">Using click function:</div>
 		<div id="click"></div>
 
 		<div class="source">
 		 	$('#click').raty({<br/>
-			&nbsp;&nbsp;onClick: function(score) {<br/>
+			&nbsp;&nbsp;click: function(score) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
 			&nbsp;&nbsp;}<br/>
 			});<br/><br/>
@@ -229,13 +230,13 @@
 			 - In the function you can mension the star element itself using "this".<br/>
 		</span>
 		
-		<div id="half-demo" class="session">Displaying half star:</div>
+		<div id="half-demo" class="session">Enabling half star:</div>
 		<div id="half"></div>
 
 		<div class="source">
 		 	$('#half').raty({<br/>
-			&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3,<br/>
-			&nbsp;&nbsp;showHalf:&nbsp;&nbsp;true<br/>
+			&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;start:&nbsp;3.3<br/>
 			});<br/><br/>
 		   
 			&lt;div id="half"&gt;&lt;/div&gt;
@@ -271,7 +272,7 @@
 			&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'remove my rating!',<br/>
 			&nbsp;&nbsp;cancelPlace:&nbsp;&nbsp;'right',<br/>
 			&nbsp;&nbsp;showCancel:&nbsp;&nbsp;&nbsp;true<br/>
-			&nbsp;&nbsp;onClick: function(score) {<br/>
+			&nbsp;&nbsp;click: function(score) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
 			&nbsp;&nbsp;}<br/>
 			});<br/><br/>
@@ -310,6 +311,18 @@
 			- The sequence of the range interval should be in a ascending order.
 		</span>
 
+		<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
+		<div id="anyone"></div>
+
+		<div class="source">
+		 	$('#anyone').raty({<br/>
+			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
+			});<br/><br/>
+		   
+			&lt;div id="anyone"&gt;&lt;/div&gt;
+		</div>
+
 		<div id="group-demo" class="session">With a group of elements:</div>
 		<div class="group"></div>
 		<div class="group"></div>
@@ -341,8 +354,8 @@
 
 		<div class="source">
 			$('.target').raty({<br/>
-			&nbsp;&nbsp;showHalf:&nbsp;&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;onClick: function(score) {<br/>
+			&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;click: function(score) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(0, '.target');<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
 			&nbsp;&nbsp;}<br/>
@@ -374,6 +387,12 @@
 		 	cancelPlace:&nbsp;&nbsp;'left'<br/>
 		 	<div class="notice">Position of the cancel button.</div>
 
+			click:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
+		 	<div class="notice">Function that returns the selected value.</div>
+
+			half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
+		 	<div class="notice">Enables half star display and selection.</div>
+
 		 	hintList:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
 		 	<div class="notice">List of names that will be used as a hint on each star.</div>
 
@@ -398,10 +417,7 @@
 		 	showCancel:&nbsp;&nbsp;&nbsp;false<br/>
 		 	<div class="notice">If will be showed a button to cancel the rating.</div>
 
-			showHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
-		 	<div class="notice">If will show half star if come a float number as score.</div>
-
- 			starHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-half.png'<br/>
+			starHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-half.png'<br/>
 		 	<div class="notice">The name of the half star image.</div>
 
 			starOff:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
@@ -412,9 +428,6 @@
 
 			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
 			<div class="notice">Number of stars to be selected.</div>
-
-			onClick:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
-		 	<div class="notice">Function that returns the selected value.</div>
 		</div>
 
 		<div class="session">Public functions:</div>
@@ -449,14 +462,14 @@
 				});
 	
 				$('#click').raty({
-					onClick: function(score) {
+					click: function(score) {
 						alert('ID: ' + this.attr('id') + '\nscore: ' + score);
 					}
 				});
 	
 				$('#half').raty({
-					start: 3.3,
-					showHalf: true
+					half: true,
+					start: 3.3
 				});
 	
 				$('#cancel').raty({
@@ -467,7 +480,7 @@
 					cancelHint: 'remove my rating!',
 					cancelPlace: 'right',
 					showCancel: true,
-					onClick: function(score) {
+					click: function(score) {
 						alert('score: ' + score);
 					}
 				});
@@ -486,12 +499,12 @@
 				$('.group').raty();
 	
 				$('#result').raty({
-					readOnly:	true,
-					showHalf:	true
+					half:	true,
+					readOnly:	true
 				});
 	
 				$('.target').raty({
-					onClick: function(score) {
+					click: function(score) {
 						$.fn.raty.start(0, '.target');
 						$.fn.raty.start(score, '#result');
 					}
