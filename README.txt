@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     1.0.1
+ * @version     1.2.0
  * @since       06.11.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -19,6 +19,7 @@
  * @glbenz
  * @franciscosouza
  * @olleolleolle
+ * @jeongee
  *
  * Default values:
  * --------------------------------------------------------------------------
@@ -26,6 +27,8 @@
  * cancelOff:    'cancel-off.png'                                 // Name of the cancel image off.
  * cancelOn:     'cancel-on.png'                                  // Name of the cancel image on.
  * cancelPlace:  'left'                                           // Position of the cancel button.
+ * click:        null                                             // Default callback function.
+ * half:         false                                            // Active the half star.
  * hintList:     ['bad', 'poor', 'regular', 'good', 'gorgeous']   // A hint information for default 5 stars.
  * iconRange:    []                                               // A range of custom icons that you can set.
  * noRatedMsg:   'not rated yet'                                  // A hint for no rated elements when it's read-only.
@@ -34,12 +37,10 @@
  * readOnly:     false                                            // read-only or not.
  * scoreName:    'score'                                          // The name of target score.
  * showCancel:   false                                            // Show a button to cancel the rating or not.   
- * showHalf:     false                                            // Active the half star.
  * starHalf:     'star-half.png'                                  // The image of the half star.
  * starOff:      'star-off.png'                                   // Name of the star image on.
  * starOn:       'star-on.png'                                    // Name of the star image on.
  * start:        0                                                // Start with a score value.
- * onClick:      null                                             // Default onClick function.
  *
  *
  * Usage with default values:
