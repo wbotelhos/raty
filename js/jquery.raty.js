@@ -86,7 +86,7 @@
 		})
 		.appendTo($global).val(start);
 
-		if (options.showHalf) {
+		if (options.half) {
 			splitStar($global, $('input#' + id + '-score').val(), options);
 		}
 
@@ -111,8 +111,8 @@
 					star.mouseout();
 				}).click(function() {
 					$('input#' + id + '-score').val(0);
-					if (opt.onClick) { 
-			          opt.onClick.apply($this, [0]);
+					if (opt.click) { 
+			          opt.click.apply($this, [0]);
 			        }
 				});
 
@@ -157,8 +157,8 @@
 
 		initialize(context, score, options);
 
-		if (options.onClick) {
-			options.onClick.apply(context, [score]);
+		if (options.click) {
+			options.click.apply(context, [score]);
 		} else {
 			debug('You must add the "click: function(score) { }" callback.');
 		}
@@ -201,7 +201,7 @@
 		$('img.' + id).mousemove(function(e) {
 	        fillStar(id, this.alt, options);
 
-			if (options.showHalf) {
+			if (options.half) {
 				var percent = parseFloat(((e.pageX - $(this).offset().left) / 16).toFixed(1));
 				percent = (percent >= 0 && percent < 0.5) ? 0.5 : 1;
 
@@ -212,10 +212,10 @@
 				fillStar(id, this.alt, options);
 			}
 		}).click(function() {
-			score.val(options.showHalf ? context.data('score') : this.alt);
+			score.val(options.half ? context.data('score') : this.alt);
 
-			if (options.onClick) {
-				options.onClick.apply(context, [this.alt]);
+			if (options.click) {
+				options.click.apply(context, [this.alt]);
 			}
 		});
 	};
@@ -313,7 +313,7 @@
 
 		fillStar(id, score, options);
 
-		if (options.showHalf) {
+		if (options.half) {
 			splitStar(context, score, options);
 		}
 
