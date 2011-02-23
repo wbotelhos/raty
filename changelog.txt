@@ -2,6 +2,11 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 1.2.0
+ *   - Added support to half star selection.
+ *   - Changed the name of the atributte onClick to just click;
+ *   - Changed the name of the atributte showHalf to half, because the selection support;
+ *
  * 1.0.1
  *   - Fixed the ID's auto generation to work in IE6 and IE7.
  *
