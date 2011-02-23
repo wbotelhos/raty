@@ -198,11 +198,22 @@
 			initialize(context, score.val(), options);
 		});
 
-		$('img.' + id)
-		.mouseenter(function() {
-			fillStar(id, this.alt, options);
+		$('img.' + id).mousemove(function(e) {
+	        fillStar(id, this.alt, options);
+
+			if (options.showHalf) {
+				var percent = parseFloat(((e.pageX - $(this).offset().left) / 16).toFixed(1));
+				percent = (percent >= 0 && percent < 0.5) ? 0.5 : 1;
+
+				context.data('score', parseFloat(this.alt) + percent - 1);
+
+				splitStar(context, context.data('score'), options);
+			} else {
+				fillStar(id, this.alt, options);
+			}
 		}).click(function() {
-			score.val(this.alt);
+			score.val(options.showHalf ? context.data('score') : this.alt);
+
 			if (options.onClick) {
 				options.onClick.apply(context, [this.alt]);
 			}
