@@ -215,7 +215,7 @@
 			score.val(options.half ? context.data('score') : this.alt);
 
 			if (options.click) {
-				options.click.apply(context, [this.alt]);
+				options.click.apply(context, [score.val()]);
 			}
 		});
 	};
