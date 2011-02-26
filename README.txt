@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     1.2.1
+ * @version     1.3.0
  * @since       06.11.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -23,6 +23,7 @@
  *
  * Default values:
  * --------------------------------------------------------------------------
+ * cancel:       false                                            // Show a button to cancel the rating or not.   
  * cancelHint:   'cancel this rating!'                            // The hint information.
  * cancelOff:    'cancel-off.png'                                 // Name of the cancel image off.
  * cancelOn:     'cancel-on.png'                                  // Name of the cancel image on.
@@ -36,11 +37,12 @@
  * path:         'img                                             // Path of images.
  * readOnly:     false                                            // read-only or not.
  * scoreName:    'score'                                          // The name of target score.
- * showCancel:   false                                            // Show a button to cancel the rating or not.   
+ * size:         16                                               // The icons size.
  * starHalf:     'star-half.png'                                  // The image of the half star.
  * starOff:      'star-off.png'                                   // Name of the star image on.
  * starOn:       'star-on.png'                                    // Name of the star image on.
  * start:        0                                                // Start with a score value.
+ * width:        null                                             // The container width of the stars.
  *
  *
  * Usage with default values:
