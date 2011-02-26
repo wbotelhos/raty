@@ -200,6 +200,18 @@
 			&lt;div id="fixed"&gt;&lt;/div&gt;
 		</div>
 
+		<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
+		<div id="anyone"></div>
+
+		<div class="source">
+		 	$('#anyone').raty({<br/>
+			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
+			});<br/><br/>
+		   
+			&lt;div id="anyone"&gt;&lt;/div&gt;
+		</div>
+
 		<div id="number-demo" class="session">With a custom score name and a number of stars:</div>
 		<div id="number"></div>
 		
@@ -228,25 +240,6 @@
 		<span class="comment-script">
 			 - The argument score is the selected value;<br/>
 			 - In the function you can mension the star element itself using "this".<br/>
-		</span>
-		
-		<div id="half-demo" class="session">Enabling half star:</div>
-		<div id="half"></div>
-
-		<div class="source">
-		 	$('#half').raty({<br/>
-			&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;start:&nbsp;3.3<br/>
-			});<br/><br/>
-		   
-			&lt;div id="half"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			The interval can be:<br/>
-			- Rounded down: [x.00 ... x.25]<br/>
-			- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
-			- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
 		</span>
 
 		<div id="cancel-demo" class="session">With a default cancel button:</div>
@@ -280,6 +273,25 @@
 			&lt;div id="cancel-custom"&gt;&lt;/div&gt;
 		</div>
 
+		<div id="half-demo" class="session">Enabling half star:</div>
+		<div id="half"></div>
+
+		<div class="source">
+		 	$('#half').raty({<br/>
+			&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;start:&nbsp;3.3<br/>
+			});<br/><br/>
+		   
+			&lt;div id="half"&gt;&lt;/div&gt;
+		</div><br/>
+
+		<span class="comment-script">
+			The interval can be:<br/>
+			- Rounded down: [x.00 ... x.25]<br/>
+			- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
+			- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
+		</span>
+
 		<div id="icon-demo" class="session">With a custom hint and icons:</div>
 		<div id="icon"></div>
 
@@ -291,7 +303,11 @@
 			});<br/><br/>
 		   
 			&lt;div id="icon"&gt;&lt;/div&gt;
-		</div>
+		</div><br/>
+
+		<span class="comment-script">
+			- To display the number of the star, set null.
+		</span>
 
 		<div id="range-demo" class="session">With a range of custom icons:</div>
 		<div id="range"></div>
@@ -311,17 +327,27 @@
 			- The sequence of the range interval should be in a ascending order.
 		</span>
 
-		<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
-		<div id="anyone"></div>
+		<div id="big-demo" class="session">With a bigger icon:</div>
+		<div id="big"></div>
 
 		<div class="source">
-		 	$('#anyone').raty({<br/>
-			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
+		 	$('#big').raty({<br/>
+		 	&nbsp;&nbsp;showCancel:&nbsp;true,<br/>
+			&nbsp;&nbsp;cancelOff:&nbsp;&nbsp;'cancel-off-big.png',<br/>
+			&nbsp;&nbsp;cancelOn:&nbsp;&nbsp;&nbsp;'cancel-on-big.png',<br/>
+			&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24,<br/>
+			&nbsp;&nbsp;starHalf:&nbsp;&nbsp;&nbsp;'star-half-big.png',<br/>
+			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off-big.png',<br/>
+			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on-big.png'<br/>
 			});<br/><br/>
 		   
-			&lt;div id="anyone"&gt;&lt;/div&gt;
-		</div>
+			&lt;div id="big"&gt;&lt;/div&gt;
+		</div><br/>
+
+		<span class="comment-script">
+			- You can specify your own width as following: width: 120.
+		</span>
 
 		<div id="group-demo" class="session">With a group of elements:</div>
 		<div class="group"></div>
@@ -354,7 +380,7 @@
 
 		<div class="source">
 			$('.target').raty({<br/>
-			&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;true,<br/>
+			&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
 			&nbsp;&nbsp;click: function(score) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(0, '.target');<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
@@ -417,6 +443,9 @@
 		 	showCancel:&nbsp;&nbsp;&nbsp;false<br/>
 		 	<div class="notice">If will be showed a button to cancel the rating.</div>
 
+			size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16<br/>
+		 	<div class="notice">The icons size.</div>
+
 			starHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-half.png'<br/>
 		 	<div class="notice">The name of the half star image.</div>
 
@@ -428,6 +457,9 @@
 
 			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
 			<div class="notice">Number of stars to be selected.</div>
+
+			width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
+			<div class="notice">The container width of the stars.</div>
 		</div>
 
 		<div class="session">Public functions:</div>
@@ -443,39 +475,34 @@
 
 		<script type="text/javascript">
 			$(function() {
-	
+
 				$('#default').raty();
-	
+
 				$('#fixed').raty({
 					readOnly:	true,
 					start:		2
 				});
-	
+
 				$('#anyone').raty({
 					readOnly:	true,
 					noRatedMsg:	'anyone rated this product yet!'
 				});
-	
+
 				$('#number').raty({
 					scoreName:	'entity.score',
 					number:		10
 				});
-	
+
 				$('#click').raty({
 					click: function(score) {
 						alert('ID: ' + this.attr('id') + '\nscore: ' + score);
 					}
 				});
-	
-				$('#half').raty({
-					half: true,
-					start: 3.3
-				});
-	
+
 				$('#cancel').raty({
 					showCancel: true
 				});
-	
+
 				$('#cancel-custom').raty({
 					cancelHint: 'remove my rating!',
 					cancelPlace: 'right',
@@ -484,32 +511,48 @@
 						alert('score: ' + score);
 					}
 				});
-	
+
+				$('#half').raty({
+					half: true,
+					start: 3.3
+				});
+
 				$('#icon').raty({
 					hintList:	['a', '', null, 'd', '5'],
 				   	starOn:		'medal-on.png',
 				   	starOff:	'medal-off.png'
 				});
-	
+
 				$('#range').raty({
 					iconRange:	[['face-a.png', 2], ['face-b.png', 3], ['face-c.png', 4], ['face-d.png', 5]],
 					starOff:	'face-off.png'
 				});
-	
+
+				$('#big').raty({
+					showCancel: true,
+					cancelOff:	'cancel-off-big.png',
+					cancelOn:	'cancel-on-big.png',
+					half:		true,
+					size:		24,
+					starOff:	'star-off-big.png',
+					starOn:		'star-on-big.png',
+					starHalf:	'star-half-big.png'
+				});
+
 				$('.group').raty();
-	
+
 				$('#result').raty({
-					half:	true,
+					half:		true,
 					readOnly:	true
 				});
-	
+
 				$('.target').raty({
 					click: function(score) {
 						$.fn.raty.start(0, '.target');
 						$.fn.raty.start(score, '#result');
 					}
 				});
-	
+
 			});
 		</script>
 	</body>
