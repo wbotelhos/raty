@@ -58,7 +58,8 @@
 		var id			= this.attr('id'),
 			start		= 0,
 			starFile	= options.starOn,
-			hint		= '';
+			hint		= '',
+			width		= (options.width) ? options.width : (options.number * options.size + options.number * 4);
 
 		if (id == '') {
 			id = 'raty-' + $global.index();
@@ -116,9 +117,9 @@
 			        }
 				});
 
-				$global.css('width', opt.number * 20 + 20);
+				$global.css('width', width + options.size + 4);
 			} else {
-				$global.css('width', options.number * 20);
+				$global.css('width', width);
 			}
 
 			$global.css('cursor', 'pointer');
@@ -131,27 +132,6 @@
 		return $global;
 	};
 	
-	$.fn.raty.defaults = {
-		cancelHint:		'cancel this rating!',
-		cancelOff:		'cancel-off.png',
-		cancelOn:		'cancel-on.png',
-		cancelPlace:	'left',
-		click:			null,
-		half:			false,
-		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
-		noRatedMsg:		'not rated yet',
-		number:			5,
-		path:			'img/',
-		iconRange:		[],
-		readOnly:		false,
-		scoreName:		'score',
-		showCancel:		false,
-		starHalf:		'star-half.png',
-		starOff:		'star-off.png',
-		starOn:			'star-on.png',
-		start:			0
-	};
-
 	$.fn.raty.click = function(score, id) {
 		var context = getContext(score, id, 'click');
 
@@ -202,7 +182,7 @@
 	        fillStar(id, this.alt, options);
 
 			if (options.half) {
-				var percent = parseFloat(((e.pageX - $(this).offset().left) / 16).toFixed(1));
+				var percent = parseFloat(((e.pageX - $(this).offset().left) / options.size).toFixed(1));
 				percent = (percent >= 0 && percent < 0.5) ? 0.5 : 1;
 
 				context.data('score', parseFloat(this.alt) + percent - 1);
@@ -336,5 +316,28 @@
 			$('img#' + id + '-' + rounded).attr('src', options.path + options.starOn);
 		}
 	};
+
+	$.fn.raty.defaults = {
+			cancelHint:		'cancel this rating!',
+			cancelOff:		'cancel-off.png',
+			cancelOn:		'cancel-on.png',
+			cancelPlace:	'left',
+			click:			null,
+			half:			false,
+			hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
+			noRatedMsg:		'not rated yet',
+			number:			5,
+			path:			'img/',
+			iconRange:		[],
+			readOnly:		false,
+			scoreName:		'score',
+			showCancel:		false,
+			size:			16,
+			starHalf:		'star-half.png',
+			starOff:		'star-off.png',
+			starOn:			'star-on.png',
+			start:			0,
+			width:			null
+		};
 
 })(jQuery);
