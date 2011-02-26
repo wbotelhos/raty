@@ -2,6 +2,11 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 1.3.0
+ *   - Added attribute size for to choose the size of the icons that will be used;
+ *   - Added attribute width for to choose the container width of the stars;
+ *   - Changed the name of the attribute showCancel to just cancel.
+ *
  * 1.2.1
  *   - Fixed half star when click function is enabled.
  *
