@@ -247,7 +247,7 @@
 
 		<div class="source">
 		 	$('#cancel').raty({<br/>
-			&nbsp;&nbsp;showCancel: true<br/>
+			&nbsp;&nbsp;cancel: true<br/>
 			});<br/><br/>
 		   
 			&lt;div id="cancel"&gt;&lt;/div&gt;
@@ -262,9 +262,9 @@
 
 		<div class="source">
 		 	$('#cancel-custom').raty({<br/>
+			&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
 			&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'remove my rating!',<br/>
 			&nbsp;&nbsp;cancelPlace:&nbsp;&nbsp;'right',<br/>
-			&nbsp;&nbsp;showCancel:&nbsp;&nbsp;&nbsp;true<br/>
 			&nbsp;&nbsp;click: function(score) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
 			&nbsp;&nbsp;}<br/>
@@ -332,7 +332,7 @@
 
 		<div class="source">
 		 	$('#big').raty({<br/>
-		 	&nbsp;&nbsp;showCancel:&nbsp;true,<br/>
+		 	&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
 			&nbsp;&nbsp;cancelOff:&nbsp;&nbsp;'cancel-off-big.png',<br/>
 			&nbsp;&nbsp;cancelOn:&nbsp;&nbsp;&nbsp;'cancel-on-big.png',<br/>
 			&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
@@ -401,6 +401,9 @@
 		<div class="session">Default options:</div>
 
 		<div class="source">
+		 	cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
+		 	<div class="notice">If will be showed a button to cancel the rating.</div>
+
 		 	cancelHint:&nbsp;&nbsp;&nbsp;'cancel this rating!'<br/>
 		 	<div class="notice">The hint information.</div>
 
@@ -439,9 +442,6 @@
 
 			scoreName:&nbsp;&nbsp;&nbsp;&nbsp;'score'<br/>
 		 	<div class="notice">Name of the hidden field that holds the score value.</div>
-
-		 	showCancel:&nbsp;&nbsp;&nbsp;false<br/>
-		 	<div class="notice">If will be showed a button to cancel the rating.</div>
 
 			size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16<br/>
 		 	<div class="notice">The icons size.</div>
@@ -500,13 +500,13 @@
 				});
 
 				$('#cancel').raty({
-					showCancel: true
+					cancel: true
 				});
 
 				$('#cancel-custom').raty({
-					cancelHint: 'remove my rating!',
-					cancelPlace: 'right',
-					showCancel: true,
+					cancel:			true,
+					cancelHint:		'remove my rating!',
+					cancelPlace:	'right',
 					click: function(score) {
 						alert('score: ' + score);
 					}
@@ -529,7 +529,7 @@
 				});
 
 				$('#big').raty({
-					showCancel: true,
+					cancel:		true,
 					cancelOff:	'cancel-off-big.png',
 					cancelOn:	'cancel-on-big.png',
 					half:		true,

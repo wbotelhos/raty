@@ -92,7 +92,7 @@
 		}
 
 		if (!options.readOnly) {
-			if (options.showCancel) {
+			if (options.cancel) {
 				var star	= $('img.' + id),
 					cancel	= '<img src="' + options.path + options.cancelOff + '" alt="x" title="' + options.cancelHint + '" class="button-cancel"/>',
 					opt		= options,
@@ -318,6 +318,7 @@
 	};
 
 	$.fn.raty.defaults = {
+			cancel:			false,
 			cancelHint:		'cancel this rating!',
 			cancelOff:		'cancel-off.png',
 			cancelOn:		'cancel-on.png',
@@ -331,7 +332,6 @@
 			iconRange:		[],
 			readOnly:		false,
 			scoreName:		'score',
-			showCancel:		false,
 			size:			16,
 			starHalf:		'star-half.png',
 			starOff:		'star-off.png',
