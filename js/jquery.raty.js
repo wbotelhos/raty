@@ -169,7 +169,7 @@
 		var context = $global;
 
 		if (idOrClass) {
-			if (idOrClass.indexOf('.') == 0) {
+			if (idOrClass.indexOf('.') >= 0) {
 				var idEach;
 
 				return $(idOrClass).each(function() {
