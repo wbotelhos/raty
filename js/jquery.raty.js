@@ -64,7 +64,8 @@
 			width		= (options.width) ? options.width : (options.number * options.size + options.number * 4);
 
 		if (id == '') {
-			$global.attr('id', 'raty-' + $global.index());
+			id = 'raty-' + $global.index();
+			$global.attr('id', id); 
 		}
 
 		if (!isNaN(options.start) && options.start > 0) {
@@ -139,7 +140,7 @@
 			qtyStar	= $('img.' + id).length;
 
 		// context.
-		$('#' + id).mouseleave(function() { 
+		$('#' + id).mouseleave(function() {
 			initialize(context, score.val(), options);
 		});
 
