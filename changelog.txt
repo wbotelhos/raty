@@ -2,6 +2,10 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 1.3.2
+ *   - Fixed: the last Raty configuration will not be applied in others targets Raty anymore;
+ *   - Now is possible to use the element as identifier like div.star on direct actions.
+ *
  * 1.3.0
  *   - Added attribute size for to choose the size of the icons that will be used;
  *   - Added attribute width for to choose the container width of the stars;
