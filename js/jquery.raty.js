@@ -55,6 +55,8 @@
 
 		$global = $(this);
 
+		$global.data('options', options);
+
 		var id			= this.attr('id'),
 			start		= 0,
 			starFile	= options.starOn,
@@ -62,8 +64,7 @@
 			width		= (options.width) ? options.width : (options.number * options.size + options.number * 4);
 
 		if (id == '') {
-			id = 'raty-' + $global.index();
-			$global.attr('id', id);
+			$global.attr('id', 'raty-' + $global.index());
 		}
 
 		if (!isNaN(options.start) && options.start > 0) {
@@ -132,42 +133,6 @@
 		return $global;
 	};
 	
-	$.fn.raty.click = function(score, id) {
-		var context = getContext(score, id, 'click');
-
-		initialize(context, score, options);
-
-		if (options.click) {
-			options.click.apply(context, [score]);
-		} else {
-			debug('You must add the "click: function(score) { }" callback.');
-		}
-		return $.fn.raty;
-	};
-
-	$.fn.raty.readOnly = function(boo, id) {
-		var context	= getContext(boo, id, 'readOnly'),
-			cancel	= context.children('img.button-cancel');
-
-		if (cancel[0]) {
-			(boo) ? cancel.hide() : cancel.show();
-		}
-
-		if (boo) {
-			$('img.' + context.attr('id')).unbind();
-			context.css('cursor', 'default').unbind();
-		} else { 
-			bindAll(context, options);
-			context.css('cursor', 'pointer');
-		}
-		return $.fn.raty;
-	};
-
-	$.fn.raty.start = function(score, id) {
-		initialize(getContext(score, id, 'start'), score, options);
-		return $.fn.raty;
-	};
-
 	function bindAll(context, options) {
 		var id		= context.attr('id'),
 			score	= $('input#' + id + '-score'),
@@ -200,14 +165,14 @@
 		});
 	};
 
-	function getContext(value, id, name) {
+	function getContext(value, idOrClass, name) {
 		var context = $global;
 
-		if (id) {
-			if (id.indexOf('.') == 0) {
+		if (idOrClass) {
+			if (idOrClass.indexOf('.') == 0) {
 				var idEach;
 
-				return $(id).each(function() {
+				return $(idOrClass).each(function() {
 					idEach = '#' + $(this).attr('id');
 
 					if (name == 'start') {
@@ -220,10 +185,10 @@
 				});
 			}
 
-			context	= $(id);
+			context	= $(idOrClass);
 
 			if (!context.length) {
-				debug('"' + id + '" is a invalid ID for the public funtion $.fn.raty.' + name + '().');
+				debug('"' + idOrClass + '" is a invalid identifier for the public funtion $.fn.raty.' + name + '().');
 				return;
 			}
 		}
@@ -317,27 +282,71 @@
 		}
 	};
 
+	$.fn.raty.click = function(score, idOrClass) {
+		var context = getContext(score, idOrClass, 'click'),
+			options = $(idOrClass).data('options');
+
+		initialize(context, score, options);
+
+		if (options.click) {
+			options.click.apply(context, [score]);
+		} else {
+			debug('You must add the "click: function(score) { }" callback.');
+		}
+
+		return $.fn.raty;
+	};
+
+	$.fn.raty.readOnly = function(boo, idOrClass) {
+		var context	= getContext(boo, idOrClass, 'readOnly'),
+			cancel	= context.children('img.button-cancel'),
+			options	= $(idOrClass).data('options');
+
+		if (cancel[0]) {
+			(boo) ? cancel.hide() : cancel.show();
+		}
+
+		if (boo) {
+			$('img.' + context.attr('id')).unbind();
+			context.css('cursor', 'default').unbind();
+		} else { 
+			bindAll(context, options);
+			context.css('cursor', 'pointer');
+		}
+
+		return $.fn.raty;
+	};
+
+	$.fn.raty.start = function(score, idOrClass) {
+		var context = getContext(score, idOrClass, 'start'),
+			options = $(idOrClass).data('options');
+
+		initialize(context, score, options);
+
+		return $.fn.raty;
+	};
+
 	$.fn.raty.defaults = {
-			cancel:			false,
-			cancelHint:		'cancel this rating!',
-			cancelOff:		'cancel-off.png',
-			cancelOn:		'cancel-on.png',
-			cancelPlace:	'left',
-			click:			null,
-			half:			false,
-			hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
-			noRatedMsg:		'not rated yet',
-			number:			5,
-			path:			'img/',
-			iconRange:		[],
-			readOnly:		false,
-			scoreName:		'score',
-			size:			16,
-			starHalf:		'star-half.png',
-			starOff:		'star-off.png',
-			starOn:			'star-on.png',
-			start:			0,
-			width:			null
-		};
+		cancel:			false,
+		cancelHint:		'cancel this rating!',
+		cancelOff:		'cancel-off.png',
+		cancelOn:		'cancel-on.png',
+		cancelPlace:	'left',
+		click:			null,
+		half:			false,
+		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
+		noRatedMsg:		'not rated yet',
+		number:			5,
+		path:			'img/',
+		iconRange:		[],
+		readOnly:		false,
+		scoreName:		'score',
+		size:			16,
+		starHalf:		'star-half.png',
+		starOff:		'star-off.png',
+		starOn:			'star-on.png',
+		start:			0,
+		width:			null
+	};
 
 })(jQuery);
