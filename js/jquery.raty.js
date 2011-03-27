@@ -157,11 +157,11 @@
 			} else {
 				fillStar(id, this.alt, options);
 			}
-		}).click(function() {
+		}).click(function(evt) {
 			score.val(options.half ? context.data('score') : this.alt);
 
 			if (options.click) {
-				options.click.apply(context, [score.val()]);
+				options.click.apply(context, [score.val(), evt]);
 			}
 		});
 	};
@@ -286,7 +286,7 @@
 	$.fn.raty.click = function(score, idOrClass) {
 		var context = getContext(score, idOrClass, 'click'),
 			options = $(idOrClass).data('options');
-
+		
 		initialize(context, score, options);
 
 		if (options.click) {
