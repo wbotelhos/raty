@@ -112,10 +112,10 @@
 				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
 					star.mouseout();
-				}).click(function() {
+				}).click(function(evt) {
 					$('input#' + id + '-score').val(0);
 					if (opt.click) { 
-			          opt.click.apply($this, [0]);
+			          opt.click.apply($this, [0, evt]);
 			        }
 				});
 
