@@ -229,8 +229,8 @@
 
 		<div class="source">
 		 	$('#click').raty({<br/>
-			&nbsp;&nbsp;click: function(score) {<br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
+			&nbsp;&nbsp;click: function(score, evt) {<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);<br/>
 			&nbsp;&nbsp;}<br/>
 			});<br/><br/>
 		   
@@ -265,7 +265,7 @@
 			&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
 			&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'remove my rating!',<br/>
 			&nbsp;&nbsp;cancelPlace:&nbsp;&nbsp;'right',<br/>
-			&nbsp;&nbsp;click: function(score) {<br/>
+			&nbsp;&nbsp;click: function(score, evt) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
 			&nbsp;&nbsp;}<br/>
 			});<br/><br/>
@@ -381,7 +381,7 @@
 		<div class="source">
 			$('.target').raty({<br/>
 			&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;click: function(score) {<br/>
+			&nbsp;&nbsp;click: function(score, evt) {<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(0, '.target');<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
 			&nbsp;&nbsp;}<br/>
@@ -494,8 +494,8 @@
 				});
 
 				$('#click').raty({
-					click: function(score) {
-						alert('ID: ' + this.attr('id') + '\nscore: ' + score);
+					click: function(score, evt) {
+						alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
 					}
 				});
 
