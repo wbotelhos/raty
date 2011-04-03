@@ -114,7 +114,8 @@
 					star.mouseout();
 				}).click(function(evt) {
 					$('input#' + id + '-score').val(0);
-					if (opt.click) { 
+
+					if (opt.click) {
 			          opt.click.apply($this, [0, evt]);
 			        }
 				});
@@ -286,7 +287,7 @@
 	$.fn.raty.click = function(score, idOrClass) {
 		var context = getContext(score, idOrClass, 'click'),
 			options = $(idOrClass).data('options');
-		
+
 		initialize(context, score, options);
 
 		if (options.click) {
