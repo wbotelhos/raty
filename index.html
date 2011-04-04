@@ -239,7 +239,8 @@
 
 		<span class="comment-script">
 			 - The argument score is the selected value;<br/>
-			 - In the function you can mension the star element itself using "this".<br/>
+			 - The argument evt is the click event;<br/>
+			 - You can mension the star element itself using 'this'.<br/>
 		</span>
 
 		<div id="cancel-demo" class="session">With a default cancel button:</div>
@@ -465,13 +466,13 @@
 		<div class="session">Public functions:</div>
 		
 		<div class="source">$.fn.raty.start(3);</div>
-		<div class="description">Starting the rating with 3 stars later.</div>
+		<div class="description">Starts the last Raty with 3 stars later.</div>
 
-		<div class="source">$.fn.raty.readOnly(true);</div>
-		<div class="description">Adjusts the rating for read-only later.</div>
+		<div class="source">$.fn.raty.click(2, '#raty');</div>
+		<div class="description">Click on the second star of the Raty with ID called 'raty' later.</div>
 
-		<div class="source">$.fn.raty.click(2);</div>
-		<div class="description">Click in the star number 2 later.</div>
+		<div class="source">$.fn.raty.readOnly(true, '.raty');</div>
+		<div class="description">Adjusts all Raty with class called 'raty' for read-only later.</div>
 
 		<script type="text/javascript">
 			$(function() {
