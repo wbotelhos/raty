@@ -199,8 +199,8 @@
 	};
 
 	function debug(message) {
-		if (console && console.log) {
-			console.log(message);
+		if (window.console && window.console.log) {
+			window.console.log(message);
 		}
 	};
 
