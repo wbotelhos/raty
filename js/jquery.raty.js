@@ -82,6 +82,10 @@
 			.append((i < options.number) ? '&nbsp;' : '');
 		}
 
+		if (start > 0) {
+			fillStar(id, start, options);	
+		}
+
 		$('<input/>', {
 			id:		id + '-score',
 			type:	'hidden',
