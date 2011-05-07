@@ -61,6 +61,7 @@
 			start		= 0,
 			starFile	= options.starOn,
 			hint		= '',
+			target		= options.target,
 			width		= (options.width) ? options.width : (options.number * options.size + options.number * 4);
 
 		if (id == '') {
@@ -98,6 +99,10 @@
 		}
 
 		if (!options.readOnly) {
+			if (target !== null) {
+				target = $(target);
+			}
+
 			if (options.cancel) {
 				var star	= $('img.' + id),
 					cancel	= '<img src="' + options.path + options.cancelOff + '" alt="x" title="' + options.cancelHint + '" class="button-cancel"/>',
@@ -113,6 +118,7 @@
 				$('#' + id + ' img.button-cancel').mouseenter(function() {
 					$(this).attr('src', opt.path + opt.cancelOn);
 					star.attr('src', opt.path + opt.starOff);
+					setTarget(target, 0);
 				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
 					star.mouseout();
@@ -130,7 +136,7 @@
 			}
 
 			$global.css('cursor', 'pointer');
-			bindAll($global, options);
+			bindAll($global, options, target);
 		} else {
 			$global.css('cursor', 'default');
 			fixHint($global, start, options);
@@ -139,7 +145,7 @@
 		return $global;
 	};
 	
-	function bindAll(context, options) {
+	function bindAll(context, options, target) {
 		var id		= context.attr('id'),
 			score	= $('input#' + id + '-score'),
 			qtyStar	= $('img.' + id).length;
@@ -147,6 +153,7 @@
 		// context.
 		$('#' + id).mouseleave(function() {
 			initialize(context, score.val(), options);
+			clearTarget(target, score);
 		});
 
 		$('img.' + id).mousemove(function(e) {
@@ -162,6 +169,8 @@
 			} else {
 				fillStar(id, this.alt, options);
 			}
+
+			setTarget(target, this.alt);
 		}).click(function(evt) {
 			score.val(options.half ? context.data('score') : this.alt);
 
@@ -169,6 +178,32 @@
 				options.click.apply(context, [score.val(), evt]);
 			}
 		});
+	};
+
+	function isField(target) {
+		return target.is('input') || target.is('select') || target.is('textarea');
+	};
+
+	function clearTarget(target, score) {
+		if (target !== null) {
+			var scored = (options.targetPersit && score.val() != 0) ? score.val() : '';
+
+			if (isField(target)) {
+				target.val(alt);
+			} else {
+				target.html(scored);
+			}	
+		}			
+	};
+
+	function setTarget(target, alt) {
+		if (target !== null) {
+			if (isField(target)) {
+				target.val(alt);
+			} else {
+				target.html(alt);
+			}
+		}			
 	};
 
 	function getContext(value, idOrClass, name) {
@@ -352,6 +387,8 @@
 		starOff:		'star-off.png',
 		starOn:			'star-on.png',
 		start:			0,
+		target:			null,
+		targetPersit:	false,
 		width:			null
 	};
 
