@@ -118,7 +118,7 @@
 				$('#' + id + ' img.button-cancel').mouseenter(function() {
 					$(this).attr('src', opt.path + opt.cancelOn);
 					star.attr('src', opt.path + opt.starOff);
-					setTarget(target, 0);
+					setTarget(target, 0, options);
 				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
 					star.mouseout();
@@ -153,7 +153,7 @@
 		// context.
 		$('#' + id).mouseleave(function() {
 			initialize(context, score.val(), options);
-			clearTarget(target, score);
+			clearTarget(target, score, options);
 		});
 
 		$('img.' + id).mousemove(function(e) {
@@ -170,7 +170,7 @@
 				fillStar(id, this.alt, options);
 			}
 
-			setTarget(target, this.alt);
+			setTarget(target, this.alt, options);
 		}).click(function(evt) {
 			score.val(options.half ? context.data('score') : this.alt);
 
@@ -184,26 +184,40 @@
 		return target.is('input') || target.is('select') || target.is('textarea');
 	};
 
-	function clearTarget(target, score) {
+	function clearTarget(target, score, options) {
 		if (target !== null) {
-			var scored = (options.targetPersit && score.val() != 0) ? score.val() : '';
+			var value = '';
+
+			if (options.targetPersit) {
+				value = (options.targetValue == 'hint') ? options.hintList[score.val() - 1] : score.val(); 
+			}
 
 			if (isField(target)) {
-				target.val(alt);
+				target.val(value);
 			} else {
-				target.html(scored);
-			}	
-		}			
+				target.html(value);
+			}
+		}
 	};
 
-	function setTarget(target, alt) {
+	function setTarget(target, alt, options) {
 		if (target !== null) {
-			if (isField(target)) {
-				target.val(alt);
-			} else {
-				target.html(alt);
+			var value = alt;
+
+			if (options.targetValue == 'hint') {
+				if (alt == 0 && options.cancel) {
+					value = options.cancelHint;
+				} else {
+					value = options.hintList[alt - 1];
+				}
 			}
-		}			
+
+			if (isField(target)) {
+				target.val(value);
+			} else {
+				target.html(value);
+			}
+		}
 	};
 
 	function getContext(value, idOrClass, name) {
@@ -389,6 +403,7 @@
 		start:			0,
 		target:			null,
 		targetPersit:	false,
+		targetValue:	'number',
 		width:			null
 	};
 
