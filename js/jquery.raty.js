@@ -118,7 +118,7 @@
 				$('#' + id + ' img.button-cancel').mouseenter(function() {
 					$(this).attr('src', opt.path + opt.cancelOn);
 					star.attr('src', opt.path + opt.starOff);
-					setTarget(target, 0, options);
+					setTarget(target, 0, opt);
 				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
 					star.mouseout();
@@ -180,35 +180,17 @@
 		});
 	};
 
-	function isField(target) {
-		return target.is('input') || target.is('select') || target.is('textarea');
-	};
-
 	function clearTarget(target, score, options) {
 		if (target !== null) {
-			var value = '';
+			var value = score.val();
 
 			if (options.targetPersit) {
-				value = (options.targetValue == 'hint') ? options.hintList[score.val() - 1] : score.val(); 
-			}
-
-			if (isField(target)) {
-				target.val(value);
-			} else {
-				target.html(value);
-			}
-		}
-	};
-
-	function setTarget(target, alt, options) {
-		if (target !== null) {
-			var value = alt;
-
-			if (options.targetValue == 'hint') {
-				if (alt == 0 && options.cancel) {
-					value = options.cancelHint;
-				} else {
-					value = options.hintList[alt - 1];
+				if (options.targetValue == 'hint') {
+					if (score.val() == 0 && options.cancel) {
+						value = options.cancelHint;
+					} else {
+						value = options.hintList[score.val() - 1];
+					}
 				}
 			}
 
@@ -300,6 +282,10 @@
 		$('#' + context.attr('id')).attr('title', hint).children('img').attr('title', hint);
 	};
 
+	function isField(target) {
+		return target.is('input') || target.is('select') || target.is('textarea');
+	};
+
 	function initialize(context, score, options) {
 		var id = context.attr('id');
 
@@ -319,6 +305,26 @@
 
 		if (options.readOnly || context.css('cursor') == 'default') {
 			fixHint(context, score, options);
+		}
+	};
+
+	function setTarget(target, alt, options) {
+		if (target !== null) {
+			var value = alt;
+
+			if (options.targetValue == 'hint') {
+				if (alt == 0 && options.cancel) {
+					value = options.cancelHint;
+				} else {
+					value = options.hintList[alt - 1];
+				}
+			}
+
+			if (isField(target)) {
+				target.val(value);
+			} else {
+				target.html(value);
+			}
 		}
 	};
 
@@ -403,7 +409,7 @@
 		start:			0,
 		target:			null,
 		targetPersit:	false,
-		targetValue:	'number',
+		targetValue:	'hint',
 		width:			null
 	};
 
