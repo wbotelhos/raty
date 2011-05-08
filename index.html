@@ -9,143 +9,50 @@
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.js"></script>
 
 		<style type="text/css">
-			body {
-				font: 10px verdana;
-			}
+			body { background: url('img/background.gif'); font: normal 11px verdana; }
 
-			a#coffee-link, div#coffee-container {
-				border-radius: 4px;
-				-khtml-border-radius: 4px;
-				-moz-border-radius: 4px;
-				-opera-border-radius: 4px;
-				-webkit-border-radius: 4px;
-			}
+			div#link a { color: #EA9C00; font: bold 10px verdana; letter-spacing: .9px; text-decoration: none; }
+			div#link a:hover { color: #DC5; font-weight: bold; letter-spacing: .9px; text-decoration: underline; }
 
-			div#link a {
-				color: #EA9C00;
-				font: bold 10px verdana;
-				letter-spacing: .9px;
-				text-decoration: none;
-			}
-			
-			div#link a:hover {
-				color: #DC5;
-				font-weight: bold;
-				letter-spacing: .9px;
-				text-decoration: underline;
-			}
+			a#coffee { background: url('img/coffee.png') 6px 2px no-repeat #DC5; border: 1px solid #D9C640; border-radius: 4px; color: #FFF; display: block; float: right; font-size: 10px; font-weight: bold; letter-spacing: .9px; margin-right: 15px; padding: 4px 5px 4px 26px; text-decoration: none; -khtml-border-radius: 4px; -moz-border-radius: 4px; -opera-border-radius: 4px; -webkit-border-radius: 4px; }
+			a#coffee:hover { text-decoration: underline; }
 
-			a#coffee-link {
-				background: url('img/coffee.png') 6px 2px no-repeat;
-				border: 1px solid #D9C640;
-				color: #FFF;
-				display: block;
-				font-weight: bold;
-				letter-spacing: .9px;
-				padding: 4px 5px 4px 26px;
-				text-decoration: none;
-			}
+			div#content { background-color: #FFF; border: 1px solid #DEDEDE; box-shadow: 0 1px 3px rgba(100, 100, 100, 0.4); margin: 0 auto; padding: 15px; width: 1100px; min-height: 510px; }
 
-			a#coffee-link:hover {
-				text-decoration: underline;
-			}
+			div#copy { margin: 0 auto; text-align: center; width: 1100px; }
 
-			div#coffee-container {
-				background-color: #DC5;
-				float: right;
-				margin-right: 15px;
-			}
+			div#header { margin: 0 auto; padding-left: 20px; width: 1130px; }
 
-			div.description {
-				color: #555;
-				letter-spacing: .1px;
-				margin-bottom: 10px;
-				text-indent: 7px;
-				text-align: left;
-				width: 99%;
-			}
+			div.description { color: #555; letter-spacing: .1px; margin-bottom: 10px; text-indent: 7px; text-align: left; }
 
-			div#link {
-				color: #AB9927;
-				text-indent: 7px;
-			}
+			div.left { float: left; }
 
-			div.notice {
-				font: 9px verdana;
-				color: #777;
-				letter-spacing: .1px;
-				margin-bottom: 3px;
-				text-indent: 7px;
-				text-align: left;
-				width: 99%;
-			}
+			div.raty-target { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; margin-top: 1px; padding-left: 4px; padding-right: 4px; text-align: center; width: 50px; }
+			div.raty-target-number { float: left; margin-right: 5px; margin-top: 2px; }
 
-			div.session {
-				font: bold 13px verdana;
-				border-bottom: 1px solid #EFEFEF;
-				color: #444;
-				letter-spacing: .7px;
-				margin-bottom: 10px;
-				margin-top: 24px;
-				text-align: left;
-				width: 99%;
-			}
+			div#link { color: #AB9927; font: bold 14px 'Lucida Grande', 'Helvetica', 'Times New Roman', serif; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase; }
 
-			div.source {
-				background: #F8F8FF;
-				border: 1px solid #EFEFEF;
-				border-left: 3px solid #CCC;
-				color: #444;
-				font: 12px monospace;
-				letter-spacing: .1px;
-				margin-bottom: 7px;
-				margin-top: 5px;
-				padding: 7px;
-				width: 99%;
-			}
+			div.notice { color: #777; font: 9px verdana; letter-spacing: 0.4px; margin-bottom: 9px; text-align: left; }
 
-			div.text {
-				color: #555;
-				letter-spacing: .1px;
-				margin-bottom: 20px;
-				margin-top: 5px;
-				text-align: left;
-				text-indent: 7px;
-				width: 99%;
-			}
+			div#rodape { clear: both; height: 25px; margin-top: 5px; width: 100%; }
 
-			div.title {
-				font: bold 17px verdana;
-				color: #269;
-				letter-spacing: .7px;
-				margin-bottom: 20px;
-				margin-top: 5px;
-				text-align: left;
-				width: 99%;
-			}
-			
-			span.comment-html, span.comment-script {
-				font: 12px monospace;
-				letter-spacing: .1px;
-				margin-bottom: 7px;
-				margin-top: 5px;
-			}
+			div.session, div.session-first { font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; margin-top: 24px; text-align: left; width: 1081px; }
+			div.session-first { margin-top: 0 !important; }
 
-			span.comment-html {
-				color: #5e85de;
-			}
+			div.source { background: #F8F8FF; border: 1px solid #EFEFEF; border-left: 3px solid #CCC; color: #444; font: 12px monospace; border-radius: 2px; letter-spacing: .1px; margin-bottom: 7px; margin-top: 15px; padding: 7px; width: 1081px; -khtml-border-radius: 2px; -moz-border-radius: 2px; -opera-border-radius: 2px; -webkit-border-radius: 2px; }
 
-			span.comment-script {
-				color: #578F73;
-			}
+			div.text { color: #555; letter-spacing: .1px; margin-bottom: 20px; margin-top: 15px; text-align: left; }
 
-			span#version {
-				color: #777;
-				font: 10px verdana;
-			}
+			div.title { font: bold 17px verdana; color: #269; letter-spacing: .7px; margin-bottom: 20px; text-align: left; }
+
+			span.comment-html, span.comment-script { font: 12px monospace; letter-spacing: .1px; margin-bottom: 7px; margin-top: 5px; }
+			span.comment-html { color: #5E85DE; }
+			span.comment-script { color: #578F73; }
+
+			span#version { color: #777; font: 10px verdana; }
 		</style>
 
 		<script type="text/javascript">
@@ -162,317 +69,383 @@
 		</script>
 	</head>
 	<body>
-		<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 1.3.3)</span></div>
-
-		<div id="link">
-			| <a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-1.3.3.zip" target="_blank">Download</a> |
-			<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
-			<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
-			<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
-			<a href="http://wbotelhos.com/raty/LICENSE.txt" target="_blank">Licence</a> |
-			<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin/" target="_blank">Article</a> |
+		<div id="header">
+			<div class="title">jQuery Raty - A Star Rating Plugin <span id="version">(current version: 1.3.3)</span></div>
+	
+			<div id="link">
+				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-1.3.3.zip" target="_blank">Download</a> |
+				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
+				<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
+				<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
+				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin/" target="_blank">Doubt</a> |
+				<a href="http://wbotelhos.com/raty/LICENSE.txt" target="_blank">Licence</a> |
+				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin/" target="_blank" style="color: #2C8CBD;">Article</a>
+			</div>
+	
+			<a id="coffee" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Raty" target="_blank">buy me a coffee</a>
+	
+			<div class="text">jQuery <strong>Raty</strong> is a plugin that generates a customizable star rating automatically.</div>
 		</div>
 
-		<div id="coffee-container">
-			<a id="coffee-link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Raty" target="_blank">buy me a coffee</a>
-		</div><br/>
-
-		<div class="text">jQuery <strong>Raty</strong> is a plugin that generates a customizable star rating automatically.</div>
-
-		<div id="default-demo" class="session">With default options:</div>
-		<div id="default"></div>
-
-		<div class="source">
-			$('#default').raty();<br/><br/>
+		<div id="content">
+			<div id="default-demo" class="session-first">With default options:</div>
+	
+			<div id="default"></div>
+	
+			<div class="source">
+				$('#default').raty();<br/><br/>
+				
+				&lt;div id="default"&gt;&lt;/div&gt;
+			</div>
+	
+			<div id="fixed-demo" class="session">Started with a score and read only value:</div>
+			<div id="fixed"></div>
+	
+			<div class="source">
+			 	$('#fixed').raty({<br/>
+				&nbsp;&nbsp;readOnly:&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/>
+				});<br/><br/>
+				
+				&lt;div id="fixed"&gt;&lt;/div&gt;
+			</div>
+	
+			<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
+			<div id="anyone"></div>
+	
+			<div class="source">
+			 	$('#anyone').raty({<br/>
+				&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
+				});<br/><br/>
+			   
+				&lt;div id="anyone"&gt;&lt;/div&gt;
+			</div>
+	
+			<div id="number-demo" class="session">With a custom score name and a number of stars:</div>
+			<div id="number"></div>
 			
-			&lt;div id="default"&gt;&lt;/div&gt;
-		</div>
-
-		<div id="fixed-demo" class="session">Started with a score and read only value:</div>
-		<div id="fixed"></div>
-
-		<div class="source">
-		 	$('#fixed').raty({<br/>
-			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/>
-			});<br/><br/>
+			<div class="source">
+			 	$('#number').raty({<br/>
+				&nbsp;&nbsp;scoreName:&nbsp;&nbsp;'entity.score',<br/>
+				&nbsp;&nbsp;number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10<br/>
+				});<br/><br/>
+			   
+				&lt;div id="number"&gt;&lt;/div&gt;
+			</div>
+	
+			<div id="click-demo" class="session">Using click function:</div>
+			<div id="click"></div>
+	
+			<div class="source">
+			 	$('#click').raty({<br/>
+				&nbsp;&nbsp;click: function(score, evt) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);<br/>
+				&nbsp;&nbsp;}<br/>
+				});<br/><br/>
+			   
+				&lt;div id="click"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment-script">
+				 - The argument score is the selected value;<br/>
+				 - The argument evt is the click event;<br/>
+				 - You can mension the star element itself using 'this'.<br/>
+			</span>
+	
+			<div id="cancel-demo" class="session">With a default cancel button:</div>
+			<div id="cancel"></div>
+	
+			<div class="source">
+			 	$('#cancel').raty({<br/>
+				&nbsp;&nbsp;cancel: true<br/>
+				});<br/><br/>
+			   
+				&lt;div id="cancel"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment-script">
+				 - The score for the click on cancel button is 0 (zero).<br/>
+			</span>
+	
+			<div id="cancel-custom-demo" class="session">With a custom cancel button:</div>
+			<div id="cancel-custom"></div>
+	
+			<div class="source">
+			 	$('#cancel-custom').raty({<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
+				&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'remove my rating!',<br/>
+				&nbsp;&nbsp;cancelPlace:&nbsp;&nbsp;'right',<br/>
+				&nbsp;&nbsp;click: function(score, evt) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
+				&nbsp;&nbsp;}<br/>
+				});<br/><br/>
+			   
+				&lt;div id="cancel-custom"&gt;&lt;/div&gt;
+			</div>
+	
+			<div id="half-demo" class="session">Enabling half star:</div>
+			<div id="half"></div>
+	
+			<div class="source">
+			 	$('#half').raty({<br/>
+				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;start:&nbsp;3.3<br/>
+				});<br/><br/>
+			   
+				&lt;div id="half"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment-script">
+				The interval can be:<br/>
+				- Rounded down: [x.00 ... x.25]<br/>
+				- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
+				- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
+			</span>
+	
+			<div id="icon-demo" class="session">With a custom hint and icons:</div>
+			<div id="icon"></div>
+	
+			<div class="source">
+			 	$('#icon').raty({<br/>
+				&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
+				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
+				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
+				});<br/><br/>
+			   
+				&lt;div id="icon"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment-script">
+				- To display the number of the star, set null.
+			</span>
+	
+			<div id="range-demo" class="session">With a range of custom icons:</div>
+			<div id="range"></div>
+	
+			<div class="source">
+			 	$('#range').raty({<br/>
+			 	&nbsp;&nbsp;iconRange:&nbsp;[['face-a.png', 2], ['face-b.png', 3], ['face-c.png', 4], ['face-d.png', 5]],<br/>
+				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'face-off.png'<br/>
+				});<br/><br/>
+			   
+				&lt;div id="range"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment-script">
+				- It's a array of array where each inner array represents a custom icon;<br/>
+				- The second parameter is until where this icon will be displayed;<br/>
+				- The sequence of the range interval should be in a ascending order.
+			</span>
+	
+			<div id="big-demo" class="session">With a bigger icon:</div>
+			<div id="big"></div>
+	
+			<div class="source">
+			 	$('#big').raty({<br/>
+			 	&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;cancelOff:&nbsp;&nbsp;'cancel-off-big.png',<br/>
+				&nbsp;&nbsp;cancelOn:&nbsp;&nbsp;&nbsp;'cancel-on-big.png',<br/>
+				&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24,<br/>
+				&nbsp;&nbsp;starHalf:&nbsp;&nbsp;&nbsp;'star-half-big.png',<br/>
+				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off-big.png',<br/>
+				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on-big.png'<br/>
+				});<br/><br/>
+			   
+				&lt;div id="big"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment-script">
+				- You can specify your own width as following: width: 120.
+			</span>
+	
+			<div id="group-demo" class="session">With a group of elements:</div>
+			<div class="group"></div>
+			<div class="group"></div>
+			<div class="group"></div>
+	
+			<div class="source">
+				$('.group').raty();<br/><br/>
+	
+				&lt;div class="group"&gt;&lt;/div&gt;<br/>
+				&lt;div class="group"&gt;&lt;/div&gt;<br/>
+				&lt;div class="group"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment-script">
+				- The ID is optional and must be unique;<br/>
+				- If you don't pass a ID for the element, then it will be created.
+			</span>
+	
+			<div id="action-demo" class="session">Using directed actions with public functions:</div>
+	
+			love:
+			<div class="action"></div>
+	
+			happy:
+			<div class="action"></div><br/>
+	
+			your last rate:
+			<div id="result"></div>
+	
+			<div class="source">
+				$('.action').raty({<br/>
+				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;click: function(score, evt) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(0, '.action');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
+				&nbsp;&nbsp;}<br/>
+				});<br/><br/>
+	
+				&lt;div class="action"&gt;&lt;/div&gt;<br/>
+				&lt;div class="action"&gt;&lt;/div&gt;<br/><br/>
+				&lt;div id="result"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment-script">
+				- All public functions have a optional second parameter to specify which container will be executed;<br/>
+				- You can pass a ID or a class to be the target of the action;<br/>
+				- If the ID or class are not specified, then the last element Raty will be takes.
+			</span>
+	
+			<div id="target-demo" class="session">Displaying the hint in a target element:</div>
+	
+			<div id="target" class="left"></div>
+			<div id="hint" class="raty-target"></div><br/>
+	
+			<div class="source">
+				$('#target').raty({<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
+				&nbsp;&nbsp;cancelHint:&nbsp;true<br/>
+				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint'<br/>
+				});<br/><br/>
+	
+				&lt;div id="target"&gt;&lt;/div&gt;
+				&lt;div id="hint"&gt;&lt;/div&gt;
+			</div>
+	
+			<div id="target-number-demo" class="session">Displaying and persisting the score in a target element:</div>
+	
+			<div id="target-number" class="raty-target-number left"></div>
+	
+			<select id="score" class="left">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+	
+			<div class="source">
+				$('#target-number').raty({<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
+				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#score'<br/>
+				&nbsp;&nbsp;targetPersit:&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;targetValue:&nbsp;&nbsp;&nbsp;'number'<br/>
+				});<br/><br/>
+	
+				&lt;select id="score"&gt;<br/>
+					&nbsp;&nbsp;&lt;option value="0"&gt;0&lt;/option&gt;<br/>
+					&nbsp;&nbsp;&lt;option value="1"&gt;1&lt;/option&gt;<br/>
+					&nbsp;&nbsp;&lt;option value="2"&gt;2&lt;/option&gt;<br/>
+					&nbsp;&nbsp;&lt;option value="3"&gt;3&lt;/option&gt;<br/>
+					&nbsp;&nbsp;&lt;option value="4"&gt;4&lt;/option&gt;<br/>
+					&nbsp;&nbsp;&lt;option value="5"&gt;5&lt;/option&gt;<br/>
+				&lt;/select&gt;<br/>
+			</div><br/>
+	
+			<span class="comment-script">
+				- You can to choose the type 'hint' or 'number' on 'targetValue' attribute.
+			</span>
+	
+			<div class="session">Default options:</div>
+	
+			<div class="source">
+			 	cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
+			 	<div class="notice">If will be showed a button to cancel the rating.</div>
+	
+			 	cancelHint:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'cancel this rating!'<br/>
+			 	<div class="notice">The hint information.</div>
+	
+			 	cancelOff:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'cancel-off.png'<br/>
+			 	<div class="notice">Name of the cancel image off.</div>
+	
+			 	cancelOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'cancel-on.png'<br/>
+			 	<div class="notice">Name of the cancel image on.</div>
+	
+			 	cancelPlace:&nbsp;&nbsp;&nbsp;&nbsp;'left'<br/>
+			 	<div class="notice">Position of the cancel button.</div>
+	
+				click:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
+			 	<div class="notice">Function that returns the selected value.</div>
+	
+				half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
+			 	<div class="notice">Enables half star display and selection.</div>
+	
+			 	hintList:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
+			 	<div class="notice">List of names that will be used as a hint on each star.</div>
+	
+				iconRange:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[]<br/>
+				<div class="notice">Name and position of the set icons.</div>
+	
+				noRatedMsg:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'not rated yet'<br/>
+			 	<div class="notice">A hint for no rated elements when it's read-only.</div>
+	
+				number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/>
+			 	<div class="notice">Number of stars that will be presented.</div>
+	
+				path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'img/'<br/>
+			 	<div class="notice">A range of custom icons that you can set.</div>
+	
+				readOnly:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
+			 	<div class="notice">If the stars will be read-only.</div>
+	
+				scoreName:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'score'<br/>
+			 	<div class="notice">Name of the hidden field that holds the score value.</div>
+	
+				size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16<br/>
+			 	<div class="notice">The icons size.</div>
+	
+				starHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-half.png'<br/>
+			 	<div class="notice">The name of the half star image.</div>
+	
+				starOff:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
+			 	<div class="notice">Name of the star image off.</div>
+	
+				starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
+			 	<div class="notice">Name of the star image on.</div>
+	
+				start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
+				<div class="notice">Number of stars to be selected.</div>
+	
+				target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
+				<div class="notice">Number of stars to be selected.</div>
+	
+				targetPersist:&nbsp;&nbsp;false<br/>
+				<div class="notice">If the last choose value will be keeped on mouseout.</div>
+	
+				targetValue:&nbsp;&nbsp;&nbsp;&nbsp;'hint'<br/>
+				<div class="notice">What will be displayed in the target element: hint or number.</div>
+	
+				width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
+				<div class="notice">The container width of the stars.</div>
+			</div>
+	
+			<div class="session">Public functions:</div>
 			
-			&lt;div id="fixed"&gt;&lt;/div&gt;
+			<div class="source">$.fn.raty.start(3);</div>
+			<div class="description">Starts the last Raty with 3 stars later.</div>
+	
+			<div class="source">$.fn.raty.click(2, '#raty');</div>
+			<div class="description">Click on the second star of the Raty with ID called 'raty' later.</div>
+	
+			<div class="source">$.fn.raty.readOnly(true, '.raty');</div>
+			<div class="description">Adjusts all Raty with class called 'raty' for read-only later.</div>
 		</div>
 
-		<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
-		<div id="anyone"></div>
-
-		<div class="source">
-		 	$('#anyone').raty({<br/>
-			&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
-			});<br/><br/>
-		   
-			&lt;div id="anyone"&gt;&lt;/div&gt;
-		</div>
-
-		<div id="number-demo" class="session">With a custom score name and a number of stars:</div>
-		<div id="number"></div>
-		
-		<div class="source">
-		 	$('#number').raty({<br/>
-			&nbsp;&nbsp;scoreName:&nbsp;&nbsp;'entity.score',<br/>
-			&nbsp;&nbsp;number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10<br/>
-			});<br/><br/>
-		   
-			&lt;div id="number"&gt;&lt;/div&gt;
-		</div>
-
-		<div id="click-demo" class="session">Using click function:</div>
-		<div id="click"></div>
-
-		<div class="source">
-		 	$('#click').raty({<br/>
-			&nbsp;&nbsp;click: function(score, evt) {<br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);<br/>
-			&nbsp;&nbsp;}<br/>
-			});<br/><br/>
-		   
-			&lt;div id="click"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			 - The argument score is the selected value;<br/>
-			 - The argument evt is the click event;<br/>
-			 - You can mension the star element itself using 'this'.<br/>
-		</span>
-
-		<div id="cancel-demo" class="session">With a default cancel button:</div>
-		<div id="cancel"></div>
-
-		<div class="source">
-		 	$('#cancel').raty({<br/>
-			&nbsp;&nbsp;cancel: true<br/>
-			});<br/><br/>
-		   
-			&lt;div id="cancel"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			 - The score for the click on cancel button is 0 (zero).<br/>
-		</span>
-
-		<div id="cancel-custom-demo" class="session">With a custom cancel button:</div>
-		<div id="cancel-custom"></div>
-
-		<div class="source">
-		 	$('#cancel-custom').raty({<br/>
-			&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
-			&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'remove my rating!',<br/>
-			&nbsp;&nbsp;cancelPlace:&nbsp;&nbsp;'right',<br/>
-			&nbsp;&nbsp;click: function(score, evt) {<br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
-			&nbsp;&nbsp;}<br/>
-			});<br/><br/>
-		   
-			&lt;div id="cancel-custom"&gt;&lt;/div&gt;
-		</div>
-
-		<div id="half-demo" class="session">Enabling half star:</div>
-		<div id="half"></div>
-
-		<div class="source">
-		 	$('#half').raty({<br/>
-			&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;start:&nbsp;3.3<br/>
-			});<br/><br/>
-		   
-			&lt;div id="half"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			The interval can be:<br/>
-			- Rounded down: [x.00 ... x.25]<br/>
-			- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
-			- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
-		</span>
-
-		<div id="icon-demo" class="session">With a custom hint and icons:</div>
-		<div id="icon"></div>
-
-		<div class="source">
-		 	$('#icon').raty({<br/>
-			&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
-			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
-			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
-			});<br/><br/>
-		   
-			&lt;div id="icon"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			- To display the number of the star, set null.
-		</span>
-
-		<div id="range-demo" class="session">With a range of custom icons:</div>
-		<div id="range"></div>
-
-		<div class="source">
-		 	$('#range').raty({<br/>
-		 	&nbsp;&nbsp;iconRange:&nbsp;[['face-a.png', 2], ['face-b.png', 3], ['face-c.png', 4], ['face-d.png', 5]],<br/>
-			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'face-off.png'<br/>
-			});<br/><br/>
-		   
-			&lt;div id="range"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			- It's a array of array where each inner array represents a custom icon;<br/>
-			- The second parameter is until where this icon will be displayed;<br/>
-			- The sequence of the range interval should be in a ascending order.
-		</span>
-
-		<div id="big-demo" class="session">With a bigger icon:</div>
-		<div id="big"></div>
-
-		<div class="source">
-		 	$('#big').raty({<br/>
-		 	&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;cancelOff:&nbsp;&nbsp;'cancel-off-big.png',<br/>
-			&nbsp;&nbsp;cancelOn:&nbsp;&nbsp;&nbsp;'cancel-on-big.png',<br/>
-			&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24,<br/>
-			&nbsp;&nbsp;starHalf:&nbsp;&nbsp;&nbsp;'star-half-big.png',<br/>
-			&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off-big.png',<br/>
-			&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on-big.png'<br/>
-			});<br/><br/>
-		   
-			&lt;div id="big"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			- You can specify your own width as following: width: 120.
-		</span>
-
-		<div id="group-demo" class="session">With a group of elements:</div>
-		<div class="group"></div>
-		<div class="group"></div>
-		<div class="group"></div>
-
-		<div class="source">
-			$('.group').raty();<br/><br/>
-
-			&lt;div class="group"&gt;&lt;/div&gt;<br/>
-			&lt;div class="group"&gt;&lt;/div&gt;<br/>
-			&lt;div class="group"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			- The ID is optional and must be unique;<br/>
-			- If you don't pass a ID for the element, then it will be created.
-		</span>
-
-		<div id="target-demo" class="session">Using directed actions with public functions:</div>
-
-		love:
-		<div class="target"></div>
-
-		happy:
-		<div class="target"></div><br/>
-
-		your last rate:
-		<div id="result"></div>
-
-		<div class="source">
-			$('.target').raty({<br/>
-			&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
-			&nbsp;&nbsp;click: function(score, evt) {<br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(0, '.target');<br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
-			&nbsp;&nbsp;}<br/>
-			});<br/><br/>
-
-			&lt;div class="target"&gt;&lt;/div&gt;<br/>
-			&lt;div class="target"&gt;&lt;/div&gt;<br/><br/>
-			&lt;div id="result"&gt;&lt;/div&gt;
-		</div><br/>
-
-		<span class="comment-script">
-			- All public functions have a optional second parameter to specify which container will be executed;<br/>
-			- You can pass a ID or a class to be the target of the action;<br/>
-			- If the ID or class are not specified, then the last element Raty will be takes.
-		</span>
-
-		<div class="session">Default options:</div>
-
-		<div class="source">
-		 	cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
-		 	<div class="notice">If will be showed a button to cancel the rating.</div>
-
-		 	cancelHint:&nbsp;&nbsp;&nbsp;'cancel this rating!'<br/>
-		 	<div class="notice">The hint information.</div>
-
-		 	cancelOff:&nbsp;&nbsp;&nbsp;&nbsp;'cancel-off.png'<br/>
-		 	<div class="notice">Name of the cancel image off.</div>
-
-		 	cancelOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'cancel-on.png'<br/>
-		 	<div class="notice">Name of the cancel image on.</div>
-
-		 	cancelPlace:&nbsp;&nbsp;'left'<br/>
-		 	<div class="notice">Position of the cancel button.</div>
-
-			click:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
-		 	<div class="notice">Function that returns the selected value.</div>
-
-			half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
-		 	<div class="notice">Enables half star display and selection.</div>
-
-		 	hintList:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
-		 	<div class="notice">List of names that will be used as a hint on each star.</div>
-
-			iconRange:&nbsp;&nbsp;&nbsp;&nbsp;[]<br/>
-			<div class="notice">Name and position of the set icons.</div>
-
-			noRatedMsg:&nbsp;&nbsp;&nbsp;'not rated yet'<br/>
-		 	<div class="notice">A hint for no rated elements when it's read-only.</div>
-
-			number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/>
-		 	<div class="notice">Number of stars that will be presented.</div>
-
-			path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'img/'<br/>
-		 	<div class="notice">A range of custom icons that you can set.</div>
-
-			readOnly:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
-		 	<div class="notice">If the stars will be read-only.</div>
-
-			scoreName:&nbsp;&nbsp;&nbsp;&nbsp;'score'<br/>
-		 	<div class="notice">Name of the hidden field that holds the score value.</div>
-
-			size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16<br/>
-		 	<div class="notice">The icons size.</div>
-
-			starHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-half.png'<br/>
-		 	<div class="notice">The name of the half star image.</div>
-
-			starOff:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
-		 	<div class="notice">Name of the star image off.</div>
-
-			starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
-		 	<div class="notice">Name of the star image on.</div>
-
-			start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
-			<div class="notice">Number of stars to be selected.</div>
-
-			width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
-			<div class="notice">The container width of the stars.</div>
-		</div>
-
-		<div class="session">Public functions:</div>
-		
-		<div class="source">$.fn.raty.start(3);</div>
-		<div class="description">Starts the last Raty with 3 stars later.</div>
-
-		<div class="source">$.fn.raty.click(2, '#raty');</div>
-		<div class="description">Click on the second star of the Raty with ID called 'raty' later.</div>
-
-		<div class="source">$.fn.raty.readOnly(true, '.raty');</div>
-		<div class="description">Adjusts all Raty with class called 'raty' for read-only later.</div>
+		<div id="rodape"><div id="copy">&copy; 2011 <a href="http://www.wbotelhos.com/" target="_blank">wbotelhos.com</a></div></div>
 
 		<script type="text/javascript">
 			$(function() {
@@ -547,11 +520,25 @@
 					readOnly:	true
 				});
 
-				$('.target').raty({
+				$('.action').raty({
 					click: function(score) {
-						$.fn.raty.start(0, '.target');
+						$.fn.raty.start(0, '.action');
 						$.fn.raty.start(score, '#result');
 					}
+				});
+
+				$('#target').raty({
+					cancel:			true,
+					cancelHint:		'cancelled',
+					targetPersit:	true,
+					target:			'#hint'
+				});
+
+				$('#target-number').raty({
+					cancel:			true,
+					target:			'#score',
+					targetPersit:	true,
+					targetValue:	'number'
 				});
 
 			});
