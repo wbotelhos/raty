@@ -42,7 +42,19 @@
 			});
 		}
 
-		var opt = $.extend({}, $.fn.raty.defaults, settings);
+		var opt			= $.extend({}, $.fn.raty.defaults, settings),
+			$this		= $(this),
+			id			= $this.attr('id'),
+			start		= 0,
+			starFile	= opt.starOn,
+			hint		= '',
+			target		= opt.target,
+			width		= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
+
+		if (id == undefined) {
+			id = 'raty-' + $this.index();
+			$this.attr('id', id); 
+		}
 
 		if (opt.number > 20) {
 			opt.number = 20;
@@ -54,20 +66,7 @@
 			opt.path += '/';
 		}
 
-		var $this		= $(this),
-			id			= this.attr('id'),
-			start		= 0,
-			starFile	= opt.starOn,
-			hint		= '',
-			target		= opt.target,
-			width		= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
-
 		$this.data('options', opt);
-
-		if (id == '') {
-			id = 'raty-' + $this.index();
-			$this.attr('id', id); 
-		}
 
 		if (!isNaN(opt.start) && opt.start > 0) {
 			start = (opt.start > opt.number) ? opt.number : opt.start;
