@@ -44,14 +44,14 @@
 
 		var opt			= $.extend({}, $.fn.raty.defaults, settings),
 			$this		= $(this),
-			id			= $this.attr('id'),
+			id			= this.attr('id'),
 			start		= 0,
 			starFile	= opt.starOn,
 			hint		= '',
 			target		= opt.target,
 			width		= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
 
-		if (id == undefined) {
+		if (id === undefined) {
 			id = 'raty-' + $this.index();
 			$this.attr('id', id); 
 		}
