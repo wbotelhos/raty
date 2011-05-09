@@ -194,7 +194,7 @@
 			if (options.targetKeep) {
 				value = score.val();
 
-				if (options.targetValue == 'hint') {
+				if (options.targetType == 'hint') {
 					if (score.val() == '' && options.cancel) {
 						value = options.cancelHint;
 					} else {
@@ -325,7 +325,7 @@
 		if (target !== null) {
 			var value = alt;
 
-			if (options.targetValue == 'hint') {
+			if (options.targetType == 'hint') {
 				if (alt == 0 && options.cancel) {
 					value = options.cancelHint;
 				} else {
@@ -422,7 +422,7 @@
 		start:			0,
 		target:			null,
 		targetKeep:		false,
-		targetValue:	'hint',
+		targetType:		'hint',
 		width:			null
 	};
 
