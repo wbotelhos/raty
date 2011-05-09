@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     1.3.3
+ * @version     1.4.0
  * @since       06.11.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
@@ -43,6 +43,9 @@
  * starOff:      'star-off.png'                                   // Name of the star image on.
  * starOn:       'star-on.png'                                    // Name of the star image on.
  * start:        0                                                // Start with a score value.
+ * target:       null                                             // Number of stars to be selected.
+ * targetKeep:   false                                            // If the last choose value will be keeped on mouseout.
+ * targetType:   'hint'                                           // What display on target element: hint or number.
  * width:        null                                             // The container width of the stars.
  *
  *
@@ -63,12 +66,11 @@
  *
  * Public functions:
  * --------------------------------------------------------------------------
- * $.fn.raty.start(3);                                             // Starting the rating with 3 stars later.
- * $.fn.raty.readOnly(true);                                       // Adjusts the rating for read-only later.
- * $.fn.raty.click(2);                                             // Click in the second star later.
+ * You must pass a ID or a class to be the target of the action:
  *
- * You can pass a ID or a class to be the target of the action
- *
- * $.fn.raty.start(5, '#target');                                  // Starting the rating with ID named "target".
+ * $.fn.raty.start(3, '#raty');        // Starting the rating with 3 stars.
+ * $.fn.raty.readOnly(true, '.raty');  // Adjusts the ratings for read-only.
+ * $.fn.raty.click(2, '#raty');        // Click on the second star.
+ * $.fn.raty.cancel('#raty', true);    // Cancel the rating. The second parameter is optionally and enable the click callback.
  *
  */

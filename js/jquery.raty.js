@@ -362,6 +362,18 @@
 		}
 	};
 
+	$.fn.raty.cancel = function(idOrClass, isClickIn) {
+		var isClick = (isClickIn === undefined) ? false : true;
+
+		if (isClick) {
+			$.fn.raty.click('', idOrClass, 'cancel');
+		} else {
+			$.fn.raty.start('', idOrClass, 'cancel');
+		}
+
+		return $.fn.raty;
+	};
+
 	$.fn.raty.click = function(score, idOrClass) {
 		var context = getContext(score, idOrClass, 'click'),
 			options = $(idOrClass).data('options');
@@ -379,8 +391,8 @@
 
 	$.fn.raty.readOnly = function(boo, idOrClass) {
 		var context	= getContext(boo, idOrClass, 'readOnly'),
-			cancel	= context.children('img.button-cancel'),
-			options	= $(idOrClass).data('options');
+			options	= $(idOrClass).data('options'),
+			cancel	= context.children('img.button-cancel');
 
 		if (cancel[0]) {
 			(boo) ? cancel.hide() : cancel.show();
