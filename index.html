@@ -293,7 +293,7 @@
 				$('.action').raty({<br/>
 				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;click: function(score, evt) {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(0, '.action');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.cancel('.action');<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
 				&nbsp;&nbsp;}<br/>
 				});<br/><br/>
@@ -525,7 +525,7 @@
 
 				$('.action').raty({
 					click: function(score) {
-						$.fn.raty.start(0, '.action');
+						$.fn.raty.cancel('.action');
 						$.fn.raty.start(score, '#result');
 					}
 				});
