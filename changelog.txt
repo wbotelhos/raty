@@ -2,6 +2,16 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 1.4.0
+ *   - Added attribute 'target' to choose a element to display the score when the mouse is on the star;
+ *   - Added attribute 'targetKeep' to keep the selected value on the target element;
+ *   - Added attribute 'targetType' to choose what display in the target element: hint or number;
+ *   - New function called $.fn.raty.cancel() to cancel the rating;
+ *   - Now the action of cancel removes the score value instead set it to zero;
+ *   - Using mouseover when the half star is disabled to avoid to waste actions trigger;
+ *   - Now is possible pass a empty string in the $.fn.raty.start() to cancel the rating;
+ *   - Public functions without specify ID or class is no longer supported.
+ *
  * 1.3.3
  *   - Fixed the icon presentation when the start attribute is setted and the iconRange is enabled;
  *   - Now the click function receives the event as argument. (by emwendelin)
