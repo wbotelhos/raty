@@ -159,7 +159,7 @@
 			clearTarget(target, score, options);
 		});
 
-		$('img.' + id).mousemove(function(e) {
+		$('img.' + id).bind(((options.half) ? 'mousemove' : 'mouseover'), function(e) {
 	        fillStar(id, this.alt, options);
 
 			if (options.half) {
