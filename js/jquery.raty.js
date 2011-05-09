@@ -104,6 +104,10 @@
 		if (!options.readOnly) {
 			if (target !== null) {
 				target = $(target);
+
+				if (target.length == 0) {
+					debug('Target selector invalid or missing!');
+				}
 			}
 
 			if (options.cancel) {
@@ -361,7 +365,7 @@
 		if (options.click) {
 			options.click.apply(context, [score]);
 		} else {
-			debug('You must add the "click: function(score) { }" callback.');
+			debug('You must add the "click: function(score, evt) { }" callback.');
 		}
 
 		return $.fn.raty;
