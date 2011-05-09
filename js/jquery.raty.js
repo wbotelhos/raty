@@ -290,7 +290,7 @@
 			hint = opt.noRatedMsg;
 		}
 
-		$('#' + context.attr('id')).attr('title', hint).children('img').attr('title', hint);
+		context.attr('title', hint).children('img').attr('title', hint);
 	};
 
 	function isField(target) {
