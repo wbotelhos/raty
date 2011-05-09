@@ -87,12 +87,15 @@
 			fillStar(id, start, options);	
 		}
 
-		$('<input/>', {
+		var $score = $('<input/>', {
 			id:		id + '-score',
 			type:	'hidden',
 			name:	options.scoreName
-		})
-		.appendTo($global).val(start);
+		}).appendTo($global);
+
+		if (start > 0) {
+			$score.val(start);
+		}
 
 		if (options.half) {
 			splitStar($global, $('input#' + id + '-score').val(), options);
@@ -118,15 +121,15 @@
 				$('#' + id + ' img.button-cancel').mouseenter(function() {
 					$(this).attr('src', opt.path + opt.cancelOn);
 					star.attr('src', opt.path + opt.starOff);
-					setTarget(target, 0, opt);
+					setTarget(target, '', opt);
 				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
 					star.mouseout();
 				}).click(function(evt) {
-					$('input#' + id + '-score').val(0);
+					$('input#' + id + '-score').removeAttr('value');
 
 					if (opt.click) {
-			          opt.click.apply($this, [0, evt]);
+			          opt.click.apply($this, [null, evt]);
 			        }
 				});
 
@@ -289,18 +292,22 @@
 	function initialize(context, score, options) {
 		var id = context.attr('id');
 
-		if (score < 0 || isNaN(score)) {
+		if (isNaN(parseInt(score))) {
+			$('input#' + id + '-score').removeAttr('value');
+		} else if (score < 0) {
 			score = 0;
 		} else if (score > options.number) {
 			score = options.number;
 		}
 
-		$('input#' + id + '-score').val(score);
-
 		fillStar(id, score, options);
 
-		if (options.half) {
-			splitStar(context, score, options);
+		if (score > 0) {
+			$('input#' + id + '-score').val(score);
+
+			if (options.half) {
+				splitStar(context, score, options);
+			}
 		}
 
 		if (options.readOnly || context.css('cursor') == 'default') {
