@@ -152,15 +152,14 @@
 	function bindAll(context, opt, target) {
 		var id		= context.attr('id'),
 			score	= $('input#' + id + '-score'),
-			qtyStar	= $('img.' + id).length;
+			stars	= context.children('img.' + id);
 
-		// context.
-		$('#' + id).mouseleave(function() {
+		context.mouseleave(function() {
 			initialize(context, score.val(), opt);
 			clearTarget(target, score, opt);
 		});
 
-		$('img.' + id).bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
+		stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
 	        fillStar(id, this.alt, opt);
 
 			if (opt.half) {
