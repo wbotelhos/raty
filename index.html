@@ -9,7 +9,7 @@
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
 
 		<style type="text/css">
 			body { background: url('img/background.gif'); font: normal 11px verdana; }
@@ -321,7 +321,7 @@
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint'<br/>
 				});<br/><br/>
 	
-				&lt;div id="target"&gt;&lt;/div&gt;
+				&lt;div id="target"&gt;&lt;/div&gt;<br/>
 				&lt;div id="hint"&gt;&lt;/div&gt;
 			</div>
 	
@@ -330,7 +330,7 @@
 			<div id="target-number" class="raty-target-number left"></div>
 	
 			<select id="score" class="left">
-				<option value="0">0</option>
+				<option value="">--</option>
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -340,14 +340,14 @@
 	
 			<div class="source">
 				$('#target-number').raty({<br/>
-				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
-				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#score'<br/>
-				&nbsp;&nbsp;targetPersit:&nbsp;&nbsp;true,<br/>
-				&nbsp;&nbsp;targetValue:&nbsp;&nbsp;&nbsp;'number'<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
+				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#score'<br/>
+				&nbsp;&nbsp;targetKeep:&nbsp;true,<br/>
+				&nbsp;&nbsp;targetType:&nbsp;'number'<br/>
 				});<br/><br/>
 	
 				&lt;select id="score"&gt;<br/>
-					&nbsp;&nbsp;&lt;option value="0"&gt;0&lt;/option&gt;<br/>
+					&nbsp;&nbsp;&lt;option value=""&gt;0&lt;/option&gt;<br/>
 					&nbsp;&nbsp;&lt;option value="1"&gt;1&lt;/option&gt;<br/>
 					&nbsp;&nbsp;&lt;option value="2"&gt;2&lt;/option&gt;<br/>
 					&nbsp;&nbsp;&lt;option value="3"&gt;3&lt;/option&gt;<br/>
@@ -357,7 +357,7 @@
 			</div><br/>
 	
 			<span class="comment-script">
-				- You can to choose the type 'hint' or 'number' on 'targetValue' attribute.
+				- You can to choose the target types 'hint' or 'number'.
 			</span>
 	
 			<div class="session">Default options:</div>
@@ -426,7 +426,7 @@
 				targetPersist:&nbsp;&nbsp;false<br/>
 				<div class="notice">If the last choose value will be keeped on mouseout.</div>
 	
-				targetValue:&nbsp;&nbsp;&nbsp;&nbsp;'hint'<br/>
+				targetType:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'hint'<br/>
 				<div class="notice">What will be displayed in the target element: hint or number.</div>
 	
 				width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
@@ -481,7 +481,7 @@
 					cancel:			true,
 					cancelHint:		'remove my rating!',
 					cancelPlace:	'right',
-					click: function(score) {
+					click: function(score, evt) {
 						alert('score: ' + score);
 					}
 				});
@@ -528,17 +528,16 @@
 				});
 
 				$('#target').raty({
-					cancel:			true,
-					cancelHint:		'none',
-					targetPersit:	true,
-					target:			'#hint'
+					cancel:		true,
+					cancelHint:	'none',
+					target:		'#hint'
 				});
 
 				$('#target-number').raty({
-					cancel:			true,
-					target:			'#score',
-					targetPersit:	true,
-					targetValue:	'number'
+					cancel:		true,
+					target:		'#score',
+					targetKeep:	true,
+					targetType:	'number'
 				});
 
 			});
