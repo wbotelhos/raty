@@ -346,10 +346,10 @@
 			rounded	= Math.ceil(score),
 			diff	= (rounded - score).toFixed(1);
 
-		if (diff >= 0.3 && diff <= 0.7) {
+		if (diff > 0.25 && diff <= 0.75) {
 			rounded = rounded - 0.5;
 			$('img#' + id + '-' + Math.ceil(rounded)).attr('src', options.path + options.starHalf);
-		} else if (diff >= 0.8) {
+		} else if (diff > 0.75) {
 			rounded--;
 		} else {
 			$('img#' + id + '-' + rounded).attr('src', options.path + options.starOn);
