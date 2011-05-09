@@ -32,7 +32,6 @@
 ;(function($) {
 
 	$.fn.raty = function(settings) {
-		options = $.extend({}, $.fn.raty.defaults, settings);
 
 		if (this.length == 0) {
 			debug('Selector invalid or missing!');
@@ -43,64 +42,66 @@
 			});
 		}
 
-		if (options.number > 20) {
-			options.number = 20;
-		} else if (options.number < 0) {
-			options.number = 0;
+		var opt = $.extend({}, $.fn.raty.defaults, settings);
+
+		if (opt.number > 20) {
+			opt.number = 20;
+		} else if (opt.number < 0) {
+			opt.number = 0;
 		}
 
-		if (options.path.substring(options.path.length - 1, options.path.length) != '/') {
-			options.path += '/';
+		if (opt.path.substring(opt.path.length - 1, opt.path.length) != '/') {
+			opt.path += '/';
 		}
 
 		var $this		= $(this),
 			id			= this.attr('id'),
 			start		= 0,
-			starFile	= options.starOn,
+			starFile	= opt.starOn,
 			hint		= '',
-			target		= options.target,
-			width		= (options.width) ? options.width : (options.number * options.size + options.number * 4);
+			target		= opt.target,
+			width		= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
 
-		$this.data('options', options);
+		$this.data('options', opt);
 
 		if (id == '') {
 			id = 'raty-' + $this.index();
 			$this.attr('id', id); 
 		}
 
-		if (!isNaN(options.start) && options.start > 0) {
-			start = (options.start > options.number) ? options.number : options.start;
+		if (!isNaN(opt.start) && opt.start > 0) {
+			start = (opt.start > opt.number) ? opt.number : opt.start;
 		}
 
-		for (var i = 1; i <= options.number; i++) {
-			starFile = (start >= i) ? options.starOn : options.starOff;
+		for (var i = 1; i <= opt.number; i++) {
+			starFile = (start >= i) ? opt.starOn : opt.starOff;
 
-			hint = (i <= options.hintList.length && options.hintList[i - 1] !== null) ? options.hintList[i - 1] : i;
+			hint = (i <= opt.hintList.length && opt.hintList[i - 1] !== null) ? opt.hintList[i - 1] : i;
 
 			$this
-			.append('<img id="' + id + '-' + i + '" src="' + options.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>')
-			.append((i < options.number) ? '&nbsp;' : '');
+			.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>')
+			.append((i < opt.number) ? '&nbsp;' : '');
 		}
 
-		if (options.iconRange && start > 0) {
-			fillStar(id, start, options);	
+		if (opt.iconRange && start > 0) {
+			fillStar(id, start, opt);	
 		}
 
 		var $score = $('<input/>', {
 			id:		id + '-score',
 			type:	'hidden',
-			name:	options.scoreName
+			name:	opt.scoreName
 		}).appendTo($this);
 
 		if (start > 0) {
 			$score.val(start);
 		}
 
-		if (options.half) {
-			splitStar($this, $('input#' + id + '-score').val(), options);
+		if (opt.half) {
+			splitStar($this, $('input#' + id + '-score').val(), opt);
 		}
 
-		if (!options.readOnly) {
+		if (!opt.readOnly) {
 			if (target !== null) {
 				target = $(target);
 
@@ -109,10 +110,9 @@
 				}
 			}
 
-			if (options.cancel) {
+			if (opt.cancel) {
 				var star	= $('img.' + id),
-					cancel	= '<img src="' + options.path + options.cancelOff + '" alt="x" title="' + options.cancelHint + '" class="button-cancel"/>',
-					opt		= options;
+					cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="button-cancel"/>';
 
 				if (opt.cancelPlace == 'left') {
 					$this.prepend(cancel + '&nbsp;');
@@ -135,68 +135,68 @@
 			        }
 				});
 
-				$this.css('width', width + options.size + 4);
+				$this.css('width', width + opt.size + 4);
 			} else {
 				$this.css('width', width);
 			}
 
 			$this.css('cursor', 'pointer');
-			bindAll($this, options, target);
+			bindAll($this, opt, target);
 		} else {
 			$this.css('cursor', 'default');
-			fixHint($this, start, options);
+			fixHint($this, start, opt);
 		}
 
 		return $this;
 	};
 	
-	function bindAll(context, options, target) {
+	function bindAll(context, opt, target) {
 		var id		= context.attr('id'),
 			score	= $('input#' + id + '-score'),
 			qtyStar	= $('img.' + id).length;
 
 		// context.
 		$('#' + id).mouseleave(function() {
-			initialize(context, score.val(), options);
-			clearTarget(target, score, options);
+			initialize(context, score.val(), opt);
+			clearTarget(target, score, opt);
 		});
 
-		$('img.' + id).bind(((options.half) ? 'mousemove' : 'mouseover'), function(e) {
-	        fillStar(id, this.alt, options);
+		$('img.' + id).bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
+	        fillStar(id, this.alt, opt);
 
-			if (options.half) {
-				var percent = parseFloat(((e.pageX - $(this).offset().left) / options.size).toFixed(1));
+			if (opt.half) {
+				var percent = parseFloat(((e.pageX - $(this).offset().left) / opt.size).toFixed(1));
 				percent = (percent >= 0 && percent < 0.5) ? 0.5 : 1;
 
 				context.data('score', parseFloat(this.alt) + percent - 1);
 
-				splitStar(context, context.data('score'), options);
+				splitStar(context, context.data('score'), opt);
 			} else {
-				fillStar(id, this.alt, options);
+				fillStar(id, this.alt, opt);
 			}
 
-			setTarget(target, this.alt, options);
+			setTarget(target, this.alt, opt);
 		}).click(function(evt) {
-			score.val(options.half ? context.data('score') : this.alt);
+			score.val(opt.half ? context.data('score') : this.alt);
 
-			if (options.click) {
-				options.click.apply(context, [score.val(), evt]);
+			if (opt.click) {
+				opt.click.apply(context, [score.val(), evt]);
 			}
 		});
 	};
 
-	function clearTarget(target, score, options) {
+	function clearTarget(target, score, opt) {
 		if (target !== null) {
 			var value = '';
 
-			if (options.targetKeep) {
+			if (opt.targetKeep) {
 				value = score.val();
 
-				if (options.targetType == 'hint') {
-					if (score.val() == '' && options.cancel) {
-						value = options.cancelHint;
+				if (opt.targetType == 'hint') {
+					if (score.val() == '' && opt.cancel) {
+						value = opt.cancelHint;
 					} else {
-						value = options.hintList[Math.ceil(score.val()) - 1];
+						value = opt.hintList[Math.ceil(score.val()) - 1];
 					}
 				}
 			}
@@ -251,7 +251,7 @@
 		}
 	};
 
-	function fillStar(id, score, options) {
+	function fillStar(id, score, opt) {
 		var qtyStar	= $('img.' + id).length,
 			item	= 0,
 			range	= 0,
@@ -262,33 +262,33 @@
 			star = $('img#' + id + '-' + i);
 
 			if (i <= score) {
-				if (options.iconRange && options.iconRange.length > item) {
+				if (opt.iconRange && opt.iconRange.length > item) {
 
-					starOn = options.iconRange[item][0];
-					range = options.iconRange[item][1];
+					starOn = opt.iconRange[item][0];
+					range = opt.iconRange[item][1];
 
 					if (i <= range) {
-						star.attr('src', options.path + starOn);
+						star.attr('src', opt.path + starOn);
 					}
 
 					if (i == range) {
 						item++;
 					}
 				} else {
-					star.attr('src', options.path + options.starOn);
+					star.attr('src', opt.path + opt.starOn);
 				}
 			} else {
-				star.attr('src', options.path + options.starOff);
+				star.attr('src', opt.path + opt.starOff);
 			}
 		}
 	};
 
-	function fixHint(context, score, options) {
+	function fixHint(context, score, opt) {
 		if (score != 0) {
 			score = parseInt(score);
-			hint = (score > 0 && options.number <= options.hintList.length && options.hintList[score - 1] !== null) ? options.hintList[score - 1] : score;
+			hint = (score > 0 && opt.number <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
 		} else {
-			hint = options.noRatedMsg;
+			hint = opt.noRatedMsg;
 		}
 
 		$('#' + context.attr('id')).attr('title', hint).children('img').attr('title', hint);
@@ -298,41 +298,41 @@
 		return target.is('input') || target.is('select') || target.is('textarea');
 	};
 
-	function initialize(context, score, options) {
+	function initialize(context, score, opt) {
 		var id = context.attr('id');
 
 		if (isNaN(parseInt(score))) {
 			$('input#' + id + '-score').removeAttr('value');
 		} else if (score < 0) {
 			score = 0;
-		} else if (score > options.number) {
-			score = options.number;
+		} else if (score > opt.number) {
+			score = opt.number;
 		}
 
-		fillStar(id, score, options);
+		fillStar(id, score, opt);
 
 		if (score > 0) {
 			$('input#' + id + '-score').val(score);
 
-			if (options.half) {
-				splitStar(context, score, options);
+			if (opt.half) {
+				splitStar(context, score, opt);
 			}
 		}
 
-		if (options.readOnly || context.css('cursor') == 'default') {
-			fixHint(context, score, options);
+		if (opt.readOnly || context.css('cursor') == 'default') {
+			fixHint(context, score, opt);
 		}
 	};
 
-	function setTarget(target, alt, options) {
+	function setTarget(target, alt, opt) {
 		if (target !== null) {
 			var value = alt;
 
-			if (options.targetType == 'hint') {
-				if (alt == 0 && options.cancel) {
-					value = options.cancelHint;
+			if (opt.targetType == 'hint') {
+				if (alt == 0 && opt.cancel) {
+					value = opt.cancelHint;
 				} else {
-					value = options.hintList[alt - 1];
+					value = opt.hintList[alt - 1];
 				}
 			}
 
@@ -344,18 +344,18 @@
 		}
 	};
 
-	function splitStar(context, score, options) {
+	function splitStar(context, score, opt) {
 		var id		= context.attr('id'),
 			rounded	= Math.ceil(score),
 			diff	= (rounded - score).toFixed(1);
 
 		if (diff > 0.25 && diff <= 0.75) {
 			rounded = rounded - 0.5;
-			$('img#' + id + '-' + Math.ceil(rounded)).attr('src', options.path + options.starHalf);
+			$('img#' + id + '-' + Math.ceil(rounded)).attr('src', opt.path + opt.starHalf);
 		} else if (diff > 0.75) {
 			rounded--;
 		} else {
-			$('img#' + id + '-' + rounded).attr('src', options.path + options.starOn);
+			$('img#' + id + '-' + rounded).attr('src', opt.path + opt.starOn);
 		}
 	};
 
