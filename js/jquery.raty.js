@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version			1.3.3
+ * @version			1.4.0
  * @since			06.11.2010
  * @author			Washington Botelho dos Santos
  * @documentation	http://wbotelhos.com/raty
@@ -53,20 +53,19 @@
 			options.path += '/';
 		}
 
-		$global = $(this);
-
-		$global.data('options', options);
-
-		var id			= this.attr('id'),
+		var $this		= $(this);
+			id			= this.attr('id'),
 			start		= 0,
 			starFile	= options.starOn,
 			hint		= '',
 			target		= options.target,
 			width		= (options.width) ? options.width : (options.number * options.size + options.number * 4);
 
+		$this.data('options', options);
+
 		if (id == '') {
-			id = 'raty-' + $global.index();
-			$global.attr('id', id); 
+			id = 'raty-' + $this.index();
+			$this.attr('id', id); 
 		}
 
 		if (!isNaN(options.start) && options.start > 0) {
@@ -78,7 +77,7 @@
 
 			hint = (i <= options.hintList.length && options.hintList[i - 1] !== null) ? options.hintList[i - 1] : i;
 
-			$global
+			$this
 			.append('<img id="' + id + '-' + i + '" src="' + options.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>')
 			.append((i < options.number) ? '&nbsp;' : '');
 		}
@@ -91,14 +90,14 @@
 			id:		id + '-score',
 			type:	'hidden',
 			name:	options.scoreName
-		}).appendTo($global);
+		}).appendTo($this);
 
 		if (start > 0) {
 			$score.val(start);
 		}
 
 		if (options.half) {
-			splitStar($global, $('input#' + id + '-score').val(), options);
+			splitStar($this, $('input#' + id + '-score').val(), options);
 		}
 
 		if (!options.readOnly) {
@@ -113,13 +112,12 @@
 			if (options.cancel) {
 				var star	= $('img.' + id),
 					cancel	= '<img src="' + options.path + options.cancelOff + '" alt="x" title="' + options.cancelHint + '" class="button-cancel"/>',
-					opt		= options,
-					$this	= $global;
+					opt		= options;
 
 				if (opt.cancelPlace == 'left') {
-					$global.prepend(cancel + '&nbsp;');
+					$this.prepend(cancel + '&nbsp;');
 				} else {
-					$global.append('&nbsp;').append(cancel);
+					$this.append('&nbsp;').append(cancel);
 				}
 
 				$('#' + id + ' img.button-cancel').mouseenter(function() {
@@ -137,19 +135,19 @@
 			        }
 				});
 
-				$global.css('width', width + options.size + 4);
+				$this.css('width', width + options.size + 4);
 			} else {
-				$global.css('width', width);
+				$this.css('width', width);
 			}
 
-			$global.css('cursor', 'pointer');
-			bindAll($global, options, target);
+			$this.css('cursor', 'pointer');
+			bindAll($this, options, target);
 		} else {
-			$global.css('cursor', 'default');
-			fixHint($global, start, options);
+			$this.css('cursor', 'default');
+			fixHint($this, start, options);
 		}
 
-		return $global;
+		return $this;
 	};
 	
 	function bindAll(context, options, target) {
@@ -212,7 +210,12 @@
 	};
 
 	function getContext(value, idOrClass, name) {
-		var context = $global;
+		var context = undefined;
+
+		if (idOrClass == undefined) {
+			debug('Specify an ID or class to be the target of the action.');
+			return;
+		}
 
 		if (idOrClass) {
 			if (idOrClass.indexOf('.') >= 0) {
@@ -231,7 +234,7 @@
 				});
 			}
 
-			context	= $(idOrClass);
+			context = $(idOrClass);
 
 			if (!context.length) {
 				debug('"' + idOrClass + '" is a invalid identifier for the public funtion $.fn.raty.' + name + '().');
