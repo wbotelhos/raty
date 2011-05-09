@@ -68,7 +68,7 @@
 
 		$this.data('options', opt);
 
-		if (!isNaN(opt.start) && opt.start > 0) {
+		if (!isNaN(parseInt(opt.start)) && opt.start > 0) {
 			start = (opt.start > opt.number) ? opt.number : opt.start;
 		}
 
