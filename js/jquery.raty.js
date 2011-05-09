@@ -110,7 +110,7 @@
 			}
 
 			if (opt.cancel) {
-				var star	= $('img.' + id),
+				var stars	= $('img.' + id),
 					cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="button-cancel"/>';
 
 				if (opt.cancelPlace == 'left') {
@@ -121,11 +121,11 @@
 
 				$('#' + id + ' img.button-cancel').mouseenter(function() {
 					$(this).attr('src', opt.path + opt.cancelOn);
-					star.attr('src', opt.path + opt.starOff);
+					stars.attr('src', opt.path + opt.starOff);
 					setTarget(target, '', opt);
 				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
-					star.mouseout();
+					$this.mouseout();
 				}).click(function(evt) {
 					$('input#' + id + '-score').removeAttr('value');
 
