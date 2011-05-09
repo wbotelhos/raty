@@ -301,8 +301,12 @@
 		var id = context.attr('id');
 
 		if (isNaN(parseInt(score))) {
+			context.children('img.' + id).attr('src', opt.path + opt.starOff);
 			$('input#' + id + '-score').removeAttr('value');
-		} else if (score < 0) {
+			return;
+		}
+
+		if (score < 0) {
 			score = 0;
 		} else if (score > opt.number) {
 			score = opt.number;
