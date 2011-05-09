@@ -71,6 +71,6 @@
  * $.fn.raty.start(3, '#raty');        // Starting the rating with 3 stars.
  * $.fn.raty.readOnly(true, '.raty');  // Adjusts the ratings for read-only.
  * $.fn.raty.click(2, '#raty');        // Click on the second star.
- * $.fn.raty.cancel('#raty', true);    // Cancel the rating. The second parameter is optionally and enable the click callback.
+ * $.fn.raty.cancel('#raty', true);    // Cancel the rating. The second optional parameter enables the click callback.
  *
  */
