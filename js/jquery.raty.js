@@ -53,7 +53,7 @@
 			options.path += '/';
 		}
 
-		var $this		= $(this);
+		var $this		= $(this),
 			id			= this.attr('id'),
 			start		= 0,
 			starFile	= options.starOn,
