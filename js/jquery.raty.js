@@ -185,14 +185,16 @@
 
 	function clearTarget(target, score, options) {
 		if (target !== null) {
-			var value = score.val();
+			var value = '';
 
-			if (options.targetPersit) {
+			if (options.targetKeep) {
+				value = score.val();
+
 				if (options.targetValue == 'hint') {
-					if (score.val() == 0 && options.cancel) {
+					if (score.val() == '' && options.cancel) {
 						value = options.cancelHint;
 					} else {
-						value = options.hintList[score.val() - 1];
+						value = options.hintList[Math.ceil(score.val()) - 1];
 					}
 				}
 			}
@@ -415,7 +417,7 @@
 		starOn:			'star-on.png',
 		start:			0,
 		target:			null,
-		targetPersit:	false,
+		targetKeep:		false,
 		targetValue:	'hint',
 		width:			null
 	};
