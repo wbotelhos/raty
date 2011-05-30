@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  * 
- * @version     1.4.0
+ * @version     1.4.1
  * @since       06.11.2010
  * @author      Washington Botelho dos Santos
  * @link        http://wbotelhos.com/raty
