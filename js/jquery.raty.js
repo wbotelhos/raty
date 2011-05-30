@@ -207,48 +207,6 @@
 		}
 	};
 
-	function getContext(value, idOrClass, name) {
-		var context = undefined;
-
-		if (idOrClass == undefined) {
-			debug('Specify an ID or class to be the target of the action.');
-			return;
-		}
-
-		if (idOrClass) {
-			if (idOrClass.indexOf('.') >= 0) {
-				var idEach;
-
-				return $(idOrClass).each(function() {
-					idEach = '#' + $(this).attr('id');
-
-					if (name == 'start') {
-						$.fn.raty.start(value, idEach);
-					} else if (name == 'click') {
-						$.fn.raty.click(value, idEach);
-					} else if (name == 'readOnly') {
-						$.fn.raty.readOnly(value, idEach);
-					}
-				});
-			}
-
-			context = $(idOrClass);
-
-			if (!context.length) {
-				debug('"' + idOrClass + '" is a invalid identifier for the public funtion $.fn.raty.' + name + '().');
-				return;
-			}
-		}
-
-		return context;
-	};
-
-	function debug(message) {
-		if (window.console && window.console.log) {
-			window.console.log(message);
-		}
-	};
-
 	function fillStar(id, score, opt) {
 		var qtyStar	= $('img.' + id).length,
 			item	= 0,
@@ -377,6 +335,10 @@
 		var context = getContext(score, idOrClass, 'click'),
 			options = $(idOrClass).data('options');
 
+		if (idOrClass.indexOf('.') >= 0) {
+			return;
+		}
+
 		initialize(context, score, options);
 
 		if (options.click) {
@@ -392,6 +354,10 @@
 		var context	= getContext(boo, idOrClass, 'readOnly'),
 			options	= $(idOrClass).data('options'),
 			cancel	= context.children('img.button-cancel');
+
+		if (idOrClass.indexOf('.') >= 0) {
+			return;
+		}
 
 		if (cancel[0]) {
 			(boo) ? cancel.hide() : cancel.show();
@@ -412,9 +378,55 @@
 		var context = getContext(score, idOrClass, 'start'),
 			options = $(idOrClass).data('options');
 
+		if (idOrClass.indexOf('.') >= 0) {
+			return;
+		}
+
 		initialize(context, score, options);
 
 		return $.fn.raty;
+	};
+
+	function getContext(value, idOrClass, name) {
+		var context = undefined;
+
+		if (idOrClass == undefined) {
+			debug('Specify an ID or class to be the target of the action.');
+			return;
+		}
+
+		if (idOrClass) {
+			if (idOrClass.indexOf('.') >= 0) {
+				var idEach;
+
+				return $(idOrClass).each(function() {
+					idEach = '#' + $(this).attr('id');
+
+					if (name == 'start') {
+						$.fn.raty.start(value, idEach);
+					} else if (name == 'click') {
+						$.fn.raty.click(value, idEach);
+					} else if (name == 'readOnly') {
+						$.fn.raty.readOnly(value, idEach);
+					}
+				});
+			}
+
+			context = $(idOrClass);
+
+			if (!context.length) {
+				debug('"' + idOrClass + '" is a invalid identifier for the public funtion $.fn.raty.' + name + '().');
+				return;
+			}
+		}
+
+		return context;
+	};
+
+	function debug(message) {
+		if (window.console && window.console.log) {
+			window.console.log(message);
+		}
 	};
 
 	$.fn.raty.defaults = {
