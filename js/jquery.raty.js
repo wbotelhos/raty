@@ -240,6 +240,8 @@
 	};
 
 	function fixHint(context, score, opt) {
+		var hint = '';
+
 		if (score != 0) {
 			score = parseInt(score);
 			hint = (score > 0 && opt.number <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
