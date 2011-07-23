@@ -2,6 +2,11 @@
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * --------------------------------------------------------------------------
  *
+ * 1.4.3
+ *   - Now public function return the context to be able the chaining;
+ *   - Fixed: the option 'readOnly' brokes the plugin;
+ *   - Prevented the processing of the set of classes in public function.
+ *
  * 1.4.0
  *   - Added attribute 'target' to choose a element to display the score when the mouse is on the star;
  *   - Added attribute 'targetKeep' to keep the selected value on the target element;
