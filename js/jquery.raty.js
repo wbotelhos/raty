@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version			1.4.1
+ * @version			1.4.3
  * @since			06.11.2010
  * @author			Washington Botelho dos Santos
  * @documentation	http://wbotelhos.com/raty
@@ -21,11 +21,11 @@
  * <div id="star"></div>
  *
  *
- * $('.group').raty();
+ * $('.star').raty();
  *
- * <div class="group"></div>
- * <div class="group"></div>
- * <div class="group"></div>
+ * <div class="star"></div>
+ * <div class="star"></div>
+ * <div class="star"></div>
  *
  */
 
