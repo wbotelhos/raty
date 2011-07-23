@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+
+		<title>jQuery Raty - A Star Rating Plugin</title>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+
+		<style type="text/css">
+			/* This CSS does not belong to the plugin. */
+
+			body { background: url('img/background.gif'); font: normal 11px verdana; }
+
+			a { color: #2C8CBD; text-decoration: none; }
+			a:hover { color: #48A5D4; }
+
+			a#coffee {
+				background: url('img/coffee.png') 6px 2px no-repeat #DC5; border: 1px solid #D9C640; color: #FFF; display: block; float: right; font-size: 10px; font-weight: bold; letter-spacing: .9px; margin-right: 9px; padding: 4px 5px 4px 26px; text-decoration: none;
+				-khtml-border-radius: 4px; -moz-border-radius: 4px; -opera-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+			}
+			a#coffee:hover { text-decoration: underline; }
+
+			span.comment { color: #999; font: 12px monospace; letter-spacing: .1px; margin-bottom: 7px; margin-top: 5px; }
+
+			div#content { background-color: #FFF; border: 1px solid #DEDEDE; box-shadow: 0 1px 3px rgba(100, 100, 100, 0.4); margin: 0 auto; padding: 15px; width: 1100px; min-height: 510px; }
+
+			div.description { color: #555; letter-spacing: .1px; margin-bottom: 15px; margin-top: 10px; text-align: left; }
+
+			div.description-code { color: #555; letter-spacing: .1px; margin-bottom: 10px; text-indent: 7px; }
+
+			div#footer { clear: both; height: 25px; margin-top: 5px; width: 100%; }
+			div#footer div#copy { margin: 0 auto; text-align: center; width: 1100px; }
+
+			div#header { margin: 0 auto; padding-left: 20px; width: 1130px; }
+
+			div#menu { color: #AB9927; font: bold 14px 'Lucida Grande', 'Helvetica', 'Times New Roman', serif; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase; }
+			div#menu a { color: #EA9C00; font: bold 10px verdana; letter-spacing: .9px; text-decoration: none; }
+			div#menu a:hover { color: #DC5; font-weight: bold; letter-spacing: .9px; text-decoration: underline; }
+
+			div.session { font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; margin-top: 24px; text-align: left; }
+			div.session-first { font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; text-align: left; }
+			div.session-mini { font: bold 10px verdana; color: #444; letter-spacing: .7px; margin-top: 17px; }
+
+			div.source { background: #F8F8FF; border: 1px solid #EFEFEF; border-left: 3px solid #CCC; color: #444; font: 12px monospace; border-radius: 2px; letter-spacing: .1px; margin-bottom: 7px; margin-top: 15px; padding: 7px; width: 1081px; -khtml-border-radius: 2px; -moz-border-radius: 2px; -opera-border-radius: 2px; -webkit-border-radius: 2px; }
+			div.source div.comment { color: #777; font: 9px verdana; letter-spacing: 0.4px; margin-bottom: 9px; text-align: left; }
+
+			div#title { font: bold 17px verdana; color: #269; letter-spacing: .7px; margin-bottom: 10px; text-align: left; }
+			div#title span { color: #777; font: 10px verdana; }
+
+			span#version { color: #777; font: 10px verdana; }
+
+			/* wbotelhos.com/raty */
+
+			.left { float: left; }
+
+			div#target { float: left; }
+
+			div#hint { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
+
+			div#target-number { float: left; }
+
+			select#score { float: left; margin-left: 5px }
+		</style>
+
+		<script type="text/javascript">
+			// This code does NOT belong the plugin. See the example code at the bottom of this page.
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-194992347-3']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+		<div id="header">
+			<div id="title">
+				<a href="http://wbotelhos.com/raty">jQuery Raty - A Star Rating Plugin</a>
+				<span id="version">(current version: 1.4.3)</span>
+			</div>
+	
+			<div id="menu">
+				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-1.4.3.zip" target="_blank">Download</a> |
+				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
+				<a href="http://wbotelhos.com/raty/changelog.txt" target="_blank">Change Log</a> |
+				<a href="http://wbotelhos.com/raty/README.txt" target="_blank">Readme</a> |
+				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin/" target="_blank">Article</a> |
+				<a href="http://www.wbotelhos.com/raty/LICENSE.txt" target="_blank">License</a> |
+				<a href="http://www.wbotelhos.com/raty/who.html" target="_blank">Who is using</a> |
+				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin/#comments" target="_blank" style="color: #2C8CBD;">Doubt</a> |
+				<a href="http://www.wbotelhos.com/lab" target="_blank" style="color: #000;">yLab</a>
+			</div>
+	
+			<a id="coffee" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Raty" target="_blank">buy me a coffee</a>
+	
+			<div class="description">jQuery <strong>Raty</strong> is a plugin that generates a customizable star rating automatically.</div>
+		</div>
+
+		<div id="content">
+			<div class="session-first">Who is using it:</div>
+
+			<div class="session-mini">M</div>
+
+			<span class="comment">
+			 	Movie Collection - <a href="http://www.moviecollection.com.br/" target="_blank">http://moviecollectin.com.br</a><br/>
+			</span>
+
+			<div class="session-mini">W</div>
+
+			<span class="comment">
+			 	Wine Vinhos - <a href="http://www.wine.com.br/" target="_blank">http://wine.com.br</a>
+			</span>
+		</div>
+
+		<div id="footer">
+			<div id="copy">&copy; 2011 <a href="http://www.wbotelhos.com/" target="_blank">wbotelhos.com</a></div>
+		</div>
+	</body>
+</html>
