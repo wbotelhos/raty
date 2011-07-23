@@ -325,12 +325,10 @@
 		var isClick = (isClickIn === undefined) ? false : true;
 
 		if (isClick) {
-			$.fn.raty.click('', idOrClass, 'cancel');
+			return $.fn.raty.click('', idOrClass, 'cancel');
 		} else {
-			$.fn.raty.start('', idOrClass, 'cancel');
+			return $.fn.raty.start('', idOrClass, 'cancel');
 		}
-
-		return $.fn.raty;
 	};
 
 	$.fn.raty.click = function(score, idOrClass) {
@@ -349,7 +347,7 @@
 			debug('You must add the "click: function(score, evt) { }" callback.');
 		}
 
-		return $.fn.raty;
+		return context;
 	};
 
 	$.fn.raty.readOnly = function(boo, idOrClass) {
@@ -373,7 +371,7 @@
 			context.css('cursor', 'pointer');
 		}
 
-		return $.fn.raty;
+		return context;
 	};
 
 	$.fn.raty.start = function(score, idOrClass) {
@@ -386,7 +384,7 @@
 
 		initialize(context, score, options);
 
-		return $.fn.raty;
+		return context;
 	};
 
 	function getContext(value, idOrClass, name) {
