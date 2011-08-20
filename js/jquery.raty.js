@@ -112,7 +112,7 @@
 			}
 
 			if (opt.cancel) {
-				var stars	= $('img.' + id),
+				var stars	= $this.children('img.' + id),
 					cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="button-cancel"/>';
 
 				if (opt.cancelPlace == 'left') {
@@ -121,12 +121,15 @@
 					$this.append('&nbsp;').append(cancel);
 				}
 
-				$('#' + id + ' img.button-cancel').mouseenter(function() {
+				$this.children('img.button-cancel').mouseenter(function() {
 					$(this).attr('src', opt.path + opt.cancelOn);
+
 					stars.attr('src', opt.path + opt.starOff);
+
 					setTarget(target, '', opt);
 				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
+
 					$this.mouseout();
 				}).click(function(evt) {
 					$('input#' + id + '-score').removeAttr('value');
