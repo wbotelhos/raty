@@ -44,9 +44,6 @@
 		var opt			= $.extend({}, $.fn.raty.defaults, settings),
 			$this		= $(this),
 			id			= $this.attr('id'),
-			start		= 0,
-			starFile	= opt.starOn,
-			hint		= '',
 			target		= opt.target,
 			width		= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
 
@@ -54,6 +51,8 @@
 			id = 'raty-' + $this.index();
 			$this.attr('id', id); 
 		}
+
+		$this.data('options', opt);
 
 		if (opt.number > 20) {
 			opt.number = 20;
@@ -65,11 +64,14 @@
 			opt.path += '/';
 		}
 
-		$this.data('options', opt);
+		var start = 0;
 
 		if (!isNaN(parseInt(opt.start, 10)) && opt.start > 0) {
 			start = (opt.start > opt.number) ? opt.number : opt.start;
 		}
+
+		var starFile	= opt.starOn,
+			hint		= '';
 
 		for (var i = 1; i <= opt.number; i++) {
 			starFile = (start >= i) ? opt.starOn : opt.starOff;
