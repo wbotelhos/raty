@@ -344,8 +344,7 @@
 	};
 
 	$.fn.raty.click = function(score, idOrClass) {
-		var context = getContext(score, idOrClass, 'click'),
-			options = $(idOrClass).data('options');
+		var context = getContext(score, idOrClass, 'click');
 
 		if (idOrClass.indexOf('.') >= 0) {
 			return;
@@ -353,23 +352,25 @@
 
 		initialize(context, score);
 
+		var options = $(idOrClass).data('options');
+
 		if (options.click) {
 			options.click.apply(context, [score]);
 		} else {
-			debug('You must add the "click: function(score, evt) { }" callback.');
+			debug(idOrClass + ': you must add the "click: function(score, evt) { }" callback.');
 		}
 
 		return context;
 	};
 
 	$.fn.raty.readOnly = function(boo, idOrClass) {
-		var context	= getContext(boo, idOrClass, 'readOnly'),
-			options	= $(idOrClass).data('options'),
-			cancel	= context.children('img.button-cancel');
+		var context	= getContext(boo, idOrClass, 'readOnly');
 
 		if (idOrClass.indexOf('.') >= 0) {
 			return;
 		}
+
+		var cancel = context.children('img.button-cancel');
 
 		if (cancel[0]) {
 			(boo) ? cancel.hide() : cancel.show();
@@ -378,7 +379,9 @@
 		if (boo) {
 			$('img.' + context.attr('id')).unbind();
 			context.css('cursor', 'default').unbind();
-		} else { 
+		} else {
+			var options = $(idOrClass).data('options');
+
 			bindAll(context, options);
 			context.css('cursor', 'pointer');
 		}
