@@ -64,9 +64,10 @@
 			opt.path += '/';
 		}
 
-		var start = 0;
+		var isValidStart	= !isNaN(parseInt(opt.start, 10)) && opt.start > 0, 
+			start			= 0;
 
-		if (!isNaN(parseInt(opt.start, 10)) && opt.start > 0) {
+		if (isValidStart) {
 			start = (opt.start > opt.number) ? opt.number : opt.start;
 		}
 
@@ -80,10 +81,10 @@
 
 			$this
 			.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>')
-			.append((i < opt.number) ? '&nbsp;' : '');
+			.append((i < opt.number) ? '&nbsp;' : ''); // TODO: space: true/false;
 		}
 
-		if (opt.iconRange && start > 0) {
+		if (opt.iconRange && isValidStart) {
 			fillStar(id, start, opt);	
 		}
 
@@ -93,7 +94,7 @@
 			name:	opt.scoreName
 		}).appendTo($this);
 
-		if (start > 0) {
+		if (isValidStart) {
 			$score.val(start);
 		}
 
