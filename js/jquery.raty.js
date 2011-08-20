@@ -151,7 +151,7 @@
 			bindAll($this, opt, target);
 		} else {
 			$this.css('cursor', 'default');
-			fixHint($this, start, opt);
+			fixHint($this, start);
 		}
 
 		return $this;
@@ -249,8 +249,9 @@
 		}
 	};
 
-	function fixHint(context, score, opt) {
-		var hint = '';
+	function fixHint(context, score) {
+		var opt		= context.data('options'),
+			hint	= '';
 
 		if (score != 0) {
 			score = parseInt(score, 10);
@@ -292,7 +293,7 @@
 		}
 
 		if (opt.readOnly || context.css('cursor') == 'default') {
-			fixHint(context, score, opt);
+			fixHint(context, score);
 		}
 	};
 
