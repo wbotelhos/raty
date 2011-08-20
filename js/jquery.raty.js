@@ -1,4 +1,4 @@
-/**
+/*!
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
  * ---------------------------------------------------------------------------------
  *
@@ -19,7 +19,6 @@
  * $('#star').raty();
  *
  * <div id="star"></div>
- *
  *
  * $('.star').raty();
  *
@@ -44,7 +43,7 @@
 
 		var opt			= $.extend({}, $.fn.raty.defaults, settings),
 			$this		= $(this),
-			id			= this.attr('id'),
+			id			= $this.attr('id'),
 			start		= 0,
 			starFile	= opt.starOn,
 			hint		= '',
@@ -68,7 +67,7 @@
 
 		$this.data('options', opt);
 
-		if (!isNaN(parseInt(opt.start)) && opt.start > 0) {
+		if (!isNaN(parseInt(opt.start, 10)) && opt.start > 0) {
 			start = (opt.start > opt.number) ? opt.number : opt.start;
 		}
 
@@ -243,7 +242,7 @@
 		var hint = '';
 
 		if (score != 0) {
-			score = parseInt(score);
+			score = parseInt(score, 10);
 			hint = (score > 0 && opt.number <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
 		} else {
 			hint = opt.noRatedMsg;
@@ -259,7 +258,7 @@
 	function initialize(context, score, opt) {
 		var id = context.attr('id');
 
-		if (isNaN(parseInt(score))) {
+		if (isNaN(parseInt(score, 10))) {
 			context.children('img.' + id).attr('src', opt.path + opt.starOff);
 			$('input#' + id + '-score').removeAttr('value');
 			return;
