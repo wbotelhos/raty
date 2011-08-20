@@ -84,7 +84,7 @@
 		}
 
 		if (opt.iconRange && isValidStart) {
-			fillStar(id, start, opt);	
+			fillStar($this, start);	
 		}
 
 		var $score = $('<input/>', {
@@ -168,7 +168,7 @@
 		});
 
 		$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
-	        fillStar(id, this.alt, opt);
+	        fillStar(context, this.alt);
 
 			if (opt.half) {
 				var percent = parseFloat(((e.pageX - $(this).offset().left) / opt.size).toFixed(1));
@@ -178,7 +178,7 @@
 
 				splitStar(context, context.data('score'), opt);
 			} else {
-				fillStar(id, this.alt, opt);
+				fillStar(context, this.alt);
 			}
 
 			setTarget(target, this.alt, opt);
@@ -215,15 +215,17 @@
 		}
 	};
 
-	function fillStar(id, score, opt) {
-		var qtyStar	= $('img.' + id).length,
+	function fillStar(context, score) {
+		var opt		= context.data('options'),
+			id		= context.attr('id'),
+			qtyStar	= context.children('img.' + id).length,
 			item	= 0,
 			range	= 0,
 			star,
 			starOn;
 
 		for (var i = 1; i <= qtyStar; i++) {
-			star = $('img#' + id + '-' + i);
+			star = context.children('img#' + id + '-' + i);
 
 			if (i <= score) {
 				if (opt.iconRange && opt.iconRange.length > item) {
@@ -279,7 +281,7 @@
 			score = opt.number;
 		}
 
-		fillStar(id, score, opt);
+		fillStar(context, score);
 
 		if (score > 0) {
 			$('input#' + id + '-score').val(score);
