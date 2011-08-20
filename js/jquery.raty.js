@@ -134,7 +134,7 @@
 
 					$this.mouseout();
 				}).click(function(evt) {
-					$('input#' + id + '-score').removeAttr('value');
+					$score.removeAttr('value');
 
 					if (opt.click) {
 			          opt.click.apply($this, [null, evt]);
@@ -147,6 +147,7 @@
 			}
 
 			$this.css('cursor', 'pointer');
+
 			bindAll($this, opt, target);
 		} else {
 			$this.css('cursor', 'default');
