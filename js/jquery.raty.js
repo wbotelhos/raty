@@ -44,7 +44,6 @@
 		var opt			= $.extend({}, $.fn.raty.defaults, settings),
 			$this		= $(this),
 			id			= $this.attr('id'),
-			target		= opt.target,
 			width		= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
 
 		if (id === undefined) {
@@ -103,6 +102,9 @@
 		}
 
 		if (!opt.readOnly) {
+
+			var target = opt.target;
+
 			if (target !== null) {
 				target = $(target);
 
