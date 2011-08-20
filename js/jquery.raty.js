@@ -98,7 +98,7 @@
 		}
 
 		if (opt.half) {
-			splitStar($this, $score.val(), opt);
+			splitStar($this, $score.val());
 		}
 
 		if (!opt.readOnly) {
@@ -176,7 +176,7 @@
 
 				context.data('score', parseFloat(this.alt) + percent - 1);
 
-				splitStar(context, context.data('score'), opt);
+				splitStar(context, context.data('score'));
 			} else {
 				fillStar(context, this.alt);
 			}
@@ -289,7 +289,7 @@
 			$('input#' + id + '-score').val(score);
 
 			if (opt.half) {
-				splitStar(context, score, opt);
+				splitStar(context, score);
 			}
 		}
 
@@ -318,8 +318,9 @@
 		}
 	};
 
-	function splitStar(context, score, opt) {
-		var id		= context.attr('id'),
+	function splitStar(context, score) {
+		var opt		= context.data('options'),
+			id		= context.attr('id'),
 			rounded	= Math.ceil(score),
 			diff	= (rounded - score).toFixed(1);
 
