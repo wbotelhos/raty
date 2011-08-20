@@ -74,7 +74,7 @@
 			hint		= '';
 
 		for (var i = 1; i <= opt.number; i++) {
-			starFile = (start >= i) ? opt.starOn : opt.starOff;
+			starFile = (start < i) ? opt.starOff : opt.starOn;
 
 			hint = (i <= opt.hintList.length && opt.hintList[i - 1] !== null) ? opt.hintList[i - 1] : i;
 
