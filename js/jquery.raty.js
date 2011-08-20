@@ -99,7 +99,7 @@
 		}
 
 		if (opt.half) {
-			splitStar($this, $('input#' + id + '-score').val(), opt);
+			splitStar($this, $score.val(), opt);
 		}
 
 		if (!opt.readOnly) {
@@ -107,7 +107,7 @@
 				target = $(target);
 
 				if (target.length == 0) {
-					debug('Target selector invalid or missing!');
+					debug(id + ': target selector invalid or missing!');
 				}
 			}
 
