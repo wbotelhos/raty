@@ -159,15 +159,15 @@
 	
 	function bindAll(context, opt, target) {
 		var id		= context.attr('id'),
-			score	= $('input#' + id + '-score'),
-			stars	= context.children('img.' + id);
+			$score	= $('input#' + id + '-score'),
+			$stars	= context.children('img.' + id);
 
 		context.mouseleave(function() {
-			initialize(context, score.val(), opt);
-			clearTarget(target, score, opt);
+			initialize(context, $score.val(), opt);
+			clearTarget(target, $score, opt);
 		});
 
-		stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
+		$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
 	        fillStar(id, this.alt, opt);
 
 			if (opt.half) {
@@ -183,10 +183,10 @@
 
 			setTarget(target, this.alt, opt);
 		}).click(function(evt) {
-			score.val(opt.half ? context.data('score') : this.alt);
+			$score.val(opt.half ? context.data('score') : this.alt);
 
 			if (opt.click) {
-				opt.click.apply(context, [score.val(), evt]);
+				opt.click.apply(context, [$score.val(), evt]);
 			}
 		});
 	};
