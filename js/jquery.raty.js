@@ -46,7 +46,7 @@
 			id			= $this.attr('id'),
 			width		= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
 
-		if (id === undefined) {
+		if (id === undefined || id == '') {
 			id = 'raty-' + $this.index();
 			$this.attr('id', id); 
 		}
