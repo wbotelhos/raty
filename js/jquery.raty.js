@@ -163,7 +163,7 @@
 			$stars	= context.children('img.' + id);
 
 		context.mouseleave(function() {
-			initialize(context, $score.val(), opt);
+			initialize(context, $score.val());
 			clearTarget(target, $score, opt);
 		});
 
@@ -267,8 +267,9 @@
 		return target.is('input') || target.is('select') || target.is('textarea');
 	};
 
-	function initialize(context, score, opt) {
-		var id = context.attr('id');
+	function initialize(context, score) {
+		var opt	= context.data('options'),
+			id	= context.attr('id');
 
 		if (isNaN(parseInt(score, 10))) {
 			context.children('img.' + id).attr('src', opt.path + opt.starOff);
@@ -350,7 +351,7 @@
 			return;
 		}
 
-		initialize(context, score, options);
+		initialize(context, score);
 
 		if (options.click) {
 			options.click.apply(context, [score]);
@@ -386,14 +387,13 @@
 	};
 
 	$.fn.raty.start = function(score, idOrClass) {
-		var context = getContext(score, idOrClass, 'start'),
-			options = $(idOrClass).data('options');
+		var context = getContext(score, idOrClass, 'start');
 
 		if (idOrClass.indexOf('.') >= 0) {
 			return;
 		}
 
-		initialize(context, score, options);
+		initialize(context, score);
 
 		return context;
 	};
