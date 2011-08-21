@@ -97,9 +97,7 @@
 			$score.val(start);
 		}
 
-		if (opt.half) {
-			splitStar($this, $score.val());
-		}
+		roundStar($this, start);
 
 		if (!opt.readOnly) {
 
@@ -163,25 +161,32 @@
 			$stars	= context.children('img.' + id);
 
 		context.mouseleave(function() {
-			initialize(context, $score.val());
-			clearTarget(target, $score, opt);
+			if (opt.halfShow) {
+				initialize(context, $score.val());
+			} else {
+				initialize(context, ($score.val() <= 5) ? Math.floor($score.val()) : Math.ceil($score.val()));
+				clearTarget(target, $score, opt);
+			}
 		});
 
 		$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
-	        fillStar(context, this.alt);
+			var alt = parseInt(this.alt, 10);
 
 			if (opt.half) {
-				var percent = parseFloat(((e.pageX - $(this).offset().left) / opt.size).toFixed(1));
-				percent = (percent >= 0 && percent < 0.5) ? 0.5 : 1;
+				var position	= parseFloat(((e.pageX - $(this).offset().left) / opt.size).toFixed(2)),
+					diff		= (position > .5) ? 1 : .5,
+					value		= parseFloat(this.alt) - 1 + diff; // TODO: precission true/false (diff || position.fixed(1))
 
-				context.data('score', parseFloat(this.alt) + percent - 1);
+				context.data('score', value);
 
-				splitStar(context, context.data('score'));
+				fillStar(context, value);
+
+				roundStar(context, value);
 			} else {
-				fillStar(context, this.alt);
+				fillStar(context, alt);
 			}
 
-			setTarget(target, this.alt, opt);
+			setTarget(target, alt, opt);
 		}).click(function(evt) {
 			$score.val(opt.half ? context.data('score') : this.alt);
 
@@ -288,9 +293,7 @@
 		if (score > 0) {
 			$('input#' + id + '-score').val(score);
 
-			if (opt.half) {
-				splitStar(context, score);
-			}
+			roundStar(context, score);
 		}
 
 		if (opt.readOnly || context.css('cursor') == 'default') {
@@ -318,20 +321,19 @@
 		}
 	};
 
-	function splitStar(context, score) {
-		var opt		= context.data('options'),
-			id		= context.attr('id'),
-			rounded	= Math.ceil(score),
-			diff	= (rounded - score).toFixed(1);
+	function roundStar(context, score) {
+		var diff = (score - Math.floor(score)).toFixed(2);
 
-		if (diff > 0.25 && diff <= 0.75) {
-			rounded = rounded - 0.5;
-			$('img#' + id + '-' + Math.ceil(rounded)).attr('src', opt.path + opt.starHalf);
-		} else if (diff > 0.75) {
-			rounded--;
-		} else {
-			$('img#' + id + '-' + rounded).attr('src', opt.path + opt.starOn);
-		}
+		if (diff > .25) {
+			var opt		= context.data('options'),
+				icon	= opt.starOn;			// Rounded up: [x.76 ... x.99]
+
+			if (diff < .76 && (opt.half || opt.halfShow)) {	// Half star: [x.26 ... x.75]
+				icon = opt.starHalf;
+			}
+
+			$('img#' + context.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + icon);
+		}										// Rounded down: [x.00 ... x.25]
 	};
 
 	$.fn.raty.cancel = function(idOrClass, isClickIn) {
@@ -452,6 +454,7 @@
 		cancelPlace:	'left',
 		click:			null,
 		half:			false,
+		halfShow:		false,
 		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
 		noRatedMsg:		'not rated yet',
 		number:			5,
