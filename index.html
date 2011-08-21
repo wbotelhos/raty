@@ -201,7 +201,7 @@
 				&lt;div id="cancel-custom"&gt;&lt;/div&gt;
 			</div>
 	
-			<div id="half-demo" class="session">Enabling half star:</div>
+			<div id="half-demo" class="session">Enabling half star voting:</div>
 			<div id="half"></div>
 	
 			<div class="source">
@@ -214,10 +214,11 @@
 			</div><br/>
 	
 			<span class="comment">
-				The interval can be:<br/>
-				- Rounded down: [x.00 ... x.25]<br/>
-				- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
-				- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
+				- You can disable the 'showHalf' option to just vote with half star but now show it.<br/>
+				- The interval can be:<br/>
+				-- Rounded down: [x.00 ... x.25]<br/>
+				-- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
+				-- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
 			</span>
 	
 			<div id="icon-demo" class="session">With a custom hint and icons:</div>
@@ -399,7 +400,10 @@
 			 	<div class="comment">Function that returns the selected value.</div>
 
 				half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
-			 	<div class="comment">Enables half star display and selection.</div>
+			 	<div class="comment">Enables half star selection.</div>
+
+				halfShow:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
+			 	<div class="comment">Enables half star display.</div>
 
 			 	hintList:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
 			 	<div class="comment">List of names that will be used as a hint on each star.</div>
