@@ -194,7 +194,7 @@
 				debug(id + ': target selector invalid or missing!');
 			} else {
 				if (isClear) {
-					value = '';
+					value = opt.targetOutValue;
 				} else {
 					if (opt.targetType == 'hint') {
 						if (value === null && opt.cancel) {
@@ -206,7 +206,6 @@
 				}
 
 				if (isField($target)) {
-					debug(value);
 					$target.val(value);
 				} else {
 					$target.html(value);
@@ -450,6 +449,7 @@
 		start:			0,
 		target:			null,
 		targetKeep:		false,
+		targetOutValue:	'',
 		targetType:		'hint',
 		width:			null
 	};
