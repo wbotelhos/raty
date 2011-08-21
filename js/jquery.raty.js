@@ -87,6 +87,10 @@
 			fillStar($this, start);	
 		}
 
+		if (opt.halfShow) {
+			roundStar($this, start);
+		}
+
 		var $score = $('<input/>', {
 			id:		id + '-score',
 			type:	'hidden',
@@ -96,8 +100,6 @@
 		if (isValidStart) {
 			$score.val(start);
 		}
-
-		roundStar($this, start);
 
 		if (!opt.readOnly) {
 
@@ -161,12 +163,8 @@
 			$stars	= context.children('img.' + id);
 
 		context.mouseleave(function() {
-			if (opt.halfShow) {
-				initialize(context, $score.val());
-			} else {
-				initialize(context, ($score.val() <= 5) ? Math.floor($score.val()) : Math.ceil($score.val()));
-				clearTarget(target, $score, opt);
-			}
+			initialize(context, $score.val());
+			clearTarget(target, $score, opt);
 		});
 
 		$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
@@ -290,11 +288,11 @@
 
 		fillStar(context, score);
 
-		if (score > 0) {
-			$('input#' + id + '-score').val(score);
-
+		if (opt.halfShow) {
 			roundStar(context, score);
 		}
+
+		$('input#' + id + '-score').val(score);
 
 		if (opt.readOnly || context.css('cursor') == 'default') {
 			fixHint(context, score);
