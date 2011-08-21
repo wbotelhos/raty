@@ -454,7 +454,7 @@
 		cancelPlace:	'left',
 		click:			null,
 		half:			false,
-		halfShow:		false,
+		halfShow:		true,
 		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
 		noRatedMsg:		'not rated yet',
 		number:			5,
