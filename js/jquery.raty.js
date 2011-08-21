@@ -91,6 +91,8 @@
 			roundStar($this, start);
 		}
 
+		setTarget(start, opt);
+
 		var $score = $('<input/>', {
 			id:		id + '-score',
 			type:	'hidden',
@@ -102,17 +104,6 @@
 		}
 
 		if (!opt.readOnly) {
-
-			var target = opt.target;
-
-			if (target !== null) {
-				target = $(target);
-
-				if (target.length == 0) {
-					debug(id + ': target selector invalid or missing!');
-				}
-			}
-
 			if (opt.cancel) {
 				var stars	= $this.children('img.' + id),
 					cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="button-cancel"/>';
@@ -128,7 +119,7 @@
 
 					stars.attr('src', opt.path + opt.starOff);
 
-					setTarget(target, '', opt);
+					setTarget(null, opt);
 				}).mouseleave(function() {
 					$(this).attr('src', opt.path + opt.cancelOff);
 
@@ -148,7 +139,7 @@
 
 			$this.css('cursor', 'pointer');
 
-			bindAll($this, opt, target);
+			bindAll($this, opt);
 		} else {
 			$this.css('cursor', 'default');
 			fixHint($this, start);
@@ -157,34 +148,35 @@
 		return $this;
 	};
 	
-	function bindAll(context, opt, target) {
+	function bindAll(context, opt) {
 		var id		= context.attr('id'),
 			$score	= $('input#' + id + '-score'),
 			$stars	= context.children('img.' + id);
 
 		context.mouseleave(function() {
 			initialize(context, $score.val());
-			clearTarget(target, $score, opt);
+			setTarget($score.val(), opt, !opt.targetKeep);
 		});
 
 		$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
-			var alt = parseInt(this.alt, 10);
+			var value = parseInt(this.alt, 10);
 
 			if (opt.half) {
 				var position	= parseFloat(((e.pageX - $(this).offset().left) / opt.size).toFixed(2)),
-					diff		= (position > .5) ? 1 : .5,
-					value		= parseFloat(this.alt) - 1 + diff; // TODO: precission true/false (diff || position.fixed(1))
+					diff		= (position > .5) ? 1 : .5;
+
+				value = parseFloat(this.alt) - 1 + diff; // TODO: precission true/false (diff || position.fixed(1))
 
 				context.data('score', value);
-
-				fillStar(context, value);
-
-				roundStar(context, value);
-			} else {
-				fillStar(context, alt);
 			}
 
-			setTarget(target, alt, opt);
+			fillStar(context, value);
+
+			if (opt.half) {
+				roundStar(context, value);
+			}
+
+			setTarget(value, opt);
 		}).click(function(evt) {
 			$score.val(opt.half ? context.data('score') : this.alt);
 
@@ -194,26 +186,31 @@
 		});
 	};
 
-	function clearTarget(target, score, opt) {
-		if (target !== null) {
-			var value = '';
+	function setTarget(value, opt, isClear) {
+		if (opt.target) {
+			var $target = $(opt.target);
 
-			if (opt.targetKeep) {
-				value = score.val();
-
-				if (opt.targetType == 'hint') {
-					if (score.val() == '' && opt.cancel) {
-						value = opt.cancelHint;
-					} else {
-						value = opt.hintList[Math.ceil(score.val()) - 1];
+			if ($target.length == 0) {
+				debug(id + ': target selector invalid or missing!');
+			} else {
+				if (isClear) {
+					value = '';
+				} else {
+					if (opt.targetType == 'hint') {
+						if (value === null && opt.cancel) {
+							value = opt.cancelHint;
+						} else {
+							value = opt.hintList[Math.ceil(value - 1)];
+						}
 					}
 				}
-			}
 
-			if (isField(target)) {
-				target.val(value);
-			} else {
-				target.html(value);
+				if (isField($target)) {
+					debug(value);
+					$target.val(value);
+				} else {
+					$target.html(value);
+				}
 			}
 		}
 	};
@@ -299,26 +296,6 @@
 		}
 	};
 
-	function setTarget(target, alt, opt) {
-		if (target !== null) {
-			var value = alt;
-
-			if (opt.targetType == 'hint') {
-				if (alt == 0 && opt.cancel) {
-					value = opt.cancelHint;
-				} else {
-					value = opt.hintList[alt - 1];
-				}
-			}
-
-			if (isField(target)) {
-				target.val(value);
-			} else {
-				target.html(value);
-			}
-		}
-	};
-
 	function roundStar(context, score) {
 		var diff = (score - Math.floor(score)).toFixed(2);
 
@@ -355,7 +332,7 @@
 
 		var opt = $(idOrClass).data('options');
 
-		setTarget($(opt.target), score, opt);
+		setTarget(score, opt);
 
 		if (opt.click) {
 			opt.click.apply(context, [score]);
@@ -403,7 +380,7 @@
 
 		var opt = $(idOrClass).data('options');
 
-		setTarget($(opt.target), score, opt);
+		setTarget(score, opt);
 
 		return context;
 	};
