@@ -353,10 +353,12 @@
 
 		initialize(context, score);
 
-		var options = $(idOrClass).data('options');
+		var opt = $(idOrClass).data('options');
 
-		if (options.click) {
-			options.click.apply(context, [score]);
+		setTarget($(opt.target), score, opt);
+
+		if (opt.click) {
+			opt.click.apply(context, [score]);
 		} else {
 			debug(idOrClass + ': you must add the "click: function(score, evt) { }" callback.');
 		}
@@ -398,6 +400,10 @@
 		}
 
 		initialize(context, score);
+
+		var opt = $(idOrClass).data('options');
+
+		setTarget($(opt.target), score, opt);
 
 		return context;
 	};
