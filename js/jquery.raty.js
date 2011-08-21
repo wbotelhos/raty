@@ -64,7 +64,7 @@
 		}
 
 		var isValidStart	= !isNaN(parseInt(opt.start, 10)) && opt.start > 0, 
-			start			= 0;
+			start			= '';
 
 		if (isValidStart) {
 			start = (opt.start > opt.number) ? opt.number : opt.start;
@@ -162,23 +162,28 @@
 			var value = parseInt(this.alt, 10);
 
 			if (opt.half) {
-				var position	= parseFloat(((e.pageX - $(this).offset().left) / opt.size).toFixed(2)),
+				var position	= parseFloat((e.pageX - $(this).offset().left) / opt.size),
 					diff		= (position > .5) ? 1 : .5;
 
-				value = parseFloat(this.alt) - 1 + diff; // TODO: precission true/false (diff || position.fixed(1))
+				value = parseFloat(this.alt) - 1 + diff;
+
+				fillStar(context, value);
+
+				roundStar(context, value);
+
+				if (opt.precision) {
+					value = (value - diff + position).toFixed(1);
+
+					setTarget(value, opt);
+				}
 
 				context.data('score', value);
+			} else {
+				fillStar(context, value);
+				setTarget(value, opt);
 			}
-
-			fillStar(context, value);
-
-			if (opt.half) {
-				roundStar(context, value);
-			}
-
-			setTarget(value, opt);
 		}).click(function(evt) {
-			$score.val(opt.half ? context.data('score') : this.alt);
+			$score.val((opt.half || opt.precision) ? context.data('score') : this.alt);
 
 			if (opt.click) {
 				opt.click.apply(context, [$score.val(), evt]);
@@ -436,10 +441,11 @@
 		half:			false,
 		halfShow:		true,
 		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
+		iconRange:		[],
 		noRatedMsg:		'not rated yet',
 		number:			5,
 		path:			'img/',
-		iconRange:		[],
+		precision:		false,
 		readOnly:		false,
 		scoreName:		'score',
 		size:			16,
