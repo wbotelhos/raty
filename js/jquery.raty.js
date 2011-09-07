@@ -48,7 +48,7 @@
 
 		if (id === undefined || id == '') {
 			id = 'raty-' + $this.index();
-			$this.attr('id', id); 
+			$this.attr('id', id);
 		}
 
 		$this.data('options', opt);
@@ -63,7 +63,7 @@
 			opt.path += '/';
 		}
 
-		var isValidStart	= !isNaN(parseInt(opt.start, 10)) && opt.start > 0, 
+		var isValidStart	= !isNaN(parseInt(opt.start, 10)) && opt.start > 0,
 			start			= 0;
 
 		if (isValidStart) {
@@ -84,7 +84,7 @@
 		}
 
 		if (opt.iconRange && isValidStart) {
-			fillStar($this, start);	
+			fillStar($this, start);
 		}
 
 		if (opt.halfShow) {
@@ -96,8 +96,10 @@
 		var $score = $('<input/>', {
 			id:		id + '-score',
 			type:	'hidden',
-			name:	opt.scoreName
-		}).appendTo($this);
+			name:	opt.scoreName,
+			class:	opt.scoreClass,
+		})
+		.appendTo($this);
 
 		if (isValidStart) {
 			$score.val(start);
@@ -128,8 +130,8 @@
 					$score.removeAttr('value');
 
 					if (opt.click) {
-			          opt.click.apply($this, [null, evt]);
-			        }
+						opt.click.apply($this, [null, evt]);
+					}
 				});
 
 				$this.css('width', width + opt.size + 4);
@@ -147,7 +149,7 @@
 
 		return $this;
 	};
-	
+
 	function bindAll(context, opt) {
 		var id		= context.attr('id'),
 			$score	= $('input#' + id + '-score'),
@@ -191,7 +193,7 @@
 			var $target = $(opt.target);
 
 			if ($target.length == 0) {
-				debug(id + ': target selector invalid or missing!');
+				debug('target selector invalid or missing!');
 			} else {
 				if (isClear) {
 					value = opt.targetOutValue;
@@ -421,9 +423,11 @@
 	};
 
 	function debug(message) {
-		if (window.console && window.console.log) {
-			window.console.log(message);
-		}
+		throw message;
+		//If error happened, user should get it, insted of silent log record
+		//if (window.console && window.console.log) {
+		//	window.console.log(message);
+		//}
 	};
 
 	$.fn.raty.defaults = {
@@ -451,7 +455,8 @@
 		targetKeep:		false,
 		targetOutValue:	'',
 		targetType:		'hint',
-		width:			null
+		width:			null,
+		scoreClass:		'',
 	};
 
 })(jQuery);
