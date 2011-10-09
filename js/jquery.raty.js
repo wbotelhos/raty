@@ -235,10 +235,6 @@
 
 			if (opt.iconRange && opt.iconRange.length > item) {
 				star = opt.iconRange[item];
-				range = opt.iconRange[item];
-				starOn = opt.iconRange[item];
-				starOff = opt.iconRange[item];
-
 				icon = (i <= score) ? star.on : star.off;
 
 				if (!icon) {
