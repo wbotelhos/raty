@@ -6,6 +6,7 @@
  *   - Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
  *   - Fixed the functions start() and click() to set the value on target when 'target' is enabled;
  *   - Fixed the 'target' option to work with half option;
+ *   - Now attribute 'iconRange' is represented as a list of object with option to choose starOn and starOff;
  *   - Added attribute 'showHalf' to just display and separate from the option to vote 'half';
  *   - Added attribute 'targetOutValue' to be applied on 'target' when the 'targetKeep' is disabled;
  *   - Added attribute 'precision' to be able rating with precision values, without star representation;

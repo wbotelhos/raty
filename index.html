@@ -137,7 +137,7 @@
 			<div class="source">
 			 	$('#anyone').raty({<br/>
 				&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
-				&nbsp;&nbsp;noRatedMsg:&nbsp;'anyone rated this product yet!'<br/>
+				&nbsp;&nbsp;noRatedMsg: 'anyone rated this product yet!'<br/>
 				});<br/><br/>
 			   
 				&lt;div id="anyone"&gt;&lt;/div&gt;
@@ -247,17 +247,25 @@
 	
 			<div class="source">
 			 	$('#range').raty({<br/>
-			 	&nbsp;&nbsp;iconRange:&nbsp;[['face-a.png', 2], ['face-b.png', 3], ['face-c.png', 4], ['face-d.png', 5]],<br/>
-				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'face-off.png'<br/>
+			 	&nbsp;&nbsp;iconRange: iconRange: [<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 5, on: 'face-d.png' }<br/>
+				&nbsp;&nbsp;],<br/>
+				&nbsp;&nbsp;starOff: 'face-off.png'<br/>
 				});<br/><br/>
 			   
 				&lt;div id="range"&gt;&lt;/div&gt;
 			</div><br/>
 	
 			<span class="comment">
-				- It's a array of array where each inner array represents a custom icon;<br/>
-				- The second parameter is until where this icon will be displayed;<br/>
-				- The sequence of the range interval should be in a ascending order.
+				- It's a array of objects where each one represents a custom icon;<br/>
+				- The value range is until wich position the icon will be displayed;<br/>
+				- The value on is the active icon;<br/>
+				- The value off is the inactive icon;<br/>
+				- The sequence of the range interval should be in a ascending order;<br/>
+				- If the value on or off is omitted then the attribute starOff will be used.
 			</span>
 	
 			<div id="big-demo" class="session">With a bigger icon:</div>
@@ -339,7 +347,7 @@
 			<div class="source">
 				$('#target').raty({<br/>
 				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
-				&nbsp;&nbsp;cancelHint:&nbsp;'none'<br/>
+				&nbsp;&nbsp;cancelHint: 'none'<br/>
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint'<br/>
 				});<br/><br/>
 	
@@ -365,7 +373,7 @@
 				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#score'<br/>
 				&nbsp;&nbsp;targetKeep:&nbsp;true,<br/>
-				&nbsp;&nbsp;targetType:&nbsp;'number'<br/>
+				&nbsp;&nbsp;targetType: 'number'<br/>
 				});<br/><br/>
 	
 				&lt;select id="score"&gt;<br/>
@@ -396,7 +404,7 @@
 				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off-big.png',<br/>
 				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on-big.png'<br/>
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#precision-target'<br/>
-				&nbsp;&nbsp;targetType:&nbsp;'number'<br/>
+				&nbsp;&nbsp;targetType: 'number'<br/>
 				});<br/><br/>
 			   
 				&lt;div id="precision"&gt;&lt;/div&gt;<br/>
@@ -446,7 +454,7 @@
 			 	<div class="comment">List of names that will be used as a hint on each star.</div>
 
 				iconRange:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[]<br/>
-				<div class="comment">Name and position of the set icons.</div>
+				<div class="comment">List of object that represent each icon with position and names.</div>
 
 				noRatedMsg:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'not rated yet'<br/>
 			 	<div class="comment">A hint for no rated elements when it's read-only.</div>
@@ -564,7 +572,12 @@
 				});
 
 				$('#range').raty({
-					iconRange:	[['face-a.png', 2], ['face-b.png', 3], ['face-c.png', 4], ['face-d.png', 5]],
+					iconRange: [
+						{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
+						{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
+						{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
+						{ range: 5, on: 'face-d.png' }
+					],
 					starOff:	'face-off.png'
 				});
 

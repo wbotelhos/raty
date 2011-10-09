@@ -63,7 +63,7 @@
 			opt.path += '/';
 		}
 
-		var isValidStart	= !isNaN(parseInt(opt.start, 10)) && opt.start > 0, 
+		var isValidStart	= !isNaN(parseInt(opt.start, 10)),
 			start			= '';
 
 		if (isValidStart) {
@@ -226,31 +226,35 @@
 			id		= context.attr('id'),
 			qtyStar	= context.children('img.' + id).length,
 			item	= 0,
-			range	= 0,
-			star,
-			starOn;
+			$stars	,
+			icon	,
+			star	;
 
 		for (var i = 1; i <= qtyStar; i++) {
-			star = context.children('img#' + id + '-' + i);
+			$stars = context.children('img#' + id + '-' + i);
 
-			if (i <= score) {
-				if (opt.iconRange && opt.iconRange.length > item) {
+			if (opt.iconRange && opt.iconRange.length > item) {
+				star = opt.iconRange[item];
+				range = opt.iconRange[item];
+				starOn = opt.iconRange[item];
+				starOff = opt.iconRange[item];
 
-					starOn = opt.iconRange[item][0];
-					range = opt.iconRange[item][1];
+				icon = (i <= score) ? star.on : star.off;
 
-					if (i <= range) {
-						star.attr('src', opt.path + starOn);
-					}
+				if (!icon) {
+					icon = opt.starOff;
+				}
 
-					if (i == range) {
-						item++;
-					}
-				} else {
-					star.attr('src', opt.path + opt.starOn);
+				if (i <= star.range) {
+					$stars.attr('src', opt.path + icon);
+				}
+
+				if (i == star.range) {
+					item++;
 				}
 			} else {
-				star.attr('src', opt.path + opt.starOff);
+				icon = (i <= score) ? opt.starOn : opt.starOff;
+				$stars.attr('src', opt.path + icon);
 			}
 		}
 	};
@@ -443,7 +447,7 @@
 		half:			false,
 		halfShow:		true,
 		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
-		iconRange:		[],
+		iconRange:		undefined,
 		noRatedMsg:		'not rated yet',
 		number:			5,
 		path:			'img/',

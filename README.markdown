@@ -25,7 +25,7 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 	click:        null                                            // Default callback function.
 	half:         false                                           // Active the half star.
 	hintList:     ['bad', 'poor', 'regular', 'good', 'gorgeous']  // A hint information for default 5 stars.
-	iconRange:    []                                              // A range of custom icons that you can set.
+	iconRange:    undefined                                       // List of object representing each icon with position and names.
 	noRatedMsg:   'not rated yet'                                 // A hint for no rated elements when it's read-only.
 	number:       5                                               // Number of star.
 	path:         'img                                            // Path of images.
