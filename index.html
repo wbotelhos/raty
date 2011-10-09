@@ -9,7 +9,7 @@
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.js"></script>
 
 		<style type="text/css">
 			/* This CSS does not belong to the plugin. */
@@ -60,9 +60,13 @@
 
 			div#target { float: left; }
 
+			div#target-number { float: left; }
+
 			div#hint { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
 
-			div#target-number { float: left; }
+			div#precision { float: left; }
+
+			div#precision-target { background-color: #F0F0F0; border-radius: 3px; float: left; height: 20px; margin-left: 5px; padding-left: 8px; padding-right: 8px; padding-top: 4px; text-align: center; width: 50px; }
 
 			select#score { float: left; margin-left: 5px }
 		</style>
@@ -330,7 +334,7 @@
 			<div id="target-demo" class="session">Displaying the hint in a target element:</div>
 	
 			<div id="target"></div>
-			<div id="hint" class="target-score"></div><br/>
+			<div id="hint"></div><br/>
 	
 			<div class="source">
 				$('#target').raty({<br/>
@@ -378,6 +382,39 @@
 				- You can to choose the target types 'hint' or 'number'.
 			</span>
 	
+			<div id="precision-demo" class="session">With half star voting precision:</div>
+	
+			<div id="precision"></div>
+			<div id="precision-target"></div><br/>
+	
+			<div class="source" style="margin-top: 20px;">
+				$('#precision').raty({<br/>
+				&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;precision:&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24,<br/>
+				&nbsp;&nbsp;starHalf:&nbsp;&nbsp;&nbsp;'star-half-big.png',<br/>
+				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off-big.png',<br/>
+				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on-big.png'<br/>
+				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#precision-target'<br/>
+				&nbsp;&nbsp;targetType:&nbsp;'number'<br/>
+				});<br/><br/>
+			   
+				&lt;div id="precision"&gt;&lt;/div&gt;<br/>
+				&lt;div id="precision-target"&gt;&lt;/div&gt;
+			</div>
+
+			<div id="space-demo" class="session">Without space between stars:</div>
+	
+			<div id="space"></div>
+	
+			<div class="source" style="margin-top: 20px;">
+				$('#precision').raty({<br/>
+				&nbsp;&nbsp;space:&nbsp;&nbsp;false<br/>
+				});<br/><br/>
+
+				&lt;div id="space"&gt;&lt;/div&gt;<br/>
+			</div>
+
 			<div class="session">Default options:</div>
 	
 			<div class="source">
@@ -431,6 +468,9 @@
 	
 				starHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-half.png'<br/>
 			 	<div class="comment">The name of the half star image.</div>
+
+				space:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
+			 	<div class="comment">Option to take off the spaces between the star.</div>
 	
 				starOff:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
 			 	<div class="comment">Name of the star image off.</div>
@@ -564,6 +604,21 @@
 					target:		'#score',
 					targetKeep:	true,
 					targetType:	'number'
+				});
+
+				$('#precision').raty({
+					half:		true,
+					precision:	true,
+					size:		24,
+					starOff:	'star-off-big.png',
+					starOn:		'star-on-big.png',
+					starHalf:	'star-half-big.png',
+					target:		'#precision-target',
+					targetType:	'number'
+				});
+
+				$('#space').raty({
+					space: false
 				});
 
 			});

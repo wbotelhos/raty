@@ -41,10 +41,10 @@
 			});
 		}
 
-		var opt			= $.extend({}, $.fn.raty.defaults, settings),
-			$this		= $(this),
-			id			= $this.attr('id'),
-			width		= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
+		var opt		= $.extend({}, $.fn.raty.defaults, settings),
+			$this	= $(this),
+			id		= $this.attr('id'),
+			width	= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
 
 		if (id === undefined || id == '') {
 			id = 'raty-' + $this.index();
@@ -78,9 +78,11 @@
 
 			hint = (i <= opt.hintList.length && opt.hintList[i - 1] !== null) ? opt.hintList[i - 1] : i;
 
-			$this
-			.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>')
-			.append((i < opt.number) ? '&nbsp;' : ''); // TODO: space: true/false;
+			$this.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>');
+
+			if (opt.space) {
+				$this.append((i < opt.number) ? '&nbsp;' : '');
+			}
 		}
 
 		if (opt.iconRange && isValidStart) {
@@ -449,6 +451,7 @@
 		readOnly:		false,
 		scoreName:		'score',
 		size:			16,
+		space:			true,
 		starHalf:		'star-half.png',
 		starOff:		'star-off.png',
 		starOn:			'star-on.png',
