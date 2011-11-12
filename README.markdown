@@ -8,12 +8,17 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 ## Version
 
-	@version         1.4.3
-	@since           06.11.2010
-	@author          Washington Botelho dos Santos
-	@documentation   wbotelhos.com/raty
-	@twitter         twitter.com/wbotelhos
-	@package         jQuery Plugins
+	@version        1.4.3
+	@since          06.11.2010
+	@author         Washington Botelho
+	@documentation  wbotelhos.com/raty
+	@twitter        twitter.com/wbotelhos
+
+## Required Files
+
++ jquery.raty.min.js
++ star-on.png
++ star-off.png
 
 ## Default values
 
@@ -66,10 +71,6 @@ You must pass a ID or a class to be the target of the action:
 
 	$.fn.raty.cancel('#raty', true);    // Cancel the rating. The second optional parameter enables the click callback.
 
-## Buy me a coffee
-
-You can do it by [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=jQuery%20Raty). Thanks! (:
-
 ## Contributors
 
 + emwendelin
@@ -77,3 +78,7 @@ You can do it by [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&b
 + Gabriel Benz
 + jeongee
 + Olle Jonsson
+
+## Buy me a coffee
+
+You can do it by [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=jQuery%20Raty). Thanks! (:
