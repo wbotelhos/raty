@@ -394,7 +394,7 @@
 	function getContext(value, idOrClass, name) {
 		var context = undefined;
 
-		if (idOrClass == undefined) {
+		if (idOrClass === undefined) {
 			debug('Specify an ID or class to be the target of the action.');
 			return;
 		}
