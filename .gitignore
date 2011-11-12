@@ -2,4 +2,5 @@
 .DS_Store
 .project
 .settings
-annotations.txt
+doc.txt
+test/runner.htm
