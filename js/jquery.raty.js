@@ -66,6 +66,8 @@
 
 		if (isValidStart) {
 			start = (opt.start > opt.number) ? opt.number : opt.start;
+		}else if(typeof opt.start == 'function'){ // this helps to create a callback function for start value 
+			start = opt.start.call(this);
 		}
 
 		var starFile	= opt.starOn,
