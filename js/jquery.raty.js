@@ -33,7 +33,7 @@
 	$.fn.raty = function(settings) {
 
 		if (this.length == 0) {
-			debug('Selector invalid or missing!');
+			$.error('Selector invalid or missing!');
 			return;
 		} else if (this.length > 1) {
 			return this.each(function() {
@@ -195,7 +195,7 @@
 			var $target = $(opt.target);
 
 			if ($target.length == 0) {
-				debug(id + ': target selector invalid or missing!');
+				$.error(id + ': target selector invalid or missing!');
 			} else {
 				if (isClear) {
 					value = opt.targetOutValue;
@@ -352,7 +352,7 @@
 		if (opt.click) {
 			opt.click.apply(context, [score]);
 		} else {
-			debug(idOrClass + ': you must add the "click: function(score, evt) { }" callback.');
+			$.error(idOrClass + ': you must add the "click: function(score, evt) { }" callback.');
 		}
 
 		return context;
@@ -404,7 +404,7 @@
 		var context = undefined;
 
 		if (idOrClass === undefined) {
-			debug('Specify an ID or class to be the target of the action.');
+			$.error('Specify an ID or class to be the target of the action.');
 			return;
 		}
 
@@ -428,7 +428,7 @@
 			context = $(idOrClass);
 
 			if (!context.length) {
-				debug('"' + idOrClass + '" is a invalid identifier for the public funtion $.fn.raty.' + name + '().');
+				$.error('"' + idOrClass + '" is a invalid identifier for the public funtion $.fn.raty.' + name + '().');
 				return;
 			}
 		}
