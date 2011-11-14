@@ -1,7 +1,8 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
-### 1.5.0
+### 2.0.0 (Development)
 
++ Added full round option without half star option is enabled;
 + Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
 + Fixed the functions start() and click() to set the value on target when 'target' is enabled;
 + Fixed the 'target' option to work with half option;

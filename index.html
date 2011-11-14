@@ -128,13 +128,13 @@
 	
 			<div class="source">
 			 	$('#fixed').raty({<br/>
-				&nbsp;&nbsp;readOnly:&nbsp;&nbsp;true,<br/>
-				&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/>
+				&nbsp;&nbsp;readOnly: true,<br/>
+				&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;2<br/>
 				});<br/><br/>
 				
 				&lt;div id="fixed"&gt;&lt;/div&gt;
 			</div>
-	
+
 			<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
 			<div id="anyone"></div>
 	
@@ -152,8 +152,8 @@
 			
 			<div class="source">
 			 	$('#number').raty({<br/>
-				&nbsp;&nbsp;scoreName:&nbsp;&nbsp;'entity.score',<br/>
-				&nbsp;&nbsp;number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10<br/>
+				&nbsp;&nbsp;scoreName: 'entity.score',<br/>
+				&nbsp;&nbsp;number:&nbsp;&nbsp;&nbsp;&nbsp;10<br/>
 				});<br/><br/>
 			   
 				&lt;div id="number"&gt;&lt;/div&gt;
@@ -198,9 +198,9 @@
 	
 			<div class="source">
 			 	$('#cancel-custom').raty({<br/>
-				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
-				&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'remove my rating!',<br/>
-				&nbsp;&nbsp;cancelPlace:&nbsp;&nbsp;'right',<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;'remove my rating!',<br/>
+				&nbsp;&nbsp;cancelPlace: 'right',<br/>
 				&nbsp;&nbsp;click: function(score, evt) {<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
 				&nbsp;&nbsp;}<br/>
@@ -215,7 +215,7 @@
 			<div class="source">
 			 	$('#half').raty({<br/>
 				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
-				&nbsp;&nbsp;start:&nbsp;3.3<br/>
+				&nbsp;&nbsp;start: 3.3<br/>
 				});<br/><br/>
 			   
 				&lt;div id="half"&gt;&lt;/div&gt;
@@ -234,9 +234,9 @@
 	
 			<div class="source">
 			 	$('#icon').raty({<br/>
-				&nbsp;&nbsp;hintList:&nbsp;&nbsp;['a', '', null, 'd', '5'],<br/>
-				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
-				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'medal-off.png'<br/>
+				&nbsp;&nbsp;hintList: ['a', '', null, 'd', '5'],<br/>
+				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
+				&nbsp;&nbsp;starOff:&nbsp;&nbsp;'medal-off.png'<br/>
 				});<br/><br/>
 			   
 				&lt;div id="icon"&gt;&lt;/div&gt;
@@ -251,7 +251,7 @@
 	
 			<div class="source">
 			 	$('#range').raty({<br/>
-			 	&nbsp;&nbsp;iconRange: iconRange: [<br/>
+			 	&nbsp;&nbsp;iconRange: [<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },<br/>
@@ -277,14 +277,14 @@
 	
 			<div class="source">
 			 	$('#big').raty({<br/>
-			 	&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
-				&nbsp;&nbsp;cancelOff:&nbsp;&nbsp;'cancel-off-big.png',<br/>
-				&nbsp;&nbsp;cancelOn:&nbsp;&nbsp;&nbsp;'cancel-on-big.png',<br/>
-				&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
-				&nbsp;&nbsp;size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24,<br/>
-				&nbsp;&nbsp;starHalf:&nbsp;&nbsp;&nbsp;'star-half-big.png',<br/>
-				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;&nbsp;'star-off-big.png',<br/>
-				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on-big.png'<br/>
+			 	&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;cancelOff: 'cancel-off-big.png',<br/>
+				&nbsp;&nbsp;cancelOn:&nbsp;&nbsp;'cancel-on-big.png',<br/>
+				&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24,<br/>
+				&nbsp;&nbsp;starHalf:&nbsp;&nbsp;'star-half-big.png',<br/>
+				&nbsp;&nbsp;starOff:&nbsp;&nbsp;&nbsp;'star-off-big.png',<br/>
+				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'star-on-big.png'<br/>
 				});<br/><br/>
 			   
 				&lt;div id="big"&gt;&lt;/div&gt;
@@ -312,37 +312,6 @@
 				- If you don't pass a ID for the element, then it will be created.
 			</span>
 	
-			<div id="action-demo" class="session">Using directed actions with public functions:</div>
-	
-			love:
-			<div class="action"></div>
-	
-			happy:
-			<div class="action"></div><br/>
-	
-			your last rate:
-			<div id="result"></div>
-	
-			<div class="source">
-				$('.action').raty({<br/>
-				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
-				&nbsp;&nbsp;click: function(score, evt) {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.cancel('.action');<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
-				&nbsp;&nbsp;}<br/>
-				});<br/><br/>
-	
-				&lt;div class="action"&gt;&lt;/div&gt;<br/>
-				&lt;div class="action"&gt;&lt;/div&gt;<br/><br/>
-				&lt;div id="result"&gt;&lt;/div&gt;
-			</div><br/>
-	
-			<span class="comment">
-				- All public functions have a optional second parameter to specify which container will be executed;<br/>
-				- You can pass a ID or a class to be the target of the action;<br/>
-				- If the ID or class are not specified, then the last element Raty will be takes.
-			</span>
-	
 			<div id="target-demo" class="session">Displaying the hint in a target element:</div>
 	
 			<div id="target"></div>
@@ -350,8 +319,8 @@
 	
 			<div class="source">
 				$('#target').raty({<br/>
-				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
-				&nbsp;&nbsp;cancelHint: 'none'<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;cancelHint: 'none',<br/>
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint'<br/>
 				});<br/><br/>
 	
@@ -374,8 +343,8 @@
 
 			<div class="source left">
 				$('#target-number').raty({<br/>
-				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
-				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#score'<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#score',<br/>
 				&nbsp;&nbsp;targetKeep:&nbsp;true,<br/>
 				&nbsp;&nbsp;targetType: 'number'<br/>
 				});<br/><br/>
@@ -421,11 +390,42 @@
 	
 			<div class="source" style="margin-top: 20px;">
 				$('#precision').raty({<br/>
-				&nbsp;&nbsp;space:&nbsp;&nbsp;false<br/>
+				&nbsp;&nbsp;space: false<br/>
 				});<br/><br/>
 
 				&lt;div id="space"&gt;&lt;/div&gt;<br/>
 			</div>
+
+			<div id="action-demo" class="session">Using directed actions with public functions:</div>
+
+			love:
+			<div class="action"></div>
+	
+			happy:
+			<div class="action"></div><br/>
+	
+			your last rate:
+			<div id="result"></div>
+	
+			<div class="source">
+				$('.action').raty({<br/>
+				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;click: function(score, evt) {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.cancel('.action');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
+				&nbsp;&nbsp;}<br/>
+				});<br/><br/>
+	
+				&lt;div class="action"&gt;&lt;/div&gt;<br/>
+				&lt;div class="action"&gt;&lt;/div&gt;<br/><br/>
+				&lt;div id="result"&gt;&lt;/div&gt;
+			</div><br/>
+	
+			<span class="comment">
+				- All public functions have a optional second parameter to specify which container will be executed;<br/>
+				- You can pass a ID or a class to be the target of the action;<br/>
+				- If the ID or class are not specified, then the last element Raty will be takes.
+			</span>
 
 			<div class="session">Default options:</div>
 	
@@ -603,13 +603,6 @@
 					readOnly:	true
 				});
 
-				$('.action').raty({
-					click: function(score) {
-						$.fn.raty.cancel('.action');
-						$.fn.raty.start(score, '#result');
-					}
-				});
-
 				$('#target').raty({
 					cancel:		true,
 					cancelHint:	'none',
@@ -636,6 +629,13 @@
 
 				$('#space').raty({
 					space: false
+				});
+
+				$('.action').raty({
+					click: function(score) {
+						$.fn.raty.cancel('.action');
+						$.fn.raty.start(score, '#result');
+					}
 				});
 
 			});

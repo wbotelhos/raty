@@ -6,13 +6,12 @@
  *
  * Licensed under The MIT License
  *
- * @version			1.4.3
- * @since			06.11.2010
- * @author			Washington Botelho dos Santos
- * @documentation	http://wbotelhos.com/raty
- * @twitter			http://twitter.com/wbotelhos
- * @license			http://opensource.org/licenses/mit-license.php
- * @package			jQuery Plugins
+ * @version        2.0.0 (Development)
+ * @since          2010.06.11
+ * @author         Washington Botelho
+ * @documentation  wbotelhos.com/raty
+ * @twitter        twitter.com/wbotelhos
+ * @license        opensource.org/licenses/mit-license.php
  *
  * Usage with default values:
  * ---------------------------------------------------------------------------------
