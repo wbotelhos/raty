@@ -40,7 +40,6 @@
 				$.fn.raty.apply($(this), [settings]);
 			});
 		}
-
 		var opt		= $.extend({}, $.fn.raty.defaults, settings),
 			$this	= $(this),
 			id		= $this.attr('id'),
@@ -89,9 +88,7 @@
 			fillStar($this, start);	
 		}
 
-		if (opt.halfShow) {
-			roundStar($this, start);
-		}
+		roundStar($this, start);
 
 		setTarget(start, opt);
 
@@ -101,7 +98,7 @@
 			name:	opt.scoreName
 		}).appendTo($this);
 
-		if (isValidStart) {
+		if (isValidStart && opt.start > 0) {
 			$score.val(start);
 		}
 
@@ -171,7 +168,7 @@
 
 				fillStar(context, value);
 
-				roundStar(context, value);
+				showHalf(context, value);
 
 				if (opt.precision) {
 					value = (value - diff + position).toFixed(1);
@@ -307,16 +304,28 @@
 
 		if (diff > .25) {
 			var opt		= context.data('options'),
-				icon	= opt.starOn;			// Rounded up: [x.76 ... x.99]
+				icon	= opt.starOn;						// Full up: [x.76 ... x.99]
 
-			if (diff < .76 && (opt.half || opt.halfShow)) {	// Half star: [x.26 ... x.75]
+			if (diff < .76 && opt.halfShow) {				// Half: [x.26 ... x.75]
 				icon = opt.starHalf;
+			} else if (diff <= .5 ) {						// Full down: [x.00 .. x.5]
+				icon = opt.starOff;
 			}
 
 			$('img#' + context.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + icon);
-		}										// Rounded down: [x.00 ... x.25]
+		}													// Full down: [x.00 ... x.25]
 	};
 
+	function showHalf(context, score) {
+		var diff = (score - Math.floor(score)).toFixed(2);
+
+		if (diff > .25 && diff < .76) {
+			var opt	= context.data('options');
+
+			$('img#' + context.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + opt.starHalf);
+		}
+	};
+	
 	$.fn.raty.cancel = function(idOrClass, isClickIn) {
 		var isClick = (isClickIn === undefined) ? false : true;
 
