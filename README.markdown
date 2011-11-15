@@ -1,6 +1,6 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
-jQuery Raty is a plugin that generates a customizable star rating automatically.
+jQuery Raty is a plugin that generates a customizable star rating.
 
 ## License
 

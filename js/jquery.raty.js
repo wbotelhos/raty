@@ -1,8 +1,8 @@
 /*!
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
- * ---------------------------------------------------------------------------------
+ * ---------------------------------------------------------------------
  *
- * jQuery Raty is a plugin that generates a customizable star rating automatically.
+ * jQuery Raty is a plugin that generates a customizable star rating.
  *
  * Licensed under The MIT License
  *
@@ -13,7 +13,7 @@
  * @twitter        twitter.com/wbotelhos
  *
  * Usage with default values:
- * ---------------------------------------------------------------------------------
+ * ---------------------------------------------------------------------
  * $('#star').raty();
  *
  * <div id="star"></div>
@@ -352,11 +352,13 @@
 			if (opt.halfShow) {
 				methods.roundStar.call(this, score);
 			}
-	
-			$('input#' + id + '-score').val(score);
+
+			if (score != '') {
+				$('input#' + id + '-score').val(score);
+			}
 	
 			if (opt.readOnly || this.css('cursor') == 'default') {
-				methods.fixHint.call(this, score);
+				methods.fixHint.call(this, score); // TODO evitar chamar sempre. function chamar direto.
 			}
 		}
 	};
