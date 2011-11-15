@@ -143,7 +143,7 @@
 		}, bindAll: function(opt) {
 			var $this	= this,
 				id		= this.attr('id'),
-				$score	= $('input#' + id + '-score'),
+				$score	= $('#' + id + '-score'),
 				$stars	= this.children('img.' + id);
 
 			this.mouseleave(function() {
@@ -214,32 +214,32 @@
 			var opt		= this.data('options'),
 				id		= this.attr('id'),
 				qtyStar	= this.children('img.' + id).length,
-				item	= 0,
-				$stars	,
-				icon	,
-				star	;
-	
+				count	= 0,
+				$star	,
+				star	,
+				icon	;
+
 			for (var i = 1; i <= qtyStar; i++) {
-				$stars = this.children('img#' + id + '-' + i);
-	
-				if (opt.iconRange && opt.iconRange.length > item) {
-					star = opt.iconRange[item];
+				$star = this.children('#' + id + '-' + i);
+
+				if (opt.iconRange && opt.iconRange.length > count) {
+					star = opt.iconRange[count];
 					icon = (i <= score) ? star.on : star.off;
-	
+
 					if (!icon) {
 						icon = opt.starOff;
 					}
-	
+
 					if (i <= star.range) {
-						$stars.attr('src', opt.path + icon);
+						$star.attr('src', opt.path + icon);
 					}
-	
+
 					if (i == star.range) {
-						item++;
+						count++;
 					}
 				} else {
 					icon = (i <= score) ? opt.starOn : opt.starOff;
-					$stars.attr('src', opt.path + icon);
+					$star.attr('src', opt.path + icon);
 				}
 			}
 		}, fixHint: function(score) {
@@ -340,13 +340,7 @@
 		}, initialize: function(score) {
 			var opt	= this.data('options'),
 				id	= this.attr('id');
-	
-			if (isNaN(parseInt(score, 10))) {
-				this.children('img.' + id).attr('src', opt.path + opt.starOff);
-				$('input#' + id + '-score').removeAttr('value');
-				return;
-			}
-	
+
 			if (score < 0) {
 				score = 0;
 			} else if (score > opt.number) {
@@ -354,7 +348,7 @@
 			}
 
 			methods.fillStar.call(this, score);
-	
+
 			if (opt.halfShow) {
 				methods.roundStar.call(this, score);
 			}

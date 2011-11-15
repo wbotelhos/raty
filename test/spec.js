@@ -234,7 +234,7 @@ describe('Using ID', function() {
 
 		var $imgs = $star.children('img');
 
-		$imgs.eq(1).mouseover().click().mouseout();
+		$imgs.eq(1).mouseover().click().mouseleave();
 
 		// then
 		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
@@ -274,7 +274,7 @@ describe('Using ID', function() {
 
 		var $imgs = $star.children('img');
 
-		$imgs.eq(1).mouseover().click().mouseout();
+		$imgs.eq(1).mouseover().click().mouseleave();
 
 		// then
 		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
@@ -297,7 +297,7 @@ describe('Using ID', function() {
 			}
 		});
 
-		$star.children('img').eq(3).mouseover().click().mouseout();
+		$star.children('img').eq(3).mouseover().click().mouseleave();
 
 		// then
 		expect($star).toHaveAttr('title', 4);
@@ -315,7 +315,7 @@ describe('Using ID', function() {
 			}
 		});
 
-		$star.children('img').eq(3).mouseover().click().mouseout();
+		$star.children('img').eq(3).mouseover().click().mouseleave();
 
 		// then
 		expect($star).toHaveAttr('title', 4);
@@ -424,7 +424,7 @@ describe('Using ID', function() {
 			$imgs	= $star.children('img');
 
 		// when
-		$star.children('img:first').mouseover().click().mouseout();
+		$star.children('img:first').mouseover().click().mouseleave();
 
 		// then
 		expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
@@ -474,7 +474,7 @@ describe('Using ID', function() {
 		var $star = $('#star').raty({ cancel: true, click: function(score, evt) { $(this).attr('title', score); } });
 
 		// when
-		$star.children('img:first').mouseover().click().mouseout();
+		$star.children('img:first').mouseover().click().mouseleave();
 
 		// then
 		expect($star).toHaveAttr('title', null);
@@ -860,6 +860,63 @@ describe('Using ID', function() {
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/face-d.png');
 	});
 
+	it('should set off range icons on mouseleave', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({
+			iconRange: [
+				{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
+				{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
+				{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
+				{ range: 5, on: 'face-d.png', off: 'face-d-off.png' },
+			],
+            starOff: 'face-off.png'
+		});
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(4).mouseover();
+		$star.mouseleave();
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/face-a-off.png');
+		expect($imgs.eq(1)).toHaveAttr('src', 'img/face-a-off.png');
+		expect($imgs.eq(2)).toHaveAttr('src', 'img/face-b-off.png');
+		expect($imgs.eq(3)).toHaveAttr('src', 'img/face-c-off.png');
+		expect($imgs.eq(4)).toHaveAttr('src', 'img/face-d-off.png');
+	});
+
+	it('should keep the start value range icons on mouseleave', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({
+			iconRange: [
+				{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
+				{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
+				{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
+				{ range: 5, on: 'face-d.png' }
+			],
+            starOff: 'face-off.png',
+            start: 1
+		});
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(4).mouseover();
+		$star.mouseleave();
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/face-a.png');
+		expect($imgs.eq(1)).toHaveAttr('src', 'img/face-a-off.png');
+		expect($imgs.eq(2)).toHaveAttr('src', 'img/face-b-off.png');
+		expect($imgs.eq(3)).toHaveAttr('src', 'img/face-c-off.png');
+		expect($imgs.eq(4)).toHaveAttr('src', 'img/face-off.png');
+	});
+
 	it('should calculate the right icon size', function() {
 		// given
 		var $star	= $('#star'),
@@ -902,7 +959,7 @@ describe('Using ID', function() {
 		$hint.remove();
 	});
 
-	it('should set a target on div with mouseover but take off when mouseout', function() {
+	it('should set a target on div with mouseover but take off when mouseleave', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
@@ -910,7 +967,7 @@ describe('Using ID', function() {
 			$star = $('#star').raty({ target: '#hint' });
 
 		// when
-		$star.children('img').eq(3).mouseover().mouseout();
+		$star.children('img').eq(3).mouseover().mouseleave();
 
 		// then
 		expect($hint).toHaveHtml('');
@@ -918,7 +975,7 @@ describe('Using ID', function() {
 		$hint.remove();
 	});
 
-	it('should set a target on div with mouseover and click but take off when mouseout', function() {
+	it('should set a target on div with mouseover and click but take off when mouseleave', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
@@ -926,7 +983,7 @@ describe('Using ID', function() {
 			$star = $('#star').raty({ target: '#hint' });
 
 		// when
-		$star.children('img').eq(3).mouseover().click().mouseout();
+		$star.children('img').eq(3).mouseover().click().mouseleave();
 
 		// then
 		expect($hint).toHaveHtml('');
@@ -1018,7 +1075,7 @@ describe('Using ID', function() {
 		$hint.remove();
 	});
 
-	it('should set number hint and keep it on mouseout', function() {
+	it('should set number hint and keep it on mouseleave', function() {
 		$('body').append('<select id="hint"><option value="">--</option><option value="4">4</option></select>');
 
 		// given
@@ -1026,7 +1083,7 @@ describe('Using ID', function() {
 			$star = $('#star').raty({ target: '#hint', targetType: 'number', targetKeep: true });
 
 		// when
-		$star.children('img').eq(3).mouseover().click().mouseout();
+		$star.children('img').eq(3).mouseover().click().mouseleave();
 
 		// then
 		expect($hint.val()).toEqual('4');
@@ -1069,7 +1126,7 @@ describe('Using ID', function() {
 			$star	= $('#star').raty({ target: '#hint', targetOutValue: message });
 
 		// when
-		$star.children('img').eq(3).mouseover().mouseout();
+		$star.children('img').eq(3).mouseover().mouseleave();
 
 		// then
 		expect($hint).toHaveHtml(message);
@@ -1085,7 +1142,7 @@ describe('Using ID', function() {
 			$star = $('#star').raty({ target: '#hint', targetKeep: true, targetOutValue: 'cancel this rating!' });
 
 		// when
-		$star.children('img').eq(3).mouseover().mouseout();
+		$star.children('img').eq(3).mouseover().mouseleave();
 
 		// then
 		expect($hint).toHaveHtml('good');
@@ -1211,7 +1268,7 @@ describe('Using class', function() {
 
 		// when
 
-		$imgs2.eq(3).mouseover().click().mouseout();
+		$imgs2.eq(3).mouseover().click().mouseleave();
 
 		// then
 	    expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-off.png');
@@ -1241,8 +1298,8 @@ describe('Using class', function() {
 			$imgs3 = $stars.eq(2).children('img');
 
 		// when
-		$imgs1.eq(3).mouseover().click().mouseout();
-		$imgs3.eq(3).mouseover().click().mouseout();
+		$imgs1.eq(3).mouseover().click().mouseleave();
+		$imgs3.eq(3).mouseover().click().mouseleave();
 
 		// then
 		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-on.png');
@@ -1272,9 +1329,9 @@ describe('Using class', function() {
 			$imgs3 = $stars.eq(2).children('img');
 
 		// when
-		$imgs1.eq(1).mouseover().mouseout();
-		$imgs2.eq(2).mouseover().mouseout();
-		$imgs3.eq(3).mouseover().mouseout();
+		$imgs1.eq(1).mouseover().mouseleave();
+		$imgs2.eq(2).mouseover().mouseleave();
+		$imgs3.eq(3).mouseover().mouseleave();
 
 		// then
 		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-off.png');
