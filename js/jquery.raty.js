@@ -182,24 +182,33 @@
 				}
 			});
 		}, cancel: function(isClick) {
-			if (isClick) {
-				methods.click.call(this, null);
-			} else {
-				methods.start.call(this, null);
-			}
-			this.children('input').removeAttr('value');
+			return this.each(function() {
+				var $this = $(this);
+
+				if (isClick) {
+					methods.click.call($this, null);
+				} else {
+					methods.start.call($this, null);
+				}
+
+				$this.children('input').removeAttr('value');
+			});
 		}, click: function(score) {
-			methods.initialize.call(this, score);
+			return this.each(function() {
+				var $this = $(this);
 
-			var opt = this.data('options');
+				methods.initialize.call($this, score);
 
-			if (opt.click) {
-				opt.click.call(this, score);
-			} else {
-				$.error(this.attr('id') + ': you must add the "click: function(score, evt) { }" callback.');
-			}
+				var opt = $this.data('options');
 
-			methods.setTarget.call(this, score, opt);
+				if (opt.click) {
+					opt.click.call($this, score);
+				} else {
+					$.error($this.attr('id') + ': you must add the "click: function(score, evt) { }" callback.');
+				}
+
+				methods.setTarget.call(this, score, opt);
+			});
 		}, fillStar: function(score) {
 			var opt		= this.data('options'),
 				id		= this.attr('id'),
@@ -245,21 +254,25 @@
 	
 			this.attr('title', hint).children('img').attr('title', hint);
 		}, readOnly: function(boo) {
-			var cancel = this.children('img.button-cancel');
+			return this.each(function() {
+				var $this = $(this);
 
-			if (cancel[0]) {
-				(boo) ? cancel.hide() : cancel.show();
-			}
+				var cancel = $this.children('img.button-cancel');
 
-			if (boo) {
-				$('img.' + this.attr('id')).unbind();
-				this.css('cursor', 'default').unbind();
-			} else {
-				var options = this.data('options');
+				if (cancel[0]) {
+					(boo) ? cancel.hide() : cancel.show();
+				}
 
-				methods.bindAll.call(this, options);
-				this.css('cursor', 'pointer');
-			}
+				if (boo) {
+					$('img.' + $this.attr('id')).unbind();
+					$this.css('cursor', 'default').unbind();
+				} else {
+					var options = $this.data('options');
+
+					methods.bindAll.call($this, options);
+					$this.css('cursor', 'pointer');
+				}
+			});
 		}, roundStar: function(score) {
 			var diff = (score - Math.floor(score)).toFixed(2);
 			
@@ -314,11 +327,15 @@
 				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + opt.starHalf);
 			}
 		}, start: function(score) {
-			methods.initialize.call(this, score);
+			return this.each(function() {
+				var $this = $(this);
 
-			var opt = this.data('options');
+				methods.initialize.call($this, score);
 
-			methods.setTarget.call(this, score, opt);
+				var opt = $this.data('options');
+
+				methods.setTarget.call($this, score, opt);
+			});
 		}, initialize: function(score) {
 			var opt	= this.data('options'),
 				id	= this.attr('id');

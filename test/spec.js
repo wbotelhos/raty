@@ -1,16 +1,16 @@
 describe('Using ID', function() {
 
 	beforeEach(function() {
-		$('body').append('<div id="raty"></div>');
+		$('body').append('<div id="star"></div>');
 	});
 
 	afterEach(function() {
-		$('#raty').remove();
+		$('#star').remove();
 	});
 
 	it('should chainable', function() {
 		// given
-		var $star		= $('#raty'),
+		var $star		= $('#star'),
 			className	= 'my-class';
 
 		// when
@@ -22,7 +22,7 @@ describe('Using ID', function() {
 
 	it('should change the path', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ path: '../img' });
@@ -39,7 +39,7 @@ describe('Using ID', function() {
 
 	it('should create the default stars', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty();
@@ -47,17 +47,17 @@ describe('Using ID', function() {
 		var $imgs = $star.children('img');
 
 		// then
-	    expect($imgs.eq(0)).toHaveClass('raty');
-	    expect($imgs.eq(1)).toHaveClass('raty');
-	    expect($imgs.eq(2)).toHaveClass('raty');
-	    expect($imgs.eq(3)).toHaveClass('raty');
-	    expect($imgs.eq(4)).toHaveClass('raty');
+	    expect($imgs.eq(0)).toHaveClass('star');
+	    expect($imgs.eq(1)).toHaveClass('star');
+	    expect($imgs.eq(2)).toHaveClass('star');
+	    expect($imgs.eq(3)).toHaveClass('star');
+	    expect($imgs.eq(4)).toHaveClass('star');
 
-	    expect($imgs.eq(0)).toHaveId('raty-1');
-	    expect($imgs.eq(1)).toHaveId('raty-2');
-	    expect($imgs.eq(2)).toHaveId('raty-3');
-	    expect($imgs.eq(3)).toHaveId('raty-4');
-	    expect($imgs.eq(4)).toHaveId('raty-5');
+	    expect($imgs.eq(0)).toHaveId('star-1');
+	    expect($imgs.eq(1)).toHaveId('star-2');
+	    expect($imgs.eq(2)).toHaveId('star-3');
+	    expect($imgs.eq(3)).toHaveId('star-4');
+	    expect($imgs.eq(4)).toHaveId('star-5');
 
 	    expect($imgs.eq(0)).toHaveAttr('title', 'bad');
 	    expect($imgs.eq(1)).toHaveAttr('title', 'poor');
@@ -76,7 +76,7 @@ describe('Using ID', function() {
 
 	it('should create 7 stars', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ number: 7 });
@@ -84,21 +84,21 @@ describe('Using ID', function() {
 		var $imgs = $star.children('img');
 
 		// then
-	    expect($imgs.eq(0)).toHaveClass('raty');
-	    expect($imgs.eq(1)).toHaveClass('raty');
-	    expect($imgs.eq(2)).toHaveClass('raty');
-	    expect($imgs.eq(3)).toHaveClass('raty');
-	    expect($imgs.eq(4)).toHaveClass('raty');
-	    expect($imgs.eq(5)).toHaveClass('raty');
-	    expect($imgs.eq(6)).toHaveClass('raty');
+	    expect($imgs.eq(0)).toHaveClass('star');
+	    expect($imgs.eq(1)).toHaveClass('star');
+	    expect($imgs.eq(2)).toHaveClass('star');
+	    expect($imgs.eq(3)).toHaveClass('star');
+	    expect($imgs.eq(4)).toHaveClass('star');
+	    expect($imgs.eq(5)).toHaveClass('star');
+	    expect($imgs.eq(6)).toHaveClass('star');
 
-	    expect($imgs.eq(0)).toHaveId('raty-1');
-	    expect($imgs.eq(1)).toHaveId('raty-2');
-	    expect($imgs.eq(2)).toHaveId('raty-3');
-	    expect($imgs.eq(3)).toHaveId('raty-4');
-	    expect($imgs.eq(4)).toHaveId('raty-5');
-	    expect($imgs.eq(5)).toHaveId('raty-6');
-	    expect($imgs.eq(6)).toHaveId('raty-7');
+	    expect($imgs.eq(0)).toHaveId('star-1');
+	    expect($imgs.eq(1)).toHaveId('star-2');
+	    expect($imgs.eq(2)).toHaveId('star-3');
+	    expect($imgs.eq(3)).toHaveId('star-4');
+	    expect($imgs.eq(4)).toHaveId('star-5');
+	    expect($imgs.eq(5)).toHaveId('star-6');
+	    expect($imgs.eq(6)).toHaveId('star-7');
 
 	    expect($imgs.eq(0)).toHaveAttr('title', 'bad');
 	    expect($imgs.eq(1)).toHaveAttr('title', 'poor');
@@ -119,7 +119,7 @@ describe('Using ID', function() {
 
 	it('should create the score field', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty();
@@ -127,7 +127,7 @@ describe('Using ID', function() {
 		var $score = $star.children('input');
 
 		// then
-	    expect($score).toHaveId('raty-score');
+	    expect($score).toHaveId('star-score');
 	    expect($score).toHaveAttr('type', 'hidden');
 	    expect($score).toHaveAttr('name', 'score');
 	    expect($score).toHaveValue(0);
@@ -135,7 +135,7 @@ describe('Using ID', function() {
 
 	it('should create a custom score name field', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ scoreName: 'entity.score' });
@@ -143,7 +143,7 @@ describe('Using ID', function() {
 		var $score = $star.children('input');
 
 		// then
-		expect($score).toHaveId('raty-score');
+		expect($score).toHaveId('star-score');
 		expect($score).toHaveAttr('type', 'hidden');
 		expect($score).toHaveAttr('name', 'entity.score');
 		expect($score).toHaveValue(0);
@@ -151,7 +151,7 @@ describe('Using ID', function() {
 
 	it('should be readonly with not rated yet message', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ readOnly: true });
@@ -168,7 +168,7 @@ describe('Using ID', function() {
 
 	it('should be started with 3 stars', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ start: 3 });
@@ -185,7 +185,7 @@ describe('Using ID', function() {
 
 	it('should be started with 3 stars and readOnly', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ readOnly: true, start: 3});
@@ -208,7 +208,7 @@ describe('Using ID', function() {
 
 	it('should be hovered 2 stars', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty();
@@ -227,7 +227,7 @@ describe('Using ID', function() {
 
 	it('should be clicked 2 stars', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty();
@@ -248,7 +248,7 @@ describe('Using ID', function() {
 
 	it('should not be hovered with readOnly', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ readOnly: true });
@@ -267,7 +267,7 @@ describe('Using ID', function() {
 
 	it('should not be clicked with readOnly', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ readOnly: true });
@@ -288,7 +288,7 @@ describe('Using ID', function() {
 
 	it('should execute click callback', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({
@@ -305,7 +305,7 @@ describe('Using ID', function() {
 
 	it('should have this as self element', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({
@@ -323,7 +323,7 @@ describe('Using ID', function() {
 
 	it('should create default cancel button', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ cancel: true });
@@ -340,7 +340,7 @@ describe('Using ID', function() {
 
 	it('should change cancel off button', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ cancel: true, cancelOff: 'new-cancel-off.png' });
@@ -357,7 +357,7 @@ describe('Using ID', function() {
 
 	it('should change cancel on button', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ cancel: true, cancelOn: 'new-cancel-on.png' });
@@ -374,7 +374,7 @@ describe('Using ID', function() {
 
 	it('should turn off the stars on mouseover on cancel button', function() {
 		// given
-		var $star	= $('#raty').raty({ start: 3, cancel: true }),
+		var $star	= $('#star').raty({ start: 3, cancel: true }),
 			$imgs	= $star.children('img');
 		
 		// when
@@ -390,7 +390,7 @@ describe('Using ID', function() {
 
 	it('should cancel the rating', function() {
 		// given
-		var $star	= $('#raty').raty({ start: 5, cancel: true }),
+		var $star	= $('#star').raty({ start: 5, cancel: true }),
 			$imgs	= $star.children('img');
 		// when
 		$star.children('img:first').mouseover().click().mouseout();
@@ -405,7 +405,7 @@ describe('Using ID', function() {
 
 	it('should create right cancel button', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ cancel: true, cancelPlace: 'right' });
@@ -422,7 +422,7 @@ describe('Using ID', function() {
 
 	it('should set hint for cancel button', function() {
 		// given
-		var $star	= $('#raty'),
+		var $star	= $('#star'),
 			hint	= 'remove my rating!';
 
 		// when
@@ -440,7 +440,7 @@ describe('Using ID', function() {
 
 	it('should execute cancel click callback', function() {
 		// given
-		var $star = $('#raty').raty({ cancel: true, click: function(score, evt) { $(this).attr('title', score); } });
+		var $star = $('#star').raty({ cancel: true, click: function(score, evt) { $(this).attr('title', score); } });
 
 		// when
 		$star.children('img:first').mouseover().click().mouseout();
@@ -452,7 +452,7 @@ describe('Using ID', function() {
 
 	it('should round down on max limit down with no half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ half: false, halfShow: false, start: 1.5 });
@@ -469,7 +469,7 @@ describe('Using ID', function() {
 
 	it('should round up on min limit up with no half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ half: false, halfShow: false, start: 1.6 });
@@ -486,7 +486,7 @@ describe('Using ID', function() {
 
 	it('should round down on max limit down with half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: true, halfShow: true, start: 1.25 });
@@ -506,7 +506,7 @@ describe('Using ID', function() {
 
 	it('should show half on min limit half with half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: true, halfShow: true, start: 1.26 });
@@ -526,7 +526,7 @@ describe('Using ID', function() {
 
 	it('should show half on max limit half with half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: true, halfShow: true, start: 1.75 });
@@ -546,7 +546,7 @@ describe('Using ID', function() {
 
 	it('should show round up on min limit up with half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: true, halfShow: true, start: 1.76 });
@@ -566,7 +566,7 @@ describe('Using ID', function() {
 
 	it('should round down on max limit down with half and no halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ half: true, halfShow: false, start: 1.25 });
@@ -586,7 +586,7 @@ describe('Using ID', function() {
 
 	it('should round down on min limit half with half and no halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ half: true, halfShow: false, start: 1.26 });
@@ -606,7 +606,7 @@ describe('Using ID', function() {
 
 	it('should round up on max limit half with half and no halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: true, halfShow: false, start: 1.75 });
@@ -626,7 +626,7 @@ describe('Using ID', function() {
 
 	it('should round up on min limit up with half and no halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: true, halfShow: false, start: 1.76 });
@@ -646,7 +646,7 @@ describe('Using ID', function() {
 
 	it('should round down on max limit down with no half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ half: false, halfShow: true, start: 1.25 });
@@ -666,7 +666,7 @@ describe('Using ID', function() {
 
 	it('should show half on min limit half with no half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: false, halfShow: true, start: 1.26 });
@@ -686,7 +686,7 @@ describe('Using ID', function() {
 
 	it('should show half on max limit half with no half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: false, halfShow: true, start: 1.75 });
@@ -706,7 +706,7 @@ describe('Using ID', function() {
 
 	it('should show round up on min limit up with no half and halfShow', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 		
 		// when
 		$star.raty({ half: false, halfShow: true, start: 1.76 });
@@ -726,7 +726,7 @@ describe('Using ID', function() {
 
 	it('should set custom hints', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ hintList: ['a', '', null, 'd', '5'] });
@@ -743,7 +743,7 @@ describe('Using ID', function() {
 
 	it('should change the star off', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ starOff: 'medal-off.png' });
@@ -760,7 +760,7 @@ describe('Using ID', function() {
 
 	it('should change the star on', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({ starOn: 'medal-on.png' });
@@ -779,7 +779,7 @@ describe('Using ID', function() {
 
 	it('should use range icons', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({
@@ -804,7 +804,7 @@ describe('Using ID', function() {
 
 	it('should hover range icons', function() {
 		// given
-		var $star = $('#raty');
+		var $star = $('#star');
 
 		// when
 		$star.raty({
@@ -831,7 +831,7 @@ describe('Using ID', function() {
 
 	it('should calculate the right icon size', function() {
 		// given
-		var $star	= $('#raty'),
+		var $star	= $('#star'),
 			size	= 24,
 			number	= 5;
 
@@ -844,7 +844,7 @@ describe('Using ID', function() {
 
 	it('should calculate the right icon size with cancel button', function() {
 		// given
-		var $star	= $('#raty'),
+		var $star	= $('#star'),
 			size	= 24,
 			number	= 5;
 
@@ -860,7 +860,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint' });
+			$star = $('#star').raty({ target: '#hint' });
 
 		// when
 		$star.children('img').eq(3).mouseover();
@@ -876,7 +876,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint' });
+			$star = $('#star').raty({ target: '#hint' });
 
 		// when
 		$star.children('img').eq(3).mouseover().mouseout();
@@ -892,7 +892,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint' });
+			$star = $('#star').raty({ target: '#hint' });
 
 		// when
 		$star.children('img').eq(3).mouseover().click().mouseout();
@@ -908,7 +908,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({
+			$star = $('#star').raty({
 			cancel:     true,
 			cancelHint: 'none',
 			target:     '#hint',
@@ -928,7 +928,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint' });
+			$star = $('#star').raty({ target: '#hint' });
 
 		// when
 		$star.children('img').eq(3).mouseover();
@@ -944,7 +944,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint' });
+			$star = $('#star').raty({ target: '#hint' });
 
 		// when
 		$star.children('img').eq(3).mouseover();
@@ -960,7 +960,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint' });
+			$star = $('#star').raty({ target: '#hint' });
 
 		// when
 		$star.children('img').eq(3).mouseover();
@@ -976,7 +976,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint', targetType: 'number' });
+			$star = $('#star').raty({ target: '#hint', targetType: 'number' });
 
 		// when
 		$star.children('img').eq(3).mouseover();
@@ -992,7 +992,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint', targetType: 'number', targetKeep: true });
+			$star = $('#star').raty({ target: '#hint', targetType: 'number', targetKeep: true });
 
 		// when
 		$star.children('img').eq(3).mouseover().click().mouseout();
@@ -1005,7 +1005,7 @@ describe('Using ID', function() {
 
 	it('should create stars without space', function() {
 		// given
-		var $star	= $('#raty');
+		var $star	= $('#star');
 			size	= 16,
 			number	= 5;
 
@@ -1018,7 +1018,7 @@ describe('Using ID', function() {
 
 	it('should create stars with cancel without space', function() {
 		// given
-		var $star	= $('#raty');
+		var $star	= $('#star');
 			size	= 16,
 			number	= 5;
 
@@ -1035,7 +1035,7 @@ describe('Using ID', function() {
 		// given
 		var message	= 'cancel this rating!',
 			$hint	= $('#hint'),
-			$star	= $('#raty').raty({ target: '#hint', targetOutValue: message });
+			$star	= $('#star').raty({ target: '#hint', targetOutValue: message });
 
 		// when
 		$star.children('img').eq(3).mouseover().mouseout();
@@ -1051,7 +1051,7 @@ describe('Using ID', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint', targetKeep: true, targetOutValue: 'cancel this rating!' });
+			$star = $('#star').raty({ target: '#hint', targetKeep: true, targetOutValue: 'cancel this rating!' });
 
 		// when
 		$star.children('img').eq(3).mouseover().mouseout();
@@ -1067,16 +1067,16 @@ describe('Using ID', function() {
 describe('Using class', function() {
 
 	beforeEach(function() {
-		$('body').append('<div class="raty"></div><div class="raty"></div><div class="raty"></div>');
+		$('body').append('<div class="star"></div><div class="star"></div><div class="star"></div>');
 	});
 
 	afterEach(function() {
-		$('.raty').remove();
+		$('.star').remove();
 	});
 
 	it('should create the default stars', function() {
 		// given
-		var $stars = $('.raty');
+		var $stars = $('.star');
 
 		// when
 		$stars.raty();
@@ -1143,7 +1143,7 @@ describe('Using class', function() {
 
 	it('should select first raty', function() {
 		// given
-		var $stars = $('.raty').raty(),
+		var $stars = $('.star').raty(),
 			$imgs1 = $stars.eq(0).children('img'),
 			$imgs2 = $stars.eq(1).children('img'),
 			$imgs3 = $stars.eq(2).children('img');
@@ -1173,7 +1173,7 @@ describe('Using class', function() {
 
 	it('should click second raty', function() {
 		// given
-		var $stars = $('.raty').raty(),
+		var $stars = $('.star').raty(),
 			$imgs1 = $stars.eq(0).children('img'),
 			$imgs2 = $stars.eq(1).children('img'),
 			$imgs3 = $stars.eq(2).children('img');
@@ -1204,7 +1204,7 @@ describe('Using class', function() {
 
 	it('should click on first and third raty', function() {
 		// given
-		var $stars = $('.raty').raty(),
+		var $stars = $('.star').raty(),
 			$imgs1 = $stars.eq(0).children('img'),
 			$imgs2 = $stars.eq(1).children('img'),
 			$imgs3 = $stars.eq(2).children('img');
@@ -1235,7 +1235,7 @@ describe('Using class', function() {
 
 	it('should hover all and out', function() {
 		// given
-		var $stars = $('.raty').raty(),
+		var $stars = $('.star').raty(),
 			$imgs1 = $stars.eq(0).children('img'),
 			$imgs2 = $stars.eq(1).children('img'),
 			$imgs3 = $stars.eq(2).children('img');
@@ -1267,19 +1267,19 @@ describe('Using class', function() {
 
 });
 
-describe('Using function', function() {
+describe('Using function with id', function() {
 
 	beforeEach(function() {
-		$('body').append('<div id="raty"></div>');
+		$('body').append('<div id="star"></div>');
 	});
 
 	afterEach(function() {
-		$('#raty').remove();
+		$('#star').remove();
 	});
 
 	it('should start the start with 3 stars', function() {
 		// given
-		var $star = $('#raty').raty();
+		var $star = $('#star').raty();
 
 		// when
 		$star.raty('start', 3);
@@ -1296,7 +1296,7 @@ describe('Using function', function() {
 
 	it('should set readOnly', function() {
 		// given
-		var $star = $('#raty').raty();
+		var $star = $('#star').raty();
 
 		// when
 		$star.raty('readOnly', true);
@@ -1315,7 +1315,7 @@ describe('Using function', function() {
 
 	it('should unset readOnly', function() {
 		// given
-		var $star = $('#raty').raty();
+		var $star = $('#star').raty();
 
 		// when
 		$star.raty('readOnly', true);
@@ -1336,7 +1336,7 @@ describe('Using function', function() {
 
 	it('should cancel without click', function() {
 		// given
-		var $star = $('#raty').raty({ start: 1 });
+		var $star = $('#star').raty({ start: 1 });
 
 		// when
 		$star.raty('cancel');
@@ -1355,7 +1355,7 @@ describe('Using function', function() {
 
 	it('should cancel with click', function() {
 		// given
-		var $star = $('#raty').raty({
+		var $star = $('#star').raty({
 			click: function(score, evt) {
 				this.attr('title', (score === null) ? 'null' : score);
 			},
@@ -1375,12 +1375,16 @@ describe('Using function', function() {
 	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
 
 	    expect($star).toHaveAttr('title', 'null');
-	    expect($star).not.toHaveAttr('value');
+	    expect($star.children('input').val()).toEqual('');
 	});
 
 	it('should click the star 3', function() {
 		// given
-		var $star = $('#raty').raty({ click: function() { this.addClass('my-class'); }});
+		var $star = $('#star').raty({
+			click: function(score, evt) {
+				this.attr('title', score);
+			}
+		});
 
 		// when
 		$star.raty('click', 3);
@@ -1393,8 +1397,7 @@ describe('Using function', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-
-		expect($star).toHaveClass('my-class');
+		expect($star).toHaveAttr('title', 3);
 	});
 
 	it('should set a target on div with mouseover', function() {
@@ -1402,7 +1405,7 @@ describe('Using function', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint', targetKeep: true, click: function(score, evt) { } });
+			$star = $('#star').raty({ target: '#hint', targetKeep: true, click: function(score, evt) { } });
 
 		// when
 		$star.raty('click', 4);
@@ -1418,7 +1421,7 @@ describe('Using function', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ target: '#hint', targetKeep: true });
+			$star = $('#star').raty({ target: '#hint', targetKeep: true });
 
 		// when
 		$star.raty('start', 4);
@@ -1434,7 +1437,7 @@ describe('Using function', function() {
 
 		// given
 		var $hint = $('#hint'),
-			$star = $('#raty').raty({ cancel: true, target: '#hint', targetKeep: true });
+			$star = $('#star').raty({ cancel: true, target: '#hint', targetKeep: true });
 
 		// when
 		$star.raty('cancel');
@@ -1445,4 +1448,309 @@ describe('Using function', function() {
 		$hint.remove();
 	});
 
+});
+
+describe('Using function with class', function() {
+	
+	beforeEach(function() {
+		$('body').append('<div class="star"></div><div class="star"></div><div class="star"></div>');
+	});
+
+	afterEach(function() {
+		$('.star').remove();
+	});
+
+	it('should start the starts with 3 stars', function() {
+		// given
+		var $stars = $('.star').raty();
+
+		// when
+		$stars.raty('start', 3);
+
+		// then
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+	
+	it('should set readOnly', function() {
+		// given
+		var $stars = $('.star').raty();
+
+		// when
+		$stars.raty('readOnly', true);
+
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+	
+		$imgs1.eq(3).mouseover().click();
+		$imgs2.eq(3).mouseover().click();
+		$imgs3.eq(3).mouseover().click();
+
+		// then
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should unset readOnly', function() {
+		// given
+		var $stars = $('.star').raty();
+
+		// when
+		$stars.raty('readOnly', true).raty('readOnly', false);
+
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+
+		$imgs1.eq(3).mouseover().click();
+		$imgs2.eq(3).mouseover().click();
+		$imgs3.eq(3).mouseover().click();
+
+		// then
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+	
+	it('should cancel without click', function() {
+		// given
+		var $stars = $('.star').raty({ start: 1 });
+
+		// when
+		$stars.raty('cancel');
+
+		// then
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(0).children('input').val()).toEqual('');
+
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(1).children('input').val()).toEqual('');
+
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(2).children('input').val()).toEqual('');
+	});
+	
+	it('should cancel with click', function() {
+		// given
+		var $stars = $('.star').raty({
+			click: function(score, evt) {
+				this.attr('title', (score === null) ? 'null' : score);
+			},
+			start: 1
+		});
+
+		// when
+		$stars.raty('cancel', true);
+
+		// then
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+	
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(0)).toHaveAttr('title', 'null');
+		expect($stars.eq(0).children('input').val()).toEqual('');
+
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(1)).toHaveAttr('title', 'null');
+		expect($stars.eq(1).children('input').val()).toEqual('');
+
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(1)).toHaveAttr('title', 'null');
+		expect($stars.eq(2).children('input').val()).toEqual('');
+	});
+
+	it('should click the star 3', function() {
+		// given
+		var $stars = $('.star').raty({
+			click: function(score, evt) {
+				this.attr('title', score);
+			}
+		});
+
+		// when
+		$stars.raty('click', 3);
+
+		// then
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+	
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(0)).toHaveAttr('title', 3);
+
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(1)).toHaveAttr('title', 3);
+
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(2)).toHaveAttr('title', 3);
+	});
+	
+	it('should set a target on div with click', function() {
+		$('body').append('<div id="hint1"></div><div id="hint2"></div><div id="hint3"></div>');
+
+		// given
+		var $hint1	= $('#hint1'),
+			$hint2	= $('#hint2'),
+			$hint3	= $('#hint3'),
+			$stars	= $('.star');
+
+		$stars.eq(0).raty({ target: '#hint1', targetKeep: true, click: function(score, evt) { } });
+		$stars.eq(1).raty({ target: '#hint2', targetKeep: true, click: function(score, evt) { } });
+		$stars.eq(2).raty({ target: '#hint3', targetKeep: true, click: function(score, evt) { } });
+
+		// when
+		$stars.raty('click', 4);
+
+		// then
+		expect($hint1).toHaveHtml('good');
+		expect($hint2).toHaveHtml('good');
+		expect($hint3).toHaveHtml('good');
+
+		$hint1.remove();
+		$hint2.remove();
+		$hint3.remove();
+	});
+	
+	it('should set a target on div with start', function() {
+		$('body').append('<div id="hint1"></div><div id="hint2"></div><div id="hint3"></div>');
+
+		// given
+		var $hint1	= $('#hint1'),
+			$hint2	= $('#hint2'),
+			$hint3	= $('#hint3'),
+			$stars	= $('.star');
+	
+		$stars.eq(0).raty({ target: '#hint1', targetKeep: true, click: function(score, evt) { } });
+		$stars.eq(1).raty({ target: '#hint2', targetKeep: true, click: function(score, evt) { } });
+		$stars.eq(2).raty({ target: '#hint3', targetKeep: true, click: function(score, evt) { } });
+
+		// when
+		$stars.raty('start', 4);
+
+		// then
+		expect($hint1).toHaveHtml('good');
+		expect($hint2).toHaveHtml('good');
+		expect($hint3).toHaveHtml('good');
+
+		$hint1.remove();
+		$hint2.remove();
+		$hint3.remove();
+	});
+
+	it('should set a target on div with cancel', function() {
+		$('body').append('<div id="hint1"></div><div id="hint2"></div><div id="hint3"></div>');
+
+		// given
+		var $hint1	= $('#hint1'),
+			$hint2	= $('#hint2'),
+			$hint3	= $('#hint3'),
+			$stars	= $('.star');
+	
+		$stars.eq(0).raty({ cancel: true, target: '#hint1', targetKeep: true, click: function(score, evt) { } });
+		$stars.eq(1).raty({ cancel: true, target: '#hint2', targetKeep: true, click: function(score, evt) { } });
+		$stars.eq(2).raty({ cancel: true, target: '#hint3', targetKeep: true, click: function(score, evt) { } });
+
+		// when
+		$stars.raty('cancel');
+
+		// then
+		expect($hint1).toHaveHtml('cancel this rating!');
+		expect($hint2).toHaveHtml('cancel this rating!');
+		expect($hint3).toHaveHtml('cancel this rating!');
+
+		$hint1.remove();
+		$hint2.remove();
+		$hint3.remove();
+	});
+	
 });
