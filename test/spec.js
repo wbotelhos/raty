@@ -930,6 +930,32 @@ describe('Using ID', function() {
 		expect($star.width()).toEqual(number * size + number * 4);
 	});
 
+	it('should set custom width', function() {
+		// given
+		var $star	= $('#star'),
+			size	= 24,
+			number	= 5;
+
+		// when
+		$star.raty({ size: size, width: 200 });
+
+		// then
+		expect($star.width()).toEqual(200);
+	});
+
+	it('should set custom width when readOnly', function() {
+		// given
+		var $star	= $('#star'),
+			size	= 24,
+			number	= 5;
+
+		// when
+		$star.raty({ readOnly: true, size: size, width: 200 });
+
+		// then
+		expect($star.width()).toEqual(200);
+	});
+
 	it('should calculate the right icon size with cancel button', function() {
 		// given
 		var $star	= $('#star'),

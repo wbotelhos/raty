@@ -9,6 +9,7 @@
 + Added attribute 'precision' to be able rating with precision values, without star representation;
 + Added attribute 'space' to be able take off the spaces between the star;
 + Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
++ Fixed bug that not set custom width when readOnly is enabled;
 + Fixed the functions start() and click() to set the value on target when 'target' is enabled;
 + Fixed the 'target' option to work with half option;
 + Refactored the code to make it cleanner and faster;

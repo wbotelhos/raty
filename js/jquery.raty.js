@@ -35,8 +35,7 @@
 				var opt		= $.extend({}, $.fn.raty.defaults, options),
 					$this	= $(this),
 					id		= $this.attr('id'),
-					space	= (opt.space) ? 4 : 0, 
-					width	= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
+					space	= (opt.space) ? 4 : 0;
 
 					if (id === undefined || id == '') {
 						id = 'raty-' + $this.index();
@@ -44,7 +43,7 @@
 					}
 			
 					$this.data('options', opt);
-			
+
 					if (opt.number > 20) {
 						opt.number = 20;
 					} else if (opt.number < 0) {
@@ -96,8 +95,13 @@
 					if (isValidStart && opt.start > 0) {
 						$score.val(start);
 					}
-			
-					if (!opt.readOnly) {
+
+					var width = (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
+
+					if (opt.readOnly) {
+						$this.css('cursor', 'default');
+						methods.fixHint.call($this, start);
+					} else {
 						if (opt.cancel) {
 							var stars	= $this.children('img.' + id),
 								cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="button-cancel"/>';
@@ -125,20 +129,16 @@
 						          opt.click.call($this, null, evt);
 						        }
 							});
-			
-							$this.css('width', width + opt.size + space);
-						} else {
-							$this.css('width', width);
+
+							width += opt.size + space;
 						}
-			
+
 						$this.css('cursor', 'pointer');
 			
 						methods.bindAll.call($this, opt);
-					} else {
-						$this.css('cursor', 'default');
-						methods.fixHint.call($this, start);
 					}
 
+					$this.css('width', width);
 			});
 		}, bindAll: function(opt) {
 			var $this	= this,
