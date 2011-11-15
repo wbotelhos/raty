@@ -297,7 +297,7 @@
 							}
 						}
 
-						if ($target.is('input') || $target.is('select') || $target.is('textarea')) {
+						if ($target.is(':input')) {
 							$target.val(value);
 						} else {
 							$target.html(value);
