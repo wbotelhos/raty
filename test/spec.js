@@ -1029,6 +1029,39 @@ describe('Using ID', function() {
 		expect($star.width()).toEqual(number * size + number * (4 * 0) + 16 + (4 * 0));
 	});
 
+	it('should set the target with targetOutValue', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var message	= 'cancel this rating!',
+			$hint	= $('#hint'),
+			$star	= $('#raty').raty({ target: '#hint', targetOutValue: message });
+
+		// when
+		$star.children('img').eq(3).mouseover().mouseout();
+
+		// then
+		expect($hint).toHaveHtml(message);
+
+		$hint.remove();
+	});
+
+	it('should not to set the target with targetOutValue when targetKeep is enabled', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint', targetKeep: true, targetOutValue: 'cancel this rating!' });
+
+		// when
+		$star.children('img').eq(3).mouseover().mouseout();
+
+		// then
+		expect($hint).toHaveHtml('good');
+
+		$hint.remove();
+	});
+
 });
 
 describe('Using class', function() {

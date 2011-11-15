@@ -62,11 +62,11 @@
 
 			.left { float: left; }
 
-			div#target { float: left; }
+			div#target, #target-out { float: left; }
 
 			div#target-number { float: left; }
 
-			div#hint { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
+			div#hint, #hint-out { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
 
 			div#precision { float: left; }
 
@@ -94,7 +94,7 @@
 				<a href="http://wbotelhos.com/raty">jQuery Raty - A Star Rating Plugin</a>
 				<span id="version">(current version: 1.4.3)</span>
 			</div>
-	
+
 			<div id="menu">
 				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-1.4.3.zip" target="_blank">Download</a> |
 				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
@@ -106,98 +106,98 @@
 				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin/#comments" target="_blank" style="color: #2C8CBD;">Doubt</a> |
 				<a href="http://www.wbotelhos.com/lab" target="_blank" style="color: #000;">yLab</a>
 			</div>
-	
+
 			<a id="coffee" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Raty" target="_blank">buy me a coffee</a>
-	
+
 			<div class="description">jQuery <strong>Raty</strong> is a plugin that generates a customizable star rating automatically.</div>
 		</div>
 
 		<div id="content">
 			<div id="default-demo" class="session-first">With default options:</div>
-	
+
 			<div id="default"></div>
-	
+
 			<div class="source">
-				$('#default').raty();<br/><br/>
-				
-				&lt;div id="default"&gt;&lt;/div&gt;
+				$('#star').raty();<br/><br/>
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
-	
+
 			<div id="fixed-demo" class="session">Started with a score and read only value:</div>
 			<div id="fixed"></div>
-	
+
 			<div class="source">
-			 	$('#fixed').raty({<br/>
+			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;readOnly: true,<br/>
 				&nbsp;&nbsp;start:&nbsp;&nbsp;&nbsp;&nbsp;2<br/>
 				});<br/><br/>
 				
-				&lt;div id="fixed"&gt;&lt;/div&gt;
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
 
 			<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
 			<div id="anyone"></div>
-	
+
 			<div class="source">
-			 	$('#anyone').raty({<br/>
+			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;readOnly:&nbsp;&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;noRatedMsg: 'anyone rated this product yet!'<br/>
 				});<br/><br/>
-			   
-				&lt;div id="anyone"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
-	
+
 			<div id="number-demo" class="session">With a custom score name and a number of stars:</div>
 			<div id="number"></div>
-			
+
 			<div class="source">
-			 	$('#number').raty({<br/>
+			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;scoreName: 'entity.score',<br/>
 				&nbsp;&nbsp;number:&nbsp;&nbsp;&nbsp;&nbsp;10<br/>
 				});<br/><br/>
-			   
-				&lt;div id="number"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
-	
+
 			<div id="click-demo" class="session">Using click function:</div>
 			<div id="click"></div>
-	
+
 			<div class="source">
-			 	$('#click').raty({<br/>
+			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;click: function(score, evt) {<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);<br/>
 				&nbsp;&nbsp;}<br/>
 				});<br/><br/>
-			   
-				&lt;div id="click"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div><br/>
-	
+
 			<span class="comment">
 				 - The argument score is the selected value;<br/>
 				 - The argument evt is the click event;<br/>
 				 - You can mension the star element itself using 'this'.<br/>
 			</span>
-	
+
 			<div id="cancel-demo" class="session">With a default cancel button:</div>
 			<div id="cancel"></div>
-	
+
 			<div class="source">
-			 	$('#cancel').raty({<br/>
+			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;cancel: true<br/>
 				});<br/><br/>
-			   
-				&lt;div id="cancel"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div><br/>
-	
+
 			<span class="comment">
 				 - The score value for the click on cancel button is null.<br/>
 			</span>
-	
+
 			<div id="cancel-custom-demo" class="session">With a custom cancel button:</div>
 			<div id="cancel-custom"></div>
-	
+
 			<div class="source">
-			 	$('#cancel-custom').raty({<br/>
+			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;'remove my rating!',<br/>
 				&nbsp;&nbsp;cancelPlace: 'right',<br/>
@@ -205,22 +205,22 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;alert('score: ' + score);<br/>
 				&nbsp;&nbsp;}<br/>
 				});<br/><br/>
-			   
-				&lt;div id="cancel-custom"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
-	
+
 			<div id="half-demo" class="session">Enabling half star voting:</div>
 			<div id="half"></div>
-	
+
 			<div class="source">
-			 	$('#half').raty({<br/>
+			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;start: 3.3<br/>
 				});<br/><br/>
-			   
-				&lt;div id="half"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div><br/>
-	
+
 			<span class="comment">
 				- You can disable the 'showHalf' option to just vote with half star but now show it.<br/>
 				- The interval can be:<br/>
@@ -228,29 +228,29 @@
 				-- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
 				-- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
 			</span>
-	
+
 			<div id="icon-demo" class="session">With a custom hint and icons:</div>
 			<div id="icon"></div>
-	
+
 			<div class="source">
-			 	$('#icon').raty({<br/>
+			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;hintList: ['a', '', null, 'd', '5'],<br/>
 				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;'medal-on.png',<br/>
 				&nbsp;&nbsp;starOff:&nbsp;&nbsp;'medal-off.png'<br/>
 				});<br/><br/>
-			   
-				&lt;div id="icon"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div><br/>
-	
+
 			<span class="comment">
 				- To display the number of the star, set null.
 			</span>
-	
+
 			<div id="range-demo" class="session">With a range of custom icons:</div>
 			<div id="range"></div>
-	
+
 			<div class="source">
-			 	$('#range').raty({<br/>
+			 	$('#star').raty({<br/>
 			 	&nbsp;&nbsp;iconRange: [<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },<br/>
@@ -259,10 +259,10 @@
 				&nbsp;&nbsp;],<br/>
 				&nbsp;&nbsp;starOff: 'face-off.png'<br/>
 				});<br/><br/>
-			   
-				&lt;div id="range"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div><br/>
-	
+
 			<span class="comment">
 				- It's a array of objects where each one represents a custom icon;<br/>
 				- The value range is until wich position the icon will be displayed;<br/>
@@ -271,12 +271,12 @@
 				- The sequence of the range interval should be in a ascending order;<br/>
 				- If the value on or off is omitted then the attribute starOff will be used.
 			</span>
-	
+
 			<div id="big-demo" class="session">With a bigger icon:</div>
 			<div id="big"></div>
-	
+
 			<div class="source">
-			 	$('#big').raty({<br/>
+			 	$('#star').raty({<br/>
 			 	&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;cancelOff: 'cancel-off-big.png',<br/>
 				&nbsp;&nbsp;cancelOn:&nbsp;&nbsp;'cancel-on-big.png',<br/>
@@ -287,45 +287,45 @@
 				&nbsp;&nbsp;starOn:&nbsp;&nbsp;&nbsp;&nbsp;'star-on-big.png'<br/>
 				});<br/><br/>
 			   
-				&lt;div id="big"&gt;&lt;/div&gt;
+				&lt;div id="star"&gt;&lt;/div&gt;
 			</div><br/>
-	
+
 			<span class="comment">
 				- You can specify your own width as following: width: 120.
 			</span>
-	
+
 			<div id="group-demo" class="session">With a group of elements:</div>
 			<div class="group"></div>
 			<div class="group"></div>
 			<div class="group"></div>
-	
+
 			<div class="source">
-				$('.group').raty();<br/><br/>
+				$('.star').raty();<br/><br/>
 	
-				&lt;div class="group"&gt;&lt;/div&gt;<br/>
-				&lt;div class="group"&gt;&lt;/div&gt;<br/>
-				&lt;div class="group"&gt;&lt;/div&gt;
+				&lt;div class="star"&gt;&lt;/div&gt;<br/>
+				&lt;div class="star"&gt;&lt;/div&gt;<br/>
+				&lt;div class="star"&gt;&lt;/div&gt;
 			</div><br/>
-	
+
 			<span class="comment">
 				- The ID is optional and must be unique;<br/>
 				- If you don't pass a ID for the element, then it will be created.
 			</span>
-	
+
 			<div id="target-demo" class="session">Displaying the hint in a target element:</div>
-	
+
 			<div id="target"></div>
 			<div id="hint"></div><br/>
-	
+
 			<div class="source">
-				$('#target').raty({<br/>
+				$('#star').raty({<br/>
 				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;cancelHint: 'none',<br/>
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint'<br/>
 				});<br/><br/>
-	
-				&lt;div id="target"&gt;&lt;/div&gt;<br/>
-				&lt;div id="hint"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;<br/>
+				&lt;div id="target"&gt;&lt;/div&gt;
 			</div>
 
 			<div id="target-number-demo" class="session">Displaying and keeping the score in a target element:</div>
@@ -342,14 +342,14 @@
 			</select>
 
 			<div class="source left">
-				$('#target-number').raty({<br/>
+				$('#star').raty({<br/>
 				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#score',<br/>
 				&nbsp;&nbsp;targetKeep:&nbsp;true,<br/>
 				&nbsp;&nbsp;targetType: 'number'<br/>
 				});<br/><br/>
-	
-				&lt;select id="score"&gt;<br/>
+
+				&lt;select id="target"&gt;<br/>
 					&nbsp;&nbsp;&lt;option value=""&gt;0&lt;/option&gt;<br/>
 					&nbsp;&nbsp;&lt;option value="1"&gt;1&lt;/option&gt;<br/>
 					&nbsp;&nbsp;&lt;option value="2"&gt;2&lt;/option&gt;<br/>
@@ -358,18 +358,34 @@
 					&nbsp;&nbsp;&lt;option value="5"&gt;5&lt;/option&gt;<br/>
 				&lt;/select&gt;<br/>
 			</div><br/>
-	
+
 			<span class="comment">
 				- You can to choose the target types 'hint' or 'number'.
 			</span>
+
+			<div id="target-out-demo" class="session">Setting default value to the target on mouseout:</div>
+
+			<div id="target-out"></div>
+			<div id="hint-out"></div><br/>
+
+			<div class="source">
+				$('#star').raty({<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;cancelHint: 'none',<br/>
+				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint'<br/>
+				});<br/><br/>
 	
+				&lt;div id="star"&gt;&lt;/div&gt;<br/>
+				&lt;div id="target"&gt;&lt;/div&gt;
+			</div>
+
 			<div id="precision-demo" class="session">With half star voting precision:</div>
-	
+
 			<div id="precision"></div>
 			<div id="precision-target"></div><br/>
-	
+
 			<div class="source" style="margin-top: 20px;">
-				$('#precision').raty({<br/>
+				$('#star').raty({<br/>
 				&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;precision:&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24,<br/>
@@ -379,48 +395,48 @@
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#precision-target'<br/>
 				&nbsp;&nbsp;targetType: 'number'<br/>
 				});<br/><br/>
-			   
-				&lt;div id="precision"&gt;&lt;/div&gt;<br/>
-				&lt;div id="precision-target"&gt;&lt;/div&gt;
+
+				&lt;div id="star"&gt;&lt;/div&gt;<br/>
+				&lt;div id="target"&gt;&lt;/div&gt;
 			</div>
 
 			<div id="space-demo" class="session">Without space between stars:</div>
-	
+
 			<div id="space"></div>
-	
+
 			<div class="source" style="margin-top: 20px;">
-				$('#precision').raty({<br/>
+				$('#star').raty({<br/>
 				&nbsp;&nbsp;space: false<br/>
 				});<br/><br/>
 
-				&lt;div id="space"&gt;&lt;/div&gt;<br/>
+				&lt;div id="star"&gt;&lt;/div&gt;<br/>
 			</div>
 
 			<div id="action-demo" class="session">Using directed actions with public functions:</div>
 
 			love:
 			<div class="action"></div>
-	
+
 			happy:
 			<div class="action"></div><br/>
-	
+
 			your last rate:
 			<div id="result"></div>
-	
+
 			<div class="source">
-				$('.action').raty({<br/>
+				$('.star').raty({<br/>
 				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;click: function(score, evt) {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.cancel('.action');<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;$.fn.raty.start(score, '#result');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;this.raty('cancel');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;$('#result').raty('start', score);<br/>
 				&nbsp;&nbsp;}<br/>
 				});<br/><br/>
-	
-				&lt;div class="action"&gt;&lt;/div&gt;<br/>
-				&lt;div class="action"&gt;&lt;/div&gt;<br/><br/>
+
+				&lt;div class="star"&gt;&lt;/div&gt;<br/>
+				&lt;div class="star"&gt;&lt;/div&gt;<br/><br/>
 				&lt;div id="result"&gt;&lt;/div&gt;
 			</div><br/>
-	
+
 			<span class="comment">
 				- All public functions have a optional second parameter to specify which container will be executed;<br/>
 				- You can pass a ID or a class to be the target of the action;<br/>
@@ -428,7 +444,7 @@
 			</span>
 
 			<div class="session">Default options:</div>
-	
+
 			<div class="source">
 			 	cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
 			 	<div class="comment">If will be showed a button to cancel the rating.</div>
@@ -471,53 +487,56 @@
 
 				readOnly:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
 			 	<div class="comment">If the stars will be read-only.</div>
-	
+
 				scoreName:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'score'<br/>
 			 	<div class="comment">Name of the hidden field that holds the score value.</div>
-	
+
 				size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16<br/>
 			 	<div class="comment">The icons size.</div>
-	
+
 				starHalf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-half.png'<br/>
 			 	<div class="comment">The name of the half star image.</div>
 
 				space:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
 			 	<div class="comment">Option to take off the spaces between the star.</div>
-	
+
 				starOff:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-off.png'<br/>
 			 	<div class="comment">Name of the star image off.</div>
-	
+
 				starOn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'star-on.png'<br/>
 			 	<div class="comment">Name of the star image on.</div>
-	
+
 				start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
 				<div class="comment">Number of stars to be selected.</div>
-	
+
 				target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
 				<div class="comment">Number of stars to be selected.</div>
-	
+
 				targetKeep:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
 				<div class="comment">If the last choose value will be keeped on mouseout.</div>
-	
+
+				targetOutValue: ''<br/>
+				<div class="comment">Default value to be setted into target on mouseout.</div>
+
 				targetType:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'hint'<br/>
 				<div class="comment">What display on target element: hint or number.</div>
-	
+
 				width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
 				<div class="comment">The container width of the stars.</div>
 			</div>
 
 			<div class="session">Public functions:</div>
 
-			<div class="source">$.fn.raty.start(3);</div>
-			<div class="description">Starts the last Raty with 3 stars later.</div>
+			<div class="source">$('#star').raty('start', 3);</div>
+			<div class="description">Starts the last Raty with 3 stars.</div>
 
-			<div class="source">$.fn.raty.click(2, '#raty');</div>
-			<div class="description">Click on the second star of the Raty with ID called 'raty' later.</div>
+			<div class="source">$('#star').raty('click', 2);</div>
+			<div class="description">Click on the second star of the Raty with ID called 'raty'.</div>
 
-			<div class="source">$.fn.raty.readOnly(true, '.raty');</div>
-			<div class="description">Adjusts all Raty with class called 'raty' for read-only later.</div>
+			<div class="source">$('.star').raty('readOnly', true);</div>
+			<div class="description">Adjusts all Raty with class called 'raty' for read-only.</div>
 
-			<div class="source">$.fn.raty.cancel('#raty', true);</div>
+			<div class="source">$('#star').raty('cancel', true);</div>
 			<div class="description">Cancel the rating. The second parameter is optionally and enable the click callback.</div>
 		</div>
 
@@ -616,6 +635,11 @@
 					targetType:	'number'
 				});
 
+				$('#target-out').raty({
+					target:			'#hint-out',
+					targetOutValue: '--'
+				});
+
 				$('#precision').raty({
 					half:		true,
 					precision:	true,
@@ -633,8 +657,8 @@
 
 				$('.action').raty({
 					click: function(score) {
-						$.fn.raty.cancel('.action');
-						$.fn.raty.start(score, '#result');
+						this.raty('cancel');
+						$('#result').raty('start', score);
 					}
 				});
 
