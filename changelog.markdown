@@ -2,16 +2,18 @@
 
 ### 2.0.0 (Development)
 
-+ Added full round option without half star option is enabled;
-+ Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
-+ Fixed the functions start() and click() to set the value on target when 'target' is enabled;
-+ Fixed the 'target' option to work with half option;
 + Now attribute 'iconRange' is represented as a list of object with option to choose starOn and starOff;
++ Added full round value without half star option is enabled;
 + Added attribute 'showHalf' to just display and separate from the option to vote 'half';
 + Added attribute 'targetOutValue' to be applied on 'target' when the 'targetKeep' is disabled;
 + Added attribute 'precision' to be able rating with precision values, without star representation;
 + Added attribute 'space' to be able take off the spaces between the star;
-+ Refactored the code to make it cleanner and faster.
++ Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
++ Fixed the functions start() and click() to set the value on target when 'target' is enabled;
++ Fixed the 'target' option to work with half option;
++ Refactored the code to make it cleanner and faster;
++ Now we using the best pratice to build the plugin;
++ Now the plugin is under test with Jasmine and Jasmine jQuery.
 
 ### 1.4.3
 

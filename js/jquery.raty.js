@@ -187,19 +187,26 @@
 			} else {
 				methods.start.call(this, null);
 			}
-
 			this.children('input').removeAttr('value');
 		}, click: function(score) {
 			methods.initialize.call(this, score);
 
 			var opt = this.data('options');
 
-			methods.setTarget.call(this, score, opt);
-
 			if (opt.click) {
 				opt.click.call(this, score);
 			} else {
 				$.error(this.attr('id') + ': you must add the "click: function(score, evt) { }" callback.');
+			}
+
+			if (score == null) {
+				if (opt.cancel) {
+					methods.setTarget.call(this, score, opt);
+				} else {
+					$.error(this.attr('id') + ': you must enable the "cancel" option to set hint on target.');
+				}
+			} else {
+				methods.setTarget.call(this, score, opt);
 			}
 		}, fillStar: function(score) {
 			var opt		= this.data('options'),
@@ -315,7 +322,15 @@
 
 			var opt = this.data('options');
 
-			methods.setTarget.call(this, score, opt);
+			if (score == null) {
+				if (opt.cancel) {
+					methods.setTarget.call(this, score, opt);
+				} else {
+					$.error(this.attr('id') + ': you must enable the "cancel" option to set hint on target.');
+				}
+			} else {
+				methods.setTarget.call(this, score, opt);
+			}
 		}, initialize: function(score) {
 			var opt	= this.data('options'),
 				id	= this.attr('id');

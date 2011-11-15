@@ -1364,7 +1364,52 @@ describe('Using function', function() {
 		expect($star).toHaveClass('my-class');
 	});
 
-	// set target with start keep
-	// set target with click keep
-	// set target with cancel keep
+	it('should set a target on div with mouseover', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint', targetKeep: true, click: function(score, evt) { } });
+
+		// when
+		$star.raty('click', 4);
+
+		// then
+		expect($hint).toHaveHtml('good');
+
+		$hint.remove();
+	});
+
+	it('should set a target on div with mouseover', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint', targetKeep: true });
+
+		// when
+		$star.raty('start', 4);
+
+		// then
+		expect($hint).toHaveHtml('good');
+
+		$hint.remove();
+	});
+
+	it('should set a target on div with mouseover', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ cancel: true, target: '#hint', targetKeep: true });
+
+		// when
+		$star.raty('cancel');
+
+		// then
+		expect($hint).toHaveHtml('good');
+
+		$hint.remove();
+	});
+
 });
