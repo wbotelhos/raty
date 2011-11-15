@@ -159,9 +159,10 @@
 						diff		= (position > .5) ? 1 : .5;
 	
 					value = parseFloat(this.alt) - 1 + diff;
-					methods.fillStar.call(this, value);
-	
-					showHalf(this, value);
+
+					methods.fillStar.call($this, value);
+
+					methods.showHalf.call($this, value);
 	
 					if (opt.precision) {
 						value = (value - diff + position).toFixed(1);
@@ -169,14 +170,14 @@
 						methods.setTarget.call($this, value, opt);
 					}
 	
-					this.data('score', value);
+					$this.data('score', value);
 				} else {
 					methods.fillStar.call($this, value);
 					methods.setTarget.call($this, value, opt);
 				}
 			}).click(function(evt) {
-				$score.val((opt.half || opt.precision) ? this.data('score') : this.alt);
-	
+				$score.val((opt.half || opt.precision) ? $this.data('score') : this.alt);
+
 				if (opt.click) {
 					opt.click.call($this, $score.val(), evt);
 				}
