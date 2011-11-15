@@ -1407,7 +1407,7 @@ describe('Using function', function() {
 		$star.raty('cancel');
 
 		// then
-		expect($hint).toHaveHtml('good');
+		expect($hint).toHaveHtml('cancel this rating!');
 
 		$hint.remove();
 	});

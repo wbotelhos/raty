@@ -199,15 +199,7 @@
 				$.error(this.attr('id') + ': you must add the "click: function(score, evt) { }" callback.');
 			}
 
-			if (score == null) {
-				if (opt.cancel) {
-					methods.setTarget.call(this, score, opt);
-				} else {
-					$.error(this.attr('id') + ': you must enable the "cancel" option to set hint on target.');
-				}
-			} else {
-				methods.setTarget.call(this, score, opt);
-			}
+			methods.setTarget.call(this, score, opt);
 		}, fillStar: function(score) {
 			var opt		= this.data('options'),
 				id		= this.attr('id'),
@@ -288,24 +280,28 @@
 				var $target = $(opt.target);
 
 				if ($target.length == 0) {
-					$.error(id + ': target selector invalid or missing!');
+					$.error(this.attr('id') + ': target selector invalid or missing!');
 				} else {
-					if (isClear) {
-						value = opt.targetOutValue;
+					if (value == null && !opt.cancel) {
+						$.error(this.attr('id') + ': you must enable the "cancel" option to set hint on target.');
 					} else {
-						if (opt.targetType == 'hint') {
-							if (value === null && opt.cancel) {
-								value = opt.cancelHint;
-							} else {
-								value = opt.hintList[Math.ceil(value - 1)];
+						if (isClear) {
+							value = opt.targetOutValue;
+						} else {
+							if (opt.targetType == 'hint') {
+								if (value === null && opt.cancel) {
+									value = opt.cancelHint;
+								} else {
+									value = opt.hintList[Math.ceil(value - 1)];
+								}
 							}
 						}
-					}
-	
-					if ($target.is('input') || $target.is('select') || $target.is('textarea')) {
-						$target.val(value);
-					} else {
-						$target.html(value);
+
+						if ($target.is('input') || $target.is('select') || $target.is('textarea')) {
+							$target.val(value);
+						} else {
+							$target.html(value);
+						}
 					}
 				}
 			}
@@ -322,15 +318,7 @@
 
 			var opt = this.data('options');
 
-			if (score == null) {
-				if (opt.cancel) {
-					methods.setTarget.call(this, score, opt);
-				} else {
-					$.error(this.attr('id') + ': you must enable the "cancel" option to set hint on target.');
-				}
-			} else {
-				methods.setTarget.call(this, score, opt);
-			}
+			methods.setTarget.call(this, score, opt);
 		}, initialize: function(score) {
 			var opt	= this.data('options'),
 				id	= this.attr('id');
