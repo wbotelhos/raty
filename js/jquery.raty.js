@@ -349,11 +349,11 @@
 
 			methods.fillStar.call(this, score);
 
-			if (opt.halfShow) {
-				methods.roundStar.call(this, score);
-			}
-
 			if (score != '') {
+				if (opt.halfShow) {
+					methods.roundStar.call(this, score);
+				}
+
 				$('input#' + id + '-score').val(score);
 			}
 	
