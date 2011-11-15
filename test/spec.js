@@ -372,6 +372,19 @@ describe('Using ID', function() {
 		expect($cancel).toHaveAttr('src', 'img/new-cancel-on.png');
 	});
 
+	it('should change cancel hint', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ cancel: true, cancelHint: 'my-hint' });
+
+		var $cancel = $star.children('img:first').mouseover();
+
+		// then
+		expect($cancel).toHaveAttr('title', 'my-hint');
+	});
+
 	it('should turn off the stars on mouseover on cancel button', function() {
 		// given
 		var $star	= $('#star').raty({ start: 3, cancel: true }),
@@ -388,10 +401,28 @@ describe('Using ID', function() {
 		expect($imgs.eq(5)).toHaveAttr('src', 'img/star-off.png');
 	});
 
+	it('should display noRatedMsg when readOnly', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ readOnly: true });
+
+		// then
+		var $imgs = $star.children('img');
+
+		expect($imgs.eq(0)).toHaveAttr('title', 'not rated yet');
+		expect($imgs.eq(1)).toHaveAttr('title', 'not rated yet');
+		expect($imgs.eq(2)).toHaveAttr('title', 'not rated yet');
+		expect($imgs.eq(3)).toHaveAttr('title', 'not rated yet');
+		expect($imgs.eq(4)).toHaveAttr('title', 'not rated yet');
+	});
+
 	it('should cancel the rating', function() {
 		// given
 		var $star	= $('#star').raty({ start: 5, cancel: true }),
 			$imgs	= $star.children('img');
+
 		// when
 		$star.children('img:first').mouseover().click().mouseout();
 
