@@ -829,7 +829,6 @@ describe('Using ID', function() {
 		$star.raty({ size: size });
 
 		// then
-		console.log($star.width());
 		expect($star.width()).toEqual(number * size + number * 4);
 	});
 
@@ -843,60 +842,183 @@ describe('Using ID', function() {
 		$star.raty({ cancel: true, size: size });
 
 		// then
-		console.log($star.width());
 		expect($star.width()).toEqual(number * size + number * 4 + (size + 4));
 	});
 
-	it('should set a target on div', function() {
+	it('should set a target on div with mouseover', function() {
+		$('body').append('<div id="hint"></div>');
+
 		// given
-		var $star = $('#raty').raty({
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint' });
+
+		// when
+		$star.children('img').eq(3).mouseover();
+
+		// then
+		expect($hint).toHaveHtml('good');
+
+		$hint.remove();
+	});
+
+	it('should set a target on div with mouseover but take off when mouseout', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint' });
+
+		// when
+		$star.children('img').eq(3).mouseover().mouseout();
+
+		// then
+		expect($hint).toHaveHtml('');
+
+		$hint.remove();
+	});
+
+	it('should set a target on div with mouseover and click but take off when mouseout', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint' });
+
+		// when
+		$star.children('img').eq(3).mouseover().click().mouseout();
+
+		// then
+		expect($hint).toHaveHtml('');
+
+		$hint.remove();
+	});
+
+	it('should change the cancel hint using target', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({
 			cancel:     true,
 			cancelHint: 'none',
 			target:     '#hint',
 		});
 
 		// when
-		$star.raty({ cancel: true, size: size });
-		
+		$star.children('img:first').mouseover();
+
 		// then
-		console.log($star.width());
-		expect($star.width()).toEqual(number * size + number * 4 + (size + 4));
+		expect($hint).toHaveHtml('none');
+
+		$hint.remove();
 	});
 
-//	it('should set custom hints', function() {
-//		// given
-//		var $star = $('#raty');
-//
-//		// when
-//		$star.raty({ hintList: ['a', '', null, 'd', '5'] });
-//
-//		var $imgs = $star.children('img');
-//
-//		// then
-//	    expect($imgs.eq(0)).toHaveClass('raty');
-//	    expect($imgs.eq(1)).toHaveClass('raty');
-//	    expect($imgs.eq(2)).toHaveClass('raty');
-//	    expect($imgs.eq(3)).toHaveClass('raty');
-//	    expect($imgs.eq(4)).toHaveClass('raty');
-//
-//	    expect($imgs.eq(0)).toHaveId('raty-1');
-//	    expect($imgs.eq(1)).toHaveId('raty-2');
-//	    expect($imgs.eq(2)).toHaveId('raty-3');
-//	    expect($imgs.eq(3)).toHaveId('raty-4');
-//	    expect($imgs.eq(4)).toHaveId('raty-5');
-//
-//	    expect($imgs.eq(0)).toHaveAttr('title', 'bad');
-//	    expect($imgs.eq(1)).toHaveAttr('title', 'poor');
-//	    expect($imgs.eq(2)).toHaveAttr('title', 'regular');
-//	    expect($imgs.eq(3)).toHaveAttr('title', 'good');
-//	    expect($imgs.eq(4)).toHaveAttr('title', 'gorgeous');
-//
-//	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
-//	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
-//	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
-//	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
-//	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-//	});
+	it('should set hint on a combobox element', function() {
+		$('body').append('<select id="hint"><option value="">--</option><option value="good">good</option></select>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint' });
+
+		// when
+		$star.children('img').eq(3).mouseover();
+
+		// then
+		expect($hint.val()).toEqual('good');
+
+		$hint.remove();
+	});
+
+	it('should set hint on a text element', function() {
+		$('body').append('<input id="hint" type="text" />');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint' });
+
+		// when
+		$star.children('img').eq(3).mouseover();
+
+		// then
+		expect($hint.val()).toEqual('good');
+
+		$hint.remove();
+	});
+
+	it('should set hint on a textarea element', function() {
+		$('body').append('<textarea id="hint"></textarea>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint' });
+
+		// when
+		$star.children('img').eq(3).mouseover();
+
+		// then
+		expect($hint.val()).toEqual('good');
+
+		$hint.remove();
+	});
+
+	it('should set number hint on a combobox element', function() {
+		$('body').append('<select id="hint"><option value="">--</option><option value="4">4</option></select>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint', targetType: 'number' });
+
+		// when
+		$star.children('img').eq(3).mouseover();
+
+		// then
+		expect($hint.val()).toEqual('4');
+
+		$hint.remove();
+	});
+
+	it('should set number hint and keep it on mouseout', function() {
+		$('body').append('<select id="hint"><option value="">--</option><option value="4">4</option></select>');
+
+		// given
+		var $hint = $('#hint'),
+			$star = $('#raty').raty({ target: '#hint', targetType: 'number', targetKeep: true });
+
+		// when
+		$star.children('img').eq(3).mouseover().click().mouseout();
+
+		// then
+		expect($hint.val()).toEqual('4');
+
+		$hint.remove();
+	});
+
+	it('should create stars without space', function() {
+		// given
+		var $star	= $('#raty');
+			size	= 16,
+			number	= 5;
+
+		// when
+		$star.raty({ space: false });
+
+		// then
+		expect($star.width()).toEqual(number * size + number * (4 * 0));
+	});
+
+	it('should create stars with cancel without space', function() {
+		// given
+		var $star	= $('#raty');
+			size	= 16,
+			number	= 5;
+
+		// when
+		$star.raty({ cancel: true, space: false });
+
+		// then
+		expect($star.width()).toEqual(number * size + number * (4 * 0) + 16 + (4 * 0));
+	});
+
 });
 
 describe('Using ID', function() {
@@ -1100,4 +1222,4 @@ describe('Using ID', function() {
 		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
 	});
 
-});	
+});
