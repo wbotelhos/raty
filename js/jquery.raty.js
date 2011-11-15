@@ -42,7 +42,8 @@
 		var opt		= $.extend({}, $.fn.raty.defaults, settings),
 			$this	= $(this),
 			id		= $this.attr('id'),
-			width	= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * 4);
+			space	= (opt.space) ? 4 : 0, 
+			width	= (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
 
 		if (id === undefined || id == '') {
 			id = 'raty-' + $this.index();
@@ -132,7 +133,7 @@
 			        }
 				});
 
-				$this.css('width', width + opt.size + 4);
+				$this.css('width', width + opt.size + space);
 			} else {
 				$this.css('width', width);
 			}
