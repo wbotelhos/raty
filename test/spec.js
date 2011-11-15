@@ -291,7 +291,11 @@ describe('Using ID', function() {
 		var $star = $('#raty');
 
 		// when
-		$star.raty({ click: function(score, evt) { $(this).attr('title', score); } });
+		$star.raty({
+			click: function(score, evt) {
+				$(this).attr('title', score);
+			}
+		});
 
 		$star.children('img').eq(3).mouseover().click().mouseout();
 
@@ -304,12 +308,17 @@ describe('Using ID', function() {
 		var $star = $('#raty');
 
 		// when
-		$star.raty({ click: function(score, evt) { $(this).attr('title', $(this).attr('id')); } });
+		$star.raty({
+			click: function(score, evt) {
+				var $this = $(this);
+				$this.attr('title', score);
+			}
+		});
 
 		$star.children('img').eq(3).mouseover().click().mouseout();
-		
+
 		// then
-		expect($star).toHaveAttr('title', 'raty');
+		expect($star).toHaveAttr('title', 4);
 	});
 
 	it('should create default cancel button', function() {
@@ -438,6 +447,7 @@ describe('Using ID', function() {
 
 		// then
 		expect($star).toHaveAttr('title', null);
+		expect($star.children('input').val()).toEqual('');
 	});
 
 	it('should round down on max limit down with no half and halfShow', function() {
@@ -1021,7 +1031,7 @@ describe('Using ID', function() {
 
 });
 
-describe('Using ID', function() {
+describe('Using class', function() {
 
 	beforeEach(function() {
 		$('body').append('<div class="raty"></div><div class="raty"></div><div class="raty"></div>');
@@ -1222,4 +1232,139 @@ describe('Using ID', function() {
 		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
 	});
 
+});
+
+describe('Using function', function() {
+
+	beforeEach(function() {
+		$('body').append('<div id="raty"></div>');
+	});
+
+	afterEach(function() {
+		$('#raty').remove();
+	});
+
+	it('should start the start with 3 stars', function() {
+		// given
+		var $star = $('#raty').raty();
+
+		// when
+		$star.raty('start', 3);
+
+		// then
+		var $imgs = $star.children('img');
+
+	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should set readOnly', function() {
+		// given
+		var $star = $('#raty').raty();
+
+		// when
+		$star.raty('readOnly', true);
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(3).mouseover().click();
+
+		// then
+	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should unset readOnly', function() {
+		// given
+		var $star = $('#raty').raty();
+
+		// when
+		$star.raty('readOnly', true);
+
+		$star.raty('readOnly', false);
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(1).mouseover().click();
+
+		// then
+	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should cancel without click', function() {
+		// given
+		var $star = $('#raty').raty({ start: 1 });
+
+		// when
+		$star.raty('cancel');
+
+		var $imgs = $star.children('img');
+
+		// then
+	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+	    expect($star.children('input').val()).toEqual('');
+	});
+
+	it('should cancel with click', function() {
+		// given
+		var $star = $('#raty').raty({
+			click: function(score, evt) {
+				this.attr('title', (score === null) ? 'null' : score);
+			},
+			start: 1
+		});
+
+		// when
+		$star.raty('cancel', true);
+
+		var $imgs = $star.children('img');
+
+		// then
+	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+	    expect($star).toHaveAttr('title', 'null');
+	    expect($star).not.toHaveAttr('value');
+	});
+
+	it('should click the star 3', function() {
+		// given
+		var $star = $('#raty').raty({ click: function() { this.addClass('my-class'); }});
+
+		// when
+		$star.raty('click', 3);
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($star).toHaveClass('my-class');
+	});
+
+	// set target with start keep
+	// set target with click keep
+	// set target with cancel keep
 });

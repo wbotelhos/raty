@@ -11,7 +11,6 @@
  * @author         Washington Botelho
  * @documentation  wbotelhos.com/raty
  * @twitter        twitter.com/wbotelhos
- * @license        opensource.org/licenses/mit-license.php
  *
  * Usage with default values:
  * ---------------------------------------------------------------------------------
@@ -81,12 +80,12 @@
 					}
 			
 					if (opt.iconRange && isValidStart) {
-						fillStar($this, start);	
+						methods.fillStar.call($this, start);	
 					}
 			
-					roundStar($this, start);
+					methods.roundStar.call($this, start);
 			
-					setTarget(start, opt);
+					methods.setTarget.call($this, start, opt);
 			
 					var $score = $('<input/>', {
 						id:		id + '-score',
@@ -114,16 +113,16 @@
 			
 								stars.attr('src', opt.path + opt.starOff);
 			
-								setTarget(null, opt);
+								methods.setTarget.call($this, null, opt);
 							}).mouseleave(function() {
 								$(this).attr('src', opt.path + opt.cancelOff);
 			
 								$this.mouseout();
 							}).click(function(evt) {
 								$score.removeAttr('value');
-			
+
 								if (opt.click) {
-						          opt.click.apply($this, [null, evt]);
+						          opt.click.call($this, null, evt);
 						        }
 							});
 			
@@ -134,308 +133,216 @@
 			
 						$this.css('cursor', 'pointer');
 			
-						bindAll($this, opt);
+						methods.bindAll.call($this, opt);
 					} else {
 						$this.css('cursor', 'default');
-						fixHint($this, start);
+						methods.fixHint.call($this, start);
 					}
-			
-				function bindAll(context, opt) {
-					var id		= context.attr('id'),
-						$score	= $('input#' + id + '-score'),
-						$stars	= context.children('img.' + id);
-			
-					context.mouseleave(function() {
-						initialize(context, $score.val());
-						setTarget($score.val(), opt, !opt.targetKeep);
-					});
-			
-					$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
-						var value = parseInt(this.alt, 10);
-			
-						if (opt.half) {
-							var position	= parseFloat((e.pageX - $(this).offset().left) / opt.size),
-								diff		= (position > .5) ? 1 : .5;
-			
-							value = parseFloat(this.alt) - 1 + diff;
-			
-							fillStar(context, value);
-			
-							showHalf(context, value);
-			
-							if (opt.precision) {
-								value = (value - diff + position).toFixed(1);
-			
-								setTarget(value, opt);
-							}
-			
-							context.data('score', value);
-						} else {
-							fillStar(context, value);
-							setTarget(value, opt);
-						}
-					}).click(function(evt) {
-						$score.val((opt.half || opt.precision) ? context.data('score') : this.alt);
-			
-						if (opt.click) {
-							opt.click.apply(context, [$score.val(), evt]);
-						}
-					});
-				};
-			
-				function setTarget(value, opt, isClear) {
-					if (opt.target) {
-						var $target = $(opt.target);
-			
-						if ($target.length == 0) {
-							$.error(id + ': target selector invalid or missing!');
-						} else {
-							if (isClear) {
-								value = opt.targetOutValue;
-							} else {
-								if (opt.targetType == 'hint') {
-									if (value === null && opt.cancel) {
-										value = opt.cancelHint;
-									} else {
-										value = opt.hintList[Math.ceil(value - 1)];
-									}
-								}
-							}
-			
-							if (isField($target)) {
-								$target.val(value);
-							} else {
-								$target.html(value);
-							}
-						}
-					}
-				};
-			
-				function fillStar(context, score) {
-					var opt		= context.data('options'),
-						id		= context.attr('id'),
-						qtyStar	= context.children('img.' + id).length,
-						item	= 0,
-						$stars	,
-						icon	,
-						star	;
-			
-					for (var i = 1; i <= qtyStar; i++) {
-						$stars = context.children('img#' + id + '-' + i);
-			
-						if (opt.iconRange && opt.iconRange.length > item) {
-							star = opt.iconRange[item];
-							icon = (i <= score) ? star.on : star.off;
-			
-							if (!icon) {
-								icon = opt.starOff;
-							}
-			
-							if (i <= star.range) {
-								$stars.attr('src', opt.path + icon);
-							}
-			
-							if (i == star.range) {
-								item++;
-							}
-						} else {
-							icon = (i <= score) ? opt.starOn : opt.starOff;
-							$stars.attr('src', opt.path + icon);
-						}
-					}
-				};
-			
-				function fixHint(context, score) {
-					var opt		= context.data('options'),
-						hint	= '';
-			
-					if (score != 0) {
-						score = parseInt(score, 10);
-						hint = (score > 0 && opt.number <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
-					} else {
-						hint = opt.noRatedMsg;
-					}
-			
-					context.attr('title', hint).children('img').attr('title', hint);
-				};
-			
-				function isField(target) {
-					return target.is('input') || target.is('select') || target.is('textarea');
-				};
-			
-				function initialize(context, score) {
-					var opt	= context.data('options'),
-						id	= context.attr('id');
-			
-					if (isNaN(parseInt(score, 10))) {
-						context.children('img.' + id).attr('src', opt.path + opt.starOff);
-						$('input#' + id + '-score').removeAttr('value');
-						return;
-					}
-			
-					if (score < 0) {
-						score = 0;
-					} else if (score > opt.number) {
-						score = opt.number;
-					}
-			
-					fillStar(context, score);
-			
-					if (opt.halfShow) {
-						roundStar(context, score);
-					}
-			
-					$('input#' + id + '-score').val(score);
-			
-					if (opt.readOnly || context.css('cursor') == 'default') {
-						fixHint(context, score);
-					}
-				};
-			
-				function roundStar(context, score) {
-					var diff = (score - Math.floor(score)).toFixed(2);
-			
-					if (diff > .25) {
-						var opt		= context.data('options'),
-							icon	= opt.starOn;						// Full up: [x.76 ... x.99]
-			
-						if (diff < .76 && opt.halfShow) {				// Half: [x.26 ... x.75]
-							icon = opt.starHalf;
-						} else if (diff <= .5 ) {						// Full down: [x.00 .. x.5]
-							icon = opt.starOff;
-						}
-			
-						$('img#' + context.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + icon);
-					}													// Full down: [x.00 ... x.25]
-				};
-			
-				function showHalf(context, score) {
-					var diff = (score - Math.floor(score)).toFixed(2);
-			
-					if (diff > .25 && diff < .76) {
-						var opt	= context.data('options');
-			
-						$('img#' + context.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + opt.starHalf);
-					}
-				};
-				
-				$.fn.raty.cancel = function(idOrClass, isClickIn) {
-					var isClick = (isClickIn === undefined) ? false : true;
-			
-					if (isClick) {
-						return $.fn.raty.click('', idOrClass, 'cancel');
-					} else {
-						return $.fn.raty.start('', idOrClass, 'cancel');
-					}
-				};
-			
-				$.fn.raty.click = function(score, idOrClass) {
-					var context = getContext(score, idOrClass, 'click');
-			
-					if (idOrClass.indexOf('.') >= 0) {
-						return;
-					}
-			
-					initialize(context, score);
-			
-					var opt = $(idOrClass).data('options');
-			
-					setTarget(score, opt);
-			
-					if (opt.click) {
-						opt.click.apply(context, [score]);
-					} else {
-						$.error(idOrClass + ': you must add the "click: function(score, evt) { }" callback.');
-					}
-			
-					return context;
-				};
-			
-				$.fn.raty.readOnly = function(boo, idOrClass) {
-					var context	= getContext(boo, idOrClass, 'readOnly');
-			
-					if (idOrClass.indexOf('.') >= 0) {
-						return;
-					}
-			
-					var cancel = context.children('img.button-cancel');
-			
-					if (cancel[0]) {
-						(boo) ? cancel.hide() : cancel.show();
-					}
-			
-					if (boo) {
-						$('img.' + context.attr('id')).unbind();
-						context.css('cursor', 'default').unbind();
-					} else {
-						var options = $(idOrClass).data('options');
-			
-						bindAll(context, options);
-						context.css('cursor', 'pointer');
-					}
-			
-					return context;
-				};
-			
-				$.fn.raty.start = function(score, idOrClass) {
-					var context = getContext(score, idOrClass, 'start');
-			
-					if (idOrClass.indexOf('.') >= 0) {
-						return;
-					}
-			
-					initialize(context, score);
-			
-					var opt = $(idOrClass).data('options');
-			
-					setTarget(score, opt);
-			
-					return context;
-				};
-			
-				function getContext(value, idOrClass, name) {
-					var context = undefined;
-			
-					if (idOrClass === undefined) {
-						$.error('Specify an ID or class to be the target of the action.');
-						return;
-					}
-			
-					if (idOrClass) {
-						if (idOrClass.indexOf('.') >= 0) {
-							var idEach;
-			
-							return $(idOrClass).each(function() {
-								idEach = '#' + $(this).attr('id');
-			
-								if (name == 'start') {
-									$.fn.raty.start(value, idEach);
-								} else if (name == 'click') {
-									$.fn.raty.click(value, idEach);
-								} else if (name == 'readOnly') {
-									$.fn.raty.readOnly(value, idEach);
-								}
-							});
-						}
-			
-						context = $(idOrClass);
-			
-						if (!context.length) {
-							$.error('"' + idOrClass + '" is a invalid identifier for the public funtion $.fn.raty.' + name + '().');
-							return;
-						}
-					}
-			
-					return context;
-				};
-			
-				function debug(message) {
-					if (window.console && window.console.log) {
-						window.console.log(message);
-					}
-				};
 
 			});
+		}, bindAll: function(opt) {
+			var $this	= this,
+				id		= this.attr('id'),
+				$score	= $('input#' + id + '-score'),
+				$stars	= this.children('img.' + id);
+
+			this.mouseleave(function() {
+				methods.initialize.call($this, $score.val());
+				methods.setTarget.call($this, $score.val(), opt, !opt.targetKeep);
+			});
+
+			$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
+				var value = parseInt(this.alt, 10);
+	
+				if (opt.half) {
+					var position	= parseFloat((e.pageX - $(this).offset().left) / opt.size),
+						diff		= (position > .5) ? 1 : .5;
+	
+					value = parseFloat(this.alt) - 1 + diff;
+					methods.fillStar.call(this, value);
+	
+					showHalf(this, value);
+	
+					if (opt.precision) {
+						value = (value - diff + position).toFixed(1);
+	
+						methods.setTarget.call($this, value, opt);
+					}
+	
+					this.data('score', value);
+				} else {
+					methods.fillStar.call($this, value);
+					methods.setTarget.call($this, value, opt);
+				}
+			}).click(function(evt) {
+				$score.val((opt.half || opt.precision) ? this.data('score') : this.alt);
+	
+				if (opt.click) {
+					opt.click.call($this, $score.val(), evt);
+				}
+			});
+		}, cancel: function(isClick) {
+			if (isClick) {
+				methods.click.call(this, null);
+			} else {
+				methods.start.call(this, null);
+			}
+
+			this.children('input').removeAttr('value');
+		}, click: function(score) {
+			methods.initialize.call(this, score);
+
+			var opt = this.data('options');
+
+			methods.setTarget.call(this, score, opt);
+
+			if (opt.click) {
+				opt.click.call(this, score);
+			} else {
+				$.error(this.attr('id') + ': you must add the "click: function(score, evt) { }" callback.');
+			}
+		}, fillStar: function(score) {
+			var opt		= this.data('options'),
+				id		= this.attr('id'),
+				qtyStar	= this.children('img.' + id).length,
+				item	= 0,
+				$stars	,
+				icon	,
+				star	;
+	
+			for (var i = 1; i <= qtyStar; i++) {
+				$stars = this.children('img#' + id + '-' + i);
+	
+				if (opt.iconRange && opt.iconRange.length > item) {
+					star = opt.iconRange[item];
+					icon = (i <= score) ? star.on : star.off;
+	
+					if (!icon) {
+						icon = opt.starOff;
+					}
+	
+					if (i <= star.range) {
+						$stars.attr('src', opt.path + icon);
+					}
+	
+					if (i == star.range) {
+						item++;
+					}
+				} else {
+					icon = (i <= score) ? opt.starOn : opt.starOff;
+					$stars.attr('src', opt.path + icon);
+				}
+			}
+		}, fixHint: function(score) {
+			var opt		= this.data('options'),
+				hint	= '';
+	
+			if (score != 0) {
+				score = parseInt(score, 10);
+				hint = (score > 0 && opt.number <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
+			} else {
+				hint = opt.noRatedMsg;
+			}
+	
+			this.attr('title', hint).children('img').attr('title', hint);
+		}, readOnly: function(boo) {
+			var cancel = this.children('img.button-cancel');
+
+			if (cancel[0]) {
+				(boo) ? cancel.hide() : cancel.show();
+			}
+
+			if (boo) {
+				$('img.' + this.attr('id')).unbind();
+				this.css('cursor', 'default').unbind();
+			} else {
+				var options = this.data('options');
+
+				methods.bindAll.call(this, options);
+				this.css('cursor', 'pointer');
+			}
+		}, roundStar: function(score) {
+			var diff = (score - Math.floor(score)).toFixed(2);
+			
+			if (diff > .25) {
+				var opt		= this.data('options'),
+					icon	= opt.starOn;						// Full up: [x.76 ... x.99]
+	
+				if (diff < .76 && opt.halfShow) {				// Half: [x.26 ... x.75]
+					icon = opt.starHalf;
+				} else if (diff <= .5 ) {						// Full down: [x.00 .. x.5]
+					icon = opt.starOff;
+				}
+	
+				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + icon);
+			}													// Full down: [x.00 ... x.25]
+		}, setTarget: function(value, opt, isClear) {
+			if (opt.target) {
+				var $target = $(opt.target);
+
+				if ($target.length == 0) {
+					$.error(id + ': target selector invalid or missing!');
+				} else {
+					if (isClear) {
+						value = opt.targetOutValue;
+					} else {
+						if (opt.targetType == 'hint') {
+							if (value === null && opt.cancel) {
+								value = opt.cancelHint;
+							} else {
+								value = opt.hintList[Math.ceil(value - 1)];
+							}
+						}
+					}
+	
+					if ($target.is('input') || $target.is('select') || $target.is('textarea')) {
+						$target.val(value);
+					} else {
+						$target.html(value);
+					}
+				}
+			}
+		}, showHalf: function(score) {
+			var diff = (score - Math.floor(score)).toFixed(2);
+
+			if (diff > .25 && diff < .76) {
+				var opt	= this.data('options');
+
+				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + opt.starHalf);
+			}
+		}, start: function(score) {
+			methods.initialize.call(this, score);
+
+			var opt = this.data('options');
+
+			methods.setTarget.call(this, score, opt);
+		}, initialize: function(score) {
+			var opt	= this.data('options'),
+				id	= this.attr('id');
+	
+			if (isNaN(parseInt(score, 10))) {
+				this.children('img.' + id).attr('src', opt.path + opt.starOff);
+				$('input#' + id + '-score').removeAttr('value');
+				return;
+			}
+	
+			if (score < 0) {
+				score = 0;
+			} else if (score > opt.number) {
+				score = opt.number;
+			}
+
+			methods.fillStar.call(this, score);
+	
+			if (opt.halfShow) {
+				methods.roundStar.call(this, score);
+			}
+	
+			$('input#' + id + '-score').val(score);
+	
+			if (opt.readOnly || this.css('cursor') == 'default') {
+				methods.fixHint.call(this, score);
+			}
 		}
 	};
 
