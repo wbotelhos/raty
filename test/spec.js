@@ -311,7 +311,7 @@ describe('Using ID', function() {
 		$star.raty({
 			click: function(score, evt) {
 				var $this = $(this);
-				$this.attr('title', score);
+				$(this).attr('title', score);
 			}
 		});
 
@@ -1468,7 +1468,7 @@ describe('Using function with id', function() {
 
 	it('should not call click callback when start function run', function() {
 		// given
-		var $star = $('#star').raty({ click: function(score, evt) { this.attr('title', score); }});
+		var $star = $('#star').raty({ click: function(score, evt) { $(this).attr('title', score); }});
 
 		// when
 		$star.raty('start', 3);
@@ -1580,7 +1580,7 @@ describe('Using function with id', function() {
 		// given
 		var $star = $('#star').raty({
 			click: function(score, evt) {
-				this.attr('title', (score === null) ? 'null' : score);
+				$(this).attr('title', (score === null) ? 'null' : score);
 			},
 			start: 1
 		});
@@ -1605,7 +1605,7 @@ describe('Using function with id', function() {
 		// given
 		var $star = $('#star').raty({
 			click: function(score, evt) {
-				this.attr('title', score);
+				$(this).attr('title', score);
 			}
 		});
 
@@ -1921,7 +1921,7 @@ describe('Using function with class', function() {
 		// given
 		var $stars = $('.star').raty({
 			click: function(score, evt) {
-				this.attr('title', (score === null) ? 'null' : score);
+				$(this).attr('title', (score === null) ? 'null' : score);
 			},
 			start: 1
 		});
@@ -1963,7 +1963,7 @@ describe('Using function with class', function() {
 		// given
 		var $stars = $('.star').raty({
 			click: function(score, evt) {
-				this.attr('title', score);
+				$(this).attr('title', score);
 			}
 		});
 

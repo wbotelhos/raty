@@ -165,7 +165,7 @@
 			<div class="source">
 			 	$('#star').raty({<br/>
 				&nbsp;&nbsp;click: function(score, evt) {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);<br/>
 				&nbsp;&nbsp;}<br/>
 				});<br/><br/>
 
@@ -175,7 +175,7 @@
 			<span class="comment">
 				 - The argument score is the selected value;<br/>
 				 - The argument evt is the click event;<br/>
-				 - You can mension the star element itself using 'this'.<br/>
+				 - You can mension the star element (DOM) itself using 'this'.<br/>
 			</span>
 
 			<div id="cancel-demo" class="session">With a default cancel button:</div>
@@ -427,7 +427,7 @@
 				$('.star').raty({<br/>
 				&nbsp;&nbsp;half:&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;click: function(score, evt) {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;this.raty('cancel');<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;$(this).raty('cancel');<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;$('#result').raty('start', score);<br/>
 				&nbsp;&nbsp;}<br/>
 				});<br/><br/>
@@ -597,7 +597,7 @@
 
 				$('#click').raty({
 					click: function(score, evt) {
-						alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
+						alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
 					}
 				});
 
@@ -687,8 +687,8 @@
 				});
 
 				$('.action').raty({
-					click: function(score) {
-						this.raty('cancel');
+					click: function(score, evt) {
+						$(this).raty('cancel');
 						$('#result').raty('start', score);
 					}
 				});
@@ -696,7 +696,7 @@
 				$('#function').raty({
 					cancel:			true,
 					cancelHint:		'Boring!',
-					click:	function(score) {
+					click:	function(score, evt) {
 						$(this).fadeOut(function() { $(this).fadeIn(); });
 					},
 					targetKeep:	true,

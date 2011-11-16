@@ -33,113 +33,113 @@
 			return this.each(function() {
 
 				var opt		= $.extend({}, $.fn.raty.defaults, options),
-					$this	= $(this),
-					id		= $this.attr('id'),
-					space	= (opt.space) ? 4 : 0;
+					$this	= $(this).data('options', opt),
+					id		= $this.attr('id');
 
-					if (id === undefined || id == '') {
-						id = 'raty-' + $this.index();
-						$this.attr('id', id); 
-					}
+				if (id === undefined || id == '') {
+					id = 'raty-' + $this.index();
+					$this.attr('id', id); 
+				}
 
-					$this.data('options', opt);
+				if (opt.number > 20) {
+					opt.number = 20;
+				} else if (opt.number < 0) {
+					opt.number = 0;
+				}
 
-					if (opt.number > 20) {
-						opt.number = 20;
-					} else if (opt.number < 0) {
-						opt.number = 0;
-					}
+				if (opt.path.substring(opt.path.length - 1, opt.path.length) != '/') {
+					opt.path += '/';
+				}
 
-					if (opt.path.substring(opt.path.length - 1, opt.path.length) != '/') {
-						opt.path += '/';
-					}
-			
-					var isValidStart	= !isNaN(parseInt(opt.start, 10)),
-						start			= '';
+				if (typeof opt.start == 'function') {
+					opt.start = opt.start.call(this);
+				}
 
-					if (isValidStart) {
-						start = (opt.start > opt.number) ? opt.number : opt.start;
-					}else if(typeof opt.start == 'function'){ // this helps to create a callback function for start value 
-						start = opt.start.call(this);
-					}
+				var isValidStart	= !isNaN(parseInt(opt.start, 10)),
+					start			= '';
 
-					var starFile	= opt.starOn,
-						hint		= '';
+				if (isValidStart) {
+					start = (opt.start > opt.number) ? opt.number : opt.start;
+				} 
 
-					for (var i = 1; i <= opt.number; i++) {
-						starFile = (start < i) ? opt.starOff : opt.starOn;
-			
-						hint = (i <= opt.hintList.length && opt.hintList[i - 1] !== null) ? opt.hintList[i - 1] : i;
-			
-						$this.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>');
-			
-						if (opt.space) {
-							$this.append((i < opt.number) ? '&nbsp;' : '');
-						}
-					}
-			
-					if (opt.iconRange && isValidStart) {
-						methods.fillStar.call($this, start);	
-					}
-			
-					methods.roundStar.call($this, start);
+				var starFile	= opt.starOn,
+					space		= (opt.space) ? 4 : 0,
+					hint		= '';
 
-					methods.setTarget.call($this, start, opt.targetKeep);
-			
-					var $score = $('<input/>', {
-						id:		id + '-score',
-						type:	'hidden',
-						name:	opt.scoreName
-					}).appendTo($this);
-			
-					if (isValidStart && opt.start > 0) {
-						$score.val(start);
-					}
-
-					var width = (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
-
-					if (opt.cancel) {
-						var stars	= $this.children('img.' + id),
-							cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>';
+				for (var i = 1; i <= opt.number; i++) {
+					starFile = (start < i) ? opt.starOff : opt.starOn;
 		
-						if (opt.cancelPlace == 'left') {
-							$this.prepend(cancel + '&nbsp;');
-						} else {
-							$this.append('&nbsp;').append(cancel);
-						}
+					hint = (i <= opt.hintList.length && opt.hintList[i - 1] !== null) ? opt.hintList[i - 1] : i;
 		
-						$this.children('.raty-cancel').mouseenter(function() {
-							$(this).attr('src', opt.path + opt.cancelOn);
+					$this.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>');
 		
-							stars.attr('src', opt.path + opt.starOff);
-
-							methods.setTarget.call($this, null, true);
-						}).mouseleave(function() {
-							$(this).attr('src', opt.path + opt.cancelOff);
-		
-							$this.mouseout();
-						}).click(function(evt) {
-							$score.removeAttr('value');
-
-							if (opt.click) {
-					          opt.click.call($this, null, evt);
-					        }
-						});
-
-						width += opt.size + space;
+					if (opt.space) {
+						$this.append((i < opt.number) ? '&nbsp;' : '');
 					}
+				}
+		
+				if (opt.iconRange && isValidStart) {
+					methods.fillStar.call($this, start);	
+				}
+		
+				methods.roundStar.call($this, start);
 
-					if (opt.readOnly) {
-						methods.fixHint.call($this);
+				methods.setTarget.call($this, start, opt.targetKeep);
+		
+				var $score = $('<input/>', {
+					id:		id + '-score',
+					type:	'hidden',
+					name:	opt.scoreName
+				}).appendTo($this);
+		
+				if (isValidStart && opt.start > 0) {
+					$score.val(start);
+				}
 
-						$this.children('.raty-cancel').hide();
+				var width = (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
+
+				if (opt.cancel) {
+					var stars	= $this.children('img.' + id),
+						cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>';
+	
+					if (opt.cancelPlace == 'left') {
+						$this.prepend(cancel + '&nbsp;');
 					} else {
-						$this.css('cursor', 'pointer');
-
-						methods.bindAll.call($this, opt);
+						$this.append('&nbsp;').append(cancel);
 					}
+	
+					$this.children('.raty-cancel').mouseenter(function() {
+						$(this).attr('src', opt.path + opt.cancelOn);
+	
+						stars.attr('src', opt.path + opt.starOff);
 
-					$this.css('width', width);
+						methods.setTarget.call($this, null, true);
+					}).mouseleave(function() {
+						$(this).attr('src', opt.path + opt.cancelOff);
+	
+						$this.mouseout();
+					}).click(function(evt) {
+						$score.removeAttr('value');
+
+						if (opt.click) {
+				          opt.click.call($this[0], null, evt);
+				        }
+					});
+
+					width += opt.size + space;
+				}
+
+				if (opt.readOnly) {
+					methods.fixHint.call($this);
+
+					$this.children('.raty-cancel').hide();
+				} else {
+					$this.css('cursor', 'pointer');
+
+					methods.bindAll.call($this, opt);
+				}
+
+				$this.css('width', width);
 			});
 		}, bindAll: function(opt) {
 			var $this	= this,
@@ -182,7 +182,7 @@
 				$score.val((opt.half || opt.precision) ? $this.data('score') : this.alt);
 
 				if (opt.click) {
-					opt.click.call($this, $score.val(), evt);
+					opt.click.call($this[0], $score.val(), evt);
 				}
 			});
 		}, cancel: function(isClick) {
@@ -214,7 +214,7 @@
 				var opt = $this.data('options');
 
 				if (opt.click) {
-					opt.click.call($this, score);
+					opt.click.call($this[0], score);
 				} else {
 					$.error($this.attr('id') + ': you must add the "click: function(score, evt) { }" callback.');
 				}
