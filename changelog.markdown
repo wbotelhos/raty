@@ -2,20 +2,21 @@
 
 ### 2.0.0 (Development)
 
-+ Now attribute 'iconRange' is represented as a list of object with option to choose starOn and starOff;
-+ Added full round value without half star option is enabled;
 + Added attribute 'showHalf' to just display and separate from the option to vote 'half';
 + Added attribute 'targetText' to choose default value when there is no score or targetKepp is off.
 + Added attribute 'precision' to be able rating with precision values, without star representation;
 + Added attribute 'space' to be able take off the spaces between the star;
 + Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
-+ Fixed bug that not set custom width when readOnly is enabled;
++ Fixed bug that not set custom width when 'readOnly' is enabled;
 + Fixed bug that not set back the hints after disable read only option;
-+ Fixed bug that not create cancel button when starts with readOnly;
-+ Fixed the functions start() and click() to set the value on target when 'target' is enabled;
-+ Fixed the 'target' option to work with half option;
-+ Changed the class of the cancel button to 'raty-cancel' to avoid CSS conflicts;
++ Fixed bug that not create cancel button when starts with 'readOnly';
++ Fixed the functions start() and click() to set the value on target when 'target' option is enabled;
++ Fixed the functions start() and click() not to be executed when 'readOnly' is enabled;
++ Fixed the 'target' option to work with 'half' option;
++ Added visual round up automatically on score > 5, it will be customized;
 + Refactored the code to make it cleanner and faster;
++ Changed the class of the cancel button to 'raty-cancel' to avoid CSS conflicts;
++ Now attribute 'iconRange' is represented as a list of object with option to choose starOn and starOff;
 + Now we using the best pratice to build the plugin;
 + Now the plugin is under test with Jasmine and Jasmine jQuery.
 

@@ -933,8 +933,7 @@ describe('Using ID', function() {
 	it('should set custom width', function() {
 		// given
 		var $star	= $('#star'),
-			size	= 24,
-			number	= 5;
+			size	= 24;
 
 		// when
 		$star.raty({ size: size, width: 200 });
@@ -946,8 +945,7 @@ describe('Using ID', function() {
 	it('should set custom width when readOnly', function() {
 		// given
 		var $star	= $('#star'),
-			size	= 24,
-			number	= 5;
+			size	= 24;
 
 		// when
 		$star.raty({ readOnly: true, size: size, width: 200 });
@@ -1588,9 +1586,9 @@ describe('Using function with id', function() {
 		// when
 		$star.raty('click', 3);
 
+		// then
 		var $imgs = $star.children('img');
 
-		// then
 		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-on.png');
@@ -1645,6 +1643,58 @@ describe('Using function with id', function() {
 		expect($hint).toHaveHtml('cancel this rating!');
 
 		$hint.remove();
+	});
+
+	it('should not start when it is readOnly', function() {
+		// given
+		var $star = $('#star').raty({ readOnly: true });
+
+		// when
+		$star.raty('start', 1);
+
+		// then
+		var $imgs = $star.children('img');
+
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should not click when it is readOnly', function() {
+		// given
+		var $star = $('#star').raty({ readOnly: true, click: function(score, evt) { } });
+
+		// when
+		$star.raty('click', 1);
+
+		// then
+		var $imgs = $star.children('img');
+
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should not cancel when it is readOnly', function() {
+		// given
+		var $star = $('#star').raty({ readOnly: true, start: 1 });
+
+		// when
+		$star.raty('cancel');
+
+		// then
+		var $imgs = $star.children('img');
+
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($star.children('input').val()).toEqual('1');
 	});
 
 });
@@ -1987,5 +2037,107 @@ describe('Using function with class', function() {
 		$hint2.remove();
 		$hint3.remove();
 	});
-	
+
+	it('should not start when it is readOnly', function() {
+		// given
+		var $stars = $('.star').raty({ readOnly: true });
+
+		// when
+		$stars.eq(0).raty('start', 1);
+		$stars.eq(1).raty('start', 1);
+		$stars.eq(2).raty('start', 1);
+
+		// then
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should not click when it is readOnly', function() {
+		// given
+		var $stars = $('.star').raty({ readOnly: true, click: function(score, evt) { } });
+
+		// when
+		$stars.eq(0).raty('click', 1);
+		$stars.eq(1).raty('click', 1);
+		$stars.eq(2).raty('click', 1);
+
+		// then
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should not cancel when it is readOnly', function() {
+		// given
+		var $stars = $('.star').raty({ readOnly: true, start: 1 });
+
+		// when
+		$stars.eq(0).raty('cancel');
+		$stars.eq(1).raty('cancel');
+		$stars.eq(2).raty('cancel');
+
+		// then
+		var $imgs1 = $stars.eq(0).children('img'),
+			$imgs2 = $stars.eq(1).children('img'),
+			$imgs3 = $stars.eq(2).children('img');
+
+		expect($imgs1.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs1.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(0).children('input').val()).toEqual('1');
+
+		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(1).children('input').val()).toEqual('1');
+
+		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-on.png');
+		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
+		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+		expect($stars.eq(2).children('input').val()).toEqual('1');
+	});
+
 });

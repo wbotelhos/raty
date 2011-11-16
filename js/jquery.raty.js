@@ -189,6 +189,10 @@
 			return this.each(function() {
 				var $this = $(this);
 
+				if ($this.data('readonly') == 'readonly') {
+					return false;
+				}
+
 				if (isClick) {
 					methods.click.call($this, null);
 				} else {
@@ -200,6 +204,10 @@
 		}, click: function(score) {
 			return this.each(function() {
 				var $this = $(this);
+
+				if ($this.data('readonly') == 'readonly') {
+					return false;
+				}
 
 				methods.initialize.call($this, score);
 
@@ -254,7 +262,7 @@
 				hint = (score <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
 			}
 
-			this.css('cursor', 'default').attr('title', hint).children('img').attr('title', hint);
+			this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint).children('img').attr('title', hint);
 		}, readOnly: function(isReadOnly) {
 			return this.each(function() {
 				var $this	= $(this),
@@ -265,9 +273,9 @@
 				}
 
 				if (isReadOnly) {
-					$('img.' + $this.attr('id')).unbind();
+					$this.unbind();
 
-					$this.css('cursor', 'default').unbind();
+					$('img.' + $this.attr('id')).unbind();
 
 					methods.fixHint.call($this);
 				} else {
@@ -337,6 +345,10 @@
 			return this.each(function() {
 				var $this = $(this);
 
+				if ($this.data('readonly') == 'readonly') {
+					return false;
+				}
+
 				methods.initialize.call($this, score);
 
 				var opt = $this.data('options');
@@ -364,14 +376,13 @@
 			}
 		}, unfixHint: function() {
 			var opt		= this.data('options'),
-				score	= parseInt(this.children('input').val(), 10),
 				$imgs	= this.children('img').filter(':not(.raty-cancel)');
 
 			for (var i = 0; i < opt.number; i++) {
 				$imgs.eq(i).attr('title', (i < opt.hintList.length && opt.hintList[i] !== null) ? opt.hintList[i] : i);
 			}
 
-			this.css('cursor', 'pointer').removeAttr('title');
+			this.css('cursor', 'pointer').removeData('readonly').removeAttr('title');
 		}
 	};
 
