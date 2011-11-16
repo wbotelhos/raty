@@ -68,55 +68,54 @@
 
 				for (var i = 1; i <= opt.number; i++) {
 					starFile = (start < i) ? opt.starOff : opt.starOn;
-		
+
 					hint = (i <= opt.hintList.length && opt.hintList[i - 1] !== null) ? opt.hintList[i - 1] : i;
-		
+
 					$this.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>');
-		
+
 					if (opt.space) {
 						$this.append((i < opt.number) ? '&nbsp;' : '');
 					}
 				}
-		
-				if (opt.iconRange && isValidStart) {
+
+				var $score = $('<input/>', { id: id + '-score', type: 'hidden', name: opt.scoreName}).appendTo($this);
+
+				if (isValidStart) {
+					if (opt.start > 0) {
+						$score.val(start);
+					}
+
+					methods.roundStar.call($this, start);
+				}
+
+				if (opt.iconRange) {
 					methods.fillStar.call($this, start);	
 				}
-		
-				methods.roundStar.call($this, start);
 
 				methods.setTarget.call($this, start, opt.targetKeep);
-		
-				var $score = $('<input/>', {
-					id:		id + '-score',
-					type:	'hidden',
-					name:	opt.scoreName
-				}).appendTo($this);
-		
-				if (isValidStart && opt.start > 0) {
-					$score.val(start);
-				}
 
 				var width = (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
 
 				if (opt.cancel) {
-					var stars	= $this.children('img.' + id),
-						cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>';
-	
+					var $cancel = $('<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
+
 					if (opt.cancelPlace == 'left') {
-						$this.prepend(cancel + '&nbsp;');
+						$this.prepend('&nbsp;').prepend($cancel);
 					} else {
-						$this.append('&nbsp;').append(cancel);
+						$this.append('&nbsp;').append($cancel);
 					}
-	
-					$this.children('.raty-cancel').mouseenter(function() {
+
+					var $stars = $this.children('img.' + id);
+
+					$cancel.mouseenter(function() {
 						$(this).attr('src', opt.path + opt.cancelOn);
-	
-						stars.attr('src', opt.path + opt.starOff);
+
+						$stars.attr('src', opt.path + opt.starOff);
 
 						methods.setTarget.call($this, null, true);
 					}).mouseleave(function() {
 						$(this).attr('src', opt.path + opt.cancelOff);
-	
+
 						$this.mouseout();
 					}).click(function(evt) {
 						$score.removeAttr('value');
