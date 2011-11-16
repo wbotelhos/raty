@@ -22,30 +22,30 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 ## Default values
 
-	cancel:        false                                          // Show a button to cancel the rating or not.   
-	cancelHint:    'cancel this rating!'                          // The hint information.
-	cancelOff:     'cancel-off.png'                               // Name of the cancel image off.
-	cancelOn:      'cancel-on.png'                                // Name of the cancel image on.
-	cancelPlace:   'left'                                         // Position of the cancel button.
-	click:         null                                           // Default callback function.
-	half:          false                                          // Active the half star.
-	hintList:      ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
-	iconRange:     undefined                                      // Object list representing each icon with position and names.
-	noRatedMsg:    'not rated yet'                                // A hint for no rated elements when it's read-only.
-	number:        5                                              // Number of star.
-	path:          'img                                           // Path of images.
-	readOnly:      false                                          // read-only or not.
-	scoreName:     'score'                                        // The name of target score.
-	size:          16                                             // The icons size.
-	starHalf:      'star-half.png'                                // The image of the half star.
-	starOff:       'star-off.png'                                 // Name of the star image on.
-	starOn:        'star-on.png'                                  // Name of the star image on.
-	start:         0                                              // Start with a score value.
-	target:        null                                           // Number of stars to be selected.
-	targetKeep:    false                                          // If the last choose value will be keeped on mouseout.
-	targetOutValue ''                                             // Default value to be setted into target on mouseout.
-	targetType:    'hint'                                         // What display on target element: hint or number.
-	width:         null                                           // The container width of the stars.
+	cancel:      false                                          // Show a button to cancel the rating or not.   
+	cancelHint:  'cancel this rating!'                          // The hint information.
+	cancelOff:   'cancel-off.png'                               // Name of the cancel image off.
+	cancelOn:    'cancel-on.png'                                // Name of the cancel image on.
+	cancelPlace: 'left'                                         // Position of the cancel button.
+	click:       null                                           // Default callback function.
+	half:        false                                          // Active the half star.
+	hintList:    ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
+	iconRange:   undefined                                      // Object list representing each icon with position and names.
+	noRatedMsg:  'not rated yet'                                // A hint for no rated elements when it's read-only.
+	number:      5                                              // Number of star.
+	path:        'img                                           // Path of images.
+	readOnly:    false                                          // read-only or not.
+	scoreName:   'score'                                        // The name of target score.
+	size:        16                                             // The icons size.
+	starHalf:    'star-half.png'                                // The image of the half star.
+	starOff:     'star-off.png'                                 // Name of the star image on.
+	starOn:      'star-on.png'                                  // Name of the star image on.
+	start:       0                                              // Start with a score value.
+	target:      null                                           // Number of stars to be selected.
+	targetKeep:  false                                          // If the last choose value will be keeped on mouseout.
+	targetText   ''                                             // Default value when there's no score or targetKeep is off.
+	targetType:  'hint'                                         // What display on target element: hint or number.
+	width:       null                                           // The container width of the stars.
 
 ## Usage with default values
 

@@ -62,11 +62,11 @@
 
 			.left { float: left; }
 
-			div#target, #target-out { float: left; }
+			div#target, #target-out, #function { float: left; }
 
 			div#target-number { float: left; }
 
-			div#hint, #hint-out { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
+			div#hint, #hint-out, #hint-function { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
 
 			div#precision { float: left; }
 
@@ -443,6 +443,39 @@
 				- If the ID or class are not specified, then the last element Raty will be takes.
 			</span>
 
+			<div id="function-demo" class="session">Using public functions:</div>
+
+			<div id="function"></div>
+			<div id="hint-function"></div><br/>
+
+			<div style="color: #CCC; margin-top: 15px;">
+				<a href="javascript:void(0);" title="1" class="start">Start 1</a> |
+				<a href="javascript:void(0);" title="2" class="start">Start 2</a> |
+				<a href="javascript:void(0);" title="3" class="start">Start 3</a> |
+				<a href="javascript:void(0);" title="4" class="start">Start 4</a> |
+				<a href="javascript:void(0);" title="5" class="start">Start 5</a>
+			</div>
+
+			<div style="color: #CCC; margin-top: 15px;">
+				<a href="javascript:void(0);" title="1" class="click">Click 1</a> |
+				<a href="javascript:void(0);" title="2" class="click">Click 2</a> |
+				<a href="javascript:void(0);" title="3" class="click">Click 3</a> |
+				<a href="javascript:void(0);" title="4" class="click">Click 4</a> |
+				<a href="javascript:void(0);" title="5" class="click">Click 5</a>
+			</div>
+
+			<div style="color: #CCC; margin-top: 15px;">
+				<a href="javascript:void(0);" title="true" class="readOnly">ReadOnly (true)</a> |
+				<a href="javascript:void(0);" title="false" class="readOnly">ReadOnly (false)</a>
+			</div>
+
+			<div style="color: #CCC; margin-top: 15px;">
+				<a href="javascript:void(0);" title="true" rel="false" class="cancel">Cancel (true)</a> |
+				<a href="javascript:void(0);" title="false" rel="false" class="cancel">Cancel (false)</a> |
+				<a href="javascript:void(0);" title="true" rel="true" class="cancel">Cancel (true, trigger)</a> |
+				<a href="javascript:void(0);" title="false" rel="true" class="cancel">Cancel (false, trigger)</a>
+			</div>
+
 			<div class="session">Default options:</div>
 
 			<div class="source">
@@ -515,8 +548,8 @@
 				targetKeep:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
 				<div class="comment">If the last choose value will be keeped on mouseout.</div>
 
-				targetOutValue: ''<br/>
-				<div class="comment">Default value to be setted into target on mouseout.</div>
+				targetText:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''<br/>
+				<div class="comment">Default value when there is no score or targetKeep is off.</div>
 
 				targetType:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'hint'<br/>
 				<div class="comment">What display on target element: hint or number.</div>
@@ -636,8 +669,8 @@
 				});
 
 				$('#target-out').raty({
-					target:			'#hint-out',
-					targetOutValue: '--'
+					target:		'#hint-out',
+					targetText:	'--'
 				});
 
 				$('#precision').raty({
@@ -660,6 +693,34 @@
 						this.raty('cancel');
 						$('#result').raty('start', score);
 					}
+				});
+
+				$('#function').raty({
+					cancel:			true,
+					cancelHint:		'Boring!',
+					click:	function(score) {
+						$(this).fadeOut(function() { $(this).fadeIn(); });
+					},
+					targetKeep:	true,
+					start:		2,
+					target:		'#hint-function',
+					targetText:	'--'
+				});
+
+				$('.start').click(function() {
+					$('#function').raty('click', this.title);
+				});
+
+				$('.click').click(function() {
+					$('#function').raty('click', this.title);
+				});
+
+				$('.readOnly').click(function() {
+					$('#function').raty('readOnly', (this.title == 'true') ? true : false , (this.rel == 'true') ? true : false);
+				});
+
+				$('.cancel').click(function() {
+					$('#function').raty('cancel', (this.title == 'true') ? true : false);
 				});
 
 			});

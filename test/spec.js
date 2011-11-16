@@ -1001,22 +1001,6 @@ describe('Using ID', function() {
 		$hint.remove();
 	});
 
-	it('should set a target on div with mouseover and click but take off when mouseleave', function() {
-		$('body').append('<div id="hint"></div>');
-
-		// given
-		var $hint = $('#hint'),
-			$star = $('#star').raty({ target: '#hint' });
-
-		// when
-		$star.children('img').eq(3).mouseover().click().mouseleave();
-
-		// then
-		expect($hint).toHaveHtml('');
-
-		$hint.remove();
-	});
-
 	it('should change the cancel hint using target', function() {
 		$('body').append('<div id="hint"></div>');
 
@@ -1143,13 +1127,45 @@ describe('Using ID', function() {
 		expect($star.width()).toEqual(number * size + number * (4 * 0) + 16 + (4 * 0));
 	});
 
-	it('should set the target with targetOutValue', function() {
+	it('should not set target with targetText when has started score and targetKeep is true with mouseout', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var message	= 'cancel this rating!',
+		var $hint	= $('#hint'),
+			$star	= $('#star').raty({ start: 3, target: '#hint', targetKeep: true, targetText: 'my-hint-message' });
+
+		// when
+		$star.children('img').eq(3).mouseover().mouseleave();
+
+		// then
+		expect($hint).toHaveHtml('regular');
+
+		$hint.remove();
+	});
+
+	it('should not set target with targetText when has clicked score and targetKeep is true with mouseout', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star').raty({ target: '#hint', targetKeep: true, targetText: 'my-hint-message' });
+
+		// when
+		$star.children('img').eq(3).mouseover().click().mouseleave();
+
+		// then
+		expect($hint).toHaveHtml('good');
+
+		$hint.remove();
+	});
+
+	it('should set target with targetText when has started score and targetKeep is false with mouseout', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var message	= 'my-hint-message',
 			$hint	= $('#hint'),
-			$star	= $('#star').raty({ target: '#hint', targetOutValue: message });
+			$star	= $('#star').raty({ start: 3, target: '#hint', targetKeep: false, targetText: message });
 
 		// when
 		$star.children('img').eq(3).mouseover().mouseleave();
@@ -1160,18 +1176,36 @@ describe('Using ID', function() {
 		$hint.remove();
 	});
 
-	it('should not to set the target with targetOutValue when targetKeep is enabled', function() {
+	it('should set target with targetText when has clicked score and targetKeep false with mouseout', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint = $('#hint'),
-			$star = $('#star').raty({ target: '#hint', targetKeep: true, targetOutValue: 'cancel this rating!' });
+		var message	= 'my-hint-message',
+			$hint	= $('#hint'),
+			$star	= $('#star').raty({ target: '#hint', targetKeep: false, targetText: message });
 
 		// when
-		$star.children('img').eq(3).mouseover().mouseleave();
+		$star.children('img').eq(3).mouseover().click().mouseleave();
 
 		// then
-		expect($hint).toHaveHtml('good');
+		expect($hint).toHaveHtml(message);
+
+		$hint.remove();
+	});
+
+	it('should set target with targetText when has started score and targetKeep is false without mouseout', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var message	= 'my-hint-message',
+			$hint	= $('#hint'),
+			$star	= $('#star');
+
+		// when
+		$star.raty({ start: 3, target: '#hint', targetKeep: false, targetText: message });
+
+		// then
+		expect($hint).toHaveHtml(message);
 
 		$hint.remove();
 	});

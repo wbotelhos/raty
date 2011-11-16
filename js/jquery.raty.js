@@ -41,7 +41,7 @@
 						id = 'raty-' + $this.index();
 						$this.attr('id', id); 
 					}
-			
+
 					$this.data('options', opt);
 
 					if (opt.number > 20) {
@@ -49,23 +49,23 @@
 					} else if (opt.number < 0) {
 						opt.number = 0;
 					}
-			
+
 					if (opt.path.substring(opt.path.length - 1, opt.path.length) != '/') {
 						opt.path += '/';
 					}
 			
 					var isValidStart	= !isNaN(parseInt(opt.start, 10)),
 						start			= '';
-			
+
 					if (isValidStart) {
 						start = (opt.start > opt.number) ? opt.number : opt.start;
 					}else if(typeof opt.start == 'function'){ // this helps to create a callback function for start value 
 						start = opt.start.call(this);
 					}
-			
+
 					var starFile	= opt.starOn,
 						hint		= '';
-			
+
 					for (var i = 1; i <= opt.number; i++) {
 						starFile = (start < i) ? opt.starOff : opt.starOn;
 			
@@ -83,8 +83,8 @@
 					}
 			
 					methods.roundStar.call($this, start);
-			
-					methods.setTarget.call($this, start, opt);
+
+					methods.setTarget.call($this, start, opt.targetKeep);
 			
 					var $score = $('<input/>', {
 						id:		id + '-score',
@@ -112,8 +112,8 @@
 							$(this).attr('src', opt.path + opt.cancelOn);
 		
 							stars.attr('src', opt.path + opt.starOff);
-		
-							methods.setTarget.call($this, null, opt);
+
+							methods.setTarget.call($this, null, true);
 						}).mouseleave(function() {
 							$(this).attr('src', opt.path + opt.cancelOff);
 		
@@ -149,7 +149,8 @@
 
 			this.mouseleave(function() {
 				methods.initialize.call($this, $score.val());
-				methods.setTarget.call($this, $score.val(), opt, !opt.targetKeep);
+
+				methods.setTarget.call($this, $score.val(), opt.targetKeep);
 			});
 
 			$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
@@ -167,14 +168,15 @@
 	
 					if (opt.precision) {
 						value = (value - diff + position).toFixed(1);
-	
-						methods.setTarget.call($this, value, opt);
+
+						methods.setTarget.call($this, value, true);
 					}
 	
 					$this.data('score', value);
 				} else {
 					methods.fillStar.call($this, value);
-					methods.setTarget.call($this, value, opt);
+
+					methods.setTarget.call($this, value, true);
 				}
 			}).click(function(evt) {
 				$score.val((opt.half || opt.precision) ? $this.data('score') : this.alt);
@@ -209,7 +211,7 @@
 					$.error($this.attr('id') + ': you must add the "click: function(score, evt) { }" callback.');
 				}
 
-				methods.setTarget.call(this, score, opt);
+				methods.setTarget.call($this, score, true);
 			});
 		}, fillStar: function(score) {
 			var opt		= this.data('options'),
@@ -291,7 +293,9 @@
 	
 				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + icon);
 			}													// Full down: [x.00 ... x.25]
-		}, setTarget: function(value, opt, isClear) {
+		}, setTarget: function(value, isKeep) {
+			var opt = this.data('options');
+
 			if (opt.target) {
 				var $target = $(opt.target);
 
@@ -301,8 +305,8 @@
 					if (value == null && !opt.cancel) {
 						$.error(this.attr('id') + ': you must enable the "cancel" option to set hint on target.');
 					} else {
-						if (isClear) {
-							value = opt.targetOutValue;
+						if (!isKeep || value == '') {
+							value = opt.targetText;
 						} else {
 							if (opt.targetType == 'hint') {
 								if (value === null && opt.cancel) {
@@ -337,7 +341,7 @@
 
 				var opt = $this.data('options');
 
-				methods.setTarget.call($this, score, opt);
+				methods.setTarget.call($this, score, true);
 			});
 		}, initialize: function(score) {
 			var opt	= this.data('options'),
@@ -406,7 +410,7 @@
 		start:			0,
 		target:			null,
 		targetKeep:		false,
-		targetOutValue:	'',
+		targetText:		'',
 		targetType:		'hint',
 		width:			null
 	};
