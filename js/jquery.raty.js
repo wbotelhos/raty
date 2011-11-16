@@ -135,16 +135,15 @@
 				} else {
 					$this.css('cursor', 'pointer');
 
-					methods.bindAll.call($this, opt);
+					methods.bindAction.call($this);
 				}
 
 				$this.css('width', width);
 			});
-		}, bindAll: function(opt) {
+		}, bindAction: function() {
 			var $this	= this,
-				id		= this.attr('id'),
-				$score	= $('#' + id + '-score'),
-				$stars	= this.children('img.' + id);
+				opt		= this.data('options'),
+				$score	= this.children('input');
 
 			this.mouseleave(function() {
 				methods.initialize.call($this, $score.val());
@@ -152,31 +151,32 @@
 				methods.setTarget.call($this, $score.val(), opt.targetKeep);
 			});
 
-			$stars.bind(((opt.half) ? 'mousemove' : 'mouseover'), function(e) {
+			var $stars	= this.children('img.' + this.attr('id')),
+				action	= (opt.half) ? 'mousemove' : 'mouseover';
+
+			$stars.bind(action, function(evt) {
 				var value = parseInt(this.alt, 10);
-	
+
 				if (opt.half) {
-					var position	= parseFloat((e.pageX - $(this).offset().left) / opt.size),
+					var position	= parseFloat((evt.pageX - $(this).offset().left) / opt.size),
 						diff		= (position > .5) ? 1 : .5;
-	
+
 					value = parseFloat(this.alt) - 1 + diff;
 
 					methods.fillStar.call($this, value);
 
 					methods.showHalf.call($this, value);
-	
+
 					if (opt.precision) {
 						value = (value - diff + position).toFixed(1);
-
-						methods.setTarget.call($this, value, true);
 					}
-	
+
 					$this.data('score', value);
 				} else {
 					methods.fillStar.call($this, value);
-
-					methods.setTarget.call($this, value, true);
 				}
+
+				methods.setTarget.call($this, value, true);
 			}).click(function(evt) {
 				$score.val((opt.half || opt.precision) ? $this.data('score') : this.alt);
 
@@ -282,7 +282,7 @@
 				} else {
 					var options = $this.data('options');
 
-					methods.bindAll.call($this, options);
+					methods.bindAction.call($this);
 
 					methods.unfixHint.call($this);
 				}
