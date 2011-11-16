@@ -1442,6 +1442,25 @@ describe('Using function with id', function() {
 	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
 	});
 
+	it('should not call click callback when start function run', function() {
+		// given
+		var $star = $('#star').raty({ click: function(score, evt) { this.attr('title', score); }});
+
+		// when
+		$star.raty('start', 3);
+
+		// then
+		var $imgs = $star.children('img');
+
+	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+	    expect($star).not.toHaveAttr('title');
+	});
+
 	it('should set readOnly and fix the hints', function() {
 		// given
 		var $star = $('#star').raty({ start: 1 });

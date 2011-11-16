@@ -470,10 +470,8 @@
 			</div>
 
 			<div style="color: #CCC; margin-top: 15px;">
-				<a href="javascript:void(0);" title="true" rel="false" class="cancel">Cancel (true)</a> |
-				<a href="javascript:void(0);" title="false" rel="false" class="cancel">Cancel (false)</a> |
-				<a href="javascript:void(0);" title="true" rel="true" class="cancel">Cancel (true, trigger)</a> |
-				<a href="javascript:void(0);" title="false" rel="true" class="cancel">Cancel (false, trigger)</a>
+				<a href="javascript:void(0);" title="false" class="cancel">Cancel</a> |
+				<a href="javascript:void(0);" title="true" class="cancel">Cancel (trigger)</a>
 			</div>
 
 			<div class="session">Default options:</div>
@@ -708,7 +706,7 @@
 				});
 
 				$('.start').click(function() {
-					$('#function').raty('click', this.title);
+					$('#function').raty('start', this.title);
 				});
 
 				$('.click').click(function() {
@@ -716,7 +714,7 @@
 				});
 
 				$('.readOnly').click(function() {
-					$('#function').raty('readOnly', (this.title == 'true') ? true : false , (this.rel == 'true') ? true : false);
+					$('#function').raty('readOnly', (this.title == 'true') ? true : false);
 				});
 
 				$('.cancel').click(function() {
