@@ -10,8 +10,11 @@
 + Added attribute 'space' to be able take off the spaces between the star;
 + Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
 + Fixed bug that not set custom width when readOnly is enabled;
++ Fixed bug that not set back the hints after disable read only option;
++ Fixed bug that not create cancel button when starts with readOnly;
 + Fixed the functions start() and click() to set the value on target when 'target' is enabled;
 + Fixed the 'target' option to work with half option;
++ Changed the class of the cancel button to 'raty-cancel' to avoid CSS conflicts;
 + Refactored the code to make it cleanner and faster;
 + Now we using the best pratice to build the plugin;
 + Now the plugin is under test with Jasmine and Jasmine jQuery.

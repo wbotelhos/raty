@@ -98,42 +98,44 @@
 
 					var width = (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
 
+					if (opt.cancel) {
+						var stars	= $this.children('img.' + id),
+							cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>';
+		
+						if (opt.cancelPlace == 'left') {
+							$this.prepend(cancel + '&nbsp;');
+						} else {
+							$this.append('&nbsp;').append(cancel);
+						}
+		
+						$this.children('.raty-cancel').mouseenter(function() {
+							$(this).attr('src', opt.path + opt.cancelOn);
+		
+							stars.attr('src', opt.path + opt.starOff);
+		
+							methods.setTarget.call($this, null, opt);
+						}).mouseleave(function() {
+							$(this).attr('src', opt.path + opt.cancelOff);
+		
+							$this.mouseout();
+						}).click(function(evt) {
+							$score.removeAttr('value');
+
+							if (opt.click) {
+					          opt.click.call($this, null, evt);
+					        }
+						});
+
+						width += opt.size + space;
+					}
+
 					if (opt.readOnly) {
 						methods.fixHint.call($this);
+
+						$this.children('.raty-cancel').hide();
 					} else {
-						if (opt.cancel) {
-							var stars	= $this.children('img.' + id),
-								cancel	= '<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="button-cancel"/>';
-			
-							if (opt.cancelPlace == 'left') {
-								$this.prepend(cancel + '&nbsp;');
-							} else {
-								$this.append('&nbsp;').append(cancel);
-							}
-			
-							$this.children('img.button-cancel').mouseenter(function() {
-								$(this).attr('src', opt.path + opt.cancelOn);
-			
-								stars.attr('src', opt.path + opt.starOff);
-			
-								methods.setTarget.call($this, null, opt);
-							}).mouseleave(function() {
-								$(this).attr('src', opt.path + opt.cancelOff);
-			
-								$this.mouseout();
-							}).click(function(evt) {
-								$score.removeAttr('value');
-
-								if (opt.click) {
-						          opt.click.call($this, null, evt);
-						        }
-							});
-
-							width += opt.size + space;
-						}
-
 						$this.css('cursor', 'pointer');
-			
+
 						methods.bindAll.call($this, opt);
 					}
 
@@ -254,9 +256,9 @@
 		}, readOnly: function(isReadOnly) {
 			return this.each(function() {
 				var $this	= $(this),
-					cancel	= $this.children('.button-cancel');
+					cancel	= $this.children('.raty-cancel');
 
-				if (cancel[0]) {
+				if (cancel.length) {
 					(isReadOnly) ? cancel.hide() : cancel.show();
 				}
 
@@ -359,7 +361,7 @@
 		}, unfixHint: function() {
 			var opt		= this.data('options'),
 				score	= parseInt(this.children('input').val(), 10),
-				$imgs	= this.children('img').filter(':not(.button-cancel)');
+				$imgs	= this.children('img').filter(':not(.raty-cancel)');
 
 			for (var i = 0; i < opt.number; i++) {
 				$imgs.eq(i).attr('title', (i < opt.hintList.length && opt.hintList[i] !== null) ? opt.hintList[i] : i);

@@ -332,7 +332,7 @@ describe('Using ID', function() {
 		
 		// then
 		expect($cancel).not.toHaveAttr('id');
-		expect($cancel).toHaveClass('button-cancel');
+		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', 'cancel this rating!');
 		expect($cancel).toHaveAttr('alt', 'x');
 		expect($cancel).toHaveAttr('src', 'img/cancel-off.png');
@@ -349,7 +349,7 @@ describe('Using ID', function() {
 
 		// then
 		expect($cancel).not.toHaveAttr('id');
-		expect($cancel).toHaveClass('button-cancel');
+		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', 'cancel this rating!');
 		expect($cancel).toHaveAttr('alt', 'x');
 		expect($cancel).toHaveAttr('src', 'img/new-cancel-off.png');
@@ -366,7 +366,7 @@ describe('Using ID', function() {
 
 		// then
 		expect($cancel).not.toHaveAttr('id');
-		expect($cancel).toHaveClass('button-cancel');
+		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', 'cancel this rating!');
 		expect($cancel).toHaveAttr('alt', 'x');
 		expect($cancel).toHaveAttr('src', 'img/new-cancel-on.png');
@@ -445,7 +445,7 @@ describe('Using ID', function() {
 
 		// then
 		expect($cancel).not.toHaveAttr('id');
-		expect($cancel).toHaveClass('button-cancel');
+		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', 'cancel this rating!');
 		expect($cancel).toHaveAttr('alt', 'x');
 		expect($cancel).toHaveAttr('src', 'img/cancel-off.png');
@@ -463,7 +463,7 @@ describe('Using ID', function() {
 
 		// then
 		expect($cancel).not.toHaveAttr('id');
-		expect($cancel).toHaveClass('button-cancel');
+		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', hint);
 		expect($cancel).toHaveAttr('alt', 'x');
 		expect($cancel).toHaveAttr('src', 'img/cancel-off.png');
@@ -1431,6 +1431,28 @@ describe('Using function with id', function() {
 	    expect($imgs.eq(2)).toHaveAttr('title', 'bad');
 	    expect($imgs.eq(3)).toHaveAttr('title', 'bad');
 	    expect($imgs.eq(4)).toHaveAttr('title', 'bad');
+	});
+
+	it('should set readOnly and hide cancel button', function() {
+		// given
+		var $star = $('#star').raty({ cancel: true, path: '../img' });
+
+		// when
+		$star.raty('readOnly', true);
+
+		// then
+	    expect($star.children('.raty-cancel')).not.toBeVisible();
+	});
+
+	it('should unset readOnly and show cancel button', function() {
+		// given
+		var $star = $('#star').raty({ cancel: true, readOnly: true, path: '../img' });
+
+		// when
+		$star.raty('readOnly', false);
+
+		// then
+	    expect($star.children('.raty-cancel')).toBeVisible();
 	});
 
 	it('should unset readOnly and put back the titles', function() {
