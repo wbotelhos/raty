@@ -149,7 +149,7 @@ describe('Using ID', function() {
 		expect($score).toHaveValue(0);
 	});
 
-	it('should be readonly with not rated yet message', function() {
+	it('should start readOnly with not rated yet message', function() {
 		// given
 		var $star = $('#star');
 
@@ -1408,9 +1408,9 @@ describe('Using function with id', function() {
 	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
 	});
 
-	it('should set readOnly', function() {
+	it('should set readOnly and fix the hints', function() {
 		// given
-		var $star = $('#star').raty();
+		var $star = $('#star').raty({ start: 1 });
 
 		// when
 		$star.raty('readOnly', true);
@@ -1420,21 +1420,25 @@ describe('Using function with id', function() {
 		$imgs.eq(3).mouseover().click();
 
 		// then
-	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
 	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
 	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+	    expect($imgs.eq(0)).toHaveAttr('title', 'bad');
+	    expect($imgs.eq(1)).toHaveAttr('title', 'bad');
+	    expect($imgs.eq(2)).toHaveAttr('title', 'bad');
+	    expect($imgs.eq(3)).toHaveAttr('title', 'bad');
+	    expect($imgs.eq(4)).toHaveAttr('title', 'bad');
 	});
 
-	it('should unset readOnly', function() {
+	it('should unset readOnly and put back the titles', function() {
 		// given
 		var $star = $('#star').raty();
 
 		// when
-		$star.raty('readOnly', true);
-
-		$star.raty('readOnly', false);
+		$star.raty('readOnly', true).raty('readOnly', false);
 
 		var $imgs = $star.children('img');
 
@@ -1446,6 +1450,12 @@ describe('Using function with id', function() {
 	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+	    expect($imgs.eq(0)).toHaveAttr('title', 'bad');
+	    expect($imgs.eq(1)).toHaveAttr('title', 'poor');
+	    expect($imgs.eq(2)).toHaveAttr('title', 'regular');
+	    expect($imgs.eq(3)).toHaveAttr('title', 'good');
+	    expect($imgs.eq(4)).toHaveAttr('title', 'gorgeous');
 	});
 
 	it('should cancel without click', function() {
@@ -1605,7 +1615,7 @@ describe('Using function with class', function() {
 		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
 	});
 	
-	it('should set readOnly', function() {
+	it('should set readOnly and fix the hint', function() {
 		// given
 		var $stars = $('.star').raty();
 
@@ -1626,21 +1636,39 @@ describe('Using function with class', function() {
 		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
-	
+
+		expect($imgs1.eq(0)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs1.eq(1)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs1.eq(2)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs1.eq(3)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs1.eq(4)).toHaveAttr('title', 'not rated yet');
+
 		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
-	
+
+		expect($imgs2.eq(0)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs2.eq(1)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs2.eq(2)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs2.eq(3)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs2.eq(4)).toHaveAttr('title', 'not rated yet');
+
 		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($imgs3.eq(0)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs3.eq(1)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs3.eq(2)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs3.eq(3)).toHaveAttr('title', 'not rated yet');
+	    expect($imgs3.eq(4)).toHaveAttr('title', 'not rated yet');
 	});
 
-	it('should unset readOnly', function() {
+	it('should unset readOnly and put back the titles', function() {
 		// given
 		var $stars = $('.star').raty();
 
@@ -1661,18 +1689,36 @@ describe('Using function with class', function() {
 		expect($imgs1.eq(2)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs1.eq(3)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs1.eq(4)).toHaveAttr('src', 'img/star-off.png');
-	
+
+		expect($imgs1.eq(0)).toHaveAttr('title', 'bad');
+	    expect($imgs1.eq(1)).toHaveAttr('title', 'poor');
+	    expect($imgs1.eq(2)).toHaveAttr('title', 'regular');
+	    expect($imgs1.eq(3)).toHaveAttr('title', 'good');
+	    expect($imgs1.eq(4)).toHaveAttr('title', 'gorgeous');
+
 		expect($imgs2.eq(0)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs2.eq(1)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs2.eq(2)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs2.eq(3)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs2.eq(4)).toHaveAttr('src', 'img/star-off.png');
-	
+
+		expect($imgs2.eq(0)).toHaveAttr('title', 'bad');
+	    expect($imgs2.eq(1)).toHaveAttr('title', 'poor');
+	    expect($imgs2.eq(2)).toHaveAttr('title', 'regular');
+	    expect($imgs2.eq(3)).toHaveAttr('title', 'good');
+	    expect($imgs2.eq(4)).toHaveAttr('title', 'gorgeous');
+
 		expect($imgs3.eq(0)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs3.eq(1)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-on.png');
 		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+		expect($imgs3.eq(0)).toHaveAttr('title', 'bad');
+	    expect($imgs3.eq(1)).toHaveAttr('title', 'poor');
+	    expect($imgs3.eq(2)).toHaveAttr('title', 'regular');
+	    expect($imgs3.eq(3)).toHaveAttr('title', 'good');
+	    expect($imgs3.eq(4)).toHaveAttr('title', 'gorgeous');
 	});
 	
 	it('should cancel without click', function() {

@@ -99,8 +99,7 @@
 					var width = (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
 
 					if (opt.readOnly) {
-						$this.css('cursor', 'default');
-						methods.fixHint.call($this, start);
+						methods.fixHint.call($this);
 					} else {
 						if (opt.cancel) {
 							var stars	= $this.children('img.' + id),
@@ -242,36 +241,37 @@
 					$star.attr('src', opt.path + icon);
 				}
 			}
-		}, fixHint: function(score) {
+		}, fixHint: function() {
 			var opt		= this.data('options'),
-				hint	= '';
-	
-			if (score != 0) {
-				score = parseInt(score, 10);
-				hint = (score > 0 && opt.number <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
-			} else {
-				hint = opt.noRatedMsg;
-			}
-	
-			this.attr('title', hint).children('img').attr('title', hint);
-		}, readOnly: function(boo) {
-			return this.each(function() {
-				var $this = $(this);
+				score	= parseInt(this.children('input').val(), 10),
+				hint	= opt.noRatedMsg;
 
-				var cancel = $this.children('img.button-cancel');
+			if (!isNaN(score) && score > 0) {
+				hint = (score <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
+			}
+
+			this.css('cursor', 'default').attr('title', hint).children('img').attr('title', hint);
+		}, readOnly: function(isReadOnly) {
+			return this.each(function() {
+				var $this	= $(this),
+					cancel	= $this.children('.button-cancel');
 
 				if (cancel[0]) {
-					(boo) ? cancel.hide() : cancel.show();
+					(isReadOnly) ? cancel.hide() : cancel.show();
 				}
 
-				if (boo) {
+				if (isReadOnly) {
 					$('img.' + $this.attr('id')).unbind();
+
 					$this.css('cursor', 'default').unbind();
+
+					methods.fixHint.call($this);
 				} else {
 					var options = $this.data('options');
 
 					methods.bindAll.call($this, options);
-					$this.css('cursor', 'pointer');
+
+					methods.unfixHint.call($this);
 				}
 			});
 		}, roundStar: function(score) {
@@ -356,10 +356,16 @@
 
 				$('input#' + id + '-score').val(score);
 			}
-	
-			if (opt.readOnly || this.css('cursor') == 'default') {
-				methods.fixHint.call(this, score); // TODO evitar chamar sempre. function chamar direto.
+		}, unfixHint: function() {
+			var opt		= this.data('options'),
+				score	= parseInt(this.children('input').val(), 10),
+				$imgs	= this.children('img').filter(':not(.button-cancel)');
+
+			for (var i = 0; i < opt.number; i++) {
+				$imgs.eq(i).attr('title', (i < opt.hintList.length && opt.hintList[i] !== null) ? opt.hintList[i] : i);
 			}
+
+			this.css('cursor', 'pointer').removeAttr('title');
 		}
 	};
 
