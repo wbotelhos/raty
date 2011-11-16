@@ -1208,6 +1208,17 @@ describe('Using ID', function() {
 		$hint.remove();
 	});
 
+	it('should set score as readonly when start with readOnly', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ readOnly: true });
+
+		// then
+		expect($star.children('input')).toHaveAttr('readonly', 'readonly');
+	});
+	
 });
 
 describe('Using class', function() {
@@ -1409,6 +1420,21 @@ describe('Using class', function() {
 		expect($imgs3.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should set score as readonly when start with readOnly', function() {
+		// given
+		var $stars = $('.star');
+
+		// when
+		$stars.eq(0).raty({ readOnly: true });
+		$stars.eq(1).raty({ readOnly: true });
+		$stars.eq(2).raty({ readOnly: true });
+
+		// then
+		expect($stars.eq(0).children('input')).toHaveAttr('readonly', 'readonly');
+		expect($stars.eq(1).children('input')).toHaveAttr('readonly', 'readonly');
+		expect($stars.eq(2).children('input')).toHaveAttr('readonly', 'readonly');
 	});
 
 });
@@ -1695,6 +1721,17 @@ describe('Using function with id', function() {
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
 		expect($star.children('input').val()).toEqual('1');
+	});
+
+	it('should set score as readonly when start with readOnly', function() {
+		// given
+		var $star = $('#star').raty();
+
+		// when
+		$star.raty('readOnly', true);
+
+		// then
+		expect($star.children('input')).toHaveAttr('readonly', 'readonly');
 	});
 
 });
@@ -2138,6 +2175,21 @@ describe('Using function with class', function() {
 		expect($imgs3.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
 		expect($stars.eq(2).children('input').val()).toEqual('1');
+	});
+
+	it('should set score as readonly when start with readOnly', function() {
+		// given
+		var $stars = $('.star').raty();
+
+		// when
+		$stars.eq(0).raty('readOnly', true);
+		$stars.eq(1).raty('readOnly', true);
+		$stars.eq(2).raty('readOnly', true);
+
+		// then
+		expect($stars.eq(0).children('input')).toHaveAttr('readonly', 'readonly');
+		expect($stars.eq(1).children('input')).toHaveAttr('readonly', 'readonly');
+		expect($stars.eq(2).children('input')).toHaveAttr('readonly', 'readonly');
 	});
 
 });

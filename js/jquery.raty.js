@@ -255,13 +255,15 @@
 			}
 		}, fixHint: function() {
 			var opt		= this.data('options'),
-				score	= parseInt(this.children('input').val(), 10),
+				$score	= this.children('input'),
+				score	= parseInt($score.val(), 10),
 				hint	= opt.noRatedMsg;
 
 			if (!isNaN(score) && score > 0) {
 				hint = (score <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
 			}
 
+			$score.attr('readonly', 'readonly');
 			this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint).children('img').attr('title', hint);
 		}, readOnly: function(isReadOnly) {
 			return this.each(function() {
@@ -382,7 +384,7 @@
 				$imgs.eq(i).attr('title', (i < opt.hintList.length && opt.hintList[i] !== null) ? opt.hintList[i] : i);
 			}
 
-			this.css('cursor', 'pointer').removeData('readonly').removeAttr('title');
+			this.css('cursor', 'pointer').removeData('readonly').removeAttr('title').children('input').attr('readonly', 'readonly');
 		}
 	};
 

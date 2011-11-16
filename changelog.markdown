@@ -16,6 +16,7 @@
 + Added visual round up automatically on score > 5, it will be customized;
 + Refactored the code to make it cleanner and faster;
 + Changed the class of the cancel button to 'raty-cancel' to avoid CSS conflicts;
++ Now the field score is set to readonly when 'readOnly' is enabled.
 + Now attribute 'iconRange' is represented as a list of object with option to choose starOn and starOff;
 + Now we using the best pratice to build the plugin;
 + Now the plugin is under test with Jasmine and Jasmine jQuery.
