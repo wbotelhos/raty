@@ -222,11 +222,32 @@
 			</div><br/>
 
 			<span class="comment">
-				- You can disable the 'showHalf' option to just vote with half star but now show it.<br/>
+				- You can disable the 'halfShow' option to just vote with half star but now show it.<br/>
+				- If 'halfShow' is disabled, then score >= x.6 will be rounded up visually.<br/>
 				- The interval can be:<br/>
-				-- Rounded down: [x.00 ... x.25]<br/>
-				-- Half star:&nbsp;&nbsp;&nbsp; [x.26 ... x.75]<br/>
-				-- Rounded up:&nbsp;&nbsp; [x.76 ... x.99]
+				-- Rounded down: [x.00 .. x.25]<br/>
+				-- Half star:&nbsp;&nbsp;&nbsp; [x.26 .. x.75]<br/>
+				-- Rounded up:&nbsp;&nbsp; [x.76 .. x.99]
+			</span>
+
+			<div id="round-demo" class="session">Using custom round option:</div>
+			<div id="round"></div>
+
+			<div class="source">
+			 	$('#star').raty({<br/>
+				&nbsp;&nbsp;start: 1.26,<br/>
+				&nbsp;&nbsp;round: { down: .25, full: .6, up: .76 }<br/>
+				});<br/><br/>
+
+				&lt;div id="star"&gt;&lt;/div&gt;
+			</div><br/>
+
+			<span class="comment">
+				- This example use the default round values;<br/>
+				- down: with halfShow enabled, score &lt;= x.25 will be rounded down; (inclusive)<br/>
+				- up: with halfShow enabled, score &gt;= x.76 will be rounded up; (inclusive)<br/>
+				- down-up: with halfShow enabled, score &gt; x.25 and score &lt; .76 will be half star; (inclusive)<br/>
+				- full: with halfShow disabled, score &gt;= x.6 will be rounded up; (inclusive)<br/>
 			</span>
 
 			<div id="icon-demo" class="session">With a custom hint and icons:</div>
@@ -384,7 +405,7 @@
 			<div id="precision"></div>
 			<div id="precision-target"></div><br/>
 
-			<div class="source" style="margin-top: 20px;">
+			<div class="source" style="margin-top: 15px;">
 				$('#star').raty({<br/>
 				&nbsp;&nbsp;half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;precision:&nbsp;&nbsp;true,<br/>
@@ -504,7 +525,7 @@
 			 	hintList:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
 			 	<div class="comment">List of names that will be used as a hint on each star.</div>
 
-				iconRange:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[]<br/>
+				iconRange:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined<br/>
 				<div class="comment">List of object that represent each icon with position and names.</div>
 
 				noRatedMsg:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'not rated yet'<br/>
@@ -617,6 +638,11 @@
 				$('#half').raty({
 					half: true,
 					start: 3.3
+				});
+
+				$('#round').raty({
+					start: 1.26,
+					round: { down: .25, full: .6, up: .76 }
 				});
 
 				$('#icon').raty({

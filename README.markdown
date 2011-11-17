@@ -27,8 +27,9 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 	cancelOff:   'cancel-off.png'                               // Name of the cancel image off.
 	cancelOn:    'cancel-on.png'                                // Name of the cancel image on.
 	cancelPlace: 'left'                                         // Position of the cancel button.
-	click:       null                                           // Default callback function.
+	click:       undefined                                      // Default callback function.
 	half:        false                                          // Active the half star.
+	halfShow:    true                                           // Enables half star display.
 	hintList:    ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
 	iconRange:   undefined                                      // Object list representing each icon with position and names.
 	noRatedMsg:  'not rated yet'                                // A hint for no rated elements when it's read-only.
@@ -38,14 +39,15 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 	scoreName:   'score'                                        // The name of target score.
 	size:        16                                             // The icons size.
 	starHalf:    'star-half.png'                                // The image of the half star.
+	space:       true                                           // Option to take off the spaces between the star.
 	starOff:     'star-off.png'                                 // Name of the star image on.
 	starOn:      'star-on.png'                                  // Name of the star image on.
 	start:       0                                              // Start with a score value.
-	target:      null                                           // Number of stars to be selected.
+	target:      undefined                                      // Number of stars to be selected.
 	targetKeep:  false                                          // If the last choose value will be keeped on mouseout.
 	targetText   ''                                             // Default value when there's no score or targetKeep is off.
 	targetType:  'hint'                                         // What display on target element: hint or number.
-	width:       null                                           // The container width of the stars.
+	width:       undefined                                      // The container width of the stars.
 
 ## Usage with default values
 
