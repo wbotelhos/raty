@@ -280,8 +280,6 @@
 
 					methods.fixHint.call($this);
 				} else {
-					var options = $this.data('options');
-
 					methods.bindAction.call($this);
 
 					methods.unfixHint.call($this);
@@ -289,19 +287,19 @@
 			});
 		}, roundStar: function(score) {
 			var diff = (score - Math.floor(score)).toFixed(2);
-			
+
 			if (diff > .25) {
 				var opt		= this.data('options'),
-					icon	= opt.starOn;						// Full up: [x.76 ... x.99]
-	
-				if (diff < .76 && opt.halfShow) {				// Half: [x.26 ... x.75]
+					icon	= opt.starOn;			// Full up: [x.76 ... x.99]
+
+				if (diff < .76 && opt.halfShow) {	// Half: [x.26 ... x.75]
 					icon = opt.starHalf;
-				} else if (diff <= .5 ) {						// Full down: [x.00 .. x.5]
+				} else if (diff <= .5 ) {			// Full down: [x.00 .. x.5]
 					icon = opt.starOff;
 				}
-	
+
 				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + icon);
-			}													// Full down: [x.00 ... x.25]
+			}										// Full down: [x.00 ... x.25]
 		}, setTarget: function(value, isKeep) {
 			var opt = this.data('options');
 
