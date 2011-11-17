@@ -1218,7 +1218,191 @@ describe('Using ID', function() {
 		// then
 		expect($star.children('input')).toHaveAttr('readonly', 'readonly');
 	});
-	
+
+	it('should be down with round option', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ halfShow: true, start: 1.9, round: { down: .9, full: .98, up: .99 } });
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should be half with round option', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ halfShow: true, start: 1.91, round: { down: .9, full: .98, up: .99 } });
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-half.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should be up with round option', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ halfShow: true, start: 1.99, round: { down: .9, full: .98, up: .99 } });
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should be full with round option and halfShow off', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ halfShow: false, start: 1.98, round: { down: .9, full: .98, up: .99 } });
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should be down with round option and others options default', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ halfShow: true, start: 1.9, round: { down: .9 } });
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should be half with round option and others options default', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ halfShow: true, start: 1.26, round: { } });
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-half.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should be up with round option and others options default', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ halfShow: true, start: 1.99, round: { up: .99 } });
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should be full with round option and halfShow off and others options default', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ halfShow: false, start: 1.98, round: { full: .98 } });
+
+		var $imgs = $star.children('img');
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should set hint target with start option and targetKeep true', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star');
+
+		// when
+		$star.raty({ target: '#hint', precision: true, start: 3, targetKeep: true });
+
+		// then
+		expect($hint).toHaveHtml('regular');
+
+		$hint.remove();
+	});
+
+	it('should set precision number target with just one fractional number', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star');
+
+		// when
+		$star.raty({ target: '#hint', precision: true, targetType: 'number', start: 1.2333, targetKeep: true });
+
+		// then
+		expect($hint).toHaveHtml('1.2');
+
+		$hint.remove();
+	});
+
+	it('should set precision number target with start options and targetKeep true', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star');
+
+		// when
+		$star.raty({ target: '#hint', precision: true, targetType: 'number', start: 1.2, targetKeep: true });
+
+		// then
+		expect($hint).toHaveHtml('1.2');
+
+		$hint.remove();
+	});
+
 });
 
 describe('Using class', function() {

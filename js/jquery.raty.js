@@ -47,6 +47,18 @@
 					opt.number = 0;
 				}
 
+				if (opt.round.down === undefined) {
+					opt.round.down = $.fn.raty.defaults.round.down;
+				}
+
+				if (opt.round.full === undefined) {
+					opt.round.full = $.fn.raty.defaults.round.full;
+				}
+
+				if (opt.round.up === undefined) {
+					opt.round.up = $.fn.raty.defaults.round.up;
+				}
+
 				if (opt.path.substring(opt.path.length - 1, opt.path.length) != '/') {
 					opt.path += '/';
 				}
@@ -165,13 +177,13 @@
 
 					methods.fillStar.call($this, value);
 
-					methods.showHalf.call($this, value);
+					$this.data('score', value);
 
 					if (opt.precision) {
-						value = (value - diff + position).toFixed(1);
+						value = value - diff + position;
 					}
 
-					$this.data('score', value);
+					methods.showHalf.call($this, value);
 				} else {
 					methods.fillStar.call($this, value);
 				}
@@ -286,20 +298,20 @@
 				}
 			});
 		}, roundStar: function(score) {
-			var diff = (score - Math.floor(score)).toFixed(2);
+			var opt		= this.data('options'),
+				diff	= (score - Math.floor(score)).toFixed(2);
 
-			if (diff > .25) {
-				var opt		= this.data('options'),
-					icon	= opt.starOn;			// Full up: [x.76 ... x.99]
+			if (diff > opt.round.down) {
+				var icon = opt.starOn;						// Full up: [x.76 .. x.99]
 
-				if (diff < .76 && opt.halfShow) {	// Half: [x.26 ... x.75]
+				if (diff < opt.round.up && opt.halfShow) {	// Half: [x.26 .. x.75]
 					icon = opt.starHalf;
-				} else if (diff <= .5 ) {			// Full down: [x.00 .. x.5]
+				} else if (diff < opt.round.full) {		// Full down: [x.00 .. x.5]
 					icon = opt.starOff;
 				}
 
 				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + icon);
-			}										// Full down: [x.00 ... x.25]
+			}												// Full down: [x.00 .. x.25]
 		}, setTarget: function(value, isKeep) {
 			var opt = this.data('options');
 
@@ -321,6 +333,12 @@
 								} else {
 									value = opt.hintList[Math.ceil(value - 1)];
 								}
+							} else {
+								if (value != '' && !opt.precision) {
+									value = parseInt(value, 10);
+								} else {
+									value = parseFloat(value).toFixed(1);
+								}
 							}
 						}
 
@@ -333,11 +351,10 @@
 				}
 			}
 		}, showHalf: function(score) {
-			var diff = (score - Math.floor(score)).toFixed(2);
+			var opt		= this.data('options'),
+				diff	= (score - Math.floor(score)).toFixed(1);
 
-			if (diff > .25 && diff < .76) {
-				var opt	= this.data('options');
-
+			if (diff > 0 && diff < .6) {
 				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + opt.starHalf);
 			}
 		}, start: function(score) {
@@ -401,7 +418,7 @@
 		cancelOff:		'cancel-off.png',
 		cancelOn:		'cancel-on.png',
 		cancelPlace:	'left',
-		click:			null,
+		click:			undefined,
 		half:			false,
 		halfShow:		true,
 		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
@@ -410,6 +427,7 @@
 		number:			5,
 		path:			'img/',
 		precision:		false,
+		round:			{ down: .25, full: .6, up: .76 },
 		readOnly:		false,
 		scoreName:		'score',
 		size:			16,
@@ -418,11 +436,11 @@
 		starOff:		'star-off.png',
 		starOn:			'star-on.png',
 		start:			0,
-		target:			null,
+		target:			undefined,
 		targetKeep:		false,
 		targetText:		'',
 		targetType:		'hint',
-		width:			null
+		width:			undefined
 	};
 
 })(jQuery);
