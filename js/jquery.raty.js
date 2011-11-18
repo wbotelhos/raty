@@ -177,8 +177,6 @@
 
 					methods.fillStar.call($this, value);
 
-					$this.data('score', value);
-
 					if (opt.precision) {
 						value = value - diff + position;
 					}
@@ -187,6 +185,8 @@
 				} else {
 					methods.fillStar.call($this, value);
 				}
+
+				$this.data('score', value);
 
 				methods.setTarget.call($this, value, true);
 			}).click(function(evt) {
