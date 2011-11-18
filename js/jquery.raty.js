@@ -342,6 +342,12 @@
 							}
 						}
 
+						if (opt.targetFormat.indexOf('{score}') < 0) {
+							$.error(this.attr('id') + ': template "{score}" missing!');
+						} else {
+							value = opt.targetFormat.toString().replace('{score}', value);
+						}
+
 						if ($target.is(':input')) {
 							$target.val(value);
 						} else {
@@ -437,6 +443,7 @@
 		starOn:			'star-on.png',
 		start:			0,
 		target:			undefined,
+		targetFormat:	'{score}',
 		targetKeep:		false,
 		targetText:		'',
 		targetType:		'hint',
