@@ -37,7 +37,7 @@
 					id		= $this.attr('id');
 
 				if (id === undefined || id == '') {
-					id = 'raty-' + $this.index();
+					id = 'raty-' + $('.' + $this.attr('class')).index(this);
 					$this.attr('id', id); 
 				}
 

@@ -1716,6 +1716,30 @@ describe('Using class', function() {
 		expect($stars.eq(2).children('input')).toHaveAttr('readonly', 'readonly');
 	});
 
+	it('should get global index from all ratys', function() {
+		$('body')
+		.append('<div class="rating"></div>')
+		.append('<div class="wrapper"><div class="rating"></div></div>')
+		.append('<div class="wrapper"><div class="sub-wrapper"><div class="rating"></div></div></div>');
+
+		var $ratings = $('.rating');
+
+		// given
+		$ratings.each(function() {
+			$(this).raty();
+		});
+
+		// when
+
+		// then
+		expect($ratings.eq(0).attr('id')).toEqual('raty-0');
+		expect($ratings.eq(1).attr('id')).toEqual('raty-1');
+		expect($ratings.eq(2).attr('id')).toEqual('raty-2');
+
+		$('.rating').remove();
+		$('.wrapper').remove();
+	});
+
 });
 
 describe('Using function with id', function() {
