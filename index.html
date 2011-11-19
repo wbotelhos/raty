@@ -62,11 +62,13 @@
 
 			.left { float: left; }
 
-			div#target, #target-out, #function { float: left; }
+			div#target, #target-out, div#function, div#format { float: left; }
 
 			div#target-number { float: left; }
 
-			div#hint, #hint-out, #hint-function { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
+			div#hint, #hint-out, div#hint-function, div#hint-format { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
+
+			div#hint-format { width: 120px; }
 
 			div#precision { float: left; }
 
@@ -223,7 +225,7 @@
 
 			<span class="comment">
 				- You can disable the 'halfShow' option to just vote with half star but now show it.<br/>
-				- If 'halfShow' is disabled, then score >= x.6 will be rounded up visually.<br/>
+				- If 'halfShow' is disabled, then score &gt;= x.6 will be rounded up visually.<br/>
 				- The interval can be:<br/>
 				-- Rounded down: [x.00 .. x.25]<br/>
 				-- Half star:&nbsp;&nbsp;&nbsp; [x.26 .. x.75]<br/>
@@ -333,7 +335,7 @@
 				- If you don't pass a ID for the element, then it will be created.
 			</span>
 
-			<div id="target-demo" class="session">Displaying the hint in a target element:</div>
+			<div id="target-demo" class="session">Displaying hint in a target element:</div>
 
 			<div id="target"></div>
 			<div id="hint"></div><br/>
@@ -343,6 +345,25 @@
 				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
 				&nbsp;&nbsp;cancelHint: 'none',<br/>
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint'<br/>
+				});<br/><br/>
+
+				&lt;div id="star"&gt;&lt;/div&gt;<br/>
+				&lt;div id="target"&gt;&lt;/div&gt;
+			</div>
+
+			<div id="format-demo" class="session">Displaying hint with format template:</div>
+
+			<div id="format"></div>
+			<div id="hint-format"></div><br/>
+
+			<div class="source">
+				$('#star').raty({<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'Sure?',<br/>
+				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint',<br/>
+				&nbsp;&nbsp;targetFormat: 'your score: {score}',<br/>
+				&nbsp;&nbsp;targetText:&nbsp;&nbsp;&nbsp;'none',<br/>
+				&nbsp;&nbsp;targetKeep:&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
@@ -683,6 +704,15 @@
 					cancel:		true,
 					cancelHint:	'none',
 					target:		'#hint'
+				});
+
+				$('#format').raty({
+					cancel:			true,
+					cancelHint:		'Sure?',
+					target:			'#hint-format',
+					targetFormat:	 'your score: {score}',
+					targetKeep:		true,
+					targetText:		'none'
 				});
 
 				$('#target-number').raty({

@@ -310,7 +310,6 @@ describe('Using ID', function() {
 		// when
 		$star.raty({
 			click: function(score, evt) {
-				var $this = $(this);
 				$(this).attr('title', score);
 			}
 		});
@@ -994,7 +993,7 @@ describe('Using ID', function() {
 		$star.children('img').eq(3).mouseover().mouseleave();
 
 		// then
-		expect($hint).toHaveHtml('');
+		expect($hint).toBeEmpty();
 
 		$hint.remove();
 	});
@@ -1399,6 +1398,102 @@ describe('Using ID', function() {
 
 		// then
 		expect($hint).toHaveHtml('1.2');
+
+		$hint.remove();
+	});
+
+	it('should set target with format on mouseover', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star').raty({ target: '#hint', targetFormat: 'score: {score}', precision: true });
+
+		// when
+		$star.children('img:first').mouseover();
+
+		// then
+		expect($hint).toHaveHtml('score: bad');
+
+		$hint.remove();
+	});
+
+	it('should set score with precision and half disabled', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star').raty({ target: '#hint', targetKeep: true, precision: true });
+
+		// when
+		$star.children('img:first').mouseover().click().mouseleave();
+
+		// then
+		expect($hint).toHaveHtml('bad');
+
+		$hint.remove();
+	});
+
+	it('should set and keep target with format on click and mouseleave', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star').raty({ target: '#hint', targetFormat: 'score: {score}', targetKeep: true });
+
+		// when
+		$star.children('img:first').mouseover().click().mouseleave();
+
+		// then
+		expect($hint).toHaveHtml('score: bad');
+
+		$hint.remove();
+	});
+
+	it('should set target with format and precision', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star');
+
+		// when
+		$star.raty({ target: '#hint', targetFormat: 'score: {score}', targetKeep: true, targetType: 'number', precision: true, start: 1.2 });
+
+		// then
+		expect($hint).toHaveHtml('score: 1.2');
+
+		$hint.remove();
+	});
+
+	it('should set target with none value', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star');
+
+		// when
+		$star.raty({ target: '#hint', targetFormat: 'score: {score}', targetKeep: true, targetType: 'number', targetText: 'none' });
+
+		// then
+		expect($hint).toHaveHtml('score: none');
+
+		$hint.remove();
+	});
+
+	it('should not to use format template on cancel mouseover', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star').raty({ cancel: true, target: '#hint', targetFormat: 'score: {score}', targetKeep: true });
+
+		// when
+		$star.children('img:first').mouseover();
+
+		// then
+		expect($hint).toHaveHtml('cancel this rating!');
 
 		$hint.remove();
 	});
@@ -1839,7 +1934,7 @@ describe('Using function with id', function() {
 		$hint.remove();
 	});
 
-	it('should set a target on div with mouseover', function() {
+	it('should set a target on div with cancel', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
@@ -1850,7 +1945,7 @@ describe('Using function with id', function() {
 		$star.raty('cancel');
 
 		// then
-		expect($hint).toHaveHtml('cancel this rating!');
+		expect($hint).toBeEmpty();
 
 		$hint.remove();
 	});
@@ -1916,6 +2011,22 @@ describe('Using function with id', function() {
 
 		// then
 		expect($star.children('input')).toHaveAttr('readonly', 'readonly');
+	});
+
+	it('should to do mouseleave automatically and set the cancel hint on target', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var $hint	= $('#hint'),
+			$star	= $('#star').raty({ cancel: true, target: '#hint', targetFormat: 'score: {score}', targetKeep: true });
+
+		// when
+		$star.raty('cancel');
+
+		// then
+		expect($hint).toHaveHtml('score: ');
+
+		$hint.remove();
 	});
 
 });
@@ -2250,9 +2361,9 @@ describe('Using function with class', function() {
 		$stars.raty('cancel');
 
 		// then
-		expect($hint1).toHaveHtml('cancel this rating!');
-		expect($hint2).toHaveHtml('cancel this rating!');
-		expect($hint3).toHaveHtml('cancel this rating!');
+		expect($hint1).toBeEmpty();
+		expect($hint2).toBeEmpty();
+		expect($hint3).toBeEmpty();
 
 		$hint1.remove();
 		$hint2.remove();

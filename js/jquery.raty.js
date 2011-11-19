@@ -210,7 +210,7 @@
 					methods.start.call($this, null);
 				}
 
-				$this.children('input').removeAttr('value');
+				$this.mouseleave().children('input').removeAttr('value');
 			});
 		}, click: function(score) {
 			return this.each(function() {
@@ -321,37 +321,39 @@
 				if ($target.length == 0) {
 					$.error(this.attr('id') + ': target selector invalid or missing!');
 				} else {
-					if (value == null && !opt.cancel) {
+					var score = value;
+
+					if (score == null && !opt.cancel) {
 						$.error(this.attr('id') + ': you must enable the "cancel" option to set hint on target.');
 					} else {
-						if (!isKeep || value == '') {
-							value = opt.targetText;
+						if (!isKeep || score == '') {
+							score = opt.targetText;
 						} else {
 							if (opt.targetType == 'hint') {
-								if (value === null && opt.cancel) {
-									value = opt.cancelHint;
+								if (score === null && opt.cancel) {
+									score = opt.cancelHint;
 								} else {
-									value = opt.hintList[Math.ceil(value - 1)];
+									score = opt.hintList[Math.ceil(score - 1)];
 								}
 							} else {
-								if (value != '' && !opt.precision) {
-									value = parseInt(value, 10);
+								if (score != '' && !opt.precision) {
+									score = parseInt(score, 10);
 								} else {
-									value = parseFloat(value).toFixed(1);
+									score = parseFloat(score).toFixed(1);
 								}
 							}
 						}
 
 						if (opt.targetFormat.indexOf('{score}') < 0) {
 							$.error(this.attr('id') + ': template "{score}" missing!');
-						} else {
-							value = opt.targetFormat.toString().replace('{score}', value);
+						} else if (value !== null) {
+							score = opt.targetFormat.toString().replace('{score}', score);
 						}
 
 						if ($target.is(':input')) {
-							$target.val(value);
+							$target.val(score);
 						} else {
-							$target.html(value);
+							$target.html(score);
 						}
 					}
 				}

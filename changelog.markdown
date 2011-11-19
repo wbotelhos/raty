@@ -7,10 +7,12 @@
 + Added attribute 'precision' to be able rating with precision values, without star representation;
 + Added attribute 'space' to be able take off the spaces between the star;
 + Added attribute 'rount' to customize the visual rounding of values;
++ Added attribute 'targetFormat' to customize the target with a template;
 + Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
 + Fixed bug that not set custom width when 'readOnly' is enabled;
 + Fixed bug that not set back the hints after disable read only option;
 + Fixed bug that not create cancel button when starts with 'readOnly';
++ Fixed the function cancel() to set the right hint on target score;
 + Fixed the functions start() and click() to set the value on target when 'target' option is enabled;
 + Fixed the functions start() and click() not to be executed when 'readOnly' is enabled;
 + Fixed the 'target' option to work with 'half' and 'precision' option;
