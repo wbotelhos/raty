@@ -446,9 +446,21 @@
 
 			<div id="space"></div>
 
-			<div class="source" style="margin-top: 20px;">
+			<div class="source">
 				$('#star').raty({<br/>
 				&nbsp;&nbsp;space: false<br/>
+				});<br/><br/>
+
+				&lt;div id="star"&gt;&lt;/div&gt;<br/>
+			</div>
+
+			<div id="single-demo" class="session">Using single icon:</div>
+
+			<div id="single"></div>
+
+			<div class="source">
+				$('#star').raty({<br/>
+				&nbsp;&nbsp;single: true<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
@@ -740,6 +752,10 @@
 
 				$('#space').raty({
 					space: false
+				});
+
+				$('#single').raty({
+					single: true
 				});
 
 				$('.action').raty({

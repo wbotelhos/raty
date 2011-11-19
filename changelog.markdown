@@ -2,12 +2,13 @@
 
 ### 2.0.0 (Development)
 
-+ Added attribute 'halfShow' to just display and separate from the option to vote 'half';
-+ Added attribute 'targetText' to choose default value when there is no score or targetKepp is off.
-+ Added attribute 'precision' to be able rating with precision values, without star representation;
-+ Added attribute 'space' to be able take off the spaces between the star;
-+ Added attribute 'rount' to customize the visual rounding of values;
-+ Added attribute 'targetFormat' to customize the target with a template;
++ Added option 'halfShow' to just display and separate from the option to vote 'half';
++ Added option 'targetText' to choose default value when there is no score or targetKepp is off.
++ Added option 'precision' to be able rating with precision values, without star representation;
++ Added option 'space' to be able take off the spaces between the star;
++ Added option 'rount' to customize the visual rounding of values;
++ Added option 'targetFormat' to customize the target with a template;
++ Added option 'single' to present only the selected star; (suggestion by newcube)
 + Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
 + Fixed bug that not set custom width when 'readOnly' is enabled;
 + Fixed bug that not set back the hints after disable read only option;
@@ -16,7 +17,7 @@
 + Fixed the functions start() and click() to set the value on target when 'target' option is enabled;
 + Fixed the functions start() and click() not to be executed when 'readOnly' is enabled;
 + Fixed the 'target' option to work with 'half' and 'precision' option;
-+ Fixed the index number given to Raty binded by class without id; (fixed by "Remember me, please?")
++ Fixed the index number given to Raty binded by class without id; (by "Remember me, please?")
 + Refactored the code to make it cleanner and faster;
 + Changed the class of the cancel button to 'raty-cancel' to avoid CSS conflicts;
 + Now the scope of click callback is the raty element as DOM, not jQuery selection, to follow the usual;

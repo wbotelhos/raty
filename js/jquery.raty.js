@@ -246,7 +246,12 @@
 
 				if (opt.iconRange && opt.iconRange.length > count) {
 					star = opt.iconRange[count];
-					icon = (i <= score) ? star.on : star.off;
+
+					if (opt.single) {
+						icon = (i == score) ? star.on : star.off;
+					} else {
+						icon = (i <= score) ? star.on : star.off;
+					}
 
 					if (!icon) {
 						icon = opt.starOff;
@@ -260,7 +265,12 @@
 						count++;
 					}
 				} else {
-					icon = (i <= score) ? opt.starOn : opt.starOff;
+					if (opt.single) {
+						icon = (i == score) ? opt.starOn : opt.starOff;
+					} else {
+						icon = (i <= score) ? opt.starOn : opt.starOff;
+					}
+
 					$star.attr('src', opt.path + icon);
 				}
 			}
@@ -438,6 +448,7 @@
 		round:			{ down: .25, full: .6, up: .76 },
 		readOnly:		false,
 		scoreName:		'score',
+		single:			false,
 		size:			16,
 		space:			true,
 		starHalf:		'star-half.png',

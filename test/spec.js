@@ -1498,6 +1498,98 @@ describe('Using ID', function() {
 		$hint.remove();
 	});
 
+	it('should show single icon selection on mouseover', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ single: true });
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(2).mouseover();
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should show single icon selection on click', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({ single: true });
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(2).mouseover().click().mouseleave();
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it('should show single icon selection with iconRange enabled on mouseover', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({
+			iconRange: [
+				{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
+				{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
+				{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
+				{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }
+			],
+			single: true
+		});
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(3).mouseover();
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/face-a-off.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/face-a-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/face-b-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/face-c.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/face-d-off.png');
+	});
+
+	it('should show single icon selection with iconRange enabled on click', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({
+			iconRange: [
+				{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
+				{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
+				{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
+				{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }
+			],
+			single: true
+		});
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(3).mouseover().click().mouseleave();
+
+		// then
+		expect($imgs.eq(0)).toHaveAttr('src', 'img/face-a-off.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/face-a-off.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/face-b-off.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/face-c.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/face-d-off.png');
+	});
+
 });
 
 describe('Using class', function() {
