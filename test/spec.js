@@ -476,7 +476,7 @@ describe('Using ID', function() {
 		$star.children('img:first').mouseover().click().mouseleave();
 
 		// then
-		expect($star).toHaveAttr('title', null);
+		expect($star).toHaveAttr('title', 'null');
 		expect($star.children('input').val()).toEqual('');
 	});
 
@@ -529,9 +529,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should show half on min limit half with half and halfShow', function() {
@@ -549,9 +546,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should show half on max limit half with half and halfShow', function() {
@@ -569,9 +563,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should show round up on min limit up with half and halfShow', function() {
@@ -589,9 +580,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should round down on max limit down with half and no halfShow', function() {
@@ -609,9 +597,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should round down on min limit half with half and no halfShow', function() {
@@ -629,9 +614,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should round up on max limit half with half and no halfShow', function() {
@@ -649,9 +631,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should round up on min limit up with half and no halfShow', function() {
@@ -669,9 +648,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should round down on max limit down with no half and halfShow', function() {
@@ -689,9 +665,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should show half on min limit half with no half and halfShow', function() {
@@ -709,9 +682,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should show half on max limit half with no half and halfShow', function() {
@@ -729,9 +699,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should show round up on min limit up with no half and halfShow', function() {
@@ -749,9 +716,6 @@ describe('Using ID', function() {
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
-		
-		// then
-		expect($star).toHaveAttr('title', null);
 	});
 
 	it('should set custom hints', function() {
