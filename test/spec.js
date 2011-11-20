@@ -361,7 +361,7 @@ describe('Using ID', function() {
 		// when
 		$star.raty({ cancel: true, cancelOn: 'new-cancel-on.png' });
 
-		var $cancel = $star.children('img:first').mouseover();
+		var $cancel = $star.children('img:first').mouseenter();
 
 		// then
 		expect($cancel).toHaveAttr('id', 'star-cancel');
@@ -378,7 +378,7 @@ describe('Using ID', function() {
 		// when
 		$star.raty({ cancel: true, cancelHint: 'my-hint' });
 
-		var $cancel = $star.children('img:first').mouseover();
+		var $cancel = $star.children('img:first').mouseenter();
 
 		// then
 		expect($cancel).toHaveAttr('title', 'my-hint');
@@ -390,7 +390,7 @@ describe('Using ID', function() {
 			$imgs	= $star.children('img');
 		
 		// when
-		$star.children('img:first').mouseover();
+		$star.children('img:first').mouseenter();
 
 		// then
 		expect($imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
@@ -470,13 +470,13 @@ describe('Using ID', function() {
 
 	it('should execute cancel click callback', function() {
 		// given
-		var $star = $('#star').raty({ cancel: true, click: function(score, evt) { $(this).attr('title', score); } });
+		var $star = $('#star').raty({ cancel: true, click: function(score, evt) { $(this).attr('title', (score === null)); } });
 
 		// when
 		$star.children('img:first').mouseover().click().mouseleave();
 
 		// then
-		expect($star).toHaveAttr('title', 'null');
+		expect($star).toHaveAttr('title', 'true');
 		expect($star.children('input').val()).toEqual('');
 	});
 
@@ -999,7 +999,7 @@ describe('Using ID', function() {
 		});
 
 		// when
-		$star.children('img:first').mouseover();
+		$star.children('img:first').mouseenter();
 
 		// then
 		expect($hint).toHaveHtml('none');
@@ -1479,7 +1479,7 @@ describe('Using ID', function() {
 			$star	= $('#star').raty({ cancel: true, target: '#hint', targetFormat: 'score: {score}', targetKeep: true });
 
 		// when
-		$star.children('img:first').mouseover();
+		$star.children('img:first').mouseenter();
 
 		// then
 		expect($hint).toHaveHtml('cancel this rating!');
@@ -1850,7 +1850,7 @@ describe('Using function with id', function() {
 	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
 	});
 
-	it('should not call click callback when start function run', function() {
+	it('should not call click callback when start function run without true option', function() {
 		// given
 		var $star = $('#star').raty({ click: function(score, evt) { $(this).attr('title', score); }});
 
@@ -1866,7 +1866,7 @@ describe('Using function with id', function() {
 	    expect($imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
 
-	    expect($star).not.toHaveAttr('title');
+	    expect($star.attr('title')).toEqual(undefined);
 	});
 
 	it('should set readOnly and fix the hints', function() {
