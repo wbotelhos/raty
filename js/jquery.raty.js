@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version        2.0.0 (Development)
+ * @version        2.0.0
  * @since          2010.06.11
  * @author         Washington Botelho
  * @documentation  wbotelhos.com/raty
@@ -106,7 +106,7 @@
 
 				methods.setTarget.call($this, start, opt.targetKeep);
 
-				var width = (opt.width) ? opt.width : (opt.number * opt.size + opt.number * space);
+				var width = opt.width || (opt.number * opt.size + opt.number * space);
 
 				if (opt.cancel) {
 					var $cancel = $('<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
@@ -248,13 +248,9 @@
 					star = opt.iconRange[count];
 
 					if (opt.single) {
-						icon = (i == score) ? star.on : star.off;
+						icon = (i == score) ? (star.on || opt.starOn) : (star.off || opt.starOff);
 					} else {
-						icon = (i <= score) ? star.on : star.off;
-					}
-
-					if (!icon) {
-						icon = opt.starOff;
+						icon = (i <= score) ? (star.on || opt.starOn) : (star.off || opt.starOff);
 					}
 
 					if (i <= star.range) {

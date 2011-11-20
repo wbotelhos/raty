@@ -817,9 +817,8 @@ describe('Using ID', function() {
 	            { range: 2, on: 'face-a.png', off: 'face-a-off.png' },
 	            { range: 3, on: 'face-b.png', off: 'face-b-off.png' },
 	            { range: 4, on: 'face-c.png', off: 'face-c-off.png' },
-	            { range: 5, on: 'face-d.png' }
-			],
-			starOff: 'face-off.png'
+	            { range: 5, on: 'face-d.png', off: 'face-d-off.png' }
+			]
 		});
 
 		var $imgs = $star.children('img');
@@ -829,7 +828,33 @@ describe('Using ID', function() {
 	    expect($imgs.eq(1)).toHaveAttr('src', 'img/face-a-off.png');
 	    expect($imgs.eq(2)).toHaveAttr('src', 'img/face-b-off.png');
 	    expect($imgs.eq(3)).toHaveAttr('src', 'img/face-c-off.png');
-	    expect($imgs.eq(4)).toHaveAttr('src', 'img/face-off.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/face-d-off.png');
+	});
+
+	it('should use range icons and apply not found icons default', function() {
+		// given
+		var $star = $('#star');
+
+		// when
+		$star.raty({
+			iconRange: [
+	            { range: 2, off: 'face-a-off.png' },
+	            { range: 3, off: 'face-b-off.png' },
+	            { range: 4, on: 'face-c.png', off: 'face-c-off.png' },
+	            { range: 5 }
+			]
+		});
+
+		var $imgs = $star.children('img');
+
+		$imgs.eq(3).mouseover();
+
+		// then
+	    expect($imgs.eq(0)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(1)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(2)).toHaveAttr('src', 'img/star-on.png');
+	    expect($imgs.eq(3)).toHaveAttr('src', 'img/face-c.png');
+	    expect($imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
 	});
 
 	it('should hover range icons', function() {
@@ -842,7 +867,7 @@ describe('Using ID', function() {
 				{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
 				{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
 				{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
-				{ range: 5, on: 'face-d.png' }
+				{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }
 			],
             starOff: 'face-off.png'
 		});
@@ -897,7 +922,7 @@ describe('Using ID', function() {
 				{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
 				{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
 				{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
-				{ range: 5, on: 'face-d.png' }
+				{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }
 			],
             starOff: 'face-off.png',
             start: 1
@@ -913,7 +938,7 @@ describe('Using ID', function() {
 		expect($imgs.eq(1)).toHaveAttr('src', 'img/face-a-off.png');
 		expect($imgs.eq(2)).toHaveAttr('src', 'img/face-b-off.png');
 		expect($imgs.eq(3)).toHaveAttr('src', 'img/face-c-off.png');
-		expect($imgs.eq(4)).toHaveAttr('src', 'img/face-off.png');
+		expect($imgs.eq(4)).toHaveAttr('src', 'img/face-d-off.png');
 	});
 
 	it('should calculate the right icon size', function() {
