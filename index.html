@@ -9,7 +9,7 @@
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
 
 		<style type="text/css">
 			/* This CSS does not belong to the plugin. */
@@ -94,11 +94,11 @@
 		<div id="header">
 			<div id="title">
 				<a href="http://wbotelhos.com/raty">jQuery Raty - A Star Rating Plugin</a>
-				<span id="version">(current version: 1.4.3)</span>
+				<span id="version">(current version: 2.0.0)</span>
 			</div>
 
 			<div id="menu">
-				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-1.4.3.zip" target="_blank">Download</a> |
+				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.0.0.zip" target="_blank">Download</a> |
 				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 				<a href="http://www.wbotelhos.com/raty/changelog.markdown" target="_blank">Change Log</a> |
 				<a href="http://www.wbotelhos.com/raty/README.markdown" target="_blank">Readme</a> |
@@ -211,7 +211,7 @@
 				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
 
-			<div id="half-demo" class="session">Enabling half star voting:</div>
+			<div id="half-demo" class="session">Using half star voting:</div>
 			<div id="half"></div>
 
 			<div class="source">
@@ -224,7 +224,7 @@
 			</div><br/>
 
 			<span class="comment">
-				- You can disable the 'halfShow' option to just vote with half star but now show it.<br/>
+				- You can disable the 'halfShow' option to just vote with half star but not show it.<br/>
 				- If 'halfShow' is disabled, then score &gt;= x.6 will be rounded up visually.<br/>
 				- The interval can be:<br/>
 				-- Rounded down: [x.00 .. x.25]<br/>
@@ -278,9 +278,8 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 5, on: 'face-d.png' }<br/>
-				&nbsp;&nbsp;],<br/>
-				&nbsp;&nbsp;starOff: 'face-off.png'<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }<br/>
+				&nbsp;&nbsp;]
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;
@@ -292,7 +291,7 @@
 				- The value on is the active icon;<br/>
 				- The value off is the inactive icon;<br/>
 				- The sequence of the range interval should be in a ascending order;<br/>
-				- If the value on or off is omitted then the attribute starOff will be used.
+				- If the value on or off is omitted then the attribute starOn or starOff will be used.
 			</span>
 
 			<div id="big-demo" class="session">With a bigger icon:</div>
@@ -351,25 +350,6 @@
 				&lt;div id="target"&gt;&lt;/div&gt;
 			</div>
 
-			<div id="format-demo" class="session">Displaying hint with format template:</div>
-
-			<div id="format"></div>
-			<div id="hint-format"></div><br/>
-
-			<div class="source">
-				$('#star').raty({<br/>
-				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
-				&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'Sure?',<br/>
-				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint',<br/>
-				&nbsp;&nbsp;targetFormat: 'your score: {score}',<br/>
-				&nbsp;&nbsp;targetText:&nbsp;&nbsp;&nbsp;'none',<br/>
-				&nbsp;&nbsp;targetKeep:&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;<br/>
-				&lt;div id="target"&gt;&lt;/div&gt;
-			</div>
-
 			<div id="target-number-demo" class="session">Displaying and keeping the score in a target element:</div>
 
 			<div id="target-number"></div>
@@ -417,6 +397,25 @@
 				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint'<br/>
 				});<br/><br/>
 	
+				&lt;div id="star"&gt;&lt;/div&gt;<br/>
+				&lt;div id="target"&gt;&lt;/div&gt;
+			</div>
+
+			<div id="format-demo" class="session">Displaying hint with format template:</div>
+
+			<div id="format"></div>
+			<div id="hint-format"></div><br/>
+
+			<div class="source">
+				$('#star').raty({<br/>
+				&nbsp;&nbsp;cancel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,<br/>
+				&nbsp;&nbsp;cancelHint:&nbsp;&nbsp;&nbsp;'Sure?',<br/>
+				&nbsp;&nbsp;target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#hint',<br/>
+				&nbsp;&nbsp;targetFormat: 'your score: {score}',<br/>
+				&nbsp;&nbsp;targetText:&nbsp;&nbsp;&nbsp;'none',<br/>
+				&nbsp;&nbsp;targetKeep:&nbsp;&nbsp;&nbsp;&nbsp;true<br/>
+				});<br/><br/>
+
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
 				&lt;div id="target"&gt;&lt;/div&gt;
 			</div>
@@ -528,6 +527,18 @@
 				<a href="javascript:void(0);" title="true" class="cancel">Cancel (trigger)</a>
 			</div>
 
+			<div id="global-demo" class="session">Changing the settings globally:</div>
+
+			<div class="source">
+				$.fn.raty.defaults.starOn = 'star-on.gif';<br/>
+				$.fn.raty.defaults.starOff = 'star-off.gif';
+			</div>
+
+			<span class="comment">
+				- You can change any option mention the scope <b>$.fn.raty.defaults.</b> + <i>option_name</i>;<br/>
+				- This setup must be called before you bind the Raty, of course.
+			</span>
+
 			<div class="session">Default options:</div>
 
 			<div class="source">
@@ -546,7 +557,7 @@
 			 	cancelPlace:&nbsp;&nbsp;&nbsp;&nbsp;'left'<br/>
 			 	<div class="comment">Position of the cancel button.</div>
 
-				click:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
+				click:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined<br/>
 			 	<div class="comment">Function that returns the selected value.</div>
 
 				half:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
@@ -594,7 +605,7 @@
 				start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>
 				<div class="comment">Number of stars to be selected.</div>
 
-				target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
+				target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined<br/>
 				<div class="comment">Number of stars to be selected.</div>
 
 				targetKeep:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false<br/>
@@ -606,7 +617,7 @@
 				targetType:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'hint'<br/>
 				<div class="comment">What display on target element: hint or number.</div>
 
-				width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;null<br/>
+				width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined<br/>
 				<div class="comment">The container width of the stars.</div>
 			</div>
 
@@ -689,9 +700,8 @@
 						{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
 						{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
 						{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
-						{ range: 5, on: 'face-d.png' }
-					],
-					starOff:	'face-off.png'
+						{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }
+					]
 				});
 
 				$('#big').raty({
@@ -706,11 +716,6 @@
 				});
 
 				$('.group').raty();
-
-				$('#result').raty({
-					half:		true,
-					readOnly:	true
-				});
 
 				$('#target').raty({
 					cancel:		true,
@@ -758,10 +763,12 @@
 					single: true
 				});
 
+				var $result = $('#result').raty();
+
 				$('.action').raty({
 					click: function(score, evt) {
 						$(this).raty('cancel');
-						$('#result').raty('start', score);
+						$result.raty('start', score);
 					}
 				});
 

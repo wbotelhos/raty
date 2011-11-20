@@ -8,7 +8,7 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 ## Version
 
-	@version        2.0.0 (Development)
+	@version        2.0.0
 	@since          2010.06.11
 	@author         Washington Botelho
 	@documentation  wbotelhos.com/raty
