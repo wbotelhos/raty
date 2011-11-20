@@ -1,12 +1,12 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
-### 2.0.0 (Development)
+### 2.0.0
 
 + Added option 'halfShow' to just display and separate from the option to vote 'half';
 + Added option 'targetText' to choose default value when there is no score or targetKepp is off.
 + Added option 'precision' to be able rating with precision values, without star representation;
 + Added option 'space' to be able take off the spaces between the star;
-+ Added option 'rount' to customize the visual rounding of values;
++ Added option 'round' to customize the visual rounding of values;
 + Added option 'targetFormat' to customize the target with a template;
 + Added option 'single' to present only the selected star; (suggestion by newcube)
 + Fixed bug in IE 7 that returns void instead undefined when there is no an attribute;
