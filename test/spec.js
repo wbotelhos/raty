@@ -330,7 +330,7 @@ describe('Using ID', function() {
 		var $cancel = $star.children('img:first');
 		
 		// then
-		expect($cancel).not.toHaveAttr('id');
+		expect($cancel).toHaveAttr('id', 'star-cancel');
 		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', 'cancel this rating!');
 		expect($cancel).toHaveAttr('alt', 'x');
@@ -347,7 +347,7 @@ describe('Using ID', function() {
 		var $cancel = $star.children('img:first');
 
 		// then
-		expect($cancel).not.toHaveAttr('id');
+		expect($cancel).toHaveAttr('id', 'star-cancel');
 		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', 'cancel this rating!');
 		expect($cancel).toHaveAttr('alt', 'x');
@@ -364,7 +364,7 @@ describe('Using ID', function() {
 		var $cancel = $star.children('img:first').mouseover();
 
 		// then
-		expect($cancel).not.toHaveAttr('id');
+		expect($cancel).toHaveAttr('id', 'star-cancel');
 		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', 'cancel this rating!');
 		expect($cancel).toHaveAttr('alt', 'x');
@@ -443,7 +443,7 @@ describe('Using ID', function() {
 		var $cancel = $star.children('img:last');
 
 		// then
-		expect($cancel).not.toHaveAttr('id');
+		expect($cancel).toHaveAttr('id', 'star-cancel');
 		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', 'cancel this rating!');
 		expect($cancel).toHaveAttr('alt', 'x');
@@ -461,7 +461,7 @@ describe('Using ID', function() {
 		var $cancel = $star.children('img:first');
 
 		// then
-		expect($cancel).not.toHaveAttr('id');
+		expect($cancel).toHaveAttr('id', 'star-cancel');
 		expect($cancel).toHaveClass('raty-cancel');
 		expect($cancel).toHaveAttr('title', hint);
 		expect($cancel).toHaveAttr('alt', 'x');

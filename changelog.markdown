@@ -1,5 +1,9 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+### 2.1.0 (Development)
+
++ Now the cancel button has ID.
+
 ### 2.0.0
 
 + Added option 'halfShow' to just display and separate from the option to vote 'half';

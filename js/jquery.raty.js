@@ -109,7 +109,7 @@
 				var width = opt.width || (opt.number * opt.size + opt.number * space);
 
 				if (opt.cancel) {
-					var $cancel = $('<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
+					var $cancel = $('<img id="' + id + '-cancel" src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
 
 					if (opt.cancelPlace == 'left') {
 						$this.prepend('&nbsp;').prepend($cancel);
