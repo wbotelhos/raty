@@ -24,6 +24,7 @@
 + Fixed the index number given to Raty binded by class without id; (by "Remember me, please?")
 + Refactored the code to make it cleanner and faster;
 + Changed the class of the cancel button to 'raty-cancel' to avoid CSS conflicts;
++ Now is possible to use 'start' option as callback function to get start value; (by hpgihan)
 + Now the scope of click callback is the raty element as DOM, not jQuery selection, to follow the usual;
 + Now the field score is set to readonly when 'readOnly' is enabled.
 + Now attribute 'iconRange' is represented as a list of object with option to choose starOn and starOff;
@@ -50,7 +51,7 @@
 ### 1.3.3
 
 + Fixed the icon presentation when the start attribute is setted and the iconRange is enabled;
-+ Now the click function receives the event as argument. (by emwendelin)
++ Now the click function receives the event as argument. (by Eric Wendelin)
 
 ### 1.3.2
 

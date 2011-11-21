@@ -76,9 +76,10 @@ You must pass a ID or a class to be the target of the action:
 
 ## Contributors
 
-+ emwendelin
++ Eric Wendelin
 + Francisco Souza
 + Gabriel Benz
++ hpgihan
 + jeongee
 + Olle Jonsson
 
