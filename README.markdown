@@ -66,13 +66,13 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 You must pass a ID or a class to be the target of the action:
 
-	$.fn.raty.start(3, '#raty');        // Starting the rating with 3 stars.
+	$('#star').raty('start', 3);        // Starts the last Raty with 3 stars.
 
-	$.fn.raty.readOnly(true, '.raty');  // Adjusts the ratings for read-only.
+	$('#star').raty('click', 2);        // Click on the second star of the Raty with ID called 'raty'.
 
-	$.fn.raty.click(2, '#raty');        // Click on the second star.
+	$('.star').raty('readOnly', true);  // Adjusts all Raty with class called 'raty' for read-only.
 
-	$.fn.raty.cancel('#raty', true);    // Cancel the rating. The second optional parameter enables the click callback.
+	$('#star').raty('cancel', true);    // Cancel the rating. The second optional parameter enable thes click callback.
 
 ## Contributors
 
