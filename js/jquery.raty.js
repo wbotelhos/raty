@@ -85,8 +85,12 @@
 
 					$this.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>');
 
-					if (opt.space) {
-						$this.append((i < opt.number) ? '&nbsp;' : '');
+					if (i < opt.number) {
+						if (opt.starsInRow && !(i % opt.starsInRow)) {
+							$this.append('<br>');
+						} else if (opt.space) {
+							$this.append('&nbsp;');
+						}
 					}
 				}
 
@@ -106,7 +110,8 @@
 
 				methods.setTarget.call($this, start, opt.targetKeep);
 
-				var width = opt.width || (opt.number * opt.size + opt.number * space);
+				var starsInRow = (opt.starsInRow || opt.number);
+				var width = opt.width || (starsInRow * opt.size + starsInRow * space);
 
 				if (opt.cancel) {
 					var $cancel = $('<img id="' + id + '-cancel" src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
@@ -456,7 +461,8 @@
 		targetKeep:		false,
 		targetText:		'',
 		targetType:		'hint',
-		width:			undefined
+		width:			undefined,
+		starsInRow:		undefined
 	};
 
 })(jQuery);
