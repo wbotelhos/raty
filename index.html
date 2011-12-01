@@ -9,7 +9,7 @@
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.js"></script>
 
 		<style type="text/css">
 			/* This CSS does not belong to the plugin. */
@@ -464,6 +464,19 @@
 
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
 			</div>
+            
+			<div id="multiplerows-demo" class="session">Multiple rows:</div>
+
+			<div id="multiplerows"></div>
+
+			<div class="source">
+				$('#multiplerows').raty({<br/>
+				&nbsp;&nbsp;starsInRow: 3,<br/>
+				&nbsp;&nbsp;number: 9<br/>
+				});<br/><br/>
+
+				&lt;div id="multiplerows"&gt;&lt;/div&gt;<br/>
+			</div>
 
 			<div id="action-demo" class="session">Using directed actions with public functions:</div>
 
@@ -619,6 +632,9 @@
 
 				width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined<br/>
 				<div class="comment">The container width of the stars.</div>
+
+				starsInRow:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined<br/>
+				<div class="comment">Number of stars in one row.</div>
 			</div>
 
 			<div class="session">Public functions:</div>
@@ -761,6 +777,11 @@
 
 				$('#single').raty({
 					single: true
+				});
+
+				$('#multiplerows').raty({
+					starsInRow: 3,
+					number: 9 
 				});
 
 				var $result = $('#result').raty();

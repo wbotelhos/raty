@@ -48,7 +48,7 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 	targetText   ''                                             // Default value when there's no score or targetKeep is off.
 	targetType:  'hint'                                         // What display on target element: hint or number.
 	width:       undefined                                      // The container width of the stars.
-
+	starsInRow:  undefined                                      // Number of stars in one row.
 ## Usage with default values
 
 	$('#star').raty();
