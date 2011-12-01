@@ -1579,6 +1579,29 @@ describe('Using ID', function() {
 	    expect($imgs.eq(4)).toHaveAttr('src', 'img/face-d-off.png');
 	});
 
+	it('should break the row', function() {
+		//given
+		var $star = $('#star');
+		
+		//when
+		$star.raty({ starsInRow: 2, number: 4 });
+
+		//then
+		expect($star).toContain("br");
+	});
+
+	it('should calculate right width with multiple rows', function() {
+		//given
+		var $star = $('#star'),
+			starsInRow = 2,
+			size = 30;
+		
+		//when
+		$star.raty({ starsInRow: starsInRow, number: 4, size: size });
+
+		//then
+		expect($star.width()).toEqual(starsInRow * size + starsInRow * 4);
+	});
 });
 
 describe('Using class', function() {
