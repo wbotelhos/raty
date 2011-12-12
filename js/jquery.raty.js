@@ -316,6 +316,18 @@
 
 				this.children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', opt.path + icon);
 			}												// Full down: [x.00 .. x.25]
+		}, score: function() {
+			var score	= [],
+				value	;
+
+			this.each(function() {
+				value = $(this).children('input').val();
+				value = (value == '') ? null : parseFloat(value);
+
+				score.push(value);
+			});
+
+			return (score.length > 1) ? score : score[0];
 		}, setTarget: function(value, isKeep) {
 			var opt = this.data('options');
 
@@ -399,7 +411,7 @@
 					methods.roundStar.call(this, score);
 				}
 
-				this.children('input[name="' + opt.scoreName + '"]').val(score);
+				this.children('input').val(score);
 			}
 		}, unfixHint: function() {
 			var opt		= this.data('options'),
