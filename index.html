@@ -5,6 +5,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="-1">
+		<meta name="keywords" content="jquery,rating,raty,voto,star,staring,classificacao,classificar,votar,plugin" />
+		<meta name="description" content="jQuery Raty - A Star Rating Plugin" />
 
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
@@ -58,7 +60,7 @@
 			
 			span#version { color: #777; font: 10px verdana; }
 
-			/* custom CSS */
+			/* custom */
 
 			.left { float: left; }
 
@@ -94,11 +96,11 @@
 		<div id="header">
 			<div id="title">
 				<a href="http://wbotelhos.com/raty">jQuery Raty - A Star Rating Plugin</a>
-				<span id="version">(current version: 2.0.0)</span>
+				<span id="version">(current version: 2.1.0)</span>
 			</div>
 
 			<div id="menu">
-				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.0.0.zip" target="_blank">Download</a> |
+				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.1.0.zip" target="_blank">Download</a> |
 				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 				<a href="http://www.wbotelhos.com/raty/changelog.markdown" target="_blank">Change Log</a> |
 				<a href="http://www.wbotelhos.com/raty/README.markdown" target="_blank">Readme</a> |
@@ -115,7 +117,7 @@
 		</div>
 
 		<div id="content">
-			<div id="default-demo" class="session-first">With default options:</div>
+			<div id="default-demo" class="session-first">Default options:</div>
 
 			<div id="default"></div>
 
@@ -137,6 +139,19 @@
 				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
 
+			<div id="start-demo" class="session">Starting with a callback:</div>
+			<div id="start" data-rating="3"></div>
+
+			<div class="source">
+			 	$('#start').raty({<br/>
+				&nbsp;&nbsp;start: function() {<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;return $(this).attr('data-rating');<br/>
+				&nbsp;&nbsp;}<br/>
+				});<br/><br/>
+
+				&lt;div id="star" data-rating="3"&gt;&lt;/div&gt;
+			</div>
+
 			<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
 			<div id="anyone"></div>
 
@@ -149,7 +164,7 @@
 				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
 
-			<div id="number-demo" class="session">With a custom score name and a number of stars:</div>
+			<div id="number-demo" class="session">Custom score name and a number of stars:</div>
 			<div id="number"></div>
 
 			<div class="source">
@@ -180,7 +195,7 @@
 				 - You can mension the star element (DOM) itself using 'this'.<br/>
 			</span>
 
-			<div id="cancel-demo" class="session">With a default cancel button:</div>
+			<div id="cancel-demo" class="session">Default cancel button:</div>
 			<div id="cancel"></div>
 
 			<div class="source">
@@ -195,7 +210,7 @@
 				 - The score value for the click on cancel button is null.<br/>
 			</span>
 
-			<div id="cancel-custom-demo" class="session">With a custom cancel button:</div>
+			<div id="cancel-custom-demo" class="session">Custom cancel button:</div>
 			<div id="cancel-custom"></div>
 
 			<div class="source">
@@ -211,7 +226,7 @@
 				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
 
-			<div id="half-demo" class="session">Using half star voting:</div>
+			<div id="half-demo" class="session">Half star voting:</div>
 			<div id="half"></div>
 
 			<div class="source">
@@ -232,7 +247,7 @@
 				-- Rounded up:&nbsp;&nbsp; [x.76 .. x.99]
 			</span>
 
-			<div id="round-demo" class="session">Using custom round option:</div>
+			<div id="round-demo" class="session">Custom round option:</div>
 			<div id="round"></div>
 
 			<div class="source">
@@ -252,7 +267,7 @@
 				- full: with halfShow disabled, score &gt;= x.6 will be rounded up; (inclusive)<br/>
 			</span>
 
-			<div id="icon-demo" class="session">With a custom hint and icons:</div>
+			<div id="icon-demo" class="session">Custom hint and icons:</div>
 			<div id="icon"></div>
 
 			<div class="source">
@@ -269,7 +284,7 @@
 				- To display the number of the star, set null.
 			</span>
 
-			<div id="range-demo" class="session">With a range of custom icons:</div>
+			<div id="range-demo" class="session">Range of custom icons:</div>
 			<div id="range"></div>
 
 			<div class="source">
@@ -294,7 +309,7 @@
 				- If the value on or off is omitted then the attribute starOn or starOff will be used.
 			</span>
 
-			<div id="big-demo" class="session">With a bigger icon:</div>
+			<div id="big-demo" class="session">Bigger icon:</div>
 			<div id="big"></div>
 
 			<div class="source">
@@ -316,7 +331,7 @@
 				- You can specify your own width as following: width: 120.
 			</span>
 
-			<div id="group-demo" class="session">With a group of elements:</div>
+			<div id="group-demo" class="session">Group of elements:</div>
 			<div class="group"></div>
 			<div class="group"></div>
 			<div class="group"></div>
@@ -420,7 +435,7 @@
 				&lt;div id="target"&gt;&lt;/div&gt;
 			</div>
 
-			<div id="precision-demo" class="session">With half star voting precision:</div>
+			<div id="precision-demo" class="session">Half star voting precision:</div>
 
 			<div id="precision"></div>
 			<div id="precision-target"></div><br/>
@@ -453,7 +468,7 @@
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
 			</div>
 
-			<div id="single-demo" class="session">Using single icon:</div>
+			<div id="single-demo" class="session">Single icon:</div>
 
 			<div id="single"></div>
 
@@ -465,7 +480,7 @@
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
 			</div>
 
-			<div id="action-demo" class="session">Using directed actions with public functions:</div>
+			<div id="action-demo" class="session">Directed actions with public functions:</div>
 
 			love:
 			<div class="action"></div>
@@ -496,7 +511,7 @@
 				- If the ID or class are not specified, then the last element Raty will be takes.
 			</span>
 
-			<div id="function-demo" class="session">Using public functions:</div>
+			<div id="function-demo" class="session">Public functions:</div>
 
 			<div id="function"></div>
 			<div id="hint-function"></div><br/>
@@ -634,6 +649,9 @@
 
 			<div class="source">$('#star').raty('cancel', true);</div>
 			<div class="description">Cancel the rating. The second optional parameter enable thes click callback.</div>
+
+			<div class="source">$('#star').raty('score');</div>
+			<div class="description">Recovers the current score. For class returns an array. No rated returns null.</div>
 		</div>
 
 		<div id="footer">
@@ -648,6 +666,12 @@
 				$('#fixed').raty({
 					readOnly:	true,
 					start:		2
+				});
+
+				$('#start').raty({
+				    start: function() {
+				        return $(this).attr('data-rating');
+				    }
 				});
 
 				$('#anyone').raty({

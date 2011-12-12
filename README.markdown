@@ -8,7 +8,7 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 ## Version
 
-	@version        2.0.0
+	@version        2.1.0
 	@since          2010.06.11
 	@author         Washington Botelho
 	@documentation  wbotelhos.com/raty
@@ -64,8 +64,6 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 ## Public functions
 
-You must pass a ID or a class to be the target of the action:
-
 	$('#star').raty('start', 3);        // Starts the last Raty with 3 stars.
 
 	$('#star').raty('click', 2);        // Click on the second star of the Raty with ID called 'raty'.
@@ -73,6 +71,8 @@ You must pass a ID or a class to be the target of the action:
 	$('.star').raty('readOnly', true);  // Adjusts all Raty with class called 'raty' for read-only.
 
 	$('#star').raty('cancel', true);    // Cancel the rating. The second optional parameter enable thes click callback.
+
+	$('#star').raty('score');           // Recovers the current score. For class returns an array. No rated returns null.
 
 ## Contributors
 
