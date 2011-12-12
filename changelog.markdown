@@ -1,8 +1,12 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
-### 2.1.0 (Development)
+### 2.1.0
 
-+ Now the cancel button has ID.
++ Now Raty keeps the state of the elements and no longer depends on ID for each one:
+	+ The score no longer has ID;
+	+ The stars images no longer has ID;
+	+ The stars images no longer has class.
++ Added function 'score' to recover the current score. 
 
 ### 2.0.0
 
