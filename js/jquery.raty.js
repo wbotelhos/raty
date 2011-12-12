@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version        2.0.0
+ * @version        2.1.0
  * @since          2010.06.11
  * @author         Washington Botelho
  * @documentation  wbotelhos.com/raty
@@ -33,13 +33,7 @@
 			return this.each(function() {
 
 				var opt		= $.extend({}, $.fn.raty.defaults, options),
-					$this	= $(this).data('options', opt),
-					id		= $this.attr('id');
-
-				if (id === undefined || id == '') {
-					id = 'raty-' + $('.' + $this.attr('class')).index(this);
-					$this.attr('id', id); 
-				}
+					$this	= $(this).data('options', opt);
 
 				if (opt.number > 20) {
 					opt.number = 20;
@@ -83,14 +77,14 @@
 
 					hint = (i <= opt.hintList.length && opt.hintList[i - 1] !== null) ? opt.hintList[i - 1] : i;
 
-					$this.append('<img id="' + id + '-' + i + '" src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" class="' + id + '"/>');
+					$this.append('<img src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" />');
 
 					if (opt.space) {
 						$this.append((i < opt.number) ? '&nbsp;' : '');
 					}
 				}
 
-				var $score = $('<input/>', { id: id + '-score', type: 'hidden', name: opt.scoreName}).appendTo($this);
+				var $score = $('<input/>', { type: 'hidden', name: opt.scoreName}).appendTo($this);
 
 				if (isValidStart) {
 					if (opt.start > 0) {
@@ -109,33 +103,13 @@
 				var width = opt.width || (opt.number * opt.size + opt.number * space);
 
 				if (opt.cancel) {
-					var $cancel = $('<img id="' + id + '-cancel" src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
+					var $cancel = $('<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
 
 					if (opt.cancelPlace == 'left') {
 						$this.prepend('&nbsp;').prepend($cancel);
 					} else {
 						$this.append('&nbsp;').append($cancel);
 					}
-
-					var $stars = $this.children('img.' + id);
-
-					$cancel.mouseenter(function() {
-						$(this).attr('src', opt.path + opt.cancelOn);
-
-						$stars.attr('src', opt.path + opt.starOff);
-
-						methods.setTarget.call($this, null, true);
-					}).mouseleave(function() {
-						$(this).attr('src', opt.path + opt.cancelOff);
-
-						$this.mouseout();
-					}).click(function(evt) {
-						$score.removeAttr('value');
-
-						if (opt.click) {
-				          opt.click.call($this[0], null, evt);
-				        }
-					});
 
 					width += opt.size + space;
 				}
@@ -153,18 +127,38 @@
 				$this.css('width', width);
 			});
 		}, bindAction: function() {
-			var $this	= this,
+			var self	= this,
 				opt		= this.data('options'),
 				$score	= this.children('input');
 
-			this.mouseleave(function() {
-				methods.initialize.call($this, $score.val());
+			self.mouseleave(function() {
+				methods.initialize.call(self, $score.val());
 
-				methods.setTarget.call($this, $score.val(), opt.targetKeep);
+				methods.setTarget.call(self, $score.val(), opt.targetKeep);
 			});
 
-			var $stars	= this.children('img.' + this.attr('id')),
+			var $stars	= this.children('img').not('.raty-cancel'),
 				action	= (opt.half) ? 'mousemove' : 'mouseover';
+
+			if (opt.cancel) {
+				self.children('.raty-cancel').mouseenter(function() {
+					$(this).attr('src', opt.path + opt.cancelOn);
+
+					$stars.attr('src', opt.path + opt.starOff);
+
+					methods.setTarget.call(self, null, true);
+				}).mouseleave(function() {
+					$(this).attr('src', opt.path + opt.cancelOff);
+
+					self.mouseout();
+				}).click(function(evt) {
+					$score.removeAttr('value');
+
+					if (opt.click) {
+			          opt.click.call(self[0], null, evt);
+			        }
+				});
+			}
 
 			$stars.bind(action, function(evt) {
 				var value = parseInt(this.alt, 10);
@@ -175,25 +169,25 @@
 
 					value = parseFloat(this.alt) - 1 + diff;
 
-					methods.fillStar.call($this, value);
+					methods.fillStar.call(self, value);
 
 					if (opt.precision) {
 						value = value - diff + position;
 					}
 
-					methods.showHalf.call($this, value);
+					methods.showHalf.call(self, value);
 				} else {
-					methods.fillStar.call($this, value);
+					methods.fillStar.call(self, value);
 				}
 
-				$this.data('score', value);
+				self.data('score', value);
 
-				methods.setTarget.call($this, value, true);
+				methods.setTarget.call(self, value, true);
 			}).click(function(evt) {
-				$score.val((opt.half || opt.precision) ? $this.data('score') : this.alt);
+				$score.val((opt.half || opt.precision) ? self.data('score') : this.alt);
 
 				if (opt.click) {
-					opt.click.call($this[0], $score.val(), evt);
+					opt.click.call(self[0], $score.val(), evt);
 				}
 			});
 		}, cancel: function(isClick) {
@@ -227,22 +221,22 @@
 				if (opt.click) {
 					opt.click.call($this[0], score);
 				} else {
-					$.error($this.attr('id') + ': you must add the "click: function(score, evt) { }" callback.');
+					$.error('you must add the "click: function(score, evt) { }" callback.');
 				}
 
 				methods.setTarget.call($this, score, true);
 			});
 		}, fillStar: function(score) {
 			var opt		= this.data('options'),
-				id		= this.attr('id'),
-				qtyStar	= this.children('img.' + id).length,
+				$stars	= this.children('img').not('.raty-cancel'),
+				qtyStar	= $stars.length,
 				count	= 0,
 				$star	,
 				star	,
 				icon	;
 
 			for (var i = 1; i <= qtyStar; i++) {
-				$star = this.children('#' + id + '-' + i);
+				$star = $stars.eq(i - 1);
 
 				if (opt.iconRange && opt.iconRange.length > count) {
 					star = opt.iconRange[count];
@@ -285,16 +279,20 @@
 		}, readOnly: function(isReadOnly) {
 			return this.each(function() {
 				var $this	= $(this),
-					cancel	= $this.children('.raty-cancel');
+					$cancel	= $this.children('.raty-cancel');
 
-				if (cancel.length) {
-					(isReadOnly) ? cancel.hide() : cancel.show();
+				if ($cancel.length) {
+					if (isReadOnly) {
+						$cancel.hide();
+					} else {
+						$cancel.show();
+					}
 				}
 
 				if (isReadOnly) {
 					$this.unbind();
 
-					$('img.' + $this.attr('id')).unbind();
+					$this.children('img').unbind();
 
 					methods.fixHint.call($this);
 				} else {
@@ -312,11 +310,11 @@
 
 				if (diff < opt.round.up && opt.halfShow) {	// Half: [x.26 .. x.75]
 					icon = opt.starHalf;
-				} else if (diff < opt.round.full) {		// Full down: [x.00 .. x.5]
+				} else if (diff < opt.round.full) {			// Full down: [x.00 .. x.5]
 					icon = opt.starOff;
 				}
 
-				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + icon);
+				this.children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', opt.path + icon);
 			}												// Full down: [x.00 .. x.25]
 		}, setTarget: function(value, isKeep) {
 			var opt = this.data('options');
@@ -325,12 +323,12 @@
 				var $target = $(opt.target);
 
 				if ($target.length == 0) {
-					$.error(this.attr('id') + ': target selector invalid or missing!');
+					$.error('target selector invalid or missing!');
 				} else {
 					var score = value;
 
 					if (score == null && !opt.cancel) {
-						$.error(this.attr('id') + ': you must enable the "cancel" option to set hint on target.');
+						$.error('you must enable the "cancel" option to set hint on target.');
 					} else {
 						if (!isKeep || score == '') {
 							score = opt.targetText;
@@ -351,7 +349,7 @@
 						}
 
 						if (opt.targetFormat.indexOf('{score}') < 0) {
-							$.error(this.attr('id') + ': template "{score}" missing!');
+							$.error('template "{score}" missing!');
 						} else if (value !== null) {
 							score = opt.targetFormat.toString().replace('{score}', score);
 						}
@@ -369,7 +367,7 @@
 				diff	= (score - Math.floor(score)).toFixed(1);
 
 			if (diff > 0 && diff < .6) {
-				$('img#' + this.attr('id') + '-' + Math.ceil(score)).attr('src', opt.path + opt.starHalf);
+				this.children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', opt.path + opt.starHalf);
 			}
 		}, start: function(score) {
 			return this.each(function() {
@@ -386,8 +384,7 @@
 				methods.setTarget.call($this, score, true);
 			});
 		}, initialize: function(score) {
-			var opt	= this.data('options'),
-				id	= this.attr('id');
+			var opt	= this.data('options');
 
 			if (score < 0) {
 				score = 0;
@@ -402,7 +399,7 @@
 					methods.roundStar.call(this, score);
 				}
 
-				$('input#' + id + '-score').val(score);
+				this.children('input[name="' + opt.scoreName + '"]').val(score);
 			}
 		}, unfixHint: function() {
 			var opt		= this.data('options'),
