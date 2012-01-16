@@ -32,25 +32,13 @@
 		init: function(options) {
 			return this.each(function() {
 
-				var opt		= $.extend({}, $.fn.raty.defaults, options),
+				var opt		= $.extend(true, {}, $.fn.raty.defaults, options),
 					$this	= $(this).data('options', opt);
 
 				if (opt.number > 20) {
 					opt.number = 20;
 				} else if (opt.number < 0) {
 					opt.number = 0;
-				}
-
-				if (opt.round.down === undefined) {
-					opt.round.down = $.fn.raty.defaults.round.down;
-				}
-
-				if (opt.round.full === undefined) {
-					opt.round.full = $.fn.raty.defaults.round.full;
-				}
-
-				if (opt.round.up === undefined) {
-					opt.round.up = $.fn.raty.defaults.round.up;
 				}
 
 				if (opt.path.substring(opt.path.length - 1, opt.path.length) != '/') {
