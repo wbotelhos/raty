@@ -265,6 +265,12 @@
 			$score.attr('readonly', 'readonly');
 			this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint).children('img').attr('title', hint);
 		}, readOnly: function(isReadOnly) {
+			
+			var newState = (isReadOnly ? 'readonly' : undefined)
+			if ($(this).data('readonly') == newState){
+				return this;
+			}
+			
 			return this.each(function() {
 				var $this	= $(this),
 					$cancel	= $this.children('.raty-cancel');
