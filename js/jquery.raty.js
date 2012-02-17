@@ -80,7 +80,7 @@
 					$this.append('<img src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" />');
 
 					if (opt.space) {
-						$this.append((i < opt.number) ? '&nbsp;' : '');
+						$this.append((i < opt.number) ? '&#160;' : '');
 					}
 				}
 
@@ -106,9 +106,9 @@
 					var $cancel = $('<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
 
 					if (opt.cancelPlace == 'left') {
-						$this.prepend('&nbsp;').prepend($cancel);
+						$this.prepend('&#160;').prepend($cancel);
 					} else {
-						$this.append('&nbsp;').append($cancel);
+						$this.append('&#160;').append($cancel);
 					}
 
 					width += opt.size + space;
