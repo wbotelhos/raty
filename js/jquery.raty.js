@@ -32,118 +32,119 @@
 		init: function(options) {
 			return this.each(function() {
 
-				var opt		= $.extend(true, {}, $.fn.raty.defaults, options),
-					$this	= $(this).data('options', opt);
+				var $this = $(this);
 
-				if (opt.number > 20) {
-					opt.number = 20;
-				} else if (opt.number < 0) {
-					opt.number = 0;
+				this.opt = $.extend(true, {}, $.fn.raty.defaults, options);
+
+				if (this.opt.number > 20) {
+					this.opt.number = 20;
+				} else if (this.opt.number < 0) {
+					this.opt.number = 0;
 				}
 
-				if (opt.path.substring(opt.path.length - 1, opt.path.length) != '/') {
-					opt.path += '/';
+				if (this.opt.path.substring(this.opt.path.length - 1, this.opt.path.length) != '/') {
+					this.opt.path += '/';
 				}
 
-				if (typeof opt.start == 'function') {
-					opt.start = opt.start.call(this);
+				if (typeof this.opt.start == 'function') {
+					this.opt.start = this.opt.start.call(this);
 				}
 
-				var isValidStart	= !isNaN(parseInt(opt.start, 10)),
+				var isValidStart	= !isNaN(parseInt(this.opt.start, 10)),
 					start			= '';
 
 				if (isValidStart) {
-					start = (opt.start > opt.number) ? opt.number : opt.start;
+					start = (this.opt.start > this.opt.number) ? this.opt.number : this.opt.start;
 				} 
 
-				var starFile	= opt.starOn,
-					space		= (opt.space) ? 4 : 0,
+				var starFile	= this.opt.starOn,
+					space		= (this.opt.space) ? 4 : 0,
 					hint		= '';
 
-				for (var i = 1; i <= opt.number; i++) {
-					starFile = (start < i) ? opt.starOff : opt.starOn;
+				for (var i = 1; i <= this.opt.number; i++) {
+					starFile = (start < i) ? this.opt.starOff : this.opt.starOn;
 
-					hint = (i <= opt.hintList.length && opt.hintList[i - 1] !== null) ? opt.hintList[i - 1] : i;
+					hint = (i <= this.opt.hintList.length && this.opt.hintList[i - 1] !== null) ? this.opt.hintList[i - 1] : i;
 
-					$this.append('<img src="' + opt.path + starFile + '" alt="' + i + '" title="' + hint + '" />');
+					$this.append('<img src="' + this.opt.path + starFile + '" alt="' + i + '" title="' + hint + '" />');
 
-					if (opt.space) {
-						$this.append((i < opt.number) ? '&#160;' : '');
+					if (this.opt.space) {
+						$this.append((i < this.opt.number) ? '&#160;' : '');
 					}
 				}
 
-				var $score = $('<input/>', { type: 'hidden', name: opt.scoreName}).appendTo($this);
+				var $score = $('<input/>', { type: 'hidden', name: this.opt.scoreName}).appendTo(this);
 
 				if (isValidStart) {
-					if (opt.start > 0) {
+					if (this.opt.start > 0) {
 						$score.val(start);
 					}
 
-					methods.roundStar.call($this, start);
+					methods.roundStar.call(this, start);
 				}
 
-				if (opt.iconRange) {
-					methods.fillStar.call($this, start);	
+				if (this.opt.iconRange) {
+					methods.fillStar.call(this, start);	
 				}
 
-				methods.setTarget.call($this, start, opt.targetKeep);
+				methods.setTarget.call(this, start, this.opt.targetKeep);
 
-				var width = opt.width || (opt.number * opt.size + opt.number * space);
+				var width = this.opt.width || (this.opt.number * this.opt.size + this.opt.number * space);
 
-				if (opt.cancel) {
-					var $cancel = $('<img src="' + opt.path + opt.cancelOff + '" alt="x" title="' + opt.cancelHint + '" class="raty-cancel"/>');
+				if (this.opt.cancel) {
+					var $cancel = $('<img src="' + this.opt.path + this.opt.cancelOff + '" alt="x" title="' + this.opt.cancelHint + '" class="raty-cancel"/>');
 
-					if (opt.cancelPlace == 'left') {
+					if (this.opt.cancelPlace == 'left') {
 						$this.prepend('&#160;').prepend($cancel);
 					} else {
 						$this.append('&#160;').append($cancel);
 					}
 
-					width += opt.size + space;
+					width += this.opt.size + space;
 				}
 
-				if (opt.readOnly) {
-					methods.fixHint.call($this);
+				if (this.opt.readOnly) {
+					methods.fixHint.call(this);
 
 					$this.children('.raty-cancel').hide();
 				} else {
 					$this.css('cursor', 'pointer');
 
-					methods.bindAction.call($this);
+					methods.bindAction.call(this);
 				}
 
 				$this.css('width', width);
 			});
 		}, bindAction: function() {
 			var self	= this,
-				opt		= this.data('options'),
-				$score	= this.children('input');
+				$this	= $(self),
+				$score	= $this.children('input');
 
-			self.mouseleave(function() {
+			$this.mouseleave(function() {
 				methods.initialize.call(self, $score.val());
 
-				methods.setTarget.call(self, $score.val(), opt.targetKeep);
+				methods.setTarget.call(self, $score.val(), self.opt.targetKeep);
 			});
 
-			var $stars	= this.children('img').not('.raty-cancel'),
-				action	= (opt.half) ? 'mousemove' : 'mouseover';
+			var $stars	= $this.children('img').not('.raty-cancel'),
+				action	= (self.opt.half) ? 'mousemove' : 'mouseover';
 
-			if (opt.cancel) {
-				self.children('.raty-cancel').mouseenter(function() {
-					$(this).attr('src', opt.path + opt.cancelOn);
+			if (self.opt.cancel) {
+				$this.children('.raty-cancel').mouseenter(function() {
+					$(this).attr('src', self.opt.path + self.opt.cancelOn);
 
-					$stars.attr('src', opt.path + opt.starOff);
+					$stars.attr('src', self.opt.path + self.opt.starOff);
 
 					methods.setTarget.call(self, null, true);
 				}).mouseleave(function() {
-					$(this).attr('src', opt.path + opt.cancelOff);
+					$(this).attr('src', self.opt.path + self.opt.cancelOff);
 
-					self.mouseout();
+					$this.mouseout();
 				}).click(function(evt) {
 					$score.removeAttr('value');
 
-					if (opt.click) {
-			          opt.click.call(self[0], null, evt);
+					if (self.opt.click) {
+			          self.opt.click.call(self, null, evt);
 			        }
 				});
 			}
@@ -151,15 +152,15 @@
 			$stars.bind(action, function(evt) {
 				var value = parseInt(this.alt, 10);
 
-				if (opt.half) {
-					var position	= parseFloat((evt.pageX - $(this).offset().left) / opt.size),
+				if (self.opt.half) {
+					var position	= parseFloat((evt.pageX - $(this).offset().left) / self.opt.size),
 						diff		= (position > .5) ? 1 : .5;
 
 					value = parseFloat(this.alt) - 1 + diff;
 
 					methods.fillStar.call(self, value);
 
-					if (opt.precision) {
+					if (self.opt.precision) {
 						value = value - diff + position;
 					}
 
@@ -168,18 +169,18 @@
 					methods.fillStar.call(self, value);
 				}
 
-				self.data('score', value);
+				$this.data('score', value);
 
 				methods.setTarget.call(self, value, true);
 			}).click(function(evt) {
-				$score.val((opt.half || opt.precision) ? self.data('score') : this.alt);
+				$score.val((self.opt.half || self.opt.precision) ? $this.data('score') : this.alt);
 
-				if (opt.click) {
-					opt.click.call(self[0], $score.val(), evt);
+				if (self.opt.click) {
+					self.opt.click.call(self, $score.val(), evt);
 				}
 			});
 		}, cancel: function(isClick) {
-			return this.each(function() {
+			return $(this).each(function() {
 				var $this = $(this);
 
 				if ($this.data('readonly') == 'readonly') {
@@ -187,36 +188,33 @@
 				}
 
 				if (isClick) {
-					methods.click.call($this, null);
+					methods.click.call(this, null);
 				} else {
-					methods.start.call($this, null);
+					methods.start.call(this, null);
 				}
 
 				$this.mouseleave().children('input').removeAttr('value');
 			});
 		}, click: function(score) {
-			return this.each(function() {
-				var $this = $(this);
-
-				if ($this.data('readonly') == 'readonly') {
+			return $(this).each(function() {
+				if ($(this).data('readonly') == 'readonly') {
 					return false;
 				}
 
-				methods.initialize.call($this, score);
+				methods.initialize.call(this, score);
 
-				var opt = $this.data('options');
-
-				if (opt.click) {
-					opt.click.call($this[0], score);
+				if (this.opt.click) {
+					this.opt.click.call(this, score);
 				} else {
 					$.error('you must add the "click: function(score, evt) { }" callback.');
 				}
 
-				methods.setTarget.call($this, score, true);
+				methods.setTarget.call(this, score, true);
 			});
 		}, fillStar: function(score) {
-			var opt		= this.data('options'),
-				$stars	= this.children('img').not('.raty-cancel'),
+			var self	= this,
+				$this	= $(self),
+				$stars	= $this.children('img').not('.raty-cancel'),
 				qtyStar	= $stars.length,
 				count	= 0,
 				$star	,
@@ -226,46 +224,47 @@
 			for (var i = 1; i <= qtyStar; i++) {
 				$star = $stars.eq(i - 1);
 
-				if (opt.iconRange && opt.iconRange.length > count) {
-					star = opt.iconRange[count];
+				if (self.opt.iconRange && self.opt.iconRange.length > count) {
+					star = self.opt.iconRange[count];
 
-					if (opt.single) {
-						icon = (i == score) ? (star.on || opt.starOn) : (star.off || opt.starOff);
+					if (self.opt.single) {
+						icon = (i == score) ? (star.on || self.opt.starOn) : (star.off || self.opt.starOff);
 					} else {
-						icon = (i <= score) ? (star.on || opt.starOn) : (star.off || opt.starOff);
+						icon = (i <= score) ? (star.on || self.opt.starOn) : (star.off || self.opt.starOff);
 					}
 
 					if (i <= star.range) {
-						$star.attr('src', opt.path + icon);
+						$star.attr('src', self.opt.path + icon);
 					}
 
 					if (i == star.range) {
 						count++;
 					}
 				} else {
-					if (opt.single) {
-						icon = (i == score) ? opt.starOn : opt.starOff;
+					if (self.opt.single) {
+						icon = (i == score) ? self.opt.starOn : self.opt.starOff;
 					} else {
-						icon = (i <= score) ? opt.starOn : opt.starOff;
+						icon = (i <= score) ? self.opt.starOn : self.opt.starOff;
 					}
 
-					$star.attr('src', opt.path + icon);
+					$star.attr('src', self.opt.path + icon);
 				}
 			}
 		}, fixHint: function() {
-			var opt		= this.data('options'),
-				$score	= this.children('input'),
+			var self	= this,
+			 	$this	= $(self),
+				$score	= $this.children('input'),
 				score	= parseInt($score.val(), 10),
-				hint	= opt.noRatedMsg;
+				hint	= self.opt.noRatedMsg;
 
 			if (!isNaN(score) && score > 0) {
-				hint = (score <= opt.hintList.length && opt.hintList[score - 1] !== null) ? opt.hintList[score - 1] : score;
+				hint = (score <= self.opt.hintList.length && self.opt.hintList[score - 1] !== null) ? self.opt.hintList[score - 1] : score;
 			}
 
 			$score.attr('readonly', 'readonly');
-			this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint).children('img').attr('title', hint);
+			$this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint).children('img').attr('title', hint);
 		}, readOnly: function(isReadOnly) {
-			return this.each(function() {
+			return $(this).each(function() {
 				var $this	= $(this),
 					$cancel	= $this.children('.raty-cancel');
 
@@ -282,33 +281,31 @@
 
 					$this.children('img').unbind();
 
-					methods.fixHint.call($this);
+					methods.fixHint.call(this);
 				} else {
-					methods.bindAction.call($this);
-
-					methods.unfixHint.call($this);
+					methods.bindAction.call(this);
+					methods.unfixHint.call(this);
 				}
 			});
 		}, roundStar: function(score) {
-			var opt		= this.data('options'),
-				diff	= (score - Math.floor(score)).toFixed(2);
+			var diff = (score - Math.floor(score)).toFixed(2);
 
-			if (diff > opt.round.down) {
-				var icon = opt.starOn;						// Full up: [x.76 .. x.99]
+			if (diff > this.opt.round.down) {
+				var icon = this.opt.starOn;								// Full up: [x.76 .. x.99]
 
-				if (diff < opt.round.up && opt.halfShow) {	// Half: [x.26 .. x.75]
-					icon = opt.starHalf;
-				} else if (diff < opt.round.full) {			// Full down: [x.00 .. x.5]
-					icon = opt.starOff;
+				if (diff < this.opt.round.up && this.opt.halfShow) {	// Half: [x.26 .. x.75]
+					icon = this.opt.starHalf;
+				} else if (diff < this.opt.round.full) {				// Full down: [x.00 .. x.5]
+					icon = this.opt.starOff;
 				}
 
-				this.children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', opt.path + icon);
-			}												// Full down: [x.00 .. x.25]
+				$(this).children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', this.opt.path + icon);
+			}															// Full down: [x.00 .. x.25]
 		}, score: function() {
 			var score	= [],
 				value	;
 
-			this.each(function() {
+			$(this).each(function() {
 				value = $(this).children('input').val();
 				value = (value == '') ? null : parseFloat(value);
 
@@ -317,30 +314,28 @@
 
 			return (score.length > 1) ? score : score[0];
 		}, setTarget: function(value, isKeep) {
-			var opt = this.data('options');
-
-			if (opt.target) {
-				var $target = $(opt.target);
+			if (this.opt.target) {
+				var $target = $(this.opt.target);
 
 				if ($target.length == 0) {
 					$.error('target selector invalid or missing!');
 				} else {
 					var score = value;
 
-					if (score == null && !opt.cancel) {
+					if (score == null && !this.opt.cancel) {
 						$.error('you must enable the "cancel" option to set hint on target.');
 					} else {
 						if (!isKeep || score == '') {
-							score = opt.targetText;
+							score = this.opt.targetText;
 						} else {
-							if (opt.targetType == 'hint') {
-								if (score === null && opt.cancel) {
-									score = opt.cancelHint;
+							if (this.opt.targetType == 'hint') {
+								if (score === null && this.opt.cancel) {
+									score = this.opt.cancelHint;
 								} else {
-									score = opt.hintList[Math.ceil(score - 1)];
+									score = this.opt.hintList[Math.ceil(score - 1)];
 								}
 							} else {
-								if (score != '' && !opt.precision) {
+								if (score != '' && !this.opt.precision) {
 									score = parseInt(score, 10);
 								} else {
 									score = parseFloat(score).toFixed(1);
@@ -348,10 +343,10 @@
 							}
 						}
 
-						if (opt.targetFormat.indexOf('{score}') < 0) {
+						if (this.opt.targetFormat.indexOf('{score}') < 0) {
 							$.error('template "{score}" missing!');
 						} else if (value !== null) {
-							score = opt.targetFormat.toString().replace('{score}', score);
+							score = this.opt.targetFormat.toString().replace('{score}', score);
 						}
 
 						if ($target.is(':input')) {
@@ -363,53 +358,45 @@
 				}
 			}
 		}, showHalf: function(score) {
-			var opt		= this.data('options'),
-				diff	= (score - Math.floor(score)).toFixed(1);
+			var diff = (score - Math.floor(score)).toFixed(1);
 
 			if (diff > 0 && diff < .6) {
-				this.children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', opt.path + opt.starHalf);
+				$(this).children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', this.opt.path + this.opt.starHalf);
 			}
 		}, start: function(score) {
-			return this.each(function() {
-				var $this = $(this);
-
-				if ($this.data('readonly') == 'readonly') {
+			return $(this).each(function() {
+				if ($(this).data('readonly') == 'readonly') {
 					return false;
 				}
 
-				methods.initialize.call($this, score);
-
-				var opt = $this.data('options');
-
-				methods.setTarget.call($this, score, true);
+				methods.initialize.call(this, score);
+				methods.setTarget.call(this, score, true);
 			});
 		}, initialize: function(score) {
-			var opt	= this.data('options');
-
 			if (score < 0) {
 				score = 0;
-			} else if (score > opt.number) {
-				score = opt.number;
+			} else if (score > this.opt.number) {
+				score = this.opt.number;
 			}
 
 			methods.fillStar.call(this, score);
 
 			if (score != '') {
-				if (opt.halfShow) {
+				if (this.opt.halfShow) {
 					methods.roundStar.call(this, score);
 				}
 
-				this.children('input').val(score);
+				$(this).children('input').val(score);
 			}
 		}, unfixHint: function() {
-			var opt		= this.data('options'),
-				$imgs	= this.children('img').filter(':not(.raty-cancel)');
+			var $this	= $(this),
+				$imgs	= $this.children('img').filter(':not(.raty-cancel)');
 
-			for (var i = 0; i < opt.number; i++) {
-				$imgs.eq(i).attr('title', (i < opt.hintList.length && opt.hintList[i] !== null) ? opt.hintList[i] : i);
+			for (var i = 0; i < this.opt.number; i++) {
+				$imgs.eq(i).attr('title', (i < this.opt.hintList.length && this.opt.hintList[i] !== null) ? this.opt.hintList[i] : i);
 			}
 
-			this.css('cursor', 'pointer').removeData('readonly').removeAttr('title').children('input').attr('readonly', 'readonly');
+			$this.css('cursor', 'pointer').removeData('readonly').removeAttr('title').children('input').attr('readonly', 'readonly');
 		}
 	};
 
