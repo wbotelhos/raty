@@ -63,11 +63,11 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 ## Public functions
 
-	$('#star').raty('start', 3);       // Starts the last Raty with 3 stars.
+	$('#star').raty('start', 3);       // Starts with 3 stars.
 
-	$('#star').raty('click', 2);       // Click on the second star of the Raty with ID called 'raty'.
+	$('#star').raty('click', 2);       // Click on the second star.
 
-	$('.star').raty('readOnly', true); // Adjusts all Raty with class called 'raty' for read-only.
+	$('.star').raty('readOnly', true); // Adjusts all elements with class called 'star' for read-only.
 
 	$('#star').raty('cancel', true);   // Cancel the rating. The second optional parameter enables the callback.
 
@@ -75,6 +75,7 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 ## Contributors
 
++ Daniel Faria
 + Eric Wendelin
 + Francisco Souza
 + Gabriel Benz
