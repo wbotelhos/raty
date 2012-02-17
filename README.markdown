@@ -40,10 +40,10 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 	size:        16                                             // The icons size.
 	starHalf:    'star-half.png'                                // The image of the half star.
 	space:       true                                           // Option to take off the spaces between the star.
-	starOff:     'star-off.png'                                 // Name of the star image on.
+	starOff:     'star-off.png'                                 // Name of the star image off.
 	starOn:      'star-on.png'                                  // Name of the star image on.
 	start:       0                                              // Start with a score value.
-	target:      undefined                                      // Number of stars to be selected.
+	target:      undefined                                      // Element selector where the rating will be displayed.
 	targetKeep:  false                                          // If the last choose value will be keeped on mouseout.
 	targetText   ''                                             // Default value when there's no score or targetKeep is off.
 	targetType:  'hint'                                         // What display on target element: hint or number.
@@ -55,7 +55,6 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 	<div id="star"></div>
 
-
 	$('.star').raty();
 
 	<div class="star"></div>
@@ -64,15 +63,15 @@ The jQuery Raty is licensed under [The MIT License](http://www.opensource.org/li
 
 ## Public functions
 
-	$('#star').raty('start', 3);        // Starts the last Raty with 3 stars.
+	$('#star').raty('start', 3);       // Starts the last Raty with 3 stars.
 
-	$('#star').raty('click', 2);        // Click on the second star of the Raty with ID called 'raty'.
+	$('#star').raty('click', 2);       // Click on the second star of the Raty with ID called 'raty'.
 
-	$('.star').raty('readOnly', true);  // Adjusts all Raty with class called 'raty' for read-only.
+	$('.star').raty('readOnly', true); // Adjusts all Raty with class called 'raty' for read-only.
 
-	$('#star').raty('cancel', true);    // Cancel the rating. The second optional parameter enable thes click callback.
+	$('#star').raty('cancel', true);   // Cancel the rating. The second optional parameter enables the callback.
 
-	$('#star').raty('score');           // Recovers the current score. For class returns an array. No rated returns null.
+	$('#star').raty('score');          // Recovers the current score. Class returns an array or null for no rated.
 
 ## Contributors
 
