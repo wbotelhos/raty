@@ -10,74 +10,11 @@
 
 		<title>jQuery Raty - A Star Rating Plugin</title>
 
+		<!-- This CSS does not belong to the plugin. -->
+		<link type="text/css" rel="stylesheet" href="doc/css/stylesheet.css"/>
+
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
-
-		<style type="text/css">
-			/* This CSS does not belong to the plugin. */
-			body { background: url('img/background.gif'); font: normal 11px verdana; }
-			
-			a { color: #2C8CBD; text-decoration: none; }
-			a:hover { color: #48A5D4; }
-			
-			a#coffee {
-				background: url('img/coffee.png') 6px 2px no-repeat #DC5; border: 1px solid #D9C640; color: #FFF; display: block; float: right; font-size: 10px; font-weight: bold; letter-spacing: .9px; margin-right: 9px; padding: 4px 5px 4px 26px; text-decoration: none;
-				-khtml-border-radius: 4px; -moz-border-radius: 4px; -opera-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
-			}
-			a#coffee:hover { text-decoration: underline; }
-			
-			span.comment { color: #999; font: 12px monospace; letter-spacing: .1px; margin-bottom: 7px; margin-top: 5px; }
-			
-			div#content { background-color: #FFF; border: 1px solid #DEDEDE; box-shadow: 0 1px 3px rgba(100, 100, 100, 0.4); margin: 0 auto; padding: 15px; width: 1100px; min-height: 510px; }
-			
-			div.description { color: #555; letter-spacing: .1px; margin-bottom: 15px; margin-top: 10px; text-align: left; }
-			
-			div.description-code { color: #555; letter-spacing: .1px; margin-bottom: 10px; text-indent: 7px; }
-
-			div#menu-feature { color: #AAA; float: left; margin-bottom: 20px; }
-			div#menu-feature a { float: left; width: 120px }
-			div#menu-feature a.disabled { color: #999; cursor: default; }
-			div#menu-feature a.selected { color: #2C8CBD; cursor: default; font-weight: bold; }
-
-			div#footer { clear: both; height: 25px; margin-top: 5px; width: 100%; }
-			div#footer div#copy { margin: 0 auto; text-align: center; width: 1100px; }
-			
-			div#header { margin: 0 auto; padding-left: 20px; width: 1130px; }
-			
-			div#menu { color: #AB9927; font: bold 14px 'Lucida Grande', 'Helvetica', 'Times New Roman', serif; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase; }
-			div#menu a { color: #EA9C00; font: bold 10px verdana; letter-spacing: .9px; text-decoration: none; }
-			div#menu a:hover { color: #DC5; font-weight: bold; letter-spacing: .9px; text-decoration: underline; }
-			
-			div.session { clear: both;  font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; margin-top: 24px; text-align: left; }
-			div.session-first { clear: both; font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; text-align: left; }
-			div.session-mini { font: bold 10px verdana; color: #444; letter-spacing: .7px; margin-top: 17px; }
-			
-			div.source { background: #F8F8FF; border: 1px solid #EFEFEF; border-left: 3px solid #CCC; clear: both; color: #444; font: 12px monospace; border-radius: 2px; letter-spacing: .1px; margin-bottom: 7px; margin-top: 15px; padding: 7px; width: 1081px; -khtml-border-radius: 2px; -moz-border-radius: 2px; -opera-border-radius: 2px; -webkit-border-radius: 2px; }
-			div.source div.comment { color: #777; font: 9px verdana; letter-spacing: 0.4px; margin-bottom: 9px; text-align: left; }
-			
-			div#title { font: bold 17px verdana; color: #269; letter-spacing: .7px; margin-bottom: 10px; text-align: left; }
-			div#title span { color: #777; font: 10px verdana; }
-			
-			span#version { color: #777; font: 10px verdana; }
-
-			/* custom */
-
-			.left { float: left; }
-
-			div#target, #target-out, div#function, div#format { float: left; }
-
-			div#target-number { float: left; }
-
-			div#hint, #hint-out, div#hint-function, div#hint-format { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
-
-			div#hint-format { width: 120px; }
-
-			div#precision { float: left; }
-
-			div#precision-target { background-color: #F0F0F0; border-radius: 3px; float: left; height: 20px; margin-left: 5px; padding-left: 8px; padding-right: 8px; padding-top: 4px; text-align: center; width: 50px; }
-
-			select#score { float: left; margin-left: 5px }
-		</style>
 
 		<script type="text/javascript">
 			// This code does NOT belong the plugin. See the example code at the bottom of this page.
@@ -102,12 +39,11 @@
 			<div id="menu">
 				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.1.0.zip" target="_blank">Download</a> |
 				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
-				<a href="http://www.wbotelhos.com/raty/changelog.markdown" target="_blank">Change Log</a> |
-				<a href="http://www.wbotelhos.com/raty/README.markdown" target="_blank">Readme</a> |
+				<a href="http://www.wbotelhos.com/raty/changelog.md" target="_blank">Change Log</a> |
+				<a href="http://www.wbotelhos.com/raty/README.md" target="_blank">Readme</a> |
 				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin" target="_blank">Article</a> |
-				<a href="http://www.wbotelhos.com/raty/LICENSE.txt" target="_blank">License</a> |
-				<a href="http://www.wbotelhos.com/raty/who.html" target="_blank">Who is using</a> |
-				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin/#comments" target="_blank" style="color: #2C8CBD;">Doubt</a> |
+				<a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">License</a> |
+				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin#comments" target="_blank" style="color: #2C8CBD;">Doubt</a> |
 				<a href="http://www.wbotelhos.com/lab" target="_blank" style="color: #000;">yLab</a>
 			</div>
 
@@ -294,7 +230,7 @@
 				&#160;&#160;&#160;&#160;{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },<br/>
 				&#160;&#160;&#160;&#160;{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },<br/>
 				&#160;&#160;&#160;&#160;{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }<br/>
-				&#160;&#160;]
+				&#160;&#160;]<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;
@@ -664,8 +600,8 @@
 				$('#default').raty();
 
 				$('#fixed').raty({
-					readOnly:	true,
-					start:		2
+					readOnly	: true,
+					start		: 2
 				});
 
 				$('#start').raty({
@@ -675,13 +611,13 @@
 				});
 
 				$('#anyone').raty({
-					readOnly:	true,
-					noRatedMsg:	'anyone rated this product yet!'
+					readOnly	: true,
+					noRatedMsg	: 'anyone rated this product yet!'
 				});
 
 				$('#number').raty({
-					scoreName:	'entity.score',
-					number:		10
+					scoreName	: 'entity.score',
+					number		: 10
 				});
 
 				$('#click').raty({
@@ -695,88 +631,92 @@
 				});
 
 				$('#cancel-custom').raty({
-					cancel:			true,
-					cancelHint:		'remove my rating!',
-					cancelPlace:	'right',
-					click: function(score, evt) {
+					cancel		: true,
+					cancelHint	: 'remove my rating!',
+					cancelPlace	: 'right',
+					click		: function(score, evt) {
 						alert('score: ' + score);
 					}
 				});
 
 				$('#half').raty({
-					half: true,
-					start: 3.3
+					half	: true,
+					start	: 3.3
 				});
 
 				$('#round').raty({
-					start: 1.26,
-					round: { down: .25, full: .6, up: .76 }
+					start	: 1.26,
+					round	: { down: .25, full: .6, up: .76 }
 				});
 
 				$('#icon').raty({
-					hintList:	['a', '', null, 'd', '5'],
-				   	starOn:		'medal-on.png',
-				   	starOff:	'medal-off.png'
+					hintList	: ['a', '', null, 'd', '5'],
+					path		: 'doc/img/',
+				   	starOn		: 'medal-on.png',
+				   	starOff		: 'medal-off.png'
 				});
 
 				$('#range').raty({
-					iconRange: [
+					iconRange	: [
 						{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
 						{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
 						{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
 						{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }
-					]
+					],
+					path		: 'doc/img/'
 				});
 
 				$('#big').raty({
-					cancel:		true,
-					cancelOff:	'cancel-off-big.png',
-					cancelOn:	'cancel-on-big.png',
-					half:		true,
-					size:		24,
-					starOff:	'star-off-big.png',
-					starOn:		'star-on-big.png',
-					starHalf:	'star-half-big.png'
+					cancel		: true,
+					cancelOff	: 'cancel-off-big.png',
+					cancelOn	: 'cancel-on-big.png',
+					half		: true,
+					path		: 'doc/img/',
+					size		: 24,
+					starOff		: 'star-off-big.png',
+					starOn		: 'star-on-big.png',
+					starHalf	: 'star-half-big.png'
 				});
 
 				$('.group').raty();
 
 				$('#target').raty({
-					cancel:		true,
-					cancelHint:	'none',
-					target:		'#hint'
+					cancel		: true,
+					cancelHint	: 'none',
+					target		: '#hint'
 				});
 
 				$('#format').raty({
-					cancel:			true,
-					cancelHint:		'Sure?',
-					target:			'#hint-format',
-					targetFormat:	 'your score: {score}',
-					targetKeep:		true,
-					targetText:		'none'
+					cancel			: true,
+					cancelHint		: 'Sure?',
+					target			: '#hint-format',
+					targetFormat	: 'your score: {score}',
+					targetKeep		: true,
+					targetText		: 'none'
 				});
 
 				$('#target-number').raty({
-					cancel:		true,
-					target:		'#score',
-					targetKeep:	true,
-					targetType:	'number'
+					cancel		: true,
+					target		: '#score',
+					targetKeep	: true,
+					targetType	: 'number'
 				});
 
 				$('#target-out').raty({
-					target:		'#hint-out',
-					targetText:	'--'
+					target		: '#hint-out',
+					targetText	: '--'
 				});
 
 				$('#precision').raty({
-					half:		true,
-					precision:	true,
-					size:		24,
-					starOff:	'star-off-big.png',
-					starOn:		'star-on-big.png',
-					starHalf:	'star-half-big.png',
-					target:		'#precision-target',
-					targetType:	'number'
+					half		: true,
+					path		: 'doc/img/',
+					precision	: true,
+					size		: 24,
+					starOff		: 'star-off-big.png',
+					starOn		: 'star-on-big.png',
+					starHalf	: 'star-half-big.png',
+					target		: '#precision-target',
+					targetType	: 'number'
 				});
 
 				$('#space').raty({
@@ -797,15 +737,15 @@
 				});
 
 				$('#function').raty({
-					cancel:			true,
-					cancelHint:		'Boring!',
-					click:	function(score, evt) {
+					cancel		: true,
+					cancelHint	: 'Boring!',
+					click		: function(score, evt) {
 						$(this).fadeOut(function() { $(this).fadeIn(); });
 					},
-					targetKeep:	true,
-					start:		2,
-					target:		'#hint-function',
-					targetText:	'--'
+					targetKeep	: true,
+					start		: 2,
+					target		: '#hint-function',
+					targetText	: '--'
 				});
 
 				$('.start').click(function() {
