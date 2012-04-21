@@ -18,32 +18,36 @@ jQuery Raty is a plugin that generates a customizable star rating.
 
 ## Default values
 
-	cancel:      false                                          // Show a button to cancel the rating or not.   
-	cancelHint:  'cancel this rating!'                          // The hint information.
-	cancelOff:   'cancel-off.png'                               // Name of the cancel image off.
-	cancelOn:    'cancel-on.png'                                // Name of the cancel image on.
-	cancelPlace: 'left'                                         // Position of the cancel button.
-	click:       undefined                                      // Default callback function.
-	half:        false                                          // Active the half star.
-	halfShow:    true                                           // Enables half star display.
-	hintList:    ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
-	iconRange:   undefined                                      // Object list representing each icon with position and names.
-	noRatedMsg:  'not rated yet'                                // A hint for no rated elements when it's read-only.
-	number:      5                                              // Number of star.
-	path:        'img                                           // Path of images.
-	readOnly:    false                                          // read-only or not.
-	scoreName:   'score'                                        // The name of target score.
-	size:        16                                             // The icons size.
-	starHalf:    'star-half.png'                                // The image of the half star.
-	space:       true                                           // Option to take off the spaces between the star.
-	starOff:     'star-off.png'                                 // Name of the star image off.
-	starOn:      'star-on.png'                                  // Name of the star image on.
-	start:       0                                              // Start with a score value.
-	target:      undefined                                      // Element selector where the rating will be displayed.
-	targetKeep:  false                                          // If the last choose value will be keeped on mouseout.
-	targetText   ''                                             // Default value when there's no score or targetKeep is off.
-	targetType:  'hint'                                         // What display on target element: hint or number.
-	width:       undefined                                      // The container width of the stars.
+	cancel       : false                                          // Show a button to cancel the rating or not.   
+	cancelHint   : 'cancel this rating!'                          // The hint information.
+	cancelOff    : 'cancel-off.png'                               // Name of the cancel image off.
+	cancelOn     : 'cancel-on.png'                                // Name of the cancel image on.
+	cancelPlace  : 'left'                                         // Position of the cancel button.
+	click        : undefined                                      // Default callback function.
+	half         : false                                          // Active the half star.
+	halfShow     : true                                           // Enables half star display.
+	hintList     : ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
+	iconRange    : undefined                                      // Object list representing each icon with position and names.
+	noRatedMsg   : 'not rated yet'                                // A hint for no rated elements when it's read-only.
+	number       : 5                                              // Number of star.
+	path         : 'img                                           // Path of images.
+	precision    : false                                          // Enables the selection of a precision score.
+	readOnly     : false                                          // read-only or not.
+	round        : { down: .25, full: .6, up: .76 }               // Configuration to set the round rules.
+	scoreName    : 'score'                                        // The name of target score.
+	single       : false                                          // Enables the single star selection.
+	size         : 16                                             // The icons size.
+	space        : true                                           // Puts space between the stars.
+	starHalf     : 'star-half.png'                                // The image of the half star.
+	starOff      : 'star-off.png'                                 // Name of the star image off.
+	starOn       : 'star-on.png'                                  // Name of the star image on.
+	start        : 0                                              // Start with a score value.
+	target       : undefined                                      // Element selector where the rating will be displayed.
+	targetFormat : '{score}'                                      // Template to interpolate the score with some thing.
+	targetKeep   : false                                          // If the last choose value will be keeped on mouseout.
+	targetText   : ''                                             // Default value when there's no score or targetKeep is off.
+	targetType   : 'hint'                                         // What display on target element: hint or number.
+	width        : undefined                                      // The container width of the stars.
 
 ## Usage with default values
 
