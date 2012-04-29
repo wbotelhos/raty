@@ -58,7 +58,7 @@
 				} 
 
 				var starFile	= this.opt.starOn,
-					space		= (this.opt.space) ? 4 : 0,
+					space		= this.opt.space ? 4 : 0,
 					hint		= '';
 
 				for (var i = 1; i <= this.opt.number; i++) {
@@ -127,7 +127,7 @@
 			});
 
 			var $stars	= $this.children('img').not('.raty-cancel'),
-				action	= (self.opt.half) ? 'mousemove' : 'mouseover';
+				action	= self.opt.half ? 'mousemove' : 'mouseover';
 
 			if (self.opt.cancel) {
 				$this.children('.raty-cancel').mouseenter(function() {
