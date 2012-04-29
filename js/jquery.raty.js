@@ -29,12 +29,9 @@
 				var $this = $(this);
 
 				this.opt = $.extend(true, {}, $.fn.raty.defaults, options);
-
-				if (this.opt.number > 20) {
-					this.opt.number = 20;
-				} else if (this.opt.number < 0) {
-					this.opt.number = 0;
-				}
+			
+				this.opt.number = Math.min(Math.max(parseInt(this.opt.number), 0), 20);
+				
 
 				if (this.opt.path.substring(this.opt.path.length - 1, this.opt.path.length) != '/') {
 					this.opt.path += '/';
