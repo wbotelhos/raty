@@ -60,7 +60,7 @@
 
 					hint = (i <= this.opt.hintList.length && this.opt.hintList[i - 1] !== null) ? this.opt.hintList[i - 1] : i;
 
-					$('<img />', { src: this.opt.path + starFile, alt: i, title: hint }).appendTo($this);
+					$('<img />', { src: this.opt.path + starFile, alt: i, title: hint }).appendTo(this);
 
 					if (this.opt.space) {
 						$this.append((i < this.opt.number) ? '&#160;' : '');
