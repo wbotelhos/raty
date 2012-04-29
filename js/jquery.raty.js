@@ -264,14 +264,15 @@
 			$score.attr('readonly', 'readonly');
 			$this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint).children('img').attr('title', hint);
 		}, readOnly: function(isReadOnly) {
-			var newState = (isReadOnly ? 'readonly' : undefined)
-			if ($(this).data('readonly') == newState){
-				return this;
-			}
-			
 			return this.each(function() {
-				var $this	= $(this),
-					$cancel	= $this.children('.raty-cancel');
+				var $this		= $(this),
+					newState	= isReadOnly ? 'readonly' : undefined;
+
+				if ($this.data('readonly') == newState) {
+					return $this;
+				}
+
+				var $cancel = $this.children('.raty-cancel');
 
 				if ($cancel.length) {
 					if (isReadOnly) {
@@ -401,7 +402,7 @@
 				$imgs.eq(i).attr('title', (i < this.opt.hintList.length && this.opt.hintList[i] !== null) ? this.opt.hintList[i] : i);
 			}
 
-			$this.css('cursor', 'pointer').removeData('readonly').removeAttr('title').children('input').attr('readonly', 'readonly');
+			$this.css('cursor', 'pointer').data('readonly', undefined).removeAttr('title').children('input').attr('readonly', 'readonly');
 		}
 	};
 
