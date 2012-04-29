@@ -18,12 +18,6 @@
  *
  * <div id="star"></div>
  *
- * $('.star').raty();
- *
- * <div class="star"></div>
- * <div class="star"></div>
- * <div class="star"></div>
- *
  */
 
 ;(function($) {
@@ -66,14 +60,14 @@
 
 					hint = (i <= this.opt.hintList.length && this.opt.hintList[i - 1] !== null) ? this.opt.hintList[i - 1] : i;
 
-					$this.append('<img src="' + this.opt.path + starFile + '" alt="' + i + '" title="' + hint + '" />');
+					$('<img />', { src: this.opt.path + starFile, alt: i, title: hint }).appendTo($this);
 
 					if (this.opt.space) {
 						$this.append((i < this.opt.number) ? '&#160;' : '');
 					}
 				}
 
-				var $score = $('<input/>', { type: 'hidden', name: this.opt.scoreName}).appendTo(this);
+				var $score = $('<input />', { type: 'hidden', name: this.opt.scoreName }).appendTo(this);
 
 				if (isValidStart) {
 					if (this.opt.start > 0) {
@@ -92,7 +86,7 @@
 				var width = this.opt.width || (this.opt.number * this.opt.size + this.opt.number * space);
 
 				if (this.opt.cancel) {
-					var $cancel = $('<img src="' + this.opt.path + this.opt.cancelOff + '" alt="x" title="' + this.opt.cancelHint + '" class="raty-cancel"/>');
+					var $cancel = $('<img />', { src: this.opt.path + this.opt.cancelOff, alt: 'x', title: this.opt.cancelHint, 'class': 'raty-cancel' });
 
 					if (this.opt.cancelPlace == 'left') {
 						$this.prepend('&#160;').prepend($cancel);
