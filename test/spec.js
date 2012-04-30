@@ -1566,6 +1566,39 @@ describe('Using ID', function() {
 		expect(score).toEqual(1.5);
 	});
 
+	it ('[score] should not have score when it is setted to 0', function() {
+		// given
+		var star = $('#star').raty({ start: 0 });
+
+		// when
+		var score = star.raty('score');
+
+		// then
+		expect(score).toEqual(null);
+	});
+
+	it ('[score] should have 20 as max', function() {
+		// given
+		var star = $('#star').raty({ number: 30, start: 30 });
+
+		// when
+		var score = star.raty('score');
+
+		// then
+		expect(score).toEqual(20);
+	});
+
+	it ('[score] should have 0 as min', function() {
+		// given
+		var star = $('#star').raty({ start: -30 });
+
+		// when
+		var score = star.raty('score');
+
+		// then
+		expect(score).toEqual(null);
+	});
+
 });
 
 describe('Using class', function() {
