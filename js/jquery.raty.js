@@ -56,7 +56,7 @@
 				for (var i = 1; i <= self.opt.number; i++) {
 					starFile = (start < i) ? self.opt.starOff : self.opt.starOn;
 
-					hint = (i <= self.opt.hintList.length && self.opt.hintList[i - 1] !== null) ? self.opt.hintList[i - 1] : i;
+					hint = (i <= self.opt.hints.length && self.opt.hints[i - 1] !== null) ? self.opt.hints[i - 1] : i;
 
 					$('<img />', { src: self.opt.path + starFile, alt: i, title: hint }).appendTo(self);
 
@@ -267,7 +267,7 @@
 				hint	= self.opt.noRatedMsg;
 
 			if (!isNaN(score) && score > 0) {
-				hint = (score <= self.opt.hintList.length && self.opt.hintList[score - 1] !== null) ? self.opt.hintList[score - 1] : score;
+				hint = (score <= self.opt.hints.length && self.opt.hints[score - 1] !== null) ? self.opt.hints[score - 1] : score;
 			}
 
 			$score.attr('readonly', 'readonly');
@@ -361,7 +361,7 @@
 								if (score === null && this.opt.cancel) {
 									score = this.opt.cancelHint;
 								} else {
-									score = this.opt.hintList[Math.ceil(score - 1)];
+									score = this.opt.hints[Math.ceil(score - 1)];
 								}
 							} else {
 								if (score != '' && !this.opt.precision) {
@@ -422,7 +422,7 @@
 				$imgs	= $this.children('img').filter(':not(.raty-cancel)');
 
 			for (var i = 0; i < this.opt.number; i++) {
-				$imgs.eq(i).attr('title', (i < this.opt.hintList.length && this.opt.hintList[i] !== null) ? this.opt.hintList[i] : i);
+				$imgs.eq(i).attr('title', (i < this.opt.hints.length && this.opt.hints[i] !== null) ? this.opt.hints[i] : i);
 			}
 
 			$this.css('cursor', 'pointer').data('readonly', undefined).removeAttr('title').children('input').attr('readonly', 'readonly');
@@ -448,7 +448,7 @@
 		click			: undefined,
 		half			: false,
 		halfShow		: true,
-		hintList		: ['bad', 'poor', 'regular', 'good', 'gorgeous'],
+		hints			: ['bad', 'poor', 'regular', 'good', 'gorgeous'],
 		iconRange		: undefined,
 		mouseover		: undefined,
 		noRatedMsg		: 'not rated yet',

@@ -688,7 +688,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ hintList: ['a', '', null, 'd', '5'] });
+		star.raty({ hints: ['a', '', null, 'd', '5'] });
 
 		var imgs = star.children('img');
 
