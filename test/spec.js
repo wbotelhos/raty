@@ -141,7 +141,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ start: 3 });
+		star.raty({ score: 3 });
 
 		var imgs = star.children('img');
 
@@ -158,7 +158,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ readOnly: true, start: 3});
+		star.raty({ readOnly: true, score: 3});
 
 		var imgs = star.children('img');
 
@@ -353,7 +353,7 @@ describe('Using ID', function() {
 
 	it ('should turn off the stars on mouseover on cancel button', function() {
 		// given
-		var star	= $('#star').raty({ start: 3, cancel: true }),
+		var star	= $('#star').raty({ score: 3, cancel: true }),
 			imgs	= star.children('img');
 		
 		// when
@@ -386,7 +386,7 @@ describe('Using ID', function() {
 
 	it ('should cancel the rating', function() {
 		// given
-		var star	= $('#star').raty({ start: 5, cancel: true }),
+		var star	= $('#star').raty({ score: 5, cancel: true }),
 			imgs	= star.children('img');
 
 		// when
@@ -450,7 +450,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ half: false, halfShow: false, start: 1.5 });
+		star.raty({ half: false, halfShow: false, score: 1.5 });
 
 		var imgs = star.children('img');
 
@@ -467,7 +467,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ half: false, halfShow: false, start: 1.6 });
+		star.raty({ half: false, halfShow: false, score: 1.6 });
 
 		var imgs = star.children('img');
 
@@ -484,7 +484,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: true, halfShow: true, start: 1.25 });
+		star.raty({ half: true, halfShow: true, score: 1.25 });
 		
 		var imgs = star.children('img');
 		
@@ -501,7 +501,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: true, halfShow: true, start: 1.26 });
+		star.raty({ half: true, halfShow: true, score: 1.26 });
 		
 		var imgs = star.children('img');
 		
@@ -518,7 +518,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: true, halfShow: true, start: 1.75 });
+		star.raty({ half: true, halfShow: true, score: 1.75 });
 		
 		var imgs = star.children('img');
 		
@@ -535,7 +535,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: true, halfShow: true, start: 1.76 });
+		star.raty({ half: true, halfShow: true, score: 1.76 });
 		
 		var imgs = star.children('img');
 		
@@ -552,7 +552,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ half: true, halfShow: false, start: 1.25 });
+		star.raty({ half: true, halfShow: false, score: 1.25 });
 
 		var imgs = star.children('img');
 
@@ -569,7 +569,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ half: true, halfShow: false, start: 1.26 });
+		star.raty({ half: true, halfShow: false, score: 1.26 });
 
 		var imgs = star.children('img');
 
@@ -586,7 +586,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: true, halfShow: false, start: 1.75 });
+		star.raty({ half: true, halfShow: false, score: 1.75 });
 		
 		var imgs = star.children('img');
 		
@@ -603,7 +603,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: true, halfShow: false, start: 1.76 });
+		star.raty({ half: true, halfShow: false, score: 1.76 });
 		
 		var imgs = star.children('img');
 		
@@ -620,7 +620,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ half: false, halfShow: true, start: 1.25 });
+		star.raty({ half: false, halfShow: true, score: 1.25 });
 
 		var imgs = star.children('img');
 
@@ -637,7 +637,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: false, halfShow: true, start: 1.26 });
+		star.raty({ half: false, halfShow: true, score: 1.26 });
 		
 		var imgs = star.children('img');
 		
@@ -654,7 +654,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: false, halfShow: true, start: 1.75 });
+		star.raty({ half: false, halfShow: true, score: 1.75 });
 		
 		var imgs = star.children('img');
 		
@@ -671,7 +671,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 		
 		// when
-		star.raty({ half: false, halfShow: true, start: 1.76 });
+		star.raty({ half: false, halfShow: true, score: 1.76 });
 		
 		var imgs = star.children('img');
 		
@@ -841,7 +841,7 @@ describe('Using ID', function() {
 		expect(imgs.eq(4)).toHaveAttr('src', 'img/face-d-off.png');
 	});
 
-	it ('should keep the start value range icons on mouseleave', function() {
+	it ('should keep the score value range icons on mouseleave', function() {
 		// given
 		var star = $('#star');
 
@@ -854,7 +854,7 @@ describe('Using ID', function() {
 				{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }
 			],
             starOff: 'face-off.png',
-            start: 1
+            score: 1
 		});
 
 		var imgs = star.children('img');
@@ -1083,7 +1083,7 @@ describe('Using ID', function() {
 
 		// given
 		var hint	= $('#hint'),
-			star	= $('#star').raty({ start: 3, target: '#hint', targetKeep: true, targetText: 'my-hint-message' });
+			star	= $('#star').raty({ score: 3, target: '#hint', targetKeep: true, targetText: 'my-hint-message' });
 
 		// when
 		star.children('img').eq(3).mouseover().mouseleave();
@@ -1110,13 +1110,13 @@ describe('Using ID', function() {
 		hint.remove();
 	});
 
-	it ('should set target with targetText when has started score and targetKeep is false with mouseout', function() {
+	it ('should set target with targetText when has scoreed score and targetKeep is false with mouseout', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
 		var message	= 'my-hint-message',
 			hint	= $('#hint'),
-			star	= $('#star').raty({ start: 3, target: '#hint', targetKeep: false, targetText: message });
+			star	= $('#star').raty({ score: 3, target: '#hint', targetKeep: false, targetText: message });
 
 		// when
 		star.children('img').eq(3).mouseover().mouseleave();
@@ -1153,7 +1153,7 @@ describe('Using ID', function() {
 			star	= $('#star');
 
 		// when
-		star.raty({ start: 3, target: '#hint', targetKeep: false, targetText: message });
+		star.raty({ score: 3, target: '#hint', targetKeep: false, targetText: message });
 
 		// then
 		expect(hint).toHaveHtml(message);
@@ -1177,7 +1177,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ halfShow: true, start: 1.9, round: { down: .9, full: .98, up: .99 } });
+		star.raty({ halfShow: true, score: 1.9, round: { down: .9, full: .98, up: .99 } });
 
 		var imgs = star.children('img');
 
@@ -1194,7 +1194,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ halfShow: true, start: 1.91, round: { down: .9, full: .98, up: .99 } });
+		star.raty({ halfShow: true, score: 1.91, round: { down: .9, full: .98, up: .99 } });
 
 		var imgs = star.children('img');
 
@@ -1211,7 +1211,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ halfShow: true, start: 1.99, round: { down: .9, full: .98, up: .99 } });
+		star.raty({ halfShow: true, score: 1.99, round: { down: .9, full: .98, up: .99 } });
 
 		var imgs = star.children('img');
 
@@ -1228,7 +1228,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ halfShow: false, start: 1.98, round: { down: .9, full: .98, up: .99 } });
+		star.raty({ halfShow: false, score: 1.98, round: { down: .9, full: .98, up: .99 } });
 
 		var imgs = star.children('img');
 
@@ -1245,7 +1245,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ halfShow: true, start: 1.9, round: { down: .9 } });
+		star.raty({ halfShow: true, score: 1.9, round: { down: .9 } });
 
 		var imgs = star.children('img');
 
@@ -1262,7 +1262,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ halfShow: true, start: 1.26, round: { } });
+		star.raty({ halfShow: true, score: 1.26, round: { } });
 
 		var imgs = star.children('img');
 
@@ -1279,7 +1279,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ halfShow: true, start: 1.99, round: { up: .99 } });
+		star.raty({ halfShow: true, score: 1.99, round: { up: .99 } });
 
 		var imgs = star.children('img');
 
@@ -1296,7 +1296,7 @@ describe('Using ID', function() {
 		var star = $('#star');
 
 		// when
-		star.raty({ halfShow: false, start: 1.98, round: { full: .98 } });
+		star.raty({ halfShow: false, score: 1.98, round: { full: .98 } });
 
 		var imgs = star.children('img');
 
@@ -1316,7 +1316,7 @@ describe('Using ID', function() {
 			star	= $('#star');
 
 		// when
-		star.raty({ target: '#hint', precision: true, start: 3, targetKeep: true });
+		star.raty({ target: '#hint', precision: true, score: 3, targetKeep: true });
 
 		// then
 		expect(hint).toHaveHtml('regular');
@@ -1332,7 +1332,7 @@ describe('Using ID', function() {
 			star	= $('#star');
 
 		// when
-		star.raty({ target: '#hint', precision: true, targetType: 'number', start: 1.2333, targetKeep: true });
+		star.raty({ target: '#hint', precision: true, targetType: 'number', score: 1.2333, targetKeep: true });
 
 		// then
 		expect(hint).toHaveHtml('1.2');
@@ -1348,7 +1348,7 @@ describe('Using ID', function() {
 			star	= $('#star');
 
 		// when
-		star.raty({ target: '#hint', precision: true, targetType: 'number', start: 1.2, targetKeep: true });
+		star.raty({ target: '#hint', precision: true, targetType: 'number', score: 1.2, targetKeep: true });
 
 		// then
 		expect(hint).toHaveHtml('1.2');
@@ -1412,7 +1412,7 @@ describe('Using ID', function() {
 			star	= $('#star');
 
 		// when
-		star.raty({ target: '#hint', targetFormat: 'score: {score}', targetKeep: true, targetType: 'number', precision: true, start: 1.2 });
+		star.raty({ target: '#hint', targetFormat: 'score: {score}', targetKeep: true, targetType: 'number', precision: true, score: 1.2 });
 
 		// then
 		expect(hint).toHaveHtml('score: 1.2');
@@ -1546,7 +1546,7 @@ describe('Using ID', function() {
 
 	it ('score should get it as int', function() {
 		// given
-		var star = $('#star').raty({ start: 1 });
+		var star = $('#star').raty({ score: 1 });
 
 		// when
 		var score = star.raty('score');
@@ -1557,7 +1557,7 @@ describe('Using ID', function() {
 
 	it ('score should get it as float', function() {
 		// given
-		var star = $('#star').raty({ start: 1.5 });
+		var star = $('#star').raty({ score: 1.5 });
 
 		// when
 		var score = star.raty('score');
@@ -1568,7 +1568,7 @@ describe('Using ID', function() {
 
 	it ('[score] should not have score when it is setted to 0', function() {
 		// given
-		var star = $('#star').raty({ start: 0 });
+		var star = $('#star').raty({ score: 0 });
 
 		// when
 		var score = star.raty('score');
@@ -1579,7 +1579,7 @@ describe('Using ID', function() {
 
 	it ('[score] should have 20 as max', function() {
 		// given
-		var star = $('#star').raty({ number: 30, start: 30 });
+		var star = $('#star').raty({ number: 30, score: 30 });
 
 		// when
 		var score = star.raty('score');
@@ -1590,7 +1590,7 @@ describe('Using ID', function() {
 
 	it ('[score] should have 0 as min', function() {
 		// given
-		var star = $('#star').raty({ start: -30 });
+		var star = $('#star').raty({ score: -30 });
 
 		// when
 		var score = star.raty('score');
@@ -1696,7 +1696,7 @@ describe('Using ID', function() {
 		var hint	= $('#hint'),
 			star	= $('#star').raty({
 				cancel		: true,
-				start		: 1,
+				score		: 1,
 				mouseover	: function(score, evt) {
 					hint.html(score === null ? 'null' : score);
 				}
@@ -1717,7 +1717,7 @@ describe('Using ID', function() {
 		// given
 		var hint	= $('#hint'),
 			star	= $('#star').raty({
-				start		: 1,
+				score		: 1,
 				cancel		: true,
 				mouseover	: function(score, evt) {
 					console.log(score);
@@ -1938,9 +1938,9 @@ describe('Using class', function() {
 		// given
 		var stars = $('.star');;
 
-		stars.eq(0).raty({ start: 1 });
-		stars.eq(1).raty({ start: 2 });
-		stars.eq(2).raty({ start: 3 });
+		stars.eq(0).raty({ score: 1 });
+		stars.eq(1).raty({ score: 2 });
+		stars.eq(2).raty({ score: 3 });
 
 		// when
 		var score1 = stars.eq(0).raty('score'),
@@ -1957,9 +1957,9 @@ describe('Using class', function() {
 		// given
 		var stars = $('.star');;
 
-		stars.eq(0).raty({ start: 1.1 });
-		stars.eq(1).raty({ start: 2.2 });
-		stars.eq(2).raty({ start: 3.3 });
+		stars.eq(0).raty({ score: 1.1 });
+		stars.eq(1).raty({ score: 2.2 });
+		stars.eq(2).raty({ score: 3.3 });
 
 		// when
 		var score1 = stars.eq(0).raty('score'),
@@ -1989,7 +1989,7 @@ describe('Using function with id', function() {
 		var star = $('#star').raty();
 
 		// when
-		star.raty('start', 3);
+		star.raty('score', 3);
 
 		// then
 		var imgs = star.children('img');
@@ -2006,7 +2006,7 @@ describe('Using function with id', function() {
 		var star = $('#star').raty({ click: function(score, evt) { $(this).attr('title', score); }});
 
 		// when
-		star.raty('start', 3);
+		star.raty('score', 3);
 
 		// then
 		var imgs = star.children('img');
@@ -2022,7 +2022,7 @@ describe('Using function with id', function() {
 
 	it ('should set readOnly and fix the hints', function() {
 		// given
-		var star = $('#star').raty({ start: 1 });
+		var star = $('#star').raty({ score: 1 });
 
 		// when
 		star.raty('readOnly', true);
@@ -2094,7 +2094,7 @@ describe('Using function with id', function() {
 
 	it ('should cancel without click', function() {
 		// given
-		var star = $('#star').raty({ start: 1 });
+		var star = $('#star').raty({ score: 1 });
 
 		// when
 		star.raty('cancel');
@@ -2117,7 +2117,7 @@ describe('Using function with id', function() {
 			click: function(score, evt) {
 				$(this).attr('title', (score === null) ? 'null' : score);
 			},
-			start: 1
+			score: 1
 		});
 
 		// when
@@ -2182,7 +2182,7 @@ describe('Using function with id', function() {
 			star = $('#star').raty({ target: '#hint', targetKeep: true });
 
 		// when
-		star.raty('start', 4);
+		star.raty('score', 4);
 
 		// then
 		expect(hint).toHaveHtml('good');
@@ -2211,7 +2211,7 @@ describe('Using function with id', function() {
 		var star = $('#star').raty({ readOnly: true });
 
 		// when
-		star.raty('start', 1);
+		star.raty('score', 1);
 
 		// then
 		var imgs = star.children('img');
@@ -2242,7 +2242,7 @@ describe('Using function with id', function() {
 
 	it ('should not cancel when it is readOnly', function() {
 		// given
-		var star = $('#star').raty({ readOnly: true, start: 1 });
+		var star = $('#star').raty({ readOnly: true, score: 1 });
 
 		// when
 		star.raty('cancel');
@@ -2319,7 +2319,7 @@ describe('Using function with class', function() {
 		var stars = $('.star').raty();
 
 		// when
-		stars.raty('start', 3);
+		stars.raty('score', 3);
 
 		// then
 		var imgs1 = stars.eq(0).children('img'),
@@ -2453,7 +2453,7 @@ describe('Using function with class', function() {
 	
 	it ('should cancel without click', function() {
 		// given
-		var stars = $('.star').raty({ start: 1 });
+		var stars = $('.star').raty({ score: 1 });
 
 		// when
 		stars.raty('cancel');
@@ -2491,7 +2491,7 @@ describe('Using function with class', function() {
 			click: function(score, evt) {
 				$(this).attr('title', (score === null) ? 'null' : score);
 			},
-			start: 1
+			score: 1
 		});
 
 		// when
@@ -2605,7 +2605,7 @@ describe('Using function with class', function() {
 		stars.eq(2).raty({ target: '#hint3', targetKeep: true, click: function(score, evt) { } });
 
 		// when
-		stars.raty('start', 4);
+		stars.raty('score', 4);
 
 		// then
 		expect(hint1).toHaveHtml('good');
@@ -2648,9 +2648,9 @@ describe('Using function with class', function() {
 		var stars = $('.star').raty({ readOnly: true });
 
 		// when
-		stars.eq(0).raty('start', 1);
-		stars.eq(1).raty('start', 1);
-		stars.eq(2).raty('start', 1);
+		stars.eq(0).raty('score', 1);
+		stars.eq(1).raty('score', 1);
+		stars.eq(2).raty('score', 1);
 
 		// then
 		var imgs1 = stars.eq(0).children('img'),
@@ -2711,7 +2711,7 @@ describe('Using function with class', function() {
 
 	it ('should not cancel when it is readOnly', function() {
 		// given
-		var stars = $('.star').raty({ readOnly: true, start: 1 });
+		var stars = $('.star').raty({ readOnly: true, score: 1 });
 
 		// when
 		stars.eq(0).raty('cancel');

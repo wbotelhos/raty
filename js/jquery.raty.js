@@ -38,15 +38,15 @@
 					self.opt.path += '/';
 				}
 
-				if (typeof self.opt.start == 'function') {
-					self.opt.start = self.opt.start.call(self);
+				if (typeof self.opt.score == 'function') {
+					self.opt.score = self.opt.score.call(self);
 				}
 
-				var isValidStart	= !isNaN(parseInt(self.opt.start, 10)),
-					start			= '';
+				var isValidScore	= !isNaN(parseInt(self.opt.score, 10)),
+					score			= '';
 
-				if (isValidStart) {
-					start = (self.opt.start > self.opt.number) ? self.opt.number : self.opt.start;
+				if (isValidScore) {
+					score = (self.opt.score > self.opt.number) ? self.opt.number : self.opt.score;
 				} 
 
 				var starFile	= self.opt.starOn,
@@ -54,7 +54,7 @@
 					hint		= '';
 
 				for (var i = 1; i <= self.opt.number; i++) {
-					starFile = (start < i) ? self.opt.starOff : self.opt.starOn;
+					starFile = (score < i) ? self.opt.starOff : self.opt.starOn;
 
 					hint = (i <= self.opt.hints.length && self.opt.hints[i - 1] !== null) ? self.opt.hints[i - 1] : i;
 
@@ -67,19 +67,19 @@
 
 				var $score = $('<input />', { type: 'hidden', name: self.opt.scoreName }).appendTo(self);
 
-				if (isValidStart) {
-					if (self.opt.start > 0) {
-						$score.val(start);
+				if (isValidScore) {
+					if (self.opt.score > 0) {
+						$score.val(score);
 					}
 
-					methods.roundStar.call(self, start);
+					methods.roundStar.call(self, score);
 				}
 
 				if (self.opt.iconRange) {
-					methods.fillStar.call(self, start);	
+					methods.fillStar.call(self, score);	
 				}
 
-				methods.setTarget.call(self, start, self.opt.targetKeep);
+				methods.setTarget.call(self, score, self.opt.targetKeep);
 
 				var width = self.opt.width || (self.opt.number * self.opt.size + self.opt.number * space);
 
@@ -199,7 +199,7 @@
 				if (isClick) {
 					methods.click.call(this, null);
 				} else {
-					methods.start.call(this, null);
+					methods.score.call(this, null);
 				}
 
 				$this.mouseleave().children('input').removeAttr('value');
@@ -272,6 +272,18 @@
 
 			$score.attr('readonly', 'readonly');
 			$this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint).children('img').attr('title', hint);
+		}, getScore: function() {
+			var score	= [],
+				value	;
+
+			$(this).each(function() {
+				value = $(this).children('input').val();
+				value = (value == '') ? null : parseFloat(value);
+
+				score.push(value);
+			});
+
+			return (score.length > 1) ? score : score[0];
 		}, readOnly: function(isReadOnly) {
 			return this.each(function() {
 				var $this		= $(this),
@@ -319,17 +331,7 @@
 				$(this).children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', this.opt.path + icon);
 			}															// Full down: [x.00 .. x.25]
 		}, score: function() {
-			var score	= [],
-				value	;
-
-			$(this).each(function() {
-				value = $(this).children('input').val();
-				value = (value == '') ? null : parseFloat(value);
-
-				score.push(value);
-			});
-
-			return (score.length > 1) ? score : score[0];
+			return arguments.length ? methods.setScore.apply(this, arguments) : methods.getScore.call(this);
 		}, set: function(settings) {
 			this.each(function() {
 				var $this	= $(this),
@@ -342,6 +344,15 @@
 			});
 
 			return $(this.selector);
+		}, setScore: function(score) {
+			return $(this).each(function() {
+				if ($(this).data('readonly') == 'readonly') {
+					return false;
+				}
+
+				methods.initialize.call(this, score);
+				methods.setTarget.call(this, score, true);
+			});
 		}, setTarget: function(value, isKeep) {
 			if (this.opt.target) {
 				var $target = $(this.opt.target);
@@ -392,15 +403,6 @@
 			if (diff > 0 && diff < .6) {
 				$(this).children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', this.opt.path + this.opt.starHalf);
 			}
-		}, start: function(score) {
-			return $(this).each(function() {
-				if ($(this).data('readonly') == 'readonly') {
-					return false;
-				}
-
-				methods.initialize.call(this, score);
-				methods.setTarget.call(this, score, true);
-			});
 		}, initialize: function(score) {
 			if (score < 0) {
 				score = 0;
@@ -457,6 +459,7 @@
 		precision		: false,
 		round			: { down: .25, full: .6, up: .76 },
 		readOnly		: false,
+		score			: null,
 		scoreName		: 'score',
 		single			: false,
 		size			: 16,
@@ -464,7 +467,6 @@
 		starHalf		: 'star-half.png',
 		starOff			: 'star-off.png',
 		starOn			: 'star-on.png',
-		start			: 0,
 		target			: undefined,
 		targetFormat	: '{score}',
 		targetKeep		: false,
