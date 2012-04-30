@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version        2.1.0
+ * @version        2.4.0
  * @since          2010.06.11
  * @author         Washington Botelho
  * @documentation  wbotelhos.com/raty
@@ -113,9 +113,14 @@
 				$score	= $this.children('input');
 
 			$this.mouseleave(function() {
-				methods.initialize.call(self, $score.val());
+				var score = $score.val();
 
-				methods.setTarget.call(self, $score.val(), self.opt.targetKeep);
+				methods.initialize.call(self, score);
+				methods.setTarget.call(self, score, self.opt.targetKeep);
+
+				if (self.opt.mouseover) {
+					self.opt.mouseover.call(self, score);
+				}
 			});
 
 			var $stars	= $this.children('img').not('.raty-cancel'),
@@ -128,10 +133,18 @@
 					$stars.attr('src', self.opt.path + self.opt.starOff);
 
 					methods.setTarget.call(self, null, true);
+
+					if (self.opt.mouseover) {
+						self.opt.mouseover.call(self, null);
+					}
 				}).mouseleave(function() {
 					$(this).attr('src', self.opt.path + self.opt.cancelOff);
 
 					$this.mouseout();
+
+					if (self.opt.mouseover) {
+						self.opt.mouseover.call(self, $score.val() || null);
+					}
 				}).click(function(evt) {
 					$score.removeAttr('value');
 
@@ -164,6 +177,10 @@
 				$this.data('score', value);
 
 				methods.setTarget.call(self, value, true);
+
+				if (self.opt.mouseover) {
+					self.opt.mouseover.call(self, value, evt);
+				}
 			}).click(function(evt) {
 				$score.val((self.opt.half || self.opt.precision) ? $this.data('score') : this.alt);
 
@@ -433,6 +450,7 @@
 		halfShow		: true,
 		hintList		: ['bad', 'poor', 'regular', 'good', 'gorgeous'],
 		iconRange		: undefined,
+		mouseover		: undefined,
 		noRatedMsg		: 'not rated yet',
 		number			: 5,
 		path			: 'img/',

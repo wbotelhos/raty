@@ -924,39 +924,39 @@ describe('Using ID', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint' });
 
 		// when
 		star.children('img').eq(3).mouseover();
 
 		// then
-		expect($hint).toHaveHtml('good');
+		expect(hint).toHaveHtml('good');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set a target on div with mouseover but take off when mouseleave', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint' });
 
 		// when
 		star.children('img').eq(3).mouseover().mouseleave();
 
 		// then
-		expect($hint).toBeEmpty();
+		expect(hint).toBeEmpty();
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should change the cancel hint using target', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({
 			cancel:     true,
 			cancelHint: 'none',
@@ -967,89 +967,89 @@ describe('Using ID', function() {
 		star.children('img:first').mouseenter();
 
 		// then
-		expect($hint).toHaveHtml('none');
+		expect(hint).toHaveHtml('none');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set hint on a combobox element', function() {
 		$('body').append('<select id="hint"><option value="">--</option><option value="good">good</option></select>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint' });
 
 		// when
 		star.children('img').eq(3).mouseover();
 
 		// then
-		expect($hint.val()).toEqual('good');
+		expect(hint.val()).toEqual('good');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set hint on a text element', function() {
 		$('body').append('<input id="hint" type="text" />');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint' });
 
 		// when
 		star.children('img').eq(3).mouseover();
 
 		// then
-		expect($hint.val()).toEqual('good');
+		expect(hint.val()).toEqual('good');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set hint on a textarea element', function() {
 		$('body').append('<textarea id="hint"></textarea>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint' });
 
 		// when
 		star.children('img').eq(3).mouseover();
 
 		// then
-		expect($hint.val()).toEqual('good');
+		expect(hint.val()).toEqual('good');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set number hint on a combobox element', function() {
 		$('body').append('<select id="hint"><option value="">--</option><option value="4">4</option></select>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint', targetType: 'number' });
 
 		// when
 		star.children('img').eq(3).mouseover();
 
 		// then
-		expect($hint.val()).toEqual('4');
+		expect(hint.val()).toEqual('4');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set number hint and keep it on mouseleave', function() {
 		$('body').append('<select id="hint"><option value="">--</option><option value="4">4</option></select>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint', targetType: 'number', targetKeep: true });
 
 		// when
 		star.children('img').eq(3).mouseover().click().mouseleave();
 
 		// then
-		expect($hint.val()).toEqual('4');
+		expect(hint.val()).toEqual('4');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should create stars without space', function() {
@@ -1082,32 +1082,32 @@ describe('Using ID', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star').raty({ start: 3, target: '#hint', targetKeep: true, targetText: 'my-hint-message' });
 
 		// when
 		star.children('img').eq(3).mouseover().mouseleave();
 
 		// then
-		expect($hint).toHaveHtml('regular');
+		expect(hint).toHaveHtml('regular');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should not set target with targetText when has clicked score and targetKeep is true with mouseout', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star').raty({ target: '#hint', targetKeep: true, targetText: 'my-hint-message' });
 
 		// when
 		star.children('img').eq(3).mouseover().click().mouseleave();
 
 		// then
-		expect($hint).toHaveHtml('good');
+		expect(hint).toHaveHtml('good');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set target with targetText when has started score and targetKeep is false with mouseout', function() {
@@ -1115,16 +1115,16 @@ describe('Using ID', function() {
 
 		// given
 		var message	= 'my-hint-message',
-			$hint	= $('#hint'),
+			hint	= $('#hint'),
 			star	= $('#star').raty({ start: 3, target: '#hint', targetKeep: false, targetText: message });
 
 		// when
 		star.children('img').eq(3).mouseover().mouseleave();
 
 		// then
-		expect($hint).toHaveHtml(message);
+		expect(hint).toHaveHtml(message);
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set target with targetText when has clicked score and targetKeep false with mouseout', function() {
@@ -1132,16 +1132,16 @@ describe('Using ID', function() {
 
 		// given
 		var message	= 'my-hint-message',
-			$hint	= $('#hint'),
+			hint	= $('#hint'),
 			star	= $('#star').raty({ target: '#hint', targetKeep: false, targetText: message });
 
 		// when
 		star.children('img').eq(3).mouseover().click().mouseleave();
 
 		// then
-		expect($hint).toHaveHtml(message);
+		expect(hint).toHaveHtml(message);
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set target with targetText when has started score and targetKeep is false without mouseout', function() {
@@ -1149,16 +1149,16 @@ describe('Using ID', function() {
 
 		// given
 		var message	= 'my-hint-message',
-			$hint	= $('#hint'),
+			hint	= $('#hint'),
 			star	= $('#star');
 
 		// when
 		star.raty({ start: 3, target: '#hint', targetKeep: false, targetText: message });
 
 		// then
-		expect($hint).toHaveHtml(message);
+		expect(hint).toHaveHtml(message);
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set score as readonly when start with readOnly', function() {
@@ -1312,144 +1312,144 @@ describe('Using ID', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star');
 
 		// when
 		star.raty({ target: '#hint', precision: true, start: 3, targetKeep: true });
 
 		// then
-		expect($hint).toHaveHtml('regular');
+		expect(hint).toHaveHtml('regular');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set precision number target with just one fractional number', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star');
 
 		// when
 		star.raty({ target: '#hint', precision: true, targetType: 'number', start: 1.2333, targetKeep: true });
 
 		// then
-		expect($hint).toHaveHtml('1.2');
+		expect(hint).toHaveHtml('1.2');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set precision number target with start options and targetKeep true', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star');
 
 		// when
 		star.raty({ target: '#hint', precision: true, targetType: 'number', start: 1.2, targetKeep: true });
 
 		// then
-		expect($hint).toHaveHtml('1.2');
+		expect(hint).toHaveHtml('1.2');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set target with format on mouseover', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star').raty({ target: '#hint', targetFormat: 'score: {score}', precision: true });
 
 		// when
 		star.children('img:first').mouseover();
 
 		// then
-		expect($hint).toHaveHtml('score: bad');
+		expect(hint).toHaveHtml('score: bad');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set score with precision and half disabled', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star').raty({ target: '#hint', targetKeep: true, precision: true });
 
 		// when
 		star.children('img:first').mouseover().click().mouseleave();
 
 		// then
-		expect($hint).toHaveHtml('bad');
+		expect(hint).toHaveHtml('bad');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set and keep target with format on click and mouseleave', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star').raty({ target: '#hint', targetFormat: 'score: {score}', targetKeep: true });
 
 		// when
 		star.children('img:first').mouseover().click().mouseleave();
 
 		// then
-		expect($hint).toHaveHtml('score: bad');
+		expect(hint).toHaveHtml('score: bad');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set target with format and precision', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star');
 
 		// when
 		star.raty({ target: '#hint', targetFormat: 'score: {score}', targetKeep: true, targetType: 'number', precision: true, start: 1.2 });
 
 		// then
-		expect($hint).toHaveHtml('score: 1.2');
+		expect(hint).toHaveHtml('score: 1.2');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set target with none value', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star');
 
 		// when
 		star.raty({ target: '#hint', targetFormat: 'score: {score}', targetKeep: true, targetType: 'number', targetText: 'none' });
 
 		// then
-		expect($hint).toHaveHtml('score: none');
+		expect(hint).toHaveHtml('score: none');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should not to use format template on cancel mouseover', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star').raty({ cancel: true, target: '#hint', targetFormat: 'score: {score}', targetKeep: true });
 
 		// when
 		star.children('img:first').mouseenter();
 
 		// then
-		expect($hint).toHaveHtml('cancel this rating!');
+		expect(hint).toHaveHtml('cancel this rating!');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should show single icon selection on mouseover', function() {
@@ -1646,6 +1646,92 @@ describe('Using ID', function() {
 
 		// then
 		expect($('#star').children('img').length).toEqual(6);
+	});
+
+	it ('[mouseover] should display the value', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var hint	= $('#hint'),
+			star	= $('#star').raty({
+				mouseover: function(score, evt) {
+					hint.html(score);
+				}
+			});
+
+		// when
+		star.children('img:eq(1)').mouseover();
+
+		// then
+		expect(hint).toHaveHtml(2);
+
+		hint.remove();
+	});
+
+	it ('[mouseover] should display the cancel value', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var hint	= $('#hint'),
+			star	= $('#star').raty({
+				cancel		: true,
+				mouseover	: function(score, evt) {
+					hint.html(score === null ? 'null' : score);
+				}
+			});
+
+		// when
+		star.children('.raty-cancel').mouseover();
+
+		// then
+		expect(hint).toHaveHtml('null');
+
+		hint.remove();
+	});
+
+	it ('[mouseover] should pass the original value on cancel mouseout', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var hint	= $('#hint'),
+			star	= $('#star').raty({
+				cancel		: true,
+				start		: 1,
+				mouseover	: function(score, evt) {
+					hint.html(score === null ? 'null' : score);
+				}
+			});
+
+		// when
+		star.children('.raty-cancel').mouseenter().mouseleave();
+
+		// then
+		expect(hint).toHaveHtml(1);
+
+		hint.remove();
+	});
+
+	it ('[mouseover] should pass the original value on star mouseout', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var hint	= $('#hint'),
+			star	= $('#star').raty({
+				start		: 1,
+				cancel		: true,
+				mouseover	: function(score, evt) {
+					console.log(score);
+					hint.html(score);
+				}
+			});
+
+		// when
+		star.children('img:eq(4)').mouseover().mouseleave();
+
+		// then
+		expect(hint).toHaveHtml(1);
+
+		hint.remove();
 	});
 
 });
@@ -2076,48 +2162,48 @@ describe('Using function with id', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint', targetKeep: true, click: function(score, evt) { } });
 
 		// when
 		star.raty('click', 4);
 
 		// then
-		expect($hint).toHaveHtml('good');
+		expect(hint).toHaveHtml('good');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set a target on div with mouseover', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ target: '#hint', targetKeep: true });
 
 		// when
 		star.raty('start', 4);
 
 		// then
-		expect($hint).toHaveHtml('good');
+		expect(hint).toHaveHtml('good');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should set a target on div with cancel', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint = $('#hint'),
+		var hint = $('#hint'),
 			star = $('#star').raty({ cancel: true, target: '#hint', targetKeep: true });
 
 		// when
 		star.raty('cancel');
 
 		// then
-		expect($hint).toBeEmpty();
+		expect(hint).toBeEmpty();
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should not start when it is readOnly', function() {
@@ -2187,16 +2273,16 @@ describe('Using function with id', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
-		var $hint	= $('#hint'),
+		var hint	= $('#hint'),
 			star	= $('#star').raty({ cancel: true, target: '#hint', targetFormat: 'score: {score}', targetKeep: true });
 
 		// when
 		star.raty('cancel');
 
 		// then
-		expect($hint).toHaveHtml('score: ');
+		expect(hint).toHaveHtml('score: ');
 
-		$hint.remove();
+		hint.remove();
 	});
 
 	it ('should rebind the cancel button after readOnly be enabled', function() {
@@ -2483,9 +2569,9 @@ describe('Using function with class', function() {
 		$('body').append('<div id="hint1"></div><div id="hint2"></div><div id="hint3"></div>');
 
 		// given
-		var $hint1	= $('#hint1'),
-			$hint2	= $('#hint2'),
-			$hint3	= $('#hint3'),
+		var hint1	= $('#hint1'),
+			hint2	= $('#hint2'),
+			hint3	= $('#hint3'),
 			stars	= $('.star');
 
 		stars.eq(0).raty({ target: '#hint1', targetKeep: true, click: function(score, evt) { } });
@@ -2496,22 +2582,22 @@ describe('Using function with class', function() {
 		stars.raty('click', 4);
 
 		// then
-		expect($hint1).toHaveHtml('good');
-		expect($hint2).toHaveHtml('good');
-		expect($hint3).toHaveHtml('good');
+		expect(hint1).toHaveHtml('good');
+		expect(hint2).toHaveHtml('good');
+		expect(hint3).toHaveHtml('good');
 
-		$hint1.remove();
-		$hint2.remove();
-		$hint3.remove();
+		hint1.remove();
+		hint2.remove();
+		hint3.remove();
 	});
 	
 	it ('should set a target on div with start', function() {
 		$('body').append('<div id="hint1"></div><div id="hint2"></div><div id="hint3"></div>');
 
 		// given
-		var $hint1	= $('#hint1'),
-			$hint2	= $('#hint2'),
-			$hint3	= $('#hint3'),
+		var hint1	= $('#hint1'),
+			hint2	= $('#hint2'),
+			hint3	= $('#hint3'),
 			stars	= $('.star');
 	
 		stars.eq(0).raty({ target: '#hint1', targetKeep: true, click: function(score, evt) { } });
@@ -2522,22 +2608,22 @@ describe('Using function with class', function() {
 		stars.raty('start', 4);
 
 		// then
-		expect($hint1).toHaveHtml('good');
-		expect($hint2).toHaveHtml('good');
-		expect($hint3).toHaveHtml('good');
+		expect(hint1).toHaveHtml('good');
+		expect(hint2).toHaveHtml('good');
+		expect(hint3).toHaveHtml('good');
 
-		$hint1.remove();
-		$hint2.remove();
-		$hint3.remove();
+		hint1.remove();
+		hint2.remove();
+		hint3.remove();
 	});
 
 	it ('should set a target on div with cancel', function() {
 		$('body').append('<div id="hint1"></div><div id="hint2"></div><div id="hint3"></div>');
 
 		// given
-		var $hint1	= $('#hint1'),
-			$hint2	= $('#hint2'),
-			$hint3	= $('#hint3'),
+		var hint1	= $('#hint1'),
+			hint2	= $('#hint2'),
+			hint3	= $('#hint3'),
 			stars	= $('.star');
 	
 		stars.eq(0).raty({ cancel: true, target: '#hint1', targetKeep: true, click: function(score, evt) { } });
@@ -2548,13 +2634,13 @@ describe('Using function with class', function() {
 		stars.raty('cancel');
 
 		// then
-		expect($hint1).toBeEmpty();
-		expect($hint2).toBeEmpty();
-		expect($hint3).toBeEmpty();
+		expect(hint1).toBeEmpty();
+		expect(hint2).toBeEmpty();
+		expect(hint3).toBeEmpty();
 
-		$hint1.remove();
-		$hint2.remove();
-		$hint3.remove();
+		hint1.remove();
+		hint2.remove();
+		hint3.remove();
 	});
 
 	it ('should not start when it is readOnly', function() {
