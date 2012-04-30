@@ -1599,6 +1599,55 @@ describe('Using ID', function() {
 		expect(score).toEqual(null);
 	});
 
+	it ('[set] should be chainable', function() {
+		// given
+		var star	= $('#star').raty(),
+			clazz	= 'some-class';
+
+		// when
+		var clone = star.raty('set', { readOnly: true }).addClass(clazz);
+
+		// then
+		expect(clone).toHaveClass(clazz);
+	});
+
+	it ('[set] should change just the passed parameters', function() {
+		// given
+		var star = $('#star').raty({ number: 6 });
+
+		// when
+		star.raty('set', { scoreName: 'changed' });
+
+		// then
+		var clone = $('#star');
+
+		expect(clone.children('input')).toHaveAttr('name', 'changed');
+		expect(clone.children('img').length).toEqual(6);
+	});
+
+	it ('[reload] should be chainable', function() {
+		// given
+		var star	= $('#star').raty(),
+			clazz	= 'some-class';
+
+		// when
+		var clone = star.raty('reload').addClass(clazz);
+
+		// then
+		expect(clone).toHaveClass(clazz);
+	});
+
+	it ('[reload] should reload with same configuration', function() {
+		// given
+		var star = $('#star').raty({ number: 6 });
+
+		// when
+		star.raty('reload');
+
+		// then
+		expect($('#star').children('img').length).toEqual(6);
+	});
+
 });
 
 describe('Using class', function() {

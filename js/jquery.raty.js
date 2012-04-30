@@ -23,85 +23,86 @@
 ;(function($) {
 
 	var methods = {
-		init: function(options) {
+		init: function(settings) {
 			return this.each(function() {
+				var self	= this,
+					$this	= $(self).empty();
+	
+				self.opt = $.extend(true, {}, $.fn.raty.defaults, settings);
 
-				var $this = $(this);
+				$this.data('settings', self.opt);
 
-				this.opt = $.extend(true, {}, $.fn.raty.defaults, options);
-			
-				this.opt.number = Math.min(Math.max(parseInt(this.opt.number, 10), 0), 20);
-				
+				self.opt.number = Math.min(Math.max(parseInt(self.opt.number, 10), 0), 20);
 
-				if (this.opt.path.substring(this.opt.path.length - 1, this.opt.path.length) != '/') {
-					this.opt.path += '/';
+				if (self.opt.path.substring(self.opt.path.length - 1, self.opt.path.length) != '/') {
+					self.opt.path += '/';
 				}
 
-				if (typeof this.opt.start == 'function') {
-					this.opt.start = this.opt.start.call(this);
+				if (typeof self.opt.start == 'function') {
+					self.opt.start = self.opt.start.call(self);
 				}
 
-				var isValidStart	= !isNaN(parseInt(this.opt.start, 10)),
+				var isValidStart	= !isNaN(parseInt(self.opt.start, 10)),
 					start			= '';
 
 				if (isValidStart) {
-					start = (this.opt.start > this.opt.number) ? this.opt.number : this.opt.start;
+					start = (self.opt.start > self.opt.number) ? self.opt.number : self.opt.start;
 				} 
 
-				var starFile	= this.opt.starOn,
-					space		= this.opt.space ? 4 : 0,
+				var starFile	= self.opt.starOn,
+					space		= self.opt.space ? 4 : 0,
 					hint		= '';
 
-				for (var i = 1; i <= this.opt.number; i++) {
-					starFile = (start < i) ? this.opt.starOff : this.opt.starOn;
+				for (var i = 1; i <= self.opt.number; i++) {
+					starFile = (start < i) ? self.opt.starOff : self.opt.starOn;
 
-					hint = (i <= this.opt.hintList.length && this.opt.hintList[i - 1] !== null) ? this.opt.hintList[i - 1] : i;
+					hint = (i <= self.opt.hintList.length && self.opt.hintList[i - 1] !== null) ? self.opt.hintList[i - 1] : i;
 
-					$('<img />', { src: this.opt.path + starFile, alt: i, title: hint }).appendTo(this);
+					$('<img />', { src: self.opt.path + starFile, alt: i, title: hint }).appendTo(self);
 
-					if (this.opt.space) {
-						$this.append((i < this.opt.number) ? '&#160;' : '');
+					if (self.opt.space) {
+						$this.append((i < self.opt.number) ? '&#160;' : '');
 					}
 				}
 
-				var $score = $('<input />', { type: 'hidden', name: this.opt.scoreName }).appendTo(this);
+				var $score = $('<input />', { type: 'hidden', name: self.opt.scoreName }).appendTo(self);
 
 				if (isValidStart) {
-					if (this.opt.start > 0) {
+					if (self.opt.start > 0) {
 						$score.val(start);
 					}
 
-					methods.roundStar.call(this, start);
+					methods.roundStar.call(self, start);
 				}
 
-				if (this.opt.iconRange) {
-					methods.fillStar.call(this, start);	
+				if (self.opt.iconRange) {
+					methods.fillStar.call(self, start);	
 				}
 
-				methods.setTarget.call(this, start, this.opt.targetKeep);
+				methods.setTarget.call(self, start, self.opt.targetKeep);
 
-				var width = this.opt.width || (this.opt.number * this.opt.size + this.opt.number * space);
+				var width = self.opt.width || (self.opt.number * self.opt.size + self.opt.number * space);
 
-				if (this.opt.cancel) {
-					var $cancel = $('<img />', { src: this.opt.path + this.opt.cancelOff, alt: 'x', title: this.opt.cancelHint, 'class': 'raty-cancel' });
+				if (self.opt.cancel) {
+					var $cancel = $('<img />', { src: self.opt.path + self.opt.cancelOff, alt: 'x', title: self.opt.cancelHint, 'class': 'raty-cancel' });
 
-					if (this.opt.cancelPlace == 'left') {
+					if (self.opt.cancelPlace == 'left') {
 						$this.prepend('&#160;').prepend($cancel);
 					} else {
 						$this.append('&#160;').append($cancel);
 					}
 
-					width += this.opt.size + space;
+					width += self.opt.size + space;
 				}
 
-				if (this.opt.readOnly) {
-					methods.fixHint.call(this);
+				if (self.opt.readOnly) {
+					methods.fixHint.call(self);
 
 					$this.children('.raty-cancel').hide();
 				} else {
 					$this.css('cursor', 'pointer');
 
-					methods.bindAction.call(this);
+					methods.bindAction.call(self);
 				}
 
 				$this.css('width', width);
@@ -284,6 +285,8 @@
 					methods.unfixHint.call(this);
 				}
 			});
+		}, reload: function() {
+			return methods.set.call(this, {});
 		}, roundStar: function(score) {
 			var diff = (score - Math.floor(score)).toFixed(2);
 
@@ -310,6 +313,18 @@
 			});
 
 			return (score.length > 1) ? score : score[0];
+		}, set: function(settings) {
+			this.each(function() {
+				var $this	= $(this),
+					actual	= $this.data('settings'),
+					clone	= $this.clone().removeAttr('style').insertBefore($this);
+
+				$this.remove();
+
+				clone.raty($.extend(actual, settings));
+			});
+
+			return $(this.selector);
 		}, setTarget: function(value, isKeep) {
 			if (this.opt.target) {
 				var $target = $(this.opt.target);
