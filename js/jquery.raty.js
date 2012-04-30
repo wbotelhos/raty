@@ -30,7 +30,7 @@
 
 				this.opt = $.extend(true, {}, $.fn.raty.defaults, options);
 			
-				this.opt.number = Math.min(Math.max(parseInt(this.opt.number), 0), 20);
+				this.opt.number = Math.min(Math.max(parseInt(this.opt.number, 10), 0), 20);
 				
 
 				if (this.opt.path.substring(this.opt.path.length - 1, this.opt.path.length) != '/') {
