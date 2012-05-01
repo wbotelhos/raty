@@ -33,6 +33,10 @@ hr { border-top: medium none; height: 1px; margin-bottom: 16px; margin-top: 15px
 
 #version { color: #777; font: 10px verdana; }
 
+.action-field { border: 1px solid #CCC; height: 20px; padding-left: 3px; width: 80px; }
+.action-link { margin-left: 5px; }
+.action-wrapper { margin-top: 15px; }
+
 .comment { color: #444; font: 11px verdana; letter-spacing: 0.4px; line-height: 1.6; padding-bottom: 5px; text-align: left; }
 .comment-personal { color: #444; font: italic 11px verdana; letter-spacing: 0.4px; line-height: 1.6; text-align: left; }
 
@@ -53,11 +57,11 @@ hr { border-top: medium none; height: 1px; margin-bottom: 16px; margin-top: 15px
 
 .left { float: left; }
 
-#target, #target-out, #function, #format { float: left; }
+#target, #target-out, #function, #format, #mouseover { float: left; }
 
 #target-number { float: left; }
 
-#hint, #hint-out, #hint-function, #hint-format { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 50px; }
+#hint, #hint-out, #hint-function, #hint-format, #mouseover-target { background-color: #F0F0F0; border-radius: 3px; float: left; height: 15px; margin-left: 5px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; text-align: center; width: 70px; }
 
 #hint-format { width: 120px; }
 

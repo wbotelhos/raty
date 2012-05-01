@@ -33,11 +33,11 @@
 		<div id="header">
 			<div id="title">
 				<a href="http://wbotelhos.com/raty">jQuery Raty - A Star Rating Plugin</a>
-				<span id="version">(current version: 2.1.0)</span>
+				<span id="version">(current version: 2.4.0)</span>
 			</div>
 
 			<div id="menu">
-				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.1.0.zip" target="_blank">Download</a> |
+				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.4.0.zip" target="_blank">Download</a> |
 				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 				<a href="http://www.wbotelhos.com/raty/changelog.md" target="_blank">Change Log</a> |
 				<a href="http://www.wbotelhos.com/raty/README.md" target="_blank">Readme</a> |
@@ -68,19 +68,19 @@
 
 			<div class="source">
 			 	$('#star').raty({<br/>
-				&#160;&#160;readOnly: true,<br/>
-				&#160;&#160;start:&#160;&#160;&#160;&#160;2<br/>
+				&#160;&#160;readOnly : true,<br/>
+				&#160;&#160;score&#160;&#160;&#160; : 2<br/>
 				});<br/><br/>
 				
 				&lt;div id="star"&gt;&lt;/div&gt;
 			</div>
 
-			<div id="start-demo" class="session">Starting with a callback:</div>
-			<div id="start" data-rating="3"></div>
+			<div id="score-demo" class="session">Starting with a callback:</div>
+			<div id="score" data-rating="3"></div>
 
 			<div class="source">
-			 	$('#start').raty({<br/>
-				&#160;&#160;start: function() {<br/>
+			 	$('#score').raty({<br/>
+				&#160;&#160;score: function() {<br/>
 				&#160;&#160;&#160;&#160;return $(this).attr('data-rating');<br/>
 				&#160;&#160;}<br/>
 				});<br/><br/>
@@ -93,8 +93,8 @@
 
 			<div class="source">
 			 	$('#star').raty({<br/>
-				&#160;&#160;readOnly:&#160;&#160;&#160;true,<br/>
-				&#160;&#160;noRatedMsg: 'anyone rated this product yet!'<br/>
+				&#160;&#160;readOnly&#160;&#160; : true,<br/>
+				&#160;&#160;noRatedMsg : 'anyone rated this product yet!'<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;
@@ -105,8 +105,8 @@
 
 			<div class="source">
 			 	$('#star').raty({<br/>
-				&#160;&#160;scoreName: 'entity.score',<br/>
-				&#160;&#160;number:&#160;&#160;&#160;&#160;10<br/>
+				&#160;&#160;scoreName : 'entity.score',<br/>
+				&#160;&#160;number&#160;&#160;&#160; : 10<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;
@@ -151,10 +151,10 @@
 
 			<div class="source">
 			 	$('#star').raty({<br/>
-				&#160;&#160;cancel:&#160;&#160;&#160;&#160;&#160;&#160;true,<br/>
-				&#160;&#160;cancelHint:&#160;&#160;'remove my rating!',<br/>
-				&#160;&#160;cancelPlace: 'right',<br/>
-				&#160;&#160;click: function(score, evt) {<br/>
+				&#160;&#160;cancel&#160;&#160;&#160;&#160;&#160; : true,<br/>
+				&#160;&#160;cancelHint&#160; : 'remove my rating!',<br/>
+				&#160;&#160;cancelPlace : 'right',<br/>
+				&#160;&#160;click&#160;&#160;&#160;&#160;&#160;&#160; : function(score, evt) {<br/>
 				&#160;&#160;&#160;&#160;alert('score: ' + score);<br/>
 				&#160;&#160;}<br/>
 				});<br/><br/>
@@ -167,8 +167,8 @@
 
 			<div class="source">
 			 	$('#star').raty({<br/>
-				&#160;&#160;half:&#160;&#160;true,<br/>
-				&#160;&#160;start: 3.3<br/>
+				&#160;&#160;half&#160; : true,<br/>
+				&#160;&#160;score : 3.3<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;
@@ -188,8 +188,8 @@
 
 			<div class="source">
 			 	$('#star').raty({<br/>
-				&#160;&#160;start: 1.26,<br/>
-				&#160;&#160;round: { down: .25, full: .6, up: .76 }<br/>
+				&#160;&#160;score : 1.26,<br/>
+				&#160;&#160;round : { down: .25, full: .6, up: .76 }<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;
@@ -208,9 +208,9 @@
 
 			<div class="source">
 			 	$('#star').raty({<br/>
-				&#160;&#160;hintList: ['a', '', null, 'd', '5'],<br/>
-				&#160;&#160;starOn:&#160;&#160;&#160;'medal-on.png',<br/>
-				&#160;&#160;starOff:&#160;&#160;'medal-off.png'<br/>
+				&#160;&#160;hints&#160;&#160; : ['a', '', null, 'd', '5'],<br/>
+				&#160;&#160;starOn&#160; : 'medal-on.png',<br/>
+				&#160;&#160;starOff : 'medal-off.png'<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;
@@ -250,14 +250,14 @@
 
 			<div class="source">
 			 	$('#star').raty({<br/>
-			 	&#160;&#160;cancel:&#160;&#160;&#160;&#160;true,<br/>
-				&#160;&#160;cancelOff: 'cancel-off-big.png',<br/>
-				&#160;&#160;cancelOn:&#160;&#160;'cancel-on-big.png',<br/>
-				&#160;&#160;half:&#160;&#160;&#160;&#160;&#160;&#160;true,<br/>
-				&#160;&#160;size:&#160;&#160;&#160;&#160;&#160;&#160;24,<br/>
-				&#160;&#160;starHalf:&#160;&#160;'star-half-big.png',<br/>
-				&#160;&#160;starOff:&#160;&#160;&#160;'star-off-big.png',<br/>
-				&#160;&#160;starOn:&#160;&#160;&#160;&#160;'star-on-big.png'<br/>
+			 	&#160;&#160;cancel&#160;&#160;&#160; : true,<br/>
+				&#160;&#160;cancelOff : 'cancel-off-big.png',<br/>
+				&#160;&#160;cancelOn&#160; : 'cancel-on-big.png',<br/>
+				&#160;&#160;half&#160;&#160;&#160;&#160;&#160; : true,<br/>
+				&#160;&#160;size&#160;&#160;&#160;&#160;&#160; : 24,<br/>
+				&#160;&#160;starHalf&#160; : 'star-half-big.png',<br/>
+				&#160;&#160;starOff&#160;&#160; : 'star-off-big.png',<br/>
+				&#160;&#160;starOn&#160;&#160;&#160; : 'star-on-big.png'<br/>
 				});<br/><br/>
 			   
 				&lt;div id="star"&gt;&lt;/div&gt;
@@ -292,9 +292,9 @@
 
 			<div class="source">
 				$('#star').raty({<br/>
-				&#160;&#160;cancel:&#160;&#160;&#160;&#160;&#160;true,<br/>
-				&#160;&#160;cancelHint: 'none',<br/>
-				&#160;&#160;target:&#160;&#160;&#160;&#160;&#160;'#hint'<br/>
+				&#160;&#160;cancel&#160;&#160;&#160;&#160; : true,<br/>
+				&#160;&#160;cancelHint : 'none',<br/>
+				&#160;&#160;target&#160;&#160;&#160;&#160; : '#hint'<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
@@ -316,10 +316,10 @@
 
 			<div class="source left">
 				$('#star').raty({<br/>
-				&#160;&#160;cancel:&#160;&#160;&#160;&#160;&#160;true,<br/>
-				&#160;&#160;target:&#160;&#160;&#160;&#160;&#160;'#score',<br/>
-				&#160;&#160;targetKeep:&#160;true,<br/>
-				&#160;&#160;targetType: 'number'<br/>
+				&#160;&#160;cancel&#160;&#160;&#160;&#160; : true,<br/>
+				&#160;&#160;target&#160;&#160;&#160;&#160; : '#score',<br/>
+				&#160;&#160;targetKeep : true,<br/>
+				&#160;&#160;targetType : 'number'<br/>
 				});<br/><br/>
 
 				&lt;select id="target"&gt;<br/>
@@ -343,11 +343,10 @@
 
 			<div class="source">
 				$('#star').raty({<br/>
-				&#160;&#160;cancel:&#160;&#160;&#160;&#160;&#160;true,<br/>
-				&#160;&#160;cancelHint: 'none',<br/>
-				&#160;&#160;target:&#160;&#160;&#160;&#160;&#160;'#hint'<br/>
+				&#160;&#160;target&#160;&#160;&#160;&#160; : '#hint',<br/>
+				&#160;&#160;targetText : '--'<br/>
 				});<br/><br/>
-	
+
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
 				&lt;div id="target"&gt;&lt;/div&gt;
 			</div>
@@ -359,17 +358,38 @@
 
 			<div class="source">
 				$('#star').raty({<br/>
-				&#160;&#160;cancel:&#160;&#160;&#160;&#160;&#160;&#160;&#160;true,<br/>
-				&#160;&#160;cancelHint:&#160;&#160;&#160;'Sure?',<br/>
-				&#160;&#160;target:&#160;&#160;&#160;&#160;&#160;&#160;&#160;'#hint',<br/>
-				&#160;&#160;targetFormat: 'your score: {score}',<br/>
-				&#160;&#160;targetText:&#160;&#160;&#160;'none',<br/>
-				&#160;&#160;targetKeep:&#160;&#160;&#160;&#160;true<br/>
+				&#160;&#160;cancel&#160;&#160;&#160;&#160;&#160;&#160; : true,<br/>
+				&#160;&#160;cancelHint&#160;&#160; : 'Sure?',<br/>
+				&#160;&#160;target&#160;&#160;&#160;&#160;&#160;&#160; : '#hint',<br/>
+				&#160;&#160;targetFormat : 'your score: {score}',<br/>
+				&#160;&#160;targetText&#160;&#160; : 'none',<br/>
+				&#160;&#160;targetKeep&#160;&#160; : true<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
 				&lt;div id="target"&gt;&lt;/div&gt;
 			</div>
+
+			<div id="mouseover-demo" class="session">Using mouseover callback:</div>
+
+			<div id="mouseover"></div>
+			<div id="mouseover-target"></div><br/>
+
+			<div class="source" style="margin-top: 15px;">
+				$('#star').raty({<br/>
+				&#160;&#160;cancel&#160;&#160;&#160; : true,<br />
+				&#160;&#160;mouseover : function(score, evt) {<br />
+				&#160;&#160;&#160;&#160;$('#target').html('score: ' + score);<br />
+				&#160;&#160;}<br />
+				});<br/><br/>
+
+				&lt;div id="star"&gt;&lt;/div&gt;<br/>
+				&lt;div id="target"&gt;&lt;/div&gt;
+			</div>
+
+			<span class="comment">
+				- The options target, targetFormat, targetKeep, targetText and targetType are abstractions of this callback.
+			</span>
 
 			<div id="precision-demo" class="session">Half star voting precision:</div>
 
@@ -378,14 +398,14 @@
 
 			<div class="source" style="margin-top: 15px;">
 				$('#star').raty({<br/>
-				&#160;&#160;half:&#160;&#160;&#160;&#160;&#160;&#160;&#160;true,<br/>
-				&#160;&#160;precision:&#160;&#160;true,<br/>
-				&#160;&#160;size:&#160;&#160;&#160;&#160;&#160;&#160;&#160;24,<br/>
-				&#160;&#160;starHalf:&#160;&#160;&#160;'star-half-big.png',<br/>
-				&#160;&#160;starOff:&#160;&#160;&#160;&#160;'star-off-big.png',<br/>
-				&#160;&#160;starOn:&#160;&#160;&#160;&#160;&#160;'star-on-big.png'<br/>
-				&#160;&#160;target:&#160;&#160;&#160;&#160;&#160;'#precision-target'<br/>
-				&#160;&#160;targetType: 'number'<br/>
+				&#160;&#160;half&#160;&#160;&#160;&#160;&#160;&#160; : true,<br/>
+				&#160;&#160;precision&#160; : true,<br/>
+				&#160;&#160;size&#160;&#160;&#160;&#160;&#160;&#160; : 24,<br/>
+				&#160;&#160;starHalf&#160;&#160; : 'star-half-big.png',<br/>
+				&#160;&#160;starOff&#160;&#160;&#160; : 'star-off-big.png',<br/>
+				&#160;&#160;starOn&#160;&#160;&#160;&#160; : 'star-on-big.png'<br/>
+				&#160;&#160;target&#160;&#160;&#160;&#160; : '#precision-target'<br/>
+				&#160;&#160;targetType : 'number'<br/>
 				});<br/><br/>
 
 				&lt;div id="star"&gt;&lt;/div&gt;<br/>
@@ -429,10 +449,10 @@
 
 			<div class="source">
 				$('.star').raty({<br/>
-				&#160;&#160;half:&#160;&#160;true,<br/>
-				&#160;&#160;click: function(score, evt) {<br/>
+				&#160;&#160;half&#160; : true,<br/>
+				&#160;&#160;click : function(score, evt) {<br/>
 				&#160;&#160;&#160;&#160;$(this).raty('cancel');<br/>
-				&#160;&#160;&#160;&#160;$('#result').raty('start', score);<br/>
+				&#160;&#160;&#160;&#160;$('#result').raty('score', score);<br/>
 				&#160;&#160;}<br/>
 				});<br/><br/>
 
@@ -453,11 +473,11 @@
 			<div id="hint-function"></div><br/>
 
 			<div style="color: #CCC; margin-top: 15px;">
-				<a href="javascript:void(0);" title="1" class="start">Start 1</a> |
-				<a href="javascript:void(0);" title="2" class="start">Start 2</a> |
-				<a href="javascript:void(0);" title="3" class="start">Start 3</a> |
-				<a href="javascript:void(0);" title="4" class="start">Start 4</a> |
-				<a href="javascript:void(0);" title="5" class="start">Start 5</a>
+				<a href="javascript:void(0);" title="1" class="score">Score 1</a> |
+				<a href="javascript:void(0);" title="2" class="score">Score 2</a> |
+				<a href="javascript:void(0);" title="3" class="score">Score 3</a> |
+				<a href="javascript:void(0);" title="4" class="score">Score 4</a> |
+				<a href="javascript:void(0);" title="5" class="score">Score 5</a>
 			</div>
 
 			<div style="color: #CCC; margin-top: 15px;">
@@ -478,6 +498,16 @@
 				<a href="javascript:void(0);" title="true" class="cancel">Cancel (trigger)</a>
 			</div>
 
+			<div style="color: #CCC; margin-top: 15px;">
+				<a id="reload" href="javascript:void(0);" title="reload">Reload</a> |
+				<a id="get-score" href="javascript:void(0);" title="score">Score</a>
+			</div>
+
+			<div class="action-wrapper">
+				settings: <input id="set-id" type="text" value="{ number: 3 }" class="action-field" />
+				<a id="set-action" href="javascript:void(0);" title="set" class="action-link">set</a>
+			</div>
+
 			<div id="global-demo" class="session">Changing the settings globally:</div>
 
 			<div class="source">
@@ -492,114 +522,181 @@
 
 			<div class="session">Default options:</div>
 
-			<div class="source">
-			 	cancel&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: false<br/>
-			 	<div class="comment">If will be showed a button to cancel the rating.</div>
+			<div class="session-option">cancel: <span>false</span></div>
+			<div class="comment">If will be showed a button to cancel the rating.</div>
 
-			 	cancelHint&#160;&#160;&#160;&#160;&#160;: 'cancel this rating!'<br/>
-			 	<div class="comment">The hint information.</div>
+			<hr />
 
-			 	cancelOff&#160;&#160;&#160;&#160;&#160;&#160;: 'cancel-off.png'<br/>
-			 	<div class="comment">Name of the cancel image off.</div>
+			<div class="session-option">cancelHint: <span>'cancel this rating!'</span></div>
+			<div class="comment">The hint information.</div>
 
-			 	cancelOn&#160;&#160;&#160;&#160;&#160;&#160;&#160;: 'cancel-on.png'<br/>
-			 	<div class="comment">Name of the cancel image on.</div>
+			<hr />
 
-			 	cancelPlace&#160;&#160;&#160;&#160;: 'left'<br/>
-			 	<div class="comment">Position of the cancel button.</div>
+		 	<div class="session-option">cancelHint: 'cancel this rating!'<br/>
+		 	<div class="comment">The hint information.</div>
 
-				click&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: undefined<br/>
-			 	<div class="comment">Function that returns the selected value.</div>
+			<hr />
 
-				half&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: false<br/>
-			 	<div class="comment">Enables half star selection.</div>
+		 	<div class="session-option">cancelOff: <span>'cancel-off.png'</span></div>
+		 	<div class="comment">Name of the cancel image off.</div>
 
-				halfShow&#160;&#160;&#160;&#160;&#160;&#160;&#160;: true<br/>
-			 	<div class="comment">Enables half star display.</div>
+			<hr />
 
-			 	hintList&#160;&#160;&#160;&#160;&#160;&#160;&#160;: ['bad', 'poor', 'regular', 'good', 'gorgeous']<br/>
-			 	<div class="comment">List of names that will be used as a hint on each star.</div>
+		 	<div class="session-option">cancelOn: <span>'cancel-on.png'</span></div>
+		 	<div class="comment">Name of the cancel image on.</div>
 
-				iconRange&#160;&#160;&#160;&#160;&#160;&#160;: undefined<br/>
-				<div class="comment">List of object that represent each icon with position and names.</div>
+			<hr />
 
-				noRatedMsg&#160;&#160;&#160;&#160;&#160;: 'not rated yet'<br/>
-			 	<div class="comment">A hint for no rated elements when it's read-only.</div>
+		 	<div class="session-option">cancelPlace: <span>'left'</span></div>
+		 	<div class="comment">Position of the cancel button.</div>
 
-				number&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: 5<br/>
-			 	<div class="comment">Number of stars that will be presented.</div>
+			<hr />
 
-				path&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: 'img/'<br/>
-			 	<div class="comment">A range of custom icons that you can set.</div>
+			<div class="session-option">click: <span>undefined</span></div>
+		 	<div class="comment">Function that returns the selected value.</div>
 
-				precision&#160;&#160;&#160;&#160;&#160;&#160;: false<br/>
-			 	<div class="comment">Enables the selection of a precision score.</div>
+			<hr />
 
-				readOnly&#160;&#160;&#160;&#160;&#160;&#160;&#160;: false<br/>
-			 	<div class="comment">If the stars will be read-only.</div>
+			<div class="session-option">half: <span>false</span></div>
+		 	<div class="comment">Enables half star selection.</div>
 
-				round&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: { down: .25, full: .6, up: .76 }<br/>
-			 	<div class="comment">Configuration to set the round rules.</div>
+			<hr />
 
-				scoreName&#160;&#160;&#160;&#160;&#160;&#160;: 'score'<br/>
-			 	<div class="comment">Name of the hidden field that holds the score value.</div>
+			<div class="session-option">halfShow: <span>true</span></div>
+		 	<div class="comment">Enables half star display.</div>
 
-				single&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: false<br/>
-			 	<div class="comment">Enables the single star selection.</div>
+			<hr />
 
-				space&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: true<br/>
-			 	<div class="comment">Puts space between the stars.</div>
+		 	<div class="session-option">hints: <span>['bad', 'poor', 'regular', 'good', 'gorgeous']</span></div>
+		 	<div class="comment">List of names that will be used as a hint on each star.</div>
 
-				size&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: 16<br/>
-			 	<div class="comment">The icons size.</div>
+			<hr />
 
-				starHalf&#160;&#160;&#160;&#160;&#160;&#160;&#160;: 'star-half.png'<br/>
-			 	<div class="comment">The name of the half star image.</div>
+			<div class="session-option">iconRange: <span>undefined</span></div>
+			<div class="comment">List of object that represent each icon with position and names.</div>
 
-				starOff&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: 'star-off.png'<br/>
-			 	<div class="comment">Name of the star image off.</div>
+			<hr />
 
-				starOn&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: 'star-on.png'<br/>
-			 	<div class="comment">Name of the star image on.</div>
+			<div class="session-option">noRatedMsg: <span>'not rated yet'</span></div>
+		 	<div class="comment">A hint for no rated elements when it's read-only.</div>
 
-				start&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: 0<br/>
-				<div class="comment">Number of stars to be selected.</div>
+			<hr />
 
-				target&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: undefined<br/>
-				<div class="comment">Element selector where the rating will be displayed.</div>
+			<div class="session-option">number: <span>5</span></div>
+		 	<div class="comment">Number of stars that will be presented.</div>
 
-				targetFormat&#160;&#160;&#160;: '{score}'<br/>
-				<div class="comment">Template to interpolate the score with some thing.</div>
+			<hr />
 
-				targetKeep&#160;&#160;&#160;&#160;&#160;: false<br/>
-				<div class="comment">If the last choose value will be keeped on mouseout.</div>
+			<div class="session-option">path: <span>'img/'</span></div>
+		 	<div class="comment">A range of custom icons that you can set.</div>
 
-				targetText&#160;&#160;&#160;&#160;&#160;: ''<br/>
-				<div class="comment">Default value when there is no score or targetKeep is off.</div>
+			<hr />
 
-				targetType&#160;&#160;&#160;&#160;&#160;: 'hint'<br/>
-				<div class="comment">What display on target element hint or number.</div>
+			<div class="session-option">precision: <span>false</span></div>
+		 	<div class="comment">Enables the selection of a precision score.</div>
 
-				width&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: undefined<br/>
-				<div class="comment">The container width of the stars.</div>
-			</div>
+			<hr />
+
+			<div class="session-option">readOnly: <span>false</span></div>
+		 	<div class="comment">If the stars will be read-only.</div>
+
+			<hr />
+
+			<div class="session-option">round: <span>{ down: <span>.25, full: <span>.6, up: <span>.76 }</span></div>
+		 	<div class="comment">Configuration to set the round rules.</div>
+
+			<hr />
+
+			<div class="session-option">score: <span>0</span></div>
+			<div class="comment">Number of stars to be selected.</div>
+
+			<hr />
+
+			<div class="session-option">scoreName: <span>'score'</span></div>
+		 	<div class="comment">Name of the hidden field that holds the score value.</div>
+
+			<hr />
+
+			<div class="session-option">single: <span>false</span></div>
+		 	<div class="comment">Enables the single star selection.</div>
+
+			<hr />
+
+			<div class="session-option">space: <span>true</span></div>
+		 	<div class="comment">Puts space between the stars.</div>
+
+			<hr />
+
+			<div class="session-option">size: <span>16</span></div>
+		 	<div class="comment">The icons size.</div>
+
+			<hr />
+
+			<div class="session-option">starHalf: <span>'star-half.png'</span></div>
+		 	<div class="comment">The name of the half star image.</div>
+
+			<hr />
+
+			<div class="session-option">starOff: <span>'star-off.png'</span></div>
+		 	<div class="comment">Name of the star image off.</div>
+
+			<hr />
+
+			<div class="session-option">starOn: <span>'star-on.png'</span></div>
+		 	<div class="comment">Name of the star image on.</div>
+
+			<hr />
+
+			<div class="session-option">target: <span>undefined</span></div>
+			<div class="comment">Element selector where the rating will be displayed.</div>
+
+			<hr />
+
+			<div class="session-option">targetFormat: <span>'{score}'</span></div>
+			<div class="comment">Template to interpolate the score with some thing.</div>
+
+			<hr />
+
+			<div class="session-option">targetKeep: <span>false</span></div>
+			<div class="comment">If the last choose value will be keeped on mouseout.</div>
+
+			<hr />
+
+			<div class="session-option">targetText: <span>''</span></div>
+			<div class="comment">Default value when there is no score or targetKeep is off.</div>
+
+			<hr />
+
+			<div class="session-option">targetType: <span>'hint'</span></div>
+			<div class="comment">What display on target element hint or number.</div>
+
+			<hr />
+
+			<div class="session-option">width&#160;: <span>undefined</span></div>
+			<div class="comment">The container width of the stars.</div>
 
 			<div class="session">Public functions:</div>
 
-			<div class="source">$('#star').raty('start', 3);</div>
-			<div class="description">Starts the last Raty with 3 stars.</div>
+			<div class="source">$('#star').raty('score');</div>
+			<div class="comment">Recovers the current score. For class returns an array. No rated returns null.</div>
+
+			<div class="source">$('#star').raty('score', 3);</div>
+			<div class="comment">Set the score with 3 stars.</div>
 
 			<div class="source">$('#star').raty('click', 2);</div>
-			<div class="description">Click on the second star of the Raty with ID called 'raty'.</div>
+			<div class="comment">Click on the second star of the Raty with ID called 'raty'.</div>
 
 			<div class="source">$('.star').raty('readOnly', true);</div>
-			<div class="description">Adjusts all Raty with class called 'raty' for read-only.</div>
+			<div class="comment">Adjusts all Raty with class called 'raty' for read-only.</div>
 
 			<div class="source">$('#star').raty('cancel', true);</div>
-			<div class="description">Cancel the rating. The second optional parameter enable thes click callback.</div>
+			<div class="comment">Cancel the rating. The second optional parameter enable thes click callback.</div>
 
-			<div class="source">$('#star').raty('score');</div>
-			<div class="description">Recovers the current score. For class returns an array. No rated returns null.</div>
+			<div class="source">$('#star').raty('reload');</div>
+			<div class="comment">Reload the rating with the current configuration.</div>
+
+			<div class="source">$('#star').raty('set', { number: 10 });</div>
+			<div class="comment">Reload the rating applying new configurations.</div>
 		</div>
 
 		<div id="footer">
@@ -613,11 +710,11 @@
 
 				$('#fixed').raty({
 					readOnly	: true,
-					start		: 2
+					score		: 2
 				});
 
-				$('#start').raty({
-				    start: function() {
+				$('#score').raty({
+				    score: function() {
 				        return $(this).attr('data-rating');
 				    }
 				});
@@ -653,16 +750,16 @@
 
 				$('#half').raty({
 					half	: true,
-					start	: 3.3
+					score	: 3.3
 				});
 
 				$('#round').raty({
-					start	: 1.26,
+					score	: 1.26,
 					round	: { down: .25, full: .6, up: .76 }
 				});
 
 				$('#icon').raty({
-					hintList	: ['a', '', null, 'd', '5'],
+					hints		: ['a', '', null, 'd', '5'],
 					path		: 'doc/img/',
 				   	starOn		: 'medal-on.png',
 				   	starOff		: 'medal-off.png'
@@ -719,6 +816,13 @@
 					targetText	: '--'
 				});
 
+				$('#mouseover').raty({
+  					cancel		: true,
+  					mouseover	: function(score, evt) {
+  						$('#mouseover-target').html('score: ' + score);
+  					}
+  				});
+
 				$('#precision').raty({
 					half		: true,
 					path		: 'doc/img/',
@@ -744,7 +848,7 @@
 				$('.action').raty({
 					click: function(score, evt) {
 						$(this).raty('cancel');
-						$result.raty('start', score);
+						$result.raty('score', score);
 					}
 				});
 
@@ -755,13 +859,13 @@
 						$(this).fadeOut(function() { $(this).fadeIn(); });
 					},
 					targetKeep	: true,
-					start		: 2,
+					score		: 2,
 					target		: '#hint-function',
 					targetText	: '--'
 				});
 
-				$('.start').click(function() {
-					$('#function').raty('start', this.title);
+				$('.score').click(function() {
+					$('#function').raty('score', this.title);
 				});
 
 				$('.click').click(function() {
@@ -774,6 +878,20 @@
 
 				$('.cancel').click(function() {
 					$('#function').raty('cancel', (this.title == 'true') ? true : false);
+				});
+
+				$('#reload').click(function() {
+					$('#function').raty('reload');
+				});
+
+				$('#get-score').click(function() {
+					alert($('#function').raty('score'));
+				});
+
+				$('#set-action').on('click', function() {
+					var options = $('#set-id').val();
+
+					eval("$('#function').raty('set', " + options + ");");
 				});
 
 			});

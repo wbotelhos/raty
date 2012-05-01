@@ -4,7 +4,7 @@ jQuery Raty is a plugin that generates a customizable star rating.
 
 ## Version
 
-	@version        2.1.0
+	@version        2.4.0
 	@since          2010.06.11
 	@author         Washington Botelho
 	@documentation  wbotelhos.com/raty
@@ -23,11 +23,12 @@ jQuery Raty is a plugin that generates a customizable star rating.
 	cancelOff    : 'cancel-off.png'                               // Name of the cancel image off.
 	cancelOn     : 'cancel-on.png'                                // Name of the cancel image on.
 	cancelPlace  : 'left'                                         // Position of the cancel button.
-	click        : undefined                                      // Default callback function.
+	click        : undefined                                      // Callback for click actions.
 	half         : false                                          // Active the half star.
 	halfShow     : true                                           // Enables half star display.
-	hintList     : ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
+	hints        : ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
 	iconRange    : undefined                                      // Object list representing each icon with position and names.
+	mouseover    : undefined                                      // Callback for mouseover actions.
 	noRatedMsg   : 'not rated yet'                                // A hint for no rated elements when it's read-only.
 	number       : 5                                              // Number of star.
 	path         : 'img                                           // Path of images.
@@ -63,25 +64,32 @@ jQuery Raty is a plugin that generates a customizable star rating.
 
 ## Public functions
 
-	$('#star').raty('start', 3);       // Starts with 3 stars.
+	$('#star').raty('score');                // Recovers the current score. Class returns an array or null for no rated.
 
-	$('#star').raty('click', 2);       // Click on the second star.
+	$('#star').raty('score', 3);             // Set the score to 3 stars.
 
-	$('.star').raty('readOnly', true); // Adjusts all elements with class called 'star' for read-only.
+	$('#star').raty('click', 2);             // Click on the second star.
 
-	$('#star').raty('cancel', true);   // Cancel the rating. The second optional parameter enables the callback.
+	$('.star').raty('readOnly', true);       // Adjusts all elements with class called 'star' for read-only.
 
-	$('#star').raty('score');          // Recovers the current score. Class returns an array or null for no rated.
+	$('#star').raty('cancel', true);         // Cancel the rating. The second optional parameter enables the callback.
+
+	$('#star').raty('reload');               // Reload the rating with the current configuration.
+
+	$('#star').raty('set', { number: 10 });  // Reload the rating applying new configurations.
 
 ## Contributors
 
++ Andreas Köberle
 + Daniel Faria
 + Eric Wendelin
 + Francisco Souza
 + Gabriel Benz
 + hpgihan
++ janapol
 + jeongee
 + Olle Jonsson
++ packowitz
 
 ## Licence
 
