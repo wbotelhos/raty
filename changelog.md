@@ -1,5 +1,16 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+### 2.4.0
+
++ Added the function 'reload' to reload the rating with the current configuration;
++ Added the function 'set' to reload the rating applying new configurations;
++ Added the option 'mouseover' to handle a callback on mouseover the stars (by packowitz);
++ Fixed error when 'start' options receives a string number (by eskimoblood);
++ Fixed multiples events when readOnly is applied more then time by public function (by janapol).
++ Now attribute 'hintList' is called just of 'hints';
++ Now attribute 'start' is called as 'score' to make more sense;
++ Now the method 'start' is called as 'score' too.
+
 ### 2.1.0
 
 + Now Raty keeps the state of the elements and no longer depends on ID for each one:
