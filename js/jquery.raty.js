@@ -32,7 +32,7 @@
 
 				$this.data('settings', self.opt);
 
-				self.opt.number = Math.min(Math.max(parseInt(self.opt.number, 10), 0), 20);
+				self.opt.number = methods.between(self.opt.number, 0, 20);
 
 				if (self.opt.path.substring(self.opt.path.length - 1, self.opt.path.length) != '/') {
 					self.opt.path += '/';
@@ -42,23 +42,16 @@
 					self.opt.score = self.opt.score.call(self);
 				}
 
-				var isValidScore	= !isNaN(parseInt(self.opt.score, 10)),
-					score			= '';
-
-				if (isValidScore) {
-					score = (self.opt.score > self.opt.number) ? self.opt.number : self.opt.score;
-				} 
-
-				var starFile	= self.opt.starOn,
-					space		= self.opt.space ? 4 : 0,
-					hint		= '';
+				if (self.opt.score) {
+					self.opt.score = methods.between(self.opt.score, 0, self.opt.number);					
+				}
 
 				for (var i = 1; i <= self.opt.number; i++) {
-					starFile = (score < i) ? self.opt.starOff : self.opt.starOn;
-
-					hint = (i <= self.opt.hints.length && self.opt.hints[i - 1] !== null) ? self.opt.hints[i - 1] : i;
-
-					$('<img />', { src: self.opt.path + starFile, alt: i, title: hint }).appendTo(self);
+					$('<img />', {
+						src		: self.opt.path + ((!self.opt.score || self.opt.score < i) ? self.opt.starOff : self.opt.starOn),
+						alt		: i,
+						title	: (i <= self.opt.hints.length && self.opt.hints[i - 1] !== null) ? self.opt.hints[i - 1] : i
+					}).appendTo(self);
 
 					if (self.opt.space) {
 						$this.append((i < self.opt.number) ? '&#160;' : '');
@@ -67,21 +60,19 @@
 
 				var $score = $('<input />', { type: 'hidden', name: self.opt.scoreName }).appendTo(self);
 
-				if (isValidScore) {
-					if (self.opt.score > 0) {
-						$score.val(score);
-					}
-
-					methods.roundStar.call(self, score);
+				if (self.opt.score && self.opt.score > 0) {
+					$score.val(self.opt.score);
+					methods.roundStar.call(self, self.opt.score);
 				}
 
 				if (self.opt.iconRange) {
-					methods.fillStar.call(self, score);	
+					methods.fill.call(self, self.opt.score);	
 				}
 
-				methods.setTarget.call(self, score, self.opt.targetKeep);
+				methods.setTarget.call(self, self.opt.score, self.opt.targetKeep);
 
-				var width = self.opt.width || (self.opt.number * self.opt.size + self.opt.number * space);
+				var space	= self.opt.space ? 4 : 0,
+					width	= self.opt.width || (self.opt.number * self.opt.size + self.opt.number * space);
 
 				if (self.opt.cancel) {
 					var $cancel = $('<img />', { src: self.opt.path + self.opt.cancelOff, alt: 'x', title: self.opt.cancelHint, 'class': 'raty-cancel' });
@@ -107,13 +98,15 @@
 
 				$this.css('width', width);
 			});
+		}, between: function(value, min, max) {
+			return Math.min(Math.max(parseFloat(value), min), max);
 		}, bindAction: function() {
 			var self	= this,
 				$this	= $(self),
 				$score	= $this.children('input');
 
 			$this.mouseleave(function() {
-				var score = $score.val();
+				var score = $score.val() || undefined;
 
 				methods.initialize.call(self, score);
 				methods.setTarget.call(self, score, self.opt.targetKeep);
@@ -123,7 +116,7 @@
 				}
 			});
 
-			var $stars	= $this.children('img').not('.raty-cancel'),
+			var $stars	= $this.children('img:not(".raty-cancel")'),
 				action	= self.opt.half ? 'mousemove' : 'mouseover';
 
 			if (self.opt.cancel) {
@@ -139,8 +132,6 @@
 					}
 				}).mouseleave(function() {
 					$(this).attr('src', self.opt.path + self.opt.cancelOff);
-
-					$this.mouseout();
 
 					if (self.opt.mouseover) {
 						self.opt.mouseover.call(self, $score.val() || null);
@@ -163,7 +154,7 @@
 
 					value = parseFloat(this.alt) - 1 + diff;
 
-					methods.fillStar.call(self, value);
+					methods.fill.call(self, value);
 
 					if (self.opt.precision) {
 						value = value - diff + position;
@@ -171,7 +162,7 @@
 
 					methods.showHalf.call(self, value);
 				} else {
-					methods.fillStar.call(self, value);
+					methods.fill.call(self, value);
 				}
 
 				$this.data('score', value);
@@ -202,7 +193,7 @@
 					methods.score.call(this, null);
 				}
 
-				$this.mouseleave().children('input').removeAttr('value');
+				$this.children('input').removeAttr('value');
 			});
 		}, click: function(score) {
 			return $(this).each(function() {
@@ -220,7 +211,7 @@
 
 				methods.setTarget.call(this, score, true);
 			});
-		}, fillStar: function(score) {
+		}, fill: function(score) {
 			var self	= this,
 				$this	= $(self),
 				$stars	= $this.children('img').not('.raty-cancel'),
@@ -362,24 +353,21 @@
 				} else {
 					var score = value;
 
-					if (score == null && !this.opt.cancel) {
+					if (score === null && !this.opt.cancel) {
 						$.error('you must enable the "cancel" option to set hint on target.');
 					} else {
-						if (!isKeep || score == '') {
+						
+						if (!isKeep || score === undefined) {
 							score = this.opt.targetText;
 						} else {
 							if (this.opt.targetType == 'hint') {
-								if (score === null && this.opt.cancel) {
-									score = this.opt.cancelHint;
-								} else {
-									score = this.opt.hints[Math.ceil(score - 1)];
-								}
+								score = (score === null && this.opt.cancel)
+										? this.opt.cancelHint
+										: this.opt.hints[Math.ceil(score - 1)];
 							} else {
-								if (score != '' && !this.opt.precision) {
-									score = parseInt(score, 10);
-								} else {
-									score = parseFloat(score).toFixed(1);
-								}
+								score = this.opt.precision
+										? parseFloat(score).toFixed(1)
+										: parseInt(score, 10);
 							}
 						}
 
@@ -404,15 +392,11 @@
 				$(this).children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', this.opt.path + this.opt.starHalf);
 			}
 		}, initialize: function(score) {
-			if (score < 0) {
-				score = 0;
-			} else if (score > this.opt.number) {
-				score = this.opt.number;
-			}
+			score = !score ? 0 : methods.between(score, 0, this.opt.number);
 
-			methods.fillStar.call(this, score);
+			methods.fill.call(this, score);
 
-			if (score != '') {
+			if (score > 0) {
 				if (this.opt.halfShow) {
 					methods.roundStar.call(this, score);
 				}
@@ -459,7 +443,7 @@
 		precision		: false,
 		round			: { down: .25, full: .6, up: .76 },
 		readOnly		: false,
-		score			: null,
+		score			: undefined,
 		scoreName		: 'score',
 		single			: false,
 		size			: 16,

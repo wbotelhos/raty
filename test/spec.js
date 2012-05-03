@@ -1720,7 +1720,6 @@ describe('Using ID', function() {
 				score		: 1,
 				cancel		: true,
 				mouseover	: function(score, evt) {
-					console.log(score);
 					hint.html(score);
 				}
 			});
@@ -1732,6 +1731,139 @@ describe('Using ID', function() {
 		expect(hint).toHaveHtml(1);
 
 		hint.remove();
+	});
+
+	it ('[score] should accept int string', function() {
+		// given
+		var star = $('#star');
+
+		// when
+		star.raty({ number: 10, score: '10' });
+
+		// then
+		expect(star.children('input')).toHaveValue(10);
+	});
+
+	it ('[score] should accept float string', function() {
+		// given
+		var star = $('#star');
+
+		// when
+		star.raty({ number: 11, score: '10.5' });
+
+		// then
+		expect(star.children('input')).toHaveValue(10.5);
+	});
+
+	it ('[number] should accept string', function() {
+		// given
+		var star = $('#star');
+
+		// when
+		star.raty({ number: '10' });
+
+		// then
+		expect(star.children('img').length).toEqual(10);
+	});
+
+	it ('[mouseover] handle null on cancel over', function() {
+		var isOver = true;
+
+		// given
+		var star = $('#star').raty({
+			cancel		: true,
+			mouseover	: function(score, evt) {
+				if (isOver) {
+					// then
+					expect(score === null).toBeTruthy();
+
+					isOver = false;
+				}
+			}
+		});
+
+		// when
+		star.children('.raty-cancel').mouseover();
+	});
+
+	it ('[mouseover] handle undefined on mouse out of cancel', function() {
+		var nextOut = false;
+
+		// given
+		var star = $('#star').raty({
+			cancel		: true,
+			mouseover	: function(score, evt) {
+				if (nextOut) {
+					// then
+					expect(score === undefined).toBeTruthy();
+				}
+
+				nextOut = true;
+			}
+		});
+
+		// when
+		star.children('.raty-cancel').mouseleave();
+	});
+
+	it ('[mouseover] handle undefined on star out', function() {
+		var nextOut = false;
+
+		// given
+		var star = $('#star').raty({
+			mouseover	: function(score, evt) {
+				if (nextOut) {
+					// then
+					expect(score === undefined).toBeTruthy();
+				}
+
+				nextOut = true;
+			}
+		});
+
+		// when
+		star.children('img:first').mouseleave();
+	});
+
+	it ('[mouseover] handle 1 on star out', function() {
+		var nextOut = false;
+
+		// given
+		var star = $('#star').raty({
+			score		: 1,
+			mouseover	: function(score, evt) {
+				if (nextOut) {
+					// then
+					expect(score).toEqual(1);
+				}
+
+				nextOut = true;
+			}
+		});
+
+		// when
+		star.children('img:first').mouseleave();
+	});
+
+	it ('[mouseover] handle 1 on cancel out', function() {
+		var nextOut = false;
+
+		// given
+		var star = $('#star').raty({
+			cancel		: true,
+			score		: 1,
+			mouseover	: function(score, evt) {
+				if (nextOut) {
+					// then
+					expect(parseInt(score)).toEqual(1);
+				}
+
+				nextOut = true;
+			}
+		});
+
+		// when
+		star.children('.raty-cancel').mouseleave();
 	});
 
 });
@@ -2198,7 +2330,7 @@ describe('Using function with id', function() {
 			star = $('#star').raty({ cancel: true, target: '#hint', targetKeep: true });
 
 		// when
-		star.raty('cancel');
+		star.raty('cancel').mouseout();
 
 		// then
 		expect(hint).toBeEmpty();
@@ -2269,7 +2401,7 @@ describe('Using function with id', function() {
 		expect(star.children('input')).toHaveAttr('readonly', 'readonly');
 	});
 
-	it ('should to do mouseleave automatically and set the cancel hint on target', function() {
+	it ('should set the cancel hint on target', function() {
 		$('body').append('<div id="hint"></div>');
 
 		// given
@@ -2277,7 +2409,7 @@ describe('Using function with id', function() {
 			star	= $('#star').raty({ cancel: true, target: '#hint', targetFormat: 'score: {score}', targetKeep: true });
 
 		// when
-		star.raty('cancel');
+		star.raty('cancel').mouseleave();
 
 		// then
 		expect(hint).toHaveHtml('score: ');
@@ -2631,7 +2763,7 @@ describe('Using function with class', function() {
 		stars.eq(2).raty({ cancel: true, target: '#hint3', targetKeep: true, click: function(score, evt) { } });
 
 		// when
-		stars.raty('cancel');
+		stars.raty('cancel').mouseout();
 
 		// then
 		expect(hint1).toBeEmpty();
