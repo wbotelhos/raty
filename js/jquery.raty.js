@@ -58,10 +58,11 @@
 					}
 				}
 
-				var $score = $('<input />', { type: 'hidden', name: self.opt.scoreName }).appendTo(self);
+				self.stars = $this.children('img:not(".raty-cancel")');
+				self.score = $('<input />', { type: 'hidden', name: self.opt.scoreName }).appendTo(self);
 
 				if (self.opt.score && self.opt.score > 0) {
-					$score.val(self.opt.score);
+					self.score.val(self.opt.score);
 					methods.roundStar.call(self, self.opt.score);
 				}
 
@@ -75,12 +76,12 @@
 					width	= self.opt.width || (self.opt.number * self.opt.size + self.opt.number * space);
 
 				if (self.opt.cancel) {
-					var $cancel = $('<img />', { src: self.opt.path + self.opt.cancelOff, alt: 'x', title: self.opt.cancelHint, 'class': 'raty-cancel' });
+					self.cancel = $('<img />', { src: self.opt.path + self.opt.cancelOff, alt: 'x', title: self.opt.cancelHint, 'class': 'raty-cancel' });
 
 					if (self.opt.cancelPlace == 'left') {
-						$this.prepend('&#160;').prepend($cancel);
+						$this.prepend('&#160;').prepend(self.cancel);
 					} else {
-						$this.append('&#160;').append($cancel);
+						$this.append('&#160;').append(self.cancel);
 					}
 
 					width += self.opt.size + space;
@@ -89,7 +90,9 @@
 				if (self.opt.readOnly) {
 					methods.fixHint.call(self);
 
-					$this.children('.raty-cancel').hide();
+					if (self.cancel) {
+						self.cancel.hide();
+					}
 				} else {
 					$this.css('cursor', 'pointer');
 
@@ -102,11 +105,10 @@
 			return Math.min(Math.max(parseFloat(value), min), max);
 		}, bindAction: function() {
 			var self	= this,
-				$this	= $(self),
-				$score	= $this.children('input');
+				$this	= $(self);
 
 			$this.mouseleave(function() {
-				var score = $score.val() || undefined;
+				var score = self.score.val() || undefined;
 
 				methods.initialize.call(self, score);
 				methods.setTarget.call(self, score, self.opt.targetKeep);
@@ -116,14 +118,13 @@
 				}
 			});
 
-			var $stars	= $this.children('img:not(".raty-cancel")'),
-				action	= self.opt.half ? 'mousemove' : 'mouseover';
+			var action = self.opt.half ? 'mousemove' : 'mouseover';
 
 			if (self.opt.cancel) {
-				$this.children('.raty-cancel').mouseenter(function() {
+				self.cancel.mouseenter(function() {
 					$(this).attr('src', self.opt.path + self.opt.cancelOn);
 
-					$stars.attr('src', self.opt.path + self.opt.starOff);
+					self.stars.attr('src', self.opt.path + self.opt.starOff);
 
 					methods.setTarget.call(self, null, true);
 
@@ -134,10 +135,10 @@
 					$(this).attr('src', self.opt.path + self.opt.cancelOff);
 
 					if (self.opt.mouseover) {
-						self.opt.mouseover.call(self, $score.val() || null);
+						self.opt.mouseover.call(self, self.score.val() || null);
 					}
 				}).click(function(evt) {
-					$score.removeAttr('value');
+					self.score.removeAttr('value');
 
 					if (self.opt.click) {
 			          self.opt.click.call(self, null, evt);
@@ -145,7 +146,7 @@
 				});
 			}
 
-			$stars.bind(action, function(evt) {
+			self.stars.bind(action, function(evt) {
 				var value = parseInt(this.alt, 10);
 
 				if (self.opt.half) {
@@ -173,27 +174,28 @@
 					self.opt.mouseover.call(self, value, evt);
 				}
 			}).click(function(evt) {
-				$score.val((self.opt.half || self.opt.precision) ? $this.data('score') : this.alt);
+				self.score.val((self.opt.half || self.opt.precision) ? $this.data('score') : this.alt);
 
 				if (self.opt.click) {
-					self.opt.click.call(self, $score.val(), evt);
+					self.opt.click.call(self, self.score.val(), evt);
 				}
 			});
 		}, cancel: function(isClick) {
 			return $(this).each(function() {
-				var $this = $(this);
+				var self	= this, 
+					$this	= $(self);
 
 				if ($this.data('readonly') == 'readonly') {
 					return false;
 				}
 
 				if (isClick) {
-					methods.click.call(this, null);
+					methods.click.call(self, null);
 				} else {
-					methods.score.call(this, null);
+					methods.score.call(self, null);
 				}
 
-				$this.children('input').removeAttr('value');
+				self.score.removeAttr('value');
 			});
 		}, click: function(score) {
 			return $(this).each(function() {
@@ -213,16 +215,14 @@
 			});
 		}, fill: function(score) {
 			var self	= this,
-				$this	= $(self),
-				$stars	= $this.children('img').not('.raty-cancel'),
-				qtyStar	= $stars.length,
+				number	= self.stars.length,
 				count	= 0,
 				$star	,
 				star	,
 				icon	;
 
-			for (var i = 1; i <= qtyStar; i++) {
-				$star = $stars.eq(i - 1);
+			for (var i = 1; i <= number; i++) {
+				$star = self.stars.eq(i - 1);
 
 				if (self.opt.iconRange && self.opt.iconRange.length > count) {
 					star = self.opt.iconRange[count];
@@ -251,27 +251,26 @@
 				}
 			}
 		}, fixHint: function() {
-			var self	= this,
-			 	$this	= $(self),
-				$score	= $this.children('input'),
-				score	= parseInt($score.val(), 10),
-				hint	= self.opt.noRatedMsg;
+			var $this	= $(this),
+				score	= parseInt(this.score.val(), 10),
+				hint	= this.opt.noRatedMsg;
 
 			if (!isNaN(score) && score > 0) {
-				hint = (score <= self.opt.hints.length && self.opt.hints[score - 1] !== null) ? self.opt.hints[score - 1] : score;
+				hint = (score <= this.opt.hints.length && this.opt.hints[score - 1] !== null) ? this.opt.hints[score - 1] : score;
 			}
 
-			$score.attr('readonly', 'readonly');
-			$this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint).children('img').attr('title', hint);
+			$this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint);
+
+			this.score.attr('readonly', 'readonly');
+			this.stars.attr('title', hint);
 		}, getScore: function() {
 			var score	= [],
 				value	;
 
 			$(this).each(function() {
-				value = $(this).children('input').val();
-				value = (value == '') ? null : parseFloat(value);
+				value = this.score.val();
 
-				score.push(value);
+				score.push(value ? parseFloat(value) : undefined);
 			});
 
 			return (score.length > 1) ? score : score[0];
@@ -284,13 +283,11 @@
 					return $this;
 				}
 
-				var $cancel = $this.children('.raty-cancel');
-
-				if ($cancel.length) {
+				if (this.cancel) {
 					if (isReadOnly) {
-						$cancel.hide();
+						this.cancel.hide();
 					} else {
-						$cancel.show();
+						this.cancel.show();
 					}
 				}
 
@@ -319,7 +316,7 @@
 					icon = this.opt.starOff;
 				}
 
-				$(this).children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', this.opt.path + icon);
+				this.stars.eq(Math.ceil(score) - 1).attr('src', this.opt.path + icon);
 			}															// Full down: [x.00 .. x.25]
 		}, score: function() {
 			return arguments.length ? methods.setScore.apply(this, arguments) : methods.getScore.call(this);
@@ -356,7 +353,6 @@
 					if (score === null && !this.opt.cancel) {
 						$.error('you must enable the "cancel" option to set hint on target.');
 					} else {
-						
 						if (!isKeep || score === undefined) {
 							score = this.opt.targetText;
 						} else {
@@ -389,7 +385,7 @@
 			var diff = (score - Math.floor(score)).toFixed(1);
 
 			if (diff > 0 && diff < .6) {
-				$(this).children('img').not('.raty-cancel').eq(Math.ceil(score) - 1).attr('src', this.opt.path + this.opt.starHalf);
+				this.stars.eq(Math.ceil(score) - 1).attr('src', this.opt.path + this.opt.starHalf);
 			}
 		}, initialize: function(score) {
 			score = !score ? 0 : methods.between(score, 0, this.opt.number);
@@ -401,17 +397,16 @@
 					methods.roundStar.call(this, score);
 				}
 
-				$(this).children('input').val(score);
+				this.score.val(score);
 			}
 		}, unfixHint: function() {
-			var $this	= $(this),
-				$imgs	= $this.children('img').filter(':not(.raty-cancel)');
-
 			for (var i = 0; i < this.opt.number; i++) {
-				$imgs.eq(i).attr('title', (i < this.opt.hints.length && this.opt.hints[i] !== null) ? this.opt.hints[i] : i);
+				this.stars.eq(i).attr('title', (i < this.opt.hints.length && this.opt.hints[i] !== null) ? this.opt.hints[i] : i);
 			}
 
-			$this.css('cursor', 'pointer').data('readonly', undefined).removeAttr('title').children('input').attr('readonly', 'readonly');
+			$(this).css('cursor', 'pointer').data('readonly', undefined).removeAttr('title');
+
+			this.score.attr('readonly', 'readonly');
 		}
 	};
 
