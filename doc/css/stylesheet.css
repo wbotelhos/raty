@@ -69,4 +69,4 @@ hr { border-top: medium none; height: 1px; margin-bottom: 16px; margin-top: 15px
 
 #precision-target { background-color: #F0F0F0; border-radius: 3px; float: left; height: 20px; margin-left: 5px; padding-left: 8px; padding-right: 8px; padding-top: 4px; text-align: center; width: 50px; }
 
-#score { float: left; margin-left: 5px }
+#score-target { float: left; margin-left: 5px }

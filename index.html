@@ -13,8 +13,8 @@
 		<!-- This CSS does not belong to the plugin. -->
 		<link type="text/css" rel="stylesheet" href="doc/css/stylesheet.css"/>
 
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jquery.raty.js"></script>
 
 		<script type="text/javascript">
 			// This code does NOT belong the plugin. See the example code at the bottom of this page.
@@ -305,7 +305,7 @@
 
 			<div id="target-number"></div>
 
-			<select id="score">
+			<select id="score-target">
 				<option value="">--</option>
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -379,7 +379,15 @@
 				$('#star').raty({<br/>
 				&#160;&#160;cancel&#160;&#160;&#160; : true,<br />
 				&#160;&#160;mouseover : function(score, evt) {<br />
-				&#160;&#160;&#160;&#160;$('#target').html('score: ' + score);<br />
+				&#160;&#160;&#160;&#160;var target = $('#mouseover-target');<br /><br />
+
+				&#160;&#160;&#160;&#160;if (score === null) {<br />
+				&#160;&#160;&#160;&#160;&#160;&#160;target.html('Boring!');<br />
+				&#160;&#160;&#160;&#160;} else if (score === undefined) {<br />
+				&#160;&#160;&#160;&#160;&#160;&#160;target.empty();<br />
+				&#160;&#160;&#160;&#160;} else {<br />
+				&#160;&#160;&#160;&#160;&#160;&#160;target.html('score: ' + score);<br />
+				&#160;&#160;&#160;&#160;}<br />
 				&#160;&#160;}<br />
 				});<br/><br/>
 
@@ -607,7 +615,7 @@
 
 			<hr />
 
-			<div class="session-option">score: <span>0</span></div>
+			<div class="session-option">score: <span>undefined</span></div>
 			<div class="comment">Number of stars to be selected.</div>
 
 			<hr />
@@ -678,7 +686,7 @@
 			<div class="session">Public functions:</div>
 
 			<div class="source">$('#star').raty('score');</div>
-			<div class="comment">Recovers the current score. For class returns an array. No rated returns null.</div>
+			<div class="comment">Recovers the current score or undefined for no rated. Class returns an array of score</div>
 
 			<div class="source">$('#star').raty('score', 3);</div>
 			<div class="comment">Set the score with 3 stars.</div>
@@ -806,7 +814,7 @@
 
 				$('#target-number').raty({
 					cancel		: true,
-					target		: '#score',
+					target		: '#score-target',
 					targetKeep	: true,
 					targetType	: 'number'
 				});
@@ -819,7 +827,15 @@
 				$('#mouseover').raty({
   					cancel		: true,
   					mouseover	: function(score, evt) {
-  						$('#mouseover-target').html('score: ' + score);
+  						var target = $('#mouseover-target');
+
+  						if (score === null) {
+  							target.html('Boring!');
+  						} else if (score === undefined) {
+  							target.empty();
+  						} else {
+  							target.html('score: ' + score);
+  						}
   					}
   				});
 
