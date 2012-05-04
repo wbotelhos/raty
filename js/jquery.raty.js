@@ -1,6 +1,6 @@
 /*!
  * jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
- * ---------------------------------------------------------------------
+ * -------------------------------------------------------------------
  *
  * jQuery Raty is a plugin that generates a customizable star rating.
  *
@@ -12,8 +12,8 @@
  * @documentation  wbotelhos.com/raty
  * @twitter        twitter.com/wbotelhos
  *
- * Usage with default values:
- * ---------------------------------------------------------------------
+ * Usage:
+ * -------------------------------------------------------------------
  * $('#star').raty();
  *
  * <div id="star"></div>
@@ -84,7 +84,7 @@
 						$this.append('&#160;').append(self.cancel);
 					}
 
-					width += self.opt.size + space;
+					width += (self.opt.size + space);
 				}
 
 				if (self.opt.readOnly) {
@@ -208,11 +208,15 @@
 				if (this.opt.click) {
 					this.opt.click.call(this, score);
 				} else {
-					$.error('you must add the "click: function(score, evt) { }" callback.');
+					methods.error.call(this, 'you must add the "click: function(score, evt) { }" callback.');
 				}
 
 				methods.setTarget.call(this, score, true);
 			});
+		}, error: function(message) {
+			$(this).html(message);
+
+			$.error(message);
 		}, fill: function(score) {
 			var self	= this,
 				number	= self.stars.length,
@@ -346,39 +350,37 @@
 				var $target = $(this.opt.target);
 
 				if ($target.length == 0) {
-					$.error('target selector invalid or missing!');
+					methods.error.call(this, 'target selector invalid or missing!');
+				}
+
+				var score = value;
+
+				if (!isKeep || score === undefined) {
+					score = this.opt.targetText;
 				} else {
-					var score = value;
-
-					if (score === null && !this.opt.cancel) {
-						$.error('you must enable the "cancel" option to set hint on target.');
+					if (this.opt.targetType == 'hint') {
+						score = (score === null && this.opt.cancel)
+								? this.opt.cancelHint
+								: this.opt.hints[Math.ceil(score - 1)];
 					} else {
-						if (!isKeep || score === undefined) {
-							score = this.opt.targetText;
-						} else {
-							if (this.opt.targetType == 'hint') {
-								score = (score === null && this.opt.cancel)
-										? this.opt.cancelHint
-										: this.opt.hints[Math.ceil(score - 1)];
-							} else {
-								score = this.opt.precision
-										? parseFloat(score).toFixed(1)
-										: parseInt(score, 10);
-							}
-						}
-
-						if (this.opt.targetFormat.indexOf('{score}') < 0) {
-							$.error('template "{score}" missing!');
-						} else if (value !== null) {
-							score = this.opt.targetFormat.toString().replace('{score}', score);
-						}
-
-						if ($target.is(':input')) {
-							$target.val(score);
-						} else {
-							$target.html(score);
-						}
+						score = this.opt.precision
+								? parseFloat(score).toFixed(1)
+								: parseInt(score, 10);
 					}
+				}
+
+				if (this.opt.targetFormat.indexOf('{score}') < 0) {
+					methods.error.call(this, 'template "{score}" missing!');
+				}
+
+				if (value !== null) {
+					score = this.opt.targetFormat.toString().replace('{score}', score);
+				}
+
+				if ($target.is(':input')) {
+					$target.val(score);
+				} else {
+					$target.html(score);
 				}
 			}
 		}, showHalf: function(score) {
