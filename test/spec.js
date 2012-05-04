@@ -2338,7 +2338,7 @@ describe('Using function with id', function() {
 		hint.remove();
 	});
 
-	it ('should not start when it is readOnly', function() {
+	it ('[score / readOnly] should not set score when it is read-only', function() {
 		// given
 		var star = $('#star').raty({ readOnly: true });
 
@@ -2432,6 +2432,25 @@ describe('Using function with id', function() {
 		expect(imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
 		expect(imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
 		expect(imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+	});
+
+	it ('[cancel] should cancel after a read-only false', function() {
+		// given
+		var star = $('#star').raty({ score: 1 }).raty('readOnly', true).raty('readOnly', false);
+
+		// when
+		star.raty('cancel');
+
+		var imgs = star.children('img');
+
+		// then
+	    expect(imgs.eq(0)).toHaveAttr('src', 'img/star-off.png');
+	    expect(imgs.eq(1)).toHaveAttr('src', 'img/star-off.png');
+	    expect(imgs.eq(2)).toHaveAttr('src', 'img/star-off.png');
+	    expect(imgs.eq(3)).toHaveAttr('src', 'img/star-off.png');
+	    expect(imgs.eq(4)).toHaveAttr('src', 'img/star-off.png');
+
+	    expect(star.children('input').val()).toEqual('');
 	});
 
 });

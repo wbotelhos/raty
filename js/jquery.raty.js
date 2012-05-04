@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version        2.4.3
+ * @version        2.4.5
  * @since          2010.06.11
  * @author         Washington Botelho
  * @documentation  wbotelhos.com/raty
@@ -185,7 +185,7 @@
 				var self	= this, 
 					$this	= $(self);
 
-				if ($this.data('readonly') == 'readonly') {
+				if ($this.data('readonly') === true) {
 					return this;
 				}
 
@@ -199,7 +199,7 @@
 			});
 		}, click: function(score) {
 			return $(this).each(function() {
-				if ($(this).data('readonly') == 'readonly') {
+				if ($(this).data('readonly') === true) {
 					return this;
 				}
 
@@ -263,7 +263,7 @@
 				hint = (score <= this.opt.hints.length && this.opt.hints[score - 1] !== null) ? this.opt.hints[score - 1] : score;
 			}
 
-			$this.css('cursor', 'default').data('readonly', 'readonly').attr('title', hint);
+			$this.data('readonly', true).css('cursor', 'default').attr('title', hint);
 
 			this.score.attr('readonly', 'readonly');
 			this.stars.attr('title', hint);
@@ -280,11 +280,10 @@
 			return (score.length > 1) ? score : score[0];
 		}, readOnly: function(isReadOnly) {
 			return this.each(function() {
-				var $this		= $(this),
-					newState	= isReadOnly ? 'readonly' : undefined;
+				var $this = $(this);
 
-				if ($this.data('readonly') == newState) {
-					return $this;
+				if ($this.data('readonly') === isReadOnly) {
+					return this;
 				}
 
 				if (this.cancel) {
@@ -305,6 +304,8 @@
 					methods.bindAction.call(this);
 					methods.unfixHint.call(this);
 				}
+
+				$this.data('readonly', isReadOnly);
 			});
 		}, reload: function() {
 			return methods.set.call(this, {});
@@ -338,7 +339,7 @@
 			return $(this.selector);
 		}, setScore: function(score) {
 			return $(this).each(function() {
-				if ($(this).data('readonly') == 'readonly') {
+				if ($(this).data('readonly') === true) {
 					return this;
 				}
 
@@ -406,7 +407,7 @@
 				this.stars.eq(i).attr('title', (i < this.opt.hints.length && this.opt.hints[i] !== null) ? this.opt.hints[i] : i);
 			}
 
-			$(this).css('cursor', 'pointer').data('readonly', undefined).removeAttr('title');
+			$(this).data('readonly', false).css('cursor', 'pointer').removeAttr('title');
 
 			this.score.attr('readonly', 'readonly');
 		}
