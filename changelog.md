@@ -1,5 +1,15 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+### 2.4.5
+
++ Now the error messages is displayed in place of stars to be more visible;
++ Fixed the 'score' function to handle undefined score when we have no vote;
++ Fixed the mouseover function to handle undefined score when we have no vote;
+	- For cancel button we get 'null' to know when mouse over it;
++ Fixed multiple mouseout actions on cancel function and mouseout bind;
++ Fixed functions that was not applying not continuing to apply if someone was invalid; 
++ Fixed the flag that indicates read-only or not.
+
 ### 2.4.0
 
 + Added the function 'reload' to reload the rating with the current configuration;
