@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en" dir="ltr">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Pragma" content="no-cache">
@@ -14,7 +14,7 @@
 		<link type="text/css" rel="stylesheet" href="doc/css/stylesheet.css"/>
 
 		<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/jquery.raty.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jquery.raty.min.js"></script>
 
 		<script type="text/javascript">
 			// This code does NOT belong the plugin. See the example code at the bottom of this page.
@@ -33,11 +33,11 @@
 		<div id="header">
 			<div id="title">
 				<a href="http://wbotelhos.com/raty">jQuery Raty - A Star Rating Plugin</a>
-				<span id="version">(current version: 2.4.0)</span>
+				<span id="version">(current version: 2.4.5)</span>
 			</div>
 
 			<div id="menu">
-				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.4.0.zip" target="_blank">Download</a> |
+				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.4.5.zip" target="_blank">Download</a> |
 				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
 				<a href="http://www.wbotelhos.com/raty/changelog.md" target="_blank">Change Log</a> |
 				<a href="http://www.wbotelhos.com/raty/README.md" target="_blank">Readme</a> |
@@ -470,12 +470,12 @@
 			</div><br/>
 
 			<span class="comment">
-				- All public functions have a optional second parameter to specify which container will be executed;<br/>
+				- All functions have a optional second parameter to specify which container will be executed;<br/>
 				- You can pass a ID or a class to be the target of the action;<br/>
 				- If the ID or class are not specified, then the last element Raty will be takes.
 			</span>
 
-			<div id="function-demo" class="session">Public functions:</div>
+			<div id="function-demo" class="session">Functions Demo:</div>
 
 			<div id="function"></div>
 			<div id="hint-function"></div><br/>
@@ -683,7 +683,7 @@
 			<div class="session-option">width&#160;: <span>undefined</span></div>
 			<div class="comment">The container width of the stars.</div>
 
-			<div class="session">Public functions:</div>
+			<div class="session">Functions:</div>
 
 			<div class="source">$('#star').raty('score');</div>
 			<div class="comment">Recovers the current score or undefined for no rated. Class returns an array of score</div>

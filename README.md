@@ -4,7 +4,7 @@ jQuery Raty is a plugin that generates a customizable star rating.
 
 ## Version
 
-	@version        2.4.0
+	@version        2.4.5
 	@since          2010.06.11
 	@author         Washington Botelho
 	@documentation  wbotelhos.com/raty
@@ -50,7 +50,7 @@ jQuery Raty is a plugin that generates a customizable star rating.
 	targetType   : 'hint'                                         // What display on target element: hint or number.
 	width        : undefined                                      // The container width of the stars.
 
-## Usage with default values
+## Usage
 
 	$('#star').raty();
 
@@ -62,7 +62,7 @@ jQuery Raty is a plugin that generates a customizable star rating.
 	<div class="star"></div>
 	<div class="star"></div>
 
-## Public functions
+## Functions
 
 	$('#star').raty('score');                // Recovers the current score or undefined for no rated. Class returns an array of score.
 
