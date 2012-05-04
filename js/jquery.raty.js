@@ -6,7 +6,7 @@
  *
  * Licensed under The MIT License
  *
- * @version        2.4.0
+ * @version        2.4.3
  * @since          2010.06.11
  * @author         Washington Botelho
  * @documentation  wbotelhos.com/raty
@@ -186,7 +186,7 @@
 					$this	= $(self);
 
 				if ($this.data('readonly') == 'readonly') {
-					return false;
+					return this;
 				}
 
 				if (isClick) {
@@ -200,7 +200,7 @@
 		}, click: function(score) {
 			return $(this).each(function() {
 				if ($(this).data('readonly') == 'readonly') {
-					return false;
+					return this;
 				}
 
 				methods.initialize.call(this, score);
@@ -339,7 +339,7 @@
 		}, setScore: function(score) {
 			return $(this).each(function() {
 				if ($(this).data('readonly') == 'readonly') {
-					return false;
+					return this;
 				}
 
 				methods.initialize.call(this, score);

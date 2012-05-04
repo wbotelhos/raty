@@ -2923,4 +2923,52 @@ describe('Using function with class', function() {
 		expect(imgs3.eq(4)).toHaveAttr('src', 'img/star-off.png');
 	});
 
+	it ('[score] should set score on rating that is not read-only', function() {
+		// given
+		var stars = $('.star');
+
+		stars.raty();
+		stars.eq(1).raty('readOnly', true);
+
+		// when
+		stars.raty('score', 2);
+
+		// then
+		expect(stars.eq(0).children('input')).toHaveValue('2');
+	    expect(stars.eq(1).children('input').val()).toEqual('');
+	    expect(stars.eq(2).children('input')).toHaveValue('2');
+	});
+
+	it ('[click] should click on rating that is not read-only', function() {
+		// given
+		var stars = $('.star');
+
+		stars.raty({ click: function() { } });
+		stars.eq(1).raty('readOnly', true);
+
+		// when
+		stars.raty('click', 2);
+
+		// then
+		expect(stars.eq(0).children('input')).toHaveValue('2');
+	    expect(stars.eq(1).children('input').val()).toEqual('');
+	    expect(stars.eq(2).children('input')).toHaveValue('2');
+	});
+
+	it ('[cancel] should cancel all rating that is not read-only', function() {
+		// given
+		var stars = $('.star');
+
+		stars.raty({ score: 2 });
+		stars.eq(1).raty('readOnly', true);
+
+		// when
+		stars.raty('cancel');
+
+		// then
+		expect(stars.eq(0).children('input').val()).toEqual('');
+	    expect(stars.eq(1).children('input')).toHaveValue('2');
+	    expect(stars.eq(2).children('input').val()).toEqual('');
+	});
+
 });
