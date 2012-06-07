@@ -65,7 +65,7 @@
 				}
 
 				self.stars = $this.children('img:not(".raty-cancel")');
-				self.score = $('<input />', { type: 'hidden', name: self.opt.scoreName }).appendTo(self);
+				self.score = $('<input />', { type: 'hidden', name: self.opt.scoreName, id: self.opt.scoreName  }).appendTo(self);
 
 				if (self.opt.score && self.opt.score > 0) {
 					self.score.val(self.opt.score);
