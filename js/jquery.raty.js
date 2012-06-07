@@ -47,11 +47,17 @@
 				}
 
 				for (var i = 1; i <= self.opt.number; i++) {
-					$('<img />', {
+					starImg = $('<img />', {
 						src		: self.opt.path + ((!self.opt.score || self.opt.score < i) ? self.opt.starOff : self.opt.starOn),
 						alt		: i,
 						title	: (i <= self.opt.hints.length && self.opt.hints[i - 1] !== null) ? self.opt.hints[i - 1] : i
-					}).appendTo(self);
+					})
+					
+					if (!self.opt.readOnly) {
+						starImg.css('cursor', 'pointer');
+					}
+					
+					starImg.appendTo(self);
 
 					if (self.opt.space) {
 						$this.append((i < self.opt.number) ? '&#160;' : '');
@@ -94,8 +100,6 @@
 						self.cancel.hide();
 					}
 				} else {
-					$this.css('cursor', 'pointer');
-
 					methods.bindAction.call(self);
 				}
 
