@@ -178,7 +178,7 @@
 					self.opt.mouseover.call(self, value, evt);
 				}
 			}).click(function(evt) {
-				self.score.val((self.opt.half || self.opt.precision) ? $this.data('score') : this.alt);
+				self.score.val((self.opt.half || self.opt.precision) ? $this.data('score') : this.alt).trigger('change');
 
 				if (self.opt.click) {
 					self.opt.click.call(self, self.score.val(), evt);
