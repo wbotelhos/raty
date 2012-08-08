@@ -366,7 +366,7 @@
 					} else {
 						score = this.opt.precision
 								? parseFloat(score).toFixed(1)
-								: parseInt(score, 10);
+								: score;
 					}
 				}
 

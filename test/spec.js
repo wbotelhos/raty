@@ -1356,6 +1356,22 @@ describe('Using ID', function() {
 		hint.remove();
 	});
 
+	it ('should set .5 increment value target with half option and no precision', function() {
+		$('body').append('<div id="hint"></div>');
+
+		// given
+		var hint	= $('#hint'),
+			star	= $('#star');
+
+		// when
+		star.raty({ target: '#hint', precision: false, targetType: 'number', score: 1.5, half: true, targetKeep: true });
+
+		// then
+		expect(hint).toHaveHtml('1.5');
+
+		hint.remove();
+	});
+
 	it ('should set target with format on mouseover', function() {
 		$('body').append('<div id="hint"></div>');
 
