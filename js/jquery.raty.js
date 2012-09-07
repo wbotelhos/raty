@@ -32,7 +32,11 @@
 
 				$this.data('settings', self.opt);
 
-				self.opt.number = methods.between(self.opt.number, 0, 20);
+				if (typeof self.opt.number == 'function') {
+					self.opt.number = self.opt.number.call(self);
+				} else {
+					self.opt.number = methods.between(self.opt.number, 0, 20)
+				}
 
 				if (self.opt.path.substring(self.opt.path.length - 1, self.opt.path.length) != '/') {
 					self.opt.path += '/';
