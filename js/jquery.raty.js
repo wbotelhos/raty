@@ -38,9 +38,13 @@
 					self.opt.number = methods.between(self.opt.number, 0, 20)
 				}
 
-				if (self.opt.path.substring(self.opt.path.length - 1, self.opt.path.length) != '/') {
-					self.opt.path += '/';
-				}
+				if (!self.opt.path) {
+                    self.opt.path = '';
+                } else {
+                    if (self.opt.path.substring(self.opt.path.length - 1, self.opt.path.length) != '/') {
+                        self.opt.path += '/';
+                    }
+                }
 
 				if (typeof self.opt.score == 'function') {
 					self.opt.score = self.opt.score.call(self);
