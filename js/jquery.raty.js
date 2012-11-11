@@ -30,7 +30,7 @@
 	
 				self.opt = $.extend(true, {}, $.fn.raty.defaults, settings);
 
-				$this.data('settings', self.opt);
+				$this.data('raty-settings', self.opt);
 
 				if (typeof self.opt.number == 'function') {
 					self.opt.number = self.opt.number.call(self);
@@ -332,7 +332,7 @@
 		}, set: function(settings) {
 			this.each(function() {
 				var $this	= $(this),
-					actual	= $this.data('settings'),
+					actual	= $this.data('raty-settings'),
 					clone	= $this.clone().removeAttr('style').insertBefore($this);
 
 				$this.remove();
