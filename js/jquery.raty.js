@@ -329,6 +329,8 @@
 			}															// Full down: [x.00 .. x.25]
 		}, score: function() {
 			return arguments.length ? methods.setScore.apply(this, arguments) : methods.getScore.call(this);
+    }, get: function(property) {
+      return $(this).data('raty-settings')[property];
 		}, set: function(settings) {
 			this.each(function() {
 				var $this	= $(this),
