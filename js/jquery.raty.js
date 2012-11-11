@@ -30,7 +30,7 @@
 	
 				self.opt = $.extend(true, {}, $.fn.raty.defaults, settings);
 
-				$this.data('settings', self.opt);
+				$this.data('raty-settings', self.opt);
 
 				if (typeof self.opt.number == 'function') {
 					self.opt.number = self.opt.number.call(self);
@@ -329,10 +329,12 @@
 			}															// Full down: [x.00 .. x.25]
 		}, score: function() {
 			return arguments.length ? methods.setScore.apply(this, arguments) : methods.getScore.call(this);
+    }, get: function(property) {
+      return $(this).data('raty-settings')[property];
 		}, set: function(settings) {
 			this.each(function() {
 				var $this	= $(this),
-					actual	= $this.data('settings'),
+					actual	= $this.data('raty-settings'),
 					clone	= $this.clone().removeAttr('style').insertBefore($this);
 
 				$this.remove();
