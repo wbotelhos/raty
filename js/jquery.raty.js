@@ -27,7 +27,7 @@
 			return this.each(function() {
 				var self	= this,
 					$this	= $(self).empty();
-	
+
 				self.opt = $.extend(true, {}, $.fn.raty.defaults, settings);
 
 				$this.data('settings', self.opt);
@@ -47,7 +47,7 @@
 				}
 
 				if (self.opt.score) {
-					self.opt.score = methods.between(self.opt.score, 0, self.opt.number);					
+					self.opt.score = methods.between(self.opt.score, 0, self.opt.number);
 				}
 
 				for (var i = 1; i <= self.opt.number; i++) {
@@ -62,6 +62,10 @@
 					}
 				}
 
+				if (typeof self.opt.scoreName == 'function') {
+					self.opt.scoreName = self.opt.scoreName.call(self);
+				}
+
 				self.stars = $this.children('img:not(".raty-cancel")');
 				self.score = $('<input />', { type: 'hidden', name: self.opt.scoreName }).appendTo(self);
 
@@ -71,7 +75,7 @@
 				}
 
 				if (self.opt.iconRange) {
-					methods.fill.call(self, self.opt.score);	
+					methods.fill.call(self, self.opt.score);
 				}
 
 				methods.setTarget.call(self, self.opt.score, self.opt.targetKeep);
@@ -89,6 +93,10 @@
 					}
 
 					width += (self.opt.size + space);
+				}
+
+				if (typeof self.opt.readOnly == 'function') {
+					self.opt.readOnly = self.opt.readOnly.call(self);
 				}
 
 				if (self.opt.readOnly) {
@@ -145,8 +153,8 @@
 					self.score.removeAttr('value');
 
 					if (self.opt.click) {
-			          self.opt.click.call(self, null, evt);
-			        }
+					  self.opt.click.call(self, null, evt);
+					}
 				});
 			}
 
@@ -186,7 +194,7 @@
 			});
 		}, cancel: function(isClick) {
 			return $(this).each(function() {
-				var self	= this, 
+				var self	= this,
 					$this	= $(self);
 
 				if ($this.data('readonly') === true) {
@@ -424,7 +432,7 @@
 			return methods.init.apply(this, arguments);
 		} else {
 			$.error('Method ' + method + ' does not exist!');
-		} 
+		}
 	};
 
 	$.fn.raty.defaults = {
