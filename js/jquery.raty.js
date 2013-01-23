@@ -51,11 +51,17 @@
 				}
 
 				for (var i = 1; i <= self.opt.number; i++) {
-					$('<img />', {
+					starImg = $('<img />', {
 						src		: self.opt.path + ((!self.opt.score || self.opt.score < i) ? self.opt.starOff : self.opt.starOn),
 						alt		: i,
 						title	: (i <= self.opt.hints.length && self.opt.hints[i - 1] !== null) ? self.opt.hints[i - 1] : i
-					}).appendTo(self);
+					})
+					
+					if (!self.opt.readOnly) {
+						starImg.css('cursor', 'pointer');
+					}
+					
+					starImg.appendTo(self);
 
 					if (self.opt.space) {
 						$this.append((i < self.opt.number) ? '&#160;' : '');
@@ -63,7 +69,7 @@
 				}
 
 				self.stars = $this.children('img:not(".raty-cancel")');
-				self.score = $('<input />', { type: 'hidden', name: self.opt.scoreName }).appendTo(self);
+				self.score = $('<input />', { type: 'hidden', name: self.opt.scoreName, id: self.opt.scoreName  }).appendTo(self);
 
 				if (self.opt.score && self.opt.score > 0) {
 					self.score.val(self.opt.score);
@@ -98,8 +104,6 @@
 						self.cancel.hide();
 					}
 				} else {
-					$this.css('cursor', 'pointer');
-
 					methods.bindAction.call(self);
 				}
 
@@ -178,7 +182,7 @@
 					self.opt.mouseover.call(self, value, evt);
 				}
 			}).click(function(evt) {
-				self.score.val((self.opt.half || self.opt.precision) ? $this.data('score') : this.alt);
+				self.score.val((self.opt.half || self.opt.precision) ? $this.data('score') : this.alt).trigger('change');
 
 				if (self.opt.click) {
 					self.opt.click.call(self, self.score.val(), evt);
