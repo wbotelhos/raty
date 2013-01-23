@@ -1,0 +1,62 @@
+/* commons */
+a { color: #277DA8; text-decoration: none }
+a:hover { color: #48A5D4 }
+
+body { background: url('http://wbotelhos.com/images/background.png') #E7E7E7; font: normal 10px/1.6 'Helvetica Neue', 'Lucida Grande', Helvetica, Arial, sans-serif }
+
+footer { font-size: 1.3em; margin: 0 auto; overflow: auto; padding-bottom: 15px; padding-top: 10px; text-align: center; width: 1100px }
+
+h2 { border-bottom: 1px solid #DEDEDE; color: #444; font-size: 2.6em; letter-spacing: .5px; line-height: 1.3em; padding-bottom: 3px }
+h2 a { color: #444 }
+
+/* pygments */
+blockquote { background: url('http://wbotelhos.com/images/quote.gif') no-repeat; border-radius: 4px; margin-left: 0; padding-left: 22px }
+blockquote p { font-size: 1.3em !important; padding-left: 10px; padding-top: 5px }
+code { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; margin: 0 2px; padding: 1px 5px; white-space: nowrap }
+pre { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; color: #393939; font-family: menlo, monospace, serif; font-size: 1.3em; padding: 10px 10px; text-shadow: none }
+
+/* wrapper */
+#wrapper { margin: 0 auto; width: 87% }
+#wrapper #container { margin-bottom: 30px; width: 100% }
+
+/* content */
+article > p { font-size: 1.5em }
+
+.option div { color: #444; font: bold 1.4em verdana; margin-top: 12px; letter-spacing: .7px }
+.option div span { color: #888; font: 1em arial }
+.option p { color: #444; font-size: 1.2em; letter-spacing: .4px; margin-top: 5px; text-align: left }
+
+.function p { color: #444; font-size: 1.2em; letter-spacing: .4px; margin-left: 3px; margin-top: -8px; text-align: left }
+
+.demo { float: left; margin-bottom: 10px }
+
+.highlight { clear: both }
+
+/* top */
+header { height: 140px }
+header #logo { float: left }
+header #logo h1 { margin: 0; }
+header #logo h1 a { color: #3B3B3B; font-size: 3em; letter-spacing: -3px; text-shadow: 2px 2px #FFF }
+header #logo h1 a:hover { color: #000 }
+header #logo p { color: #999; float: left; font-size: 1.7em; font-weight: bold; margin-left: 10px; margin-top: 0; text-shadow: 1px 1px 1px #FFF; width: 385px }
+
+header nav { float: right; margin-top: 20px }
+header nav li { display: inline-block; padding-left: 10px; padding-right: 10px }
+header nav li a { background-color: #D7D7D7; border-radius: 4px; color: #333; display: block; font: 15px helvetica; letter-spacing: .4px; padding: 2px 10px 1px 16px }
+header nav li a:hover { background-color: #BBB; color: #333 }
+header nav li a i { font-size: 1.5em; left: -20px; position: relative; top: 3px }
+
+header nav li a.download { background-color: #E7D785 }
+header nav li a.download:hover { background-color: #E3D070 }
+
+/* footer */
+.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 93px; margin: 50px auto 0; padding-left: 10px; padding-top: 12px; width: 75% }
+.author img { background-color: #EEE; float: left; height: 80px; width: 80px }
+.author .biography { color: #555; float: left; font-size: 1.2em; letter-spacing: .3px; margin-top: 2px; padding-left: 10px; width: 650px }
+.author .biography p { margin: 0 }
+.author .social { float: right; margin-right: 10px; width: 16px }
+.author .social a { background-color: #EEE; background-repeat: no-repeat; border-radius: 3px; display: block; height: 16px; margin-bottom: 5px; width: 16px }
+.author .social a.facebook { background-image: url('http://wbotelhos.com/images/facebook.png') }
+.author .social a.github { background-image: url('http://wbotelhos.com/images/github.png') }
+.author .social a.linkedin { background-image: url('http://wbotelhos.com/images/linkedin.png') }
+.author .social a.twitter { background-image: url('http://wbotelhos.com/images/twitter.png') }
