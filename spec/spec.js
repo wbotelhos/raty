@@ -2504,6 +2504,32 @@ describe('Raty', function() {
           expect(self.children('img')).toHaveAttr('src', 'img/star-on.png');
         });
       });
+
+      describe('without :click', function() {
+        it ('does not throw exception', function() {
+          // given
+          var self = $('#element').raty();
+
+          // when
+          var lambda = function() { self.raty('score', 1); };
+
+			    // then
+			    expect(lambda).not.toThrow(new Error('you must add the "click: function(score, evt) { }" callback.'));
+        });
+      });
+
+      describe('with :readOnly', function() {
+        it ('does not set the score', function() {
+          // given
+          var self = $('#element').raty({ readOnly: true });
+
+          // when
+          self.raty('score', 5);
+
+          // then
+          expect(self.children('img')).toHaveAttr('src', 'img/star-off.png');
+        });
+      });
     });
 
     describe('#set', function() {
@@ -2543,6 +2569,17 @@ describe('Raty', function() {
 
     describe('#readOnly', function() {
       context('changes to true', function() {
+      	it ('sets score as readonly', function() {
+			    // given
+			    var self = $('#element').raty();
+
+			    // when
+			    self.raty('readOnly', true);
+
+			    // then
+			    expect(self.children('input')).toHaveAttr('readonly', 'readonly');
+			  });
+
         it ('Applies "not rated yet" on stars', function() {
           // given
           var self = $('#element').raty();
@@ -2611,6 +2648,17 @@ describe('Raty', function() {
       });
 
       context('changes to false', function() {
+      	it ('removes the readonly of the score', function() {
+			    // given
+			    var self = $('#element').raty();
+
+			    // when
+			    self.raty('readOnly', false);
+
+			    // then
+			    expect(self.children('input')).not.toHaveAttr('readonly', 'readonly');
+			  });
+
         it ('Removes the "not rated yet" off the stars', function() {
           // given
           var self   = $('#element').raty({ readOnly: true }),
@@ -2690,6 +2738,160 @@ describe('Raty', function() {
         });
       });
     });
+
+		describe('#cancel', function() {
+			describe('with :readOnly', function() {
+        it ('does not cancel', function() {
+          // given
+          var self = $('#element').raty({ readOnly: true, score: 5 });
+
+          // when
+          self.raty('cancel');
+
+          // then
+          expect(self.children('img')).toHaveAttr('src', 'img/star-on.png');
+        });
+      });
+
+			describe('without trigger enabled', function() {
+        it ('does not trigger the click callback', function() {
+          // given
+          var self = $('#element').raty({
+          			click: function() {
+					        $(this).data('clicked', true);
+					      }
+					    });
+
+          // when
+          self.raty('cancel');
+
+          // then
+          expect(self.data('clicked')).toBeFalsy();
+        });
+      });
+
+			describe('with trigger enabled', function() {
+        it ('Triggers the click callback', function() {
+          // given
+          var self = $('#element').raty({
+          			click: function() {
+					        $(this).data('clicked', true);
+					      }
+					    });
+
+          // when
+          self.raty('cancel', true);
+
+          // then
+          expect(self.data('clicked')).toBeTruthy();
+        });
+      });
+
+			context('without click trigger', function() {
+				it ('cancel the rating', function() {
+			    // given
+			    var self = $('#element').raty({
+			    			score: 1,
+					      click: function() {
+					        $(this).data('clicked', true);
+					      }
+					    });
+
+			    // when
+			    self.raty('cancel');
+
+			    // then
+			    expect(self.children('img')).toHaveAttr('src', 'img/star-off.png');
+			    expect(self.children('input').val()).toEqual('');
+			    expect(self.data('clicked')).toBeFalsy();
+			  });
+			});
+
+			context('with click trigger', function() {
+				it ('cancel the rating', function() {
+			    // given
+			    var self = $('#element').raty({
+			    			score: 1,
+					      click: function() {
+					        $(this).data('clicked', true);
+					      }
+					    });
+
+			    // when
+			    self.raty('cancel', true);
+
+			    // then
+			    expect(self.children('img')).toHaveAttr('src', 'img/star-off.png');
+			    expect(self.children('input').val()).toEqual('');
+			    expect(self.data('clicked')).toBeTruthy();
+			  });
+			});
+		});
+
+		describe('#click', function() {
+		  it ('clicks on star', function() {
+		    // given
+		    var self = $('#element').raty({
+		      click: function() {
+		        $(this).data('clicked', true);
+		      }
+		    });
+
+		    // when
+		    self.raty('click', 5);
+
+		    // then
+		    expect(self.children('img')).toHaveAttr('src', 'img/star-on.png');
+		    expect(self.data('clicked')).toBeTruthy();
+		  });
+
+		  describe('with :readOnly', function() {
+        it ('does not set the score', function() {
+          // given
+          var self = $('#element').raty({ readOnly: true });
+
+          // when
+          self.raty('click', 5);
+
+          // then
+          expect(self.children('img')).toHaveAttr('src', 'img/star-off.png');
+        });
+      });
+
+		  context('without :click', function() {
+	  		it ('throws error', function() {
+			    // given
+			    var self = $('#element').raty();
+
+			    // when
+			    var lambda = function() { self.raty('click', 1); };
+
+			    // then
+			    expect(lambda).toThrow(new Error('you must add the "click: function(score, evt) { }" callback.'));
+			  });
+			});
+
+		  context('with :target', function() {
+		  	beforeEach(function() { buildDivTarget(); });
+
+		  	context('and :targetKeep', function() {
+		  		it ('sets the score on target', function() {
+				    // given
+				    var self = $('#element').raty({
+				    	target		: '#hint',
+				    	targetKeep: true,
+				    	click			: function() { }
+				    });
+
+				    // when
+				    self.raty('click', 1);
+
+				    // then
+				    expect($('#hint')).toHaveHtml('bad');
+				  });
+				});
+		 	});
+		});
 
     describe('#reload', function() {
       xit ('is chainable', function() {
