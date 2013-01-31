@@ -69,7 +69,7 @@ describe('Raty', function() {
     expect(opt.hints).toContain('bad', 'poor', 'regular', 'good', 'gorgeous');
     expect(opt.iconRange).toBeUndefined();
     expect(opt.mouseover).toBeUndefined();
-    expect(opt.noRatedMsg).toEqual('not rated yet');
+    expect(opt.noRatedMsg).toEqual('Not rated yet!');
     expect(opt.number).toBe(5);
     expect(opt.path).toEqual('img/');
     expect(opt.precision).toBeFalsy();
@@ -564,7 +564,7 @@ describe('Raty', function() {
     });
 
     describe('#readOnly', function() {
-      it ('Applies "not rated yet" on stars', function() {
+      it ('Applies "Not rated yet!" on stars', function() {
         // given
         var self = $('#element');
 
@@ -572,7 +572,7 @@ describe('Raty', function() {
         self.raty({ readOnly: true });
 
         // then
-        expect(self.children('img')).toHaveAttr('title', 'not rated yet');
+        expect(self.children('img')).toHaveAttr('title', 'Not rated yet!');
       });
 
       it ('avoids trigger mouseover', function() {
@@ -2580,7 +2580,7 @@ describe('Raty', function() {
           expect(self.children('input')).toHaveAttr('readonly', 'readonly');
         });
 
-        it ('Applies "not rated yet" on stars', function() {
+        it ('Applies "Not rated yet!" on stars', function() {
           // given
           var self = $('#element').raty();
 
@@ -2588,7 +2588,7 @@ describe('Raty', function() {
           self.raty('readOnly', true);
 
           // then
-          expect(self.children('img')).toHaveAttr('title', 'not rated yet');
+          expect(self.children('img')).toHaveAttr('title', 'Not rated yet!');
         });
 
         it ('avoids trigger mouseover', function() {
@@ -2659,7 +2659,7 @@ describe('Raty', function() {
           expect(self.children('input')).not.toHaveAttr('readonly', 'readonly');
         });
 
-        it ('Removes the "not rated yet" off the stars', function() {
+        it ('Removes the "Not rated yet!" off the stars', function() {
           // given
           var self   = $('#element').raty({ readOnly: true }),
               imgs  = self.children('img');
