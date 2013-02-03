@@ -575,6 +575,17 @@ describe('Raty', function() {
         expect(self.children('img')).toHaveAttr('title', 'Not rated yet!');
       });
 
+      it ('applies the default cursor on wrapper', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ readOnly: true });
+
+        // then
+        expect(self).toHaveCss({ cursor: 'default' });
+      });
+
       it ('avoids trigger mouseover', function() {
         // given
         var self = $('#element').raty({ readOnly: true }),
@@ -2104,6 +2115,19 @@ describe('Raty', function() {
         expect(self.width()).toEqual(200);
       });
 
+      describe('when it is false', function() {
+        it ('does not apply the style', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ width: false });
+
+          // then
+          expect(self).not.toHaveCss({ width: '100px' });
+        });
+      });
+
       describe('when :readOnly', function() {
         it ('set custom width when readOnly', function() {
           // given
@@ -2643,6 +2667,17 @@ describe('Raty', function() {
           expect(self.children('input')).toHaveAttr('readonly', 'readonly');
         });
 
+        it ('applies the default cursor on wrapper', function() {
+          // given
+          var self = $('#element').raty();
+
+          // when
+          self.raty('readOnly', true);
+
+          // then
+          expect(self).toHaveCss({ cursor: 'default' });
+        });
+
         it ('Applies "Not rated yet!" on stars', function() {
           // given
           var self = $('#element').raty();
@@ -2720,6 +2755,17 @@ describe('Raty', function() {
 
           // then
           expect(self.children('input')).not.toHaveAttr('readonly', 'readonly');
+        });
+
+        it ('applies the pointer cursor on wrapper', function() {
+          // given
+          var self = $('#element').raty();
+
+          // when
+          self.raty('readOnly', false);
+
+          // then
+          expect(self).toHaveCss({ cursor: 'pointer' });
         });
 
         it ('Removes the "Not rated yet!" off the stars', function() {
