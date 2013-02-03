@@ -616,7 +616,7 @@ describe('Raty', function() {
       context('with :cancel', function() {
         it ('hides the button', function() {
           // given
-          var self = $('#element').raty({ cancel: true, readOnly: true, path: '../img' });
+          var self = $('#element').raty({ cancel: true, readOnly: true, path: '../lib/img' });
 
           // when
           self.raty('readOnly', false);
@@ -644,6 +644,40 @@ describe('Raty', function() {
         expect(imgs.eq(2)).toHaveAttr('title', 'c');
         expect(imgs.eq(3)).toHaveAttr('title', '-');
         expect(imgs.eq(4)).toHaveAttr('title', '#');
+      });
+
+      it ('receives the number of the star when is undefined', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ hints: [undefined, 'a', 'b', 'c', 'd'] });
+
+        // then
+        var imgs = self.children('img');
+
+        expect(imgs.eq(0)).toHaveAttr('title', 'bad');
+        expect(imgs.eq(1)).toHaveAttr('title', 'a');
+        expect(imgs.eq(2)).toHaveAttr('title', 'b');
+        expect(imgs.eq(3)).toHaveAttr('title', 'c');
+        expect(imgs.eq(4)).toHaveAttr('title', 'd');
+      });
+
+      it ('receives empty when is empty string', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ hints: ['', 'a', 'b', 'c', 'd'] });
+
+        // then
+        var imgs = self.children('img');
+
+        expect(imgs.eq(0)).toHaveAttr('title', '');
+        expect(imgs.eq(1)).toHaveAttr('title', 'a');
+        expect(imgs.eq(2)).toHaveAttr('title', 'b');
+        expect(imgs.eq(3)).toHaveAttr('title', 'c');
+        expect(imgs.eq(4)).toHaveAttr('title', 'd');
       });
 
       it ('receives the number of the star when is null', function() {
@@ -2665,7 +2699,7 @@ describe('Raty', function() {
         context('with :cancel', function() {
           it ('hides the button', function() {
             // given
-            var self = $('#element').raty({ cancel: true, path: '../img' });
+            var self = $('#element').raty({ cancel: true, path: '../lib/img' });
 
             // when
             self.raty('readOnly', true);
@@ -2755,7 +2789,7 @@ describe('Raty', function() {
         context('with :cancel', function() {
           it ('shows the button', function() {
             // given
-            var self = $('#element').raty({ readOnly: true, cancel: true, path: '../img' });
+            var self = $('#element').raty({ readOnly: true, cancel: true, path: '../lib/img' });
 
             // when
             self.raty('readOnly', false);
