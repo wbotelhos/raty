@@ -1194,21 +1194,23 @@ describe('Raty', function() {
         context('as div', function() {
           beforeEach(function() { buildDivTarget(); });
 
-          it ('receives the hint value', function() {
-            // given
-            var self = $('#element').raty({ target: '#hint' });
+          context('with :targetType as hint', function() {
+            it ('receives the hint value', function() {
+              // given
+              var self = $('#element').raty({ target: '#hint' });
 
-            // when
-            self.children('img:first').mouseover();
+              // when
+              self.children('img:first').mouseover();
 
-            // then
-            expect($('#hint')).toHaveHtml('bad');
+              // then
+              expect($('#hint')).toHaveHtml('bad');
+            });
           });
 
-          context('with :targetType as number', function() {
-            it ('receives the number value', function() {
+          context('with :targetType as score', function() {
+            it ('receives the score value', function() {
               // given
-              var self = $('#element').raty({ target: '#hint', targetType: 'number' });
+              var self = $('#element').raty({ target: '#hint', targetType: 'score' });
 
               // when
               self.children('img:first').mouseover();
@@ -1230,10 +1232,10 @@ describe('Raty', function() {
               expect($('#hint')).toHaveHtml('cancel this rating!');
             });
 
-            context('and :targetType as number', function() {
+            context('and :targetType as score', function() {
               it ('receives an empty value', function() {
                 // given
-                var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'number' });
+                var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'score' });
 
                 // when
                 self.children('.raty-cancel').mouseover();
@@ -1254,7 +1256,7 @@ describe('Raty', function() {
                       score     : 1.2333,
                       target    : '#hint',
                       targetKeep: true,
-                      targetType: 'number'
+                      targetType: 'score'
                     });
 
                     // then
@@ -1299,21 +1301,23 @@ describe('Raty', function() {
         context('as text field', function() {
           beforeEach(function() { buildTextTarget(); });
 
-          it ('receives the hint value', function() {
-            // given
-            var self = $('#element').raty({ target: '#hint' });
+          context('with :targetType as hint', function() {
+            it ('receives the hint value', function() {
+              // given
+              var self = $('#element').raty({ target: '#hint' });
 
-            // when
-            self.children('img:first').mouseover();
+              // when
+              self.children('img:first').mouseover();
 
-            // then
-            expect($('#hint')).toHaveValue('bad');
+              // then
+              expect($('#hint')).toHaveValue('bad');
+            });
           });
 
-          context('with :targetType as number', function() {
-            it ('receives the number value', function() {
+          context('with :targetType as score', function() {
+            it ('receives the score value', function() {
               // given
-              var self = $('#element').raty({ target: '#hint', targetType: 'number' });
+              var self = $('#element').raty({ target: '#hint', targetType: 'score' });
 
               // when
               self.children('img:first').mouseover();
@@ -1335,10 +1339,10 @@ describe('Raty', function() {
               expect($('#hint')).toHaveValue('cancel this rating!');
             });
 
-            context('with :targetType as number', function() {
-              it ('receives the number value', function() {
+            context('with :targetType as score', function() {
+              it ('receives the score value', function() {
                 // given
-                var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'number' });
+                var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'score' });
 
                 // when
                 self.children('.raty-cancel').mouseenter();
@@ -1380,24 +1384,26 @@ describe('Raty', function() {
           });
         });
 
-        context('sa textarea', function() {
+        context('as textarea', function() {
           beforeEach(function() { buildTextareaTarget(); });
 
-          it ('receives the hint value', function() {
-            // given
-            var self = $('#element').raty({ target: '#hint' });
+          context('with :targetType as hint', function() {
+            it ('receives the hint value', function() {
+              // given
+              var self = $('#element').raty({ target: '#hint' });
 
-            // when
-            self.children('img:first').mouseover();
+              // when
+              self.children('img:first').mouseover();
 
-            // then
-            expect($('#hint')).toHaveValue('bad');
+              // then
+              expect($('#hint')).toHaveValue('bad');
+            });
           });
 
-          context('with :targetType as number', function() {
-            it ('receives the number value', function() {
+          context('with :targetType as score', function() {
+            it ('receives the score value', function() {
               // given
-              var self = $('#element').raty({ target: '#hint', targetType: 'number' });
+              var self = $('#element').raty({ target: '#hint', targetType: 'score' });
 
               // when
               self.children('img:first').mouseover();
@@ -1419,10 +1425,10 @@ describe('Raty', function() {
               expect($('#hint')).toHaveValue('cancel this rating!');
             });
 
-            context('with :targetType as number', function() {
-              it ('receives the number value', function() {
+            context('with :targetType as score', function() {
+              it ('receives the score value', function() {
                 // given
-                var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'number' });
+                var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'score' });
 
                 // when
                 self.children('.raty-cancel').mouseenter();
@@ -1467,21 +1473,23 @@ describe('Raty', function() {
         context('as combobox', function() {
           beforeEach(function() { buildComboboxTarget(); });
 
-          it ('receives the hint value', function() {
-            // given
-            var self = $('#element').raty({ target: '#hint' });
+          context('with :targetType as hint', function() {
+            it ('receives the hint value', function() {
+              // given
+              var self = $('#element').raty({ target: '#hint' });
 
-            // when
-            self.children('img:first').mouseover();
+              // when
+              self.children('img:first').mouseover();
 
-            // then
-            expect($('#hint')).toHaveValue('bad');
+              // then
+              expect($('#hint')).toHaveValue('bad');
+            });
           });
 
-          context('with :targetType as number', function() {
-            it ('receives the number value', function() {
+          context('with :targetType as score', function() {
+            it ('receives the score value', function() {
               // given
-              var self = $('#element').raty({ target: '#hint', targetType: 'number' });
+              var self = $('#element').raty({ target: '#hint', targetType: 'score' });
 
               // when
               self.children('img:first').mouseover();
@@ -1503,10 +1511,10 @@ describe('Raty', function() {
               expect($('#hint')).toHaveValue('cancel this rating!');
             });
 
-            context('with :targetType as number', function() {
-              it ('receives the number value', function() {
+            context('with :targetType as score', function() {
+              it ('receives the score value', function() {
                 // given
-                var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'number' });
+                var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'score' });
 
                 // when
                 self.children('img:first').mouseover();
@@ -2400,9 +2408,9 @@ describe('Raty', function() {
           beforeEach(function() { buildDivTarget(); });
 
           context('and :precision', function() {
-            context('and :targetType as number', function() {
+            context('and :targetType as score', function() {
               context('and :targetKeep', function() {
-                context('and :targetType as number', function() {
+                context('and :targetType as score', function() {
                   it ('set .5 increment value target with half option and no precision', function() {
                     // given
                     var self = $('#element');
@@ -2414,7 +2422,7 @@ describe('Raty', function() {
                       score     : 1.5,
                       target    : '#hint',
                       targetKeep: true,
-                      targetType: 'number'
+                      targetType: 'score'
                     });
 
                     // then
