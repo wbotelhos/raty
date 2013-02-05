@@ -1,5 +1,25 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+### 2.5.0.rc1
+
++ The `number` option can be setted via callback; (by muratguzel)
++ The `readOnly` and `scoreName` option can be setted via callback; (by aprimadi)
++ The `score` argument of `click` callback now is number instead string;
++ The `score` argument of `mouseover` callback now is number instead string;
++ Added option `mouseout` to handle things on mouse out:
+  - The option `mouseover` no more will trigged on mouseout.
++ Extracted the limit of stars to the option `numberMax`;
++ Fix: `readonly` was not removed on readOnly becames disabled;
++ The `noRatedMsg` option value was change to "Not rated yet!";
++ Fix: `path` always was prepend avoiding absolute or different path for each icon.
++ The `hints` options can receives three values:
+  - empty string: receives an empty string as hint;
+  - null: receives the score value as hint;
+  - undefined: receives the default hint;
++ You can avoid the width style setting the option `width` to false;
++ Fix: `targetKeep` was keepping the template even without score;
++ When `precision` is enabled, `half` becomes enabled and `targetType` is changed to 'score'.
+
 ### 2.4.5
 
 + Now the error messages is displayed in place of stars to be more visible;
@@ -7,7 +27,7 @@
 + Fixed the mouseover function to handle undefined score when we have no vote;
 	- For cancel button we get 'null' to know when mouse over it;
 + Fixed multiple mouseout actions on cancel function and mouseout bind;
-+ Fixed functions that was not applying not continuing to apply if someone was invalid; 
++ Fixed functions that was not applying not continuing to apply if someone was invalid;
 + Fixed the flag that indicates read-only or not.
 
 ### 2.4.0
@@ -27,7 +47,7 @@
 	+ The score no longer has ID;
 	+ The stars images no longer has ID;
 	+ The stars images no longer has class.
-+ Added function 'score' to recover the current score. 
++ Added function 'score' to recover the current score.
 
 ### 2.0.0
 
@@ -149,11 +169,11 @@
 
 ### 0.3
 
-+ Fixed some mistakes to work on IE browser. 
++ Fixed some mistakes to work on IE browser.
 
 ### 0.2
 
-+ Added the public function click, that do the click on a star; 
++ Added the public function click, that do the click on a star;
 + Was removed the execution of the onClick when used the function start;
 + Added onClick function that enable a callback when a star is clicked.
 
