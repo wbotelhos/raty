@@ -4,7 +4,7 @@ jQuery Raty is a plugin that generates a customizable star rating.
 
 ## Version
 
-	@version        2.4.5
+	@version        2.5.0.rc1
 	@since          2010.06.11
 	@author         Washington Botelho
 	@documentation  wbotelhos.com/raty
@@ -18,8 +18,8 @@ jQuery Raty is a plugin that generates a customizable star rating.
 
 ## Default values
 
-	cancel       : false                                          // Show a button to cancel the rating or not.   
-	cancelHint   : 'cancel this rating!'                          // The hint information.
+	cancel       : false                                          // Show a button to cancel the rating or not.
+	cancelHint   : 'Cancel this rating!'                          // The hint information.
 	cancelOff    : 'cancel-off.png'                               // Name of the cancel image off.
 	cancelOn     : 'cancel-on.png'                                // Name of the cancel image on.
 	cancelPlace  : 'left'                                         // Position of the cancel button.
@@ -29,9 +29,10 @@ jQuery Raty is a plugin that generates a customizable star rating.
 	hints        : ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
 	iconRange    : undefined                                      // Object list representing each icon with position and names.
 	mouseover    : undefined                                      // Callback for mouseover actions.
-	noRatedMsg   : 'not rated yet'                                // A hint for no rated elements when it's read-only.
+	noRatedMsg   : 'Not rated yet!'                               // A hint for no rated elements when it's read-only.
 	number       : 5                                              // Number of star.
-	path         : 'img                                           // Path of images.
+	numberMax    : 20                                             // Max of star.
+	path         : undefined                                      // Path of images.
 	precision    : false                                          // Enables the selection of a precision score.
 	readOnly     : false                                          // read-only or not.
 	round        : { down: .25, full: .6, up: .76 }               // Configuration to set the round rules.
@@ -47,7 +48,7 @@ jQuery Raty is a plugin that generates a customizable star rating.
 	targetFormat : '{score}'                                      // Template to interpolate the score with some thing.
 	targetKeep   : false                                          // If the last choose value will be keeped on mouseout.
 	targetText   : ''                                             // Default value when there's no score or targetKeep is off.
-	targetType   : 'hint'                                         // What display on target element: hint or number.
+	targetType   : 'hint'                                         // What display on target element: hint or score.
 	width        : undefined                                      // The container width of the stars.
 
 ## Usage
@@ -88,6 +89,7 @@ jQuery Raty is a plugin that generates a customizable star rating.
 + hpgihan
 + janapol
 + jeongee
++ Murat GUZEL
 + Olle Jonsson
 + packowitz
 
