@@ -15,7 +15,7 @@ function buildDivTarget() {
 function buildComboboxTarget() {
   $('body').append(
     '<select id="hint">' +
-      '<option value="cancel this rating!">cancel hint default</option>' +
+      '<option value="Cancel this rating!">cancel hint default</option>' +
       '<option value="cancel-hint-custom">cancel hint custom</option>' +
 
       '<option value="">cancel number default</option>' +
@@ -59,7 +59,7 @@ describe('Raty', function() {
 
     // then
     expect(opt.cancel).toBeFalsy();
-    expect(opt.cancelHint).toEqual('cancel this rating!');
+    expect(opt.cancelHint).toEqual('Cancel this rating!');
     expect(opt.cancelOff).toEqual('cancel-off.png');
     expect(opt.cancelOn).toEqual('cancel-on.png');
     expect(opt.cancelPlace).toEqual('left');
@@ -1049,7 +1049,7 @@ describe('Raty', function() {
         var cancel = self.children('img:last');
 
         expect(cancel).toHaveClass('raty-cancel');
-        expect(cancel).toHaveAttr('title', 'cancel this rating!');
+        expect(cancel).toHaveAttr('title', 'Cancel this rating!');
         expect(cancel).toHaveAttr('alt', 'x');
         expect(cancel).toHaveAttr('src', 'cancel-off.png');
       });
@@ -1067,7 +1067,7 @@ describe('Raty', function() {
         var cancel = self.children('.raty-cancel');
 
         expect(cancel).toHaveClass('raty-cancel');
-        expect(cancel).toHaveAttr('title', 'cancel this rating!');
+        expect(cancel).toHaveAttr('title', 'Cancel this rating!');
         expect(cancel).toHaveAttr('alt', 'x');
         expect(cancel).toHaveAttr('src', 'cancel-off.png');
       });
@@ -1218,7 +1218,7 @@ describe('Raty', function() {
         });
 
         context('with :cancel', function() {
-          it ('receives the hint', function() {
+          it ('receives the :cancelHint', function() {
             // given
             var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'hint' });
 
@@ -1226,7 +1226,7 @@ describe('Raty', function() {
             self.children('.raty-cancel').mouseover();
 
             // then
-            expect($('#hint')).toHaveHtml('cancel this rating!');
+            expect($('#hint')).toHaveHtml('Cancel this rating!');
           });
         });
       });
@@ -1244,7 +1244,7 @@ describe('Raty', function() {
         });
 
         context('with :cancel', function() {
-          it ('receives an empty string', function() {
+          it ('receives the :cancelHint', function() {
             // given
             var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'score' });
 
@@ -1252,7 +1252,7 @@ describe('Raty', function() {
             self.children('.raty-cancel').mouseover();
 
             // then
-            expect($('#hint')).toHaveHtml('');
+            expect($('#hint')).toHaveHtml('Cancel this rating!');
           });
         });
       });
@@ -1372,6 +1372,28 @@ describe('Raty', function() {
 
     describe('#precision', function() {
       beforeEach(function() { buildDivTarget(); });
+
+      it ('enables the :half options', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ precision: true });
+
+        // then
+        expect(self.data('settings').half).toBeTruthy();
+      });
+
+      it ('changes the :targetType to score', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ precision: true });
+
+        // then
+        expect(self.data('settings').targetType).toEqual('score');
+      });
 
       context('with :target', function() {
         context('with :targetKeep', function() {
@@ -1759,25 +1781,6 @@ describe('Raty', function() {
 
               // then
               expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
-            });
-          });
-        });
-
-        context('with :precision', function() {
-          context('and :target', function() {
-            beforeEach(function() { buildDivTarget(); });
-
-            context('and :targetKeep', function() {
-              it ('keeps the hint precision', function() {
-                // given
-                var self = $('#element').raty({ target: '#hint', targetKeep: true, precision: true });
-
-                // when
-                self.children('img:first').mouseover().click().mouseleave();
-
-                // then
-                expect($('#hint')).toHaveHtml('bad');
-              });
             });
           });
         });
