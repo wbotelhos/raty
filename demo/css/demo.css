@@ -1,3 +1,12 @@
-.demo input { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font: 1.6em arial; height: 26px; margin-bottom: 5px; letter-spacing: .3px; padding: 3px; width: 200px }
-.demo input:focus { border: 1px solid #95BDD4 }
-.demo input:hover { border: 1px solid #BDBDBD }
+.demo .target-demo { display: inline-block; vertical-align: middle }
+
+.demo .hint { border: 1px solid #999; border-radius: 5px; color: #333; display: inline-block; height: 27px; font-size: 1.5em; text-align: center; width: 135px; vertical-align: middle }
+.demo .hint:focus { border: 1px solid #95BDD4 }
+.demo .hint:hover { border: 1px solid #BDBDBD }
+
+.demo div.hint { border: none; background-color: #F8F8F8; border-radius: 5px }
+.demo div.hint:hover { border: none }
+
+.demo input.hint { }
+.demo textarea.hint { resize: none; height: 27px }
+.demo select.hint { text-align: left }

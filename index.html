@@ -1,916 +1,1133 @@
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="Pragma" content="no-cache">
-		<meta http-equiv="Expires" content="-1">
-		<meta name="keywords" content="jquery,rating,raty,voto,star,staring,classificacao,classificar,votar,plugin" />
-		<meta name="description" content="jQuery Raty - A Star Rating Plugin" />
-
-		<title>jQuery Raty - A Star Rating Plugin</title>
-
-		<!-- This CSS does not belong to the plugin. -->
-		<link type="text/css" rel="stylesheet" href="doc/css/stylesheet.css"/>
-
-		<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/jquery.raty.min.js"></script>
-
-		<script type="text/javascript">
-			// This code does NOT belong the plugin. See the example code at the bottom of this page.
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-194992347-3']);
-			_gaq.push(['_trackPageview']);
-			
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
-	</head>
-	<body>
-		<div id="header">
-			<div id="title">
-				<a href="http://wbotelhos.com/raty">jQuery Raty - A Star Rating Plugin</a>
-				<span id="version">(current version: 2.4.5)</span>
-			</div>
-
-			<div id="menu">
-				<a href="http://github.com/downloads/wbotelhos/raty/jquery.raty-2.4.5.zip" target="_blank">Download</a> |
-				<a href="http://github.com/wbotelhos/raty" target="_blank">Github</a> |
-				<a href="http://www.wbotelhos.com/raty/changelog.md" target="_blank">Change Log</a> |
-				<a href="http://www.wbotelhos.com/raty/README.md" target="_blank">Readme</a> |
-				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin" target="_blank">Article</a> |
-				<a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">License</a> |
-				<a href="http://www.wbotelhos.com/2010/07/14/jquery-raty-a-star-rating-plugin#comments" target="_blank" style="color: #2C8CBD;">Doubt</a> |
-				<a href="http://www.wbotelhos.com/lab" target="_blank" style="color: #000;">yLab</a>
-			</div>
-
-			<a id="coffee" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Raty" target="_blank">buy me a coffee</a>
-
-			<div class="description">jQuery <strong>Raty</strong> is a plugin that generates a customizable star rating.</div>
-		</div>
-
-		<div id="content">
-			<div id="default-demo" class="session-first">Default options:</div>
-
-			<div id="default"></div>
-
-			<div class="source">
-				$('#star').raty();<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="fixed-demo" class="session">Started with a score and read only value:</div>
-			<div id="fixed"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;readOnly : true,<br/>
-				&#160;&#160;score&#160;&#160;&#160; : 2<br/>
-				});<br/><br/>
-				
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="score-demo" class="session">Starting with a callback:</div>
-			<div id="score" data-rating="3"></div>
-
-			<div class="source">
-			 	$('#score').raty({<br/>
-				&#160;&#160;score: function() {<br/>
-				&#160;&#160;&#160;&#160;return $(this).attr('data-rating');<br/>
-				&#160;&#160;}<br/>
-				});<br/><br/>
-
-				&lt;div id="star" data-rating="3"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="anyone-demo" class="session">A hint for no rated elements when it's read-only:</div>
-			<div id="anyone"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;readOnly&#160;&#160; : true,<br/>
-				&#160;&#160;noRatedMsg : 'anyone rated this product yet!'<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="number-demo" class="session">Custom score name and a number of stars:</div>
-			<div id="number"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;scoreName : 'entity.score',<br/>
-				&#160;&#160;number&#160;&#160;&#160; : 10<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="click-demo" class="session">Using click function:</div>
-			<div id="click"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;click: function(score, evt) {<br/>
-				&#160;&#160;&#160;&#160;alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);<br/>
-				&#160;&#160;}<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				 - The argument score is the selected value;<br/>
-				 - The argument evt is the click event;<br/>
-				 - You can mension the star element (DOM) itself using 'this'.<br/>
-			</span>
-
-			<div id="cancel-demo" class="session">Default cancel button:</div>
-			<div id="cancel"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;cancel: true<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				 - The score value for the click on cancel button is null.<br/>
-			</span>
-
-			<div id="cancel-custom-demo" class="session">Custom cancel button:</div>
-			<div id="cancel-custom"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;cancel&#160;&#160;&#160;&#160;&#160; : true,<br/>
-				&#160;&#160;cancelHint&#160; : 'remove my rating!',<br/>
-				&#160;&#160;cancelPlace : 'right',<br/>
-				&#160;&#160;click&#160;&#160;&#160;&#160;&#160;&#160; : function(score, evt) {<br/>
-				&#160;&#160;&#160;&#160;alert('score: ' + score);<br/>
-				&#160;&#160;}<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="half-demo" class="session">Half star voting:</div>
-			<div id="half"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;half&#160; : true,<br/>
-				&#160;&#160;score : 3.3<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				- You can disable the 'halfShow' option to just vote with half star but not show it.<br/>
-				- If 'halfShow' is disabled, then score &gt;= x.6 will be rounded up visually.<br/>
-				- The interval can be:<br/>
-				-- Rounded down: [x.00 .. x.25]<br/>
-				-- Half star:&#160;&#160;&#160; [x.26 .. x.75]<br/>
-				-- Rounded up:&#160;&#160; [x.76 .. x.99]
-			</span>
-
-			<div id="round-demo" class="session">Custom round option:</div>
-			<div id="round"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;score : 1.26,<br/>
-				&#160;&#160;round : { down: .25, full: .6, up: .76 }<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				- This example use the default round values;<br/>
-				- down: with halfShow enabled, score &lt;= x.25 will be rounded down; (inclusive)<br/>
-				- up: with halfShow enabled, score &gt;= x.76 will be rounded up; (inclusive)<br/>
-				- down-up: with halfShow enabled, score &gt; x.25 and score &lt; .76 will be half star; (inclusive)<br/>
-				- full: with halfShow disabled, score &gt;= x.6 will be rounded up; (inclusive)<br/>
-			</span>
-
-			<div id="icon-demo" class="session">Custom hint and icons:</div>
-			<div id="icon"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-				&#160;&#160;hints&#160;&#160; : ['a', '', null, 'd', '5'],<br/>
-				&#160;&#160;starOn&#160; : 'medal-on.png',<br/>
-				&#160;&#160;starOff : 'medal-off.png'<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				- To display the number of the star, set null.
-			</span>
-
-			<div id="range-demo" class="session">Range of custom icons:</div>
-			<div id="range"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-			 	&#160;&#160;iconRange: [<br/>
-				&#160;&#160;&#160;&#160;{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },<br/>
-				&#160;&#160;&#160;&#160;{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },<br/>
-				&#160;&#160;&#160;&#160;{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },<br/>
-				&#160;&#160;&#160;&#160;{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }<br/>
-				&#160;&#160;]<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				- It's a array of objects where each one represents a custom icon;<br/>
-				- The value range is until wich position the icon will be displayed;<br/>
-				- The value on is the active icon;<br/>
-				- The value off is the inactive icon;<br/>
-				- The sequence of the range interval should be in a ascending order;<br/>
-				- If the value on or off is omitted then the attribute starOn or starOff will be used.
-			</span>
-
-			<div id="big-demo" class="session">Bigger icon:</div>
-			<div id="big"></div>
-
-			<div class="source">
-			 	$('#star').raty({<br/>
-			 	&#160;&#160;cancel&#160;&#160;&#160; : true,<br/>
-				&#160;&#160;cancelOff : 'cancel-off-big.png',<br/>
-				&#160;&#160;cancelOn&#160; : 'cancel-on-big.png',<br/>
-				&#160;&#160;half&#160;&#160;&#160;&#160;&#160; : true,<br/>
-				&#160;&#160;size&#160;&#160;&#160;&#160;&#160; : 24,<br/>
-				&#160;&#160;starHalf&#160; : 'star-half-big.png',<br/>
-				&#160;&#160;starOff&#160;&#160; : 'star-off-big.png',<br/>
-				&#160;&#160;starOn&#160;&#160;&#160; : 'star-on-big.png'<br/>
-				});<br/><br/>
-			   
-				&lt;div id="star"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				- You can specify your own width as following: width: 120.
-			</span>
-
-			<div id="group-demo" class="session">Group of elements:</div>
-			<div class="group"></div>
-			<div class="group"></div>
-			<div class="group"></div>
-
-			<div class="source">
-				$('.star').raty();<br/><br/>
-	
-				&lt;div class="star"&gt;&lt;/div&gt;<br/>
-				&lt;div class="star"&gt;&lt;/div&gt;<br/>
-				&lt;div class="star"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				- The ID is optional and must be unique;<br/>
-				- If you don't pass a ID for the element, then it will be created.
-			</span>
-
-			<div id="target-demo" class="session">Displaying hint in a target element:</div>
-
-			<div id="target"></div>
-			<div id="hint"></div><br/>
-
-			<div class="source">
-				$('#star').raty({<br/>
-				&#160;&#160;cancel&#160;&#160;&#160;&#160; : true,<br/>
-				&#160;&#160;cancelHint : 'none',<br/>
-				&#160;&#160;target&#160;&#160;&#160;&#160; : '#hint'<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;<br/>
-				&lt;div id="target"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="target-number-demo" class="session">Displaying and keeping the score in a target element:</div>
-
-			<div id="target-number"></div>
-
-			<select id="score-target">
-				<option value="">--</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select>
-
-			<div class="source left">
-				$('#star').raty({<br/>
-				&#160;&#160;cancel&#160;&#160;&#160;&#160; : true,<br/>
-				&#160;&#160;target&#160;&#160;&#160;&#160; : '#score',<br/>
-				&#160;&#160;targetKeep : true,<br/>
-				&#160;&#160;targetType : 'number'<br/>
-				});<br/><br/>
-
-				&lt;select id="target"&gt;<br/>
-					&#160;&#160;&lt;option value=""&gt;0&lt;/option&gt;<br/>
-					&#160;&#160;&lt;option value="1"&gt;1&lt;/option&gt;<br/>
-					&#160;&#160;&lt;option value="2"&gt;2&lt;/option&gt;<br/>
-					&#160;&#160;&lt;option value="3"&gt;3&lt;/option&gt;<br/>
-					&#160;&#160;&lt;option value="4"&gt;4&lt;/option&gt;<br/>
-					&#160;&#160;&lt;option value="5"&gt;5&lt;/option&gt;<br/>
-				&lt;/select&gt;<br/>
-			</div><br/>
-
-			<span class="comment">
-				- You can to choose the target types 'hint' or 'number'.
-			</span>
-
-			<div id="target-out-demo" class="session">Setting default value to the target on mouseout:</div>
-
-			<div id="target-out"></div>
-			<div id="hint-out"></div><br/>
-
-			<div class="source">
-				$('#star').raty({<br/>
-				&#160;&#160;target&#160;&#160;&#160;&#160; : '#hint',<br/>
-				&#160;&#160;targetText : '--'<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;<br/>
-				&lt;div id="target"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="format-demo" class="session">Displaying hint with format template:</div>
-
-			<div id="format"></div>
-			<div id="hint-format"></div><br/>
-
-			<div class="source">
-				$('#star').raty({<br/>
-				&#160;&#160;cancel&#160;&#160;&#160;&#160;&#160;&#160; : true,<br/>
-				&#160;&#160;cancelHint&#160;&#160; : 'Sure?',<br/>
-				&#160;&#160;target&#160;&#160;&#160;&#160;&#160;&#160; : '#hint',<br/>
-				&#160;&#160;targetFormat : 'your score: {score}',<br/>
-				&#160;&#160;targetText&#160;&#160; : 'none',<br/>
-				&#160;&#160;targetKeep&#160;&#160; : true<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;<br/>
-				&lt;div id="target"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="mouseover-demo" class="session">Using mouseover callback:</div>
-
-			<div id="mouseover"></div>
-			<div id="mouseover-target"></div><br/>
-
-			<div class="source" style="margin-top: 15px;">
-				$('#star').raty({<br/>
-				&#160;&#160;cancel&#160;&#160;&#160; : true,<br />
-				&#160;&#160;mouseover : function(score, evt) {<br />
-				&#160;&#160;&#160;&#160;var target = $('#mouseover-target');<br /><br />
-
-				&#160;&#160;&#160;&#160;if (score === null) {<br />
-				&#160;&#160;&#160;&#160;&#160;&#160;target.html('Boring!');<br />
-				&#160;&#160;&#160;&#160;} else if (score === undefined) {<br />
-				&#160;&#160;&#160;&#160;&#160;&#160;target.empty();<br />
-				&#160;&#160;&#160;&#160;} else {<br />
-				&#160;&#160;&#160;&#160;&#160;&#160;target.html('score: ' + score);<br />
-				&#160;&#160;&#160;&#160;}<br />
-				&#160;&#160;}<br />
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;<br/>
-				&lt;div id="target"&gt;&lt;/div&gt;
-			</div>
-
-			<span class="comment">
-				- The options target, targetFormat, targetKeep, targetText and targetType are abstractions of this callback.
-			</span>
-
-			<div id="precision-demo" class="session">Half star voting precision:</div>
-
-			<div id="precision"></div>
-			<div id="precision-target"></div><br/>
-
-			<div class="source" style="margin-top: 15px;">
-				$('#star').raty({<br/>
-				&#160;&#160;half&#160;&#160;&#160;&#160;&#160;&#160; : true,<br/>
-				&#160;&#160;precision&#160; : true,<br/>
-				&#160;&#160;size&#160;&#160;&#160;&#160;&#160;&#160; : 24,<br/>
-				&#160;&#160;starHalf&#160;&#160; : 'star-half-big.png',<br/>
-				&#160;&#160;starOff&#160;&#160;&#160; : 'star-off-big.png',<br/>
-				&#160;&#160;starOn&#160;&#160;&#160;&#160; : 'star-on-big.png'<br/>
-				&#160;&#160;target&#160;&#160;&#160;&#160; : '#precision-target'<br/>
-				&#160;&#160;targetType : 'number'<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;<br/>
-				&lt;div id="target"&gt;&lt;/div&gt;
-			</div>
-
-			<div id="space-demo" class="session">Without space between stars:</div>
-
-			<div id="space"></div>
-
-			<div class="source">
-				$('#star').raty({<br/>
-				&#160;&#160;space: false<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;<br/>
-			</div>
-
-			<div id="single-demo" class="session">Single icon:</div>
-
-			<div id="single"></div>
-
-			<div class="source">
-				$('#star').raty({<br/>
-				&#160;&#160;single: true<br/>
-				});<br/><br/>
-
-				&lt;div id="star"&gt;&lt;/div&gt;<br/>
-			</div>
-
-			<div id="action-demo" class="session">Directed actions with public functions:</div>
-
-			love:
-			<div class="action"></div>
-
-			happy:
-			<div class="action"></div><br/>
-
-			your last rate:
-			<div id="result"></div>
-
-			<div class="source">
-				$('.star').raty({<br/>
-				&#160;&#160;half&#160; : true,<br/>
-				&#160;&#160;click : function(score, evt) {<br/>
-				&#160;&#160;&#160;&#160;$(this).raty('cancel');<br/>
-				&#160;&#160;&#160;&#160;$('#result').raty('score', score);<br/>
-				&#160;&#160;}<br/>
-				});<br/><br/>
-
-				&lt;div class="star"&gt;&lt;/div&gt;<br/>
-				&lt;div class="star"&gt;&lt;/div&gt;<br/><br/>
-				&lt;div id="result"&gt;&lt;/div&gt;
-			</div><br/>
-
-			<span class="comment">
-				- All functions have a optional second parameter to specify which container will be executed;<br/>
-				- You can pass a ID or a class to be the target of the action;<br/>
-				- If the ID or class are not specified, then the last element Raty will be takes.
-			</span>
-
-			<div id="function-demo" class="session">Functions Demo:</div>
-
-			<div id="function"></div>
-			<div id="hint-function"></div><br/>
-
-			<div style="color: #CCC; margin-top: 15px;">
-				<a href="javascript:void(0);" title="1" class="score">Score 1</a> |
-				<a href="javascript:void(0);" title="2" class="score">Score 2</a> |
-				<a href="javascript:void(0);" title="3" class="score">Score 3</a> |
-				<a href="javascript:void(0);" title="4" class="score">Score 4</a> |
-				<a href="javascript:void(0);" title="5" class="score">Score 5</a>
-			</div>
-
-			<div style="color: #CCC; margin-top: 15px;">
-				<a href="javascript:void(0);" title="1" class="click">Click 1</a> |
-				<a href="javascript:void(0);" title="2" class="click">Click 2</a> |
-				<a href="javascript:void(0);" title="3" class="click">Click 3</a> |
-				<a href="javascript:void(0);" title="4" class="click">Click 4</a> |
-				<a href="javascript:void(0);" title="5" class="click">Click 5</a>
-			</div>
-
-			<div style="color: #CCC; margin-top: 15px;">
-				<a href="javascript:void(0);" title="true" class="readOnly">ReadOnly (true)</a> |
-				<a href="javascript:void(0);" title="false" class="readOnly">ReadOnly (false)</a>
-			</div>
-
-			<div style="color: #CCC; margin-top: 15px;">
-				<a href="javascript:void(0);" title="false" class="cancel">Cancel</a> |
-				<a href="javascript:void(0);" title="true" class="cancel">Cancel (trigger)</a>
-			</div>
-
-			<div style="color: #CCC; margin-top: 15px;">
-				<a id="reload" href="javascript:void(0);" title="reload">Reload</a> |
-				<a id="get-score" href="javascript:void(0);" title="score">Score</a>
-			</div>
-
-			<div class="action-wrapper">
-				settings: <input id="set-id" type="text" value="{ number: 3 }" class="action-field" />
-				<a id="set-action" href="javascript:void(0);" title="set" class="action-link">set</a>
-			</div>
-
-			<div id="global-demo" class="session">Changing the settings globally:</div>
-
-			<div class="source">
-				$.fn.raty.defaults.starOn = 'star-on.gif';<br/>
-				$.fn.raty.defaults.starOff = 'star-off.gif';
-			</div>
-
-			<span class="comment">
-				- You can change any option mention the scope <b>$.fn.raty.defaults.</b> + <i>option_name</i>;<br/>
-				- This setup must be called before you bind the Raty, of course.
-			</span>
-
-			<div class="session">Default options:</div>
-
-			<div class="session-option">cancel: <span>false</span></div>
-			<div class="comment">If will be showed a button to cancel the rating.</div>
-
-			<hr />
-
-			<div class="session-option">cancelHint: <span>'cancel this rating!'</span></div>
-			<div class="comment">The hint information.</div>
-
-			<hr />
-
-		 	<div class="session-option">cancelHint: 'cancel this rating!'<br/>
-		 	<div class="comment">The hint information.</div>
-
-			<hr />
-
-		 	<div class="session-option">cancelOff: <span>'cancel-off.png'</span></div>
-		 	<div class="comment">Name of the cancel image off.</div>
-
-			<hr />
-
-		 	<div class="session-option">cancelOn: <span>'cancel-on.png'</span></div>
-		 	<div class="comment">Name of the cancel image on.</div>
-
-			<hr />
-
-		 	<div class="session-option">cancelPlace: <span>'left'</span></div>
-		 	<div class="comment">Position of the cancel button.</div>
-
-			<hr />
-
-			<div class="session-option">click: <span>undefined</span></div>
-		 	<div class="comment">Function that returns the selected value.</div>
-
-			<hr />
-
-			<div class="session-option">half: <span>false</span></div>
-		 	<div class="comment">Enables half star selection.</div>
-
-			<hr />
-
-			<div class="session-option">halfShow: <span>true</span></div>
-		 	<div class="comment">Enables half star display.</div>
-
-			<hr />
-
-		 	<div class="session-option">hints: <span>['bad', 'poor', 'regular', 'good', 'gorgeous']</span></div>
-		 	<div class="comment">List of names that will be used as a hint on each star.</div>
-
-			<hr />
-
-			<div class="session-option">iconRange: <span>undefined</span></div>
-			<div class="comment">List of object that represent each icon with position and names.</div>
-
-			<hr />
-
-			<div class="session-option">noRatedMsg: <span>'not rated yet'</span></div>
-		 	<div class="comment">A hint for no rated elements when it's read-only.</div>
-
-			<hr />
-
-			<div class="session-option">number: <span>5</span></div>
-		 	<div class="comment">Number of stars that will be presented.</div>
-
-			<hr />
-
-			<div class="session-option">path: <span>'img/'</span></div>
-		 	<div class="comment">A range of custom icons that you can set.</div>
-
-			<hr />
-
-			<div class="session-option">precision: <span>false</span></div>
-		 	<div class="comment">Enables the selection of a precision score.</div>
-
-			<hr />
-
-			<div class="session-option">readOnly: <span>false</span></div>
-		 	<div class="comment">If the stars will be read-only.</div>
-
-			<hr />
-
-			<div class="session-option">round: <span>{ down: <span>.25, full: <span>.6, up: <span>.76 }</span></div>
-		 	<div class="comment">Configuration to set the round rules.</div>
-
-			<hr />
-
-			<div class="session-option">score: <span>undefined</span></div>
-			<div class="comment">Number of stars to be selected.</div>
-
-			<hr />
-
-			<div class="session-option">scoreName: <span>'score'</span></div>
-		 	<div class="comment">Name of the hidden field that holds the score value.</div>
-
-			<hr />
-
-			<div class="session-option">single: <span>false</span></div>
-		 	<div class="comment">Enables the single star selection.</div>
-
-			<hr />
-
-			<div class="session-option">space: <span>true</span></div>
-		 	<div class="comment">Puts space between the stars.</div>
-
-			<hr />
-
-			<div class="session-option">size: <span>16</span></div>
-		 	<div class="comment">The icons size.</div>
-
-			<hr />
-
-			<div class="session-option">starHalf: <span>'star-half.png'</span></div>
-		 	<div class="comment">The name of the half star image.</div>
-
-			<hr />
-
-			<div class="session-option">starOff: <span>'star-off.png'</span></div>
-		 	<div class="comment">Name of the star image off.</div>
-
-			<hr />
-
-			<div class="session-option">starOn: <span>'star-on.png'</span></div>
-		 	<div class="comment">Name of the star image on.</div>
-
-			<hr />
-
-			<div class="session-option">target: <span>undefined</span></div>
-			<div class="comment">Element selector where the rating will be displayed.</div>
-
-			<hr />
-
-			<div class="session-option">targetFormat: <span>'{score}'</span></div>
-			<div class="comment">Template to interpolate the score with some thing.</div>
-
-			<hr />
-
-			<div class="session-option">targetKeep: <span>false</span></div>
-			<div class="comment">If the last choose value will be keeped on mouseout.</div>
-
-			<hr />
-
-			<div class="session-option">targetText: <span>''</span></div>
-			<div class="comment">Default value when there is no score or targetKeep is off.</div>
-
-			<hr />
-
-			<div class="session-option">targetType: <span>'hint'</span></div>
-			<div class="comment">What display on target element hint or number.</div>
-
-			<hr />
-
-			<div class="session-option">width&#160;: <span>undefined</span></div>
-			<div class="comment">The container width of the stars.</div>
-
-			<div class="session">Functions:</div>
-
-			<div class="source">$('#star').raty('score');</div>
-			<div class="comment">Recovers the current score or undefined for no rated. Class returns an array of score</div>
-
-			<div class="source">$('#star').raty('score', 3);</div>
-			<div class="comment">Set the score with 3 stars.</div>
-
-			<div class="source">$('#star').raty('click', 2);</div>
-			<div class="comment">Click on the second star of the Raty with ID called 'raty'.</div>
-
-			<div class="source">$('.star').raty('readOnly', true);</div>
-			<div class="comment">Adjusts all Raty with class called 'raty' for read-only.</div>
-
-			<div class="source">$('#star').raty('cancel', true);</div>
-			<div class="comment">Cancel the rating. The second optional parameter enable thes click callback.</div>
-
-			<div class="source">$('#star').raty('reload');</div>
-			<div class="comment">Reload the rating with the current configuration.</div>
-
-			<div class="source">$('#star').raty('set', { number: 10 });</div>
-			<div class="comment">Reload the rating applying new configurations.</div>
-		</div>
-
-		<div id="footer">
-			<div id="copy">&copy; 2010 <a href="http://www.wbotelhos.com/" target="_blank">wbotelhos.com</a></div>
-		</div>
-
-		<script type="text/javascript">
-			$(function() {
-
-				$('#default').raty();
-
-				$('#fixed').raty({
-					readOnly	: true,
-					score		: 2
-				});
-
-				$('#score').raty({
-				    score: function() {
-				        return $(this).attr('data-rating');
-				    }
-				});
-
-				$('#anyone').raty({
-					readOnly	: true,
-					noRatedMsg	: 'anyone rated this product yet!'
-				});
-
-				$('#number').raty({
-					scoreName	: 'entity.score',
-					number		: 10
-				});
-
-				$('#click').raty({
-					click: function(score, evt) {
-						alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
-					}
-				});
-
-				$('#cancel').raty({
-					cancel: true
-				});
-
-				$('#cancel-custom').raty({
-					cancel		: true,
-					cancelHint	: 'remove my rating!',
-					cancelPlace	: 'right',
-					click		: function(score, evt) {
-						alert('score: ' + score);
-					}
-				});
-
-				$('#half').raty({
-					half	: true,
-					score	: 3.3
-				});
-
-				$('#round').raty({
-					score	: 1.26,
-					round	: { down: .25, full: .6, up: .76 }
-				});
-
-				$('#icon').raty({
-					hints		: ['a', '', null, 'd', '5'],
-					path		: 'doc/img/',
-				   	starOn		: 'medal-on.png',
-				   	starOff		: 'medal-off.png'
-				});
-
-				$('#range').raty({
-					iconRange	: [
-						{ range: 2, on: 'face-a.png', off: 'face-a-off.png' },
-						{ range: 3, on: 'face-b.png', off: 'face-b-off.png' },
-						{ range: 4, on: 'face-c.png', off: 'face-c-off.png' },
-						{ range: 5, on: 'face-d.png', off: 'face-d-off.png' }
-					],
-					path		: 'doc/img/'
-				});
-
-				$('#big').raty({
-					cancel		: true,
-					cancelOff	: 'cancel-off-big.png',
-					cancelOn	: 'cancel-on-big.png',
-					half		: true,
-					path		: 'doc/img/',
-					size		: 24,
-					starOff		: 'star-off-big.png',
-					starOn		: 'star-on-big.png',
-					starHalf	: 'star-half-big.png'
-				});
-
-				$('.group').raty();
-
-				$('#target').raty({
-					cancel		: true,
-					cancelHint	: 'none',
-					target		: '#hint'
-				});
-
-				$('#format').raty({
-					cancel			: true,
-					cancelHint		: 'Sure?',
-					target			: '#hint-format',
-					targetFormat	: 'your score: {score}',
-					targetKeep		: true,
-					targetText		: 'none'
-				});
-
-				$('#target-number').raty({
-					cancel		: true,
-					target		: '#score-target',
-					targetKeep	: true,
-					targetType	: 'number'
-				});
-
-				$('#target-out').raty({
-					target		: '#hint-out',
-					targetText	: '--'
-				});
-
-				$('#mouseover').raty({
-  					cancel		: true,
-  					mouseover	: function(score, evt) {
-  						var target = $('#mouseover-target');
-
-  						if (score === null) {
-  							target.html('Boring!');
-  						} else if (score === undefined) {
-  							target.empty();
-  						} else {
-  							target.html('score: ' + score);
-  						}
-  					}
-  				});
-
-				$('#precision').raty({
-					half		: true,
-					path		: 'doc/img/',
-					precision	: true,
-					size		: 24,
-					starOff		: 'star-off-big.png',
-					starOn		: 'star-on-big.png',
-					starHalf	: 'star-half-big.png',
-					target		: '#precision-target',
-					targetType	: 'number'
-				});
-
-				$('#space').raty({
-					space: false
-				});
-
-				$('#single').raty({
-					single: true
-				});
-
-				var $result = $('#result').raty();
-
-				$('.action').raty({
-					click: function(score, evt) {
-						$(this).raty('cancel');
-						$result.raty('score', score);
-					}
-				});
-
-				$('#function').raty({
-					cancel		: true,
-					cancelHint	: 'Boring!',
-					click		: function(score, evt) {
-						$(this).fadeOut(function() { $(this).fadeIn(); });
-					},
-					targetKeep	: true,
-					score		: 2,
-					target		: '#hint-function',
-					targetText	: '--'
-				});
-
-				$('.score').click(function() {
-					$('#function').raty('score', this.title);
-				});
-
-				$('.click').click(function() {
-					$('#function').raty('click', this.title);
-				});
-
-				$('.readOnly').click(function() {
-					$('#function').raty('readOnly', (this.title == 'true') ? true : false);
-				});
-
-				$('.cancel').click(function() {
-					$('#function').raty('cancel', (this.title == 'true') ? true : false);
-				});
-
-				$('#reload').click(function() {
-					$('#function').raty('reload');
-				});
-
-				$('#get-score').click(function() {
-					alert($('#function').raty('score'));
-				});
-
-				$('#set-action').on('click', function() {
-					var options = $('#set-id').val();
-
-					eval("$('#function').raty('set', " + options + ");");
-				});
-
-			});
-		</script>
-	</body>
-</html>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width; initial-scale=1; maximum-scale=1" name="viewport">
+
+  <title>JQuery Raty</title>
+
+  <meta content="Washington Botelho" name="author">
+  <meta content="jQuery Raty - A Star Rating Plugin" name="description">
+  <meta content="jquery,plugin,rating,raty,voto,star,staring,classificacao,classificar,votar,plugin" name="keywords">
+
+  <link type="text/css" rel="stylesheet" href="demo/css/application.css">
+
+  <script type="text/javascript" src="demo/js/jquery.min.js"></script>
+  <script type="text/javascript" src="lib/jquery.raty.js"></script>
+
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+  <div id="wrapper">
+    <header role="banner">
+      <div id="logo">
+        <h1><a href="http://wbotelhos.com/raty" title="jQuery Raty">jQuery Raty</a></h1>
+        <p>A Star Rating Plugin</p>
+      </div>
+
+      <nav role="navigation">
+        <ul>
+          <li><a href="http://github.com/wbotelhos/raty/archive/2.5.0.rc1.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v2.5.0.rc1</a></li>
+          <li><a href="http://github.com/wbotelhos/raty" title="Github" target="_blank"><i class="icon-github icon-large"></i>Github</a></li>
+          <li><a href="http://wbotelhos.com/labs" title="yLab" target="_blank"><i class="icon-beaker icon-large"></i>yLab</a></li>
+          <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Raty" title="Donate" target="_blank"><i class="icon-heart-empty icon-large"></i>Donate</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="container">
+      <section role="main">
+        <article>
+          <h2 id="default">
+            <a href="#default">Default</a>
+          </h2>
+
+          <p>You need just to have a <code>div</code> to build the Raty.</p>
+
+          <div class="demo">
+            <div id="default-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"star"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">();</span>
+</pre>
+</div>
+
+          <h2 id="score">
+            <a href="#score">Score</a>
+          </h2>
+
+          <p>
+            Used when we want starts with saved rating.
+          </p>
+
+          <div class="demo">
+            <div id="score-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">score</span><span class="o">:</span> <span class="mi">3</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="score-callback">
+            <a href="#score-callback">Score callback</a>
+          </h2>
+
+          <p>
+            If you need to start you <a href="#score">score</a> depending of a dynamic value, you can use callback for it.<br/>
+            You can pass any value for it, not necessarily a <code>data-</code> value. You can use a field value for example.<br />
+          </p>
+
+          <div class="demo">
+            <div id="score-callback-demo" data-score="1"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"star"</span> <span class="na">data-score=</span><span class="s">"1"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">score</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'data-score'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="number">
+            <a href="#number">Number</a>
+          </h2>
+
+          <p>Changes the number of stars.</p>
+
+          <div class="demo">
+            <div id="number-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">number</span><span class="o">:</span> <span class="mi">10</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="scoreName">
+            <a href="#scoreName">Score Name</a>
+          </h2>
+
+          <p>
+            Changes the name of the hidden <a href="#score">score</a> field.<br />
+            It can be submited on a <code>form</code> or captured via JavaScript to be sended via ajax.
+          </p>
+
+          <div class="demo">
+            <div id="scoreName-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">scoreName</span><span class="o">:</span> <span class="s1">'entity[score]'</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="number-callback">
+            <a href="#number-callback">Number callback</a>
+          </h2>
+
+          <p>You can receive initialize the number of star dynamic using callback to set it.</p>
+
+          <div class="demo">
+            <div id="number-callback-demo" data-number="3"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"star"</span> <span class="na">data-number=</span><span class="s">"3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">number</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'data-number'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="readOnly">
+            <a href="#readOnly">Read Only</a>
+          </h2>
+
+          <p>
+            You can prevent users to vote.
+            It can be applied with or without <a href="#score">score</a> and all stars will receives the <a href="#hints">hint</a> corresponding of the selected star.<br />
+            Stop the mouse over the stars to see:
+          </p>
+
+          <div class="demo">
+            <div id="readOnly-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">score</span><span class="o">:</span> <span class="mi">3</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="readOnly-callback">
+            <a href="#readOnly-callback">Read Only callback</a>
+          </h2>
+
+          <p>
+            You can decide if the rating will be <a href="#readOnly">readOnly</a> dynamically returning <code>true</code> of <code>false</code> on the callback.
+          </p>
+
+          <div class="demo">
+            <div id="readOnly-callback-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">readOnly</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'true becomes readOnly'</span> <span class="o">==</span> <span class="s1">'true becomes readOnly'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="noRatedMsg">
+            <a href="#noRatedMsg">No Rated Message</a>
+          </h2>
+
+          <p>
+            If <a href="#readOnly">readOnly</a> is enabled and there is no <a href="#score">score</a>, the hint "Not rated yet!" will be shown for all stars. But you can change it.<br />
+            Stop the mouse over the star to see:
+          </p>
+
+          <div class="demo">
+            <div id="noRatedMsg-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">readOnly</span>  <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">noRatedMsg</span><span class="o">:</span> <span class="s2">"I'am readOnly and a haven't rated yet!"</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="halfShow">
+            <a href="#halfShow">Half Show</a>
+          </h2>
+
+          <p>
+            You can represent a float <a href="#score">score</a> as a half star icon.<br />
+            This options is just to show the half star. If you want enable the vote with half star on mouseover, please check the option <a href="#half">half</a>.<br />
+            The round options showed belows is just for the icon, the score keeps as float always.
+          </p>
+
+          <h3>Enabled</h3>
+
+          <p>The round rules are:<br />
+
+          <ul>
+            <li>Down: score <= x.25 the star will be rounded down;</li>
+            <li>Half: score >= x.26 and <= x.75 the star will be a half star;</li>
+            <li>Up: score >= x.76 the star will be rounded up.</li>
+          </ul>
+
+          <div class="demo">
+            <div id="halfShow-true-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty({ score</span><span class="o">:</span> <span class="mf">3.26</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h3>Disabled</h3>
+
+          <p>The rules becomes:</p>
+
+          <ul>
+            <li>Down: score < x.6 the star will be rounded down;</li>
+            <li>Up: score >= x.6 the star will be rounded up;</li>
+          </ul>
+
+          <div class="demo">
+            <div id="halfShow-false-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#halfShow-demo'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">halfShow</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">score</span>   <span class="o">:</span> <span class="mf">3.26</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="round">
+            <a href="#round">Round</a>
+          </h2>
+
+          <p>
+            You can customize the round values of the <a href="#halfShow">halfShow</a> option.<br />
+            We changed the default interval [x.25 .. x.76], now x.26 will round down instead of to be a half star.<br />
+            Remember that the <code>full</code> attribute is used only when <a href="#halfShow">halfShow</a> is disabled.<br />
+            You can specify just the attribute you want to change and keeps the others as default.
+          </p>
+
+          <div class="demo">
+            <div id="round-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">round</span><span class="o">:</span> <span class="p">{</span> <span class="nx">down</span><span class="o">:</span> <span class="p">.</span><span class="mi">26</span><span class="p">,</span> <span class="nx">full</span><span class="o">:</span> <span class="p">.</span><span class="mi">6</span><span class="p">,</span> <span class="nx">up</span><span class="o">:</span> <span class="p">.</span><span class="mi">76</span> <span class="p">},</span>
+  <span class="nx">score</span><span class="o">:</span> <span class="mf">3.26</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+          <h2 id="half">
+            <a href="#half">Half</a>
+          </h2>
+
+          <p>Enables the half star mouseover to be possible vote with half values.<br />
+            If you want to vote with more precison than half value, please check the option <a href="#precision">precision</a>.
+          </p>
+
+          <div class="demo">
+            <div id="half-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">half</span><span class="o">:</span> <span class="kc">true</span> });</span>
+</pre>
+</div>
+
+        <h2 id="click">
+            <a href="#click">Click</a>
+          </h2>
+
+          <p>
+            Callback to handle the <a href="score">score</a> and the click <code>event</code> on click action.<br />
+            You can mension the Raty element (DOM) itself using <code>this</code>.
+          </p>
+
+          <div class="demo">
+            <div id="click-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s1">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+            <h2 id="hints">
+            <a href="#hints">Hints</a>
+          </h2>
+
+          <p>
+            Changes the hint for each star by it position on array.<br />
+            If you pass <code>null</code>, the <a href="#score">score</a> value of this star will be the hint.<br />
+            If you pass <code>undefined</code>, this position will be ignored and receive the default hint.<br />
+          </p>
+
+          <div class="demo">
+            <div id="hints-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">hints</span><span class="o">:</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="s1">'*_*'</span><span class="p">]});</span>
+</pre>
+</div>
+
+          <h2 id="path">
+            <a href="#path">Path</a>
+          </h2>
+
+          <p>
+            Changes the path where your icons are located.<br />
+            Set it only if you want the same path for all icons.<br />
+            Don't mind about the last slash of the path, if you don't put it, we will set it for you.
+          </p>
+
+          <div class="demo">
+            <div id="path-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">'assets/images'</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <p>Now we have the following full paths: <code>assets/images/star-on.png</code>, <code>assets/images/star-off.png</code> and so.</p>
+
+          <h2 id="star-off-and-star-on">
+            <a href="#star-off-and-star-on">Star Off and Star On</a>
+          </h2>
+
+          <p>Changes the name of the star on and star off.</p>
+
+          <div class="demo">
+            <div id="star-off-and-star-on-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">starOff</span><span class="o">:</span> <span class="s1">'img/off.png'</span><span class="p">,</span>
+  <span class="nx">starOn</span> <span class="o">:</span> <span class="s1">'http://icons.com/on.png'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="cancel">
+            <a href="#cancel">Cancel</a>
+          </h2>
+
+          <p>
+            Add a cancel button on the left side of the stars to cacel the <a href="#score">score</a>.<br />
+            Inside the <a href="#click">click</a> callback the argument <code>code</code> receives the value <code>null</code> when we click on cancel button.
+          </p>
+
+          <div class="demo">
+            <div id="cancel-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">cancel</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
+</pre>
+</div>
+
+        <h2 id="cancelHint">
+            <a href="#cancelHint">Cancel Hint</a>
+          </h2>
+
+          <p>
+            Like the stars, the <a href="#cancel">cancel</a> button have a hint too, and you can change it.<br />
+            Stop the mouse over the cancel button to see:
+          </p>
+
+          <div class="demo">
+            <div id="cancelHint-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">cancelHint</span><span class="o">:</span> <span class="s1">'My cancel hint!'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="cancelPlace">
+            <a href="#cancelPlace">Cancel Place</a>
+          </h2>
+
+          <p>Changes the <a href="#cancel">cancel</a> button to the right side.</p>
+
+          <div class="demo">
+            <div id="cancelPlace-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">cancelPlace</span><span class="o">:</span> <span class="s1">'right'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="cancel-off-and-cancel-on">
+            <a href="#cancel-off-and-cancel-on">Cancel off and Cancel On</a>
+          </h2>
+
+          <p>Changes the off and on icon of the <a href="#cancel">cancel</a> button.</p>
+
+          <div class="demo">
+            <div id="cancel-off-and-cancel-on-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span>   <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">cancelOff</span><span class="o">:</span> <span class="s1">'off.png'</span><span class="p">,</span>
+  <span class="nx">cancelOn</span> <span class="o">:</span> <span class="s1">'on.png'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="iconRange">
+            <a href="#iconRange">Icon Range</a>
+          </h2>
+
+          <p>
+            It's an array of objects where each one represents a custom icon.<br />
+            The <code>range</code> attribute is until wich position the icon will be displayed.<br />
+            The <code>on</code> attribute is the active icon.<br />
+            The <code>off</code> attribute is the inactive icon.<br />
+            The <code>range</code> attribute must be in an ascending order.<br />
+            If the value <code>on</code> or <code>off</code> is omitted then the attribute <code>starOn</code> and <code>starOff</code> will be used.
+          </p>
+
+          <div class="demo">
+            <div id="iconRange-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">iconRange</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'face-a-on.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'face-a-off.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'face-b-on.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'face-b-off.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'face-c-on.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'face-c-off.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'face-d-on.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'face-d-off.png'</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="size">
+            <a href="#size">Size</a>
+          </h2>
+
+          <p>
+            The size in pixel of the icon you will to use.<br />
+            It changes the size for all icons.
+          </p>
+
+          <div class="demo">
+            <div id="size-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span>   <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">cancelOff</span><span class="o">:</span> <span class="s1">'cancel-off-big.png'</span><span class="p">,</span>
+  <span class="nx">cancelOn</span> <span class="o">:</span> <span class="s1">'cancel-on-big.png'</span><span class="p">,</span>
+  <span class="nx">half</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">size</span>     <span class="o">:</span> <span class="mi">24</span><span class="p">,</span>
+  <span class="nx">starHalf</span> <span class="o">:</span> <span class="s1">'star-half-big.png'</span><span class="p">,</span>
+  <span class="nx">starOff</span>  <span class="o">:</span> <span class="s1">'star-off-big.png'</span><span class="p">,</span>
+  <span class="nx">starOn</span>   <span class="o">:</span> <span class="s1">'star-on-big.png'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="width">
+            <a href="#width">Width</a>
+          </h2>
+
+          <p>
+            By default Raty calculates the width calculating the <a href="#size">size</a> of the stars plus the spaces.<br />
+            But for some reason the calculated width not fits on your layout, you can change it manually.<br />
+            If you want to avoid that Raty applies the style width on you wrapper, set it to <code>false</code>.
+
+          </p>
+
+          <div class="demo">
+            <div id="width-demo" style="background-color: #FFF"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">150</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="target">
+            <a href="#target">Target</a>
+          </h2>
+
+          <p>
+            Some place to display the <a href="#hints">hints</a> or the <a href="#cancelHint">cancelHint</a>.
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">target</span><span class="o">:</span> <span class="s1">'#hint'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <p>Your target can be a <code>div</code>.</p>
+
+          <div class="demo">
+            <div id="target-div-demo" class="target-demo"></div>
+            <div id="target-div-hint" class="hint"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"hint"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre>
+</div>
+
+          <p>Your target can be a <code>text</code> field.</p>
+
+          <div class="demo">
+            <div id="target-text-demo" class="target-demo"></div>
+            <input id="target-text-hint" type="text" class="hint" />
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"hint"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;</span>
+</pre>
+</div>
+
+          <p>Your target can be a <code>textarea</code>.</p>
+
+          <div class="demo">
+            <div id="target-textarea-demo" class="target-demo"></div>
+            <textarea id="target-textarea-hint" class="hint"></textarea>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"hint"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+</pre>
+</div>
+
+          <p>Your target can be a <code>select</code>.</p>
+
+          <div class="demo">
+            <div id="target-select-demo" class="target-demo"></div>
+
+            <select id="target-select-hint" class="hint">
+              <option value="">--</option>
+              <option value="bad">bad</option>
+              <option value="poor">poor</option>
+              <option value="regular">regular</option>
+              <option value="good">good</option>
+              <option value="gorgeous">gorgeous</option>
+            </select>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"hint"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>--<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"bad"</span><span class="nt">&gt;</span>bad<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"poor"</span><span class="nt">&gt;</span>poor<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"regular"</span><span class="nt">&gt;</span>regular<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"good"</span><span class="nt">&gt;</span>good<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"gorgeous"</span><span class="nt">&gt;</span>gorgeous<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</pre>
+</div>
+
+
+          <h2 id="targetType">
+            <a href="#targetType">Target Type</a>
+          </h2>
+
+          <p>
+            You have the option <code>hint</code> or <code>score</code> to chosse.<br />
+            You can choose to see the <a href="#score">score</a> instead the <a href="#hints">hints</a> using the value <code>score</code>.<br />
+            For the <a href="#cancel">cancel</a> button the value is empty.
+          </p>
+
+          <div class="demo">
+            <div id="targetType-demo" class="target-demo"></div>
+            <div id="targetType-hint" class="hint"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"hint"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#targetType-demo'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">target</span>    <span class="o">:</span> <span class="s1">'#hint'</span><span class="p">,</span>
+  <span class="nx">targetType</span><span class="o">:</span> <span class="s1">'number'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="targetKeep">
+            <a href="#targetKeep">Target Keep</a>
+          </h2>
+
+          <p>
+            If you want to keep the <a href="#score">score</a> into the hint box after you do the rating, turn on this option.
+          </p>
+
+          <div class="demo">
+            <div id="targetKeep-demo" class="target-demo"></div>
+            <div id="targetKeep-hint" class="hint"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"hint"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre>
+</div>
+
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">target</span>    <span class="o">:</span> <span class="s1">'#hint'</span><span class="p">,</span>
+  <span class="nx">targetKeep</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="targetText">
+            <a href="#targetText">Target Text</a>
+          </h2>
+
+          <p>
+            Normally all <a href="#target">target</a> is keeped blank if you don't use the <a href="#targetKeep">targetKeep</a> option.<br />
+            If you want a default content you can use this option.
+          </p>
+
+          <div class="demo">
+            <div id="targetText-demo" class="target-demo"></div>
+            <div id="targetText-hint" class="hint"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">target</span>    <span class="o">:</span> <span class="s1">'#hint'</span><span class="p">,</span>
+  <span class="nx">targetText</span><span class="o">:</span> <span class="s1">'--'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="targetFormat">
+            <a href="#targetFormat">Target Format</a>
+          </h2>
+
+          <p>
+            You can choose a template to be merged with your hints and displayed on <a href="#target">target</a>.
+          </p>
+
+          <div class="demo">
+            <div id="targetFormat-demo" class="target-demo"></div>
+            <div id="targetFormat-hint" class="hint"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">target</span>      <span class="o">:</span> <span class="s1">'#hint'</span><span class="p">,</span>
+  <span class="nx">targetFormat</span><span class="o">:</span> <span class="s1">'Rating: {score}'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="mouseover">
+            <a href="#mouseover">Mouseover</a>
+          </h2>
+
+          <p>
+            You can handle the action on mouseover.<br />
+            The arguments is the same of the <a href="#click">click</a> callback.<br />
+            The options <a href="#target">target</a>, <a href="#targetFormat">targetFormat</a>, <a href="#targetKeep">targetKeep</a>, <a href="#targetText">targetText</a> and <a href="#targetType">targetType</a> are abstractions of this callback. You can do it by yourself.
+          </p>
+
+          <div class="demo">
+            <div id="mouseover-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">mouseover</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="mouseout">
+            <a href="#mouseout">Mouseout</a>
+          </h2>
+
+          <p>
+            You can handle the action on mouseout.<br />
+            The arguments is the same of the <a href="#mouseover">mouseover</a> callback.
+          </p>
+
+          <div class="demo">
+            <div id="mouseout-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">mouseout</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="precision">
+            <a href="#precision">Precision</a>
+          </h2>
+
+          <p>
+            You can get the right position of the cursor to get a precision <a href="#score">score</a>.<br />
+            The star is represented just as half and full star, but the <a href="#score">score</a> is saved with precision.<br />
+            When you enable this option the <a href="#half">half</a> options is automatically enabled and <a href="#targetType">targetType</a> is changed to <code>score</code>.
+          </p>
+
+          <div class="demo">
+            <div id="precision-demo" class="target-demo"></div>
+            <div id="precision-hint" class="hint"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">precision</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="space">
+            <a href="#space">Space</a>
+          </h2>
+
+          <p>You can take off the space between the star.</p>
+
+          <div class="demo">
+            <div id="space-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">space</span><span class="o">:</span> <span class="kc">false</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="xxx">
+            <a href="#xxx">xxx</a>
+          </h2>
+
+          <p>
+
+          </p>
+
+          <div class="demo">
+            <div id="xxx-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+
+</pre>
+</div>
+
+
+
+
+
+
+
+          <h2 id="global">
+            <a href="#global">Changing the settings globally</a>
+          </h2>
+
+          <p>
+            You can change any option mentioning the scope <code>$.fn.raty.defaults.</code> + <i>option_name</i>. It must be called before you bind the plugin.
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">${globally_key_1}</span> <span class="o">=</span> <span class="s1">${globally_value_1}</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">${globally_key_2}</span> <span class="o">=</span> <span class="s1">${globally_value_1}</span><span class="p">;</span>
+</pre>
+</div>
+
+          <h2 id="options">
+            <a href="#options">Options</a>
+          </h2>
+
+          <div id="xpto" class="option">
+            <div>xpto: <span>'xpto'</span></div>
+            <p>xpto</p>
+          </div>
+
+          <h2 id="functions">
+            <a href="#functions">Functions</a>
+          </h2>
+
+          <div id="set" class="function">
+
+<div class="highlight">
+<pre>
+
+</pre>
+</div>
+
+            <p>xpto</p>
+          </div>
+
+          <h2 id="tests">
+            <a href="#tests">Tests</a>
+          </h2>
+
+          <p>
+            This plugin is tested to work better.
+            <a href="http://wbotelhos.com/raty/spec/run.html" target="_blank">Check it out!</a>
+          </p>
+
+        </article>
+      </section>
+
+      <div class="author">
+        <img title="Washington Botelho" src="http://www.gravatar.com/avatar/00c9b483d3c58a12c5f256cf2770d0b8?d=mm" alt="">
+        <div class="biography">
+          <p>
+            Ruby, Java and Python Developer in <a href="http://r7.com" title="R7.com" target="_blank">R7.com</a> Portal.<br />
+            Bachelor's in Information Systems and certified OCJA 1.0 and OCJP 6.<br />
+            Helper and learner of the open source community, and designer adventurer.<br />
+            Also has a passion for dance, skate, jiu-jitsu and Counter Strike Source. (:
+          </p>
+        </div>
+
+        <div class="social">
+          <a href="http://github.com/wbotelhos" title="http://github.com/wbotelhos" target="_blank" class="github"></a>
+          <a href="http://linkedin.com/in/wbotelhos" title="http://linkedin.com/in/wbotelhos" target="_blank" class="linkedin"></a>
+          <a href="http://twitter.com/wbotelhos" title="http://twitter.com/wbotelhos" target="_blank" class="twitter"></a>
+          <a href="http://facebook.com/wbotelhos" title="http://facebook.com/wbotelhos" target="_blank" class="facebook"></a>
+        </div>
+      </div>
+    </div>
+
+    <footer role="contentinfo">
+      &copy; 2010 <a href="http://wbotelhos.com" title="wbotelhos.com">wbotelhos.com</a>
+    </footer>
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+      $.fn.raty.defaults.path = 'lib/img';
+
+      $('#default-demo').raty();
+
+      $('#score-demo').raty({ score: 3 });
+
+      $('#number-demo').raty({ number: 10 });
+
+      $('#number-callback-demo').raty({
+        number: function() {
+          return $(this).attr('data-number');
+        }
+      });
+
+      $('#scoreName-demo').raty({ scoreName: 'entity[score]' });
+
+      $('#readOnly-demo').raty({ readOnly: true, score: 3 });
+
+      $('#readOnly-callback-demo').raty({
+        readOnly: function() {
+          return 'true becomes readOnly' == 'true becomes readOnly';
+        }
+      });
+
+      $('#noRatedMsg-demo').raty({
+        readOnly  : true,
+        noRatedMsg: "I'am readOnly and a haven't rated yet!"
+      });
+
+      $('#score-callback-demo').raty({
+        score: function() {
+          return $(this).attr('data-score');
+        }
+      });
+
+      $('#halfShow-true-demo').raty({ score: 3.26 });
+
+      $('#halfShow-false-demo').raty({
+        halfShow: false,
+        score   : 3.26
+      });
+
+      $('#half-demo').raty({ half: true });
+
+      $('#round-demo').raty({
+        round: { down: .26, full: .6, up: .76 },
+        score: 3.26
+      });
+
+      $('#click-demo').raty({
+        click: function(score, evt) {
+          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
+        }
+      });
+
+      $('#hints-demo').raty({ hints: ['a', null, '', undefined, '*_*']});
+
+      $('#cancel-demo').raty({ cancel: true });
+
+      $('#cancelHint-demo').raty({
+        cancel    : true,
+        cancelHint: 'My cancel hint!'
+      });
+
+      $('#cancelPlace-demo').raty({
+        cancel     : true,
+        cancelPlace: 'right'
+      });
+
+      $('#star-off-and-star-on-demo').raty({
+        path   : 'demo/img',
+        starOff: 'face-off.png',
+        starOn : 'face-b-on.png'
+      });
+
+      $('#cancel-off-and-cancel-on-demo').raty({
+        path     : null,
+        cancel   : true,
+        cancelOff: 'demo/img/face-a-off.png',
+        cancelOn : 'demo/img/face-a-on.png',
+        starOn   : 'lib/img/star-on.png',
+        starOff  : 'lib/img/star-off.png'
+      });
+
+      $('#iconRange-demo').raty({
+        path   : 'demo/img',
+        iconRange: [
+          { range: 2, on: 'face-a-on.png', off: 'face-a-off.png' },
+          { range: 3, on: 'face-b-on.png', off: 'face-b-off.png' },
+          { range: 4, on: 'face-c-on.png', off: 'face-c-off.png' },
+          { range: 5, on: 'face-d-on.png', off: 'face-d-off.png' }
+        ]
+      });
+
+      $('#size-demo').raty({
+        path     : 'demo/img',
+        cancel   : true,
+        cancelOff: 'cancel-off-big.png',
+        cancelOn : 'cancel-on-big.png',
+        half     : true,
+        size     : 24,
+        starHalf : 'star-half-big.png',
+        starOff  : 'star-off-big.png',
+        starOn   : 'star-on-big.png'
+      });
+
+      $('#width-demo').raty({ width: 150 });
+
+      $('#target-div-demo').raty({
+        cancel: true,
+        target: '#target-div-hint'
+      });
+
+      $('#target-text-demo').raty({
+        cancel: true,
+        target: '#target-text-hint'
+      });
+
+      $('#target-textarea-demo').raty({
+        cancel: true,
+        target: '#target-textarea-hint'
+      });
+
+      $('#target-select-demo').raty({
+        cancel: true,
+        target: '#target-select-hint'
+      });
+
+      $('#targetType-demo').raty({
+        cancel    : true,
+        target    : '#targetType-hint',
+        targetType: 'score'
+      });
+
+      $('#targetKeep-demo').raty({
+        cancel    : true,
+        target    : '#targetKeep-hint',
+        targetKeep: true
+      });
+
+      $('#targetText-demo').raty({
+        target    : '#targetText-hint',
+        targetText: '--'
+      });
+
+      $('#targetFormat-demo').raty({
+        target      : '#targetFormat-hint',
+        targetFormat: 'Rating: {score}'
+      });
+
+      $('#mouseover-demo').raty({
+        mouseover: function(score, evt) {
+          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
+        }
+      });
+
+      $('#mouseout-demo').raty({
+        mouseout: function(score, evt) {
+          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
+        }
+      });
+
+      $('#precision-demo').raty({
+        path      : 'demo/img',
+        cancelOff : 'cancel-off-big.png',
+        cancelOn  : 'cancel-on-big.png',
+        size      : 24,
+        starHalf  : 'star-half-big.png',
+        starOff   : 'star-off-big.png',
+        starOn    : 'star-on-big.png',
+        target    : '#precision-hint',
+        cancel    : true,
+        targetKeep: true,
+
+        precision : true
+      });
+
+      $('#space-demo').raty({ space: false });
+
+      $('#single-demo').raty({ single: true });
+    });
+  </script>
