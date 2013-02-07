@@ -1,14 +1,16 @@
-# jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
+# jQuery Raty - A Star Rating Plugin - [wbotelhos.com/raty](http://wbotelhos.com/raty)
 
 jQuery Raty is a plugin that generates a customizable star rating.
 
 ## Version
 
-	@version        2.5.0.rc1
-	@since          2010.06.11
-	@author         Washington Botelho
-	@documentation  wbotelhos.com/raty
-	@twitter        twitter.com/wbotelhos
+```
+@version        2.5.0.rc1
+@since          2010.06.11
+@author         Washington Botelho
+@documentation  wbotelhos.com/raty
+@twitter        twitter.com/wbotelhos
+```
 
 ## Required Files
 
@@ -16,68 +18,81 @@ jQuery Raty is a plugin that generates a customizable star rating.
 + star-on.png
 + star-off.png
 
-## Default values
+## Options
 
-	cancel       : false                                          // Show a button to cancel the rating or not.
-	cancelHint   : 'Cancel this rating!'                          // The hint information.
-	cancelOff    : 'cancel-off.png'                               // Name of the cancel image off.
-	cancelOn     : 'cancel-on.png'                                // Name of the cancel image on.
-	cancelPlace  : 'left'                                         // Position of the cancel button.
-	click        : undefined                                      // Callback for click actions.
-	half         : false                                          // Active the half star.
-	halfShow     : true                                           // Enables half star display.
-	hints        : ['bad', 'poor', 'regular', 'good', 'gorgeous'] // A hint information for default 5 stars.
-	iconRange    : undefined                                      // Object list representing each icon with position and names.
-	mouseover    : undefined                                      // Callback for mouseover actions.
-	noRatedMsg   : 'Not rated yet!'                               // A hint for no rated elements when it's read-only.
-	number       : 5                                              // Number of star.
-	numberMax    : 20                                             // Max of star.
-	path         : undefined                                      // Path of images.
-	precision    : false                                          // Enables the selection of a precision score.
-	readOnly     : false                                          // read-only or not.
-	round        : { down: .25, full: .6, up: .76 }               // Configuration to set the round rules.
-	score        : undefined                                      // Initial score value.
-	scoreName    : 'score'                                        // The name of target score.
-	single       : false                                          // Enables the single star selection.
-	size         : 16                                             // The icons size.
-	space        : true                                           // Puts space between the stars.
-	starHalf     : 'star-half.png'                                // The image of the half star.
-	starOff      : 'star-off.png'                                 // Name of the star image off.
-	starOn       : 'star-on.png'                                  // Name of the star image on.
-	target       : undefined                                      // Element selector where the rating will be displayed.
-	targetFormat : '{score}'                                      // Template to interpolate the score with some thing.
-	targetKeep   : false                                          // If the last choose value will be keeped on mouseout.
-	targetText   : ''                                             // Default value when there's no score or targetKeep is off.
-	targetType   : 'hint'                                         // What display on target element: hint or score.
-	width        : undefined                                      // The container width of the stars.
+```js
+cancel: false                                         // Creates a cancel button to cancel the rating.
+cancelHint: 'Cancel this rating!'                     // The cancel's button hint.
+cancelOff: 'cancel-off.png'                           // Icon used on active cancel.
+cancelOn: 'cancel-on.png'                             // Icon used inactive cancel.
+cancelPlace: 'left'                                   // Cancel's button position.
+click: undefined                                      // Callback executed on rating click.
+half: false                                           // Enables half star selection.
+halfShow: true                                        // Enables half star display.
+hints: ['bad', 'poor', 'regular', 'good', 'gorgeous'] // Hints used on each star.
+iconRange: undefined                                  // Object list with position and icon on and off to do a mixed icons.
+mouseout: undefined                                   // Callback executed on mouseout.
+mouseover: undefined                                  // Callback executed on mouseover.
+noRatedMsg: 'Not rated yet!'                          // Hint for no rated elements when it's readOnly.
+number: 5                                             // Number of stars that will be presented.
+numberMax: 20                                         // Max of star the option number can creates.
+path: undefined                                       // A global locate where the icon will be looked.
+precision: false                                      // Enables the selection of a precision score.
+readOnly: false                                       // Turns the rating read-only.
+round: { down: .25, full: .6, up: .76 }               // Included values attributes to do the score round math.
+score: undefined                                      // Initial rating.
+scoreName: 'score'                                    // Name of the hidden field that holds the score value.
+single: false                                         // Enables just a single star selection.
+size: 16                                              // The size of the icons that will be used.
+space: true                                           // Puts space between the icons.
+starHalf: 'star-half.png'                             // The name of the half star image.
+starOff: 'star-off.png'                               // Name of the star image off.
+starOn: 'star-on.png'                                 // Name of the star image on.
+target: undefined                                     // Element selector where the score will be displayed.
+targetFormat: '{score}'                               // Template to interpolate the score in.
+targetKeep: false                                     // If the last rating value will be keeped after mouseout.
+targetText: ''                                        // Default text setted on target.
+targetType: 'hint'                                    // Option to choose if target will receive hint o 'score' type.
+width: undefined                                      // Manually adjust the width for the project.
+```
 
 ## Usage
 
-	$('#star').raty();
+```html
+<div id="star"></div>
+```
 
-	<div id="star"></div>
+```js
+$('#star').raty();
+```
 
-	$('.star').raty();
+```html
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+```
 
-	<div class="star"></div>
-	<div class="star"></div>
-	<div class="star"></div>
+```js
+$('.star').raty();
+```
 
 ## Functions
 
-	$('#star').raty('score');                // Recovers the current score or undefined for no rated. Class returns an array of score.
+```js
+$('#star').raty('score');                   // Get the current score.
 
-	$('#star').raty('score', 3);             // Set the score to 3 stars.
+$('#star').raty('score', number);           // Set the score.
 
-	$('#star').raty('click', 2);             // Click on the second star.
+$('#star').raty('click', number);           // Click on some star.
 
-	$('.star').raty('readOnly', true);       // Adjusts all elements with class called 'star' for read-only.
+$('.star').raty('readOnly', boolean);       // Change the read-only state.
 
-	$('#star').raty('cancel', true);         // Cancel the rating. The second optional parameter enables the callback.
+$('#star').raty('cancel', boolean);         // Cancel the rating. The last param force the click callback.
 
-	$('#star').raty('reload');               // Reload the rating with the current configuration.
+$('#star').raty('reload');                  // Reload the rating with the current configuration.
 
-	$('#star').raty('set', { number: 10 });  // Reload the rating applying new configurations.
+$('#star').raty('set', { option: value });  // Reset the rating with new configurations.
+```
 
 ## Contributors
 
@@ -105,6 +120,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Buy me a coffee
+## Donate
 
-You can do it by [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=jQuery%20Raty). Thanks! (:
+You can do it via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=jQuery%20Raty). Thanks! (:
