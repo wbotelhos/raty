@@ -125,6 +125,25 @@
 </pre>
 </div>
 
+          <h2 id="numberMax">
+            <a href="#numberMax">Number Max</a>
+          </h2>
+
+          <p>Change the maximum of start that can be created.</p>
+
+          <div class="demo">
+            <div id="numberMax-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#numberMax-demo'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">numberMax</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="nx">number</span>   <span class="o">:</span> <span class="mi">500</span>
+<span class="p">});</span>
+</pre>
+</div>
+
           <h2 id="scoreName">
             <a href="#scoreName">Score Name</a>
           </h2>
@@ -286,6 +305,24 @@
 </pre>
 </div>
 
+          <h2 id="starHalf">
+            <a href="#starHalf">Star Half</a>
+          </h2>
+
+          <p>Changes the name of the half star.</p>
+
+          <div class="demo">
+            <div id="starHalf-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">half</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">starHalf</span><span class="o">:</span> <span class="s1">'half.png'</span>
+<span class="p">});</span>
+</pre>
+</div>
           <h2 id="round">
             <a href="#round">Round</a>
           </h2>
@@ -501,9 +538,7 @@
             It's an array of objects where each one represents a custom icon.<br />
             The <code>range</code> attribute is until wich position the icon will be displayed.<br />
             The <code>on</code> attribute is the active icon.<br />
-            The <code>off</code> attribute is the inactive icon.<br />
-            The <code>range</code> attribute must be in an ascending order.<br />
-            If the value <code>on</code> or <code>off</code> is omitted then the attribute <code>starOn</code> and <code>starOff</code> will be used.
+            The <code>off</code> attribute is the inactive icon.
           </p>
 
           <div class="demo">
@@ -514,14 +549,38 @@
 <pre>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">iconRange</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'face-a-on.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'face-a-off.png'</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'face-b-on.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'face-b-off.png'</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'face-c-on.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'face-c-off.png'</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'face-d-on.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'face-d-off.png'</span> <span class="p">}</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'1.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'0.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'2.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'0.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'3.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'0.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'4.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'0.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'5.png'</span><span class="p">,</span> <span class="nx">off</span><span class="o">:</span> <span class="s1">'0.png'</span> <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">});</span>
 </pre>
 </div>
+
+          <p>
+            You can use an interval of the same icon jumping some number.<br />
+            The <code>range</code> attribute must be in an ascending order.<br />
+            If the value <code>on</code> or <code>off</code> is omitted then the attribute <code>starOn</code> and <code>starOff</code> will be used.
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#iconRange-demo'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">starOff</span>  <span class="o">:</span> <span class="s1">'0.png'</span><span class="p">,</span>
+  <span class="nx">iconRange</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'1.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'3.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'5.png'</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <p>
+            Now we have all off icons as <code>0.png</code>, icons 1 and 2 as <code>1.png</code>, icon 3 as <code>3.png</code> and icons 4 and 5 as <code>5.png</code>.
+          </p>
 
           <h2 id="size">
             <a href="#size">Size</a>
@@ -847,29 +906,21 @@
 </pre>
 </div>
 
-          <h2 id="xxx">
-            <a href="#xxx">xxx</a>
+          <h2 id="single">
+            <a href="#single">Single</a>
           </h2>
 
-          <p>
-
-          </p>
+          <p>You can turn on just the mouseovered star instead all from the first until the mouseovered one.</p>
 
           <div class="demo">
-            <div id="xxx-demo"></div>
+            <div id="single-demo"></div>
           </div>
 
 <div class="highlight">
 <pre>
-
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">single</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
 </pre>
 </div>
-
-
-
-
-
-
 
           <h2 id="global">
             <a href="#global">Changing the settings globally</a>
@@ -881,8 +932,8 @@
 
 <div class="highlight">
 <pre>
-<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">${globally_key_1}</span> <span class="o">=</span> <span class="s1">${globally_value_1}</span><span class="p">;</span>
-<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">${globally_key_2}</span> <span class="o">=</span> <span class="s1">${globally_value_1}</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="s1">assets</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">cancel</span> <span class="o">=</span> <span class="s1">true</span><span class="p">;</span>
 </pre>
 </div>
 
@@ -890,24 +941,256 @@
             <a href="#options">Options</a>
           </h2>
 
-          <div id="xpto" class="option">
-            <div>xpto: <span>'xpto'</span></div>
-            <p>xpto</p>
+          <div id="cancel-option" class="option">
+            <div>cancel: <span>false</span></div>
+            <p>Creates a cancel button to cancel the rating.</p>
+          </div>
+
+          <div id="cancelHint-option" class="option">
+            <div>cancelHint: <span>'Cancel this rating!'</span></div>
+            <p>The cancel's button hint.</p>
+          </div>
+
+          <div id="cancelOff-option" class="option">
+            <div>cancelOff: <span>'cancel-off.png'</span></div>
+            <p>Icon used on active cancel.</p>
+          </div>
+
+          <div id="cancelOn-option" class="option">
+            <div>cancelOn: <span>'cancel-on.png'</span></div>
+            <p>Icon used inactive cancel.</p>
+          </div>
+
+          <div id="cancelPlace-option" class="option">
+            <div>cancelPlace: <span>'left'</span></div>
+            <p>Cancel's button position.</p>
+          </div>
+
+          <div id="click-option" class="option">
+            <div>click: <span>undefined</span></div>
+            <p>Callback executed on rating click.</p>
+          </div>
+
+          <div id="half-option" class="option">
+            <div>half: <span>false</span></div>
+            <p>Enables half star selection.</p>
+          </div>
+
+          <div id="halfShow-option" class="option">
+            <div>halfShow: <span>true</span></div>
+            <p>Enables half star display.</p>
+          </div>
+
+          <div id="hints-option" class="option">
+            <div>hints: <span>['bad', 'poor', 'regular', 'good', 'gorgeous']</span></div>
+            <p>Hints used on each star.</p>
+          </div>
+
+          <div id="iconRange-option" class="option">
+            <div>iconRange: <span>undefined</span></div>
+            <p>Object list with position and icon on and off to do a mixed icons.</p>
+          </div>
+
+          <div id="mouseout-option" class="option">
+            <div>mouseout: <span>undefined</span></div>
+            <p>Callback executed on mouseout.</p>
+          </div>
+
+          <div id="mouseover-option" class="option">
+            <div>mouseover: <span>undefined</span></div>
+            <p>Callback executed on mouseover.</p>
+          </div>
+
+          <div id="noRatedMsg-option" class="option">
+            <div>noRatedMsg: <span>'Not rated yet!'</span></div>
+            <p>Hint for no rated elements when it's <a href="#readOnly-option">readOnly</a>.</p>
+          </div>
+
+          <div id="number-option" class="option">
+            <div>number: <span>5</span></div>
+            <p>Number of stars that will be presented.</p>
+          </div>
+
+          <div id="numberMax-option" class="option">
+            <div>numberMax: <span>20</span></div>
+            <p>Max of star the option <a href="#number-option">number</a> can creates.</p>
+          </div>
+
+          <div id="path-option" class="option">
+            <div>path: <span>undefined</span></div>
+            <p>A global locate where the icon will be looked.</p>
+          </div>
+
+          <div id="precision-option" class="option">
+            <div>precision: <span>false</span></div>
+            <p>Enables the selection of a precision score.</p>
+          </div>
+
+          <div id="readOnly-option" class="option">
+            <div>readOnly: <span>false</span></div>
+            <p>Turns the rating read-only.</p>
+          </div>
+
+          <div id="round-option" class="option">
+            <div>round: <span>{ down: .25, full: .6, up: .76 }</span></div>
+            <p>Included values attributes to do the <a href="#score-option">score</a> round math.</p>
+          </div>
+
+          <div id="xpto-option" class="option">
+            <div>score: <span>undefined</span></div>
+            <p>Initial rating.</p>
+          </div>
+
+          <div id="scoreName-option" class="option">
+            <div>scoreName: <span>'score'</span></div>
+            <p>Name of the hidden field that holds the score value.</p>
+          </div>
+
+          <div id="single-option" class="option">
+            <div>single: <span>false</span></div>
+            <p>Enables just a single star selection.</p>
+          </div>
+
+          <div id="size-option" class="option">
+            <div>size: <span>16</span></div>
+            <p>The size of the icons that will be used.</p>
+          </div>
+
+          <div id="space-option" class="option">
+            <div>space: <span>true</span></div>
+            <p>Puts space between the icons.</p>
+          </div>
+
+          <div id="starHalf-option" class="option">
+            <div>starHalf: <span>'star-half.png'</span></div>
+            <p>The name of the half star image.</p>
+          </div>
+
+          <div id="starOff-option" class="option">
+            <div>starOff: <span>'star-off.png'</span></div>
+            <p>Name of the star image off.</p>
+          </div>
+
+          <div id="starOn-option" class="option">
+            <div>starOn: <span>'star-on.png'</span></div>
+            <p>Name of the star image on.</p>
+          </div>
+
+          <div id="target-option" class="option">
+            <div>target: <span>undefined</span></div>
+            <p>Element selector where the <a href="#score-option">score</a> will be displayed.</p>
+          </div>
+
+          <div id="targetFormat-option" class="option">
+            <div>targetFormat: <span>'{score}'</span></div>
+            <p>Template to interpolate the <a href="#score-option">score</a> in.</p>
+          </div>
+
+          <div id="targetKeep-option" class="option">
+            <div>targetKeep: <span>false</span></div>
+            <p>If the last rating value will be keeped after mouseout.</p>
+          </div>
+
+          <div id="targetText-option" class="option">
+            <div>targetText: <span>''</span></div>
+            <p>Default text setted on <a href="#target-demo">target</a>.</p>
+          </div>
+
+          <div id="targetType-option" class="option">
+            <div>targetType: <span>'hint'</span></div>
+            <p>Option to choose if <a href="#target-demo">target</a> will receive hint o 'score' type.</p>
+          </div>
+
+          <div id="width-option" class="option">
+            <div>width: <span>undefined</span></div>
+            <p>Manually adjust the width for the project.</p>
           </div>
 
           <h2 id="functions">
             <a href="#functions">Functions</a>
           </h2>
 
-          <div id="set" class="function">
-
+            <div id="score-get-function" class="function">
 <div class="highlight">
 <pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'score'</span><span class="p">);</span>
+</pre>
+</div>
+              <p>Get the current score. If there is no score then <code>undefined</code> will be returned.</p>
+            </div>
 
+            <div id="score-set-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'score'</span><span class="p">,</span> <span class="nx">number</span><span class="p">);</span>
 </pre>
 </div>
 
-            <p>xpto</p>
+              <p>Set a score.</p>
+            </div>
+
+            <div id="click-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">number</span><span class="p">);</span>
+</pre>
+</div>
+
+              <p>Click on some star. It always call the <a href="#click">click</a> callback if it exists.</p>
+            </div>
+
+            <div id="readOnly-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'readOnly'</span><span class="p">,</span> <span class="kr">boolean</span><span class="p">);</span>
+</pre>
+</div>
+
+              <p>Change the read-only state.</p>
+            </div>
+
+            <div id="cancel-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'cancel'</span><span class="p">,</span> <span class="kr">boolean</span><span class="p">);</span>
+</pre>
+</div>
+
+              <p>Cancel the rating. The boolean parameter tells if the <a href="#click">click</a> will be called or not. If you ommit it, <code>false</code> it will be.</p>
+            </div>
+
+            <div id="reload-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'reload'</span><span class="p">);</span>
+</pre>
+</div>
+
+              <p>Reload the rating with the same configuration it was binded.</p>
+            </div>
+
+            <div id="set-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'set'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">option</span><span class="o">:</span> <span class="nx">value</span> <span class="p">});</span>
+</pre>
+</div>
+
+              <p>Reset the rating with new configurations. Only options especified will be overrided.</p>
+            </div>
+
+            <br />
+
+          <div class="demo">
+            <div id="function-demo" class="target-demo"></div>
+            <div id="function-hint" class="hint"></div>
+          </div>
+
+          <div class="demo">
+            <label for="score-function-demo">score:</label>
+            <input id="score-function-demo" type="text" value="3" />
+
+            <a id="score-action" href="javascript:void(0);" title="score" class="run">run</a>
           </div>
 
           <h2 id="tests">
@@ -957,6 +1240,11 @@
 
       $('#number-demo').raty({ number: 10 });
 
+      $('#numberMax-demo').raty({
+        numberMax: 5,
+        number   : 500
+      });
+
       $('#number-callback-demo').raty({
         number: function() {
           return $(this).attr('data-number');
@@ -991,6 +1279,15 @@
         score   : 3.26
       });
 
+      $('#starHalf-demo').raty({
+        path    : 'demo/img',
+        half    : true,
+        starOff : 'cookie-off.png',
+        starOn  : 'cookie-on.png',
+
+        starHalf: 'cookie-half.png'
+      });
+
       $('#half-demo').raty({ half: true });
 
       $('#round-demo').raty({
@@ -1020,26 +1317,27 @@
 
       $('#star-off-and-star-on-demo').raty({
         path   : 'demo/img',
-        starOff: 'face-off.png',
-        starOn : 'face-b-on.png'
+        starOff: 'off.png',
+        starOn : 'on.png'
       });
 
       $('#cancel-off-and-cancel-on-demo').raty({
         path     : null,
         cancel   : true,
-        cancelOff: 'demo/img/face-a-off.png',
-        cancelOn : 'demo/img/face-a-on.png',
+        cancelOff: 'demo/img/cancel-custom-off.png',
+        cancelOn : 'demo/img/cancel-custom-on.png',
         starOn   : 'lib/img/star-on.png',
         starOff  : 'lib/img/star-off.png'
       });
 
       $('#iconRange-demo').raty({
-        path   : 'demo/img',
+        path     : 'demo/img',
         iconRange: [
-          { range: 2, on: 'face-a-on.png', off: 'face-a-off.png' },
-          { range: 3, on: 'face-b-on.png', off: 'face-b-off.png' },
-          { range: 4, on: 'face-c-on.png', off: 'face-c-off.png' },
-          { range: 5, on: 'face-d-on.png', off: 'face-d-off.png' }
+          { range: 1, on: '1.png', off: '0.png' },
+          { range: 2, on: '2.png', off: '0.png' },
+          { range: 3, on: '3.png', off: '0.png' },
+          { range: 4, on: '4.png', off: '0.png' },
+          { range: 5, on: '5.png', off: '0.png' }
         ]
       });
 
@@ -1129,5 +1427,20 @@
       $('#space-demo').raty({ space: false });
 
       $('#single-demo').raty({ single: true });
+
+      $('#function-demo').raty({
+        path      : 'demo/img',
+        cancelOff : 'cancel-off-big.png',
+        cancelOn  : 'cancel-on-big.png',
+        size      : 24,
+        starHalf  : 'star-half-big.png',
+        starOff   : 'star-off-big.png',
+        starOn    : 'star-on-big.png',
+        target    : '#function-hint',
+        cancel    : true,
+        targetKeep: true,
+
+        precision : true
+      });
     });
   </script>
