@@ -2580,11 +2580,41 @@ describe('Raty', function() {
         });
 
         // when
-        self.raty('click', 5);
+        self.raty('click', 1);
 
         // then
         expect(self.children('img')).toHaveAttr('src', 'star-on.png');
         expect(self.data('clicked')).toBeTruthy();
+      });
+
+      it ('receives the score', function() {
+        // given
+        var self = $('#element').raty({
+          click: function(score) {
+            $(this).data('score', score);
+          }
+        });
+
+        // when
+        self.raty('click', 1);
+
+        // then
+        expect(self.data('score')).toEqual(1);
+      });
+
+      it ('receives the event', function() {
+        // given
+        var self = $('#element').raty({
+          click: function(score, evt) {
+            $(this).data('evt', evt);
+          }
+        });
+
+        // when
+        self.raty('click', 1);
+
+        // then
+        expect(self.data('evt').type).toEqual('click');
       });
 
       describe('with :readOnly', function() {
@@ -2593,7 +2623,7 @@ describe('Raty', function() {
           var self = $('#element').raty({ readOnly: true });
 
           // when
-          self.raty('click', 5);
+          self.raty('click', 1);
 
           // then
           expect(self.children('img')).toHaveAttr('src', 'star-off.png');
