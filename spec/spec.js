@@ -563,6 +563,17 @@ describe('Raty', function() {
       });
     });
 
+    it ('accepts callback', function() {
+      // given
+      var self = $('#element');
+
+      // when
+      self.raty({ scoreName: function() { return 'custom'; } });
+
+      // then
+      expect(self.data('settings').scoreName).toEqual('custom');
+    });
+
     describe('#readOnly', function() {
       it ('Applies "Not rated yet!" on stars', function() {
         // given
@@ -584,6 +595,17 @@ describe('Raty', function() {
 
         // then
         expect(self).toHaveCss({ cursor: 'default' });
+      });
+
+      it ('accepts callback', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ readOnly: function() { return true; } });
+
+        // then
+        expect(self.data('settings').readOnly).toEqual(true);
       });
 
       it ('avoids trigger mouseover', function() {
