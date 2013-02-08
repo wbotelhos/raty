@@ -1188,9 +1188,61 @@
 
           <div class="demo">
             <label for="score-function-demo">score:</label>
-            <input id="score-function-demo" type="text" value="3" />
+            <input id="score-function-demo" type="text" value="1" />
 
             <a id="score-action" href="javascript:void(0);" title="score" class="run">run</a>
+          </div>
+
+          <div class="demo">
+            <label for="click-function-demo">click:</label>
+            <input id="click-function-demo" type="text" value="2" />
+
+            <a id="click-action" href="javascript:void(0);" title="click" class="run">run</a>
+          </div>
+
+          <div class="demo">
+            <label for="readOnly-function-demo">readOnly:</label>
+            <input id="readOnly-function-demo" type="text" value="true" />
+
+            <a id="readOnly-action" href="javascript:void(0);" title="readOnly" class="run">run</a>
+          </div>
+
+          <div class="demo">
+            <label for="cancel-function-demo">cancel:</label>
+            <input id="cancel-function-demo" type="text" value="true" disabled="disabled" />
+
+            <label for="cancel-function-trigger-demo">trigger:</label>
+            <input id="cancel-function-trigger-demo" type="text" value="true" />
+
+            <a id="cancel-action" href="javascript:void(0);" title="cancel" class="run">run</a>
+          </div>
+
+          <div class="demo">
+            <label for="reload-function-demo">reload:</label>
+            <input id="reload-function-demo" type="text" value="true" disabled="disabled" />
+
+            <a id="reload-action" href="javascript:void(0);" title="reload" class="run">run</a>
+          </div>
+
+          <div class="demo">
+            <label for="score-get-function-demo">score:</label>
+            <input id="score-get-function-demo" type="text" value="get" disabled="disabled" />
+
+            <a id="score-get-action" href="javascript:void(0);" title="get score" class="run">run</a>
+          </div>
+
+          <div class="demo">
+            <label for="score-set-function-demo">score:</label>
+            <input id="score-set-function-demo" type="text" value="3" />
+
+            <a id="score-set-action" href="javascript:void(0);" title="set score" class="run">run</a>
+          </div>
+
+          <div class="demo">
+            <label for="set-function-demo">set:</label>
+            <input id="set-function-demo" type="text" value="{ cancel: false }" />
+
+            <a id="set-action" href="javascript:void(0);" title="set" class="run">run</a>
           </div>
 
           <h2 id="tests">
@@ -1201,7 +1253,6 @@
             This plugin is tested to work better.
             <a href="http://wbotelhos.com/raty/spec/run.html" target="_blank">Check it out!</a>
           </p>
-
         </article>
       </section>
 
@@ -1297,7 +1348,7 @@
 
       $('#click-demo').raty({
         click: function(score, evt) {
-          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
+          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
         }
       });
 
@@ -1399,13 +1450,13 @@
 
       $('#mouseover-demo').raty({
         mouseover: function(score, evt) {
-          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
+          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
         }
       });
 
       $('#mouseout-demo').raty({
         mouseout: function(score, evt) {
-          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
+          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
         }
       });
 
@@ -1439,8 +1490,51 @@
         target    : '#function-hint',
         cancel    : true,
         targetKeep: true,
+        precision : true,
+        click: function(score, evt) {
+          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
+        }
+      });
 
-        precision : true
+      $('#score-action').on('click', function() {
+        $('#function-demo').raty('score', $('#score-function-demo').val());
+      });
+
+      $('#click-action').on('click', function() {
+        $('#function-demo').raty('click', $('#click-function-demo').val());
+      });
+
+      $('#readOnly-action').on('click', function() {
+        var isReadOnly = $('#readOnly-function-demo').val() === 'true' ? true : false;
+
+        $('#function-demo').raty('readOnly', isReadOnly);
+      });
+
+      $('#cancel-action').on('click', function() {
+        var isTrigger = $('#cancel-function-trigger-demo').val() === 'true' ? true : false;
+
+        $('#function-demo').raty('cancel', isTrigger);
+      });
+
+      $('#reload-action').on('click', function() {
+        $('#function-demo').raty('reload');
+      });
+
+      $('#score-get-action').on('click', function() {
+        alert('score: ' + $('#function-demo').raty('score'));
+      });
+
+      $('#score-set-action').on('click', function() {
+        var score = $('#score-set-function-demo').val();
+
+        $('#function-demo').raty('score', score);
+      });
+
+      $('#set-action').on('click', function() {
+        var options = $('#set-function-demo').val(),
+            command = "$('#function-demo').raty('set', " + options + ");";
+
+        eval(command);
       });
     });
   </script>
