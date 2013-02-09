@@ -71,7 +71,7 @@ describe('Raty', function() {
     expect(opt.mouseover).toBeUndefined();
     expect(opt.noRatedMsg).toEqual('Not rated yet!');
     expect(opt.number).toBe(5);
-    expect(opt.path).toBeUndefined();
+    expect(opt.path).toEqual('');
     expect(opt.precision).toBeFalsy();
     expect(opt.readOnly).toBeFalsy();
     expect(opt.round.down).toEqual(.25);
