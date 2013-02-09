@@ -20,7 +20,8 @@
 + The `score` argument of `click` callback now is number instead string;
 + The `score` argument of `mouseover` callback now is number instead string;
 + The option `mouseover` no longer will trigger on mouseout. Use `mouseout`;
-+ When `precision` is enabled, `half` becomes enabled and `targetType` is changed to 'score'.
++ When `precision` is enabled, `half` becomes enabled and `targetType` is changed to 'score';
++ When `readOnly` is true, the cursor style will be removed instead to use the default.
 
 ### Fix
 

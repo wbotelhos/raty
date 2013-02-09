@@ -586,7 +586,7 @@ describe('Raty', function() {
         expect(self.children('img')).toHaveAttr('title', 'Not rated yet!');
       });
 
-      it ('applies the default cursor on wrapper', function() {
+      it ('removes the pointer cursor', function() {
         // given
         var self = $('#element');
 
@@ -594,7 +594,8 @@ describe('Raty', function() {
         self.raty({ readOnly: true });
 
         // then
-        expect(self).toHaveCss({ cursor: 'default' });
+        expect(self).not.toHaveCss({ cursor: 'pointer' });
+        expect(self).not.toHaveCss({ cursor: 'default' });
       });
 
       it ('accepts callback', function() {
@@ -634,29 +635,43 @@ describe('Raty', function() {
       });
 
       context('with :score', function() {
-        it ('applies the score title on stars', function() {
-          // given
-          var self = $('#element');
+        context('as integer', function() {
+          it ('applies the score title on stars', function() {
+            // given
+            var self = $('#element');
 
-          // when
-          self.raty({ readOnly: true, score: 3 });
+            // when
+            self.raty({ readOnly: true, score: 3 });
 
-          // then
-          expect(self.children('img')).toHaveAttr('title', 'regular');
+            // then
+            expect(self.children('img')).toHaveAttr('title', 'regular');
+          });
+        });
+
+        context('as float', function() {
+          it ('applies the integer score title on stars', function() {
+            // given
+            var self = $('#element');
+
+            // when
+            self.raty({ readOnly: true, score: 3.1 });
+
+            // then
+            expect(self.children('img')).toHaveAttr('title', 'regular');
+          });
         });
       });
 
       context('with :cancel', function() {
         it ('hides the button', function() {
           // given
-          var self = $('#element').raty({ cancel: true, readOnly: true, path: '../lib/img' });
+          var self = $('#element');
 
           // when
-          self.raty('readOnly', false);
+          self.raty({ cancel: true, readOnly: true, path: '../lib/img' });
 
           // then
-          expect(self.children('.raty-cancel')).toBeVisible();
-          expect(self.children('.raty-cancel')).not.toHaveCss({ display: 'block' });
+          expect(self.children('.raty-cancel')).toBeHidden();
         });
       });
     });
@@ -2270,7 +2285,7 @@ describe('Raty', function() {
           expect(self.children('input')).toHaveAttr('readonly', 'readonly');
         });
 
-        it ('applies the default cursor on wrapper', function() {
+        it ('removes the pointer cursor', function() {
           // given
           var self = $('#element').raty();
 
@@ -2278,7 +2293,8 @@ describe('Raty', function() {
           self.raty('readOnly', true);
 
           // then
-          expect(self).toHaveCss({ cursor: 'default' });
+          expect(self).not.toHaveCss({ cursor: 'pointer' });
+          expect(self).not.toHaveCss({ cursor: 'default' });
         });
 
         it ('Applies "Not rated yet!" on stars', function() {
@@ -2349,7 +2365,7 @@ describe('Raty', function() {
       });
 
       context('changes to false', function() {
-        it ('removes the readonly of the score', function() {
+        it ('removes the :readOnly of the score', function() {
           // given
           var self = $('#element').raty();
 
@@ -2387,7 +2403,7 @@ describe('Raty', function() {
           expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
         });
 
-        it ('Triggers mouseover', function() {
+        it ('triggers mouseover', function() {
           // given
           var self = $('#element').raty({ readOnly: true }),
               imgs = self.children('img');
@@ -2401,7 +2417,7 @@ describe('Raty', function() {
           expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
         });
 
-        it ('Triggers click', function() {
+        it ('triggers click', function() {
           // given
           var self = $('#element').raty({ readOnly: true }),
               imgs = self.children('img');
@@ -2450,9 +2466,9 @@ describe('Raty', function() {
 
           it ('rebinds the mouseover', function() {
             // given
-            var self     = $('#element').raty({ readOnly: true, cancel: true }),
-                cancel   = self.children('.raty-cancel'),
-                imgs    = self.children('img:not(.raty-cancel)');
+            var self   = $('#element').raty({ readOnly: true, cancel: true }),
+                cancel = self.children('.raty-cancel'),
+                imgs   = self.children('img:not(.raty-cancel)');
 
             // when
             self.raty('readOnly', false);
@@ -2466,8 +2482,8 @@ describe('Raty', function() {
 
           it ('rebinds the click', function() {
             // given
-            var self   = $('#element').raty({ readOnly: true, cancel: true, score: 5 }),
-                imgs  = self.children('img:not(.raty-cancel)');
+            var self = $('#element').raty({ readOnly: true, cancel: true, score: 5 }),
+                imgs = self.children('img:not(.raty-cancel)');
 
             // when
             self.raty('readOnly', false);
@@ -2513,7 +2529,7 @@ describe('Raty', function() {
       });
 
       describe('with trigger enabled', function() {
-        it ('Triggers the click callback', function() {
+        it ('triggers the click callback', function() {
           // given
           var self = $('#element').raty({
                 click: function() {
