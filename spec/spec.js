@@ -640,6 +640,25 @@ describe('Raty', function() {
         expect(self.children('input').val()).toEqual('');
       });
 
+      it ('avoids trigger mouseleave', function() {
+        // given
+        var self = $('#element').raty({
+              readOnly: true,
+              mouseout: function() {
+                $(this).data('mouseleave', true);
+              }
+            }),
+            imgs = self.children('img');
+
+        imgs.eq(1).mouseover();
+
+        // when
+        self.mouseleave();
+
+        // then
+        expect(self.data('mouseleave')).toBeFalsy();
+      });
+
       context('with :score', function() {
         context('as integer', function() {
           it ('applies the score title on stars', function() {
@@ -2366,6 +2385,40 @@ describe('Raty', function() {
 
             // then
             expect(self.children('.raty-cancel')).toBeHidden();
+          });
+        });
+
+        context('with external bind on wrapper', function() {
+          it ('keeps it', function() {
+            // given
+            var self = $('#element').on('click', function() {
+              $(this).data('externalClick', true);
+            }).raty();
+
+            // when
+            self.raty('readOnly', true).click();
+
+            // then
+            expect(self.data('externalClick')).toBeTruthy();
+          });
+        });
+
+        context('with external bind on stars', function() {
+          it ('keeps it', function() {
+            // given
+            var self = $('#element').raty(),
+                star = self.children('img').first();
+
+            star.on('click', function() {
+              self.data('externalClick', true);
+            });
+
+            // when
+            self.raty('readOnly', true);
+            star.click();
+
+            // then
+            expect(self.data('externalClick')).toBeTruthy();
           });
         });
       });

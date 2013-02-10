@@ -29,6 +29,7 @@
 + The `path` always was prepend avoiding absolute or different path for each icon;
 + The `readonly` was not removed on readOnly becames disabled;
 + The `targetKeep` was keepping the template even without score;
++ The `readOnly` function no more unbinds external binds.
 
 ## 2.4.5
 
