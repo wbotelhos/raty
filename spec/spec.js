@@ -1534,7 +1534,7 @@ describe('Raty', function() {
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').click().mouseover().mouseleave();
+            self.children('img:first').mouseover().click().mouseleave();
 
             // then
             expect($('#hint')).toBeEmpty();
@@ -2517,40 +2517,6 @@ describe('Raty', function() {
         });
       });
 
-      describe('without trigger enabled', function() {
-        it ('does not trigger the click callback', function() {
-          // given
-          var self = $('#element').raty({
-                click: function() {
-                  $(this).data('clicked', true);
-                }
-              });
-
-          // when
-          self.raty('cancel');
-
-          // then
-          expect(self.data('clicked')).toBeFalsy();
-        });
-      });
-
-      describe('with trigger enabled', function() {
-        it ('triggers the click callback', function() {
-          // given
-          var self = $('#element').raty({
-                click: function() {
-                  $(this).data('clicked', true);
-                }
-              });
-
-          // when
-          self.raty('cancel', true);
-
-          // then
-          expect(self.data('clicked')).toBeTruthy();
-        });
-      });
-
       context('without click trigger', function() {
         it ('cancel the rating', function() {
           // given
@@ -2595,20 +2561,21 @@ describe('Raty', function() {
         beforeEach(function() { buildDivTarget(); });
 
         context('and :targetKeep', function() {
-          it ('sets the cancel hint on target', function() {
+          it ('sets the :targetText on target', function() {
             // given
             var hint = $('#hint').html('dirty'),
                 self = $('#element').raty({
                   cancel    : true,
                   target    : '#hint',
-                  targetKeep: true
+                  targetKeep: true,
+                  targetText: 'targetText'
                 });
 
             // when
-            self.raty('cancel').mouseleave();
+            self.raty('cancel');
 
             // then
-            expect(hint).toHaveHtml('');
+            expect(hint).toHaveHtml('targetText');
           });
         });
       });
@@ -2696,7 +2663,7 @@ describe('Raty', function() {
             var self = $('#element').raty({
               target    : '#hint',
               targetKeep: true,
-              click      : function() { }
+              click     : function() { }
             });
 
             // when
