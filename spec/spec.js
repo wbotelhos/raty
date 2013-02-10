@@ -99,10 +99,10 @@ describe('Raty', function() {
       var self = $('#element');
 
       // when
-      var clone = self.raty();
+      var ref = self.raty();
 
       // then
-      expect(clone).toBe(self);
+      expect(ref).toBe(self);
     });
 
     it ('creates the default markup', function() {
@@ -2086,11 +2086,11 @@ describe('Raty', function() {
       var self = $('.element');
 
       // when
-      var clones = self.raty();
+      var refs = self.raty();
 
       // then
-      expect(clones.eq(0)).toBe(self.eq(0));
-      expect(clones.eq(1)).toBe(self.eq(1));
+      expect(refs.eq(0)).toBe(self.eq(0));
+      expect(refs.eq(1)).toBe(self.eq(1));
     });
 
     it ('creates the default markup', function() {
@@ -2263,15 +2263,15 @@ describe('Raty', function() {
     });
 
     describe('#set', function() {
-      xit ('is chainable', function() {
+      it ('is chainable', function() {
         // given
         var self = $('#element').raty();
 
         // when
-        var clone = self.raty('set', { number: 1 });
+        var ref = self.raty('set', { number: 1 });
 
         // then
-        expect(clone).toBe(self);
+        expect(ref).toBe(self);
       });
 
       it ('changes the declared options', function() {
@@ -2279,10 +2279,10 @@ describe('Raty', function() {
         var self = $('#element').raty();
 
         // when
-        var clone = self.raty('set', { scoreName: 'change-just-it' });
+        var ref = self.raty('set', { scoreName: 'change-just-it' });
 
         // then
-        expect(clone.children('input')).toHaveAttr('name', 'change-just-it');
+        expect(ref.children('input')).toHaveAttr('name', 'change-just-it');
       });
 
       it ('does not change other none declared options', function() {
@@ -2290,10 +2290,25 @@ describe('Raty', function() {
         var self = $('#element').raty({ number: 6 });
 
         // when
-        var clone = self.raty('set', { scoreName: 'change-just-it' });
+        var ref = self.raty('set', { scoreName: 'change-just-it' });
 
         // then
-        expect(clone.children('img').length).toEqual(6);
+        expect(ref.children('img').length).toEqual(6);
+      });
+
+      context('with external bind on wrapper', function() {
+        it ('keeps it', function() {
+          // given
+          var self = $('#element').on('click', function() {
+            $(this).data('externalClick', true);
+          }).raty();
+
+          // when
+          self.raty('set', {}).click();
+
+          // then
+          expect(self.data('externalClick')).toBeTruthy();
+        });
       });
     });
 
@@ -2730,15 +2745,15 @@ describe('Raty', function() {
     });
 
     describe('#reload', function() {
-      xit ('is chainable', function() {
+      it ('is chainable', function() {
         // given
         var self = $('#element').raty();
 
         // when
-        var clone = self.raty('reload');
+        var ref = self.raty('reload');
 
         // then
-        expect(clone).toBe(self);
+        expect(ref).toBe(self);
       });
 
       it ('reloads with the same configuration', function() {
@@ -2746,10 +2761,64 @@ describe('Raty', function() {
         var self = $('#element').raty({ number: 6 });
 
         // when
-        var clone = self.raty('reload');
+        var ref = self.raty('reload');
 
         // then
-        expect(clone.children('img').length).toEqual(6);
+        expect(ref.children('img').length).toEqual(6);
+      });
+    });
+
+    describe('#destroy', function() {
+      it ('is chainable', function() {
+        // given
+        var self = $('#element').raty();
+
+        // when
+        var ref = self.raty('destroy');
+
+        // then
+        expect(ref).toBe(self);
+      });
+
+      it ('clear the content', function() {
+        // given
+        var self = $('#element').raty();
+
+        // when
+        self.raty('destroy');
+
+        // then
+        expect(self).toBeEmpty();
+      });
+
+      it ('removes the trigger mouseleave', function() {
+        // given
+        var self = $('#element').raty({
+              mouseout: function() {
+                console.log(this);
+                $(this).data('mouseleave', true);
+              }
+            });
+
+        self.raty('destroy');
+
+        // when
+        self.mouseleave();
+
+        // then
+        expect(self.data('mouseleave')).toBeFalsy();
+      });
+
+      it ('resets the style attributes', function() {
+        // given
+        var self = $('#element').css({ cursor: 'help', width: 10 }).raty();
+
+        // when
+        self.raty('destroy');
+
+        // then
+        expect(self[0].style.cursor).toEqual('help');
+        expect(self[0].style.width).toEqual('10px');
       });
     });
   });

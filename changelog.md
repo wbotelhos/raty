@@ -2,8 +2,9 @@
 
 ## 2.5.0.rc1
 
-### New
+### News
 
++ Added function `destroy` to rollback to original object before the bind;
 + Added option `mouseout` to handle things on mouse out;
 + The `number` option can be setted via callback; (by muratguzel)
 + The `readOnly` and `scoreName` option can be setted via callback; (by aprimadi)
@@ -23,13 +24,15 @@
 + When `precision` is enabled, `half` becomes enabled and `targetType` is changed to 'score';
 + When `readOnly` is true, the cursor style will be removed instead to use the default.
 
-### Fix
+### Fixes
 
 + The `click` function was not yielding the event.
 + The `path` always was prepend avoiding absolute or different path for each icon;
++ The `readOnly` function no more unbinds external binds;
 + The `readonly` was not removed on readOnly becames disabled;
++ The `reload` function now is chainable;
++ The `set` function now is chainable.
 + The `targetKeep` was keepping the template even without score;
-+ The `readOnly` function no more unbinds external binds.
 
 ## 2.4.5
 

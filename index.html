@@ -1017,7 +1017,7 @@
           </div>
 
           <div id="path-option" class="option">
-            <div>path: <span>undefined</span></div>
+            <div>path: <span>''</span></div>
             <p>A global locate where the icon will be looked.</p>
           </div>
 
@@ -1179,6 +1179,16 @@
               <p>Reset the rating with new configurations. Only options especified will be overrided.</p>
             </div>
 
+            <div id="destroy-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">);</span>
+</pre>
+</div>
+
+              <p>Destroy the bind and gives you the raw element before the bind.</p>
+            </div>
+
             <br />
 
           <div class="demo">
@@ -1243,6 +1253,13 @@
             <input id="set-function-demo" type="text" value="{ cancel: false }" />
 
             <a id="set-action" href="javascript:void(0);" title="set" class="run">run</a>
+          </div>
+
+          <div class="demo">
+            <label for="destroy-function-demo">destroy:</label>
+            <input id="destroy-function-demo" type="text" value="true" disabled="disabled" />
+
+            <a id="destroy-action" href="javascript:void(0);" title="destroy" class="run">run</a>
           </div>
 
           <h2 id="tests">
@@ -1535,6 +1552,10 @@
             command = "$('#function-demo').raty('set', " + options + ");";
 
         eval(command);
+      });
+
+      $('#destroy-action').on('click', function() {
+        $('#function-demo').raty('destroy');
       });
     });
   </script>

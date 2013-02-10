@@ -36,7 +36,7 @@ mouseover:    undefined                                      // Callback execute
 noRatedMsg:   'Not rated yet!'                               // Hint for no rated elements when it's readOnly.
 number:       5                                              // Number of stars that will be presented.
 numberMax:    20                                             // Max of star the option number can creates.
-path:         undefined                                      // A global locate where the icon will be looked.
+path:         ''                                             // A global locate where the icon will be looked.
 precision:    false                                          // Enables the selection of a precision score.
 readOnly:     false                                          // Turns the rating read-only.
 round:        { down: .25, full: .6, up: .76 }               // Included values attributes to do the score round math.
@@ -92,6 +92,8 @@ $('#star').raty('cancel', boolean);         // Cancel the rating. The last param
 $('#star').raty('reload');                  // Reload the rating with the current configuration.
 
 $('#star').raty('set', { option: value });  // Reset the rating with new configurations.
+
+$('#star').raty('reload');                  // Destroy the bind and give you the raw element.
 ```
 
 ## Contributors
