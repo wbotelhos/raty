@@ -1,5 +1,12 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+## 2.5.1
+
+### Fixes
+
++ The `path` was receiving double slash;
++ The `path` was setting `null` instead empty when we not using it.
+
 ## 2.5.0
 
 ### News

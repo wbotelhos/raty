@@ -1019,6 +1019,32 @@ describe('Raty', function() {
     });
 
     describe('#path', function() {
+      context('without last slash', function() {
+        it ('receives the slash', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ path: 'path' });
+
+          // then
+          expect(self[0].opt.path).toEqual('path/');
+        });
+      });
+
+      context('with last slash', function() {
+        it ('keeps it', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ path: 'path/' });
+
+          // then
+          expect(self[0].opt.path).toEqual('path/');
+        });
+      });
+
       it ('changes the path', function() {
         // given
         var self = $('#element');
@@ -1028,6 +1054,19 @@ describe('Raty', function() {
 
         // then
         expect(self.children('img')).toHaveAttr('src', 'path/star-off.png');
+      });
+
+      context('without path', function() {
+        it ('sets receives empty', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ path: null });
+
+          // then
+          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+        });
       });
 
       context('with :cancel', function() {
