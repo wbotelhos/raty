@@ -99,16 +99,20 @@ $('#star').raty('reload');                  // Destroy the bind and give you the
 ## Contributors
 
 + Andreas Köberle
++ Armin Primadi
 + Daniel Faria
++ Douwe Maan
 + Eric Wendelin
 + Francisco Souza
 + Gabriel Benz
 + hpgihan
 + janapol
 + jeongee
++ joe1chen
 + Murat GUZEL
 + Olle Jonsson
 + packowitz
++ Toni Uebernickel
 
 ## Licence
 
