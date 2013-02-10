@@ -4,10 +4,11 @@
 
 ### Fixes
 
++ The `half` options was not displaying the half star.
 + The `path` was receiving double slash;
-+ The `path` was setting `null` instead empty when we not using it.
++ The `path` was setting `null` instead empty when we not using it;
 
-## 2.5.0
+## 2.5.1
 
 ### News
 
