@@ -1,12 +1,10 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
-## 2.5.1
+## 2.5.2
 
 ### Fixes
 
-+ The `half` options was not displaying the half star.
-+ The `path` was receiving double slash;
-+ The `path` was setting `null` instead empty when we not using it;
+The read-only indicator was not removing after the reset of configuration, blocking the `click` and `score` functions.
 
 ## 2.5.1
 

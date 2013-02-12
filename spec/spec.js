@@ -2349,6 +2349,19 @@ describe('Raty', function() {
           expect(self.data('externalClick')).toBeTruthy();
         });
       });
+
+      context('when :readOnly by function', function() {
+        it ('is removes the readonly data info', function() {
+          // given
+          var self = $('#element').raty().raty('readOnly', true);
+
+          // when
+          var ref = self.raty('set', { readOnly: false });
+
+          // then
+          expect(self).not.toHaveData('readonly');
+        });
+      });
     });
 
     describe('#readOnly', function() {
@@ -2804,6 +2817,19 @@ describe('Raty', function() {
 
         // then
         expect(ref.children('img').length).toEqual(6);
+      });
+
+      context('when :readOnly by function', function() {
+        it ('is removes the readonly data info', function() {
+          // given
+          var self = $('#element').raty().raty('readOnly', true);
+
+          // when
+          var ref = self.raty('reload');
+
+          // then
+          expect(self).not.toHaveData('readonly');
+        });
       });
     });
 

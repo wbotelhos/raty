@@ -29,7 +29,7 @@
 
       <nav role="navigation">
         <ul>
-          <li><a href="http://github.com/wbotelhos/raty/archive/2.5.1.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v2.5.1</a></li>
+          <li><a href="http://github.com/wbotelhos/raty/archive/2.5.2.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v2.5.2</a></li>
           <li><a href="http://github.com/wbotelhos/raty" title="Github" target="_blank"><i class="icon-github icon-large"></i>Github</a></li>
           <li><a href="http://wbotelhos.com/labs" title="yLab" target="_blank"><i class="icon-beaker icon-large"></i>yLab</a></li>
           <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Raty" title="Donate" target="_blank"><i class="icon-heart-empty icon-large"></i>Donate</a></li>
@@ -85,7 +85,7 @@
           </h2>
 
           <p>
-            If you need to start you <a href="#score">score</a> depending of a dynamic value, you can use callback for it.<br/>
+            If you need to start you <a href="#score">score</a> depending of a dynamic value, you can to use callback for it.<br/>
             You can pass any value for it, not necessarily a <code>data-</code> value. You can use a field value for example.<br />
           </p>
 
@@ -167,7 +167,7 @@
             <a href="#number-callback">Number callback</a>
           </h2>
 
-          <p>You can receive initialize the number of star dynamic using callback to set it.</p>
+          <p>You can receive the number of stars dynamic using callback to set it.</p>
 
           <div class="demo">
             <div id="number-callback-demo" data-number="3"></div>
@@ -248,7 +248,7 @@
 <pre>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">readOnly</span>  <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">noRatedMsg</span><span class="o">:</span> <span class="s2">"I'am readOnly and a haven't rated yet!"</span>
+  <span class="nx">noRatedMsg</span><span class="o">:</span> <span class="s2">"I'am readOnly and I haven't rated yet!"</span>
 <span class="p">});</span>
 </pre>
 </div>
@@ -305,24 +305,6 @@
 </pre>
 </div>
 
-          <h2 id="starHalf">
-            <a href="#starHalf">Star Half</a>
-          </h2>
-
-          <p>Changes the name of the half star.</p>
-
-          <div class="demo">
-            <div id="starHalf-demo"></div>
-          </div>
-
-<div class="highlight">
-<pre>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
-  <span class="nx">half</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">starHalf</span><span class="o">:</span> <span class="s1">'half.png'</span>
-<span class="p">});</span>
-</pre>
-</div>
           <h2 id="round">
             <a href="#round">Round</a>
           </h2>
@@ -363,6 +345,25 @@
 <div class="highlight">
 <pre>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">half</span><span class="o">:</span> <span class="kc">true</span> });</span>
+</pre>
+</div>
+
+          <h2 id="starHalf">
+            <a href="#starHalf">Star Half</a>
+          </h2>
+
+          <p>Changes the name of the half star.</p>
+
+          <div class="demo">
+            <div id="starHalf-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">half</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">starHalf</span><span class="o">:</span> <span class="s1">'half.png'</span>
+<span class="p">});</span>
 </pre>
 </div>
 
@@ -1331,7 +1332,7 @@
 
       $('#noRatedMsg-demo').raty({
         readOnly  : true,
-        noRatedMsg: "I'am readOnly and a haven't rated yet!"
+        noRatedMsg: "I'am readOnly and I haven't rated yet!"
       });
 
       $('#score-callback-demo').raty({
@@ -1347,6 +1348,8 @@
         score   : 3.26
       });
 
+      $('#half-demo').raty({ half: true });
+
       $('#starHalf-demo').raty({
         path    : 'demo/img',
         half    : true,
@@ -1355,8 +1358,6 @@
 
         starHalf: 'cookie-half.png'
       });
-
-      $('#half-demo').raty({ half: true });
 
       $('#round-demo').raty({
         round: { down: .26, full: .6, up: .76 },
