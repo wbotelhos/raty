@@ -112,6 +112,7 @@ $('#star').raty('reload');                  // Destroy the bind and give you the
 + Murat GUZEL
 + Olle Jonsson
 + packowitz
++ Rodrigo Sliachticas
 + Toni Uebernickel
 
 ## Licence
