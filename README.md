@@ -48,6 +48,7 @@ space       : true                                           // Puts space betwe
 starHalf    : 'star-half.png'                                // The name of the half star image.
 starOff     : 'star-off.png'                                 // Name of the star image off.
 starOn      : 'star-on.png'                                  // Name of the star image on.
+targetScore : undefined                                      // Element selector where the score will be filled, instead of creating a new hidden field (scoreName option).
 target      : undefined                                      // Element selector where the score will be displayed.
 targetFormat: '{score}'                                      // Template to interpolate the score in.
 targetKeep  : false                                          // If the last rating value will be keeped after mouseout.
