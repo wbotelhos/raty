@@ -93,7 +93,7 @@ $('#star').raty('reload');                  // Reload the rating with the curren
 
 $('#star').raty('set', { option: value });  // Reset the rating with new configurations.
 
-$('#star').raty('reload');                  // Destroy the bind and give you the raw element.
+$('#star').raty('destroy');                 // Destroy the bind and give you the raw element.
 ```
 
 ## Contributors
