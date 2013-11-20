@@ -15,9 +15,10 @@
   <link type="text/css" rel="stylesheet" href="demo/css/application.css">
 
   <script type="text/javascript" src="demo/js/jquery.min.js"></script>
-  <script type="text/javascript" src="lib/jquery.raty.min.js"></script>
+  <script type="text/javascript" src="lib/jquery.raty.js"></script>
 
   <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
   <div id="wrapper">
@@ -891,6 +892,31 @@
 </pre>
 </div>
 
+          <h2 id="precision">
+            <a href="#precision">Font Awsome</a>
+          </h2>
+
+          <p>
+           You are able to use fontawsome instead of images.
+          </p>
+
+          <div class="demo">
+            <div id="fontawsome-demo"></div>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">font</span><span class="o">:</span> <span class="kc">true</span>, 
+<span class="nx">cancelOff</span><span class="o">:</span> <span class="kc">fa-times-circle-o</span>,
+<span class="nx">cancelOn</span><span class="o">:</span> <span class="kc">fa-times-circle</span>,
+<span class="nx">starHalf</span><span class="o">:</span> <span class="kc">fa-star-half</span>,
+<span class="nx">starOff</span><span class="o">:</span> <span class="kc">fa-star-o</span>,
+<span class="nx">starOn</span><span class="o">:</span> <span class="kc">fa-star</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
           <h2 id="space">
             <a href="#space">Space</a>
           </h2>
@@ -1492,6 +1518,16 @@
 
         precision : true
       });
+	  
+	  $('#fontawsome-demo').raty({
+		  font: true, 
+		  cancelOff: 'fa-times-circle-o',
+		  cancelOn: 'fa-times-circle',
+		  starHalf: 'fa-star-half',
+		  starOff: 'fa-star-o',
+		  starOn:'fa-star',
+		  round         : { down: 0.25, full: 0.6, up: 0.76 },
+	  });
 
       $('#space-demo').raty({ space: false });
 
