@@ -1,20 +1,21 @@
-# jQuery Raty - A Star Rating Plugin - [wbotelhos.com/raty](http://wbotelhos.com/raty)
+# jQuery Raty - A Star Rating Plugin
 
-jQuery Raty is a plugin that generates a customizable star rating.
+[http://wbotelhos.com/raty](http://wbotelhos.com/raty) - jQuery Raty is a plugin that generates a customizable star rating.
 
 ## Version
 
 ```
-@version        2.5.2
-@since          2010.06.11
-@author         Washington Botelho
-@documentation  wbotelhos.com/raty
-@twitter        twitter.com/wbotelhos
+@version  2.5.2
+@since    2010.06.11
+@author   Washington Botelho
+@doc      wbotelhos.com/raty
 ```
 
 ## Required Files
 
-+ jquery.raty.min.js
++ jquery.js
+
++ jquery.raty.js
 + star-on.png
 + star-off.png
 
@@ -79,54 +80,31 @@ $('.star').raty();
 ## Functions
 
 ```js
-$('#star').raty('score');                   // Get the current score.
+$('#star').raty('score');                  // Get the current score.
 
-$('#star').raty('score', number);           // Set the score.
+$('#star').raty('score', number);          // Set the score.
 
-$('#star').raty('click', number);           // Click on some star.
+$('#star').raty('click', number);          // Click on some star.
 
-$('.star').raty('readOnly', boolean);       // Change the read-only state.
+$('.star').raty('readOnly', boolean);      // Change the read-only state.
 
-$('#star').raty('cancel', boolean);         // Cancel the rating. The last param force the click callback.
+$('#star').raty('cancel', boolean);        // Cancel the rating. The last param force the click callback.
 
-$('#star').raty('reload');                  // Reload the rating with the current configuration.
+$('#star').raty('reload');                 // Reload the rating with the current configuration.
 
-$('#star').raty('set', { option: value });  // Reset the rating with new configurations.
+$('#star').raty('set', { option: value }); // Reset the rating with new configurations.
 
-$('#star').raty('destroy');                 // Destroy the bind and give you the raw element.
+$('#star').raty('destroy');                // Destroy the bind and give you the raw element.
 ```
 
 ## Contributors
 
-+ Andreas Köberle
-+ Armin Primadi
-+ Daniel Faria
-+ Douwe Maan
-+ Eric Wendelin
-+ Francisco Souza
-+ Gabriel Benz
-+ hpgihan
-+ janapol
-+ jeongee
-+ joe1chen
-+ Murat GUZEL
-+ Olle Jonsson
-+ packowitz
-+ Rodrigo Sliachticas
-+ Toni Uebernickel
+[Check it out](http://github.com/wbotelhos/raty/graphs/contributors)
 
 ## Licence
 
 The MIT License
 
-Copyright (c) 2010 Washington Botelho
+## Love it!
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-## Donate
-
-You can do it via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=jQuery%20Raty). Thanks! (:
+You can do it via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=jQuery%20Raty) or via [Gittip](http://www.gittip.com/wbotelhos). Thanks! (:
