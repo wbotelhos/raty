@@ -1,0 +1,6 @@
+'devDependencies': {
+  'karma': '~0.10'
+},
+'scripts': {
+   'test': './node_modules/.bin/karma start spec/karma.conf.js --single-run --browsers Firefox'
+}
