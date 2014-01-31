@@ -68,6 +68,7 @@ describe('Raty', function() {
     expect(opt.halfShow).toBeTruthy();
     expect(opt.hints).toContain('bad', 'poor', 'regular', 'good', 'gorgeous');
     expect(opt.iconRange).toBeUndefined();
+	expect(opt.rangeOverride).toBeFalsy();
     expect(opt.mouseover).toBeUndefined();
     expect(opt.noRatedMsg).toEqual('Not rated yet!');
     expect(opt.number).toBe(5);
@@ -350,6 +351,35 @@ describe('Raty', function() {
             expect(imgs.eq(4)).toHaveAttr('src', 'star-on.png');
           });
         });
+
+        context('when rangeOverride is true', function(){
+          it('uses the on icon of the highest range less or equal to the score', function(){
+
+            var self = $('#element').raty({
+              iconRange: [
+                { range: 2, on: 'a.png', off: 'a-off.png' },
+                { range: 3, on: 'b.png', off: 'b-off.png' },
+                { range: 4, on: 'c.png', off: 'c-off.png' },
+                { range: 5, on: 'd.png', off: 'd-off.png' }
+              ],
+              rangeOverride: true
+            }),
+            imgs = self.children('img');
+
+          // when
+          imgs.eq(4).mouseover();
+
+          // then
+          expect(imgs.eq(0)).toHaveAttr('src', 'c.png');
+          expect(imgs.eq(1)).toHaveAttr('src', 'c.png');
+          expect(imgs.eq(2)).toHaveAttr('src', 'c.png');
+          expect(imgs.eq(3)).toHaveAttr('src', 'c.png');
+          expect(imgs.eq(4)).toHaveAttr('src', 'c.png');
+
+          });
+
+        });
+        
       });
 
       context('on mouseout', function() {
@@ -421,6 +451,8 @@ describe('Raty', function() {
             expect(img).toHaveAttr('src', 'star-off.png');
           });
         });
+
+        
       });
     });
 
