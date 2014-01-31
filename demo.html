@@ -330,6 +330,29 @@ If the value <code>on</code> or <code>off</code> is omitted then the attribute <
 </pre></div>
 <p>Now we have all off icons as <strong>0.png</strong>, icons 1 and 2 as <strong>1.png</strong>, icon 3 as <strong>3.png</strong> and icons 4 and 5 as <strong>5.png</strong>. </p>
 
+<h1>Range Override</h1>
+
+<p>
+ It is a flag used with the iconRange option. When this flag is set to true, we don't use different icons for different range, but the highest range icon near the score, is used for all on icons.<br />
+</p>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#rangeOverride'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">starOff</span>  <span class="o">:</span> <span class="s1">'0.png'</span><span class="p">,</span>
+  <span class="nx">iconRange</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'1.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'3.png'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">range</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">on</span><span class="o">:</span> <span class="s1">'5.png'</span> <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nx">rangeOverride</span>  <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+<div id="rangeOverride"></div>
+
+
 <h1>Size</h1>
 
 <p>The size in pixel of the icon you will to use.<br>
@@ -739,6 +762,19 @@ $('#iconRange').raty({
   ]
 });
 
+$('#rangeOverride').raty({
+  path      : null,
+  starOff   : 'lib/images/star-off.png',
+  iconRange : [
+    { range: 1, on: 'demo/images/1.png', off: 'demo/images/0.png' },
+    { range: 2, on: 'demo/images/2.png', off: 'demo/images/0.png' },
+    { range: 3, on: 'demo/images/3.png', off: 'demo/images/0.png' },
+    { range: 4, on: 'demo/images/4.png', off: 'demo/images/0.png' },
+    { range: 5, on: 'demo/images/5.png', off: 'demo/images/0.png' }
+  ],
+  rangeOverride: true
+});
+	  
 $('#size').raty({
   path      : 'demo/images',
   cancel    : true,
