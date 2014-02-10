@@ -155,7 +155,7 @@ Stop the mouse over the star to see:</p>
 <h1>Half Show</h1>
 
 <p>You can represent a float <a href="#score">score</a> as a half star icon.<br>
-This options is just to <strong>show</strong> the half star. If you want enable the vote with half star on mouseover, please check the option <a href="#half">half</a>.<br>
+This options is just to <strong>show</strong> the half star. If you want enable the vote with half star on mousemove, please check the option <a href="#half">half</a>.<br>
 The <code>round</code> options showed belows is just for the <strong>icon</strong>, the score keeps as <strong>float</strong> always.</p>
 
 <h2>Enabled</h2>
@@ -199,7 +199,7 @@ You can specify just the attribute you want to change and keeps the others as de
 </pre></div>
 <h1>Half</h1>
 
-<p>Enables the half star mouseover to be possible vote with half values.<br>
+<p>Enables the half star mousemove to be possible vote with half values.<br>
 If you want to vote with more precison than half value, please check the option <a href="#precision">precision</a>.</p>
 
 <div id="half"></div>
@@ -453,15 +453,15 @@ If you want a default content you can use this option.</p>
   <span class="nx">targetFormat</span> <span class="o">:</span> <span class="s1">'Rating: {score}'</span>
 <span class="p">});</span>
 </pre></div>
-<h1>Mouseover</h1>
+<h1>Mousemove</h1>
 
-<p>You can handle the action on mouseover.<br>
+<p>You can handle the action on mousemove.<br>
 The arguments is the same of the <a href="#click">click</a> callback.<br>
 The options <a href="#target">target</a>, <a href="#targetFormat">targetFormat</a>, <a href="#targetKeep">targetKeep</a>, <a href="#targetText">targetText</a> and <a href="#targetType">targetType</a> are abstractions of this callback. You can do it by yourself.</p>
 
-<div id="mouseover"></div>
+<div id="mousemove"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
-  <span class="nx">mouseover</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">mousemove</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">});</span>
@@ -469,7 +469,7 @@ The options <a href="#target">target</a>, <a href="#targetFormat">targetFormat</
 <h1>Mouseout</h1>
 
 <p>You can handle the action on mouseout.<br>
-The arguments is the same of the <a href="#mouseover">mouseover</a> callback.</p>
+The arguments is the same of the <a href="#mousemove">mousemove</a> callback.</p>
 
 <div id="mouseout"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -795,8 +795,8 @@ $('#targetFormat').raty({
   targetFormat : 'Rating: {score}'
 });
 
-$('#mouseover').raty({
-  mouseover: function(score, evt) {
+$('#mousemove').raty({
+  mousemove: function(score, evt) {
     alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
   }
 });
