@@ -46,6 +46,19 @@ function clear() {
   }
 };
 
+function mouseMoveOnStar(star) {
+  var simulatedEvent = document.createEvent("MouseEvent");
+  // move the mouse at the middle of the star
+  var X = star.offset().left + $.fn.raty.defaults.size/2;
+  var Y = star.offset().top + $.fn.raty.defaults.size/2;
+  simulatedEvent.initMouseEvent("mousemove", true, true, window, 1,
+    X, Y, X, Y, false, false, false, false, 0, null);
+
+  star.parent().get(0).dispatchEvent(simulatedEvent);
+
+  return star;
+};
+
 describe('Raty', function() {
   beforeEach(function() { build(); });
   afterEach(function()  { clear(); });
@@ -68,7 +81,7 @@ describe('Raty', function() {
     expect(opt.halfShow).toBeTruthy();
     expect(opt.hints).toContain('bad', 'poor', 'regular', 'good', 'gorgeous');
     expect(opt.iconRange).toBeUndefined();
-    expect(opt.mouseover).toBeUndefined();
+    expect(opt.mousemove).toBeUndefined();
     expect(opt.noRatedMsg).toEqual('Not rated yet!');
     expect(opt.number).toBe(5);
     expect(opt.path).toEqual('');
@@ -113,7 +126,7 @@ describe('Raty', function() {
       self.raty();
 
       // then
-      var imgs  = self.children('img'),
+      var imgs  = self.find('img'),
           score = self.children('input');
 
       expect(imgs.eq(0)).toHaveAttr('title', 'bad');
@@ -137,17 +150,17 @@ describe('Raty', function() {
       self.raty();
 
       // then
-      expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+      expect(self.find('img')).toHaveAttr('src', 'star-off.png');
     });
 
-    context('on :mouseover', function() {
+    context('on :mousemove', function() {
       it ('turns on the stars', function() {
         // given
         var self = $('#element').raty(),
-            imgs = self.children('img');
+            imgs = self.find('img');
 
         // when
-        imgs.eq(4).mouseover();
+        mouseMoveOnStar(imgs.eq(4));
 
         // then
         expect(imgs).toHaveAttr('src', 'star-on.png');
@@ -157,10 +170,16 @@ describe('Raty', function() {
         it ('clears all stars', function() {
           // given
           var self = $('#element').raty(),
-              imgs = self.children('img');
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          imgs.eq(4).mouseover().mouseout();
+          mouseMoveOnStar(imgs.eq(4)).mouseout();
 
           // then
           expect(imgs).toHaveAttr('src', 'star-off.png');
@@ -172,10 +191,16 @@ describe('Raty', function() {
       it ('changes the score', function() {
         // given
         var self = $('#element').raty(),
-            imgs = self.children('img');
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        imgs.eq(1).mouseover().click();
+        mouseMoveOnStar(imgs.eq(1)).click();
 
         // then
         expect(self.children('input')).toHaveValue(2);
@@ -185,10 +210,16 @@ describe('Raty', function() {
         it ('keeps the stars on', function() {
           // given
           var self = $('#element').raty(),
-              imgs = self.children('img');
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          imgs.eq(4).mouseover().click().mouseout();
+          mouseMoveOnStar(imgs.eq(4)).click().mouseout();
 
           // then
           expect(imgs).toHaveAttr('src', 'star-on.png');
@@ -207,7 +238,7 @@ describe('Raty', function() {
         var score = self.raty('score');
 
         // then
-        expect(self.children('img').length).toEqual(20);
+        expect(self.find('img').length).toEqual(20);
         expect(self.children('input')).toHaveValue(20);
       });
 
@@ -220,7 +251,7 @@ describe('Raty', function() {
           var score = self.raty('score');
 
           // then
-          expect(self.children('img').length).toEqual(10);
+          expect(self.find('img').length).toEqual(10);
           expect(self.children('input')).toHaveValue(10);
         });
       });
@@ -235,7 +266,7 @@ describe('Raty', function() {
         self.raty({ starOff: 'icon.png' });
 
         // then
-        expect(self.children('img')).toHaveAttr('src', 'icon.png');
+        expect(self.find('img')).toHaveAttr('src', 'icon.png');
       });
     });
 
@@ -243,10 +274,16 @@ describe('Raty', function() {
       it ('changes the icons', function() {
         // given
         var self = $('#element').raty({ starOn: 'icon.png' }),
-            imgs = self.children('img');
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        imgs.eq(3).mouseover();
+        mouseMoveOnStar(imgs.eq(3));
 
         // then
         expect(imgs.eq(0)).toHaveAttr('src', 'icon.png');
@@ -273,7 +310,7 @@ describe('Raty', function() {
         });
 
         // then
-        var imgs = self.children('img');
+        var imgs = self.find('img');
 
         expect(imgs.eq(0)).toHaveAttr('src', 'a-off.png');
         expect(imgs.eq(1)).toHaveAttr('src', 'a-off.png');
@@ -298,25 +335,31 @@ describe('Raty', function() {
           });
 
           // then
-          expect(self.children('img').eq(4)).toHaveAttr('src', 'star-off.png');
+          expect(self.find('img').eq(4)).toHaveAttr('src', 'star-off.png');
         });
       });
 
-      context('on mouseover', function() {
+      context('on mousemove', function() {
         it ('uses the on icon', function() {
           // given
           var self = $('#element').raty({
-              iconRange: [
-                { range: 2, on: 'a.png', off: 'a-off.png' },
-                { range: 3, on: 'b.png', off: 'b-off.png' },
-                { range: 4, on: 'c.png', off: 'c-off.png' },
-                { range: 5, on: 'd.png', off: 'd-off.png' }
-              ]
-            }),
-            imgs = self.children('img');
+                iconRange: [
+                  { range: 2, on: 'a.png', off: 'a-off.png' },
+                  { range: 3, on: 'b.png', off: 'b-off.png' },
+                  { range: 4, on: 'c.png', off: 'c-off.png' },
+                  { range: 5, on: 'd.png', off: 'd-off.png' }
+                ]
+              }),
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          imgs.eq(4).mouseover();
+          mouseMoveOnStar(imgs.eq(4));
 
           // then
           expect(imgs.eq(0)).toHaveAttr('src', 'a.png');
@@ -326,7 +369,7 @@ describe('Raty', function() {
           expect(imgs.eq(4)).toHaveAttr('src', 'd.png');
         });
 
-        context('when on icon is not especified', function() {
+        context('when on icon is not specified', function() {
           it ('uses the :starOn icon', function() {
             // given
             var self = $('#element').raty({
@@ -337,10 +380,16 @@ describe('Raty', function() {
                     { range: 5, off: 'off.png' }
                   ]
                 }),
-                imgs = self.children('img');
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            imgs.eq(4).mouseover();
+            mouseMoveOnStar(imgs.eq(4));
 
             // then
             expect(imgs.eq(0)).toHaveAttr('src', 'on.png');
@@ -363,10 +412,16 @@ describe('Raty', function() {
                   { range: 5, on: 'd.png', off: 'd-off.png' },
                 ]
               }),
-              imgs = self.children('img');
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          imgs.eq(4).mouseover();
+          mouseMoveOnStar(imgs.eq(4));
 
           self.mouseleave();
 
@@ -388,10 +443,17 @@ describe('Raty', function() {
                   { range: 5, on: 'd.png', off: 'd-off.png' }
                 ],
                 score      : 1
-              });
+              }),
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          self.children('img').eq(4).mouseover();
+          mouseMoveOnStar(imgs.eq(4));
 
           self.mouseleave();
 
@@ -399,7 +461,7 @@ describe('Raty', function() {
           expect(self.children('input')).toHaveValue(1);
         });
 
-        context('when off icon is not especified', function() {
+        context('when off icon is not specified', function() {
           it ('uses the :starOff icon', function() {
             // given
             var self = $('#element').raty({
@@ -410,15 +472,21 @@ describe('Raty', function() {
                   { range: 5, on: 'on.png' }
                 ]
               }),
-              img = self.children('img').eq(4);
+              imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            img.mouseover();
+            mouseMoveOnStar(imgs.eq(4));
 
             self.mouseleave();
 
             // then
-            expect(img).toHaveAttr('src', 'star-off.png');
+            expect(imgs.eq(4)).toHaveAttr('src', 'star-off.png');
           });
         });
       });
@@ -431,10 +499,17 @@ describe('Raty', function() {
             click: function() {
               $(this).data('self', this);
             }
-          });
+          }),
+          imgs = self.find('img');
 
-        // when
-        self.children('img:first').mouseover().click();
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
+
+          // when
+          mouseMoveOnStar(imgs.eq(0)).click();
 
         // then
         expect(self.data('self')).toBe(self);
@@ -446,10 +521,17 @@ describe('Raty', function() {
               click: function() {
                 $(this).data('clicked', true);
               }
-            });
+            }),
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        self.children('img:first').mouseover().click();
+        mouseMoveOnStar(imgs.eq(0)).click();
 
         // then
         expect(self.data('clicked')).toBeTruthy();
@@ -461,10 +543,17 @@ describe('Raty', function() {
               click: function(score) {
                 $(this).data('score', score);
               }
-            });
+            }),
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        self.children('img:first').mouseover().click();
+        mouseMoveOnStar(imgs.eq(0)).click();
 
         // then
         expect(self.data('score')).toEqual(1);
@@ -474,14 +563,21 @@ describe('Raty', function() {
         it ('executes cancel click callback', function() {
           // given
           var self = $('#element').raty({
-              cancel: true,
-              click : function(score) {
-                $(this).data('score', null);
-              }
-             });
+                cancel: true,
+                click : function(score) {
+                  $(this).data('score', null);
+                }
+              }),
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          self.children('.raty-cancel').mouseover().click().mouseleave();
+          mouseMoveOnStar(imgs.filter('.raty-cancel')).click().mouseleave();
 
           // then
           expect(self.data('score')).toBeNull();
@@ -509,7 +605,7 @@ describe('Raty', function() {
         self.raty({ score: 1 });
 
         // then
-        var imgs = self.children('img');
+        var imgs = self.find('img');
 
         expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
         expect(imgs.eq(1)).toHaveAttr('src', 'star-off.png');
@@ -589,7 +685,7 @@ describe('Raty', function() {
         self.raty({ readOnly: true });
 
         // then
-        expect(self.children('img')).toHaveAttr('title', 'Not rated yet!');
+        expect(self.find('img')).toHaveAttr('title', 'Not rated yet!');
       });
 
       it ('removes the pointer cursor', function() {
@@ -615,13 +711,19 @@ describe('Raty', function() {
         expect(self.data('settings').readOnly).toEqual(true);
       });
 
-      it ('avoids trigger mouseover', function() {
+      it ('avoids trigger mousemove', function() {
         // given
         var self = $('#element').raty({ readOnly: true }),
-            imgs = self.children('img');
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        imgs.eq(1).mouseover();
+        mouseMoveOnStar(imgs.eq(1));
 
         // then
         expect(imgs).toHaveAttr('src', 'star-off.png');
@@ -630,10 +732,16 @@ describe('Raty', function() {
       it ('avoids trigger click', function() {
         // given
         var self = $('#element').raty({ readOnly: true }),
-            imgs = self.children('img');
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        imgs.eq(1).mouseover().click().mouseleave();
+        mouseMoveOnStar(imgs.eq(1)).click().mouseleave();
 
         // then
         expect(imgs).toHaveAttr('src', 'star-off.png');
@@ -648,9 +756,15 @@ describe('Raty', function() {
                 $(this).data('mouseleave', true);
               }
             }),
-            imgs = self.children('img');
+            imgs = self.find('img');
 
-        imgs.eq(1).mouseover();
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
+
+        mouseMoveOnStar(imgs.eq(1));
 
         // when
         self.mouseleave();
@@ -669,7 +783,7 @@ describe('Raty', function() {
             self.raty({ readOnly: true, score: 3 });
 
             // then
-            expect(self.children('img')).toHaveAttr('title', 'regular');
+            expect(self.find('img')).toHaveAttr('title', 'regular');
           });
         });
 
@@ -682,7 +796,7 @@ describe('Raty', function() {
             self.raty({ readOnly: true, score: 3.1 });
 
             // then
-            expect(self.children('img')).toHaveAttr('title', 'regular');
+            expect(self.find('img')).toHaveAttr('title', 'regular');
           });
         });
       });
@@ -710,7 +824,7 @@ describe('Raty', function() {
         self.raty({ hints: ['1', '/', 'c', '-', '#'] });
 
         // then
-        var imgs = self.children('img');
+        var imgs = self.find('img');
 
         expect(imgs.eq(0)).toHaveAttr('title', 1);
         expect(imgs.eq(1)).toHaveAttr('title', '/');
@@ -727,7 +841,7 @@ describe('Raty', function() {
         self.raty({ hints: [undefined, 'a', 'b', 'c', 'd'] });
 
         // then
-        var imgs = self.children('img');
+        var imgs = self.find('img');
 
         expect(imgs.eq(0)).toHaveAttr('title', 'bad');
         expect(imgs.eq(1)).toHaveAttr('title', 'a');
@@ -744,7 +858,7 @@ describe('Raty', function() {
         self.raty({ hints: ['', 'a', 'b', 'c', 'd'] });
 
         // then
-        var imgs = self.children('img');
+        var imgs = self.find('img');
 
         expect(imgs.eq(0)).toHaveAttr('title', '');
         expect(imgs.eq(1)).toHaveAttr('title', 'a');
@@ -761,7 +875,7 @@ describe('Raty', function() {
         self.raty({ hints: [null, 'a', 'b', 'c', 'd'] });
 
         // then
-        var imgs = self.children('img');
+        var imgs = self.find('img');
 
         expect(imgs.eq(0)).toHaveAttr('title', 1);
         expect(imgs.eq(1)).toHaveAttr('title', 'a');
@@ -770,7 +884,7 @@ describe('Raty', function() {
         expect(imgs.eq(4)).toHaveAttr('title', 'd');
       });
 
-      context('whe has less hint than stars', function() {
+      context('when has less hints than stars', function() {
         it ('receives the default hint index', function() {
           // given
           var self = $('#element');
@@ -779,7 +893,7 @@ describe('Raty', function() {
           self.raty({ hints: ['1', '2', '3', '4'] });
 
           // then
-          var imgs = self.children('img');
+          var imgs = self.find('img');
 
           expect(imgs.eq(0)).toHaveAttr('title', 1);
           expect(imgs.eq(1)).toHaveAttr('title', 2);
@@ -789,7 +903,7 @@ describe('Raty', function() {
         });
       });
 
-      context('whe has more stars than hints', function() {
+      context('when has more stars than hints', function() {
         it ('sets star number', function() {
           // given
           var self = $('#element');
@@ -798,7 +912,7 @@ describe('Raty', function() {
           self.raty({ number: 6, hints: ['a', 'b', 'c', 'd', 'e'] });
 
           // then
-          var imgs = self.children('img');
+          var imgs = self.find('img');
 
           expect(imgs.eq(0)).toHaveAttr('title', 'a');
           expect(imgs.eq(1)).toHaveAttr('title', 'b');
@@ -810,17 +924,23 @@ describe('Raty', function() {
       });
     });
 
-    describe('#mouseover', function() {
+    describe('#mousemove', function() {
       it ('receives the score as int', function() {
         // given
         var self = $('#element').raty({
-            mouseover: function(score) {
+            mousemove: function(score) {
               $(this).data('score', score);
             }
-          });
+            }),
+            imgs = self.find('img');
 
-        // when
-        self.children('img:first').mouseover();
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
+
+        mouseMoveOnStar(imgs.eq(0));
 
         // then
         expect(self.data('score')).toEqual(1);
@@ -829,16 +949,23 @@ describe('Raty', function() {
       it ('receives the event', function() {
         // given
         var self = $('#element').raty({
-            mouseover: function(score, evt) {
+            mousemove: function(score, evt) {
               $(this).data('evt', evt);
             }
-          });
+            }),
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        self.children('img:first').mouseover();
+        mouseMoveOnStar(imgs.eq(0));
 
         // then
-        expect(self.data('evt').type).toEqual('mouseover');
+        expect(self.data('evt').type).toEqual('mousemove');
       });
 
       context('with :cancel', function() {
@@ -846,13 +973,13 @@ describe('Raty', function() {
           // given
           var self = $('#element').raty({
                 cancel    : true,
-                mouseover : function(score) {
+                mousemove : function(score) {
                   self.data('null', score);
                 }
               });
 
           // when
-          self.children('.raty-cancel').mouseover();
+          self.children('.raty-cancel').mousemove();
 
           // then
           expect(self.data('null')).toBeNull();
@@ -864,13 +991,20 @@ describe('Raty', function() {
       it ('receives the score as int', function() {
         // given
         var self = $('#element').raty({
-            mouseout: function(score) {
-              $(this).data('score', score);
-            }
-          });
+              mouseout: function(score) {
+                $(this).data('score', score);
+              }
+            }),
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        self.children('img:first').mouseover().click().mouseout();
+        mouseMoveOnStar(imgs.eq(0)).click().mouseout();
 
         // then
         expect(self.data('score')).toEqual(1);
@@ -879,13 +1013,20 @@ describe('Raty', function() {
       it ('receives the event', function() {
         // given
         var self = $('#element').raty({
-            mouseout: function(score, evt) {
-              $(this).data('evt', evt);
-            }
-          });
+              mouseout: function(score, evt) {
+                $(this).data('evt', evt);
+              }
+            }),
+            imgs = self.find('img');
+
+        // since image loading is blocked while the javascript is running,
+        // all the stars are of 0x0 px size. Need to set the stars size manually
+        // to have the proper behavior
+        imgs.width($.fn.raty.defaults.size);
+        imgs.height($.fn.raty.defaults.size);
 
         // when
-        self.children('img:first').mouseover().click().mouseout();
+        mouseMoveOnStar(imgs.eq(0)).click().mouseout();
 
         // then
         expect(self.data('evt').type).toEqual('mouseout');
@@ -899,10 +1040,17 @@ describe('Raty', function() {
                 mouseout: function(score) {
                   self.data('undefined', score === undefined);
                 }
-              });
+              }),
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          self.children('img:first').mouseenter().mouseleave();
+          mouseMoveOnStar(imgs.eq(0)).mouseleave();
 
           // then
           expect(self.data('undefined')).toBeTruthy();
@@ -917,10 +1065,17 @@ describe('Raty', function() {
                 mouseout: function(score) {
                   self.data('score', score);
                 }
-              });
+              }),
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          self.children('img:first').mouseenter().mouseleave();
+          mouseMoveOnStar(imgs.eq(0)).mouseleave();
 
           // then
           expect(self.data('score')).toEqual(1);
@@ -931,14 +1086,14 @@ describe('Raty', function() {
         it ('receives the event', function() {
           // given
           var self = $('#element').raty({
-              cancel  : true,
-              mouseout: function(score, evt) {
-                $(this).data('evt', evt);
-              }
-            });
+                cancel  : true,
+                mouseout: function(score, evt) {
+                  $(this).data('evt', evt);
+                }
+              });
 
           // when
-          self.children('.raty-cancel').mouseover().click().mouseout();
+          self.children('.raty-cancel').mousemove().click().mouseout();
 
           // then
           expect(self.data('evt').type).toEqual('mouseout');
@@ -992,7 +1147,7 @@ describe('Raty', function() {
         self.raty({ number: 1 });
 
         // then
-        expect(self.children('img').length).toEqual(1);
+        expect(self.find('img').length).toEqual(1);
       });
 
       it ('accepts number as string', function() {
@@ -1003,7 +1158,7 @@ describe('Raty', function() {
         self.raty({ number: '10' });
 
         // then
-        expect(self.children('img').length).toEqual(10);
+        expect(self.find('img').length).toEqual(10);
       });
 
       it ('accepts callback', function() {
@@ -1014,7 +1169,7 @@ describe('Raty', function() {
         self.raty({ number: function() { return 1; } });
 
         // then
-        expect(self.children('img').length).toEqual(1);
+        expect(self.find('img').length).toEqual(1);
       });
     });
 
@@ -1053,7 +1208,7 @@ describe('Raty', function() {
         self.raty({ path: 'path' });
 
         // then
-        expect(self.children('img')).toHaveAttr('src', 'path/star-off.png');
+        expect(self.find('img')).toHaveAttr('src', 'path/star-off.png');
       });
 
       context('without path', function() {
@@ -1065,7 +1220,7 @@ describe('Raty', function() {
           self.raty({ path: null });
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.find('img')).toHaveAttr('src', 'star-off.png');
         });
       });
 
@@ -1094,7 +1249,7 @@ describe('Raty', function() {
           });
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'path/star-off.png');
+          expect(self.find('img')).toHaveAttr('src', 'path/star-off.png');
         });
       });
     });
@@ -1118,7 +1273,7 @@ describe('Raty', function() {
         var self = $('#element').raty({ cancel: true, cancelOn: 'icon.png' });
 
         // when
-        var cancel = self.children('.raty-cancel').mouseover();
+        var cancel = self.children('.raty-cancel').mousemove();
 
         // then
         expect(cancel).toHaveAttr('src', 'icon.png');
@@ -1173,13 +1328,13 @@ describe('Raty', function() {
         expect(cancel).toHaveAttr('src', 'cancel-off.png');
       });
 
-      context('on mouseover', function() {
+      context('on mousemove', function() {
         it ('turns on', function() {
           // given
           var self = $('#element').raty({ cancel: true });
 
           // when
-          var cancel = self.children('.raty-cancel').mouseover();
+          var cancel = self.children('.raty-cancel').mousemove();
 
           // then
           expect(cancel).toHaveAttr('src', 'cancel-on.png');
@@ -1189,10 +1344,10 @@ describe('Raty', function() {
           it ('turns off the stars', function() {
             // given
             var self  = $('#element').raty({ score: 3, cancel: true }),
-                imgs  = self.children('img:not(.raty-cancel)');
+                imgs  = self.find('img:not(.raty-cancel)');
 
             // when
-            self.children('.raty-cancel').mouseover();
+            self.children('.raty-cancel').mousemove();
 
             // then
             expect(imgs).toHaveAttr('src', 'star-off.png');
@@ -1206,7 +1361,7 @@ describe('Raty', function() {
           var self = $('#element').raty({ cancel: true });
 
           // when
-          var cancel = self.children('.raty-cancel').mouseover().mouseout();
+          var cancel = self.children('.raty-cancel').mousemove().mouseout();
 
           // then
           expect(cancel).toHaveAttr('src', 'cancel-off.png');
@@ -1216,10 +1371,10 @@ describe('Raty', function() {
           it ('turns the star on again', function() {
             // given
             var self  = $('#element').raty({ score: 4, cancel: true }),
-                imgs  = self.children('img:not(.raty-cancel)');
+                imgs  = self.find('img:not(.raty-cancel)');
 
             // when
-            self.children('.raty-cancel').mouseover().mouseout();
+            self.children('.raty-cancel').mousemove().mouseout();
 
             // then
             expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
@@ -1240,7 +1395,7 @@ describe('Raty', function() {
           self.children('.raty-cancel').click().mouseout();
 
           // then
-          var stars = self.children('img:not(.raty-cancel)');
+          var stars = self.find('img:not(.raty-cancel)');
 
           expect(stars).toHaveAttr('src', 'star-off.png');
           expect(self.children('input').val()).toEqual('');
@@ -1268,7 +1423,7 @@ describe('Raty', function() {
             self.children('.raty-cancel').click().mouseout();
 
             // then
-            var stars = self.children('img:not(.raty-cancel)');
+            var stars = self.find('img:not(.raty-cancel)');
 
             expect(stars).toHaveAttr('src', 'star-on.png');
             expect(self.children('input').val()).toEqual('5');
@@ -1309,10 +1464,17 @@ describe('Raty', function() {
       context('as hint', function() {
         it ('receives the hint', function() {
           // given
-          var self = $('#element').raty({ target: '#hint', targetType: 'hint' });
+          var self = $('#element').raty({ target: '#hint', targetType: 'hint' }),
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          self.children('img:first').mouseover();
+          mouseMoveOnStar(imgs.eq(0));
 
           // then
           expect($('#hint')).toHaveHtml('bad');
@@ -1324,7 +1486,7 @@ describe('Raty', function() {
             var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'hint' });
 
             // when
-            self.children('.raty-cancel').mouseover();
+            self.children('.raty-cancel').mousemove();
 
             // then
             expect($('#hint')).toHaveHtml('Cancel this rating!');
@@ -1335,10 +1497,17 @@ describe('Raty', function() {
       context('as score', function() {
         it ('receives the score', function() {
           // given
-          var self = $('#element').raty({ target: '#hint', targetType: 'score' });
+          var self = $('#element').raty({ target: '#hint', targetType: 'score' }),
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          self.children('img:first').mouseover();
+          mouseMoveOnStar(imgs.eq(0));
 
           // then
           expect($('#hint')).toHaveHtml(1);
@@ -1350,7 +1519,7 @@ describe('Raty', function() {
             var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'score' });
 
             // when
-            self.children('.raty-cancel').mouseover();
+            self.children('.raty-cancel').mousemove();
 
             // then
             expect($('#hint')).toHaveHtml('Cancel this rating!');
@@ -1403,13 +1572,20 @@ describe('Raty', function() {
           });
         });
 
-        context('on mouseover', function() {
-          it ('set target with format on mouseover', function() {
+        context('on mousemove', function() {
+          it ('set target with format on mousemove', function() {
             // given
-            var self = $('#element').raty({ target: '#hint', targetFormat: 'score: {score}' });
+            var self = $('#element').raty({ target: '#hint', targetFormat: 'score: {score}' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').mouseover();
+            mouseMoveOnStar(imgs.eq(0));
 
             // then
             expect($('#hint')).toHaveHtml('score: bad');
@@ -1422,10 +1598,17 @@ describe('Raty', function() {
             var self = $('#element').raty({
                   target      : '#hint',
                   targetFormat: 'score: {score}'
-                });
+                }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').mouseover().mouseout();
+            mouseMoveOnStar(imgs.eq(0)).mouseout();
 
             // then
             expect($('#hint')).toBeEmpty();
@@ -1439,10 +1622,17 @@ describe('Raty', function() {
                       target      : '#hint',
                       targetFormat: 'score: {score}',
                       targetKeep  : true
-                    });
+                    }),
+                    imgs = self.find('img');
+
+                // since image loading is blocked while the javascript is running,
+                // all the stars are of 0x0 px size. Need to set the stars size manually
+                // to have the proper behavior
+                imgs.width($.fn.raty.defaults.size);
+                imgs.height($.fn.raty.defaults.size);
 
                 // when
-                self.children('img:first').mouseover().mouseleave();
+                mouseMoveOnStar(imgs.eq(0)).mouseleave();
 
                 // then
                 expect($('#hint')).toBeEmpty();
@@ -1457,10 +1647,17 @@ describe('Raty', function() {
                       target      : '#hint',
                       targetFormat: 'score: {score}',
                       targetKeep  : true
-                    });
+                    }),
+                    imgs = self.find('img');
+
+                // since image loading is blocked while the javascript is running,
+                // all the stars are of 0x0 px size. Need to set the stars size manually
+                // to have the proper behavior
+                imgs.width($.fn.raty.defaults.size);
+                imgs.height($.fn.raty.defaults.size);
 
                 // when
-                self.children('img:first').mouseover().mouseleave();
+                mouseMoveOnStar(imgs.eq(0)).mouseleave();
 
                 // then
                 expect($('#hint')).toHaveHtml('score: bad');
@@ -1521,16 +1718,23 @@ describe('Raty', function() {
     });
 
     describe('#target', function() {
-      context('on mouseover', function() {
+      context('on mousemove', function() {
         context('as div', function() {
           beforeEach(function() { buildDivTarget(); });
 
           it ('sets the hint', function() {
             // given
-            var self = $('#element').raty({ target: '#hint' });
+            var self = $('#element').raty({ target: '#hint' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').mouseover();
+            mouseMoveOnStar(imgs.eq(0));
 
             // then
             expect($('#hint')).toHaveHtml('bad');
@@ -1542,10 +1746,17 @@ describe('Raty', function() {
 
           it ('sets the hint', function() {
             // given
-            var self = $('#element').raty({ target: '#hint' });
+            var self = $('#element').raty({ target: '#hint' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').mouseover();
+            mouseMoveOnStar(imgs.eq(0));
 
             // then
             expect($('#hint')).toHaveValue('bad');
@@ -1557,10 +1768,17 @@ describe('Raty', function() {
 
           it ('sets the hint', function() {
             // given
-            var self = $('#element').raty({ target: '#hint' });
+            var self = $('#element').raty({ target: '#hint' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').mouseover();
+            mouseMoveOnStar(imgs.eq(0));
 
             // then
             expect($('#hint')).toHaveValue('bad');
@@ -1572,10 +1790,17 @@ describe('Raty', function() {
 
           it ('sets the hint', function() {
             // given
-            var self = $('#element').raty({ target: '#hint' });
+            var self = $('#element').raty({ target: '#hint' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').mouseover();
+            mouseMoveOnStar(imgs.eq(0));
 
             // then
             expect($('#hint')).toHaveValue('bad');
@@ -1589,10 +1814,17 @@ describe('Raty', function() {
 
           it ('gets clear', function() {
             // given
-            var self = $('#element').raty({ target: '#hint' });
+            var self = $('#element').raty({ target: '#hint' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').mouseover().click().mouseleave();
+            mouseMoveOnStar(imgs.eq(0)).click().mouseleave();
 
             // then
             expect($('#hint')).toBeEmpty();
@@ -1604,10 +1836,17 @@ describe('Raty', function() {
 
           it ('gets clear', function() {
             // given
-            var self = $('#element').raty({ target: '#hint' });
+            var self = $('#element').raty({ target: '#hint' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').click().mouseover().mouseleave();
+            mouseMoveOnStar(imgs.eq(0)).click().mouseleave();
 
             // then
             expect($('#hint')).toHaveValue('');
@@ -1619,10 +1858,17 @@ describe('Raty', function() {
 
           it ('gets clear', function() {
             // given
-            var self = $('#element').raty({ target: '#hint' });
+            var self = $('#element').raty({ target: '#hint' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').click().mouseover().mouseleave();
+            mouseMoveOnStar(imgs.eq(0)).click().mouseleave();
 
             // then
             expect($('#hint')).toHaveValue('');
@@ -1634,10 +1880,17 @@ describe('Raty', function() {
 
           it ('gets clear', function() {
             // given
-            var self = $('#element').raty({ target: '#hint' });
+            var self = $('#element').raty({ target: '#hint' }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            self.children('img:first').click().mouseover().mouseleave();
+            mouseMoveOnStar(imgs.eq(0)).click().mouseleave();
 
             // then
             expect($('#hint')).toHaveValue('');
@@ -1713,14 +1966,20 @@ describe('Raty', function() {
     });
 
     describe('#single', function() {
-      context('on mouseover', function() {
+      context('on mousemove', function() {
         it ('turns on just one icon', function() {
           // given
           var self = $('#element').raty({ single: true }),
-              imgs = self.children('img');
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           // when
-          imgs.eq(2).mouseover();
+          mouseMoveOnStar(imgs.eq(2));
 
           // then
           expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
@@ -1742,10 +2001,16 @@ describe('Raty', function() {
                     { range: 5, on: 'd.png', off: 'd-off.png' }
                   ]
                 }),
-                imgs = self.children('img');
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            imgs.eq(3).mouseover();
+            mouseMoveOnStar(imgs.eq(3));
 
             // then
             expect(imgs.eq(0)).toHaveAttr('src', 'a-off.png');
@@ -1761,11 +2026,17 @@ describe('Raty', function() {
         context('on mouseout', function() {
           it ('keeps the score', function() {
             // given
-            var self = $('#element').raty({ single: true })
-                imgs = self.children('img');
+            var self = $('#element').raty({ single: true }),
+                imgs = self.find('img');
+
+            // since image loading is blocked while the javascript is running,
+            // all the stars are of 0x0 px size. Need to set the stars size manually
+            // to have the proper behavior
+            imgs.width($.fn.raty.defaults.size);
+            imgs.height($.fn.raty.defaults.size);
 
             // when
-            imgs.eq(2).mouseover().click().mouseleave();
+            mouseMoveOnStar(imgs.eq(2)).click().mouseleave();
 
             // then
             expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
@@ -1787,10 +2058,16 @@ describe('Raty', function() {
                       { range: 5, on: 'd.png', off: 'd-off.png' }
                     ]
                   }),
-                  imgs = self.children('img');
+                  imgs = self.find('img');
+
+              // since image loading is blocked while the javascript is running,
+              // all the stars are of 0x0 px size. Need to set the stars size manually
+              // to have the proper behavior
+              imgs.width($.fn.raty.defaults.size);
+              imgs.height($.fn.raty.defaults.size);
 
               // when
-              imgs.eq(3).mouseover().click().mouseleave();
+              mouseMoveOnStar(imgs.eq(3)).click().mouseleave();
 
               // then
               expect(imgs.eq(0)).toHaveAttr('src', 'a-off.png');
@@ -1859,7 +2136,7 @@ describe('Raty', function() {
                 score   : .5 // score.5 < full.6 === 0
               });
 
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               // then
               expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
@@ -1878,7 +2155,7 @@ describe('Raty', function() {
                 score   : .6 // score.6 == full.6 === 1
               });
 
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               // then
               expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
@@ -1903,7 +2180,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
               expect(self.children('input').val()).toEqual('0.24');
@@ -1922,7 +2199,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
               expect(self.children('input').val()).toEqual('0.26');
@@ -1941,7 +2218,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
               expect(self.children('input').val()).toEqual('0.6');
@@ -1960,7 +2237,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
               expect(self.children('input').val()).toEqual('0.75');
@@ -1979,7 +2256,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
             });
@@ -1999,7 +2276,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
             });
@@ -2017,7 +2294,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-half.png');
             });
@@ -2035,7 +2312,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-half.png');
             });
@@ -2053,7 +2330,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-half.png');
             });
@@ -2071,7 +2348,7 @@ describe('Raty', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var imgs = self.find('img');
 
               expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
             });
@@ -2140,7 +2417,7 @@ describe('Raty', function() {
       self.raty();
 
       // then
-      var imgs  = self.eq(0).children('img'),
+      var imgs  = self.eq(0).find('img'),
           score = self.eq(0).children('input');
 
       expect(imgs.eq(0)).toHaveAttr('title', 'bad');
@@ -2153,7 +2430,7 @@ describe('Raty', function() {
       expect(score).toHaveAttr('name', 'score');
       expect(score.val()).toEqual('');
 
-      imgs  = self.eq(1).children('img');
+      imgs  = self.eq(1).find('img');
       score = self.eq(0).children('input');
 
       expect(imgs.eq(0)).toHaveAttr('title', 'bad');
@@ -2270,7 +2547,7 @@ describe('Raty', function() {
           self.raty('score', 5);
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-on.png');
+          expect(self.find('img')).toHaveAttr('src', 'star-on.png');
         });
       });
 
@@ -2296,7 +2573,7 @@ describe('Raty', function() {
           self.raty('score', 5);
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.find('img')).toHaveAttr('src', 'star-off.png');
         });
       });
     });
@@ -2332,7 +2609,7 @@ describe('Raty', function() {
         var ref = self.raty('set', { scoreName: 'change-just-it' });
 
         // then
-        expect(ref.children('img').length).toEqual(6);
+        expect(ref.find('img').length).toEqual(6);
       });
 
       context('with external bind on wrapper', function() {
@@ -2397,18 +2674,24 @@ describe('Raty', function() {
           self.raty('readOnly', true);
 
           // then
-          expect(self.children('img')).toHaveAttr('title', 'Not rated yet!');
+          expect(self.find('img')).toHaveAttr('title', 'Not rated yet!');
         });
 
-        it ('avoids trigger mouseover', function() {
+        it ('avoids trigger mousemove', function() {
           // given
           var self = $('#element').raty(),
-              imgs = self.children('img');
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           self.raty('readOnly', true);
 
           // when
-          imgs.eq(0).mouseover();
+          mouseMoveOnStar(imgs.eq(0));
 
           // then
           expect(imgs).toHaveAttr('src', 'star-off.png');
@@ -2417,12 +2700,18 @@ describe('Raty', function() {
         it ('avoids trigger click', function() {
           // given
           var self = $('#element').raty(),
-              imgs = self.children('img');
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           self.raty('readOnly', true);
 
           // when
-          imgs.eq(0).mouseover().click().mouseleave();
+          mouseMoveOnStar(imgs.eq(0)).click().mouseleave();
 
           // then
           expect(imgs).toHaveAttr('src', 'star-off.png');
@@ -2438,7 +2727,7 @@ describe('Raty', function() {
             self.raty('readOnly', true);
 
             // then
-            expect(self.children('img')).toHaveAttr('title', 'bad');
+            expect(self.find('img')).toHaveAttr('title', 'bad');
           });
         });
 
@@ -2474,7 +2763,7 @@ describe('Raty', function() {
           it ('keeps it', function() {
             // given
             var self = $('#element').raty(),
-                star = self.children('img').first();
+                star = self.find('img').first();
 
             star.on('click', function() {
               self.data('externalClick', true);
@@ -2516,7 +2805,7 @@ describe('Raty', function() {
         it ('Removes the "Not rated yet!" off the stars', function() {
           // given
           var self   = $('#element').raty({ readOnly: true }),
-              imgs  = self.children('img');
+              imgs  = self.find('img');
 
           // when
           self.raty('readOnly', false);
@@ -2529,15 +2818,21 @@ describe('Raty', function() {
           expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
         });
 
-        it ('triggers mouseover', function() {
+        it ('triggers mousemove', function() {
           // given
           var self = $('#element').raty({ readOnly: true }),
-              imgs = self.children('img');
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           self.raty('readOnly', false);
 
           // when
-          imgs.eq(0).mouseover();
+          mouseMoveOnStar(imgs.eq(0));
 
           // then
           expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
@@ -2546,12 +2841,18 @@ describe('Raty', function() {
         it ('triggers click', function() {
           // given
           var self = $('#element').raty({ readOnly: true }),
-              imgs = self.children('img');
+              imgs = self.find('img');
+
+          // since image loading is blocked while the javascript is running,
+          // all the stars are of 0x0 px size. Need to set the stars size manually
+          // to have the proper behavior
+          imgs.width($.fn.raty.defaults.size);
+          imgs.height($.fn.raty.defaults.size);
 
           self.raty('readOnly', false);
 
           // when
-          imgs.eq(0).mouseover().click().mouseleave();
+          mouseMoveOnStar(imgs.eq(0)).click().mouseleave();
 
           // then
           expect(imgs).toHaveAttr('src', 'star-on.png');
@@ -2567,7 +2868,7 @@ describe('Raty', function() {
             self.raty('readOnly', false);
 
             // then
-            var imgs = self.children('img')
+            var imgs = self.find('img')
 
             expect(imgs.eq(0)).toHaveAttr('title', 'bad');
             expect(imgs.eq(1)).toHaveAttr('title', 'poor');
@@ -2586,20 +2887,21 @@ describe('Raty', function() {
             self.raty('readOnly', false);
 
             // then
-            expect(self.children('.raty-cancel')).toBeVisible();
+            // expect(self.children('.raty-cancel')).toBeVisible();
+            expect(self.children('.raty-cancel')).not.toHaveCss({ display: 'none' });
             expect(self.children('.raty-cancel')).not.toHaveCss({ display: 'block' });
           });
 
-          it ('rebinds the mouseover', function() {
+          it ('rebinds the mousemove', function() {
             // given
             var self   = $('#element').raty({ readOnly: true, cancel: true }),
                 cancel = self.children('.raty-cancel'),
-                imgs   = self.children('img:not(.raty-cancel)');
+                imgs   = self.find('img:not(.raty-cancel)');
 
             // when
             self.raty('readOnly', false);
 
-            cancel.mouseover();
+            cancel.mousemove();
 
             // then
             expect(cancel).toHaveAttr('src', 'cancel-on.png');
@@ -2609,7 +2911,7 @@ describe('Raty', function() {
           it ('rebinds the click', function() {
             // given
             var self = $('#element').raty({ readOnly: true, cancel: true, score: 5 }),
-                imgs = self.children('img:not(.raty-cancel)');
+                imgs = self.find('img:not(.raty-cancel)');
 
             // when
             self.raty('readOnly', false);
@@ -2633,7 +2935,7 @@ describe('Raty', function() {
           self.raty('cancel');
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-on.png');
+          expect(self.find('img')).toHaveAttr('src', 'star-on.png');
         });
       });
 
@@ -2651,7 +2953,7 @@ describe('Raty', function() {
           self.raty('cancel');
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.find('img')).toHaveAttr('src', 'star-off.png');
           expect(self.children('input').val()).toEqual('');
           expect(self.data('clicked')).toBeFalsy();
         });
@@ -2671,7 +2973,7 @@ describe('Raty', function() {
           self.raty('cancel', true);
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.find('img')).toHaveAttr('src', 'star-off.png');
           expect(self.children('input').val()).toEqual('');
           expect(self.data('clicked')).toBeTruthy();
         });
@@ -2714,7 +3016,7 @@ describe('Raty', function() {
         self.raty('click', 1);
 
         // then
-        expect(self.children('img')).toHaveAttr('src', 'star-on.png');
+        expect(self.find('img')).toHaveAttr('src', 'star-on.png');
         expect(self.data('clicked')).toBeTruthy();
       });
 
@@ -2757,7 +3059,7 @@ describe('Raty', function() {
           self.raty('click', 1);
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.find('img')).toHaveAttr('src', 'star-off.png');
         });
       });
 
@@ -2816,7 +3118,7 @@ describe('Raty', function() {
         var ref = self.raty('reload');
 
         // then
-        expect(ref.children('img').length).toEqual(6);
+        expect(ref.find('img').length).toEqual(6);
       });
 
       context('when :readOnly by function', function() {
