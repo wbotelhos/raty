@@ -2,15 +2,15 @@ isClear = true;
 
 function context(description, spec) {
   describe(description, spec);
-};
+}
 
 function build() {
   $('body').append('<div id="element"></div>');
-};
+}
 
 function buildDivTarget() {
   $('body').append('<div id="hint"></div>');
-};
+}
 
 function buildComboboxTarget() {
   $('body').append(
@@ -29,22 +29,22 @@ function buildComboboxTarget() {
       '<option value="score: bad">targetFormat</option>' +
     '</select>'
   );
-};
+}
 
 function buildTextareaTarget() {
   $('body').append('<textarea id="hint"></textarea>');
-};
+}
 
 function buildTextTarget() {
   $('body').append('<input id="hint" type="text" />');
-};
+}
 
 function clear() {
   if (isClear) {
     $('#element').remove();
     $('#hint').remove();
   }
-};
+}
 
 describe('Raty', function() {
   beforeEach(function() { build(); });
@@ -52,10 +52,10 @@ describe('Raty', function() {
 
   it ('has the right values', function() {
     // given
-    var raty = $.fn.raty
+    var raty = $.fn.raty;
 
     // when
-    var opt = raty.defaults
+    var opt = raty.defaults;
 
     // then
     expect(opt.cancel).toBeFalsy();
@@ -74,9 +74,9 @@ describe('Raty', function() {
     expect(opt.path).toEqual('');
     expect(opt.precision).toBeFalsy();
     expect(opt.readOnly).toBeFalsy();
-    expect(opt.round.down).toEqual(.25);
-    expect(opt.round.full).toEqual(.6);
-    expect(opt.round.up).toEqual(.76);
+    expect(opt.round.down).toEqual(0.25);
+    expect(opt.round.full).toEqual(0.6);
+    expect(opt.round.up).toEqual(0.76);
     expect(opt.score).toBeUndefined();
     expect(opt.scoreName).toEqual('score');
     expect(opt.single).toBeFalsy();
@@ -1075,7 +1075,7 @@ describe('Raty', function() {
           var self = $('#element');
 
           // when
-          self.raty({ cancel: true, path: 'path' })
+          self.raty({ cancel: true, path: 'path' });
 
           // then
           expect(self.children('.raty-cancel')).toHaveAttr('src', 'path/cancel-off.png');
@@ -1683,7 +1683,7 @@ describe('Raty', function() {
       context('when off', function() {
         it ('takes off the space', function() {
           // given
-          var self  = $('#element');
+          var self  = $('#element'),
               size  = 16,
               stars  = 5;
 
@@ -1697,7 +1697,7 @@ describe('Raty', function() {
         context('with :cancel', function() {
           it ('takes off the space', function() {
             // given
-            var self    = $('#element');
+            var self    = $('#element'),
                 size    = 16,
                 stars   = 5,
                 cancel  = size;
@@ -1761,7 +1761,7 @@ describe('Raty', function() {
         context('on mouseout', function() {
           it ('keeps the score', function() {
             // given
-            var self = $('#element').raty({ single: true })
+            var self = $('#element').raty({ single: true }),
                 imgs = self.children('img');
 
             // when
@@ -1855,8 +1855,8 @@ describe('Raty', function() {
               self.raty({
                 half    : false,
                 halfShow: false,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .5 // score.5 < full.6 === 0
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.5 // score.5 < full.6 === 0
               });
 
               var imgs = self.children('img');
@@ -1874,8 +1874,8 @@ describe('Raty', function() {
               self.raty({
                 half    : false,
                 halfShow: false,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .6 // score.6 == full.6 === 1
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.6 // score.6 == full.6 === 1
               });
 
               var imgs = self.children('img');
@@ -1898,8 +1898,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: false,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .24 // score.24 < down.25 === 0
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.24 // score.24 < down.25 === 0
               });
 
               // then
@@ -1917,8 +1917,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: false,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .26 // score.26 > down.25 and score.6 < up.76 === .5
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.26 // score.26 > down.25 and score.6 < up.76 === .5
               });
 
               // then
@@ -1936,8 +1936,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: false,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .6 // score.6 > down.25 and score.6 < up.76 === .5
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.6 // score.6 > down.25 and score.6 < up.76 === .5
               });
 
               // then
@@ -1955,8 +1955,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: false,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .75 // score.75 > down.25 and score.75 < up.76 === .5
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.75 // score.75 > down.25 and score.75 < up.76 === .5
               });
 
               // then
@@ -1974,8 +1974,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: false,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .76 // score.76 == up.76 === 1
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.76 // score.76 == up.76 === 1
               });
 
               // then
@@ -1994,8 +1994,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: true,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .24 // score.24 < down.25 === 0
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.24 // score.24 < down.25 === 0
               });
 
               // then
@@ -2012,8 +2012,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: true,
-                round    : { down: .25, full: .6, up: .76 },
-                score    : .26 // score.26 > down.25 and score.6 < up.76 === .5
+                round    : { down: 0.25, full: 0.6, up: 0.76 },
+                score    : 0.26 // score.26 > down.25 and score.6 < up.76 === .5
               });
 
               // then
@@ -2030,8 +2030,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: true,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .6 // score.6 > down.25 and score.6 < up.76 === .5
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.6 // score.6 > down.25 and score.6 < up.76 === .5
               });
 
               // then
@@ -2048,8 +2048,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: true,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .75 // score.75 > down.25 and score.75 < up.76 === .5
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.75 // score.75 > down.25 and score.75 < up.76 === .5
               });
 
               // then
@@ -2066,8 +2066,8 @@ describe('Raty', function() {
               self.raty({
                 half    : true,
                 halfShow: true,
-                round   : { down: .25, full: .6, up: .76 },
-                score   : .76 // score.76 == up.76 === 1
+                round   : { down: 0.25, full: 0.6, up: 0.76 },
+                score   : 0.76 // score.76 == up.76 === 1
               });
 
               // then
@@ -2567,7 +2567,7 @@ describe('Raty', function() {
             self.raty('readOnly', false);
 
             // then
-            var imgs = self.children('img')
+            var imgs = self.children('img');
 
             expect(imgs.eq(0)).toHaveAttr('title', 'bad');
             expect(imgs.eq(1)).toHaveAttr('title', 'poor');
