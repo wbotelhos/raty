@@ -2586,7 +2586,7 @@ describe('Raty', function() {
             self.raty('readOnly', false);
 
             // then
-            expect(self.children('.raty-cancel')).toBeVisible();
+            expect(self.children('.raty-cancel')).toBeHidden();
             expect(self.children('.raty-cancel')).not.toHaveCss({ display: 'block' });
           });
 
