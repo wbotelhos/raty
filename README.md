@@ -5,8 +5,8 @@
 ## Version
 
 ```
-@version  2.5.2
-@since    2010.06.11
+@version  2.5.3
+@since    2014.04.23
 @author   Washington Botelho
 @doc      wbotelhos.com/raty
 ```
@@ -14,10 +14,10 @@
 ## Required Files
 
 + jquery.js
-
 + jquery.raty.js
 + star-on.png
 + star-off.png
++ or (instead of images, font-awesome/glyphicons/custom css)
 
 ## Options
 
@@ -55,6 +55,7 @@ targetKeep  : false                                          // If the last rati
 targetText  : ''                                             // Default text setted on target.
 targetType  : 'hint'                                         // Option to choose if target will receive hint o 'score' type.
 width       : undefined                                      // Manually adjust the width for the project.
+starType    : 'img'                                          // The type of the star, img as default, could also be whatever element
 ```
 
 ## Usage
@@ -75,6 +76,26 @@ $('#star').raty();
 
 ```js
 $('.star').raty();
+```
+
+```js
+// using it w/ font-awesome
+$('.star').raty({
+  starType : 'i',
+  starOn   : 'fa fa-star',
+  starOff  : 'fa fa-star-o',
+  starHalf : 'fa fa-star-half-o'
+});
+```
+
+```js
+// or w/ custom css where on/off/half are classes to apply to star elements
+$('.star').raty({
+  starType : 'span',
+  starOn   : 'on',
+  starOff  : 'off',
+  starHalf : 'half',
+});
 ```
 
 ## Functions
