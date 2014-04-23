@@ -15,6 +15,7 @@
 <title>jQuery Raty | A Star Rating Plugin - Washington Botelho</title>
 <meta content="authenticity_token" name="csrf-param">
 <link href="demo/stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <style>.white{
 background-color:#FFF
 }
@@ -624,6 +625,10 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
 
   <script>
   $.fn.raty.defaults.path = '';
+  $.fn.raty.defaults.starType = 'i'
+  $.fn.raty.defaults.starOn = 'fa fa-star';
+  $.fn.raty.defaults.starOff = 'fa fa-star-o';
+  $.fn.raty.defaults.starHalf = 'fa fa-star-half-o';
 
   $(function() {
     $('#default').raty();
