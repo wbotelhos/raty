@@ -34,8 +34,8 @@
 }
 .fa-star {
   color: #40d32a;
+  text-shadow: 0 1px #fff;
 }
-
 .fa-star-o,
 .fa-star-half-o {
   color: #999;

@@ -1,5 +1,8 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+## 2.5.3
++ Now you can use font-awesome (or glyphicons, or whatever), defining a custom element and/or custom css by setting a `starType` (default `img`)
+
 ## 2.5.2
 
 ### Fixes

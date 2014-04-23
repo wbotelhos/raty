@@ -15,6 +15,7 @@
 <title>jQuery Raty | A Star Rating Plugin - Washington Botelho</title>
 <meta content="authenticity_token" name="csrf-param">
 <link href="demo/stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <style>.white{
 background-color:#FFF
 }
@@ -64,6 +65,28 @@ padding:7px
 </pre></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">();</span>
 </pre></div>
+
+<h1>Default w/ custom element (font awesome)</h1>
+
+<p>You need just to have a <code>div</code> to build the Raty.</p>
+
+<div id="default_ce"></div>
+<div class="highlight"><pre><span class="nt">&lt;div&gt;&lt;/div&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">();</span>
+</pre></div>
+
+<h1>Default w/ custom element (+ custom css)</h1>
+
+<p>You need just to have a <code>div</code> to build the Raty.</p>
+
+<div id="default_cecss"></div>
+<div class="highlight"><pre><span class="nt">&lt;div&gt;&lt;/div&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">();</span>
+</pre></div>
+
+
 <h1>Score</h1>
 
 <p>Used when we want starts with a saved rating.</p>
@@ -627,6 +650,22 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
 
   $(function() {
     $('#default').raty();
+
+    $('#default_ce').raty({
+      starType : 'i',
+      starOn   : 'fa fa-star',
+      starOff  : 'fa fa-star-o',
+      starHalf : 'fa fa-star-half-o'
+    });
+
+    $('#default_cecss').raty({
+      starType : 'span',
+      starOn   : 'on',
+      starOff  : 'off',
+      starHalf : 'half',
+      half     : true,
+      score    : 3
+    });
 
 $('#score').raty({ score: 3 });
 
