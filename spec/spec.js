@@ -1,50 +1,3 @@
-isClear = true;
-
-function context(description, spec) {
-  describe(description, spec);
-}
-
-function build() {
-  $('body').append('<div id="element"></div>');
-}
-
-function buildDivTarget() {
-  $('body').append('<div id="hint"></div>');
-}
-
-function buildComboboxTarget() {
-  $('body').append(
-    '<select id="hint">' +
-      '<option value="Cancel this rating!">cancel hint default</option>' +
-      '<option value="cancel-hint-custom">cancel hint custom</option>' +
-
-      '<option value="">cancel number default</option>' +
-      '<option value="0">cancel number custom</option>' +
-
-      '<option value="bad">bad hint imutable</option>' +
-      '<option value="1">bad number imutable</option>' +
-
-      '<option value="targetText">targetText is setted without targetKeep</option>' +
-
-      '<option value="score: bad">targetFormat</option>' +
-    '</select>'
-  );
-}
-
-function buildTextareaTarget() {
-  $('body').append('<textarea id="hint"></textarea>');
-}
-
-function buildTextTarget() {
-  $('body').append('<input id="hint" type="text" />');
-}
-
-function clear() {
-  if (isClear) {
-    $('#element').remove();
-    $('#hint').remove();
-  }
-}
 
 describe('Raty', function() {
   beforeEach(function() { build(); });
@@ -129,7 +82,7 @@ describe('Raty', function() {
   });
 
   describe('#star', function() {
-    it ('starts all off', function() {
+    it ('starts all off', function() {//
       // given
       var self = $('#element');
 
@@ -141,7 +94,7 @@ describe('Raty', function() {
     });
 
     context('on :mouseover', function() {
-      it ('turns on the stars', function() {
+      it ('turns on the stars', function() {//
         // given
         var self = $('#element').raty(),
             imgs = self.children('img');
@@ -154,7 +107,7 @@ describe('Raty', function() {
       });
 
       context('and :mouseout', function() {
-        it ('clears all stars', function() {
+        it ('clears all stars', function() {//
           // given
           var self = $('#element').raty(),
               imgs = self.children('img');
@@ -169,7 +122,7 @@ describe('Raty', function() {
     });
 
     context('on rating', function() {
-      it ('changes the score', function() {
+      it ('changes the score', function() {//
         // given
         var self = $('#element').raty(),
             imgs = self.children('img');
@@ -178,7 +131,7 @@ describe('Raty', function() {
         imgs.eq(1).mouseover().click();
 
         // then
-        expect(self.children('input')).toHaveValue(2);
+        expect(self.children('input')).toHaveValue('2');
       });
 
       context('on :mouseout', function() {
@@ -208,7 +161,7 @@ describe('Raty', function() {
 
         // then
         expect(self.children('img').length).toEqual(20);
-        expect(self.children('input')).toHaveValue(20);
+        expect(self.children('input')).toHaveValue('20');
       });
 
       context('with custom numberMax', function() {
@@ -221,7 +174,7 @@ describe('Raty', function() {
 
           // then
           expect(self.children('img').length).toEqual(10);
-          expect(self.children('input')).toHaveValue(10);
+          expect(self.children('input')).toHaveValue('10');
         });
       });
     });
@@ -396,7 +349,7 @@ describe('Raty', function() {
           self.mouseleave();
 
           // then
-          expect(self.children('input')).toHaveValue(1);
+          expect(self.children('input')).toHaveValue('1');
         });
 
         context('when off icon is not especified', function() {
@@ -425,7 +378,7 @@ describe('Raty', function() {
     });
 
     describe('#click', function() {
-      it ('has `this` as the self element', function() {
+      it ('has `this` as self element', function() {//
         // given
         var self = $('#element').raty({
             click: function() {
@@ -437,7 +390,7 @@ describe('Raty', function() {
         self.children('img:first').mouseover().click();
 
         // then
-        expect(self.data('self')).toBe(self);
+        expect(self.data('self')).toBe(self[0]);
       });
 
       it ('is called on star click', function() {
@@ -498,7 +451,7 @@ describe('Raty', function() {
         self.raty({ score: 1 });
 
         // then
-        expect(self.children('input')).toHaveValue(1);
+        expect(self.children('input')).toHaveValue('1');
       });
 
       it ('turns on 1 stars', function() {
@@ -702,7 +655,7 @@ describe('Raty', function() {
     });
 
     describe('#hints', function() {
-      it ('changes the hints', function() {
+      it ('changes the hints', function() {//
         // given
         var self = $('#element');
 
@@ -712,7 +665,7 @@ describe('Raty', function() {
         // then
         var imgs = self.children('img');
 
-        expect(imgs.eq(0)).toHaveAttr('title', 1);
+        expect(imgs.eq(0)).toHaveAttr('title', '1');
         expect(imgs.eq(1)).toHaveAttr('title', '/');
         expect(imgs.eq(2)).toHaveAttr('title', 'c');
         expect(imgs.eq(3)).toHaveAttr('title', '-');
@@ -753,7 +706,7 @@ describe('Raty', function() {
         expect(imgs.eq(4)).toHaveAttr('title', 'd');
       });
 
-      it ('receives the number of the star when is null', function() {
+      it ('receives the number of the star when is null', function() {//
         // given
         var self = $('#element');
 
@@ -763,7 +716,7 @@ describe('Raty', function() {
         // then
         var imgs = self.children('img');
 
-        expect(imgs.eq(0)).toHaveAttr('title', 1);
+        expect(imgs.eq(0)).toHaveAttr('title', '1');
         expect(imgs.eq(1)).toHaveAttr('title', 'a');
         expect(imgs.eq(2)).toHaveAttr('title', 'b');
         expect(imgs.eq(3)).toHaveAttr('title', 'c');
@@ -771,7 +724,7 @@ describe('Raty', function() {
       });
 
       context('whe has less hint than stars', function() {
-        it ('receives the default hint index', function() {
+        it ('receives the default hint index', function() {//
           // given
           var self = $('#element');
 
@@ -781,10 +734,10 @@ describe('Raty', function() {
           // then
           var imgs = self.children('img');
 
-          expect(imgs.eq(0)).toHaveAttr('title', 1);
-          expect(imgs.eq(1)).toHaveAttr('title', 2);
-          expect(imgs.eq(2)).toHaveAttr('title', 3);
-          expect(imgs.eq(3)).toHaveAttr('title', 4);
+          expect(imgs.eq(0)).toHaveAttr('title', '1');
+          expect(imgs.eq(1)).toHaveAttr('title', '2');
+          expect(imgs.eq(2)).toHaveAttr('title', '3');
+          expect(imgs.eq(3)).toHaveAttr('title', '4');
           expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
         });
       });
@@ -805,7 +758,7 @@ describe('Raty', function() {
           expect(imgs.eq(2)).toHaveAttr('title', 'c');
           expect(imgs.eq(3)).toHaveAttr('title', 'd');
           expect(imgs.eq(4)).toHaveAttr('title', 'e');
-          expect(imgs.eq(5)).toHaveAttr('title', 6);
+          expect(imgs.eq(5)).toHaveAttr('title', '6');
         });
       });
     });
@@ -2120,16 +2073,16 @@ describe('Raty', function() {
       $('.element').remove();
     });
 
-    it ('is chainable', function() {
+    it ('is chainable', function() {//
       // given
       var self = $('.element');
 
       // when
-      var refs = self.raty();
+      var els = self.raty();
 
       // then
-      expect(refs.eq(0)).toBe(self.eq(0));
-      expect(refs.eq(1)).toBe(self.eq(1));
+      expect(els.eq(0)[0]).toBe(self.eq(0)[0]);
+      expect(els.eq(1)[0]).toBe(self.eq(1)[0]);
     });
 
     it ('creates the default markup', function() {
@@ -2178,7 +2131,7 @@ describe('Raty', function() {
         self.raty({ score: '1' });
 
         // then
-        expect(self.children('input')).toHaveValue(1);
+        expect(self.children('input')).toHaveValue('1');
       });
 
       it ('accepts float string', function() {
@@ -2189,7 +2142,7 @@ describe('Raty', function() {
         self.raty({ score: '1.5' });
 
         // then
-        expect(self.children('input')).toHaveValue(1.5);
+        expect(self.children('input')).toHaveValue('1.5');
       });
 
       context('with integer score', function() {
@@ -2219,7 +2172,7 @@ describe('Raty', function() {
       });
 
       context('with score zero', function() {
-        it ('gets null to emulate cancel', function() {
+        it ('returns an undefined value because it does not exist', function() {//
           // given
           var self = $('#element').raty({ score: 0 });
 
@@ -2227,7 +2180,7 @@ describe('Raty', function() {
           var score = self.raty('score');
 
           // then
-          expect(score).toEqual(null);
+          expect(score).toBeUndefined();
         });
       });
 
@@ -2580,13 +2533,13 @@ describe('Raty', function() {
         context('with :cancel', function() {
           it ('shows the button', function() {
             // given
-            var self = $('#element').raty({ readOnly: true, cancel: true, path: '../lib/img' });
+            var self = $('#element').raty({ cancel: true, path: '../lib/img', readOnly: true });
 
             // when
             self.raty('readOnly', false);
 
             // then
-            expect(self.children('.raty-cancel')).toBeHidden();
+            expect(self.children('.raty-cancel')).toBeVisible();
             expect(self.children('.raty-cancel')).not.toHaveCss({ display: 'block' });
           });
 
@@ -2839,10 +2792,10 @@ describe('Raty', function() {
         var self = $('#element').raty();
 
         // when
-        var ref = self.raty('destroy');
+        var el = self.raty('destroy');
 
         // then
-        expect(ref).toBe(self);
+        expect(el[0]).toBe(self[0]);
       });
 
       it ('clear the content', function() {
