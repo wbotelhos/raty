@@ -520,17 +520,17 @@ describe('Raty', function() {
         // then
         expect(self.children('input')).toHaveAttr('name', 'entity.score');
       });
-    });
 
-    it ('accepts callback', function() {
-      // given
-      var self = $('#element');
+      it ('accepts callback', function() {
+        // given
+        var self = $('#element');
 
-      // when
-      self.raty({ scoreName: function() { return 'custom'; } });
+        // when
+        self.raty({ scoreName: function() { return 'custom'; } });
 
-      // then
-      expect(self.data('settings').scoreName).toEqual('custom');
+        // then
+        expect(self.data('settings').scoreName).toEqual('custom');
+      });
     });
 
     describe('#readOnly', function() {
@@ -1596,6 +1596,40 @@ describe('Raty', function() {
             expect($('#hint')).toHaveValue('');
           });
         });
+      });
+    });
+
+    describe('#targetScore', function() {
+      beforeEach(function() {
+        this.score = $('<input id="score" type="text" />').appendTo('body');
+      });
+
+      afterEach(function() {
+        this.score.remove();
+      });
+
+      it ('avoids the creation of default score field', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ targetScore: '#score' });
+
+        // then
+        expect(self.children('input')).not.toExist();
+      });
+
+      it ('changes the place where score will be setted', function() {
+        // given
+        var
+          self = $('#element').raty({ targetScore: '#score' }),
+          imgs = self.children('img');
+
+        // when
+        imgs.eq(0).click();
+
+        // then
+        expect(this.score).toHaveValue('1');
       });
     });
 

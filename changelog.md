@@ -1,5 +1,16 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+## 2.6.0
+
+### Fixes
+
++ Target was not showing the score when `half` was enabled. (by andersonba)
++ Fixed some JS Lint warnings. (by Qazzian)
+
+### News
+
++ Added option `targetScore` to choose where the score will be setted. (by byhoratiss)
+
 ## 2.5.2
 
 ### Fixes
