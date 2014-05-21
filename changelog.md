@@ -4,12 +4,13 @@
 
 ### Fixes
 
-+ Target was not showing the score when `half` was enabled. (by andersonba)
++ Target was not showing the score when `half` was enabled; (by andersonba)
 + Fixed some JS Lint warnings. (by Qazzian)
 
 ### News
 
-+ Added option `targetScore` to choose where the score will be setted. (by byhoratiss)
++ Added option `targetScore` to choose where the score will be setted; (by byhoratiss)
++ Added function `move` to move the cursor through stars.
 
 ## 2.5.2
 

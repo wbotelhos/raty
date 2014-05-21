@@ -5,7 +5,7 @@
 ## Version
 
 ```
-@version  2.5.2
+@version  2.6.0
 @since    2010.06.11
 @author   Washington Botelho
 @doc      wbotelhos.com/raty
@@ -14,7 +14,6 @@
 ## Required Files
 
 + jquery.js
-
 + jquery.raty.js
 + star-on.png
 + star-off.png
@@ -71,7 +70,6 @@ $('#star').raty();
 ```html
 <div class="star"></div>
 <div class="star"></div>
-<div class="star"></div>
 ```
 
 ```js
@@ -96,6 +94,8 @@ $('#star').raty('reload');                 // Reload the rating with the current
 $('#star').raty('set', { option: value }); // Reset the rating with new configurations.
 
 $('#star').raty('destroy');                // Destroy the bind and give you the raw element.
+
+$('#star').raty('move', number);           // Move the mouse to the given score point position.
 ```
 
 ## Contributors

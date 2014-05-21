@@ -646,7 +646,7 @@ describe('Raty', function() {
           var self = $('#element');
 
           // when
-          self.raty({ cancel: true, readOnly: true, path: '../lib/img' });
+          self.raty({ cancel: true, readOnly: true, path: '../lib/images' });
 
           // then
           expect(self.children('.raty-cancel')).toBeHidden();
@@ -2432,7 +2432,7 @@ describe('Raty', function() {
         context('with :cancel', function() {
           it ('hides the button', function() {
             // given
-            var self = $('#element').raty({ cancel: true, path: '../lib/img' });
+            var self = $('#element').raty({ cancel: true, path: '../lib/images' });
 
             // when
             self.raty('readOnly', true);
@@ -2567,7 +2567,7 @@ describe('Raty', function() {
         context('with :cancel', function() {
           it ('shows the button', function() {
             // given
-            var self = $('#element').raty({ cancel: true, path: '../lib/img', readOnly: true });
+            var self = $('#element').raty({ cancel: true, path: '../lib/images', readOnly: true });
 
             // when
             self.raty('readOnly', false);
@@ -2871,6 +2871,147 @@ describe('Raty', function() {
         // then
         expect(self[0].style.cursor).toEqual('help');
         expect(self[0].style.width).toEqual('10px');
+      });
+    });
+
+    describe('#move', function() {
+      describe('with interger score', function() {
+        beforeEach(function() {
+          this.target = $('<div id="target"></div>').appendTo('body');
+        });
+
+        afterEach(function() {
+          this.target.remove();
+        });
+
+        it ('moves to the right point', function() {
+          // given
+          var self = $('#element').raty({
+            path       : '../lib/images',
+            precision  : true,
+            target     : '#target',
+            targetType : 'number'
+          });
+
+          // when
+          self.raty('move', 1);
+
+          // then
+          expect(this.target.text()).toEqual('1.0');
+        });
+      });
+
+      describe('with float score', function() {
+        beforeEach(function() {
+          this.target = $('<div id="target"></div>').appendTo('body');
+        });
+
+        afterEach(function() {
+          this.target.remove();
+        });
+
+        it ('moves to the right point', function() {
+          // given
+          var self = $('#element').raty({
+            path       : '../lib/images',
+            precision  : true,
+            target     : '#target',
+            targetType : 'number'
+          });
+
+          // when
+          self.raty('move', 1.7);
+
+          // then
+          expect(this.target.text()).toEqual('1.7');
+        });
+      });
+
+      describe('with string score', function() {
+        beforeEach(function() {
+          this.target = $('<div id="target"></div>').appendTo('body');
+        });
+
+        afterEach(function() {
+          this.target.remove();
+        });
+
+        it ('moves to the right point', function() {
+          // given
+          var self = $('#element').raty({
+            path       : '../lib/images',
+            precision  : true,
+            target     : '#target',
+            targetType : 'number'
+          });
+
+          // when
+          self.raty('move', '1.7');
+
+          // then
+          expect(this.target.text()).toEqual('1.7');
+        });
+      });
+
+      describe('when score is bigger then the number of stars', function() {
+        beforeEach(function() {
+          this.target = $('<div id="target"></div>').appendTo('body');
+        });
+
+        afterEach(function() {
+          this.target.remove();
+        });
+
+        it ('moves to the and of the last star', function() {
+          // given
+          var self = $('#element').raty({
+            path       : '../lib/images',
+            precision  : true,
+            target     : '#target',
+            targetType : 'number'
+          });
+
+          // when
+          self.raty('move', 6.7);
+
+          // then
+          expect(this.target.text()).toEqual('5.0');
+        });
+      });
+
+      describe('with class selection', function() {
+        beforeEach(function() {
+          this.element1 = $('<div data-target="#target1" class="element"></div>').appendTo('body');
+          this.element2 = $('<div data-target="#target2" class="element"></div>').appendTo('body');
+          this.target1  = $('<div id="target1"></div>').appendTo('body');
+          this.target2  = $('<div id="target2"></div>').appendTo('body');
+        });
+
+        afterEach(function() {
+          this.element1.remove();
+          this.element2.remove();
+          this.target1.remove();
+          this.target2.remove();
+        });
+
+        xit ('moves to the right point on all of them', function() {
+          // given
+          var els = $('.element').raty({
+            path       : '../lib/images',
+            precision  : true,
+            target     : function() {
+              return this.getAttribute('data-target');
+            },
+            targetType : 'number'
+          });
+
+          // when
+          $('.element').raty('move', 1.7);
+
+          // then
+          expect(this.target.text()).toEqual('1.7');
+          expect(this.target2.text()).toEqual('1.7');
+        });
       });
     });
   });
