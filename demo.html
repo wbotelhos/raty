@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
+  <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="author" content="Washington Botelho">
@@ -11,26 +11,70 @@
 <meta name="keywords" content="jquery,plugin,rating,raty,voto,star,staring,classificacao,classificar,votar,plugin">
 <meta name="robots" content="ALL">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+
 <link href="demo/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+
 <title>jQuery Raty | A Star Rating Plugin - Washington Botelho</title>
+
 <meta content="authenticity_token" name="csrf-param">
-<link href="demo/stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
-<style>.white{
-background-color:#FFF
+
+
+  <link href="demo/stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
+
+
+<style>.functions .demo {
+  margin-bottom: 10px;
 }
 
-.hint{
-text-align:center;
-width:160px
+.functions .item {
+  background-color: #FEFEFE;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 5px 10px;
 }
 
-div.hint{
-font-size:1.4em;
-height:46px;
-margin-top:15px;
-padding:7px
-}</style>
-<script src="demo/javascripts/jquery.js"></script><script src="lib/jquery.raty.js"></script><script src="demo/javascripts/labs.js" type="text/javascript"></script>
+.functions .item a {
+  border: 1px solid #CCC;
+  margin-left: 10px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.functions .item input {
+  display: inline-block;
+  margin-left: 2px;
+  padding: 5px 6px;
+  width: 120px;
+}
+
+.functions .item label {
+  display: inline-block;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.hint {
+  text-align: center;
+  width: 160px
+}
+
+div.hint {
+  font-size: 1.4em;
+  height: 46px;
+  margin-top: 15px;
+  padding: 7px
+}
+
+.white {
+  background-color: #FFF
+}
+</style>
+
+<script src="demo/javascripts/jquery.js"></script><script src="lib/jquery.raty.js"></script>
+<script src="demo/javascripts/labs.js" type="text/javascript"></script>
+
 </head>
 <body>
   <div class="content">
@@ -40,8 +84,9 @@ padding:7px
   <div>A Star Rating Plugin</div>
 </div>
 
-    <nav role="navigation" class="navigation"><a href="wbotelhos/archive/2.5.2.zip" class="download" title="Download version 2.5.2"><i class="i-file-zip"></i> v2.5.2</a>
-  <a href="wbotelhos/raty" class="i-github" target="blank" title="Github &lt;wbotelhos/raty&gt;"></a>
+    <nav role="navigation" class="navigation">
+  <a href="http://github.com/wbotelhos/archive/2.5.2.zip" class="download" title="Download version 2.5.2"><i class="i-file-zip"></i> v2.5.2</a>
+  <a href="http://github.com/wbotelhos/raty" class="i-github" target="blank" title="Github &lt;http://github.com/wbotelhos/raty&gt;"></a>
   <a href="http://wbotelhos.com/labs" class="labs i-labs" target="blank" title="Labs &lt;http://wbotelhos.com/labs&gt;"></a>
 
   <i class="i-heart" title="Thank you! &lt;3"></i>
@@ -52,9 +97,14 @@ padding:7px
   <a href="http://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Raty" target="_blank">Paypal</a>
 </div>
 
-</nav><div class="clearfix"></div>
+</nav>
 
-<article><div class="body">
+
+    <div class="clearfix"></div>
+
+<article>
+
+  <div class="body">
     <h1>Default</h1>
 
 <p>You need just to have a <code>div</code> to build the Raty.</p>
@@ -167,6 +217,7 @@ The <code>round</code> options showed belows is just for the <strong>icon</stron
 <li>Half: score &gt;= x.26 and &lt;= x.75 the star will be a half star;</li>
 <li>Up: score &gt;= x.76 the star will be rounded up.</li>
 </ul>
+
 <div id="halfShow-true"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">score</span><span class="o">:</span> <span class="mf">3.26</span> <span class="p">});</span>
 </pre></div>
@@ -178,6 +229,7 @@ The <code>round</code> options showed belows is just for the <strong>icon</stron
 <li>Down: score &lt; x.6 the star will be rounded down;</li>
 <li>Up: score &gt;= x.6 the star will be rounded up;</li>
 </ul>
+
 <div id="halfShow-false"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">halfShow</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -384,13 +436,20 @@ If you want to avoid that Raty applies the style width on you wrapper, set it to
 
 <div id="target-select"></div>
 
-<p><select id="target-select-hint" class="input hint"><br><option value="">--</option>
-<br><option value="bad">bad</option>
-<br><option value="poor">poor</option>
-<br><option value="regular">regular</option>
-<br><option value="good">good</option>
-<br><option value="gorgeous">gorgeous</option>
-<br></select></p>
+<p><select id="target-select-hint" class="input hint"><br>
+  <option value="">--</option>
+<br>
+  <option value="bad">bad</option>
+<br>
+  <option value="poor">poor</option>
+<br>
+  <option value="regular">regular</option>
+<br>
+  <option value="good">good</option>
+<br>
+  <option value="gorgeous">gorgeous</option>
+<br>
+</select></p>
 <div class="highlight"><pre><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"hint"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>--<span class="nt">&lt;/option&gt;</span>
   <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"bad"</span><span class="nt">&gt;</span>bad<span class="nt">&lt;/option&gt;</span>
@@ -478,26 +537,2137 @@ The arguments is the same of the <a href="#mouseover">mouseover</a> callback.</p
   <span class="p">}</span>
 <span class="p">});</span>
 </pre></div>
+<h1>Precision</h1>
+
+<p>You can get the right position of the cursor to get a precision <a href="#score">score</a>.<br>
+The star is represented just as half and full star, but the <a href="#score">score</a> is saved with precision.<br>
+When you enable this option the <a href="#half">half</a> options is automatically enabled and <a href="#targetType">targetType</a> is changed to <code>score</code>.</p>
+
+<div id="precision"></div>
+
+<div id="precision-hint" class="input hint"></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#precision'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+    <span class="nx">cancel</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">cancelOff</span>  <span class="o">:</span> <span class="s1">'cancel-off-big.png'</span><span class="p">,</span>
+    <span class="nx">cancelOn</span>   <span class="o">:</span> <span class="s1">'cancel-on-big.png'</span><span class="p">,</span>
+    <span class="nx">path</span>       <span class="o">:</span> <span class="s1">'demo/images'</span><span class="p">,</span>
+    <span class="nx">size</span>       <span class="o">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="nx">starHalf</span>   <span class="o">:</span> <span class="s1">'star-half-big.png'</span><span class="p">,</span>
+    <span class="nx">starOff</span>    <span class="o">:</span> <span class="s1">'star-off-big.png'</span><span class="p">,</span>
+    <span class="nx">starOn</span>     <span class="o">:</span> <span class="s1">'star-on-big.png'</span><span class="p">,</span>
+    <span class="nx">target</span>     <span class="o">:</span> <span class="s1">'#precision-hint'</span><span class="p">,</span>
+    <span class="nx">targetKeep</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="nx">precision</span>  <span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+</pre></div>
+<h1>Space</h1>
+
+<p>You can take off the space between the star.</p>
+
+<div id="space"></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#space'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">space</span><span class="o">:</span> <span class="kc">false</span> <span class="p">});</span>
+</pre></div>
+<h1>Single</h1>
+
+<p>You can turn on just the mouseovered star instead all from the first until that one.</p>
+
+<div id="single"></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#single'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">single</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
+</pre></div>
+<h1>Changing the settings globally</h1>
+
+<p>You can change any option mentioning the scope <code>$.fn.raty.defaults.OPTION = VALUE;</code>. It must be called before you bind the plugin.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="nx">assets</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">cancel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</pre></div>
+<h1>Options</h1>
+<div class="highlight"><pre><span class="nx">cancel</span><span class="o">:</span> <span class="kc">false</span>
+</pre></div>
+<p>Creates a cancel button to cancel the rating.</p>
+<div class="highlight"><pre><span class="nx">cancelHint</span><span class="o">:</span> <span class="s1">'Cancel this rating!'</span>
+</pre></div>
+<p>The cancel's button hint.</p>
+<div class="highlight"><pre><span class="nx">cancelOff</span><span class="o">:</span> <span class="s1">'cancel-off.png'</span>
+</pre></div>
+<p>Icon used on active cancel.</p>
+<div class="highlight"><pre><span class="nx">cancelOn</span><span class="o">:</span> <span class="s1">'cancel-on.png'</span>
+</pre></div>
+<p>Icon used inactive cancel.</p>
+<div class="highlight"><pre><span class="nx">cancelPlace</span><span class="o">:</span> <span class="s1">'left'</span>
+</pre></div>
+<p>Cancel's button position.</p>
+<div class="highlight"><pre><span class="nx">click</span><span class="o">:</span> <span class="kc">undefined</span>
+</pre></div>
+<p>Callback executed on rating click.</p>
+<div class="highlight"><pre><span class="nx">half</span><span class="o">:</span> <span class="kc">false</span>
+</pre></div>
+<p>Enables half star selection.</p>
+<div class="highlight"><pre><span class="nx">halfShow</span><span class="o">:</span> <span class="kc">true</span>
+</pre></div>
+<p>Enables half star display.</p>
+<div class="highlight"><pre><span class="nx">hints</span><span class="o">:</span> <span class="p">[</span><span class="s1">'bad'</span><span class="p">,</span> <span class="s1">'poor'</span><span class="p">,</span> <span class="s1">'regular'</span><span class="p">,</span> <span class="s1">'good'</span><span class="p">,</span> <span class="s1">'gorgeous'</span><span class="p">]</span>
+</pre></div>
+<p>Hints used on each star.</p>
+<div class="highlight"><pre><span class="nx">iconRange</span><span class="o">:</span> <span class="kc">undefined</span>
+</pre></div>
+<p>Object list with position and icon on and off to do a mixed icons.</p>
+<div class="highlight"><pre><span class="nx">mouseout</span><span class="o">:</span> <span class="kc">undefined</span>
+</pre></div>
+<p>Callback executed on mouseout.</p>
+<div class="highlight"><pre><span class="nx">mouseover</span><span class="o">:</span> <span class="kc">undefined</span>
+</pre></div>
+<p>Callback executed on mouseover.</p>
+<div class="highlight"><pre><span class="nx">noRatedMsg</span><span class="o">:</span> <span class="s1">'Not rated yet!'</span>
+</pre></div>
+<p>Hint for no rated elements when it's <a href="#readOnly">readOnly</a>.</p>
+<div class="highlight"><pre><span class="nx">number</span><span class="o">:</span> <span class="mi">5</span>
+</pre></div>
+<p>Number of stars that will be presented.</p>
+<div class="highlight"><pre><span class="nx">numberMax</span><span class="o">:</span> <span class="mi">20</span>
+</pre></div>
+<p>Max of star the option <a href="#number">number</a> can creates.</p>
+<div class="highlight"><pre><span class="nx">path</span><span class="o">:</span> <span class="s1">''</span>
+</pre></div>
+<p>A global locate where the icon will be looked.</p>
+<div class="highlight"><pre><span class="nx">precision</span><span class="o">:</span> <span class="kc">false</span>
+</pre></div>
+<p>Enables the selection of a precision score.</p>
+<div class="highlight"><pre><span class="nx">readOnly</span><span class="o">:</span> <span class="kc">false</span>
+</pre></div>
+<p>Turns the rating read-only.</p>
+<div class="highlight"><pre><span class="nx">round</span><span class="o">:</span> <span class="p">{</span> <span class="nx">down</span><span class="o">:</span> <span class="p">.</span><span class="mi">25</span><span class="p">,</span> <span class="nx">full</span><span class="o">:</span> <span class="p">.</span><span class="mi">6</span><span class="p">,</span> <span class="nx">up</span><span class="o">:</span> <span class="p">.</span><span class="mi">76</span> <span class="p">}</span>
+</pre></div>
+<p>Included values attributes to do the <a href="#score">score</a> round math.</p>
+<div class="highlight"><pre><span class="nx">score</span><span class="o">:</span> <span class="kc">undefined</span>
+</pre></div>
+<p>Initial rating.</p>
+<div class="highlight"><pre><span class="nx">scoreName</span><span class="o">:</span> <span class="s1">'score'</span>
+</pre></div>
+<p>Name of the hidden field that holds the score value.</p>
+<div class="highlight"><pre><span class="nx">single</span><span class="o">:</span> <span class="kc">false</span>
+</pre></div>
+<p>Enables just a single star selection.</p>
+<div class="highlight"><pre><span class="nx">size</span><span class="o">:</span> <span class="mi">16</span>
+</pre></div>
+<p>The size of the icons that will be used.</p>
+<div class="highlight"><pre><span class="nx">space</span><span class="o">:</span> <span class="kc">true</span>
+</pre></div>
+<p>Puts space between the icons.</p>
+<div class="highlight"><pre><span class="nx">starHalf</span><span class="o">:</span> <span class="s1">'star-half.png'</span>
+</pre></div>
+<p>The name of the half star image.</p>
+<div class="highlight"><pre><span class="nx">starOff</span><span class="o">:</span> <span class="s1">'star-off.png'</span>
+</pre></div>
+<p>Name of the star image off.</p>
+<div class="highlight"><pre><span class="nx">starOn</span><span class="o">:</span> <span class="s1">'star-on.png'</span>
+</pre></div>
+<p>Name of the star image on.</p>
+<div class="highlight"><pre><span class="nx">target</span><span class="o">:</span> <span class="kc">undefined</span>
+</pre></div>
+<p>Element selector where the <a href="#score">score</a> will be displayed.</p>
+<div class="highlight"><pre><span class="nx">targetFormat</span><span class="o">:</span> <span class="s1">'{score}'</span>
+</pre></div>
+<p>Template to interpolate the <a href="#score">score</a> in.</p>
+<div class="highlight"><pre><span class="nx">targetKeep</span><span class="o">:</span> <span class="kc">false</span>
+</pre></div>
+<p>If the last rating value will be keeped after mouseout.</p>
+<div class="highlight"><pre><span class="nx">targetText</span><span class="o">:</span> <span class="s1">''</span>
+</pre></div>
+<p>Default text setted on <a href="target">target</a>.</p>
+<div class="highlight"><pre><span class="nx">targetType</span><span class="o">:</span> <span class="s1">'hint'</span>
+</pre></div>
+<p>Option to choose if <a href="target">target</a> will receive hint or the score number.</p>
+<div class="highlight"><pre><span class="nx">width</span><span class="o">:</span> <span class="kc">undefined</span>
+</pre></div>
+<p>Manually adjust the width for the project.</p>
+
+<h1>Functions</h1>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'score'</span><span class="p">);</span>
+</pre></div>
+<p>Get the current score. If there is no score then undefined will be returned.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'score'</span><span class="p">,</span> <span class="nx">number</span><span class="p">);</span>
+</pre></div>
+<p>Set a score.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">number</span><span class="p">);</span>
+</pre></div>
+<p>Click on some star. It always call the click callback if it exists.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'readOnly'</span><span class="p">,</span> <span class="kr">boolean</span><span class="p">);</span>
+</pre></div>
+<p>Change the read-only state.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'cancel'</span><span class="p">,</span> <span class="kr">boolean</span><span class="p">);</span>
+</pre></div>
+<p>Cancel the rating. The boolean parameter tells if the click will be called or not. If you ommit it, false it will be.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'reload'</span><span class="p">);</span>
+</pre></div>
+<p>Reload the rating with the same configuration it was binded.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'set'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">option</span><span class="o">:</span> <span class="nx">value</span> <span class="p">});</span>
+</pre></div>
+<p>Reset the rating with new configurations. Only options especified will be overrided.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">);</span>
+</pre></div>
+<p>Destroy the bind and gives you the raw element before the bind.</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'move'</span><span class="p">,</span> <span class="nx">number</span><span class="p">);</span>
+</pre></div>
+<p>Move the mouse to the given score point position.</p>
+
+<h1>Functions demo</h1>
+
+<div class="functions">
+  <div class="demo">
+    <div id="functions"></div>
+    <div id="functions-hint" class="input hint"></div>
   </div>
-</article><div class="share">
+
+   <div class="item">
+    <label for="score-function">score:</label>
+    <input id="score-function" type="text" value="1" class="input">
+    <a id="score-function-run" href="javascript:void(0);" title="score">run</a>
+  </div>
+
+  <div class="item">
+    <label for="click-function">click:</label>
+    <input id="click-function" type="text" value="2" class="input">
+    <a id="click-function-run" href="javascript:void(0);" title="click">run</a>
+  </div>
+
+  <div class="item">
+    <label for="readOnly-function">readOnly:</label>
+    <input id="readOnly-function" type="text" value="true" class="input">
+    <a id="readOnly-function-run" href="javascript:void(0);" title="readOnly">run</a>
+  </div>
+
+  <div class="item">
+    <label for="cancel-function">cancel:</label>
+    <input id="cancel-function" type="text" value="true" class="input">
+    <a id="cancel-function-run" href="javascript:void(0);" title="cancel">run</a>
+  </div>
+
+  <div class="item">
+    <label for="reload-function">reload:</label>
+    <input id="reload-function" type="text" value="true" disabled class="input">
+    <a id="reload-function-run" href="javascript:void(0);" title="reload">run</a>
+  </div>
+
+  <div class="item">
+    <label for="get-score-function">score:</label>
+    <input id="get-score-function" type="text" value="get" disabled class="input">
+    <a id="get-score-function-run" href="javascript:void(0);" title="get score">run</a>
+  </div>
+
+  <div class="item">
+    <label for="set-score-function">score:</label>
+    <input id="set-score-function" type="text" value="3" class="input">
+    <a id="set-score-function-run" href="javascript:void(0);" title="set score">run</a>
+  </div>
+
+  <div class="item">
+    <label for="set-function">set:</label>
+    <input id="set-function" type="text" value="{ cancel: false }" class="input">
+    <a id="set-function-run" href="javascript:void(0);" title="set">run</a>
+  </div>
+
+  <div class="item">
+    <label for="destroy-function">destroy:</label>
+    <input id="destroy-function" type="text" value="true" disabled class="input">
+    <a id="destroy-function-run" href="javascript:void(0);" title="destroy">run</a>
+  </div>
+
+  <div class="item">
+    <label for="move-function">move:</label>
+    <input id="move-function" type="text" value="3.7" class="input">
+    <a id="move-function-run" href="javascript:void(0);" title="move">run</a>
+  </div>
+</div>
+
+<h1>Tests</h1>
+
+<p>This plugin is tested to work better. <a href="spec/run.html">Check it out!</a></p>
+
+  </div>
+</article>
+
+<div class="share">
   <p>Share it!</p>
 
   <div class="twitter"><a href="https://twitter.com/intent/tweet?text=%22jQuery+Raty+-+A+Star+Rating+Plugin%22+%7E&amp;url=http%3A%2F%2Fwbotelhos.com%2Fraty&amp;via=wbotelhos" target="_blank" title="via Twitter"><i class="i-twitter"></i></a></div>
 </div>
 
 
-<section class="comments"><ol>
+<section class="comments">
+  <ol>
+    <li id="comment-721" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/a6054cbf21f02625367e3c88e1da0f8a?d=mm" title="Tatiana Perere">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Tatiana Perere</a>
+      
+      
+      
+    </header>
+
+    <p>Hi!</p>
+
+<p>I want only the star selected get marked. How can I do that?</p>
+
+<p>Thank you!</p>
+
+
+    <footer>
+      <a href="#comment-721" class="anchor" title="Link to this comment">#721</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-744" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Tatiana Perere,</p>
+
+<p>Use the options <code>single</code>.</p>
+
+
+    <footer>
+      <a href="#comment-744" class="anchor" title="Link to this comment">#744</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-722" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/a6054cbf21f02625367e3c88e1da0f8a?d=mm" title="Tatiana Perere">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Tatiana Perere</a>
+      
+      
+      
+    </header>
+
+    <p>Did it changing the js lib.</p>
+
+<p>I suggest to add this feature as an option. Very easy to do it.</p>
+
+<p>Valeu!</p>
+
+
+    <footer>
+      <a href="#comment-722" class="anchor" title="Link to this comment">#722</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-745" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Tatiana Perere,</p>
+
+<p>Good job, but it is a option called <code>single</code>.<br>
+But the next time a pull request is a polite thanks.</p>
+
+
+    <footer>
+      <a href="#comment-745" class="anchor" title="Link to this comment">#745</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+
+    </ol>
+</li>
+<li id="comment-719" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/728d40265575c53e45fa0778c47ecbbb?d=mm" title="Hussaim">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Hussaim</a>
+      
+      
+      
+    </header>
+
+    <p>Can i change name of <code>&lt;input type="hidden"&gt;</code>?<br>
+i want to assign parent div name to hidden element name</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'star'</span> <span class="na">name=</span><span class="s">n</span><span class="nt">&gt;</span>
+..
+..
+..
+
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'hidden'</span> <span class="na">name=</span><span class="s">parentName</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div/&gt;</span> 
+</pre></div>
+
+    <footer>
+      <a href="#comment-719" class="anchor" title="Link to this comment">#719</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-743" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Hussaim,</p>
+
+<p>Yes, use the option <code>scoreName</code>.</p>
+
+
+    <footer>
+      <a href="#comment-743" class="anchor" title="Link to this comment">#743</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-718" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/2eb9f371561aaba13ed4ded358e6a136?d=mm" title="florin">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">florin</a>
+      
+      
+      
+    </header>
+
+    <p>Same question as Jing bellow :)</p>
+
+
+    <footer>
+      <a href="#comment-718" class="anchor" title="Link to this comment">#718</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-742" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>florin,</p>
+
+<p>Same answer! :)</p>
+
+
+    <footer>
+      <a href="#comment-742" class="anchor" title="Link to this comment">#742</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-717" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/618067e2cb0e4bf960fa14b98aaf584f?d=mm" title="Jing">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Jing</a>
+      
+      
+      
+    </header>
+
+    <p>Hi!<br>
+I hope after clicking the star become read-only.<br>
+How should do?<br>
+Thanks in advance!</p>
+
+
+    <footer>
+      <a href="#comment-717" class="anchor" title="Link to this comment">#717</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-741" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Jing,</p>
+
+<p>Inside <code>click</code> callback, calls the <code>readOnly</code> function.</p>
+
+
+    <footer>
+      <a href="#comment-741" class="anchor" title="Link to this comment">#741</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-715" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/a0ea23054a1e071bc746b7fa0b8d4c04?d=mm" title="Joey">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Joey</a>
+      
+      
+      
+    </header>
+
+    <p>First, thanks for the plugin!</p>
+
+<p>I deployed the plugin, but was having trouble with the validation of the rating.  I wanted to use my own element to house the score.  I used the scoreName &amp; targetScore, but the plugin always creates an element with the same name as the one I created.  Is there a way to tell the plugin to no generate an element?</p>
+
+<p>Thanks!</p>
+
+
+    <footer>
+      <a href="#comment-715" class="anchor" title="Link to this comment">#715</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-740" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Joey,</p>
+
+<p>The score element is create only if you don't provide a valid (existent) target score: <a href="https://github.com/wbotelhos/blob/master/lib/jquery.raty.js#L215">https://github.com/wbotelhos/blob/master/lib/jquery.raty.js#L215</a></p>
+
+
+    <footer>
+      <a href="#comment-740" class="anchor" title="Link to this comment">#740</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-714" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/f5c79c7fc5770a01431171929fa11e6c?d=mm" title="cesar">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">cesar</a>
+      
+      
+      
+    </header>
+
+    <p>when i write the html code with jquery, a click function doesn't work</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#div1"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">"&lt;div id='star' data-score='1'&gt;&lt;/div&gt;"</span><span class="p">);</span>
+</pre></div>
+<p>help me please and excusa me, a dont speak english :D</p>
+
+
+    <footer>
+      <a href="#comment-714" class="anchor" title="Link to this comment">#714</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-739" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>cesar,</p>
+
+<p>It should be work, since you bind the Raty after the HTML is on body.<br>
+Try:</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">star</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div id="star" data-score="1"&gt;&lt;/div&gt;'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s1">'#div1'</span><span class="p">);</span>
+
+<span class="nx">star</span><span class="p">.</span><span class="nx">raty</span><span class="p">();</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-739" class="anchor" title="Link to this comment">#739</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-713" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/8a7eb9231635fc348203a6a5e398fef5?d=mm" title="rent-aroom">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://www.rent-aroom.com/rate-our-service" target="_blank">rent-aroom</a>
+      
+      
+      
+    </header>
+
+    <p>Thank you for the script. Looking great :-)</p>
+
+<p><a href="http://www.rent-aroom.com/rate-our-service">http://www.rent-aroom.com/rate-our-service</a></p>
+
+
+    <footer>
+      <a href="#comment-713" class="anchor" title="Link to this comment">#713</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-738" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>rent-aroom,</p>
+
+<p>Good to hear that.<br>
+Great job and thanks! (:</p>
+
+
+    <footer>
+      <a href="#comment-738" class="anchor" title="Link to this comment">#738</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-710" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/daa3ff6d45f9e36144996cef997b52a5?d=mm" title="John Paul">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">John Paul</a>
+      
+      
+      
+    </header>
+
+    <p>Is there any way to stop the user from submitting another rating after they have already sent one? I am recording these to database and want it to be a one time thing per user. Could I set it to read only after my POST?</p>
+
+
+    <footer>
+      <a href="#comment-710" class="anchor" title="Link to this comment">#710</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-737" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>John Paul,</p>
+
+<p>You can, but it is just JS, Raty can't do it for you.<br>
+You can set it to read-only the time you want, but the time and how you want to do this, is up to you.</p>
+
+
+    <footer>
+      <a href="#comment-737" class="anchor" title="Link to this comment">#737</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-704" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/762d76f623aa73837652480d20126008?d=mm" title="Swagata">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Swagata</a>
+      
+      
+      
+    </header>
+
+    <p>I tried the mouse over but it did not work. on mouse over call back , I was setting the score in a hidden variable , to get it's value on form post.</p>
+
+
+    <footer>
+      <a href="#comment-704" class="anchor" title="Link to this comment">#704</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-736" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Swagata,</p>
+
+<p>Raty already has a hidden field called <code>score</code> by default the you can change.<br>
+Your you can use the new option <code>scoreTarget</code> and decide to where send the score.<br>
+Your you can use your ideia and copy the score for wherever you want.</p>
+
+
+    <footer>
+      <a href="#comment-736" class="anchor" title="Link to this comment">#736</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-701" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9906126bc5f8e48554f27b3002c0cadd?d=mm" title="Marc Stein">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://recippia.herokuapp.com/test.html" target="_blank">Marc Stein</a>
+      
+      
+      
+    </header>
+
+    <p>Hi Washington,</p>
+
+<p>I'm having a styling issue with Raty that I've been unable to solve.</p>
+
+<p>If you take a look at <a href="http://recippia.herokuapp.com/test.html">http://recippia.herokuapp.com/test.html</a> you can see that the stars stack vertically rather than displaying inline. I'v tried overriding the img tag formatting in style.css but this doesn't seem to do the trick. Any thoughts as to how to resolve this?</p>
+
+<p>Many thanks in advance,</p>
+
+<p>Marc</p>
+
+<p>Great plugin, BTW!</p>
+
+
+    <footer>
+      <a href="#comment-701" class="anchor" title="Link to this comment">#701</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-735" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Marc Stein,</p>
+
+<p>I could not to see the problem.<br>
+But you can set <code>space: off</code> to avoid empty space and then manipulate the images.</p>
+
+
+    <footer>
+      <a href="#comment-735" class="anchor" title="Link to this comment">#735</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-696" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/7ea8556715a4d33e151bcf1437cc2568?d=mm" title="Surjit Sidhu">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://surjitsidhu.com" target="_blank">Surjit Sidhu</a>
+      
+      
+      
+    </header>
+
+    <p>I want to display "based on x reviews" after stars. how can do this ?<br>
+i tried to modify js function, but does not find exact line to change</p>
+
+
+    <footer>
+      <a href="#comment-696" class="anchor" title="Link to this comment">#696</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-734" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Surjit Sidhu,</p>
+
+<p>You need to use the <a href="#target-div">target</a> options.<br>
+But if you want to display the number of reviews, you should keep it on database and display it for your own.</p>
+
+
+    <footer>
+      <a href="#comment-734" class="anchor" title="Link to this comment">#734</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-694" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/c2a125bf6a22088c271ae68a2029f147?d=mm" title="sudarshan">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">sudarshan</a>
+      
+      
+      
+    </header>
+
+    <p>Hello sir,  nice work.<br>
+I have one doubt I am not getting img of stars when I used it in Codeigniter project. Can you tell me where can I provide Base url for img folder??<br>
+Thanks.</p>
+
+
+    <footer>
+      <a href="#comment-694" class="anchor" title="Link to this comment">#694</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-726" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>sudarshan,</p>
+
+<p>The base URL is up to you and your framework.<br>
+Raty can't provide it for you, sorry.</p>
+
+
+    <footer>
+      <a href="#comment-726" class="anchor" title="Link to this comment">#726</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-695" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/08cdeee40a7c2a05cd09f10e6d18f7e0?d=mm" title="Vlad">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Vlad</a>
+      
+      
+      
+    </header>
+
+    <p>sudarshan, </p>
+
+<p>Had the same issue, </p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">path</span><span class="o">:</span> <span class="s1">'img/'</span><span class="p">,</span>
+<span class="p">});</span>
+</pre></div>
+<p>if that doesnt work try,</p>
+<div class="highlight"><pre><span class="nx">jQuery</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+      <span class="nx">path</span><span class="o">:</span> <span class="s1">'img/'</span><span class="p">,</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-695" class="anchor" title="Link to this comment">#695</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-727" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Vlad,</p>
+
+<p>It could work, but the case is not the whole Raty, just the images.</p>
+
+
+    <footer>
+      <a href="#comment-727" class="anchor" title="Link to this comment">#727</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-703" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9041010388ef45fd147e202b733f616e?d=mm" title="Malek">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://sweettutos.wordpress.com" target="_blank">Malek</a>
+      
+      
+      
+    </header>
+
+    <p>the slash is added programmatically I noticed.<br>
+So just 'img' and the stars assets should be loaded correctly. Vlad,</p>
+
+
+    <footer>
+      <a href="#comment-703" class="anchor" title="Link to this comment">#703</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-728" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Malek,</p>
+
+<p>It was fixed on version 2.5.1: "The path always was prepend avoiding absolute or different path for each icon."</p>
+
+
+    <footer>
+      <a href="#comment-728" class="anchor" title="Link to this comment">#728</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+
+    </ol>
+</li>
+
+    </ol>
+</li>
+<li id="comment-692" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/24c63b5f5e5be52f7934a5fa10535221?d=mm" title="Cabel">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Cabel</a>
+      
+      
+      
+    </header>
+
+    <p>Any easy way to make the stars smaller? Other than that, what a great plugin, keep up the great work. </p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="s1">'/images'</span><span class="p">;</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#default'</span><span class="p">).</span><span class="nx">raty</span><span class="p">();</span> 
+
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'.stars'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">score</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">size</span><span class="o">:</span> <span class="mi">12</span> <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-692" class="anchor" title="Link to this comment">#692</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-729" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Cabel,</p>
+
+<p>You can set a default size for all intances.<br>
+But the only way is set the <code>size</code> to be possible calculate the right width.</p>
+
+
+    <footer>
+      <a href="#comment-729" class="anchor" title="Link to this comment">#729</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-691" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/0788403895239b40d68eb9c9f43cf00c?d=mm" title="ISEE">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">ISEE</a>
+      
+      
+      
+    </header>
+
+    <p>Hi.<br>
+Now, we can get the score from the callbcak function when the raty was initialized, suck as:</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'score: '</span> <span class="o">+</span> <span class="nx">score</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<p>but can we get the score in the other function?</p>
+
+
+    <footer>
+      <a href="#comment-691" class="anchor" title="Link to this comment">#691</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-725" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>ISEE,</p>
+
+<p>Get the score when it is initialized is on <code>score</code> option via <code>function() { return 1; }</code>, not on <code>click</code>.<br>
+On <code>click</code> you get the score choosed, like on <code>mouseover</code>and <code>mouseout</code></p>
+
+
+    <footer>
+      <a href="#comment-725" class="anchor" title="Link to this comment">#725</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-690" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/b6367e697ad8fa8010315bb21e49fe6a?d=mm" title="Darren Teng">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Darren Teng</a>
+      
+      
+      
+    </header>
+
+    <p>Hi Washington, can I set my own title for each star, such as <code>'good' =&gt; 'Strongly agree'</code>, <code>'bad' =&gt; 'Strongly disagree'</code>?</p>
+
+<p>Thanks for your great work!</p>
+
+
+    <footer>
+      <a href="#comment-690" class="anchor" title="Link to this comment">#690</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-723" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Darren Teng,</p>
+
+<p>Yes, you have the options <code>hints</code> to do that.</p>
+
+
+    <footer>
+      <a href="#comment-723" class="anchor" title="Link to this comment">#723</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-712" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/26a67c4df92e642a577e88784285f2c1?d=mm" title="Jirka Kyncl">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Jirka Kyncl</a>
+      
+      
+      
+    </header>
+
+    <p>I found it now :)<br>
+you can set parameter hints.</p>
+
+<p>Ex:</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">number</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="nx">score</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'rate'</span><span class="p">),</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">'js/img'</span><span class="p">,</span>
+    <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">noRatedMsg</span> <span class="o">:</span> <span class="s2">"Very very bad woman!"</span><span class="p">,</span>
+    <span class="nx">hints</span><span class="o">:</span> <span class="p">[</span><span class="s2">"somthing"</span><span class="p">,</span> <span class="s2">"bless"</span><span class="p">,</span> <span class="s2">"Monitor"</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"evaluation"</span><span class="p">]</span>
+<span class="p">});</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-712" class="anchor" title="Link to this comment">#712</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-711" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/26a67c4df92e642a577e88784285f2c1?d=mm" title="Jirka Kyncl">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Jirka Kyncl</a>
+      
+      
+      
+    </header>
+
+    <p>Hi, you can change it in source code. In hints array. I didn't found better solution.</p>
+
+
+    <footer>
+      <a href="#comment-711" class="anchor" title="Link to this comment">#711</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-724" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Jirka Kyncl,</p>
+
+<p>The better solution is just override the parameter <code>hints</code>.</p>
+
+
+    <footer>
+      <a href="#comment-724" class="anchor" title="Link to this comment">#724</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+
+    </ol>
+</li>
+<li id="comment-687" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/c44a4af00544c70a6841006998c6b795?d=mm" title="Guilherme Duailibe">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Guilherme Duailibe</a>
+      
+      
+      
+    </header>
+
+    <p>Excelente plugin! Estou usando. Obrigado!</p>
+
+
+    <footer>
+      <a href="#comment-687" class="anchor" title="Link to this comment">#687</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-689" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Guilherme Duailibe,</p>
+
+<p>Thank you! (:</p>
+
+
+    <footer>
+      <a href="#comment-689" class="anchor" title="Link to this comment">#689</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-686" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/c8c6efe450847ee184720928b6e69654?d=mm" title="Daniel Better">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Daniel Better</a>
+      
+      
+      
+    </header>
+
+    <p>Hi Washington, first of all, great plugin, gj!<br>
+Secondly, is there a way to enlarge the stars even more then 24px as seen here? </p>
+
+<p>Regards, Daniel.</p>
+
+
+    <footer>
+      <a href="#comment-686" class="anchor" title="Link to this comment">#686</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-688" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Daniel Better,</p>
+
+<p>Yes, just use your new icon and set the value of it as px on <code>size</code> property.</p>
+
+
+    <footer>
+      <a href="#comment-688" class="anchor" title="Link to this comment">#688</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-679" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/4653dd9471188ec0936b4e8013ad8fc4?d=mm" title="Nishit">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Nishit</a>
+      
+      
+      
+    </header>
+
+    <p>Hi Washington,</p>
+
+<p>I would like to thank you for this plugin. It works flawlessly. Great work.</p>
+
+<p>Regards.</p>
+
+
+    <footer>
+      <a href="#comment-679" class="anchor" title="Link to this comment">#679</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-680" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Nishit,</p>
+
+<p>Thanks man! (:</p>
+
+
+    <footer>
+      <a href="#comment-680" class="anchor" title="Link to this comment">#680</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-676" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/1fca03d51d167c31f2079aae85becf90?d=mm" title="Brian">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Brian</a>
+      
+      
+      
+    </header>
+
+    <p>I have a need for multiple ratings on a page. For example, individual ratings for things such as "Price," "Value" and "Quality." Is there a way to specify scoreName for each instance of a rating? Excellent plugin, btw.</p>
+
+
+    <footer>
+      <a href="#comment-676" class="anchor" title="Link to this comment">#676</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-678" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/1fca03d51d167c31f2079aae85becf90?d=mm" title="Brian">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Brian</a>
+      
+      
+      
+    </header>
+
+    <p>In the init function, I have changed:</p>
+<div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">opt</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">settings</span><span class="p">);</span>
+</pre></div>
+<p>to</p>
+<div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">opt</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">settings</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">());</span>
+</pre></div>
+<p>This allows me to pass instance variables via the div. Example:</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"my-rating"</span> <span class="na">data-score-name=</span><span class="s">"rating[quality]"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+<p>Perhaps a consideration to add to the master?</p>
+
+
+    <footer>
+      <a href="#comment-678" class="anchor" title="Link to this comment">#678</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-684" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Brian,</p>
+
+<p>Could you open a issue to create a <code>scoreName</code> callback?<br>
+This way we can pass a function to <code>scoreName</code> and receive it via data or whatever.</p>
+
+<p>Thanks.</p>
+
+
+    <footer>
+      <a href="#comment-684" class="anchor" title="Link to this comment">#684</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+
+    </ol>
+</li>
+<li id="comment-674" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/ef48b31893ff7bc1e1f842ff2a9ef677?d=mm" title="Istvan Szollosi">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://i-sty.comule.com" target="_blank">Istvan Szollosi</a>
+      
+      
+      
+    </header>
+
+    <p>Hi,<br>
+I tried to use your plugin in my blog/web-shop but I got these errors:</p>
+<div class="highlight"><pre><span class="nx">Uncaught</span> <span class="nx">TypeError</span><span class="o">:</span> <span class="nb">Object</span> <span class="err">#</span><span class="o">&lt;</span><span class="nb">Object</span><span class="o">&gt;</span> <span class="nx">has</span> <span class="nx">no</span> <span class="nx">method</span> <span class="s1">'on'</span> <span class="nx">jquery</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">js</span><span class="o">:</span><span class="mi">12</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">_bindClick</span> <span class="nx">jquery</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">js</span><span class="o">:</span><span class="mi">12</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">_binds</span> <span class="nx">jquery</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">js</span><span class="o">:</span><span class="mi">12</span>
+<span class="p">(</span><span class="nx">anonymous</span> <span class="kd">function</span><span class="p">)</span> <span class="nx">jquery</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">js</span><span class="o">:</span><span class="mi">12</span>
+<span class="nx">E</span><span class="p">.</span><span class="nx">extend</span><span class="p">.</span><span class="nx">each</span> <span class="nx">VM4322</span><span class="o">:</span><span class="mi">1</span>
+<span class="nx">E</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">E</span><span class="p">.</span><span class="nx">each</span> <span class="nx">VM4322</span><span class="o">:</span><span class="mi">1</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">init</span> <span class="nx">jquery</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">js</span><span class="o">:</span><span class="mi">12</span>
+<span class="nx">b</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span> <span class="nx">jquery</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">js</span><span class="o">:</span><span class="mi">12</span>
+<span class="p">(</span><span class="nx">anonymous</span> <span class="kd">function</span><span class="p">)</span> <span class="nx">produs</span><span class="p">.</span><span class="nx">php</span><span class="o">?</span><span class="nx">produsid</span><span class="o">=</span><span class="mi">21</span><span class="o">:</span><span class="mi">245</span>
+<span class="p">(</span><span class="nx">anonymous</span> <span class="kd">function</span><span class="p">)</span> <span class="nx">VM4322</span><span class="o">:</span><span class="mi">1</span>
+<span class="p">(</span><span class="nx">anonymous</span> <span class="kd">function</span><span class="p">)</span> <span class="nx">VM4322</span><span class="o">:</span><span class="mi">1</span>
+<span class="nx">E</span><span class="p">.</span><span class="nx">extend</span><span class="p">.</span><span class="nx">each</span> <span class="nx">VM4322</span><span class="o">:</span><span class="mi">1</span>
+<span class="nx">E</span><span class="p">.</span><span class="nx">extend</span><span class="p">.</span><span class="nx">ready</span> <span class="nx">VM4322</span><span class="o">:</span><span class="mi">1</span>
+<span class="nx">event</span><span class="p">.</span><span class="nx">returnValue</span> <span class="nx">is</span> <span class="nx">deprecated</span><span class="p">.</span> <span class="nx">Please</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">standard</span> <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span> <span class="nx">instead</span><span class="p">.</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-674" class="anchor" title="Link to this comment">#674</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-683" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Istvan Szollosi,</p>
+
+<p>Check if your jQuery was imported before the Raty call.<br>
+Check if you jQuery version has the new method <code>on</code>.</p>
+
+<p>This problem is about import, about jQuery, not about Raty.</p>
+
+
+    <footer>
+      <a href="#comment-683" class="anchor" title="Link to this comment">#683</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-673" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/07777442d9de807b3e8962129bc5fdfb?d=mm" title="Mark">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Mark</a>
+      
+      
+      
+    </header>
+
+    <p>Hi</p>
+
+<p>Is there a way of easily posting the data to a rails application? I have added the call to my application to get the images and the java but every time I post my form my defined attribute doesn't save the the rating to the DB. Heres my code :</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"star"</span> <span class="na">data-score=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="err">&lt;</span>%= :review_rating %&gt;
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">score</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">':review_rating'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<p>Forgive me if it seems basic but I know very little about J query and am at beginner level. The <code>:review_rating</code> is my rails attribute that Im trying to commit the score to.</p>
+
+<p>Please let me know.</p>
+
+<p>Many Thanks </p>
+
+
+    <footer>
+      <a href="#comment-673" class="anchor" title="Link to this comment">#673</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-682" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Mark,</p>
+
+<p>The value send by jQuery Raty is a hidden field, not what you put inside the div.<br>
+This content inside the div is ignored, because Raty will override it, then you <code>&lt;%= :review_rating %&gt;</code> is useless.<br>
+By default the hidden field that holds the score is called <code>score</code>, but you can change it if you need.</p>
+
+
+    <footer>
+      <a href="#comment-682" class="anchor" title="Link to this comment">#682</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-672" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/2fe6bd71a146dd113e894200ccc5e417?d=mm" title="Brandon">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Brandon</a>
+      
+      
+      
+    </header>
+
+    <p>Awesome plugin! Super easy to use and dropped right into my rails app for a reviews rating system. Thanks!</p>
+
+
+    <footer>
+      <a href="#comment-672" class="anchor" title="Link to this comment">#672</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-681" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Brandon,</p>
+
+<p>Great! (:</p>
+
+
+    <footer>
+      <a href="#comment-681" class="anchor" title="Link to this comment">#681</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-666" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/5f932334f26daeb30e1f6843f4c5fe70?d=mm" title="Daniel Weller">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Daniel Weller</a>
+      
+      
+      
+    </header>
+
+    <p>Here is a link to a tutorial for ruby on rails. If anyone can get it to fully work let me know! I've been able to only get the update stars to work. (Average rating isn't working)</p>
+
+<p><a href="http://paweljaniak.co.za/2013/07/25/5-star-ratings-with-rails/">http://paweljaniak.co.za/2013/07/25/5-star-ratings-with-rails/</a></p>
+
+
+    <footer>
+      <a href="#comment-666" class="anchor" title="Link to this comment">#666</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-671" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Daniel Weller,</p>
+
+<p>Thanks for the contribution.</p>
+
+
+    <footer>
+      <a href="#comment-671" class="anchor" title="Link to this comment">#671</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-664" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/17d0a792231574531d52fd09e5cad84a?d=mm" title="Max">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Max</a>
+      
+      
+      
+    </header>
+
+    <p>@Roosevelt: luckily you find the download on his github page as well: <a href="https://github.com/wbotelhos/raty">https://github.com/wbotelhos/raty</a></p>
+
+
+    <footer>
+      <a href="#comment-664" class="anchor" title="Link to this comment">#664</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-670" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Max,</p>
+
+<p>Thanks for the help. (:</p>
+
+
+    <footer>
+      <a href="#comment-670" class="anchor" title="Link to this comment">#670</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-662" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/b19d3a8e787126de5953c113ceff2be9?d=mm" title="Roosevelt P">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://www.naetech.com" target="_blank">Roosevelt P</a>
+      
+      
+      
+    </header>
+
+    <p>Your download link to the plugin is throwing a 404 error.</p>
+
+
+    <footer>
+      <a href="#comment-662" class="anchor" title="Link to this comment">#662</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-669" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Roosevelt P,</p>
+
+<p>I fixed it. Thanks!</p>
+
+
+    <footer>
+      <a href="#comment-669" class="anchor" title="Link to this comment">#669</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-661" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/e72a8f02bf33e4b757bd9d9a75ca6977?d=mm" title="Bill">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Bill</a>
+      
+      
+      
+    </header>
+
+    <p>Hi,</p>
+
+<p>Is there a way to check and see if a visitor has already voted &amp; if so, then set it to read only?</p>
+
+<p>Also, I would like to store the rating &amp; number of votes in a mySQL database, how could I do that?</p>
+
+
+    <footer>
+      <a href="#comment-661" class="anchor" title="Link to this comment">#661</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-668" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Bill,</p>
+
+<p>You can save it into database.<br>
+When the user click on star, it actives the <a href="#click">click</a> callback, inside it you can get the score and save it via ajax.</p>
+
+<p>Or you can just let the user to vote and create a submit button that will send the value keeped into hidden field named <code>score</code> by default.</p>
+
+
+    <footer>
+      <a href="#comment-668" class="anchor" title="Link to this comment">#668</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-660" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/b38e22f68b14e6752dd6fd9400ebef0a?d=mm" title="Tj">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Tj</a>
+      
+      
+      
+    </header>
+
+    <p>Hi, How to save previous ratings ?? How to download and install this plugin ?</p>
+
+<p>please help</p>
+
+
+    <footer>
+      <a href="#comment-660" class="anchor" title="Link to this comment">#660</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-667" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Tj,</p>
+
+<p>To save the last rating, you need to keep it on your database.<br>
+To instal, just import the files e use the code showed on this page.</p>
+
+
+    <footer>
+      <a href="#comment-667" class="anchor" title="Link to this comment">#667</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
 <li id="comment-654" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/da5b2acb1906cb835262546e3b67fc4b?d=mm" title="Lanamaja">
-</div>
+  </div>
 
   <div class="body">
-    <header><a href="javascript:void(0);">Lanamaja</a>
+    <header>
+      <a href="javascript:void(0);">Lanamaja</a>
       
       
       
-    </header><p>Hi,<br>
+    </header>
+
+    <p>Hi,<br>
 how can i add this on a wordpress page? and/or include into a contact form?<br>
 If i want the plugin to open up different links or display messages depending on the number of stars the user clicked, how could i manage this<br>
 with your plugin?</p>
@@ -505,35 +2675,40 @@ with your plugin?</p>
 <p>Thanks in advance</p>
 
 
-    <footer><a href="#comment-654" class="anchor" title="Link to this comment">#654</a>
+    <footer>
+      <a href="#comment-654" class="anchor" title="Link to this comment">#654</a>
       
       
     </footer>
-</div>
+  </div>
 
     <ol>
-<li id="comment-659" class="comment">
+      <li id="comment-659" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
-</div>
+  </div>
 
   <div class="body">
-    <header><a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
       
       <span class="flag author">author</span>
       
-    </header><p>Lanamaja,</p>
+    </header>
+
+    <p>Lanamaja,</p>
 
 <p>You will use the same code. But where put it, I can't help you, because I don't know about wordpress coding.</p>
 
 <p>To open whatever you want, use the callback <a href="#click">click</a>, inside it you can get the <code>score</code> and do your logic.</p>
 
 
-    <footer><a href="#comment-659" class="anchor" title="Link to this comment">#659</a>
+    <footer>
+      <a href="#comment-659" class="anchor" title="Link to this comment">#659</a>
       
       
     </footer>
-</div>
+  </div>
 
 </li>
 
@@ -542,36 +2717,43 @@ with your plugin?</p>
 <li id="comment-652" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/1761d6e4e94e6591190678d6b32c72a3?d=mm" title="Amarpreet">
-</div>
+  </div>
 
   <div class="body">
-    <header><a href="javascript:void(0);">Amarpreet</a>
+    <header>
+      <a href="javascript:void(0);">Amarpreet</a>
       
       
       
-    </header><p>Hi,</p>
+    </header>
+
+    <p>Hi,</p>
 
 <p>Could you help me with how i can post the rating using ajax.       </p>
 
 
-    <footer><a href="#comment-652" class="anchor" title="Link to this comment">#652</a>
+    <footer>
+      <a href="#comment-652" class="anchor" title="Link to this comment">#652</a>
       
       
     </footer>
-</div>
+  </div>
 
     <ol>
-<li id="comment-653" class="comment">
+      <li id="comment-653" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
-</div>
+  </div>
 
   <div class="body">
-    <header><a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
       
       <span class="flag author">author</span>
       
-    </header><p>Amarpreet,</p>
+    </header>
+
+    <p>Amarpreet,</p>
 
 <p>You can do it from inside the <a href="#click">click</a> callback.<br>
 Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
@@ -579,11 +2761,12 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
 <p>Ajax POST reference: <a href="http://api.jquery.com/jquery.post">http://api.jquery.com/jquery.post</a></p>
 
 
-    <footer><a href="#comment-653" class="anchor" title="Link to this comment">#653</a>
+    <footer>
+      <a href="#comment-653" class="anchor" title="Link to this comment">#653</a>
       
       
     </footer>
-</div>
+  </div>
 
 </li>
 
@@ -592,25 +2775,111 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
 <li id="comment-650" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
-</div>
+  </div>
 
   <div class="body">
-    <header><a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
       
       
       
-    </header><p>first</p>
+    </header>
+
+    <p>first</p>
 
 
-    <footer><a href="#comment-650" class="anchor" title="Link to this comment">#650</a>
+    <footer>
+      <a href="#comment-650" class="anchor" title="Link to this comment">#650</a>
       
       
     </footer>
-</div>
+  </div>
+
+    <ol>
+      <li id="comment-706" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/ba7b758a7f5ffafb168fce7e02a5420a?d=mm" title="José Leite">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">José Leite</a>
+      
+      
+      
+    </header>
+
+    <p>Washington Botelho,</p>
+
+<p>I wrote the following code:</p>
+<div class="highlight"><pre><span class="p">{{</span><span class="k">if</span> <span class="nx">comments</span><span class="o">:</span><span class="p">}}</span>
+  <span class="p">{{</span><span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">comment</span> <span class="k">in</span> <span class="nx">enumerate</span><span class="p">(</span><span class="nx">comments</span><span class="p">)</span><span class="o">:</span><span class="p">}}</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"badge badge-warning"</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"star{{idx}}"</span><span class="o">&gt;</span><span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+
+    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'#star{{idx}}'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> 
+        <span class="nx">numberMax</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+        <span class="nx">score</span><span class="o">:</span> <span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span> 
+      <span class="p">});</span>
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+  <span class="p">{{</span><span class="nx">pass</span><span class="p">}}</span>
+<span class="p">{{</span><span class="nx">pass</span><span class="p">}}</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-706" class="anchor" title="Link to this comment">#706</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-730" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>José Leite,</p>
+
+<p>Build your HTML elements first, then after apply Raty using class and getting the rating from data attribute, like so:</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-rating=</span><span class="s">"{{= comment.rating}}"</span> <span class="na">class=</span><span class="s">"badge badge-warning"</span><span class="nt">&gt;</span>{{= comment.rating}}<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.badge'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">score</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'data-rating'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-730" class="anchor" title="Link to this comment">#730</a>
+      
+      
+    </footer>
+  </div>
 
 </li>
 
-  </ol></section>
+    </ol>
+</li>
+
+    </ol>
+</li>
+
+  </ol>
+</section>
+
+
+
 <script>
   $(function() {
       AntiBOT.init('.new_comment');
@@ -620,7 +2889,9 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
     $('#comment_body').taby();
   });
 </script>
-</div>
+
+
+  </div>
 
   <script>
   $.fn.raty.defaults.path = 'lib/images';
@@ -807,7 +3078,91 @@ $('#mouseout').raty({
   }
 });
 
+$('#precision').raty({
+    cancel     : true,
+    cancelOff  : 'cancel-off-big.png',
+    cancelOn   : 'cancel-on-big.png',
+    path       : 'demo/images',
+    size       : 24,
+    starHalf   : 'star-half-big.png',
+    starOff    : 'star-off-big.png',
+    starOn     : 'star-on-big.png',
+    target     : '#precision-hint',
+    targetKeep : true,
+
+    precision  : true
+});
+
+$('#space').raty({ space: false });
+
+$('#single').raty({ single: true });
+
+$('#functions').raty({
+  cancel     : true,
+  cancelOff  : 'cancel-off-big.png',
+  cancelOn   : 'cancel-on-big.png',
+  path       : 'demo/images',
+  precision  : true,
+  size       : 24,
+  starHalf   : 'star-half-big.png',
+  starOff    : 'star-off-big.png',
+  starOn     : 'star-on-big.png',
+  target     : '#functions-hint',
+  targetKeep : true,
+  click: function(score, evt) {
+    alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
+  }
+});
+
+$('#score-function-run').on('click', function() {
+  $('#functions').raty('score', $('#' + this.id.replace('-run', '')).val());
+});
+
+$('#click-function-run').on('click', function() {
+  $('#functions').raty('click', $('#' + this.id.replace('-run', '')).val());
+});
+
+$('#readOnly-function-run').on('click', function() {
+var isReadOnly = $('#' + this.id.replace('-run', '')).val() === 'true';
+
+  $('#functions').raty('readOnly', isReadOnly);
+});
+
+$('#cancel-function-run').on('click', function() {
+var isTrigger = $('#' + this.id.replace('-run', '')).val() === 'true';
+
+  $('#functions').raty('cancel', isTrigger);
+});
+
+$('#reload-function-run').on('click', function() {
+  $('#functions').raty('reload');
+});
+
+$('#get-score-function-run').on('click', function() {
+  alert('score: ' + $('#functions').raty('score'));
+});
+
+$('#set-score-function-run').on('click', function() {
+  $('#functions').raty('score', $('#' + this.id.replace('-run', '')).val());
+});
+
+$('#set-function-run').on('click', function() {
+  var options = $('#' + this.id.replace('-run', '').val()),
+      command = "$('#functions').raty('set', " + options + ");";
+
+  eval(command);
+});
+
+$('#destroy-function-run').on('click', function() {
+  $('#functions').raty('destroy');
+});
+
+$('#move-function-run').on('click', function() {
+  $('#functions').raty('move', $('#' + this.id.replace('-run', '')).val());
+});
   });
 </script>
+
+  
 </body>
 </html>
