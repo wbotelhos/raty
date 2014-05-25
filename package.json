@@ -1,9 +1,46 @@
 {
+  "author": "Washington Botelho",
+
+  "bugs": {
+    "url": "https://github.com/wbotelhos/raty/issues"
+  },
+
+  "contributors" : ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
+  "demos"        : ["demo.html"],
+
+  "dependencies" : {
+    "jquery": "1"
+  },
+
+  "description": "jQuery Raty - A Star Rating Plugin",
+
   "devDependencies": {
-    "karma": "0.12"
+    "karma": "0.12",
+    "karma-firefox-launcher": "0.1",
+    "karma-jasmine": "0.2"
+  },
+
+  "directories": {
+    "lib"  : "lib",
+    "test" : "spec"
+  },
+
+  "engines"     : { "node" : "0.10" },
+  "homepage"    : "https://github.com/wbotelhos/raty",
+  "keywords"    : ["raty", "rating", "star"],
+  "license"     : "MIT",
+  "main"        : "lib/jquery.raty.js",
+  "maintainers" : ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
+  "name"        : "raty",
+
+  "repository": {
+    "type" : "git",
+    "url"  : "https://github.com/wbotelhos/raty"
   },
 
   "scripts": {
-     "test": "./node_modules/.bin/karma start spec/karma.conf.js --single-run --browsers Firefox"
-  }
+    "test": "node_modules/karma/bin/karma start spec/karma.conf.js"
+  },
+
+  "version": "2.6.0"
 }

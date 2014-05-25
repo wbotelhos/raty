@@ -1,5 +1,6 @@
 # jQuery Raty - A Star Rating Plugin
-[![Build Status](https://travis-ci.org/danielpsf/raty.png?branch=master)](https://travis-ci.org/danielpsf/raty)
+
+[![Build Status](https://travis-ci.org/wbotelhos/raty.svg?branch=master)](https://travis-ci.org/wbotelhos/raty)
 
 [http://wbotelhos.com/raty](http://wbotelhos.com/raty) - jQuery Raty is a plugin that generates a customizable star rating.
 
@@ -12,9 +13,12 @@
 @doc      wbotelhos.com/raty
 ```
 
-## Required Files
+## Dependencies
 
 + jquery.js
+
+## Required Files
+
 + jquery.raty.js
 + star-on.png
 + star-off.png
@@ -49,10 +53,10 @@ space       : true                                           // Puts space betwe
 starHalf    : 'star-half.png'                                // The name of the half star image.
 starOff     : 'star-off.png'                                 // Name of the star image off.
 starOn      : 'star-on.png'                                  // Name of the star image on.
-targetScore : undefined                                      // Element selector where the score will be filled, instead of creating a new hidden field (scoreName option).
 target      : undefined                                      // Element selector where the score will be displayed.
 targetFormat: '{score}'                                      // Template to interpolate the score in.
 targetKeep  : false                                          // If the last rating value will be keeped after mouseout.
+targetScore : undefined                                      // Element selector where the score will be filled, instead of creating a new hidden field (scoreName option).
 targetText  : ''                                             // Default text setted on target.
 targetType  : 'hint'                                         // Option to choose if target will receive hint o 'score' type.
 width       : undefined                                      // Manually adjust the width for the project.
