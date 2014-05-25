@@ -1,4 +1,5 @@
 # jQuery Raty - A Star Rating Plugin
+[![Build Status](https://travis-ci.org/danielpsf/raty.png?branch=master)](https://travis-ci.org/danielpsf/raty)
 
 [http://wbotelhos.com/raty](http://wbotelhos.com/raty) - jQuery Raty is a plugin that generates a customizable star rating.
 
