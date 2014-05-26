@@ -9,7 +9,7 @@
   "demos"        : ["demo.html"],
 
   "dependencies" : {
-    "jquery": "1"
+    "jquery": "2"
   },
 
   "description": "jQuery Raty - A Star Rating Plugin",
