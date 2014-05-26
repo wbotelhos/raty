@@ -1,8 +1,9 @@
 # jQuery Raty - A Star Rating Plugin
 
-[![Build Status](https://travis-ci.org/wbotelhos/raty.svg?branch=master)](https://travis-ci.org/wbotelhos/raty)
-
-[http://wbotelhos.com/raty](http://wbotelhos.com/raty) - jQuery Raty is a plugin that generates a customizable star rating.
+[![Build Status](https://img.shields.io/travis/wbotelhos/raty/master.svg)](https://travis-ci.org/wbotelhos/raty)
+[![Dependency Status](https://david-dm.org/wbotelhos/raty.svg?theme=shields.io)](https://david-dm.org/wbotelhos/raty)
+[![Dev Dependency Status](https://david-dm.org/wbotelhos/raty/dev-status.svg?theme=shields.io)](https://david-dm.org/wbotelhos/raty#info=devDependencies)
+[![Support jQuery Raty](http://img.shields.io/gittip/wbotelhos.svg)](https://www.gittip.com/wbotelhos)
 
 ## Version
 
