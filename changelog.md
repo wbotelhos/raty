@@ -4,13 +4,15 @@
 
 ### Fixes
 
-+ Target was not showing the score when `half` was enabled; (by andersonba)
-+ Fixed some JS Lint warnings. (by Qazzian)
++ Target was not showing the score when `half` was enabled; (andersonba)
++ Fixed some JS Lint warnings. (Qazzian)
 
 ### News
 
-+ Added option `targetScore` to choose where the score will be setted; (by byhoratiss)
-+ Added function `move` to move the cursor through stars.
++ Added option `targetScore` to choose where the score will be setted; (byhoratiss)
++ Added function `move` to move the cursor through stars;
++ Put the library over Travis Continuous Integration; (danielpsf)
++ `path` now is `undefined` by default.
 
 ## 2.5.2
 
@@ -24,8 +26,8 @@ The read-only indicator was not removing after the reset of configuration, block
 
 + Added function `destroy` to rollback to original object before the bind;
 + Added option `mouseout` to handle things on mouse out;
-+ The `number` option can be setted via callback; (by muratguzel)
-+ The `readOnly` and `scoreName` option can be setted via callback; (by aprimadi)
++ The `number` option can be setted via callback; (muratguzel)
++ The `readOnly` and `scoreName` option can be setted via callback; (aprimadi)
 + You can avoid the width style setting the option `width` to false.
 
 ### Changes
@@ -66,9 +68,9 @@ The read-only indicator was not removing after the reset of configuration, block
 
 + Added the function 'reload' to reload the rating with the current configuration;
 + Added the function 'set' to reload the rating applying new configurations;
-+ Added the option 'mouseover' to handle a callback on mouseover the stars; (by packowitz)
-+ Fixed error when 'start' options receives a string number (by eskimoblood);
-+ Fixed multiples events when readOnly is applied more then time by public function; (by janapol)
++ Added the option 'mouseover' to handle a callback on mouseover the stars; (packowitz)
++ Fixed error when 'start' options receives a string number (eskimoblood);
++ Fixed multiples events when readOnly is applied more then time by public function; (janapol)
 + Now attribute 'hintList' is called just of 'hints';
 + Now attribute 'start' is called as 'score' to make more sense;
 + Now the method 'start' is called as 'score' too.
@@ -98,10 +100,10 @@ The read-only indicator was not removing after the reset of configuration, block
 + Fixed the functions start() and click() to set the value on target when 'target' option is enabled;
 + Fixed the functions start() and click() not to be executed when 'readOnly' is enabled;
 + Fixed the 'target' option to work with 'half' and 'precision' option;
-+ Fixed the index number given to Raty binded by class without id; (by "Remember me, please?")
++ Fixed the index number given to Raty binded by class without id; ("Remember me, please?")
 + Refactored the code to make it cleanner and faster;
 + Changed the class of the cancel button to 'raty-cancel' to avoid CSS conflicts;
-+ Now is possible to use 'start' option as callback function to get start value; (by hpgihan)
++ Now is possible to use 'start' option as callback function to get start value; (hpgihan)
 + Now the scope of click callback is the raty element as DOM, not jQuery selection, to follow the usual;
 + Now the field score is set to readonly when 'readOnly' is enabled;
 + Now attribute 'iconRange' is represented as a list of object with option to choose starOn and starOff;
@@ -128,7 +130,7 @@ The read-only indicator was not removing after the reset of configuration, block
 ## 1.3.3
 
 + Fixed the icon presentation when the start attribute is setted and the iconRange is enabled;
-+ Now the click function receives the event as argument. (by Eric Wendelin)
++ Now the click function receives the event as argument. (Eric Wendelin)
 
 ## 1.3.2
 

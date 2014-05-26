@@ -28,7 +28,7 @@ describe('Raty', function() {
     expect(opt.mouseover).toBeUndefined();
     expect(opt.noRatedMsg).toEqual('Not rated yet!');
     expect(opt.number).toBe(5);
-    expect(opt.path).toEqual('');
+    expect(opt.path).toBeUndefined();
     expect(opt.precision).toBeFalsy();
     expect(opt.readOnly).toBeFalsy();
     expect(opt.round.down).toEqual(0.25);
@@ -988,6 +988,17 @@ describe('Raty', function() {
     });
 
     describe('#path', function() {
+      it ('changes the path', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ path: '../demo/images' });
+
+        // then
+        expect(self.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
+      });
+
       context('without last slash', function() {
         it ('receives the slash', function() {
           // given
@@ -1014,24 +1025,30 @@ describe('Raty', function() {
         });
       });
 
-      it ('changes the path', function() {
-        // given
-        var self = $('#element');
-
-        // when
-        self.raty({ path: '../demo/images' });
-
-        // then
-        expect(self.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
-      });
-
-      context('without path', function() {
+      context('as null', function() {
         it ('sets receives empty', function() {
           // given
           var self = $('#element');
 
           // when
           self.raty({ path: null });
+
+          // then
+          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+        });
+      });
+
+      context('as undefined', function() {
+        beforeEach(function() {
+          $.fn.raty.defaults.path = undefined;
+        });
+
+        it ('sets receives empty', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty();
 
           // then
           expect(self.children('img')).toHaveAttr('src', 'star-off.png');
