@@ -1,9 +1,13 @@
-
 describe('Raty', function() {
-  beforeEach(function() { build(); });
-  afterEach(function()  { clear(); });
+  beforeEach(function() {
+    build();
+  });
 
-  it ('has the right values', function() {
+  afterEach(function() {
+    clear();
+  });
+
+  it ('has the right default values', function() {
     // given
     var raty = $.fn.raty;
 
@@ -47,6 +51,10 @@ describe('Raty', function() {
   });
 
   describe('common features', function() {
+    beforeEach(function() {
+      $.fn.raty.defaults.path = '../lib/images';
+    });
+
     it ('is chainable', function() {
       // given
       var self = $('#element');
@@ -74,7 +82,7 @@ describe('Raty', function() {
       expect(imgs.eq(2)).toHaveAttr('title', 'regular');
       expect(imgs.eq(3)).toHaveAttr('title', 'good');
       expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
-      expect(imgs).toHaveAttr('src', 'star-off.png');
+      expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
       expect(score).toHaveAttr('type', 'hidden');
       expect(score).toHaveAttr('name', 'score');
       expect(score.val()).toEqual('');
@@ -82,6 +90,10 @@ describe('Raty', function() {
   });
 
   describe('#star', function() {
+    beforeEach(function() {
+      $.fn.raty.defaults.path = '../lib/images';
+    });
+
     it ('starts all off', function() {//
       // given
       var self = $('#element');
@@ -90,7 +102,7 @@ describe('Raty', function() {
       self.raty();
 
       // then
-      expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+      expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
     });
 
     context('on :mouseover', function() {
@@ -103,7 +115,7 @@ describe('Raty', function() {
         imgs.eq(4).mouseover();
 
         // then
-        expect(imgs).toHaveAttr('src', 'star-on.png');
+        expect(imgs).toHaveAttr('src', '../lib/images/star-on.png');
       });
 
       context('and :mouseout', function() {
@@ -116,7 +128,7 @@ describe('Raty', function() {
           imgs.eq(4).mouseover().mouseout();
 
           // then
-          expect(imgs).toHaveAttr('src', 'star-off.png');
+          expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
         });
       });
     });
@@ -144,13 +156,17 @@ describe('Raty', function() {
           imgs.eq(4).mouseover().click().mouseout();
 
           // then
-          expect(imgs).toHaveAttr('src', 'star-on.png');
+          expect(imgs).toHaveAttr('src', '../lib/images/star-on.png');
         });
       });
     });
   });
 
   describe('options', function() {
+    beforeEach(function() {
+      $.fn.raty.defaults.path = '../lib/images';
+    });
+
     describe('#numberMax', function() {
       it ('limits to 20 stars', function() {
         // given
@@ -188,7 +204,7 @@ describe('Raty', function() {
         self.raty({ starOff: 'icon.png' });
 
         // then
-        expect(self.children('img')).toHaveAttr('src', 'icon.png');
+        expect(self.children('img')).toHaveAttr('src', '../lib/images/icon.png');
       });
     });
 
@@ -202,11 +218,11 @@ describe('Raty', function() {
         imgs.eq(3).mouseover();
 
         // then
-        expect(imgs.eq(0)).toHaveAttr('src', 'icon.png');
-        expect(imgs.eq(1)).toHaveAttr('src', 'icon.png');
-        expect(imgs.eq(2)).toHaveAttr('src', 'icon.png');
-        expect(imgs.eq(3)).toHaveAttr('src', 'icon.png');
-        expect(imgs.eq(4)).toHaveAttr('src', 'star-off.png');
+        expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/icon.png');
+        expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/icon.png');
+        expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/icon.png');
+        expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/icon.png');
+        expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
       });
     });
 
@@ -218,21 +234,21 @@ describe('Raty', function() {
         // when
         self.raty({
           iconRange: [
-            { range: 2, on: 'a.png', off: 'a-off.png' },
-            { range: 3, on: 'b.png', off: 'b-off.png' },
-            { range: 4, on: 'c.png', off: 'c-off.png' },
-            { range: 5, on: 'd.png', off: 'd-off.png' }
+            { range: 2, on: 'star-off.png', off: 'star-off.png' },
+            { range: 3, on: 'star-off.png', off: 'cancel-off.png' },
+            { range: 4, on: 'star-off.png', off: 'cancel-on.png' },
+            { range: 5, on: 'star-off.png', off: 'star-half.png' }
           ]
         });
 
         // then
         var imgs = self.children('img');
 
-        expect(imgs.eq(0)).toHaveAttr('src', 'a-off.png');
-        expect(imgs.eq(1)).toHaveAttr('src', 'a-off.png');
-        expect(imgs.eq(2)).toHaveAttr('src', 'b-off.png');
-        expect(imgs.eq(3)).toHaveAttr('src', 'c-off.png');
-        expect(imgs.eq(4)).toHaveAttr('src', 'd-off.png');
+        expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/cancel-off.png');
+        expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/cancel-on.png');
+        expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-half.png');
       });
 
       context('when off icon is not especified', function() {
@@ -243,15 +259,15 @@ describe('Raty', function() {
           // when
           self.raty({
             iconRange: [
-              { range: 2, on: 'on.png', off: 'off.png' },
-              { range: 3, on: 'on.png', off: 'off.png' },
-              { range: 4, on: 'on.png', off: 'off.png' },
-              { range: 5, on: 'on.png' }
+              { range: 2, on: 'star-on.png', off: 'star-off.png' },
+              { range: 3, on: 'star-on.png', off: 'star-off.png' },
+              { range: 4, on: 'star-on.png', off: 'star-off.png' },
+              { range: 5, on: 'star-on.png' }
             ]
           });
 
           // then
-          expect(self.children('img').eq(4)).toHaveAttr('src', 'star-off.png');
+          expect(self.children('img').eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
         });
       });
 
@@ -260,10 +276,10 @@ describe('Raty', function() {
           // given
           var self = $('#element').raty({
               iconRange: [
-                { range: 2, on: 'a.png', off: 'a-off.png' },
-                { range: 3, on: 'b.png', off: 'b-off.png' },
-                { range: 4, on: 'c.png', off: 'c-off.png' },
-                { range: 5, on: 'd.png', off: 'd-off.png' }
+                { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                { range: 5, on: 'star-on.png', off: 'star-off.png' }
               ]
             }),
             imgs = self.children('img');
@@ -272,11 +288,11 @@ describe('Raty', function() {
           imgs.eq(4).mouseover();
 
           // then
-          expect(imgs.eq(0)).toHaveAttr('src', 'a.png');
-          expect(imgs.eq(1)).toHaveAttr('src', 'a.png');
-          expect(imgs.eq(2)).toHaveAttr('src', 'b.png');
-          expect(imgs.eq(3)).toHaveAttr('src', 'c.png');
-          expect(imgs.eq(4)).toHaveAttr('src', 'd.png');
+          expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-on.png');
         });
 
         context('when on icon is not especified', function() {
@@ -284,10 +300,10 @@ describe('Raty', function() {
             // given
             var self = $('#element').raty({
                   iconRange: [
-                    { range: 2, off: 'off.png', on: 'on.png' },
-                    { range: 3, off: 'off.png', on: 'on.png' },
-                    { range: 4, off: 'off.png', on: 'on.png' },
-                    { range: 5, off: 'off.png' }
+                    { range: 2, off: 'star-off.png', on: 'star-on.png' },
+                    { range: 3, off: 'star-off.png', on: 'star-on.png' },
+                    { range: 4, off: 'star-off.png', on: 'star-on.png' },
+                    { range: 5, off: 'star-off.png' }
                   ]
                 }),
                 imgs = self.children('img');
@@ -296,11 +312,11 @@ describe('Raty', function() {
             imgs.eq(4).mouseover();
 
             // then
-            expect(imgs.eq(0)).toHaveAttr('src', 'on.png');
-            expect(imgs.eq(1)).toHaveAttr('src', 'on.png');
-            expect(imgs.eq(2)).toHaveAttr('src', 'on.png');
-            expect(imgs.eq(3)).toHaveAttr('src', 'on.png');
-            expect(imgs.eq(4)).toHaveAttr('src', 'star-on.png');
+            expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-on.png');
           });
         });
       });
@@ -310,10 +326,10 @@ describe('Raty', function() {
           // given
           var self = $('#element').raty({
                 iconRange: [
-                  { range: 2, on: 'a.png', off: 'a-off.png' },
-                  { range: 3, on: 'b.png', off: 'b-off.png' },
-                  { range: 4, on: 'c.png', off: 'c-off.png' },
-                  { range: 5, on: 'd.png', off: 'd-off.png' },
+                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 5, on: 'star-on.png', off: 'star-off.png' },
                 ]
               }),
               imgs = self.children('img');
@@ -324,21 +340,21 @@ describe('Raty', function() {
           self.mouseleave();
 
           // then
-          expect(imgs.eq(0)).toHaveAttr('src', 'a-off.png');
-          expect(imgs.eq(1)).toHaveAttr('src', 'a-off.png');
-          expect(imgs.eq(2)).toHaveAttr('src', 'b-off.png');
-          expect(imgs.eq(3)).toHaveAttr('src', 'c-off.png');
-          expect(imgs.eq(4)).toHaveAttr('src', 'd-off.png');
+          expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
         });
 
         it ('keeps the score value', function() {
           // given
           var self = $('#element').raty({
                 iconRange  : [
-                  { range: 2, on: 'a.png', off: 'a-off.png' },
-                  { range: 3, on: 'b.png', off: 'b-off.png' },
-                  { range: 4, on: 'c.png', off: 'c-off.png' },
-                  { range: 5, on: 'd.png', off: 'd-off.png' }
+                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 5, on: 'star-on.png', off: 'star-off.png' }
                 ],
                 score      : 1
               });
@@ -357,10 +373,10 @@ describe('Raty', function() {
             // given
             var self = $('#element').raty({
                 iconRange: [
-                  { range: 2, on: 'on.png', off: 'off.png' },
-                  { range: 3, on: 'on.png', off: 'off.png' },
-                  { range: 4, on: 'on.png', off: 'off.png' },
-                  { range: 5, on: 'on.png' }
+                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 5, on: 'star-on.png' }
                 ]
               }),
               img = self.children('img').eq(4);
@@ -371,7 +387,7 @@ describe('Raty', function() {
             self.mouseleave();
 
             // then
-            expect(img).toHaveAttr('src', 'star-off.png');
+            expect(img).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
       });
@@ -464,11 +480,11 @@ describe('Raty', function() {
         // then
         var imgs = self.children('img');
 
-        expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
-        expect(imgs.eq(1)).toHaveAttr('src', 'star-off.png');
-        expect(imgs.eq(2)).toHaveAttr('src', 'star-off.png');
-        expect(imgs.eq(3)).toHaveAttr('src', 'star-off.png');
-        expect(imgs.eq(4)).toHaveAttr('src', 'star-off.png');
+        expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+        expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
       });
 
       it ('accepts callback', function() {
@@ -577,7 +593,7 @@ describe('Raty', function() {
         imgs.eq(1).mouseover();
 
         // then
-        expect(imgs).toHaveAttr('src', 'star-off.png');
+        expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
       });
 
       it ('avoids trigger click', function() {
@@ -589,7 +605,7 @@ describe('Raty', function() {
         imgs.eq(1).mouseover().click().mouseleave();
 
         // then
-        expect(imgs).toHaveAttr('src', 'star-off.png');
+        expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
         expect(self.children('input').val()).toEqual('');
       });
 
@@ -646,7 +662,7 @@ describe('Raty', function() {
           var self = $('#element');
 
           // when
-          self.raty({ cancel: true, readOnly: true, path: '../lib/images' });
+          self.raty({ cancel: true, readOnly: true });
 
           // then
           expect(self.children('.raty-cancel')).toBeHidden();
@@ -978,10 +994,10 @@ describe('Raty', function() {
           var self = $('#element');
 
           // when
-          self.raty({ path: 'path' });
+          self.raty({ path: '../demo/images' });
 
           // then
-          expect(self[0].opt.path).toEqual('path/');
+          expect(self[0].opt.path).toEqual('../demo/images/');
         });
       });
 
@@ -991,10 +1007,10 @@ describe('Raty', function() {
           var self = $('#element');
 
           // when
-          self.raty({ path: 'path/' });
+          self.raty({ path: '../demo/images/' });
 
           // then
-          expect(self[0].opt.path).toEqual('path/');
+          expect(self[0].opt.path).toEqual('../demo/images/');
         });
       });
 
@@ -1003,10 +1019,10 @@ describe('Raty', function() {
         var self = $('#element');
 
         // when
-        self.raty({ path: 'path' });
+        self.raty({ path: '../demo/images' });
 
         // then
-        expect(self.children('img')).toHaveAttr('src', 'path/star-off.png');
+        expect(self.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
       });
 
       context('without path', function() {
@@ -1028,10 +1044,10 @@ describe('Raty', function() {
           var self = $('#element');
 
           // when
-          self.raty({ cancel: true, path: 'path' });
+          self.raty({ cancel: true, path: '../demo/images' });
 
           // then
-          expect(self.children('.raty-cancel')).toHaveAttr('src', 'path/cancel-off.png');
+          expect(self.children('.raty-cancel')).toHaveAttr('src', '../demo/images/cancel-off.png');
         });
       });
 
@@ -1041,13 +1057,10 @@ describe('Raty', function() {
           var self = $('#element');
 
           // when
-          self.raty({
-            path     : 'path',
-            iconRange: [{ range: 5 }]
-          });
+          self.raty({ iconRange: [{ range: 5 }], path: '../demo/images' });
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'path/star-off.png');
+          expect(self.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
         });
       });
     });
@@ -1061,7 +1074,7 @@ describe('Raty', function() {
         self.raty({ cancel: true, cancelOff: 'off.png' });
 
         // then
-        expect(self.children('.raty-cancel')).toHaveAttr('src', 'off.png');
+        expect(self.children('.raty-cancel')).toHaveAttr('src', '../lib/images/off.png');
       });
     });
 
@@ -1074,7 +1087,7 @@ describe('Raty', function() {
         var cancel = self.children('.raty-cancel').mouseover();
 
         // then
-        expect(cancel).toHaveAttr('src', 'icon.png');
+        expect(cancel).toHaveAttr('src', '../lib/images/icon.png');
       });
     });
 
@@ -1105,7 +1118,7 @@ describe('Raty', function() {
         expect(cancel).toHaveClass('raty-cancel');
         expect(cancel).toHaveAttr('title', 'Cancel this rating!');
         expect(cancel).toHaveAttr('alt', 'x');
-        expect(cancel).toHaveAttr('src', 'cancel-off.png');
+        expect(cancel).toHaveAttr('src', '../lib/images/cancel-off.png');
       });
     });
 
@@ -1123,7 +1136,7 @@ describe('Raty', function() {
         expect(cancel).toHaveClass('raty-cancel');
         expect(cancel).toHaveAttr('title', 'Cancel this rating!');
         expect(cancel).toHaveAttr('alt', 'x');
-        expect(cancel).toHaveAttr('src', 'cancel-off.png');
+        expect(cancel).toHaveAttr('src', '../lib/images/cancel-off.png');
       });
 
       context('on mouseover', function() {
@@ -1135,7 +1148,7 @@ describe('Raty', function() {
           var cancel = self.children('.raty-cancel').mouseover();
 
           // then
-          expect(cancel).toHaveAttr('src', 'cancel-on.png');
+          expect(cancel).toHaveAttr('src', '../lib/images/cancel-on.png');
         });
 
         context('with :score', function() {
@@ -1148,7 +1161,7 @@ describe('Raty', function() {
             self.children('.raty-cancel').mouseover();
 
             // then
-            expect(imgs).toHaveAttr('src', 'star-off.png');
+            expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
       });
@@ -1162,7 +1175,7 @@ describe('Raty', function() {
           var cancel = self.children('.raty-cancel').mouseover().mouseout();
 
           // then
-          expect(cancel).toHaveAttr('src', 'cancel-off.png');
+          expect(cancel).toHaveAttr('src', '../lib/images/cancel-off.png');
         });
 
         context('with :score', function() {
@@ -1175,11 +1188,11 @@ describe('Raty', function() {
             self.children('.raty-cancel').mouseover().mouseout();
 
             // then
-            expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
-            expect(imgs.eq(1)).toHaveAttr('src', 'star-on.png');
-            expect(imgs.eq(2)).toHaveAttr('src', 'star-on.png');
-            expect(imgs.eq(3)).toHaveAttr('src', 'star-on.png');
-            expect(imgs.eq(4)).toHaveAttr('src', 'star-off.png');
+            expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
       });
@@ -1195,7 +1208,7 @@ describe('Raty', function() {
           // then
           var stars = self.children('img:not(.raty-cancel)');
 
-          expect(stars).toHaveAttr('src', 'star-off.png');
+          expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
           expect(self.children('input').val()).toEqual('');
         });
       });
@@ -1203,7 +1216,7 @@ describe('Raty', function() {
       context('when starts :readOnly', function() {
         it ('starts hidden', function() {
           // given
-          var self = $('#element').raty({ cancel: true, readOnly: true, path: '../img' });
+          var self = $('#element').raty({ cancel: true, readOnly: true });
 
           // when
           self.raty('readOnly', true);
@@ -1223,7 +1236,7 @@ describe('Raty', function() {
             // then
             var stars = self.children('img:not(.raty-cancel)');
 
-            expect(stars).toHaveAttr('src', 'star-on.png');
+            expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
             expect(self.children('input').val()).toEqual('5');
           });
         });
@@ -1232,7 +1245,7 @@ describe('Raty', function() {
       context('when become :readOnly', function() {
         it ('becomes hidden', function() {
           // given
-          var self = $('#element').raty({ cancel: true, path: '../img' });
+          var self = $('#element').raty({ cancel: true });
 
           // when
           self.raty('readOnly', true);
@@ -1310,7 +1323,6 @@ describe('Raty', function() {
           });
         });
       });
-
     });
 
     describe('#targetText', function() {
@@ -1710,24 +1722,24 @@ describe('Raty', function() {
           imgs.eq(2).mouseover();
 
           // then
-          expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
-          expect(imgs.eq(1)).toHaveAttr('src', 'star-off.png');
-          expect(imgs.eq(2)).toHaveAttr('src', 'star-on.png');
-          expect(imgs.eq(3)).toHaveAttr('src', 'star-off.png');
-          expect(imgs.eq(4)).toHaveAttr('src', 'star-off.png');
+          expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
         });
 
         context('with :iconRange', function() {
           it ('shows just on icon', function() {
             // given
             var self = $('#element').raty({
-                  single    : true,
                   iconRange  : [
-                    { range: 2, on: 'a.png', off: 'a-off.png' },
-                    { range: 3, on: 'b.png', off: 'b-off.png' },
-                    { range: 4, on: 'c.png', off: 'c-off.png' },
-                    { range: 5, on: 'd.png', off: 'd-off.png' }
-                  ]
+                    { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                    { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                    { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                    { range: 5, on: 'star-on.png', off: 'star-off.png' }
+                  ],
+                  single     : true
                 }),
                 imgs = self.children('img');
 
@@ -1735,11 +1747,11 @@ describe('Raty', function() {
             imgs.eq(3).mouseover();
 
             // then
-            expect(imgs.eq(0)).toHaveAttr('src', 'a-off.png');
-            expect(imgs.eq(1)).toHaveAttr('src', 'a-off.png');
-            expect(imgs.eq(2)).toHaveAttr('src', 'b-off.png');
-            expect(imgs.eq(3)).toHaveAttr('src', 'c.png');
-            expect(imgs.eq(4)).toHaveAttr('src', 'd-off.png');
+            expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
       });
@@ -1755,11 +1767,11 @@ describe('Raty', function() {
             imgs.eq(2).mouseover().click().mouseleave();
 
             // then
-            expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
-            expect(imgs.eq(1)).toHaveAttr('src', 'star-off.png');
-            expect(imgs.eq(2)).toHaveAttr('src', 'star-on.png');
-            expect(imgs.eq(3)).toHaveAttr('src', 'star-off.png');
-            expect(imgs.eq(4)).toHaveAttr('src', 'star-off.png');
+            expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
           });
 
           context('and :iconRange', function() {
@@ -1780,11 +1792,11 @@ describe('Raty', function() {
               imgs.eq(3).mouseover().click().mouseleave();
 
               // then
-              expect(imgs.eq(0)).toHaveAttr('src', 'a-off.png');
-              expect(imgs.eq(1)).toHaveAttr('src', 'a-off.png');
-              expect(imgs.eq(2)).toHaveAttr('src', 'b-off.png');
-              expect(imgs.eq(3)).toHaveAttr('src', 'c.png');
-              expect(imgs.eq(4)).toHaveAttr('src', 'd-off.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/a-off.png');
+              expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/a-off.png');
+              expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/b-off.png');
+              expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/c.png');
+              expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/d-off.png');
             });
           });
         });
@@ -1849,8 +1861,8 @@ describe('Raty', function() {
               var imgs = self.children('img');
 
               // then
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
-              expect(imgs.eq(1)).toHaveAttr('src', 'star-off.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+              expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
             });
 
             it ('rounds full when equal the full limit', function() {
@@ -1868,7 +1880,7 @@ describe('Raty', function() {
               var imgs = self.children('img');
 
               // then
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
             });
           });
         });
@@ -1892,7 +1904,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
               expect(self.children('input').val()).toEqual('0.24');
             });
 
@@ -1911,7 +1923,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
               expect(self.children('input').val()).toEqual('0.26');
             });
 
@@ -1930,7 +1942,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
               expect(self.children('input').val()).toEqual('0.6');
             });
 
@@ -1949,7 +1961,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
               expect(self.children('input').val()).toEqual('0.75');
             });
 
@@ -1968,7 +1980,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
             });
           });
 
@@ -1988,7 +2000,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-off.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
             });
 
             it ('receives half while greater then down limit', function() {
@@ -2006,7 +2018,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-half.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
             });
 
             it ('receives half while equal full limit, ignoring it', function() {
@@ -2024,7 +2036,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-half.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
             });
 
             it ('receives half while greater than down limit and less than up limit', function() {
@@ -2042,7 +2054,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-half.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
             });
 
             it ('receives full while equal or greater than up limit', function() {
@@ -2060,7 +2072,7 @@ describe('Raty', function() {
               // then
               var imgs = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
+              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
             });
           });
         });
@@ -2100,6 +2112,8 @@ describe('Raty', function() {
 
   describe('class bind', function() {
     beforeEach(function() {
+      $.fn.raty.defaults.path = '../lib/images';
+
       $('body').append('<div class="element"></div><div class="element"></div>');
     });
 
@@ -2135,7 +2149,7 @@ describe('Raty', function() {
       expect(imgs.eq(2)).toHaveAttr('title', 'regular');
       expect(imgs.eq(3)).toHaveAttr('title', 'good');
       expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
-      expect(imgs).toHaveAttr('src', 'star-off.png');
+      expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
       expect(score).toHaveAttr('type', 'hidden');
       expect(score).toHaveAttr('name', 'score');
       expect(score.val()).toEqual('');
@@ -2148,7 +2162,7 @@ describe('Raty', function() {
       expect(imgs.eq(2)).toHaveAttr('title', 'regular');
       expect(imgs.eq(3)).toHaveAttr('title', 'good');
       expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
-      expect(imgs).toHaveAttr('src', 'star-off.png');
+      expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
       expect(score).toHaveAttr('type', 'hidden');
       expect(score).toHaveAttr('name', 'score');
       expect(score.val()).toEqual('');
@@ -2156,6 +2170,10 @@ describe('Raty', function() {
   });
 
   describe('functions', function() {
+    beforeEach(function() {
+      $.fn.raty.defaults.path = '../lib/images';
+    });
+
     describe('GET #score', function() {
       it ('accepts number as string', function() {
         // given
@@ -2257,7 +2275,7 @@ describe('Raty', function() {
           self.raty('score', 5);
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-on.png');
+          expect(self.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
         });
       });
 
@@ -2283,7 +2301,7 @@ describe('Raty', function() {
           self.raty('score', 5);
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
         });
       });
     });
@@ -2398,7 +2416,7 @@ describe('Raty', function() {
           imgs.eq(0).mouseover();
 
           // then
-          expect(imgs).toHaveAttr('src', 'star-off.png');
+          expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
         });
 
         it ('avoids trigger click', function() {
@@ -2412,7 +2430,7 @@ describe('Raty', function() {
           imgs.eq(0).mouseover().click().mouseleave();
 
           // then
-          expect(imgs).toHaveAttr('src', 'star-off.png');
+          expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
           expect(self.children('input').val()).toEqual('');
         });
 
@@ -2432,7 +2450,7 @@ describe('Raty', function() {
         context('with :cancel', function() {
           it ('hides the button', function() {
             // given
-            var self = $('#element').raty({ cancel: true, path: '../lib/images' });
+            var self = $('#element').raty({ cancel: true });
 
             // when
             self.raty('readOnly', true);
@@ -2527,7 +2545,7 @@ describe('Raty', function() {
           imgs.eq(0).mouseover();
 
           // then
-          expect(imgs.eq(0)).toHaveAttr('src', 'star-on.png');
+          expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
         });
 
         it ('triggers click', function() {
@@ -2541,7 +2559,7 @@ describe('Raty', function() {
           imgs.eq(0).mouseover().click().mouseleave();
 
           // then
-          expect(imgs).toHaveAttr('src', 'star-on.png');
+          expect(imgs).toHaveAttr('src', '../lib/images/star-on.png');
           expect(self.children('input')).toHaveValue('1');
         });
 
@@ -2567,7 +2585,7 @@ describe('Raty', function() {
         context('with :cancel', function() {
           it ('shows the button', function() {
             // given
-            var self = $('#element').raty({ cancel: true, path: '../lib/images', readOnly: true });
+            var self = $('#element').raty({ cancel: true, readOnly: true });
 
             // when
             self.raty('readOnly', false);
@@ -2589,8 +2607,8 @@ describe('Raty', function() {
             cancel.mouseover();
 
             // then
-            expect(cancel).toHaveAttr('src', 'cancel-on.png');
-            expect(imgs).toHaveAttr('src', 'star-off.png');
+            expect(cancel).toHaveAttr('src', '../lib/images/cancel-on.png');
+            expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
           });
 
           it ('rebinds the click', function() {
@@ -2604,7 +2622,7 @@ describe('Raty', function() {
             self.children('.raty-cancel').click().mouseout();
 
             // then
-            expect(imgs).toHaveAttr('src', 'star-off.png');
+            expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
       });
@@ -2620,7 +2638,7 @@ describe('Raty', function() {
           self.raty('cancel');
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-on.png');
+          expect(self.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
         });
       });
 
@@ -2638,7 +2656,7 @@ describe('Raty', function() {
           self.raty('cancel');
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
           expect(self.children('input').val()).toEqual('');
           expect(self.data('clicked')).toBeFalsy();
         });
@@ -2658,7 +2676,7 @@ describe('Raty', function() {
           self.raty('cancel', true);
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
           expect(self.children('input').val()).toEqual('');
           expect(self.data('clicked')).toBeTruthy();
         });
@@ -2701,7 +2719,7 @@ describe('Raty', function() {
         self.raty('click', 1);
 
         // then
-        expect(self.children('img')).toHaveAttr('src', 'star-on.png');
+        expect(self.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
         expect(self.data('clicked')).toBeTruthy();
       });
 
@@ -2744,7 +2762,7 @@ describe('Raty', function() {
           self.raty('click', 1);
 
           // then
-          expect(self.children('img')).toHaveAttr('src', 'star-off.png');
+          expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
         });
       });
 
@@ -2887,7 +2905,6 @@ describe('Raty', function() {
         it ('moves to the right point', function() {
           // given
           var self = $('#element').raty({
-            path       : '../lib/images',
             precision  : true,
             target     : '#target',
             targetType : 'number'
@@ -2913,7 +2930,6 @@ describe('Raty', function() {
         it ('moves to the right point', function() {
           // given
           var self = $('#element').raty({
-            path       : '../lib/images',
             precision  : true,
             target     : '#target',
             targetType : 'number'
@@ -2939,7 +2955,6 @@ describe('Raty', function() {
         it ('moves to the right point', function() {
           // given
           var self = $('#element').raty({
-            path       : '../lib/images',
             precision  : true,
             target     : '#target',
             targetType : 'number'
@@ -2965,7 +2980,6 @@ describe('Raty', function() {
         it ('moves to the and of the last star', function() {
           // given
           var self = $('#element').raty({
-            path       : '../lib/images',
             precision  : true,
             target     : '#target',
             targetType : 'number'
@@ -2994,10 +3008,10 @@ describe('Raty', function() {
           this.target2.remove();
         });
 
+        // TODO: set taget with callback.
         xit ('moves to the right point on all of them', function() {
           // given
           var els = $('.element').raty({
-            path       : '../lib/images',
             precision  : true,
             target     : function() {
               return this.getAttribute('data-target');
