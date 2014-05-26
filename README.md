@@ -62,6 +62,7 @@ targetScore : undefined                                      // Element selector
 targetText  : ''                                             // Default text setted on target.
 targetType  : 'hint'                                         // Option to choose if target will receive hint o 'score' type.
 width       : undefined                                      // Manually adjust the width for the project.
+starType    : 'img'                                          // The type of the star, img as default, could also be whatever element
 ```
 
 ## Usage
@@ -81,6 +82,72 @@ $('#star').raty();
 
 ```js
 $('.star').raty();
+```
+
+```js
+// using it w/ font-awesome
+$('.star').raty({
+  starType : 'i',
+  starOn   : 'fa fa-star',
+  starOff  : 'fa fa-star-o',
+  starHalf : 'fa fa-star-half-o'
+});
+```
+
+```js
+// or w/ custom css where on/off/half are classes to apply to star elements
+$('.star').raty({
+  starType : 'span',
+  starOn   : 'on',
+  starOff  : 'off',
+  starHalf : 'half'
+});
+```
+
+```css
+/* if you use custom elements (not images), you can define a style for your stars */
+
+/*
+  font-awesome style
+*/
+.fa {
+  font-size: 16px;
+}
+.fa-star {
+  color: #40d32a;
+  text-shadow: 0 1px #fff;
+}
+.fa-star-o,
+.fa-star-half-o {
+  color: #999;
+}
+
+/*
+  Or, on/off/half classes for <span> or whatever elements
+*/
+.on,
+.off,
+.half {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  background-color: #ff2828;
+  border-radius: 50%;
+}
+.on {
+  background-color: #40d32a;
+}
+.half {
+  background: #40d32a; /* Old browsers */
+  background: -moz-linear-gradient(left,  #40d32a 0%, #40d32a 50%, #ff2828 51%, #ff0000 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#40d32a), color-stop(50%,#40d32a), color-stop(51%,#ff2828), color-stop(100%,#ff0000)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #40d32a 0%,#40d32a 50%,#ff2828 51%,#ff0000 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #40d32a 0%,#40d32a 50%,#ff2828 51%,#ff0000 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #40d32a 0%,#40d32a 50%,#ff2828 51%,#ff0000 100%); /* IE10+ */
+  background: linear-gradient(to right,  #40d32a 0%,#40d32a 50%,#ff2828 51%,#ff0000 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40d32a', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 */
+}
+
 ```
 
 ## Functions

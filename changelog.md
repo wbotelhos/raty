@@ -7,12 +7,16 @@
 + Target was not showing the score when `half` was enabled; (andersonba)
 + Fixed some JS Lint warnings. (Qazzian)
 
+### Changes
+
++ `path` now is `undefined` by default.
+
 ### News
 
 + Added option `targetScore` to choose where the score will be setted; (byhoratiss)
 + Added function `move` to move the cursor through stars;
 + Put the library over Travis Continuous Integration; (danielpsf)
-+ `path` now is `undefined` by default.
++ Added option `starType` to be possible change from image to other element like `i` and use font to render the stars.
 
 ## 2.5.2
 
