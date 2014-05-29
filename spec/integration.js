@@ -1,8 +1,8 @@
-beforeEach(function() {
-  build();
-});
-
 describe('Integration', function() {
+  beforeEach(function() {
+    build();
+  });
+
   afterEach(function() {
     clear();
   });
@@ -12,7 +12,7 @@ describe('Integration', function() {
       $.fn.raty.defaults.path = '../lib/images';
     });
 
-    it ('is chainable', function() {
+    it('is chainable', function() {
       // given
       var self = $('#element');
 
@@ -24,12 +24,12 @@ describe('Integration', function() {
     });
   });
 
-  describe('#star', function() {
+  describe('stars', function() {
     beforeEach(function() {
       $.fn.raty.defaults.path = '../lib/images';
     });
 
-    it ('starts all off', function() {//
+    it('starts all off', function() {
       // given
       var self = $('#element');
 
@@ -40,58 +40,72 @@ describe('Integration', function() {
       expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
     });
 
-    context('on :mouseover', function() {
-      it ('turns on the stars', function() {//
+    context('on click', function() {
+      it('changes the score', function() {
         // given
-        var self = $('#element').raty(),
-            imgs = self.children('img');
+        var self  = $('#element').raty(),
+            stars = self.children('img');
 
         // when
-        imgs.eq(4).mouseover();
+        stars.last().trigger('click');
 
         // then
-        expect(imgs).toHaveAttr('src', '../lib/images/star-on.png');
-      });
-
-      context('and :mouseout', function() {
-        it ('clears all stars', function() {//
-          // given
-          var self = $('#element').raty(),
-              imgs = self.children('img');
-
-          // when
-          imgs.eq(4).mouseover().mouseout();
-
-          // then
-          expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
-        });
+        expect(self.children('input')).toHaveValue('5');
       });
     });
 
-    context('on rating', function() {
-      it ('changes the score', function() {//
+    context('on mouseover', function() {
+      it('turns on the stars', function() {
         // given
-        var self = $('#element').raty(),
-            imgs = self.children('img');
+        var self  = $('#element').raty(),
+            stars = self.children('img');
 
         // when
-        imgs.eq(1).mouseover().click();
+        stars.last().trigger('mouseover');
 
         // then
-        expect(self.children('input')).toHaveValue('2');
+        expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
       });
 
-      context('on :mouseout', function() {
-        it ('keeps the stars on', function() {
+      context('and mouseout', function() {
+        it('turns off all stars', function() {
           // given
-          var self = $('#element').raty(),
-              imgs = self.children('img');
+          var self  = $('#element').raty(),
+              stars = self.children('img');
 
           // when
-          imgs.eq(4).mouseover().click().mouseout();
+          stars.last().trigger('mouseover').trigger('mouseout');
 
           // then
-          expect(imgs).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
+        });
+      });
+
+      context('and click', function() {
+        it('changes the score', function() {
+          // given
+          var self  = $('#element').raty(),
+              stars = self.children('img');
+
+          // when
+          stars.last().trigger('mouseover').trigger('click');
+
+          // then
+          expect(self.children('input')).toHaveValue('5');
+        });
+
+        context('and mouseout', function() {
+          it('keeps the stars on', function() {
+            // given
+            var self  = $('#element').raty(),
+                stars = self.children('img');
+
+            // when
+            stars.last().trigger('mouseover').trigger('click').trigger('mouseout');
+
+            // then
+            expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+          });
         });
       });
     });
@@ -103,35 +117,31 @@ describe('Integration', function() {
     });
 
     describe('#numberMax', function() {
-      it ('limits to 20 stars', function() {
+      it('limits the max of "number" option', function() {
         // given
-        var self = $('#element').raty({ number: 50, score: 50 });
+        var self = $('#element');
 
         // when
-        var score = self.raty('score');
+        self.raty({ number: 2, numberMax: 1 });
 
         // then
-        expect(self.children('img').length).toEqual(20);
-        expect(self.children('input')).toHaveValue('20');
+        expect(self[0].opt.number).toEqual(1);
       });
 
-      context('with custom numberMax', function() {
-        it ('chages the limit', function() {
-          // given
-          var self = $('#element').raty({ numberMax: 10, number: 50, score: 50 });
+      it('limits the min of "number" option', function() {
+        // given
+        var self = $('#element');
 
-          // when
-          var score = self.raty('score');
+        // when
+        self.raty({ number: -1 });
 
-          // then
-          expect(self.children('img').length).toEqual(10);
-          expect(self.children('input')).toHaveValue('10');
-        });
+        // then
+        expect(self[0].opt.number).toEqual(0);
       });
     });
 
     describe('#starOff', function() {
-      it ('changes the stars', function() { //
+      it('sets the stars off', function() {
         // given
         var self = $('#element');
 
@@ -143,7 +153,7 @@ describe('Integration', function() {
       });
 
       context('with :starType', function() {
-        it ('uses the given element', function() { //
+        it('uses the given element', function() {
           // given
           var self = $('#element');
 
@@ -160,7 +170,7 @@ describe('Integration', function() {
           expect(stars[4].tagName).toEqual('I');
         });
 
-        it ('normalizes the class name', function() { //
+        it('normalizes the class name', function() {
           // given
           var self = $('#element');
 
@@ -171,7 +181,7 @@ describe('Integration', function() {
           expect(self.children('i')).toHaveClass('star-off-png');
         });
 
-        it ('does not create the "src" attribute', function() {
+        it('does not create the "src" attribute', function() {
           // given
           var self = $('#element');
 
@@ -188,7 +198,7 @@ describe('Integration', function() {
           expect(stars[4].src).toBeUndefined();
         });
 
-        it ('creates the "data-alt" attribute', function() { //
+        it('creates the "data-alt" attribute', function() {
           // given
           var self = $('#element');
 
@@ -205,7 +215,7 @@ describe('Integration', function() {
           expect(stars[4].getAttribute('data-alt')).toEqual('5');
         });
 
-        it ('does not create the "alt" attribute', function() { //
+        it('does not create the "alt" attribute', function() {
           // given
           var self = $('#element');
 
@@ -219,26 +229,26 @@ describe('Integration', function() {
     });
 
     describe('#starOn', function() {
-      it ('changes the stars', function() { //
+      it('changes the stars on', function() {
         // given
         var self  = $('#element').raty({ starOn: 'half-star.png' }),
             stars = self.children('img');
 
         // when
-        stars.last().mouseover();
+        stars.last().trigger('mouseover');
 
         // then
         expect(stars).toHaveAttr('src', '../lib/images/half-star.png');
       });
 
       context('with :starType', function() {
-        it ('uses the given element', function() { //
+        it('uses the given element', function() {
           // given
           var self  = $('#element').raty({ starType: 'i' }),
               stars = self.children('i');
 
           // when
-          stars.last().mouseover();
+          stars.last().trigger('mouseover');
 
           // then
           expect(stars[0].tagName).toEqual('I');
@@ -248,49 +258,49 @@ describe('Integration', function() {
           expect(stars[4].tagName).toEqual('I');
         });
 
-        it ('normalizes the class name', function() { //
+        it('normalizes the class name', function() {
           // given
           var self  = $('#element').raty({ starType: 'i' }),
               stars = self.children('i');
 
           // when
-          stars.last().mouseover();
+          stars.last().trigger('mouseover');
 
           // then
           expect(stars).toHaveClass('star-on-png');
         });
 
-        it ('does not create "src" attribute', function() { //
+        it('does not create "src" attribute', function() {
           // given
           var self  = $('#element').raty({ starType: 'i' }),
               stars = self.children('i');
 
           // when
-          stars.last().mouseover();
+          stars.last().trigger('mouseover');
 
           // then
           expect(stars).not.toHaveAttr('src');
         });
 
-        it ('creates "data-alt" attribute', function() { //
+        it('creates "data-alt" attribute', function() {
           // given
           var self  = $('#element').raty({ starType: 'i' }),
               stars = self.children('i');
 
           // when
-          stars.last().mouseover();
+          stars.last().trigger('mouseover');
 
           // then
           expect(stars).toHaveAttr('data-alt');
         });
 
-        it ('does not create "alt" attribute', function() { //
+        it('does not create "alt" attribute', function() {
           // given
           var self  = $('#element').raty({ starType: 'i' }),
               stars = self.children('i');
 
           // when
-          stars.last().mouseover();
+          stars.last().trigger('mouseover');
 
           // then
           expect(stars).not.toHaveAttr('alt');
@@ -298,205 +308,38 @@ describe('Integration', function() {
       });
     });
 
-    describe('#iconRange', function() {
-      it ('uses icon intervals', function() {
-        // given
-        var self = $('#element');
-
-        // when
-        self.raty({
-          iconRange: [
-            { range: 2, on: 'star-off.png', off: 'star-off.png' },
-            { range: 3, on: 'star-off.png', off: 'cancel-off.png' },
-            { range: 4, on: 'star-off.png', off: 'cancel-on.png' },
-            { range: 5, on: 'star-off.png', off: 'star-half.png' }
-          ]
-        });
-
-        // then
-        var imgs = self.children('img');
-
-        expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
-        expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
-        expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/cancel-off.png');
-        expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/cancel-on.png');
-        expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-half.png');
-      });
-
-      context('when off icon is not especified', function() {
-        it ('uses the :starOff icon', function() {
-          // given
-          var self = $('#element');
-
-          // when
-          self.raty({
-            iconRange: [
-              { range: 2, on: 'star-on.png', off: 'star-off.png' },
-              { range: 3, on: 'star-on.png', off: 'star-off.png' },
-              { range: 4, on: 'star-on.png', off: 'star-off.png' },
-              { range: 5, on: 'star-on.png' }
-            ]
-          });
-
-          // then
-          expect(self.children('img').eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
-        });
-      });
-
-      context('on mouseover', function() {
-        it ('uses the on icon', function() {
-          // given
-          var self = $('#element').raty({
-              iconRange: [
-                { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                { range: 5, on: 'star-on.png', off: 'star-off.png' }
-              ]
-            }),
-            imgs = self.children('img');
-
-          // when
-          imgs.eq(4).mouseover();
-
-          // then
-          expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
-          expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
-          expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
-          expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
-          expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-on.png');
-        });
-
-        context('when on icon is not especified', function() {
-          it ('uses the :starOn icon', function() {
-            // given
-            var self = $('#element').raty({
-                  iconRange: [
-                    { range: 2, off: 'star-off.png', on: 'star-on.png' },
-                    { range: 3, off: 'star-off.png', on: 'star-on.png' },
-                    { range: 4, off: 'star-off.png', on: 'star-on.png' },
-                    { range: 5, off: 'star-off.png' }
-                  ]
-                }),
-                imgs = self.children('img');
-
-            // when
-            imgs.eq(4).mouseover();
-
-            // then
-            expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-on.png');
-          });
-        });
-      });
-
-      context('on mouseout', function() {
-        it ('changes to off icons', function() {
-          // given
-          var self = $('#element').raty({
-                iconRange: [
-                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 5, on: 'star-on.png', off: 'star-off.png' },
-                ]
-              }),
-              imgs = self.children('img');
-
-          // when
-          imgs.eq(4).mouseover();
-
-          self.mouseleave();
-
-          // then
-          expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
-          expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
-          expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-off.png');
-          expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
-          expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
-        });
-
-        it ('keeps the score value', function() {
-          // given
-          var self = $('#element').raty({
-                iconRange  : [
-                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 5, on: 'star-on.png', off: 'star-off.png' }
-                ],
-                score      : 1
-              });
-
-          // when
-          self.children('img').eq(4).mouseover();
-
-          self.mouseleave();
-
-          // then
-          expect(self.children('input')).toHaveValue('1');
-        });
-
-        context('when off icon is not especified', function() {
-          it ('uses the :starOff icon', function() {
-            // given
-            var self = $('#element').raty({
-                iconRange: [
-                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 5, on: 'star-on.png' }
-                ]
-              }),
-              img = self.children('img').eq(4);
-
-            // when
-            img.mouseover();
-
-            self.mouseleave();
-
-            // then
-            expect(img).toHaveAttr('src', '../lib/images/star-off.png');
-          });
-        });
-      });
-    });
-
     describe('#click', function() {
-      it ('has `this` as self element', function() {//
-        // given
-        var self = $('#element').raty({
-            click: function() {
-              $(this).data('self', this);
-            }
-          });
-
-        // when
-        self.children('img:first').mouseover().click();
-
-        // then
-        expect(self.data('self')).toBe(self[0]);
-      });
-
-      it ('is called on star click', function() {
+      it('is called on star click', function() {
         // given
         var self = $('#element').raty({
               click: function() {
-                $(this).data('clicked', true);
+                $(this).data('called', true);
               }
             });
 
         // when
-        self.children('img:first').mouseover().click();
+        self.children('img:last').trigger('click');
 
         // then
-        expect(self.data('clicked')).toBeTruthy();
+        expect(self.data('called')).toBeTruthy();
       });
 
-      it ('receives the score', function() {
+      it('has "this" as context', function() {
+        // given
+        var self = $('#element').raty({
+            click: function() {
+              $(this).data('this', this);
+            }
+          });
+
+        // when
+        self.children('img:last').trigger('click');
+
+        // then
+        expect(self.data('this')).toBe(self[0]);
+      });
+
+      it('receives the score as argument', function() {
         // given
         var self = $('#element').raty({
               click: function(score) {
@@ -505,33 +348,35 @@ describe('Integration', function() {
             });
 
         // when
-        self.children('img:first').mouseover().click();
+        self.children('img:last').trigger('click');
 
         // then
-        expect(self.data('score')).toEqual(1);
+        expect(self.data('score')).toEqual(5);
       });
 
       context('with :cancel', function() {
-        it ('executes cancel click callback', function() {
+        it('executes the callback', function() {
           // given
-          var self = $('#element').raty({
-              cancel: true,
-              click : function(score) {
-                $(this).data('score', null);
+          var
+            self = $('#element').raty({
+              cancel : true,
+              click  : function() {
+                $(this).data('called', true);
               }
-             });
+            }),
+            cancel = self.children('.raty-cancel');
 
           // when
-          self.children('.raty-cancel').mouseover().click().mouseleave();
+          cancel.trigger('click');
 
           // then
-          expect(self.data('score')).toBeNull();
+          expect(self.data('called')).toBeTruthy();
         });
       });
     });
 
     describe('#score', function() {
-      it ('starts with value', function() {
+      it('can be initialized on bind', function() {
         // given
         var self = $('#element');
 
@@ -542,24 +387,18 @@ describe('Integration', function() {
         expect(self.children('input')).toHaveValue('1');
       });
 
-      it ('turns on 1 stars', function() {
+      it('turns on stars', function() {
         // given
         var self = $('#element');
 
         // when
-        self.raty({ score: 1 });
+        self.raty({ score: 5 });
 
         // then
-        var imgs = self.children('img');
-
-        expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
-        expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
-        expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-off.png');
-        expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
-        expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(self.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
       });
 
-      it ('accepts callback', function() {
+      it('accepts callback', function() {
         // given
         var self = $('#element');
 
@@ -567,11 +406,11 @@ describe('Integration', function() {
         self.raty({ score: function() { return 1; } });
 
         // then
-        expect(self.raty('score')).toEqual(1);
+        expect(self[0].opt.score).toEqual(1);
       });
 
       context('with negative number', function() {
-        it ('gets none score', function() {
+        it('does not set the score', function() {
           // given
           var self = $('#element');
 
@@ -579,12 +418,12 @@ describe('Integration', function() {
           self.raty({ score: -1 });
 
           // then
-          expect(self.children('input').val()).toEqual('');
+          expect(self.children('input')).toHaveValue('');
         });
       });
 
       context('with :readOnly', function() {
-        it ('becomes readOnly too', function() {
+        it('becomes readOnly too', function() {
           // given
           var self = $('#element');
 
@@ -598,31 +437,31 @@ describe('Integration', function() {
     });
 
     describe('#scoreName', function() {
-      it ('changes the score field name', function() {
+      it('changes the score field name', function() {
         // given
         var self = $('#element');
 
         // when
-        self.raty({ scoreName: 'entity.score' });
+        self.raty({ scoreName: 'double' });
 
         // then
-        expect(self.children('input')).toHaveAttr('name', 'entity.score');
+        expect(self.children('input')).toHaveAttr('name', 'double');
       });
 
-      it ('accepts callback', function() {
+      it('accepts callback', function() {
         // given
         var self = $('#element');
 
         // when
-        self.raty({ scoreName: function() { return 'custom'; } });
+        self.raty({ scoreName: function() { return 'double'; } });
 
         // then
-        expect(self.data('settings').scoreName).toEqual('custom');
+        expect(self[0].opt.scoreName).toEqual('double');
       });
     });
 
     describe('#readOnly', function() {
-      it ('Applies "Not rated yet!" on stars', function() {
+      it('Applies :noRatedMsg message on stars', function() {
         // given
         var self = $('#element');
 
@@ -630,10 +469,10 @@ describe('Integration', function() {
         self.raty({ readOnly: true });
 
         // then
-        expect(self.children('img')).toHaveAttr('title', 'Not rated yet!');
+        expect(self.children('img')).toHaveAttr('title', self[0].opt.noRatedMsg);
       });
 
-      it ('removes the pointer cursor', function() {
+      it('removes the pointer style', function() {
         // given
         var self = $('#element');
 
@@ -641,95 +480,94 @@ describe('Integration', function() {
         self.raty({ readOnly: true });
 
         // then
-        expect(self).not.toHaveCss({ cursor: 'pointer' });
-        expect(self).not.toHaveCss({ cursor: 'default' });
+        expect(self[0].style.cursor).toEqual('');
       });
 
-      it ('accepts callback', function() {
+      it('accepts callback', function() {
         // given
         var self = $('#element');
 
         // when
-        self.raty({ readOnly: function() { return true; } });
+        self.raty({ readOnly: function() { return 'double'; } });
 
         // then
-        expect(self.data('settings').readOnly).toEqual(true);
+        expect(self[0].opt.readOnly).toEqual('double');
       });
 
-      it ('avoids trigger mouseover', function() {
+      it('blocks mouseover', function() {
         // given
-        var self = $('#element').raty({ readOnly: true }),
-            imgs = self.children('img');
+        var self  = $('#element').raty({ readOnly: true }),
+            stars = self.children('img');
 
         // when
-        imgs.eq(1).mouseover();
+        stars.last().trigger('mouseover');
 
         // then
-        expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
       });
 
-      it ('avoids trigger click', function() {
+      it('blocks click', function() {
         // given
-        var self = $('#element').raty({ readOnly: true }),
-            imgs = self.children('img');
+        var self  = $('#element').raty({ readOnly: true }),
+            stars = self.children('img'),
+            input = self.children('input');
 
         // when
-        imgs.eq(1).mouseover().click().mouseleave();
+        stars.last().trigger('click');
 
         // then
-        expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
-        expect(self.children('input').val()).toEqual('');
+        expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(input).toHaveValue('');
       });
 
-      it ('avoids trigger mouseleave', function() {
+      it('blocks mouseleave', function() {
         // given
-        var self = $('#element').raty({
-              readOnly: true,
-              mouseout: function() {
-                $(this).data('mouseleave', true);
-              }
-            }),
-            imgs = self.children('img');
-
-        imgs.eq(1).mouseover();
+        var
+          self = $('#element').raty({
+            readOnly : true,
+            mouseout : function() {
+              $(this).data('called', true);
+            }
+          }),
+          stars = self.children('img');
 
         // when
-        self.mouseleave();
+        self.trigger('mouseleave');
 
         // then
-        expect(self.data('mouseleave')).toBeFalsy();
+        expect(self.data('called')).toBeFalsy();
       });
 
       context('with :score', function() {
         context('as integer', function() {
-          it ('applies the score title on stars', function() {
+          it('applies the score hint on stars', function() {
             // given
             var self = $('#element');
 
             // when
-            self.raty({ readOnly: true, score: 3 });
+            self.raty({ readOnly: true, score: 1 });
 
             // then
-            expect(self.children('img')).toHaveAttr('title', 'regular');
+            expect(self.children('img')).toHaveAttr('title', 'bad');
           });
         });
 
         context('as float', function() {
-          it ('applies the integer score title on stars', function() {
+          it('applies the score integer hint on stars', function() {
             // given
             var self = $('#element');
 
             // when
-            self.raty({ readOnly: true, score: 3.1 });
+            self.raty({ readOnly: true, score: 1.1 });
 
             // then
-            expect(self.children('img')).toHaveAttr('title', 'regular');
+            expect(self.children('img')).toHaveAttr('title', 'bad');
           });
         });
       });
 
       context('with :cancel', function() {
-        it ('hides the button', function() {
+        it('is hidded', function() {
           // given
           var self = $('#element');
 
@@ -743,7 +581,7 @@ describe('Integration', function() {
     });
 
     describe('#hints', function() {
-      it ('changes the hints', function() {//
+      it('changes the hints', function() {
         // given
         var self = $('#element');
 
@@ -751,13 +589,13 @@ describe('Integration', function() {
         self.raty({ hints: ['1', '/', 'c', '-', '#'] });
 
         // then
-        var imgs = self.children('img');
+        var stars = self.children('img');
 
-        expect(imgs.eq(0)).toHaveAttr('title', '1');
-        expect(imgs.eq(1)).toHaveAttr('title', '/');
-        expect(imgs.eq(2)).toHaveAttr('title', 'c');
-        expect(imgs.eq(3)).toHaveAttr('title', '-');
-        expect(imgs.eq(4)).toHaveAttr('title', '#');
+        expect(stars.eq(0)).toHaveAttr('title', '1');
+        expect(stars.eq(1)).toHaveAttr('title', '/');
+        expect(stars.eq(2)).toHaveAttr('title', 'c');
+        expect(stars.eq(3)).toHaveAttr('title', '-');
+        expect(stars.eq(4)).toHaveAttr('title', '#');
       });
 
       it ('receives the number of the star when is undefined', function() {
@@ -768,13 +606,13 @@ describe('Integration', function() {
         self.raty({ hints: [undefined, 'a', 'b', 'c', 'd'] });
 
         // then
-        var imgs = self.children('img');
+        var stars = self.children('img');
 
-        expect(imgs.eq(0)).toHaveAttr('title', 'bad');
-        expect(imgs.eq(1)).toHaveAttr('title', 'a');
-        expect(imgs.eq(2)).toHaveAttr('title', 'b');
-        expect(imgs.eq(3)).toHaveAttr('title', 'c');
-        expect(imgs.eq(4)).toHaveAttr('title', 'd');
+        expect(stars.eq(0)).toHaveAttr('title', 'bad');
+        expect(stars.eq(1)).toHaveAttr('title', 'a');
+        expect(stars.eq(2)).toHaveAttr('title', 'b');
+        expect(stars.eq(3)).toHaveAttr('title', 'c');
+        expect(stars.eq(4)).toHaveAttr('title', 'd');
       });
 
       it ('receives empty when is empty string', function() {
@@ -785,16 +623,16 @@ describe('Integration', function() {
         self.raty({ hints: ['', 'a', 'b', 'c', 'd'] });
 
         // then
-        var imgs = self.children('img');
+        var stars = self.children('img');
 
-        expect(imgs.eq(0)).toHaveAttr('title', '');
-        expect(imgs.eq(1)).toHaveAttr('title', 'a');
-        expect(imgs.eq(2)).toHaveAttr('title', 'b');
-        expect(imgs.eq(3)).toHaveAttr('title', 'c');
-        expect(imgs.eq(4)).toHaveAttr('title', 'd');
+        expect(stars.eq(0)).toHaveAttr('title', '');
+        expect(stars.eq(1)).toHaveAttr('title', 'a');
+        expect(stars.eq(2)).toHaveAttr('title', 'b');
+        expect(stars.eq(3)).toHaveAttr('title', 'c');
+        expect(stars.eq(4)).toHaveAttr('title', 'd');
       });
 
-      it ('receives the number of the star when is null', function() {//
+      it('receives the number of the star when is null', function() {
         // given
         var self = $('#element');
 
@@ -802,17 +640,17 @@ describe('Integration', function() {
         self.raty({ hints: [null, 'a', 'b', 'c', 'd'] });
 
         // then
-        var imgs = self.children('img');
+        var stars = self.children('img');
 
-        expect(imgs.eq(0)).toHaveAttr('title', '1');
-        expect(imgs.eq(1)).toHaveAttr('title', 'a');
-        expect(imgs.eq(2)).toHaveAttr('title', 'b');
-        expect(imgs.eq(3)).toHaveAttr('title', 'c');
-        expect(imgs.eq(4)).toHaveAttr('title', 'd');
+        expect(stars.eq(0)).toHaveAttr('title', '1');
+        expect(stars.eq(1)).toHaveAttr('title', 'a');
+        expect(stars.eq(2)).toHaveAttr('title', 'b');
+        expect(stars.eq(3)).toHaveAttr('title', 'c');
+        expect(stars.eq(4)).toHaveAttr('title', 'd');
       });
 
       context('whe has less hint than stars', function() {
-        it ('receives the default hint index', function() {//
+        it('receives the default hint index', function() {
           // given
           var self = $('#element');
 
@@ -820,13 +658,13 @@ describe('Integration', function() {
           self.raty({ hints: ['1', '2', '3', '4'] });
 
           // then
-          var imgs = self.children('img');
+          var stars = self.children('img');
 
-          expect(imgs.eq(0)).toHaveAttr('title', '1');
-          expect(imgs.eq(1)).toHaveAttr('title', '2');
-          expect(imgs.eq(2)).toHaveAttr('title', '3');
-          expect(imgs.eq(3)).toHaveAttr('title', '4');
-          expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
+          expect(stars.eq(0)).toHaveAttr('title', '1');
+          expect(stars.eq(1)).toHaveAttr('title', '2');
+          expect(stars.eq(2)).toHaveAttr('title', '3');
+          expect(stars.eq(3)).toHaveAttr('title', '4');
+          expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
         });
       });
 
@@ -839,14 +677,14 @@ describe('Integration', function() {
           self.raty({ number: 6, hints: ['a', 'b', 'c', 'd', 'e'] });
 
           // then
-          var imgs = self.children('img');
+          var stars = self.children('img');
 
-          expect(imgs.eq(0)).toHaveAttr('title', 'a');
-          expect(imgs.eq(1)).toHaveAttr('title', 'b');
-          expect(imgs.eq(2)).toHaveAttr('title', 'c');
-          expect(imgs.eq(3)).toHaveAttr('title', 'd');
-          expect(imgs.eq(4)).toHaveAttr('title', 'e');
-          expect(imgs.eq(5)).toHaveAttr('title', '6');
+          expect(stars.eq(0)).toHaveAttr('title', 'a');
+          expect(stars.eq(1)).toHaveAttr('title', 'b');
+          expect(stars.eq(2)).toHaveAttr('title', 'c');
+          expect(stars.eq(3)).toHaveAttr('title', 'd');
+          expect(stars.eq(4)).toHaveAttr('title', 'e');
+          expect(stars.eq(5)).toHaveAttr('title', '6');
         });
       });
     });
@@ -861,7 +699,7 @@ describe('Integration', function() {
           });
 
         // when
-        self.children('img:first').mouseover();
+        self.children('img:first').trigger('mouseover');
 
         // then
         expect(self.data('score')).toEqual(1);
@@ -876,7 +714,7 @@ describe('Integration', function() {
           });
 
         // when
-        self.children('img:first').mouseover();
+        self.children('img:first').trigger('mouseover');
 
         // then
         expect(self.data('evt').type).toEqual('mouseover');
@@ -893,7 +731,7 @@ describe('Integration', function() {
               });
 
           // when
-          self.children('.raty-cancel').mouseover();
+          self.children('.raty-cancel').trigger('mouseover');
 
           // then
           expect(self.data('null')).toBeNull();
@@ -911,7 +749,7 @@ describe('Integration', function() {
           });
 
         // when
-        self.children('img:first').mouseover().click().mouseout();
+        self.children('img:first').trigger('mouseover').trigger('click').trigger('mouseout');
 
         // then
         expect(self.data('score')).toEqual(1);
@@ -926,7 +764,7 @@ describe('Integration', function() {
           });
 
         // when
-        self.children('img:first').mouseover().click().mouseout();
+        self.children('img:first').trigger('mouseover').trigger('click').trigger('mouseout');
 
         // then
         expect(self.data('evt').type).toEqual('mouseout');
@@ -943,7 +781,7 @@ describe('Integration', function() {
               });
 
           // when
-          self.children('img:first').mouseenter().mouseleave();
+          self.children('img:first').mouseenter().trigger('mouseleave');
 
           // then
           expect(self.data('undefined')).toBeTruthy();
@@ -961,7 +799,7 @@ describe('Integration', function() {
               });
 
           // when
-          self.children('img:first').mouseenter().mouseleave();
+          self.children('img:first').mouseenter().trigger('mouseleave');
 
           // then
           expect(self.data('score')).toEqual(1);
@@ -979,7 +817,7 @@ describe('Integration', function() {
             });
 
           // when
-          self.children('.raty-cancel').mouseover().click().mouseout();
+          self.children('.raty-cancel').trigger('mouseover').trigger('click').trigger('mouseout');
 
           // then
           expect(self.data('evt').type).toEqual('mouseout');
@@ -996,7 +834,7 @@ describe('Integration', function() {
                 });
 
             // when
-            self.children('.raty-cancel').mouseenter().mouseleave();
+            self.children('.raty-cancel').mouseenter().trigger('mouseleave');
 
             // then
             expect(self.data('undefined')).toBeTruthy();
@@ -1015,7 +853,7 @@ describe('Integration', function() {
                 });
 
             // when
-            self.children('.raty-cancel').mouseenter().mouseleave();
+            self.children('.raty-cancel').mouseenter().trigger('mouseleave');
 
             // then
             expect(self.data('score')).toEqual(1);
@@ -1047,7 +885,7 @@ describe('Integration', function() {
         expect(self.children('img').length).toEqual(10);
       });
 
-      it ('accepts callback', function() {
+      it('accepts callback', function() {
         // given
         var self = $('#element');
 
@@ -1055,7 +893,7 @@ describe('Integration', function() {
         self.raty({ number: function() { return 1; } });
 
         // then
-        expect(self.children('img').length).toEqual(1);
+        expect(self[0].opt.number).toEqual(1);
       });
     });
 
@@ -1173,7 +1011,7 @@ describe('Integration', function() {
         var self = $('#element').raty({ cancel: true, cancelOn: 'icon.png' });
 
         // when
-        var cancel = self.children('.raty-cancel').mouseover();
+        var cancel = self.children('.raty-cancel').trigger('mouseover');
 
         // then
         expect(cancel).toHaveAttr('src', '../lib/images/icon.png');
@@ -1234,7 +1072,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ cancel: true });
 
           // when
-          var cancel = self.children('.raty-cancel').mouseover();
+          var cancel = self.children('.raty-cancel').trigger('mouseover');
 
           // then
           expect(cancel).toHaveAttr('src', '../lib/images/cancel-on.png');
@@ -1244,13 +1082,13 @@ describe('Integration', function() {
           it ('turns off the stars', function() {
             // given
             var self  = $('#element').raty({ score: 3, cancel: true }),
-                imgs  = self.children('img:not(.raty-cancel)');
+                stars  = self.children('img:not(.raty-cancel)');
 
             // when
-            self.children('.raty-cancel').mouseover();
+            self.children('.raty-cancel').trigger('mouseover');
 
             // then
-            expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
 
@@ -1260,7 +1098,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ cancel: true, starType: 'i' });
 
             // when
-            var cancel = self.children('.raty-cancel').mouseover();
+            var cancel = self.children('.raty-cancel').trigger('mouseover');
 
             // then
             expect(self.children('.raty-cancel')[0].tagName).toEqual('I');
@@ -1271,7 +1109,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ cancel: true, starType: 'i' });
 
             // when
-            var cancel = self.children('.raty-cancel').mouseover();
+            var cancel = self.children('.raty-cancel').trigger('mouseover');
 
             // then
             expect(cancel).toHaveClass('cancel-on-png');
@@ -1282,7 +1120,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ cancel: true, starType: 'i' });
 
             // when
-            var cancel = self.children('.raty-cancel').mouseover();
+            var cancel = self.children('.raty-cancel').trigger('mouseover');
 
             // then
             expect(cancel).not.toHaveAttr('src');
@@ -1293,7 +1131,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ cancel: true, starType: 'i' });
 
             // when
-            var cancel = self.children('.raty-cancel').mouseover();
+            var cancel = self.children('.raty-cancel').trigger('mouseover');
 
             // then
             expect(cancel).toHaveAttr('data-alt');
@@ -1304,7 +1142,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ cancel: true, starType: 'i' });
 
             // when
-            var cancel = self.children('.raty-cancel').mouseover();
+            var cancel = self.children('.raty-cancel').trigger('mouseover');
 
             // then
             expect(cancel).not.toHaveAttr('alt');
@@ -1318,7 +1156,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ cancel: true });
 
           // when
-          var cancel = self.children('.raty-cancel').mouseover().mouseout();
+          var cancel = self.children('.raty-cancel').trigger('mouseover').trigger('mouseout');
 
           // then
           expect(cancel).toHaveAttr('src', '../lib/images/cancel-off.png');
@@ -1328,17 +1166,17 @@ describe('Integration', function() {
           it ('turns the star on again', function() {
             // given
             var self  = $('#element').raty({ score: 4, cancel: true }),
-                imgs  = self.children('img:not(.raty-cancel)');
+                stars  = self.children('img:not(.raty-cancel)');
 
             // when
-            self.children('.raty-cancel').mouseover().mouseout();
+            self.children('.raty-cancel').trigger('mouseover').trigger('mouseout');
 
             // then
-            expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
       });
@@ -1349,7 +1187,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ cancel: true, score: 1 });
 
           // when
-          self.children('.raty-cancel').click().mouseout();
+          self.children('.raty-cancel').trigger('click').trigger('mouseout');
 
           // then
           var stars = self.children('img:not(.raty-cancel)');
@@ -1377,7 +1215,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ cancel: true, readOnly: true, score: 5 });
 
             // when
-            self.children('.raty-cancel').click().mouseout();
+            self.children('.raty-cancel').trigger('click').trigger('mouseout');
 
             // then
             var stars = self.children('img:not(.raty-cancel)');
@@ -1460,7 +1298,9 @@ describe('Integration', function() {
     });
 
     describe('#targetType', function() {
-      beforeEach(function() { buildDivTarget(); });
+      beforeEach(function() {
+        buildDivTarget();
+      });
 
       context('with missing target', function() {
         it ('throws error', function() {
@@ -1481,7 +1321,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ target: '#hint', targetType: 'hint' });
 
           // when
-          self.children('img:first').mouseover();
+          self.children('img:first').trigger('mouseover');
 
           // then
           expect($('#hint')).toHaveHtml('bad');
@@ -1493,7 +1333,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'hint' });
 
             // when
-            self.children('.raty-cancel').mouseover();
+            self.children('.raty-cancel').trigger('mouseover');
 
             // then
             expect($('#hint')).toHaveHtml('Cancel this rating!');
@@ -1507,7 +1347,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ target: '#hint', targetType: 'score' });
 
           // when
-          self.children('img:first').mouseover();
+          self.children('img:first').trigger('mouseover');
 
           // then
           expect($('#hint')).toHaveHtml(1);
@@ -1519,7 +1359,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ cancel: true, target: '#hint', targetType: 'score' });
 
             // when
-            self.children('.raty-cancel').mouseover();
+            self.children('.raty-cancel').trigger('mouseover');
 
             // then
             expect($('#hint')).toHaveHtml('Cancel this rating!');
@@ -1529,7 +1369,9 @@ describe('Integration', function() {
     });
 
     describe('#targetText', function() {
-      beforeEach(function() { buildDivTarget(); });
+      beforeEach(function() {
+        buildDivTarget();
+      });
 
       it ('set target with none value', function() {
         // given
@@ -1545,7 +1387,9 @@ describe('Integration', function() {
 
     describe('#targetFormat', function() {
       context('with :target', function() {
-        beforeEach(function() { buildDivTarget(); });
+        beforeEach(function() {
+          buildDivTarget();
+        });
 
         it ('stars empty', function() {
           // given
@@ -1577,7 +1421,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ target: '#hint', targetFormat: 'score: {score}' });
 
             // when
-            self.children('img:first').mouseover();
+            self.children('img:first').trigger('mouseover');
 
             // then
             expect($('#hint')).toHaveHtml('score: bad');
@@ -1593,7 +1437,7 @@ describe('Integration', function() {
                 });
 
             // when
-            self.children('img:first').mouseover().mouseout();
+            self.children('img:first').trigger('mouseover').trigger('mouseout');
 
             // then
             expect($('#hint')).toBeEmpty();
@@ -1610,7 +1454,7 @@ describe('Integration', function() {
                     });
 
                 // when
-                self.children('img:first').mouseover().mouseleave();
+                self.children('img:first').trigger('mouseover').trigger('mouseleave');
 
                 // then
                 expect($('#hint')).toBeEmpty();
@@ -1628,7 +1472,7 @@ describe('Integration', function() {
                     });
 
                 // when
-                self.children('img:first').mouseover().mouseleave();
+                self.children('img:first').trigger('mouseover').trigger('mouseleave');
 
                 // then
                 expect($('#hint')).toHaveHtml('score: bad');
@@ -1640,7 +1484,9 @@ describe('Integration', function() {
     });
 
     describe('#precision', function() {
-      beforeEach(function() { buildDivTarget(); });
+      beforeEach(function() {
+        buildDivTarget();
+      });
 
       it ('enables the :half options', function() {
         // given
@@ -1691,14 +1537,16 @@ describe('Integration', function() {
     describe('#target', function() {
       context('on mouseover', function() {
         context('as div', function() {
-          beforeEach(function() { buildDivTarget(); });
+          beforeEach(function() {
+            buildDivTarget();
+          });
 
           it ('sets the hint', function() {
             // given
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').mouseover();
+            self.children('img:first').trigger('mouseover');
 
             // then
             expect($('#hint')).toHaveHtml('bad');
@@ -1713,7 +1561,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').mouseover();
+            self.children('img:first').trigger('mouseover');
 
             // then
             expect($('#hint')).toHaveValue('bad');
@@ -1728,7 +1576,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').mouseover();
+            self.children('img:first').trigger('mouseover');
 
             // then
             expect($('#hint')).toHaveValue('bad');
@@ -1743,7 +1591,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').mouseover();
+            self.children('img:first').trigger('mouseover');
 
             // then
             expect($('#hint')).toHaveValue('bad');
@@ -1753,14 +1601,16 @@ describe('Integration', function() {
 
       context('on mouseout', function() {
         context('as div', function() {
-          beforeEach(function() { buildDivTarget(); });
+          beforeEach(function() {
+            buildDivTarget();
+          });
 
           it ('gets clear', function() {
             // given
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').mouseover().click().mouseleave();
+            self.children('img:first').trigger('mouseover').trigger('click').trigger('mouseleave');
 
             // then
             expect($('#hint')).toBeEmpty();
@@ -1775,7 +1625,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').click().mouseover().mouseleave();
+            self.children('img:first').trigger('click').trigger('mouseover').trigger('mouseleave');
 
             // then
             expect($('#hint')).toHaveValue('');
@@ -1790,7 +1640,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').click().mouseover().mouseleave();
+            self.children('img:first').trigger('click').trigger('mouseover').trigger('mouseleave');
 
             // then
             expect($('#hint')).toHaveValue('');
@@ -1805,7 +1655,7 @@ describe('Integration', function() {
             var self = $('#element').raty({ target: '#hint' });
 
             // when
-            self.children('img:first').click().mouseover().mouseleave();
+            self.children('img:first').trigger('click').trigger('mouseover').trigger('mouseleave');
 
             // then
             expect($('#hint')).toHaveValue('');
@@ -1838,10 +1688,10 @@ describe('Integration', function() {
         // given
         var
           self = $('#element').raty({ targetScore: '#score' }),
-          imgs = self.children('img');
+          stars = self.children('img');
 
         // when
-        imgs.eq(0).click();
+        stars.eq(0).trigger('click');
 
         // then
         expect(this.score).toHaveValue('1');
@@ -1919,17 +1769,17 @@ describe('Integration', function() {
         it ('turns on just one icon', function() {
           // given
           var self = $('#element').raty({ single: true }),
-              imgs = self.children('img');
+              stars = self.children('img');
 
           // when
-          imgs.eq(2).mouseover();
+          stars.eq(2).trigger('mouseover');
 
           // then
-          expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
-          expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
-          expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
-          expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
-          expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
         });
 
         context('with :iconRange', function() {
@@ -1944,17 +1794,17 @@ describe('Integration', function() {
                   ],
                   single     : true
                 }),
-                imgs = self.children('img');
+                stars = self.children('img');
 
             // when
-            imgs.eq(3).mouseover();
+            stars.eq(3).trigger('mouseover');
 
             // then
-            expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
-            expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
-            expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-off.png');
-            expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(2)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
       });
@@ -1964,17 +1814,17 @@ describe('Integration', function() {
           it ('keeps the score', function() {
             // given
             var self = $('#element').raty({ single: true }),
-                imgs = self.children('img');
+                stars = self.children('img');
 
             // when
-            imgs.eq(2).mouseover().click().mouseleave();
+            stars.eq(2).trigger('mouseover').trigger('click').trigger('mouseleave');
 
             // then
-            expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
-            expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
-            expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
-            expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
-            expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
           });
 
           context('and :iconRange', function() {
@@ -1989,17 +1839,17 @@ describe('Integration', function() {
                       { range: 5, on: 'd.png', off: 'd-off.png' }
                     ]
                   }),
-                  imgs = self.children('img');
+                  stars = self.children('img');
 
               // when
-              imgs.eq(3).mouseover().click().mouseleave();
+              stars.eq(3).trigger('mouseover').trigger('click').trigger('mouseleave');
 
               // then
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/a-off.png');
-              expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/a-off.png');
-              expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/b-off.png');
-              expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/c.png');
-              expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/d-off.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/a-off.png');
+              expect(stars.eq(1)).toHaveAttr('src', '../lib/images/a-off.png');
+              expect(stars.eq(2)).toHaveAttr('src', '../lib/images/b-off.png');
+              expect(stars.eq(3)).toHaveAttr('src', '../lib/images/c.png');
+              expect(stars.eq(4)).toHaveAttr('src', '../lib/images/d-off.png');
             });
           });
         });
@@ -2061,11 +1911,11 @@ describe('Integration', function() {
                 score   : 0.5 // score.5 < full.6 === 0
               });
 
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
               // then
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
-              expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+              expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
             });
 
             it ('rounds full when equal the full limit', function() {
@@ -2080,10 +1930,10 @@ describe('Integration', function() {
                 score   : 0.6 // score.6 == full.6 === 1
               });
 
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
               // then
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
             });
           });
         });
@@ -2105,9 +1955,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
               expect(self.children('input').val()).toEqual('0.24');
             });
 
@@ -2124,9 +1974,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
               expect(self.children('input').val()).toEqual('0.26');
             });
 
@@ -2143,9 +1993,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
               expect(self.children('input').val()).toEqual('0.6');
             });
 
@@ -2162,9 +2012,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
               expect(self.children('input').val()).toEqual('0.75');
             });
 
@@ -2181,9 +2031,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
             });
           });
 
@@ -2201,9 +2051,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
             });
 
             it ('receives half while greater then down limit', function() {
@@ -2219,9 +2069,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
             });
 
             it ('receives half while equal full limit, ignoring it', function() {
@@ -2237,9 +2087,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
             });
 
             it ('receives half while greater than down limit and less than up limit', function() {
@@ -2255,9 +2105,9 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-half.png');
             });
 
             it ('receives full while equal or greater than up limit', function() {
@@ -2273,15 +2123,17 @@ describe('Integration', function() {
               });
 
               // then
-              var imgs = self.children('img');
+              var stars = self.children('img');
 
-              expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+              expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
             });
           });
         });
 
         context('with :target', function() {
-          beforeEach(function() { buildDivTarget(); });
+          beforeEach(function() {
+            buildDivTarget();
+          });
 
           context('and :precision', function() {
             context('and :targetType as score', function() {
@@ -2311,6 +2163,173 @@ describe('Integration', function() {
         });
       });
     });
+
+    describe('#iconRange', function() {
+      it ('uses icon intervals', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({
+          iconRange: [
+            { range: 2, on: 'star-off.png', off: 'star-off.png' },
+            { range: 3, on: 'star-off.png', off: 'cancel-off.png' },
+            { range: 4, on: 'star-off.png', off: 'cancel-on.png' },
+            { range: 5, on: 'star-off.png', off: 'star-half.png' }
+          ]
+        });
+
+        // then
+        var stars = self.children('img');
+
+        expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(stars.eq(2)).toHaveAttr('src', '../lib/images/cancel-off.png');
+        expect(stars.eq(3)).toHaveAttr('src', '../lib/images/cancel-on.png');
+        expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-half.png');
+      });
+
+      context('when off icon is not especified', function() {
+        it ('uses the :starOff icon', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({
+            iconRange: [
+              { range: 2, on: 'star-on.png', off: 'star-off.png' },
+              { range: 3, on: 'star-on.png', off: 'star-off.png' },
+              { range: 4, on: 'star-on.png', off: 'star-off.png' },
+              { range: 5, on: 'star-on.png' }
+            ]
+          });
+
+          // then
+          expect(self.children('img').eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+        });
+      });
+
+      context('on mouseover', function() {
+        it ('uses the on icon', function() {
+          // given
+          var self = $('#element').raty({
+              iconRange: [
+                { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                { range: 5, on: 'star-on.png', off: 'star-off.png' }
+              ]
+            }),
+            stars = self.children('img');
+
+          // when
+          stars.eq(4).trigger('mouseover');
+
+          // then
+          expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-on.png');
+        });
+
+        context('when on icon is not especified', function() {
+          it ('uses the :starOn icon', function() {
+            // given
+            var self = $('#element').raty({
+                  iconRange: [
+                    { range: 2, off: 'star-off.png', on: 'star-on.png' },
+                    { range: 3, off: 'star-off.png', on: 'star-on.png' },
+                    { range: 4, off: 'star-off.png', on: 'star-on.png' },
+                    { range: 5, off: 'star-off.png' }
+                  ]
+                }),
+                stars = self.children('img');
+
+            // when
+            stars.eq(4).trigger('mouseover');
+
+            // then
+            expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(3)).toHaveAttr('src', '../lib/images/star-on.png');
+            expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-on.png');
+          });
+        });
+      });
+
+      context('on mouseout', function() {
+        it ('changes to off icons', function() {
+          // given
+          var self = $('#element').raty({
+                iconRange: [
+                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 5, on: 'star-on.png', off: 'star-off.png' },
+                ]
+              }),
+              stars = self.children('img');
+
+          // when
+          stars.eq(4).trigger('mouseover');
+
+          self.trigger('mouseleave');
+
+          // then
+          expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(2)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+        });
+
+        it ('keeps the score value', function() {
+          // given
+          var self = $('#element').raty({
+                iconRange  : [
+                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 5, on: 'star-on.png', off: 'star-off.png' }
+                ],
+                score      : 1
+              });
+
+          // when
+          self.children('img').eq(4).trigger('mouseover');
+
+          self.trigger('mouseleave');
+
+          // then
+          expect(self.children('input')).toHaveValue('1');
+        });
+
+        context('when off icon is not especified', function() {
+          it ('uses the :starOff icon', function() {
+            // given
+            var self = $('#element').raty({
+                iconRange: [
+                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                  { range: 5, on: 'star-on.png' }
+                ]
+              }),
+              img = self.children('img').eq(4);
+
+            // when
+            img.trigger('mouseover');
+
+            self.trigger('mouseleave');
+
+            // then
+            expect(img).toHaveAttr('src', '../lib/images/star-off.png');
+          });
+        });
+      });
+    });
   });
 
   describe('class bind', function() {
@@ -2324,7 +2343,7 @@ describe('Integration', function() {
       $('.element').remove();
     });
 
-    it ('is chainable', function() {//
+    it('is chainable', function() {
       // given
       var self = $('.element');
 
@@ -2344,28 +2363,28 @@ describe('Integration', function() {
       self.raty();
 
       // then
-      var imgs  = self.eq(0).children('img'),
+      var stars  = self.eq(0).children('img'),
           score = self.eq(0).children('input');
 
-      expect(imgs.eq(0)).toHaveAttr('title', 'bad');
-      expect(imgs.eq(1)).toHaveAttr('title', 'poor');
-      expect(imgs.eq(2)).toHaveAttr('title', 'regular');
-      expect(imgs.eq(3)).toHaveAttr('title', 'good');
-      expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
-      expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
+      expect(stars.eq(0)).toHaveAttr('title', 'bad');
+      expect(stars.eq(1)).toHaveAttr('title', 'poor');
+      expect(stars.eq(2)).toHaveAttr('title', 'regular');
+      expect(stars.eq(3)).toHaveAttr('title', 'good');
+      expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
+      expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
       expect(score).toHaveAttr('type', 'hidden');
       expect(score).toHaveAttr('name', 'score');
       expect(score.val()).toEqual('');
 
-      imgs  = self.eq(1).children('img');
+      stars  = self.eq(1).children('img');
       score = self.eq(0).children('input');
 
-      expect(imgs.eq(0)).toHaveAttr('title', 'bad');
-      expect(imgs.eq(1)).toHaveAttr('title', 'poor');
-      expect(imgs.eq(2)).toHaveAttr('title', 'regular');
-      expect(imgs.eq(3)).toHaveAttr('title', 'good');
-      expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
-      expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
+      expect(stars.eq(0)).toHaveAttr('title', 'bad');
+      expect(stars.eq(1)).toHaveAttr('title', 'poor');
+      expect(stars.eq(2)).toHaveAttr('title', 'regular');
+      expect(stars.eq(3)).toHaveAttr('title', 'good');
+      expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
+      expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
       expect(score).toHaveAttr('type', 'hidden');
       expect(score).toHaveAttr('name', 'score');
       expect(score.val()).toEqual('');
@@ -2427,7 +2446,7 @@ describe('Integration', function() {
       });
 
       context('with score zero', function() {
-        it ('returns an undefined value because it does not exist', function() {//
+        it('returns an undefined value because it does not exist', function() {
           // given
           var self = $('#element').raty({ score: 0 });
 
@@ -2551,7 +2570,7 @@ describe('Integration', function() {
           }).raty();
 
           // when
-          self.raty('set', {}).click();
+          self.raty('set', {}).trigger('click');
 
           // then
           expect(self.data('externalClick')).toBeTruthy();
@@ -2611,29 +2630,29 @@ describe('Integration', function() {
         it ('avoids trigger mouseover', function() {
           // given
           var self = $('#element').raty(),
-              imgs = self.children('img');
+              stars = self.children('img');
 
           self.raty('readOnly', true);
 
           // when
-          imgs.eq(0).mouseover();
+          stars.eq(0).trigger('mouseover');
 
           // then
-          expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
         });
 
         it ('avoids trigger click', function() {
           // given
           var self = $('#element').raty(),
-              imgs = self.children('img');
+              stars = self.children('img');
 
           self.raty('readOnly', true);
 
           // when
-          imgs.eq(0).mouseover().click().mouseleave();
+          stars.eq(0).trigger('mouseover').trigger('click').trigger('mouseleave');
 
           // then
-          expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
           expect(self.children('input').val()).toEqual('');
         });
 
@@ -2671,7 +2690,7 @@ describe('Integration', function() {
             }).raty();
 
             // when
-            self.raty('readOnly', true).click();
+            self.raty('readOnly', true).trigger('click');
 
             // then
             expect(self.data('externalClick')).toBeTruthy();
@@ -2724,45 +2743,45 @@ describe('Integration', function() {
         it ('Removes the "Not rated yet!" off the stars', function() {
           // given
           var self   = $('#element').raty({ readOnly: true }),
-              imgs  = self.children('img');
+              stars  = self.children('img');
 
           // when
           self.raty('readOnly', false);
 
           // then
-          expect(imgs.eq(0)).toHaveAttr('title', 'bad');
-          expect(imgs.eq(1)).toHaveAttr('title', 'poor');
-          expect(imgs.eq(2)).toHaveAttr('title', 'regular');
-          expect(imgs.eq(3)).toHaveAttr('title', 'good');
-          expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
+          expect(stars.eq(0)).toHaveAttr('title', 'bad');
+          expect(stars.eq(1)).toHaveAttr('title', 'poor');
+          expect(stars.eq(2)).toHaveAttr('title', 'regular');
+          expect(stars.eq(3)).toHaveAttr('title', 'good');
+          expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
         });
 
         it ('triggers mouseover', function() {
           // given
           var self = $('#element').raty({ readOnly: true }),
-              imgs = self.children('img');
+              stars = self.children('img');
 
           self.raty('readOnly', false);
 
           // when
-          imgs.eq(0).mouseover();
+          stars.eq(0).trigger('mouseover');
 
           // then
-          expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
         });
 
         it ('triggers click', function() {
           // given
           var self = $('#element').raty({ readOnly: true }),
-              imgs = self.children('img');
+              stars = self.children('img');
 
           self.raty('readOnly', false);
 
           // when
-          imgs.eq(0).mouseover().click().mouseleave();
+          stars.eq(0).trigger('mouseover').trigger('click').trigger('mouseleave');
 
           // then
-          expect(imgs).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
           expect(self.children('input')).toHaveValue('1');
         });
 
@@ -2775,13 +2794,13 @@ describe('Integration', function() {
             self.raty('readOnly', false);
 
             // then
-            var imgs = self.children('img');
+            var stars = self.children('img');
 
-            expect(imgs.eq(0)).toHaveAttr('title', 'bad');
-            expect(imgs.eq(1)).toHaveAttr('title', 'poor');
-            expect(imgs.eq(2)).toHaveAttr('title', 'regular');
-            expect(imgs.eq(3)).toHaveAttr('title', 'good');
-            expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
+            expect(stars.eq(0)).toHaveAttr('title', 'bad');
+            expect(stars.eq(1)).toHaveAttr('title', 'poor');
+            expect(stars.eq(2)).toHaveAttr('title', 'regular');
+            expect(stars.eq(3)).toHaveAttr('title', 'good');
+            expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
           });
         });
 
@@ -2802,30 +2821,30 @@ describe('Integration', function() {
             // given
             var self   = $('#element').raty({ readOnly: true, cancel: true }),
                 cancel = self.children('.raty-cancel'),
-                imgs   = self.children('img:not(.raty-cancel)');
+                stars   = self.children('img:not(.raty-cancel)');
 
             // when
             self.raty('readOnly', false);
 
-            cancel.mouseover();
+            cancel.trigger('mouseover');
 
             // then
             expect(cancel).toHaveAttr('src', '../lib/images/cancel-on.png');
-            expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
           });
 
           it ('rebinds the click', function() {
             // given
             var self = $('#element').raty({ readOnly: true, cancel: true, score: 5 }),
-                imgs = self.children('img:not(.raty-cancel)');
+                stars = self.children('img:not(.raty-cancel)');
 
             // when
             self.raty('readOnly', false);
 
-            self.children('.raty-cancel').click().mouseout();
+            self.children('.raty-cancel').trigger('click').trigger('mouseout');
 
             // then
-            expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
+            expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
       });
@@ -2886,7 +2905,9 @@ describe('Integration', function() {
       });
 
       context('with :target', function() {
-        beforeEach(function() { buildDivTarget(); });
+        beforeEach(function() {
+          buildDivTarget();
+        });
 
         context('and :targetKeep', function() {
           it ('sets the :targetText on target', function() {
@@ -2983,7 +3004,9 @@ describe('Integration', function() {
       });
 
       context('with :target', function() {
-        beforeEach(function() { buildDivTarget(); });
+        beforeEach(function() {
+          buildDivTarget();
+        });
 
         context('and :targetKeep', function() {
           it ('sets the score on target', function() {
@@ -3076,7 +3099,7 @@ describe('Integration', function() {
         self.raty('destroy');
 
         // when
-        self.mouseleave();
+        self.trigger('mouseleave');
 
         // then
         expect(self.data('mouseleave')).toBeFalsy();
@@ -3306,70 +3329,6 @@ describe('Integration', function() {
           expect(score).toHaveAttr('name', 'score');
           expect(score.val()).toEqual('');
         });
-      });
-    });
-  });
-});
-
-describe('Model', function() {
-  beforeEach(function() {
-    $.fn.raty.defaults.path = undefined;
-  });
-
-  it ('has the right default values', function() {
-    // given
-    var raty = $.fn.raty;
-
-    // when
-    var opt = raty.defaults;
-
-    // then
-    expect(opt.cancel).toBeFalsy();
-    expect(opt.cancelHint).toEqual('Cancel this rating!');
-    expect(opt.cancelOff).toEqual('cancel-off.png');
-    expect(opt.cancelOn).toEqual('cancel-on.png');
-    expect(opt.cancelPlace).toEqual('left');
-    expect(opt.click).toBeUndefined();
-    expect(opt.half).toBeFalsy();
-    expect(opt.halfShow).toBeTruthy();
-    expect(opt.hints).toContain('bad', 'poor', 'regular', 'good', 'gorgeous');
-    expect(opt.iconRange).toBeUndefined();
-    expect(opt.mouseover).toBeUndefined();
-    expect(opt.noRatedMsg).toEqual('Not rated yet!');
-    expect(opt.number).toBe(5);
-    expect(opt.path).toBeUndefined();
-    expect(opt.precision).toBeFalsy();
-    expect(opt.readOnly).toBeFalsy();
-    expect(opt.round.down).toEqual(0.25);
-    expect(opt.round.full).toEqual(0.6);
-    expect(opt.round.up).toEqual(0.76);
-    expect(opt.score).toBeUndefined();
-    expect(opt.scoreName).toEqual('score');
-    expect(opt.single).toBeFalsy();
-    expect(opt.size).toBe(16);
-    expect(opt.space).toBeTruthy();
-    expect(opt.starHalf).toEqual('star-half.png');
-    expect(opt.starOff).toEqual('star-off.png');
-    expect(opt.starOn).toEqual('star-on.png');
-    expect(opt.target).toBeUndefined();
-    expect(opt.targetFormat).toEqual('{score}');
-    expect(opt.targetKeep).toBeFalsy();
-    expect(opt.targetText).toEqual('');
-    expect(opt.targetType).toEqual('hint');
-    expect(opt.width).toBeUndefined();
-  });
-
-  describe('#starType', function() {
-    context('when actived', function() {
-      it ('disable the width property', function() {//
-        // given
-        var self = $('#element');
-
-        // when
-        self.raty({ starType: 'i' });
-
-        // then
-        expect(self[0].style.width).toEqual('');
       });
     });
   });
