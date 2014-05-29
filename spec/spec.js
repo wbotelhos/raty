@@ -1,53 +1,10 @@
-describe('Raty', function() {
-  beforeEach(function() {
-    build();
-  });
+beforeEach(function() {
+  build();
+});
 
+describe('Integration', function() {
   afterEach(function() {
     clear();
-  });
-
-  it ('has the right default values', function() {
-    // given
-    var raty = $.fn.raty;
-
-    // when
-    var opt = raty.defaults;
-
-    // then
-    expect(opt.cancel).toBeFalsy();
-    expect(opt.cancelHint).toEqual('Cancel this rating!');
-    expect(opt.cancelOff).toEqual('cancel-off.png');
-    expect(opt.cancelOn).toEqual('cancel-on.png');
-    expect(opt.cancelPlace).toEqual('left');
-    expect(opt.click).toBeUndefined();
-    expect(opt.half).toBeFalsy();
-    expect(opt.halfShow).toBeTruthy();
-    expect(opt.hints).toContain('bad', 'poor', 'regular', 'good', 'gorgeous');
-    expect(opt.iconRange).toBeUndefined();
-    expect(opt.mouseover).toBeUndefined();
-    expect(opt.noRatedMsg).toEqual('Not rated yet!');
-    expect(opt.number).toBe(5);
-    expect(opt.path).toBeUndefined();
-    expect(opt.precision).toBeFalsy();
-    expect(opt.readOnly).toBeFalsy();
-    expect(opt.round.down).toEqual(0.25);
-    expect(opt.round.full).toEqual(0.6);
-    expect(opt.round.up).toEqual(0.76);
-    expect(opt.score).toBeUndefined();
-    expect(opt.scoreName).toEqual('score');
-    expect(opt.single).toBeFalsy();
-    expect(opt.size).toBe(16);
-    expect(opt.space).toBeTruthy();
-    expect(opt.starHalf).toEqual('star-half.png');
-    expect(opt.starOff).toEqual('star-off.png');
-    expect(opt.starOn).toEqual('star-on.png');
-    expect(opt.target).toBeUndefined();
-    expect(opt.targetFormat).toEqual('{score}');
-    expect(opt.targetKeep).toBeFalsy();
-    expect(opt.targetText).toEqual('');
-    expect(opt.targetType).toEqual('hint');
-    expect(opt.width).toBeUndefined();
   });
 
   describe('common features', function() {
@@ -64,28 +21,6 @@ describe('Raty', function() {
 
       // then
       expect(ref).toBe(self);
-    });
-
-    it ('creates the default markup', function() {
-      // given
-      var self = $('#element');
-
-      // when
-      self.raty();
-
-      // then
-      var imgs  = self.children('img'),
-          score = self.children('input');
-
-      expect(imgs.eq(0)).toHaveAttr('title', 'bad');
-      expect(imgs.eq(1)).toHaveAttr('title', 'poor');
-      expect(imgs.eq(2)).toHaveAttr('title', 'regular');
-      expect(imgs.eq(3)).toHaveAttr('title', 'good');
-      expect(imgs.eq(4)).toHaveAttr('title', 'gorgeous');
-      expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
-      expect(score).toHaveAttr('type', 'hidden');
-      expect(score).toHaveAttr('name', 'score');
-      expect(score.val()).toEqual('');
     });
   });
 
@@ -196,33 +131,170 @@ describe('Raty', function() {
     });
 
     describe('#starOff', function() {
-      it ('changes the icons', function() {
+      it ('changes the stars', function() { //
         // given
         var self = $('#element');
 
         // when
-        self.raty({ starOff: 'icon.png' });
+        self.raty({ starOff: 'half-star.png' });
 
         // then
-        expect(self.children('img')).toHaveAttr('src', '../lib/images/icon.png');
+        expect(self.children('img')).toHaveAttr('src', '../lib/images/half-star.png');
+      });
+
+      context('with :starType', function() {
+        it ('uses the given element', function() { //
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ starType: 'i' });
+
+          // then
+          var stars = self.children('i');
+
+          expect(stars[0].tagName).toEqual('I');
+          expect(stars[1].tagName).toEqual('I');
+          expect(stars[2].tagName).toEqual('I');
+          expect(stars[3].tagName).toEqual('I');
+          expect(stars[4].tagName).toEqual('I');
+        });
+
+        it ('normalizes the class name', function() { //
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ starType: 'i' });
+
+          // then
+          expect(self.children('i')).toHaveClass('star-off-png');
+        });
+
+        it ('does not create the "src" attribute', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ starType: 'i' });
+
+          // then
+          var stars = self.children('i');
+
+          expect(stars[0].src).toBeUndefined();
+          expect(stars[1].src).toBeUndefined();
+          expect(stars[2].src).toBeUndefined();
+          expect(stars[3].src).toBeUndefined();
+          expect(stars[4].src).toBeUndefined();
+        });
+
+        it ('creates the "data-alt" attribute', function() { //
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ starType: 'i' });
+
+          // then
+          var stars = self.children('i');
+
+          expect(stars[0].getAttribute('data-alt')).toEqual('1');
+          expect(stars[1].getAttribute('data-alt')).toEqual('2');
+          expect(stars[2].getAttribute('data-alt')).toEqual('3');
+          expect(stars[3].getAttribute('data-alt')).toEqual('4');
+          expect(stars[4].getAttribute('data-alt')).toEqual('5');
+        });
+
+        it ('does not create the "alt" attribute', function() { //
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ starType: 'i' });
+
+          // then
+          expect(self.children('i')).not.toHaveAttr('alt');
+        });
       });
     });
 
     describe('#starOn', function() {
-      it ('changes the icons', function() {
+      it ('changes the stars', function() { //
         // given
-        var self = $('#element').raty({ starOn: 'icon.png' }),
-            imgs = self.children('img');
+        var self  = $('#element').raty({ starOn: 'half-star.png' }),
+            stars = self.children('img');
 
         // when
-        imgs.eq(3).mouseover();
+        stars.last().mouseover();
 
         // then
-        expect(imgs.eq(0)).toHaveAttr('src', '../lib/images/icon.png');
-        expect(imgs.eq(1)).toHaveAttr('src', '../lib/images/icon.png');
-        expect(imgs.eq(2)).toHaveAttr('src', '../lib/images/icon.png');
-        expect(imgs.eq(3)).toHaveAttr('src', '../lib/images/icon.png');
-        expect(imgs.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(stars).toHaveAttr('src', '../lib/images/half-star.png');
+      });
+
+      context('with :starType', function() {
+        it ('uses the given element', function() { //
+          // given
+          var self  = $('#element').raty({ starType: 'i' }),
+              stars = self.children('i');
+
+          // when
+          stars.last().mouseover();
+
+          // then
+          expect(stars[0].tagName).toEqual('I');
+          expect(stars[1].tagName).toEqual('I');
+          expect(stars[2].tagName).toEqual('I');
+          expect(stars[3].tagName).toEqual('I');
+          expect(stars[4].tagName).toEqual('I');
+        });
+
+        it ('normalizes the class name', function() { //
+          // given
+          var self  = $('#element').raty({ starType: 'i' }),
+              stars = self.children('i');
+
+          // when
+          stars.last().mouseover();
+
+          // then
+          expect(stars).toHaveClass('star-on-png');
+        });
+
+        it ('does not create "src" attribute', function() { //
+          // given
+          var self  = $('#element').raty({ starType: 'i' }),
+              stars = self.children('i');
+
+          // when
+          stars.last().mouseover();
+
+          // then
+          expect(stars).not.toHaveAttr('src');
+        });
+
+        it ('creates "data-alt" attribute', function() { //
+          // given
+          var self  = $('#element').raty({ starType: 'i' }),
+              stars = self.children('i');
+
+          // when
+          stars.last().mouseover();
+
+          // then
+          expect(stars).toHaveAttr('data-alt');
+        });
+
+        it ('does not create "alt" attribute', function() { //
+          // given
+          var self  = $('#element').raty({ starType: 'i' }),
+              stars = self.children('i');
+
+          // when
+          stars.last().mouseover();
+
+          // then
+          expect(stars).not.toHaveAttr('alt');
+        });
       });
     });
 
@@ -1181,6 +1253,63 @@ describe('Raty', function() {
             expect(imgs).toHaveAttr('src', '../lib/images/star-off.png');
           });
         });
+
+        context('with :starType', function() {
+          it ('uses the given element', function() {
+            // given
+            var self = $('#element').raty({ cancel: true, starType: 'i' });
+
+            // when
+            var cancel = self.children('.raty-cancel').mouseover();
+
+            // then
+            expect(self.children('.raty-cancel')[0].tagName).toEqual('I');
+          });
+
+          it ('sets class replacing dot to hiphen', function() {
+            // given
+            var self = $('#element').raty({ cancel: true, starType: 'i' });
+
+            // when
+            var cancel = self.children('.raty-cancel').mouseover();
+
+            // then
+            expect(cancel).toHaveClass('cancel-on-png');
+          });
+
+          it ('does not set "src" attribute', function() {
+            // given
+            var self = $('#element').raty({ cancel: true, starType: 'i' });
+
+            // when
+            var cancel = self.children('.raty-cancel').mouseover();
+
+            // then
+            expect(cancel).not.toHaveAttr('src');
+          });
+
+          it ('sets "data-alt" attribute', function() {
+            // given
+            var self = $('#element').raty({ cancel: true, starType: 'i' });
+
+            // when
+            var cancel = self.children('.raty-cancel').mouseover();
+
+            // then
+            expect(cancel).toHaveAttr('data-alt');
+          });
+
+          it ('does not set "alt" attribute', function() {
+            // given
+            var self = $('#element').raty({ cancel: true, starType: 'i' });
+
+            // when
+            var cancel = self.children('.raty-cancel').mouseover();
+
+            // then
+            expect(cancel).not.toHaveAttr('alt');
+          });
+        });
       });
 
       context('when :mouseout', function() {
@@ -1269,6 +1398,63 @@ describe('Raty', function() {
 
           // then
           expect(self.children('.raty-cancel')).toBeHidden();
+        });
+      });
+
+      context('with :starType', function() {
+        it ('uses the given element', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ cancel: true, starType: 'i' });
+
+          // then
+          expect(self.children('.raty-cancel')[0].tagName).toEqual('I');
+        });
+
+        it ('sets class replacing dot to hiphen', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ cancel: true, starType: 'i' });
+
+          // then
+          expect(self.children('.raty-cancel')).toHaveClass('cancel-off-png');
+        });
+
+        it ('does not set "src" attribute', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ cancel: true, starType: 'i' });
+
+          // then
+          expect(self.children('.raty-cancel')).not.toHaveAttr('src');
+        });
+
+        it ('sets "data-alt" attribute', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ cancel: true, starType: 'i' });
+
+          // then
+          expect(self.children('.raty-cancel')).toHaveAttr('data-alt');
+        });
+
+        it ('does not set "alt" attribute', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ cancel: true, starType: 'i' });
+
+          // then
+          expect(self.children('.raty-cancel')).not.toHaveAttr('alt');
         });
       });
     });
@@ -3043,6 +3229,147 @@ describe('Raty', function() {
           expect(this.target.text()).toEqual('1.7');
           expect(this.target2.text()).toEqual('1.7');
         });
+      });
+    });
+
+    describe('#starType', function() {
+      it ('creates the default markup', function() {
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ starType: 'i' });
+
+        // then
+        expect(self[0].opt.path).toEqual('');
+      });
+
+      context('when "img"', function() {
+        it ('creates the default markup', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty();
+
+          // then
+          var stars = self.children('img'),
+              score = self.children('input');
+
+          expect(stars.eq(0)).toHaveAttr('title', 'bad');
+          expect(stars.eq(1)).toHaveAttr('title', 'poor');
+          expect(stars.eq(2)).toHaveAttr('title', 'regular');
+          expect(stars.eq(3)).toHaveAttr('title', 'good');
+          expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
+
+          expect(stars.eq(0)).toHaveAttr('alt', '1');
+          expect(stars.eq(1)).toHaveAttr('alt', '2');
+          expect(stars.eq(2)).toHaveAttr('alt', '3');
+          expect(stars.eq(3)).toHaveAttr('alt', '4');
+          expect(stars.eq(4)).toHaveAttr('alt', '5');
+
+          expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(score).toHaveAttr('type', 'hidden');
+          expect(score).toHaveAttr('name', 'score');
+          expect(score.val()).toEqual('');
+        });
+      });
+
+      context('when other', function() {
+        it ('creates the default markup', function() {
+          // given
+          var self = $('#element');
+
+          // when
+          self.raty({ starType: 'i' });
+
+          // then
+          var stars = self.children('i'),
+              score = self.children('input');
+
+          expect(stars.eq(0)).toHaveAttr('title', 'bad');
+          expect(stars.eq(1)).toHaveAttr('title', 'poor');
+          expect(stars.eq(2)).toHaveAttr('title', 'regular');
+          expect(stars.eq(3)).toHaveAttr('title', 'good');
+          expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
+
+          expect(stars.eq(0)).toHaveAttr('data-alt', '1');
+          expect(stars.eq(1)).toHaveAttr('data-alt', '2');
+          expect(stars.eq(2)).toHaveAttr('data-alt', '3');
+          expect(stars.eq(3)).toHaveAttr('data-alt', '4');
+          expect(stars.eq(4)).toHaveAttr('data-alt', '5');
+
+          expect(stars).not.toHaveAttr('alt');
+          expect(stars).not.toHaveAttr('src');
+
+          expect(score).toHaveAttr('type', 'hidden');
+          expect(score).toHaveAttr('name', 'score');
+          expect(score.val()).toEqual('');
+        });
+      });
+    });
+  });
+});
+
+describe('Model', function() {
+  beforeEach(function() {
+    $.fn.raty.defaults.path = undefined;
+  });
+
+  it ('has the right default values', function() {
+    // given
+    var raty = $.fn.raty;
+
+    // when
+    var opt = raty.defaults;
+
+    // then
+    expect(opt.cancel).toBeFalsy();
+    expect(opt.cancelHint).toEqual('Cancel this rating!');
+    expect(opt.cancelOff).toEqual('cancel-off.png');
+    expect(opt.cancelOn).toEqual('cancel-on.png');
+    expect(opt.cancelPlace).toEqual('left');
+    expect(opt.click).toBeUndefined();
+    expect(opt.half).toBeFalsy();
+    expect(opt.halfShow).toBeTruthy();
+    expect(opt.hints).toContain('bad', 'poor', 'regular', 'good', 'gorgeous');
+    expect(opt.iconRange).toBeUndefined();
+    expect(opt.mouseover).toBeUndefined();
+    expect(opt.noRatedMsg).toEqual('Not rated yet!');
+    expect(opt.number).toBe(5);
+    expect(opt.path).toBeUndefined();
+    expect(opt.precision).toBeFalsy();
+    expect(opt.readOnly).toBeFalsy();
+    expect(opt.round.down).toEqual(0.25);
+    expect(opt.round.full).toEqual(0.6);
+    expect(opt.round.up).toEqual(0.76);
+    expect(opt.score).toBeUndefined();
+    expect(opt.scoreName).toEqual('score');
+    expect(opt.single).toBeFalsy();
+    expect(opt.size).toBe(16);
+    expect(opt.space).toBeTruthy();
+    expect(opt.starHalf).toEqual('star-half.png');
+    expect(opt.starOff).toEqual('star-off.png');
+    expect(opt.starOn).toEqual('star-on.png');
+    expect(opt.target).toBeUndefined();
+    expect(opt.targetFormat).toEqual('{score}');
+    expect(opt.targetKeep).toBeFalsy();
+    expect(opt.targetText).toEqual('');
+    expect(opt.targetType).toEqual('hint');
+    expect(opt.width).toBeUndefined();
+  });
+
+  describe('#starType', function() {
+    context('when actived', function() {
+      it ('disable the width property', function() {//
+        // given
+        var self = $('#element');
+
+        // when
+        self.raty({ starType: 'i' });
+
+        // then
+        expect(self[0].style.width).toEqual('');
       });
     });
   });
