@@ -758,7 +758,7 @@ describe('Integration', function() {
             self = $('#element').raty({
               cancel  : true,
               mouseout: function(score) {
-                self.data('score', score === undefined);
+                self.data('score', score);
               }
             }),
             star = self.children('img:last');
@@ -767,7 +767,7 @@ describe('Integration', function() {
           star.trigger('mouseout');
 
           // then
-          expect(self.data('score')).toBeTruthy();
+          expect(self.data('score')).toBeUndefined();
         });
       });
 
@@ -811,13 +811,13 @@ describe('Integration', function() {
         });
 
         context('without score', function() {
-          it('pass undefined on callback', function() {
+          it('receives undefined', function() {
             // given
             var
               self = $('#element').raty({
                 cancel   : true,
                 mouseout : function(score) {
-                  $(this).data('score', score === undefined);
+                  $(this).data('score', score);
                 }
               }),
               cancel = self.children('.raty-cancel');
@@ -826,7 +826,7 @@ describe('Integration', function() {
             cancel.trigger('mouseout');
 
             // then
-            expect(self.data('score')).toBeTruthy();
+            expect(self.data('score')).toBeUndefined();
           });
         });
 
@@ -847,7 +847,7 @@ describe('Integration', function() {
             cancel.trigger('mouseout');
 
             // then
-            expect(self.data('score')).toEqual(1);
+            expect(typeof self.data('score')).toEqual('number');
           });
         });
       });
@@ -3101,7 +3101,6 @@ describe('Integration', function() {
         // given
         var self = $('#element').raty({
               mouseout: function() {
-                console.log(this);
                 $(this).data('mouseleave', true);
               }
             });

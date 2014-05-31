@@ -5,7 +5,8 @@
 ### Fixes
 
 + Target was not showing the score when `half` was enabled; (andersonba)
-+ Fixed some JS Lint warnings. (Qazzian)
++ Fixed some JS Lint warnings; (Qazzian)
++ Cancel button `mouseleave` must yiels no score as `undefined` not `null`.
 
 ### Changes
 
