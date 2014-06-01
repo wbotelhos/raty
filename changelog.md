@@ -6,7 +6,8 @@
 
 + Target was not showing the score when `half` was enabled; (andersonba)
 + Fixed some JS Lint warnings; (Qazzian)
-+ Cancel button `mouseleave` must yiels no score as `undefined` not `null`.
++ Cancel button `mouseleave` must yiels no score as `undefined` not `null`;
++ The `numberMax` now sets the stars between 1...`numberMax` instead 0...`numberMax`.
 
 ### Changes
 

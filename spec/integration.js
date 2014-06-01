@@ -136,7 +136,7 @@ describe('Integration', function() {
         self.raty({ number: -1 });
 
         // then
-        expect(self[0].opt.number).toEqual(0);
+        expect(self[0].opt.number).toEqual(1);
       });
     });
 
