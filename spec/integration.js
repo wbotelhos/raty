@@ -2499,7 +2499,7 @@ describe('Integration', function() {
       });
 
       describe('without :click', function() {
-        it ('does not throw exception', function() {
+        it('ignores the callback', function() {
           // given
           var self = $('#element').raty();
 
@@ -2507,7 +2507,7 @@ describe('Integration', function() {
           var lambda = function() { self.raty('score', 1); };
 
           // then
-          expect(lambda).not.toThrow(new Error('You must add the "click: function(score, evt) { }" callback.'));
+          expect(lambda).not.toThrow();
         });
       });
 
@@ -2988,7 +2988,7 @@ describe('Integration', function() {
       });
 
       context('without :click', function() {
-        it ('throws error', function() {
+        it('ignores the callback', function() {
           // given
           var self = $('#element').raty();
 
@@ -2996,7 +2996,7 @@ describe('Integration', function() {
           var lambda = function() { self.raty('click', 1); };
 
           // then
-          expect(lambda).toThrow(new Error('You must add the "click: function(score, evt) { }" callback.'));
+          expect(lambda).not.toThrow();
         });
       });
 

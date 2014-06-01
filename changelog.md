@@ -11,7 +11,8 @@
 ### Changes
 
 + `path` now is `undefined` by default;
-+ The {score} placeholder on `targetFormat` option is no longer mandatory.
++ The {score} placeholder on `targetFormat` option is no longer mandatory;
++ On `click` method, if click callback is not defined, it will be ignore instead of throw error.
 
 ### News
 
