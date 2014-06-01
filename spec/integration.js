@@ -927,7 +927,7 @@ describe('Integration', function() {
       });
 
       context('as null', function() {
-        it ('replace to an empty string', function() {
+        it('replace to an empty string', function() {
           // given
           var self = $('#element');
 
@@ -944,7 +944,7 @@ describe('Integration', function() {
           $.fn.raty.defaults.path = undefined;
         });
 
-        it ('replace to an empty string', function() {
+        it('replace to an empty string', function() {
           // given
           var self = $('#element');
 
@@ -1237,7 +1237,7 @@ describe('Integration', function() {
       });
 
       context('when become :readOnly', function() {
-        it ('becomes hidden', function() {
+        it('becomes hidden', function() {
           // given
           var self = $('#element').raty({ cancel: true });
 
@@ -1250,7 +1250,7 @@ describe('Integration', function() {
       });
 
       context('with :starType', function() {
-        it ('uses the given element', function() {
+        it('uses the given element', function() {
           // given
           var self = $('#element');
 
@@ -1261,7 +1261,7 @@ describe('Integration', function() {
           expect(self.children('.raty-cancel')[0].tagName).toEqual('I');
         });
 
-        it ('sets class replacing dot to hiphen', function() {
+        it('sets class replacing dot to hiphen', function() {
           // given
           var self = $('#element');
 
@@ -1272,7 +1272,7 @@ describe('Integration', function() {
           expect(self.children('.raty-cancel')).toHaveClass('cancel-off-png');
         });
 
-        it ('does not set "src" attribute', function() {
+        it('does not set "src" attribute', function() {
           // given
           var self = $('#element');
 
@@ -1280,10 +1280,10 @@ describe('Integration', function() {
           self.raty({ cancel: true, starType: 'i' });
 
           // then
-          expect(self.children('.raty-cancel')).not.toHaveAttr('src');
+          expect(self.children('.raty-cancel')).not.toHaveProp('src');
         });
 
-        it ('sets "data-alt" attribute', function() {
+        it('sets "data-alt" attribute', function() {
           // given
           var self = $('#element');
 
@@ -1291,10 +1291,10 @@ describe('Integration', function() {
           self.raty({ cancel: true, starType: 'i' });
 
           // then
-          expect(self.children('.raty-cancel')).toHaveAttr('data-alt');
+          expect(self.children('.raty-cancel')).toHaveAttr('data-alt', 'x');
         });
 
-        it ('does not set "alt" attribute', function() {
+        it('does not set "alt" attribute', function() {
           // given
           var self = $('#element');
 
@@ -1302,7 +1302,7 @@ describe('Integration', function() {
           self.raty({ cancel: true, starType: 'i' });
 
           // then
-          expect(self.children('.raty-cancel')).not.toHaveAttr('alt');
+          expect(self.children('.raty-cancel')).not.toHaveProp('alt');
         });
       });
     });
@@ -1313,12 +1313,12 @@ describe('Integration', function() {
       });
 
       context('with missing target', function() {
-        it ('throws error', function() {
+        it('throws error', function() {
           // given
           var self = $('#element');
 
           // when
-          var lambda = function() { self.raty({ target: 'missing' }); };
+          var lambda = function() { self.raty({ target: '#missing' }); };
 
           // then
           expect(lambda).toThrow(new Error('Target selector invalid or missing!'));
