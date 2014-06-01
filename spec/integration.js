@@ -1412,19 +1412,6 @@ describe('Integration', function() {
           expect($('#hint')).toBeEmpty();
         });
 
-        context('with missing score key', function() {
-          it ('throws error', function() {
-            // given
-            var self = $('#element');
-
-            // when
-            var lambda = function() { self.raty({ target: '#hint', targetFormat: '' }); };
-
-            // then
-            expect(lambda).toThrow(new Error('Template "{score}" missing!'));
-          });
-        });
-
         context('on mouseover', function() {
           it ('set target with format on mouseover', function() {
             // given

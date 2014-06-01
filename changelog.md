@@ -10,7 +10,8 @@
 
 ### Changes
 
-+ `path` now is `undefined` by default.
++ `path` now is `undefined` by default;
++ The {score} placeholder on `targetFormat` option is no longer mandatory.
 
 ### News
 
