@@ -7,137 +7,9 @@ describe('Integration', function() {
     clear();
   });
 
-  describe('common features', function() {
-    beforeEach(function() {
-      $.fn.raty.defaults.path = '../lib/images';
-    });
-
-    it('is chainable', function() {
-      // given
-      var self = $('#element');
-
-      // when
-      var ref = self.raty();
-
-      // then
-      expect(ref).toBe(self);
-    });
-  });
-
-  describe('stars', function() {
-    beforeEach(function() {
-      $.fn.raty.defaults.path = '../lib/images';
-    });
-
-    it('starts all off', function() {
-      // given
-      var self = $('#element');
-
-      // when
-      self.raty();
-
-      // then
-      expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
-    });
-
-    context('on click', function() {
-      it('changes the score', function() {
-        // given
-        var self  = $('#element').raty(),
-            stars = self.children('img');
-
-        // when
-        stars.last().trigger('click');
-
-        // then
-        expect(self.children('input')).toHaveValue('5');
-      });
-    });
-
-    context('on mouseover', function() {
-      it('turns on the stars', function() {
-        // given
-        var self  = $('#element').raty(),
-            stars = self.children('img');
-
-        // when
-        stars.last().trigger('mouseover');
-
-        // then
-        expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
-      });
-
-      context('and mouseout', function() {
-        it('turns off all stars', function() {
-          // given
-          var self  = $('#element').raty(),
-              stars = self.children('img');
-
-          // when
-          stars.last().trigger('mouseover').trigger('mouseout');
-
-          // then
-          expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
-        });
-      });
-
-      context('and click', function() {
-        it('changes the score', function() {
-          // given
-          var self  = $('#element').raty(),
-              stars = self.children('img');
-
-          // when
-          stars.last().trigger('mouseover').trigger('click');
-
-          // then
-          expect(self.children('input')).toHaveValue('5');
-        });
-
-        context('and mouseout', function() {
-          it('keeps the stars on', function() {
-            // given
-            var self  = $('#element').raty(),
-                stars = self.children('img');
-
-            // when
-            stars.last().trigger('mouseover').trigger('click').trigger('mouseout');
-
-            // then
-            expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
-          });
-        });
-      });
-    });
-  });
-
   describe('options', function() {
     beforeEach(function() {
       $.fn.raty.defaults.path = '../lib/images';
-    });
-
-    describe('#numberMax', function() {
-      it('limits the max of "number" option', function() {
-        // given
-        var self = $('#element');
-
-        // when
-        self.raty({ number: 2, numberMax: 1 });
-
-        // then
-        expect(self[0].opt.number).toEqual(1);
-      });
-
-      it('limits the min of "number" option', function() {
-        // given
-        var self = $('#element');
-
-        // when
-        self.raty({ number: -1 });
-
-        // then
-        expect(self[0].opt.number).toEqual(1);
-      });
     });
 
     describe('#starOff', function() {
@@ -146,10 +18,10 @@ describe('Integration', function() {
         var self = $('#element');
 
         // when
-        self.raty({ starOff: 'half-star.png' });
+        self.raty({ starOff: 'star-half.png' });
 
         // then
-        expect(self.children('img')).toHaveAttr('src', '../lib/images/half-star.png');
+        expect(self.children('img')).toHaveAttr('src', '../lib/images/star-half.png');
       });
 
       context('with :starType', function() {
@@ -231,14 +103,14 @@ describe('Integration', function() {
     describe('#starOn', function() {
       it('changes the stars on', function() {
         // given
-        var self  = $('#element').raty({ starOn: 'half-star.png' }),
+        var self  = $('#element').raty({ starOn: 'star-half.png' }),
             stars = self.children('img');
 
         // when
         stars.last().trigger('mouseover');
 
         // then
-        expect(stars).toHaveAttr('src', '../lib/images/half-star.png');
+        expect(stars).toHaveAttr('src', '../lib/images/star-half.png');
       });
 
       context('with :starType', function() {
@@ -989,24 +861,24 @@ describe('Integration', function() {
         var self = $('#element');
 
         // when
-        self.raty({ cancel: true, cancelOff: 'half-star.png' });
+        self.raty({ cancel: true, cancelOff: 'star-half.png' });
 
         // then
-        expect(self.children('.raty-cancel')).toHaveAttr('src', '../lib/images/half-star.png');
+        expect(self.children('.raty-cancel')).toHaveAttr('src', '../lib/images/star-half.png');
       });
     });
 
     describe('#cancelOn', function() {
       it('changes the icon', function() {
         // given
-        var self   = $('#element').raty({ cancel: true, cancelOn: 'half-star.png' }),
+        var self   = $('#element').raty({ cancel: true, cancelOn: 'star-half.png' }),
             cancel = self.children('.raty-cancel');
 
         // when
         cancel.trigger('mouseover');
 
         // then
-        expect(cancel).toHaveAttr('src', '../lib/images/half-star.png');
+        expect(cancel).toHaveAttr('src', '../lib/images/star-half.png');
       });
     });
 
@@ -1695,67 +1567,55 @@ describe('Integration', function() {
       });
     });
 
-    describe('#size', function() {
-      it ('calculate the right icon size', function() {
-        // given
-        var self  = $('#element'),
-            size  = 24,
-            stars = 5,
-            space = 4;
-
-        // when
-        self.raty({ size: size });
-
-        // then
-        expect(self.width()).toEqual((stars * size) + (stars * space));
-      });
-
-      context('with :cancel', function() {
-        it ('addes the cancel and space witdh', function() {
-          // given
-          var self    = $('#element'),
-              size    = 24,
-              stars   = 5,
-              cancel  = size,
-              space   = 4;
-
-          // when
-          self.raty({ cancel: true, size: size });
-
-          // then
-          expect(self.width()).toEqual(cancel + space + (stars * size) + (stars * space));
-        });
-      });
-    });
-
     describe('#space', function() {
       context('when off', function() {
-        it ('takes off the space', function() {
+        it('keeps the spaces', function() {
           // given
-          var self  = $('#element'),
-              size  = 16,
-              stars  = 5;
+          var self = $('#element');
+
+          // when
+          self.raty({ space: true });
+
+          // then
+          expect(self.text().length).toEqual(4);
+        });
+
+        context('with :cancel', function() {
+          it('adds on more space', function() {
+            // given
+            var self = $('#element');
+
+            // when
+            self.raty({ cancel: true, space: true });
+
+            // then
+            expect(self.text().length).toEqual(5);
+          });
+        });
+      });
+
+      context('when off', function() {
+        it('takes off the spaces', function() {
+          // given
+          var self = $('#element');
 
           // when
           self.raty({ space: false });
 
           // then
-          expect(self.width()).toEqual(size * stars);
+          expect(self.text().length).toEqual(0);
         });
 
         context('with :cancel', function() {
-          it ('takes off the space', function() {
+          it('keeps the cancel space', function() {
             // given
-            var self    = $('#element'),
-                size    = 16,
-                stars   = 5,
-                cancel  = size;
+            var self = $('#element');
 
             // when
             self.raty({ cancel: true, space: false });
 
             // then
-            expect(self.width()).toEqual(cancel + (size * stars));
+            expect(self.text().length).toEqual(1);
           });
         });
       });
@@ -1849,45 +1709,6 @@ describe('Integration', function() {
               expect(stars.eq(4)).toHaveAttr('src', '../lib/images/d-off.png');
             });
           });
-        });
-      });
-    });
-
-    describe('#width', function() {
-      it ('set custom width', function() {
-        // given
-        var self = $('#element');
-
-        // when
-        self.raty({ width: 200 });
-
-        // then
-        expect(self.width()).toEqual(200);
-      });
-
-      describe('when it is false', function() {
-        it ('does not apply the style', function() {
-          // given
-          var self = $('#element');
-
-          // when
-          self.raty({ width: false });
-
-          // then
-          expect(self).not.toHaveCss({ width: '100px' });
-        });
-      });
-
-      describe('when :readOnly', function() {
-        it ('set custom width when readOnly', function() {
-          // given
-          var self = $('#element');
-
-          // when
-          self.raty({ readOnly: true, width: 200 });
-
-          // then
-          expect(self.width()).toEqual(200);
         });
       });
     });
@@ -2525,328 +2346,6 @@ describe('Integration', function() {
       });
     });
 
-    describe('#set', function() {
-      it ('is chainable', function() {
-        // given
-        var self = $('#element').raty();
-
-        // when
-        var ref = self.raty('set', { number: 1 });
-
-        // then
-        expect(ref).toBe(self);
-      });
-
-      it ('changes the declared options', function() {
-        // given
-        var self = $('#element').raty();
-
-        // when
-        var ref = self.raty('set', { scoreName: 'change-just-it' });
-
-        // then
-        expect(ref.children('input')).toHaveAttr('name', 'change-just-it');
-      });
-
-      it ('does not change other none declared options', function() {
-        // given
-        var self = $('#element').raty({ number: 6 });
-
-        // when
-        var ref = self.raty('set', { scoreName: 'change-just-it' });
-
-        // then
-        expect(ref.children('img').length).toEqual(6);
-      });
-
-      context('with external bind on wrapper', function() {
-        it ('keeps it', function() {
-          // given
-          var self = $('#element').on('click', function() {
-            $(this).data('externalClick', true);
-          }).raty();
-
-          // when
-          self.raty('set', {}).trigger('click');
-
-          // then
-          expect(self.data('externalClick')).toBeTruthy();
-        });
-      });
-
-      context('when :readOnly by function', function() {
-        it ('is removes the readonly data info', function() {
-          // given
-          var self = $('#element').raty().raty('readOnly', true);
-
-          // when
-          var ref = self.raty('set', { readOnly: false });
-
-          // then
-          expect(self).not.toHaveData('readonly');
-        });
-      });
-    });
-
-    describe('#readOnly', function() {
-      context('changes to true', function() {
-        it ('sets score as readonly', function() {
-          // given
-          var self = $('#element').raty();
-
-          // when
-          self.raty('readOnly', true);
-
-          // then
-          expect(self.children('input')).toHaveAttr('readonly', 'readonly');
-        });
-
-        it ('removes the pointer cursor', function() {
-          // given
-          var self = $('#element').raty();
-
-          // when
-          self.raty('readOnly', true);
-
-          // then
-          expect(self).not.toHaveCss({ cursor: 'pointer' });
-          expect(self).not.toHaveCss({ cursor: 'default' });
-        });
-
-        it ('Applies "Not rated yet!" on stars', function() {
-          // given
-          var self = $('#element').raty();
-
-          // when
-          self.raty('readOnly', true);
-
-          // then
-          expect(self.children('img')).toHaveAttr('title', 'Not rated yet!');
-        });
-
-        it ('avoids trigger mouseover', function() {
-          // given
-          var self = $('#element').raty(),
-              stars = self.children('img');
-
-          self.raty('readOnly', true);
-
-          // when
-          stars.eq(0).trigger('mouseover');
-
-          // then
-          expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
-        });
-
-        it ('avoids trigger click', function() {
-          // given
-          var self = $('#element').raty(),
-              stars = self.children('img');
-
-          self.raty('readOnly', true);
-
-          // when
-          stars.eq(0).trigger('mouseover').trigger('click').trigger('mouseleave');
-
-          // then
-          expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
-          expect(self.children('input').val()).toEqual('');
-        });
-
-        context('with :score', function() {
-          it ('applies the score title on stars', function() {
-            // given
-            var self = $('#element').raty({ score: 1 });
-
-            // when
-            self.raty('readOnly', true);
-
-            // then
-            expect(self.children('img')).toHaveAttr('title', 'bad');
-          });
-        });
-
-        context('with :cancel', function() {
-          it ('hides the button', function() {
-            // given
-            var self = $('#element').raty({ cancel: true });
-
-            // when
-            self.raty('readOnly', true);
-
-            // then
-            expect(self.children('.raty-cancel')).toBeHidden();
-          });
-        });
-
-        context('with external bind on wrapper', function() {
-          it ('keeps it', function() {
-            // given
-            var self = $('#element').on('click', function() {
-              $(this).data('externalClick', true);
-            }).raty();
-
-            // when
-            self.raty('readOnly', true).trigger('click');
-
-            // then
-            expect(self.data('externalClick')).toBeTruthy();
-          });
-        });
-
-        context('with external bind on stars', function() {
-          it ('keeps it', function() {
-            // given
-            var self = $('#element').raty(),
-                star = self.children('img').first();
-
-            star.on('click', function() {
-              self.data('externalClick', true);
-            });
-
-            // when
-            self.raty('readOnly', true);
-            star.click();
-
-            // then
-            expect(self.data('externalClick')).toBeTruthy();
-          });
-        });
-      });
-
-      context('changes to false', function() {
-        it ('removes the :readOnly of the score', function() {
-          // given
-          var self = $('#element').raty();
-
-          // when
-          self.raty('readOnly', false);
-
-          // then
-          expect(self.children('input')).not.toHaveAttr('readonly', 'readonly');
-        });
-
-        it ('applies the pointer cursor on wrapper', function() {
-          // given
-          var self = $('#element').raty();
-
-          // when
-          self.raty('readOnly', false);
-
-          // then
-          expect(self).toHaveCss({ cursor: 'pointer' });
-        });
-
-        it ('Removes the "Not rated yet!" off the stars', function() {
-          // given
-          var self   = $('#element').raty({ readOnly: true }),
-              stars  = self.children('img');
-
-          // when
-          self.raty('readOnly', false);
-
-          // then
-          expect(stars.eq(0)).toHaveAttr('title', 'bad');
-          expect(stars.eq(1)).toHaveAttr('title', 'poor');
-          expect(stars.eq(2)).toHaveAttr('title', 'regular');
-          expect(stars.eq(3)).toHaveAttr('title', 'good');
-          expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
-        });
-
-        it ('triggers mouseover', function() {
-          // given
-          var self = $('#element').raty({ readOnly: true }),
-              stars = self.children('img');
-
-          self.raty('readOnly', false);
-
-          // when
-          stars.eq(0).trigger('mouseover');
-
-          // then
-          expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-on.png');
-        });
-
-        it ('triggers click', function() {
-          // given
-          var self = $('#element').raty({ readOnly: true }),
-              stars = self.children('img');
-
-          self.raty('readOnly', false);
-
-          // when
-          stars.eq(0).trigger('mouseover').trigger('click').trigger('mouseleave');
-
-          // then
-          expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
-          expect(self.children('input')).toHaveValue('1');
-        });
-
-        context('with :score', function() {
-          it ('removes the score title off the stars', function() {
-            // given
-            var self = $('#element').raty({ readOnly: true, score: 3 });
-
-            // when
-            self.raty('readOnly', false);
-
-            // then
-            var stars = self.children('img');
-
-            expect(stars.eq(0)).toHaveAttr('title', 'bad');
-            expect(stars.eq(1)).toHaveAttr('title', 'poor');
-            expect(stars.eq(2)).toHaveAttr('title', 'regular');
-            expect(stars.eq(3)).toHaveAttr('title', 'good');
-            expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
-          });
-        });
-
-        context('with :cancel', function() {
-          it ('shows the button', function() {
-            // given
-            var self = $('#element').raty({ cancel: true, readOnly: true });
-
-            // when
-            self.raty('readOnly', false);
-
-            // then
-            expect(self.children('.raty-cancel')).toBeVisible();
-            expect(self.children('.raty-cancel')).not.toHaveCss({ display: 'block' });
-          });
-
-          it ('rebinds the mouseover', function() {
-            // given
-            var self   = $('#element').raty({ readOnly: true, cancel: true }),
-                cancel = self.children('.raty-cancel'),
-                stars   = self.children('img:not(.raty-cancel)');
-
-            // when
-            self.raty('readOnly', false);
-
-            cancel.trigger('mouseover');
-
-            // then
-            expect(cancel).toHaveAttr('src', '../lib/images/cancel-on.png');
-            expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
-          });
-
-          it ('rebinds the click', function() {
-            // given
-            var self = $('#element').raty({ readOnly: true, cancel: true, score: 5 }),
-                stars = self.children('img:not(.raty-cancel)');
-
-            // when
-            self.raty('readOnly', false);
-
-            self.children('.raty-cancel').trigger('click').trigger('mouseout');
-
-            // then
-            expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
-          });
-        });
-      });
-    });
-
     describe('#cancel', function() {
       describe('with :readOnly', function() {
         it ('does not cancel', function() {
@@ -3103,151 +2602,13 @@ describe('Integration', function() {
 
       it ('resets the style attributes', function() {
         // given
-        var self = $('#element').css({ cursor: 'help', width: 10 }).raty();
+        var self = $('#element').css({ cursor: 'help' }).raty();
 
         // when
         self.raty('destroy');
 
         // then
         expect(self[0].style.cursor).toEqual('help');
-        expect(self[0].style.width).toEqual('10px');
-      });
-    });
-
-    describe('#move', function() {
-      describe('with interger score', function() {
-        beforeEach(function() {
-          this.target = $('<div id="target"></div>').appendTo('body');
-        });
-
-        afterEach(function() {
-          this.target.remove();
-        });
-
-        it ('moves to the right point', function() {
-          // given
-          var self = $('#element').raty({
-            precision  : true,
-            target     : '#target',
-            targetType : 'number'
-          });
-
-          // when
-          self.raty('move', 1);
-
-          // then
-          expect(this.target.text()).toEqual('1.0');
-        });
-      });
-
-      describe('with float score', function() {
-        beforeEach(function() {
-          this.target = $('<div id="target"></div>').appendTo('body');
-        });
-
-        afterEach(function() {
-          this.target.remove();
-        });
-
-        it ('moves to the right point', function() {
-          // given
-          var self = $('#element').raty({
-            precision  : true,
-            target     : '#target',
-            targetType : 'number'
-          });
-
-          // when
-          self.raty('move', 1.7);
-
-          // then
-          expect(this.target.text()).toEqual('1.7');
-        });
-      });
-
-      describe('with string score', function() {
-        beforeEach(function() {
-          this.target = $('<div id="target"></div>').appendTo('body');
-        });
-
-        afterEach(function() {
-          this.target.remove();
-        });
-
-        it ('moves to the right point', function() {
-          // given
-          var self = $('#element').raty({
-            precision  : true,
-            target     : '#target',
-            targetType : 'number'
-          });
-
-          // when
-          self.raty('move', '1.7');
-
-          // then
-          expect(this.target.text()).toEqual('1.7');
-        });
-      });
-
-      describe('when score is bigger then the number of stars', function() {
-        beforeEach(function() {
-          this.target = $('<div id="target"></div>').appendTo('body');
-        });
-
-        afterEach(function() {
-          this.target.remove();
-        });
-
-        it ('moves to the and of the last star', function() {
-          // given
-          var self = $('#element').raty({
-            precision  : true,
-            target     : '#target',
-            targetType : 'number'
-          });
-
-          // when
-          self.raty('move', 6.7);
-
-          // then
-          expect(this.target.text()).toEqual('5.0');
-        });
-      });
-
-      describe('with class selection', function() {
-        beforeEach(function() {
-          this.element1 = $('<div data-target="#target1" class="element"></div>').appendTo('body');
-          this.element2 = $('<div data-target="#target2" class="element"></div>').appendTo('body');
-          this.target1  = $('<div id="target1"></div>').appendTo('body');
-          this.target2  = $('<div id="target2"></div>').appendTo('body');
-        });
-
-        afterEach(function() {
-          this.element1.remove();
-          this.element2.remove();
-          this.target1.remove();
-          this.target2.remove();
-        });
-
-        // TODO: set taget with callback.
-        xit ('moves to the right point on all of them', function() {
-          // given
-          var els = $('.element').raty({
-            precision  : true,
-            target     : function() {
-              return this.getAttribute('data-target');
-            },
-            targetType : 'number'
-          });
-
-          // when
-          $('.element').raty('move', 1.7);
-
-          // then
-          expect(this.target.text()).toEqual('1.7');
-          expect(this.target2.text()).toEqual('1.7');
-        });
       });
     });
 

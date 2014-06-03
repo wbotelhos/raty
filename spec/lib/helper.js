@@ -1,5 +1,31 @@
 isClear = true;
 
+Helper = {
+  clear: function() {
+    for (var i = 0; i < this.ids.length; i++) {
+      $(this.ids[i].prefix + this.ids[i].id).remove();
+    }
+  },
+
+  create: function(id) {
+    var
+      attrs = {},
+      data  = { prefix: id.charAt(0), id: id.slice(1) };
+
+    this.ids = this.ids || [];
+
+    this.ids.push(data);
+
+    if (id.charAt(0) === '#') {
+      attrs.id = data.id;
+    } else {
+      attrs['class'] = data.id;
+    }
+
+    return $('<div />', attrs).appendTo('body');
+  }
+};
+
 function context(description, spec) {
   describe(description, spec);
 }

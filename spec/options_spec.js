@@ -1,6 +1,10 @@
-describe('Model', function() {
+describe('options', function() {
   beforeEach(function() {
-    build();
+    this.el = Helper.create('#el');
+  });
+
+  afterEach(function() {
+    Helper.clear();
   });
 
   it ('has the right default values', function() {
@@ -33,7 +37,6 @@ describe('Model', function() {
     expect(opt.score).toBeUndefined();
     expect(opt.scoreName).toEqual('score');
     expect(opt.single).toBeFalsy();
-    expect(opt.size).toBe(16);
     expect(opt.space).toBeTruthy();
     expect(opt.starHalf).toEqual('star-half.png');
     expect(opt.starOff).toEqual('star-off.png');
@@ -50,7 +53,7 @@ describe('Model', function() {
     context('when actived', function() {
       it('disable the width property', function() {
         // given
-        var self = $('#element');
+        var self = this.el;
 
         // when
         self.raty({ starType: 'i' });
