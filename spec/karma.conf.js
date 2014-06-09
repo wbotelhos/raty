@@ -6,7 +6,7 @@ module.exports = function(config) {
     captureTimeout : 60000,
     colors         : true,
     exclude        : [],
-    files          : ['../vendor/jquery.js', '../lib/*.js', 'lib/helper.js', 'lib/jasmine-jquery.js', 'model.js', 'integration.js' ],
+    files          : ['../vendor/jquery.js', '../lib/*.js', 'lib/helper.js', 'lib/jasmine-jquery.js', 'options_spec.js', '*spec.js' ],
     frameworks     : ['jasmine'],
     logLevel       : config.LOG_INFO,
     port           : 9876,
