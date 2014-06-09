@@ -7,9 +7,9 @@ Helper = {
     }
   },
 
-  create: function(id) {
+  create: function(id, options) {
     var
-      attrs = {},
+      attrs = options || {},
       data  = { prefix: id.charAt(0), id: id.slice(1) };
 
     this.ids = this.ids || [];

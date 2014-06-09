@@ -11,7 +11,7 @@ describe('#move', function() {
   });
 
   describe('with interger score', function() {
-    xit ('moves to the right point', function() {
+    it ('moves to the right point', function() {
       // given
       this.el.raty({
         precision  : true,
@@ -28,7 +28,7 @@ describe('#move', function() {
   });
 
   describe('with float score', function() {
-    xit ('moves to the right point', function() {
+    it ('moves to the right point', function() {
       // given
       this.el.raty({
         precision  : true,
@@ -45,7 +45,7 @@ describe('#move', function() {
   });
 
   describe('with string score', function() {
-    xit ('moves to the right point', function() {
+    it ('moves to the right point', function() {
       // given
       this.el.raty({
         precision  : true,
@@ -62,7 +62,7 @@ describe('#move', function() {
   });
 
   describe('when score is bigger then the number of stars', function() {
-    xit ('moves to the and of the last star', function() {
+    it ('moves to the and of the last star', function() {
       // given
       this.el.raty({
         precision  : true,
@@ -80,23 +80,17 @@ describe('#move', function() {
 
   describe('with class selection', function() {
     beforeEach(function() {
-      this.el1 = $('<div data-target="#target1" class="el"></div>').appendTo('body');
-      this.el2 = $('<div data-target="#target2" class="el"></div>').appendTo('body');
-      this.target1  = $('<div id="target1"></div>').appendTo('body');
-      this.target2  = $('<div id="target2"></div>').appendTo('body');
+      this.target1 = Helper.create('#target1');
+      this.target2 = Helper.create('#target2');
+      this.el1     = Helper.create('.el', { 'data-target': '#target1' });
+      this.el2     = Helper.create('.el', { 'data-target': '#target2' });
     });
 
-    afterEach(function() {
-      this.el1.remove();
-      this.el2.remove();
-      this.target1.remove();
-      this.target2.remove();
-    });
-
-    // TODO: set taget with callback.
+    // TODO: set taget as callback.
+    // TODO: set taget as object.
     xit ('moves to the right point on all of them', function() {
       // given
-      var els = $('.el').raty({
+      this.el.raty({
         precision  : true,
         target     : function() {
           return this.getAttribute('data-target');
@@ -105,10 +99,10 @@ describe('#move', function() {
       });
 
       // when
-      $('.el').raty('move', 1.7);
+      this.el.raty('move', 1.7);
 
       // then
-      expect(this.target.text()).toEqual('1.7');
+      expect(this.target1.text()).toEqual('1.7');
       expect(this.target2.text()).toEqual('1.7');
     });
   });
