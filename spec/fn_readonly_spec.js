@@ -264,7 +264,6 @@ describe('#readOnly', function() {
         cancel.trigger('click').trigger('mouseout');
 
         // then
-        console.log(stars.attr('src'));
         expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
       });
     });

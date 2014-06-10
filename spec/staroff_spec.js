@@ -9,7 +9,7 @@ describe('#numberMax', function() {
     Helper.clear();
   });
 
-  it ('sets the stars off', function() {
+  it ('changes the stars off', function() {
     // given
     var self = this.el;
 

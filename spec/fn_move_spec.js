@@ -30,7 +30,7 @@ describe('#move', function() {
         expect(that.target.text()).toEqual('1.0');
 
         done();
-      }, 1);
+      }, 100);
     });
   });
 
@@ -54,7 +54,7 @@ describe('#move', function() {
         expect(that.target.text()).toEqual('1.7');
 
         done()
-      }, 1);
+      }, 100);
     });
   });
 
@@ -78,7 +78,7 @@ describe('#move', function() {
         expect(that.target.text()).toEqual('1.7');
 
         done()
-      }, 1);
+      }, 100);
     });
   });
 
@@ -102,7 +102,7 @@ describe('#move', function() {
         expect(that.target.text()).toEqual('5.0');
 
         done()
-      }, 1);
+      }, 100);
     });
   });
 
@@ -138,7 +138,7 @@ describe('#move', function() {
         expect(that.target2.text()).toEqual('1.7');
 
         done()
-      }, 1);
+      }, 100);
     });
   });
 });
