@@ -11,7 +11,7 @@ describe('#move', function() {
   });
 
   describe('with interger score', function() {
-    it ('moves to the right point', function() {
+    it ('moves to the right point', function(done) {
       // given
       this.el.raty({
         precision  : true,
@@ -19,16 +19,23 @@ describe('#move', function() {
         targetType : 'number'
       });
 
-      // when
-      this.el.raty('move', 1);
+      var star = this.el.children('img:first'),
+          that = this;
 
-      // then
-      expect(this.target.text()).toEqual('1.0');
+      // when
+      setTimeout(function() {
+        that.el.raty('move', 1);
+
+        // then
+        expect(that.target.text()).toEqual('1.0');
+
+        done();
+      }, 1);
     });
   });
 
   describe('with float score', function() {
-    it ('moves to the right point', function() {
+    it ('moves to the right point', function(done) {
       // given
       this.el.raty({
         precision  : true,
@@ -36,16 +43,23 @@ describe('#move', function() {
         targetType : 'number'
       });
 
-      // when
-      this.el.raty('move', 1.7);
+      var star = this.el.children('img:first'),
+          that = this;
 
-      // then
-      expect(this.target.text()).toEqual('1.7');
+      // when
+      setTimeout(function() {
+        that.el.raty('move', 1.7);
+
+        // then
+        expect(that.target.text()).toEqual('1.7');
+
+        done()
+      }, 1);
     });
   });
 
   describe('with string score', function() {
-    it ('moves to the right point', function() {
+    it ('moves to the right point', function(done) {
       // given
       this.el.raty({
         precision  : true,
@@ -53,16 +67,23 @@ describe('#move', function() {
         targetType : 'number'
       });
 
-      // when
-      this.el.raty('move', '1.7');
+      var star = this.el.children('img:first'),
+          that = this;
 
-      // then
-      expect(this.target.text()).toEqual('1.7');
+      // when
+      setTimeout(function() {
+        that.el.raty('move', '1.7');
+
+        // then
+        expect(that.target.text()).toEqual('1.7');
+
+        done()
+      }, 1);
     });
   });
 
   describe('when score is bigger then the number of stars', function() {
-    it ('moves to the and of the last star', function() {
+    it ('moves to the and of the last star', function(done) {
       // given
       this.el.raty({
         precision  : true,
@@ -70,11 +91,18 @@ describe('#move', function() {
         targetType : 'number'
       });
 
-      // when
-      this.el.raty('move', 6.7);
+      var star = this.el.children('img:first'),
+          that = this;
 
-      // then
-      expect(this.target.text()).toEqual('5.0');
+      // when
+      setTimeout(function() {
+        that.el.raty('move', 6.7);
+
+        // then
+        expect(that.target.text()).toEqual('5.0');
+
+        done()
+      }, 1);
     });
   });
 
@@ -88,7 +116,7 @@ describe('#move', function() {
 
     // TODO: set taget as callback.
     // TODO: set taget as object.
-    xit ('moves to the right point on all of them', function() {
+    xit ('moves to the right point on all of them', function(done) {
       // given
       this.el.raty({
         precision  : true,
@@ -98,12 +126,19 @@ describe('#move', function() {
         targetType : 'number'
       });
 
-      // when
-      this.el.raty('move', 1.7);
+      var star = this.el.children('img:first'),
+          that = this;
 
-      // then
-      expect(this.target1.text()).toEqual('1.7');
-      expect(this.target2.text()).toEqual('1.7');
+      // when
+      setTimeout(function() {
+        that.el.raty('move', 1.7);
+
+        // then
+        expect(that.target1.text()).toEqual('1.7');
+        expect(that.target2.text()).toEqual('1.7');
+
+        done()
+      }, 1);
     });
   });
 });
