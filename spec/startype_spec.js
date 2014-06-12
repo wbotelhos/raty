@@ -89,5 +89,24 @@ describe('#starType', function() {
       expect(score).toHaveAttr('name', 'score');
       expect(score.val()).toEqual('');
     });
+
+    context('with :half true', function() {
+      it ('fills half star', function() {
+        // given
+        this.el.raty({ half: true, starType: 'i' });
+
+        var stars = this.el.children('i');
+
+        // when
+        this.el.raty('move', 4.5);
+
+        // then
+        expect(stars[0]).toHaveClass('star-on-png');
+        expect(stars[1]).toHaveClass('star-on-png');
+        expect(stars[2]).toHaveClass('star-on-png');
+        expect(stars[3]).toHaveClass('star-on-png');
+        expect(stars[4]).toHaveClass('star-half-png');
+      });
+    });
   });
 });
