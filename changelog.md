@@ -20,7 +20,8 @@
 + Added option `targetScore` to choose where the score will be setted; (byhoratiss)
 + Added function `move` to move the cursor through stars;
 + Put the library over Travis Continuous Integration; (danielpsf)
-+ Added option `starType` to be possible change from image to other element like `i` and use font to render the stars.
++ Added option `starType` to be possible change from image to other element like `i` and use font to render the stars;
++ Option `target` accepts callback.
 
 ## 2.5.2
 

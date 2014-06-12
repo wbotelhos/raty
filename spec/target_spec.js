@@ -10,6 +10,31 @@ describe('#target', function() {
   });
 
   context('on mouseover', function() {
+    context('with callback', function() {
+      beforeEach(function() {
+        this.el[0].setAttribute('data-target', '#target');
+
+        this.target = Helper.target('#target');
+      });
+
+      it ('accepts the return as value', function() {
+        // given
+        this.el.raty({
+          target: function() {
+            return this.getAttribute('data-target');
+          }
+        });
+
+        var star = this.el.children('img:last');
+
+        // when
+        star.trigger('mouseover');
+
+        // then
+        expect(this.target).toHaveHtml('gorgeous');
+      });
+    });
+
     context('as div', function() {
       beforeEach(function() {
         this.target = Helper.target('#target');

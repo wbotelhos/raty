@@ -49,19 +49,20 @@ Helper = {
     }
   },
 
-  create: function(id, options) {
+  create: function(id, type, options) {
+    type = type || 'div';
+
     var data  = this._save(id),
         attrs = this._attrs(data, options);
 
-    return this._append('div', attrs);
+    return this._append(type, attrs);
   },
 
   target: function(id, type, options) {
     type = type || 'div';
 
     var data  = this._save(id),
-        attrs = this._attrs(data, options),
-        el    = '<' + type + '/>';
+        attrs = this._attrs(data, options);
 
     if (type === 'select') {
       attrs.html = this._select();
