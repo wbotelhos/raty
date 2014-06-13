@@ -38,6 +38,19 @@ describe('#cancel', function() {
       expect(cancel).toHaveAttr('src', '../lib/images/cancel-on.png');
     });
 
+    it ('keeps the :cancelClass', function() {
+      // given
+      this.el.raty({ cancel: true });
+
+      var cancel = this.el.children('.raty-cancel');
+
+      // when
+      cancel.trigger('mouseover');
+
+      // then
+      expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
+    });
+
     context('with stars on', function() {
       it ('turns off the stars', function() {
         // given
@@ -67,6 +80,19 @@ describe('#cancel', function() {
 
         // then
         expect(cancel[0].tagName).toEqual('I');
+      });
+
+      it ('keeps the :cancelClass', function() {
+        // given
+        this.el.raty({ cancel: true, starType: 'i' });
+
+        var cancel = this.el.children('.raty-cancel');
+
+        // when
+        cancel.trigger('mouseover');
+
+        // then
+        expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
       });
 
       it ('sets class replacing dot to hiphen', function() {
@@ -123,7 +149,7 @@ describe('#cancel', function() {
     });
   });
 
-  context('on :mouseout', function() {
+  context('on mouseleave', function() {
     it ('turns off', function() {
       // given
       this.el.raty({ cancel: true });
@@ -131,10 +157,23 @@ describe('#cancel', function() {
       var cancel = this.el.children('.raty-cancel');
 
         // when
-        cancel.trigger('mouseout');
+        cancel.trigger('mouseleave');
 
       // then
       expect(cancel).toHaveAttr('src', '../lib/images/cancel-off.png');
+    });
+
+    it ('keeps the :cancelClass', function() {
+      // given
+      this.el.raty({ cancel: true });
+
+      var cancel = this.el.children('.raty-cancel');
+
+      // when
+      cancel.trigger('mouseleave');
+
+      // then
+      expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
     });
 
     context('with stars on before', function() {
@@ -147,7 +186,7 @@ describe('#cancel', function() {
           stars  = this.el.children('img:not(.raty-cancel)');
 
         // when
-        cancel.trigger('mouseout');
+        cancel.trigger('mouseleave');
 
         // then
         expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
@@ -166,7 +205,7 @@ describe('#cancel', function() {
         stars  = this.el.children('img:not(.raty-cancel)');
 
       // when
-      cancel.trigger('click').trigger('mouseout');
+      cancel.trigger('click').trigger('mouseleave');
 
       // then
       expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
@@ -199,7 +238,7 @@ describe('#cancel', function() {
           stars  = this.el.children('img:not(.raty-cancel)');
 
         // when
-        cancel.trigger('click').trigger('mouseout');
+        cancel.trigger('click').trigger('mouseleave');
 
         // then
         expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
@@ -230,6 +269,19 @@ describe('#cancel', function() {
 
       // then
       expect(this.el.children('.raty-cancel')[0].tagName).toEqual('I');
+    });
+
+    it ('keeps the :cancelClass', function() {
+      // given
+      this.el.raty({ cancel: true, starType: 'i' });
+
+      var cancel = this.el.children('.raty-cancel');
+
+      // when
+      cancel.trigger('mouseleave');
+
+      // then
+      expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
     });
 
     it ('sets class replacing dot to hiphen', function() {
