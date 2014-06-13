@@ -16,6 +16,7 @@ describe('options', function() {
 
     // then
     expect(opt.cancel).toBeFalsy();
+    expect(opt.cancelClass).toEqual('raty-cancel');
     expect(opt.cancelHint).toEqual('Cancel this rating!');
     expect(opt.cancelOff).toEqual('cancel-off.png');
     expect(opt.cancelOn).toEqual('cancel-on.png');
