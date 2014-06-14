@@ -22,7 +22,7 @@
 
   <link href="demo/stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
 
-
+<link rel="stylesheet" href="lib/jquery.raty.css">
 <style>.functions .demo {
   margin-bottom: 10px;
 }
@@ -85,7 +85,7 @@ div.hint {
 </div>
 
     <nav role="navigation" class="navigation">
-  <a href="http://github.com/wbotelhos/archive/2.5.2.zip" class="download" title="Download version 2.5.2"><i class="i-file-zip"></i> v2.5.2</a>
+  <a href="http://github.com/wbotelhos/archive/2.6.0.zip" class="download" title="Download version 2.6.0"><i class="i-file-zip"></i> v2.6.0</a>
   <a href="http://github.com/wbotelhos/raty" class="i-github" target="blank" title="Github &lt;http://github.com/wbotelhos/raty&gt;"></a>
   <a href="http://wbotelhos.com/labs" class="labs i-labs" target="blank" title="Labs &lt;http://wbotelhos.com/labs&gt;"></a>
 
@@ -547,18 +547,18 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 
 <div id="precision-hint" class="input hint"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#precision'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
-    <span class="nx">cancel</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">cancelOff</span>  <span class="o">:</span> <span class="s1">'cancel-off.png'</span><span class="p">,</span>
-    <span class="nx">cancelOn</span>   <span class="o">:</span> <span class="s1">'cancel-on.png'</span><span class="p">,</span>
-    <span class="nx">path</span>       <span class="o">:</span> <span class="s1">'demo/images'</span><span class="p">,</span>
-    <span class="nx">size</span>       <span class="o">:</span> <span class="mi">24</span><span class="p">,</span>
-    <span class="nx">starHalf</span>   <span class="o">:</span> <span class="s1">'star-half.png'</span><span class="p">,</span>
-    <span class="nx">starOff</span>    <span class="o">:</span> <span class="s1">'star-off.png'</span><span class="p">,</span>
-    <span class="nx">starOn</span>     <span class="o">:</span> <span class="s1">'star-on.png'</span><span class="p">,</span>
-    <span class="nx">target</span>     <span class="o">:</span> <span class="s1">'#precision-hint'</span><span class="p">,</span>
-    <span class="nx">targetKeep</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">cancel</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">cancelOff</span>  <span class="o">:</span> <span class="s1">'cancel-off.png'</span><span class="p">,</span>
+  <span class="nx">cancelOn</span>   <span class="o">:</span> <span class="s1">'cancel-on.png'</span><span class="p">,</span>
+  <span class="nx">path</span>       <span class="o">:</span> <span class="s1">'demo/images'</span><span class="p">,</span>
+  <span class="nx">size</span>       <span class="o">:</span> <span class="mi">24</span><span class="p">,</span>
+  <span class="nx">starHalf</span>   <span class="o">:</span> <span class="s1">'star-half.png'</span><span class="p">,</span>
+  <span class="nx">starOff</span>    <span class="o">:</span> <span class="s1">'star-off.png'</span><span class="p">,</span>
+  <span class="nx">starOn</span>     <span class="o">:</span> <span class="s1">'star-on.png'</span><span class="p">,</span>
+  <span class="nx">target</span>     <span class="o">:</span> <span class="s1">'#precision-hint'</span><span class="p">,</span>
+  <span class="nx">targetKeep</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 
-    <span class="nx">precision</span>  <span class="o">:</span> <span class="kc">true</span>
+  <span class="nx">precision</span>  <span class="o">:</span> <span class="kc">true</span>
 <span class="p">});</span>
 </pre></div>
 <h1>Space</h1>
@@ -575,6 +575,19 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <div id="single"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#single'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">single</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
 </pre></div>
+<h1>Star Type</h1>
+
+<p>It lets you to change the star element type. Changing it from <code>img</code> to <code>i</code>, for example, gives you the change to use font instead image. There is a sample CSS (<code>demo/stylesheets/jquery.raty.css</code>) using a sample fonts (<code>demo/fonts/jquery.raty.[eot|svg|ttf|woff]</code>).</p>
+
+<p>To be easier to use, we replace the dot (.) extension to hyphen (-), so you do not need to change the original names, just set the names to your fonts. We recommend you use the <a href="http://icomoon.io">Ico Moon</a> app to be possible to download only the icons you need and rename it.</p>
+
+<div id="starType"></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span>   <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">half</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">starType</span> <span class="o">:</span> <span class="s1">'i'</span>  
+<span class="p">});</span>
+</pre></div>
 <h1>Changing the settings globally</h1>
 
 <p>You can change any option mentioning the scope <code>$.fn.raty.defaults.OPTION = VALUE;</code>. It must be called before you bind the plugin.</p>
@@ -585,6 +598,9 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <div class="highlight"><pre><span class="nx">cancel</span><span class="o">:</span> <span class="kc">false</span>
 </pre></div>
 <p>Creates a cancel button to cancel the rating.</p>
+<div class="highlight"><pre><span class="nx">cancelClass</span><span class="o">:</span> <span class="s1">'raty-cancel'</span>
+</pre></div>
+<p>Name of cancel's class.</p>
 <div class="highlight"><pre><span class="nx">cancelHint</span><span class="o">:</span> <span class="s1">'Cancel this rating!'</span>
 </pre></div>
 <p>The cancel's button hint.</p>
@@ -627,7 +643,7 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <div class="highlight"><pre><span class="nx">numberMax</span><span class="o">:</span> <span class="mi">20</span>
 </pre></div>
 <p>Max of star the option <a href="#number">number</a> can creates.</p>
-<div class="highlight"><pre><span class="nx">path</span><span class="o">:</span> <span class="s1">''</span>
+<div class="highlight"><pre><span class="nx">path</span><span class="o">:</span> <span class="kc">undefined</span>
 </pre></div>
 <p>A global locate where the icon will be looked.</p>
 <div class="highlight"><pre><span class="nx">precision</span><span class="o">:</span> <span class="kc">false</span>
@@ -796,7 +812,187 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 
 <section class="comments">
   <ol>
-    <li id="comment-721" class="comment">
+    <li id="comment-754" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/ae4944c7330826ba11eb7b3d099e8e8b?d=mm" title="Waleed">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Waleed</a>
+      
+      
+      
+    </header>
+
+    <p>Hi,</p>
+
+<p>Is it possible to have a different image on hovering and different for a set rating. For example normally if i have a 3 star out of 5 star rating already set as the average user rating, so the 3 stars are yellow. What if while hovering over the stars i want to have orange stars showing your hover selection and when you select it say 4 star you set 4 stars yellow</p>
+
+<p>thanks</p>
+
+
+    <footer>
+      <a href="#comment-754" class="anchor" title="Link to this comment">#754</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-752" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/3f7f9ad4799ea029e522954e34c8c107?d=mm" title="alex">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">alex</a>
+      
+      
+      
+    </header>
+
+    <p>Feature Request:</p>
+
+<p>It would be nice if there were 4 states with 4 images. Currently this is used only for ON or OFF, so you can show only what the user has voted for before or what they are voting for now. Many sites have a need to show the average vote across all users as well. In that case you would need 4 states (OFF, ON-USER, ON-COMMUNITY, ON-BOTH). That way you can show both how this particular user voted as well as the average community vote.</p>
+
+
+    <footer>
+      <a href="#comment-752" class="anchor" title="Link to this comment">#752</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-751" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/dac5c46d3e520fc0109b91330e47d208?d=mm" title="Shawn">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Shawn</a>
+      
+      
+      
+    </header>
+
+    <p>Washington,</p>
+
+<p>First, thank you for writing and sharing this. It has saved me a lot of time and works great! </p>
+
+<p>Second, I do have one small issue with cancel. It seems to work great in non-IE browsers (figures). In IE, it clears the rating when I mouseover the cancel image but as soon as I move my mouse off of the cancel image, my rating is reset to the original. Any ideas?</p>
+
+<p>Thanks again, <br>
+Shawn</p>
+
+
+    <footer>
+      <a href="#comment-751" class="anchor" title="Link to this comment">#751</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-750" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/4634c4710a9ee6f9002ce1d20228a9eb?d=mm" title="Elad">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Elad</a>
+      
+      
+      
+    </header>
+
+    <p>This time the code is attached:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="p">(</span><span class="c1">'#starRating').raty({</span>
+<span class="w">    </span><span class="nl">click:</span><span class="w"> </span><span class="vg">function</span><span class="p">(</span><span class="vg">score</span><span class="p">,</span><span class="w"> </span><span class="vg">evt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">$</span><span class="p">(</span><span class="c1">'#starRating').raty('readOnly', true);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-750" class="anchor" title="Link to this comment">#750</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-749" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/4634c4710a9ee6f9002ce1d20228a9eb?d=mm" title="Elad">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Elad</a>
+      
+      
+      
+    </header>
+
+    <p>Hi,</p>
+
+<p>I am trying to change the to readonly onclick but it is not working.</p>
+
+<p>Here is my code (my div's ID is starRating):</p>
+
+<script>
+    $('#starRating').raty({
+        click: function(score, evt) {
+        $('#starRating').raty('readOnly', true);
+        }
+      });
+</script>
+
+<p>What am I doing wrong?</p>
+
+
+    <footer>
+      <a href="#comment-749" class="anchor" title="Link to this comment">#749</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-747" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/5915c9422895966a496a8aa6e63f7010?d=mm" title="Teo Dragovic">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Teo Dragovic</a>
+      
+      
+      
+    </header>
+
+    <p>Hi,</p>
+
+<p>is it possible to extend plugin so it outputs <code>&lt;span&gt;</code> element with starOn and starOff as classes? I'm thinking of using icon font instead of images.</p>
+
+<p>Thanks.</p>
+
+
+    <footer>
+      <a href="#comment-747" class="anchor" title="Link to this comment">#747</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-721" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/a6054cbf21f02625367e3c88e1da0f8a?d=mm" title="Tatiana Perere">
   </div>
@@ -804,9 +1000,9 @@ When you enable this option the <a href="#half">half</a> options is automaticall
   <div class="body">
     <header>
       <a href="javascript:void(0);">Tatiana Perere</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi!</p>
@@ -818,8 +1014,8 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 
     <footer>
       <a href="#comment-721" class="anchor" title="Link to this comment">#721</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -832,9 +1028,9 @@ When you enable this option the <a href="#half">half</a> options is automaticall
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Tatiana Perere,</p>
@@ -844,8 +1040,8 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 
     <footer>
       <a href="#comment-744" class="anchor" title="Link to this comment">#744</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -858,9 +1054,9 @@ When you enable this option the <a href="#half">half</a> options is automaticall
   <div class="body">
     <header>
       <a href="javascript:void(0);">Tatiana Perere</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Did it changing the js lib.</p>
@@ -872,8 +1068,8 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 
     <footer>
       <a href="#comment-722" class="anchor" title="Link to this comment">#722</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -886,9 +1082,9 @@ When you enable this option the <a href="#half">half</a> options is automaticall
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Tatiana Perere,</p>
@@ -899,11 +1095,69 @@ But the next time a pull request is a polite thanks.</p>
 
     <footer>
       <a href="#comment-745" class="anchor" title="Link to this comment">#745</a>
-
-
+      
+      
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-746" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/a6054cbf21f02625367e3c88e1da0f8a?d=mm" title="Tatiana Perere">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Tatiana Perere</a>
+      
+      
+      
+    </header>
+
+    <p>Washington Botelho,</p>
+
+<p>Hey man, I'm sorry.</p>
+
+<p>I undo those changes and I use the single=true option now.</p>
+
+<p>But the mouseOver behavior was bothering me, so I added  the code on _bindOver: function() { :</p>
+
+<p>else {<br>
+  if(!self.opt.single){<br>
+          methods._fill.call(self, score);<br>
+  }<br>
+        }</p>
+
+<p>and to have the mark action onclick I added the same mouseOut bind to onClick bind:</p>
+
+<p>if(self.opt.single){<br>
+  $(this).on('click.raty', function(evt) {<br>
+          var score = parseFloat(self.score.val()) || undefined;</p>
+<div class="highlight"><pre><span class="w">      </span><span class="vg">methods</span><span class="o">.</span><span class="vg">_apply</span><span class="o">.</span><span class="vg">call</span><span class="p">(</span><span class="vg">self</span><span class="p">,</span><span class="w"> </span><span class="vg">score</span><span class="p">);</span>
+<span class="w">      </span><span class="vg">methods</span><span class="o">.</span><span class="vg">_target</span><span class="o">.</span><span class="vg">call</span><span class="p">(</span><span class="vg">self</span><span class="p">,</span><span class="w"> </span><span class="vg">score</span><span class="p">,</span><span class="w"> </span><span class="vg">evt</span><span class="p">);</span>
+
+<span class="w">      </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">self</span><span class="o">.</span><span class="vg">opt</span><span class="o">.</span><span class="vg">mouseout</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="vg">self</span><span class="o">.</span><span class="vg">opt</span><span class="o">.</span><span class="vg">mouseout</span><span class="o">.</span><span class="vg">call</span><span class="p">(</span><span class="vg">self</span><span class="p">,</span><span class="w"> </span><span class="vg">score</span><span class="p">,</span><span class="w"> </span><span class="vg">evt</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+<p>}</p>
+
+<p>Now I have a very different behavior when using SINGLE.</p>
+
+<p>Cheers!</p>
+
+
+    <footer>
+      <a href="#comment-746" class="anchor" title="Link to this comment">#746</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 
     </ol>
@@ -919,9 +1173,9 @@ But the next time a pull request is a polite thanks.</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Hussaim</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Can i change name of <code>&lt;input type="hidden"&gt;</code>?<br>
@@ -932,13 +1186,13 @@ i want to assign parent div name to hidden element name</p>
 ..
 
   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'hidden'</span> <span class="na">name=</span><span class="s">parentName</span><span class="nt">&gt;</span>
-<span class="nt">&lt;div/&gt;</span>
+<span class="nt">&lt;div/&gt;</span> 
 </pre></div>
 
     <footer>
       <a href="#comment-719" class="anchor" title="Link to this comment">#719</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -951,9 +1205,9 @@ i want to assign parent div name to hidden element name</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Hussaim,</p>
@@ -963,8 +1217,8 @@ i want to assign parent div name to hidden element name</p>
 
     <footer>
       <a href="#comment-743" class="anchor" title="Link to this comment">#743</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -980,9 +1234,9 @@ i want to assign parent div name to hidden element name</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">florin</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Same question as Jing bellow :)</p>
@@ -990,8 +1244,8 @@ i want to assign parent div name to hidden element name</p>
 
     <footer>
       <a href="#comment-718" class="anchor" title="Link to this comment">#718</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1004,9 +1258,9 @@ i want to assign parent div name to hidden element name</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>florin,</p>
@@ -1016,8 +1270,8 @@ i want to assign parent div name to hidden element name</p>
 
     <footer>
       <a href="#comment-742" class="anchor" title="Link to this comment">#742</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1033,9 +1287,9 @@ i want to assign parent div name to hidden element name</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Jing</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi!<br>
@@ -1046,8 +1300,8 @@ Thanks in advance!</p>
 
     <footer>
       <a href="#comment-717" class="anchor" title="Link to this comment">#717</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1060,9 +1314,9 @@ Thanks in advance!</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Jing,</p>
@@ -1072,8 +1326,8 @@ Thanks in advance!</p>
 
     <footer>
       <a href="#comment-741" class="anchor" title="Link to this comment">#741</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1089,9 +1343,9 @@ Thanks in advance!</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Joey</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>First, thanks for the plugin!</p>
@@ -1103,8 +1357,8 @@ Thanks in advance!</p>
 
     <footer>
       <a href="#comment-715" class="anchor" title="Link to this comment">#715</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1117,9 +1371,9 @@ Thanks in advance!</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Joey,</p>
@@ -1129,8 +1383,8 @@ Thanks in advance!</p>
 
     <footer>
       <a href="#comment-740" class="anchor" title="Link to this comment">#740</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1146,9 +1400,9 @@ Thanks in advance!</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">cesar</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>when i write the html code with jquery, a click function doesn't work</p>
@@ -1159,8 +1413,8 @@ Thanks in advance!</p>
 
     <footer>
       <a href="#comment-714" class="anchor" title="Link to this comment">#714</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1173,9 +1427,9 @@ Thanks in advance!</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>cesar,</p>
@@ -1189,8 +1443,8 @@ Try:</p>
 
     <footer>
       <a href="#comment-739" class="anchor" title="Link to this comment">#739</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1206,9 +1460,9 @@ Try:</p>
   <div class="body">
     <header>
       <a href="http://www.rent-aroom.com/rate-our-service" target="_blank">rent-aroom</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Thank you for the script. Looking great :-)</p>
@@ -1218,8 +1472,8 @@ Try:</p>
 
     <footer>
       <a href="#comment-713" class="anchor" title="Link to this comment">#713</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1232,9 +1486,9 @@ Try:</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>rent-aroom,</p>
@@ -1245,8 +1499,8 @@ Great job and thanks! (:</p>
 
     <footer>
       <a href="#comment-738" class="anchor" title="Link to this comment">#738</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1262,9 +1516,9 @@ Great job and thanks! (:</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">John Paul</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Is there any way to stop the user from submitting another rating after they have already sent one? I am recording these to database and want it to be a one time thing per user. Could I set it to read only after my POST?</p>
@@ -1272,8 +1526,8 @@ Great job and thanks! (:</p>
 
     <footer>
       <a href="#comment-710" class="anchor" title="Link to this comment">#710</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1286,9 +1540,9 @@ Great job and thanks! (:</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>John Paul,</p>
@@ -1299,8 +1553,8 @@ You can set it to read-only the time you want, but the time and how you want to 
 
     <footer>
       <a href="#comment-737" class="anchor" title="Link to this comment">#737</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1316,9 +1570,9 @@ You can set it to read-only the time you want, but the time and how you want to 
   <div class="body">
     <header>
       <a href="javascript:void(0);">Swagata</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>I tried the mouse over but it did not work. on mouse over call back , I was setting the score in a hidden variable , to get it's value on form post.</p>
@@ -1326,8 +1580,8 @@ You can set it to read-only the time you want, but the time and how you want to 
 
     <footer>
       <a href="#comment-704" class="anchor" title="Link to this comment">#704</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1340,9 +1594,9 @@ You can set it to read-only the time you want, but the time and how you want to 
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Swagata,</p>
@@ -1354,8 +1608,8 @@ Your you can use your ideia and copy the score for wherever you want.</p>
 
     <footer>
       <a href="#comment-736" class="anchor" title="Link to this comment">#736</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1371,9 +1625,9 @@ Your you can use your ideia and copy the score for wherever you want.</p>
   <div class="body">
     <header>
       <a href="http://recippia.herokuapp.com/test.html" target="_blank">Marc Stein</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi Washington,</p>
@@ -1391,8 +1645,8 @@ Your you can use your ideia and copy the score for wherever you want.</p>
 
     <footer>
       <a href="#comment-701" class="anchor" title="Link to this comment">#701</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1405,9 +1659,9 @@ Your you can use your ideia and copy the score for wherever you want.</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Marc Stein,</p>
@@ -1418,8 +1672,8 @@ But you can set <code>space: off</code> to avoid empty space and then manipulate
 
     <footer>
       <a href="#comment-735" class="anchor" title="Link to this comment">#735</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1435,9 +1689,9 @@ But you can set <code>space: off</code> to avoid empty space and then manipulate
   <div class="body">
     <header>
       <a href="http://surjitsidhu.com" target="_blank">Surjit Sidhu</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>I want to display "based on x reviews" after stars. how can do this ?<br>
@@ -1446,8 +1700,8 @@ i tried to modify js function, but does not find exact line to change</p>
 
     <footer>
       <a href="#comment-696" class="anchor" title="Link to this comment">#696</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1460,9 +1714,9 @@ i tried to modify js function, but does not find exact line to change</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Surjit Sidhu,</p>
@@ -1473,8 +1727,8 @@ But if you want to display the number of reviews, you should keep it on database
 
     <footer>
       <a href="#comment-734" class="anchor" title="Link to this comment">#734</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1490,9 +1744,9 @@ But if you want to display the number of reviews, you should keep it on database
   <div class="body">
     <header>
       <a href="javascript:void(0);">sudarshan</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hello sir,  nice work.<br>
@@ -1502,8 +1756,8 @@ Thanks.</p>
 
     <footer>
       <a href="#comment-694" class="anchor" title="Link to this comment">#694</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1516,9 +1770,9 @@ Thanks.</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>sudarshan,</p>
@@ -1529,8 +1783,8 @@ Raty can't provide it for you, sorry.</p>
 
     <footer>
       <a href="#comment-726" class="anchor" title="Link to this comment">#726</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1543,9 +1797,9 @@ Raty can't provide it for you, sorry.</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Vlad</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>sudarshan, </p>
@@ -1565,8 +1819,8 @@ Raty can't provide it for you, sorry.</p>
 
     <footer>
       <a href="#comment-695" class="anchor" title="Link to this comment">#695</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1579,9 +1833,9 @@ Raty can't provide it for you, sorry.</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Vlad,</p>
@@ -1591,8 +1845,8 @@ Raty can't provide it for you, sorry.</p>
 
     <footer>
       <a href="#comment-727" class="anchor" title="Link to this comment">#727</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1605,9 +1859,9 @@ Raty can't provide it for you, sorry.</p>
   <div class="body">
     <header>
       <a href="http://sweettutos.wordpress.com" target="_blank">Malek</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>the slash is added programmatically I noticed.<br>
@@ -1616,8 +1870,8 @@ So just 'img' and the stars assets should be loaded correctly. Vlad,</p>
 
     <footer>
       <a href="#comment-703" class="anchor" title="Link to this comment">#703</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1630,9 +1884,9 @@ So just 'img' and the stars assets should be loaded correctly. Vlad,</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Malek,</p>
@@ -1642,8 +1896,8 @@ So just 'img' and the stars assets should be loaded correctly. Vlad,</p>
 
     <footer>
       <a href="#comment-728" class="anchor" title="Link to this comment">#728</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1665,16 +1919,16 @@ So just 'img' and the stars assets should be loaded correctly. Vlad,</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Cabel</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Any easy way to make the stars smaller? Other than that, what a great plugin, keep up the great work. </p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="s1">'/images'</span><span class="p">;</span>
 
 <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">$</span><span class="p">(</span><span class="s1">'#default'</span><span class="p">).</span><span class="nx">raty</span><span class="p">();</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#default'</span><span class="p">).</span><span class="nx">raty</span><span class="p">();</span> 
 
   <span class="nx">$</span><span class="p">(</span><span class="s1">'.stars'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">score</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">size</span><span class="o">:</span> <span class="mi">12</span> <span class="p">});</span>
 <span class="p">});</span>
@@ -1682,8 +1936,8 @@ So just 'img' and the stars assets should be loaded correctly. Vlad,</p>
 
     <footer>
       <a href="#comment-692" class="anchor" title="Link to this comment">#692</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1696,9 +1950,9 @@ So just 'img' and the stars assets should be loaded correctly. Vlad,</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Cabel,</p>
@@ -1709,8 +1963,8 @@ But the only way is set the <code>size</code> to be possible calculate the right
 
     <footer>
       <a href="#comment-729" class="anchor" title="Link to this comment">#729</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1726,9 +1980,9 @@ But the only way is set the <code>size</code> to be possible calculate the right
   <div class="body">
     <header>
       <a href="javascript:void(0);">ISEE</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi.<br>
@@ -1744,8 +1998,8 @@ Now, we can get the score from the callbcak function when the raty was initializ
 
     <footer>
       <a href="#comment-691" class="anchor" title="Link to this comment">#691</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1758,9 +2012,9 @@ Now, we can get the score from the callbcak function when the raty was initializ
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>ISEE,</p>
@@ -1771,8 +2025,8 @@ On <code>click</code> you get the score choosed, like on <code>mouseover</code>a
 
     <footer>
       <a href="#comment-725" class="anchor" title="Link to this comment">#725</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1788,9 +2042,9 @@ On <code>click</code> you get the score choosed, like on <code>mouseover</code>a
   <div class="body">
     <header>
       <a href="javascript:void(0);">Darren Teng</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi Washington, can I set my own title for each star, such as <code>'good' =&gt; 'Strongly agree'</code>, <code>'bad' =&gt; 'Strongly disagree'</code>?</p>
@@ -1800,8 +2054,8 @@ On <code>click</code> you get the score choosed, like on <code>mouseover</code>a
 
     <footer>
       <a href="#comment-690" class="anchor" title="Link to this comment">#690</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1814,9 +2068,9 @@ On <code>click</code> you get the score choosed, like on <code>mouseover</code>a
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Darren Teng,</p>
@@ -1826,8 +2080,8 @@ On <code>click</code> you get the score choosed, like on <code>mouseover</code>a
 
     <footer>
       <a href="#comment-723" class="anchor" title="Link to this comment">#723</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1840,9 +2094,9 @@ On <code>click</code> you get the score choosed, like on <code>mouseover</code>a
   <div class="body">
     <header>
       <a href="javascript:void(0);">Jirka Kyncl</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>I found it now :)<br>
@@ -1861,8 +2115,8 @@ you can set parameter hints.</p>
 
     <footer>
       <a href="#comment-712" class="anchor" title="Link to this comment">#712</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1875,9 +2129,9 @@ you can set parameter hints.</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Jirka Kyncl</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi, you can change it in source code. In hints array. I didn't found better solution.</p>
@@ -1885,8 +2139,8 @@ you can set parameter hints.</p>
 
     <footer>
       <a href="#comment-711" class="anchor" title="Link to this comment">#711</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1899,9 +2153,9 @@ you can set parameter hints.</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Jirka Kyncl,</p>
@@ -1911,8 +2165,8 @@ you can set parameter hints.</p>
 
     <footer>
       <a href="#comment-724" class="anchor" title="Link to this comment">#724</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1931,9 +2185,9 @@ you can set parameter hints.</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Guilherme Duailibe</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Excelente plugin! Estou usando. Obrigado!</p>
@@ -1941,8 +2195,8 @@ you can set parameter hints.</p>
 
     <footer>
       <a href="#comment-687" class="anchor" title="Link to this comment">#687</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1955,9 +2209,9 @@ you can set parameter hints.</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Guilherme Duailibe,</p>
@@ -1967,8 +2221,8 @@ you can set parameter hints.</p>
 
     <footer>
       <a href="#comment-689" class="anchor" title="Link to this comment">#689</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -1984,9 +2238,9 @@ you can set parameter hints.</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Daniel Better</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi Washington, first of all, great plugin, gj!<br>
@@ -1997,8 +2251,8 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
 
     <footer>
       <a href="#comment-686" class="anchor" title="Link to this comment">#686</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2011,9 +2265,9 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Daniel Better,</p>
@@ -2023,8 +2277,8 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
 
     <footer>
       <a href="#comment-688" class="anchor" title="Link to this comment">#688</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2040,9 +2294,9 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
   <div class="body">
     <header>
       <a href="javascript:void(0);">Nishit</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi Washington,</p>
@@ -2054,8 +2308,8 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
 
     <footer>
       <a href="#comment-679" class="anchor" title="Link to this comment">#679</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2068,9 +2322,9 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Nishit,</p>
@@ -2080,8 +2334,8 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
 
     <footer>
       <a href="#comment-680" class="anchor" title="Link to this comment">#680</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2097,9 +2351,9 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
   <div class="body">
     <header>
       <a href="javascript:void(0);">Brian</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>I have a need for multiple ratings on a page. For example, individual ratings for things such as "Price," "Value" and "Quality." Is there a way to specify scoreName for each instance of a rating? Excellent plugin, btw.</p>
@@ -2107,8 +2361,8 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
 
     <footer>
       <a href="#comment-676" class="anchor" title="Link to this comment">#676</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2121,9 +2375,9 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
   <div class="body">
     <header>
       <a href="javascript:void(0);">Brian</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>In the init function, I have changed:</p>
@@ -2140,8 +2394,8 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
 
     <footer>
       <a href="#comment-678" class="anchor" title="Link to this comment">#678</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2154,9 +2408,9 @@ Secondly, is there a way to enlarge the stars even more then 24px as seen here? 
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Brian,</p>
@@ -2169,8 +2423,8 @@ This way we can pass a function to <code>scoreName</code> and receive it via dat
 
     <footer>
       <a href="#comment-684" class="anchor" title="Link to this comment">#684</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2189,9 +2443,9 @@ This way we can pass a function to <code>scoreName</code> and receive it via dat
   <div class="body">
     <header>
       <a href="http://i-sty.comule.com" target="_blank">Istvan Szollosi</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi,<br>
@@ -2214,8 +2468,8 @@ I tried to use your plugin in my blog/web-shop but I got these errors:</p>
 
     <footer>
       <a href="#comment-674" class="anchor" title="Link to this comment">#674</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2228,9 +2482,9 @@ I tried to use your plugin in my blog/web-shop but I got these errors:</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Istvan Szollosi,</p>
@@ -2243,8 +2497,8 @@ Check if you jQuery version has the new method <code>on</code>.</p>
 
     <footer>
       <a href="#comment-683" class="anchor" title="Link to this comment">#683</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2260,9 +2514,9 @@ Check if you jQuery version has the new method <code>on</code>.</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Mark</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi</p>
@@ -2287,8 +2541,8 @@ Check if you jQuery version has the new method <code>on</code>.</p>
 
     <footer>
       <a href="#comment-673" class="anchor" title="Link to this comment">#673</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2301,9 +2555,9 @@ Check if you jQuery version has the new method <code>on</code>.</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Mark,</p>
@@ -2315,8 +2569,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-682" class="anchor" title="Link to this comment">#682</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2332,9 +2586,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="javascript:void(0);">Brandon</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Awesome plugin! Super easy to use and dropped right into my rails app for a reviews rating system. Thanks!</p>
@@ -2342,8 +2596,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-672" class="anchor" title="Link to this comment">#672</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2356,9 +2610,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Brandon,</p>
@@ -2368,8 +2622,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-681" class="anchor" title="Link to this comment">#681</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2385,9 +2639,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="javascript:void(0);">Daniel Weller</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Here is a link to a tutorial for ruby on rails. If anyone can get it to fully work let me know! I've been able to only get the update stars to work. (Average rating isn't working)</p>
@@ -2397,8 +2651,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-666" class="anchor" title="Link to this comment">#666</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2411,9 +2665,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Daniel Weller,</p>
@@ -2423,8 +2677,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-671" class="anchor" title="Link to this comment">#671</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2440,9 +2694,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="javascript:void(0);">Max</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>@Roosevelt: luckily you find the download on his github page as well: <a href="https://github.com/wbotelhos/raty">https://github.com/wbotelhos/raty</a></p>
@@ -2450,8 +2704,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-664" class="anchor" title="Link to this comment">#664</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2464,9 +2718,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Max,</p>
@@ -2476,8 +2730,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-670" class="anchor" title="Link to this comment">#670</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2493,9 +2747,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="http://www.naetech.com" target="_blank">Roosevelt P</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Your download link to the plugin is throwing a 404 error.</p>
@@ -2503,8 +2757,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-662" class="anchor" title="Link to this comment">#662</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2517,9 +2771,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Roosevelt P,</p>
@@ -2529,8 +2783,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-669" class="anchor" title="Link to this comment">#669</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2546,9 +2800,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="javascript:void(0);">Bill</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi,</p>
@@ -2560,8 +2814,8 @@ By default the hidden field that holds the score is called <code>score</code>, b
 
     <footer>
       <a href="#comment-661" class="anchor" title="Link to this comment">#661</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2574,9 +2828,9 @@ By default the hidden field that holds the score is called <code>score</code>, b
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Bill,</p>
@@ -2589,8 +2843,8 @@ When the user click on star, it actives the <a href="#click">click</a> callback,
 
     <footer>
       <a href="#comment-668" class="anchor" title="Link to this comment">#668</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2606,9 +2860,9 @@ When the user click on star, it actives the <a href="#click">click</a> callback,
   <div class="body">
     <header>
       <a href="javascript:void(0);">Tj</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi, How to save previous ratings ?? How to download and install this plugin ?</p>
@@ -2618,8 +2872,8 @@ When the user click on star, it actives the <a href="#click">click</a> callback,
 
     <footer>
       <a href="#comment-660" class="anchor" title="Link to this comment">#660</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2632,9 +2886,9 @@ When the user click on star, it actives the <a href="#click">click</a> callback,
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Tj,</p>
@@ -2645,8 +2899,8 @@ To instal, just import the files e use the code showed on this page.</p>
 
     <footer>
       <a href="#comment-667" class="anchor" title="Link to this comment">#667</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2662,9 +2916,9 @@ To instal, just import the files e use the code showed on this page.</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Lanamaja</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi,<br>
@@ -2677,8 +2931,8 @@ with your plugin?</p>
 
     <footer>
       <a href="#comment-654" class="anchor" title="Link to this comment">#654</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2691,9 +2945,9 @@ with your plugin?</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Lanamaja,</p>
@@ -2705,8 +2959,8 @@ with your plugin?</p>
 
     <footer>
       <a href="#comment-659" class="anchor" title="Link to this comment">#659</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2722,9 +2976,9 @@ with your plugin?</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">Amarpreet</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Hi,</p>
@@ -2734,8 +2988,8 @@ with your plugin?</p>
 
     <footer>
       <a href="#comment-652" class="anchor" title="Link to this comment">#652</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2748,9 +3002,9 @@ with your plugin?</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>Amarpreet,</p>
@@ -2763,8 +3017,8 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
 
     <footer>
       <a href="#comment-653" class="anchor" title="Link to this comment">#653</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2780,9 +3034,9 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>first</p>
@@ -2790,8 +3044,8 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
 
     <footer>
       <a href="#comment-650" class="anchor" title="Link to this comment">#650</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2804,9 +3058,9 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
   <div class="body">
     <header>
       <a href="javascript:void(0);">José Leite</a>
-
-
-
+      
+      
+      
     </header>
 
     <p>Washington Botelho,</p>
@@ -2817,10 +3071,10 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
     <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"badge badge-warning"</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"star{{idx}}"</span><span class="o">&gt;</span><span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
 
     <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-      <span class="nx">$</span><span class="p">(</span><span class="s1">'#star{{idx}}'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'#star{{idx}}'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> 
         <span class="nx">numberMax</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-        <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">score</span><span class="o">:</span> <span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span>
+        <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+        <span class="nx">score</span><span class="o">:</span> <span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span> 
       <span class="p">});</span>
     <span class="o">&lt;</span><span class="err">/script&gt;</span>
   <span class="p">{{</span><span class="nx">pass</span><span class="p">}}</span>
@@ -2829,8 +3083,8 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
 
     <footer>
       <a href="#comment-706" class="anchor" title="Link to this comment">#706</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -2843,9 +3097,9 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
   <div class="body">
     <header>
       <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-
+      
       <span class="flag author">author</span>
-
+      
     </header>
 
     <p>José Leite,</p>
@@ -2862,8 +3116,8 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
 
     <footer>
       <a href="#comment-730" class="anchor" title="Link to this comment">#730</a>
-
-
+      
+      
     </footer>
   </div>
 
@@ -3097,6 +3351,12 @@ $('#space').raty({ space: false });
 
 $('#single').raty({ single: true });
 
+$('#starType').raty({
+  cancel   : true,
+  half     : true,
+  starType : 'i'
+});
+
 $('#functions').raty({
   cancel     : true,
   cancelOff  : 'cancel-off.png',
@@ -3163,6 +3423,6 @@ $('#move-function-run').on('click', function() {
   });
 </script>
 
-
+  
 </body>
 </html>
