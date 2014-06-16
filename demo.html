@@ -281,7 +281,19 @@ You can mension the Raty element (DOM) itself using <code>this</code>.</p>
 <div id="click"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<h1>Click Prevent</h1>
+
+<p>If you return <code>false</code> into callback, the click action will be prevented.</p>
+
+<div id="click-prevent"></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Score will not change.'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </pre></div>
@@ -527,7 +539,7 @@ The options <a href="#target-div">target</a>, <a href="#targetFormat">targetForm
 <div id="mouseover"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">mouseover</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </pre></div>
@@ -3353,6 +3365,13 @@ $('#starHalf').raty({
 $('#click').raty({
   click: function(score, evt) {
     alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
+  }
+});
+
+$('#click-prevent').raty({
+  click: function(score, evt) {
+    alert('Score will not change.')
+    return false;
   }
 });
 
