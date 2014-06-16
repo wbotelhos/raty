@@ -114,57 +114,6 @@ describe('Integration', function() {
       });
     });
 
-    describe('#precision', function() {
-      beforeEach(function() {
-        buildDivTarget();
-      });
-
-      it ('enables the :half options', function() {
-        // given
-        var self = $('#element');
-
-        // when
-        self.raty({ precision: true });
-
-        // then
-        expect(self.data('options').half).toBeTruthy();
-      });
-
-      it ('changes the :targetType to score', function() {
-        // given
-        var self = $('#element');
-
-        // when
-        self.raty({ precision: true });
-
-        // then
-        expect(self.data('options').targetType).toEqual('score');
-      });
-
-      context('with :target', function() {
-        context('with :targetKeep', function() {
-          context('with :score', function() {
-            it ('sets the float with one fractional number', function() {
-              // given
-              var self = $('#element');
-
-              // when
-              self.raty({
-                precision : true,
-                score     : 1.23,
-                target    : '#hint',
-                targetKeep: true,
-                targetType: 'score'
-              });
-
-              // then
-              expect($('#hint')).toHaveHtml('1.2');
-            });
-          });
-        });
-      });
-    });
-
     describe('#targetScore', function() {
       beforeEach(function() {
         this.score = $('<input id="score" type="text" />').appendTo('body');
