@@ -13,7 +13,10 @@
 
 + `path` now is `undefined` by default;
 + The {score} placeholder on `targetFormat` option is no longer mandatory;
-+ On `click` method, if click callback is not defined, it will be ignore instead of throw error.
++ On `click` method, if click callback is not defined, it will be ignore instead of throw error;
++ Option `size` was removed! Raty will discover it;
++ Option `width` was removed! It is a bad idea force a width on this responsive days. Try `inline-block` for fit.
+
 
 ### News
 
