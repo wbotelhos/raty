@@ -17,7 +17,6 @@
 + Option `size` was removed! Raty will discover it;
 + Option `width` was removed! It is a bad idea force a width on this responsive days. Try `inline-block` for fit.
 
-
 ### News
 
 + Added option `targetScore` to choose where the score will be setted; (byhoratiss)
