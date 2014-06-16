@@ -1,5 +1,15 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+## The winter is coming...
+
+### Fixes
+
+### Changes
+
++ If you returns `false` into `click` callback, the action will be prevented.
+
+### News
+
 ## 2.6.0
 
 ### Fixes

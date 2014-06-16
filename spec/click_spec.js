@@ -47,7 +47,7 @@ describe('#click', function() {
     // given
     this.el.raty({
       click: function(score) {
-        $(this).data('score', score);
+        $(this).data('result', score);
       }
     });
 
@@ -57,7 +57,62 @@ describe('#click', function() {
     star.trigger('click');
 
     // then
-    expect(this.el.data('score')).toEqual(5);
+    expect(this.el.data('result')).toEqual(5);
+  });
+
+  context('with return as undefined', function() {
+    it ('executes click behavior', function() {
+      // given
+      this.el.raty({
+        click: function() {}
+      });
+
+      var star = this.el.children('img:last');
+
+      // when
+      star.trigger('click');
+
+      // then
+      expect(this.el.children('input')).toHaveValue('5');
+    });
+  });
+
+  context('with return as true', function() {
+    it ('executes click behavior', function() {
+      // given
+      this.el.raty({
+        click: function() {
+          return true;
+        }
+      });
+
+      var star = this.el.children('img:last');
+
+      // when
+      star.trigger('click');
+
+      // then
+      expect(this.el.children('input')).toHaveValue('5');
+    });
+  });
+
+  context('with return as false', function() {
+    it ('does not executes click behavior', function() {
+      // given
+      this.el.raty({
+        click: function() {
+          return false;
+        }
+      });
+
+      var star = this.el.children('img:last');
+
+      // when
+      star.trigger('click');
+
+      // then
+      expect(this.el.children('input')).toHaveValue('');
+    });
   });
 
   context('with :cancel', function() {
