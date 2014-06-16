@@ -233,9 +233,3 @@ The read-only indicator was not removing after the reset of configuration, block
 + Start with a default score;
 + Set the stars read-only;
 + Choose the name of the hidden score field.
-
-## known Bugs
-
-+ On versions before 1.6 if a attribute not exists, then empty string is returned instead undefined;
-+ On 1.5.2 the opt.click callback is never called, because this version always returns undefined to .call() and .apply();
-+ On 1.5.2 the attribute readonly is setted with empty value as following readonly="".
