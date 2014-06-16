@@ -28,11 +28,11 @@
 ```html
 <script src="jquery.raty.js"></script>
 
-<div id="star"></div>
+<div></div>
 ```
 
 ```js
-$('#star').raty();
+$('div').raty();
 ```
 
 ## Usage with Font
@@ -45,11 +45,11 @@ $('#star').raty();
 <link rel="stylesheet" href="jquery.raty.css">
 <script src="jquery.raty.js"></script>
 
-<div id="star"></div>
+<div></div>
 ```
 
 ```js
-$('#star').raty({ starType: 'i' });
+$('div').raty({ starType: 'i' });
 ```
 
 ## Options
@@ -78,7 +78,6 @@ round       : { down: .25, full: .6, up: .76 }               // Included values 
 score       : undefined                                      // Initial rating.
 scoreName   : 'score'                                        // Name of the hidden field that holds the score value.
 single      : false                                          // Enables just a single star selection.
-size        : 16                                             // The size of the icons that will be used.
 space       : true                                           // Puts space between the icons.
 starHalf    : 'star-half.png'                                // The name of the half star image.
 starOff     : 'star-off.png'                                 // Name of the star image off.
@@ -89,30 +88,29 @@ targetKeep  : false                                          // If the last rati
 targetScore : undefined                                      // Element selector where the score will be filled, instead of creating a new hidden field (scoreName option).
 targetText  : ''                                             // Default text setted on target.
 targetType  : 'hint'                                         // Option to choose if target will receive hint o 'score' type.
-width       : undefined                                      // Manually adjust the width for the project.
 starType    : 'img'                                          // The type of the star, img as default, could also be whatever element
 ```
 
 ## Functions
 
 ```js
-$('#star').raty('score');                  // Get the current score.
+$('div').raty('score');                  // Get the current score.
 
-$('#star').raty('score', number);          // Set the score.
+$('div').raty('score', number);          // Set the score.
 
-$('#star').raty('click', number);          // Click on some star.
+$('div').raty('click', number);          // Click on some star.
 
-$('.star').raty('readOnly', boolean);      // Change the read-only state.
+$('div').raty('readOnly', boolean);      // Change the read-only state.
 
-$('#star').raty('cancel', boolean);        // Cancel the rating. The last param force the click callback.
+$('div').raty('cancel', boolean);        // Cancel the rating. The last param force the click callback.
 
-$('#star').raty('reload');                 // Reload the rating with the current configuration.
+$('div').raty('reload');                 // Reload the rating with the current configuration.
 
-$('#star').raty('set', { option: value }); // Reset the rating with new configurations.
+$('div').raty('set', { option: value }); // Reset the rating with new configurations.
 
-$('#star').raty('destroy');                // Destroy the bind and give you the raw element.
+$('div').raty('destroy');                // Destroy the bind and give you the raw element.
 
-$('#star').raty('move', number);           // Move the mouse to the given score point position.
+$('div').raty('move', number);           // Move the mouse to the given score point position.
 ```
 
 ## Contributors
