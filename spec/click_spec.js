@@ -75,10 +75,25 @@ describe('#click', function() {
       // then
       expect(this.el.children('input')).toHaveValue('5');
     });
+
+    it ('turns on the stars', function() {
+      // given
+      this.el.raty({
+        click: function() {}
+      });
+
+      var stars = this.el.children('img');
+
+      // when
+      stars.first().trigger('click');
+
+      // then
+      expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+    });
   });
 
   context('with return as true', function() {
-    it ('executes click behavior', function() {
+    it ('applies the score', function() {
       // given
       this.el.raty({
         click: function() {
@@ -94,10 +109,27 @@ describe('#click', function() {
       // then
       expect(this.el.children('input')).toHaveValue('5');
     });
+
+    it ('turns on the stars', function() {
+      // given
+      this.el.raty({
+        click: function() {
+          return true;
+        }
+      });
+
+      var stars = this.el.children('img');
+
+      // when
+      stars.first().trigger('click');
+
+      // then
+      expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+    });
   });
 
   context('with return as false', function() {
-    it ('does not executes click behavior', function() {
+    it ('does not applies the score', function() {
       // given
       this.el.raty({
         click: function() {
@@ -112,6 +144,23 @@ describe('#click', function() {
 
       // then
       expect(this.el.children('input')).toHaveValue('');
+    });
+
+    it ('does not turns on the stars', function() {
+      // given
+      this.el.raty({
+        click: function() {
+          return false;
+        }
+      });
+
+      var stars = this.el.children('img');
+
+      // when
+      stars.first().trigger('click');
+
+      // then
+      expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
     });
   });
 

@@ -9,81 +9,83 @@ describe('#starOn', function() {
     Helper.clear();
   });
 
-  it ('changes the stars on', function() {
-    // given
-    var self  = this.el.raty({ starOn: 'star-half.png' }),
-        stars = self.children('img');
-
-    // when
-    stars.last().trigger('mouseover');
-
-    // then
-    expect(stars).toHaveAttr('src', '../lib/images/star-half.png');
-  });
-
-  context('with :starType', function() {
-    it ('uses the given element', function() {
+  context('on mouseover', function() {
+    it ('changes the stars on', function() {
       // given
-      var self  = this.el.raty({ starType: 'i' }),
-          stars = self.children('i');
+      var self  = this.el.raty({ starOn: 'star-half.png' }),
+          stars = self.children('img');
 
       // when
       stars.last().trigger('mouseover');
 
       // then
-      expect(stars[0].tagName).toEqual('I');
-      expect(stars[1].tagName).toEqual('I');
-      expect(stars[2].tagName).toEqual('I');
-      expect(stars[3].tagName).toEqual('I');
-      expect(stars[4].tagName).toEqual('I');
+      expect(stars).toHaveAttr('src', '../lib/images/star-half.png');
     });
 
-    it ('normalizes the class name', function() {
-      // given
-      var self  = this.el.raty({ starType: 'i' }),
-          stars = self.children('i');
+    context('with :starType', function() {
+      it ('uses the given element', function() {
+        // given
+        var self  = this.el.raty({ starType: 'i' }),
+            stars = self.children('i');
 
-      // when
-      stars.last().trigger('mouseover');
+        // when
+        stars.last().trigger('mouseover');
 
-      // then
-      expect(stars).toHaveClass('star-on-png');
-    });
+        // then
+        expect(stars[0].tagName).toEqual('I');
+        expect(stars[1].tagName).toEqual('I');
+        expect(stars[2].tagName).toEqual('I');
+        expect(stars[3].tagName).toEqual('I');
+        expect(stars[4].tagName).toEqual('I');
+      });
 
-    it ('does not create "src" attribute', function() {
-      // given
-      var self  = this.el.raty({ starType: 'i' }),
-          stars = self.children('i');
+      it ('normalizes the class name', function() {
+        // given
+        var self  = this.el.raty({ starType: 'i' }),
+            stars = self.children('i');
 
-      // when
-      stars.last().trigger('mouseover');
+        // when
+        stars.last().trigger('mouseover');
 
-      // then
-      expect(stars).not.toHaveAttr('src');
-    });
+        // then
+        expect(stars).toHaveClass('star-on-png');
+      });
 
-    it ('creates "data-alt" attribute', function() {
-      // given
-      var self  = this.el.raty({ starType: 'i' }),
-          stars = self.children('i');
+      it ('does not create "src" attribute', function() {
+        // given
+        var self  = this.el.raty({ starType: 'i' }),
+            stars = self.children('i');
 
-      // when
-      stars.last().trigger('mouseover');
+        // when
+        stars.last().trigger('mouseover');
 
-      // then
-      expect(stars).toHaveAttr('data-alt');
-    });
+        // then
+        expect(stars).not.toHaveAttr('src');
+      });
 
-    it ('does not create "alt" attribute', function() {
-      // given
-      var self  = this.el.raty({ starType: 'i' }),
-          stars = self.children('i');
+      it ('creates "data-alt" attribute', function() {
+        // given
+        var self  = this.el.raty({ starType: 'i' }),
+            stars = self.children('i');
 
-      // when
-      stars.last().trigger('mouseover');
+        // when
+        stars.last().trigger('mouseover');
 
-      // then
-      expect(stars).not.toHaveAttr('alt');
+        // then
+        expect(stars).toHaveAttr('data-alt');
+      });
+
+      it ('does not create "alt" attribute', function() {
+        // given
+        var self  = this.el.raty({ starType: 'i' }),
+            stars = self.children('i');
+
+        // when
+        stars.last().trigger('mouseover');
+
+        // then
+        expect(stars).not.toHaveAttr('alt');
+      });
     });
   });
 });
