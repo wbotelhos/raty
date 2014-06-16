@@ -66,10 +66,6 @@ div.hint {
   margin-top: 15px;
   padding: 7px
 }
-
-.white {
-  background-color: #FFF
-}
 </style>
 
 <script src="vendor/jquery.js"></script><script src="lib/jquery.raty.js"></script>
@@ -268,6 +264,15 @@ Pay attention, when you want specify a different icon with a different directory
   <span class="nx">starHalf</span> <span class="o">:</span> <span class="s1">'star-half-mono.png'</span>
 <span class="p">});</span>
 </pre></div>
+<p>You can to use the size of icon you want.</p>
+
+<div id="size"></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">cancel</span>  <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">starOff</span> <span class="o">:</span> <span class="s1">'star-off-big.png'</span><span class="p">,</span>
+  <span class="nx">starOn</span>  <span class="o">:</span> <span class="s1">'star-on-big.png'</span>
+<span class="p">});</span>
+</pre></div>
 <h1>Click</h1>
 
 <p>Callback to handle the <a href="#score">score</a> and the click <code>event</code> on click action.<br>
@@ -294,12 +299,21 @@ If you pass <code>undefined</code>, this position will be ignored and receive th
 <p>Changes the path where your icons are located.<br>
 Set it only if you want the same path for all icons.<br>
 Don't mind about the last slash of the path, if you don't put it, it will be setted for you.</p>
-
-<div id="path"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">'assets/images'</span> <span class="p">});</span>
 </pre></div>
 <p>Now we have the following full paths: <strong>assets/images/star-on.png</strong>, <strong>assets/images/star-off.png</strong> and so.</p>
 
+<h1>Path Callback</h1>
+
+<p>You can set the path dinamically using callback.</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-path=</span><span class="s">"assets/images"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">path</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'data-path'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
 <h1>Star Off and Star On</h1>
 
 <p>Changes the name of the star on and star off.</p>
@@ -382,27 +396,6 @@ If the value <code>on</code> or <code>off</code> is omitted then the attribute <
 </pre></div>
 <p>Now we have all off icons as <strong>0.png</strong>, icons 1 and 2 as <strong>1.png</strong>, icon 3 as <strong>3.png</strong> and icons 4 and 5 as <strong>5.png</strong>. </p>
 
-<h1>Size</h1>
-
-<p>The size in pixel of the icon you will to use.<br>
-It does <strong>not</strong> change the icon size, just the icons's wrap space to fit it.</p>
-
-<div id="size"></div>
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
-  <span class="nx">cancel</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">half</span>   <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">size</span>   <span class="o">:</span> <span class="mi">24</span>
-<span class="p">});</span>
-</pre></div>
-<h1>Width</h1>
-
-<p>By default Raty calculates the width calculating the <a href="#size">size</a> of the stars plus the spaces.<br>
-But for some reason the calculated width not fits on your layout, you can change it manually.<br>
-If you want to avoid that Raty applies the style width on you wrapper, set it to <code>false</code>.</p>
-
-<div id="width" class="white"></div>
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">150</span> <span class="p">});</span>
-</pre></div>
 <h1>Target</h1>
 
 <p>Some place to display the <a href="#hints">hints</a> or the <a href="#cancelHint">cancelHint</a>.</p>
@@ -489,7 +482,7 @@ For the <a href="#cancel">cancel</a> button the value is empty.</p>
 </pre></div>
 <h1>Target Text</h1>
 
-<p>Normally all <a href="#target">target</a> is keeped blank if you don't use the <a href="#targetKeep">targetKeep</a> option.<br>
+<p>Normally all <a href="#target-div">target</a> is keeped blank if you don't use the <a href="#targetKeep">targetKeep</a> option.<br>
 If you want a default content you can use this option.</p>
 
 <div id="targetText"></div>
@@ -502,7 +495,7 @@ If you want a default content you can use this option.</p>
 </pre></div>
 <h1>Target Format</h1>
 
-<p>You can choose a template to be merged with your hints and displayed on <a href="#target">target</a>.</p>
+<p>You can choose a template to be merged with your hints and displayed on <a href="#target-div">target</a>.</p>
 
 <div id="targetFormat"></div>
 
@@ -512,11 +505,24 @@ If you want a default content you can use this option.</p>
   <span class="nx">targetFormat</span> <span class="o">:</span> <span class="s1">'Rating: {score}'</span>
 <span class="p">});</span>
 </pre></div>
+<h1>Target Score</h1>
+
+<p>You can keep the score value inside the binded element by default or choose where to put it.<br>
+If you change the score target, the default score field won't be created.<br>
+It is not like <a href="#target-div">target</a> option for display purpose, it is the real current score data.</p>
+
+<div id="targetScore"></div>
+
+<p><input id="target-score" type="text" class="input hint"></p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">targetScore</span><span class="o">:</span> <span class="s1">'#target'</span>
+<span class="p">});</span>
+</pre></div>
 <h1>Mouseover</h1>
 
 <p>You can handle the action on mouseover.<br>
 The arguments is the same of the <a href="#click">click</a> callback.<br>
-The options <a href="#target">target</a>, <a href="#targetFormat">targetFormat</a>, <a href="#targetKeep">targetKeep</a>, <a href="#targetText">targetText</a> and <a href="#targetType">targetType</a> are abstractions of this callback. You can do it by yourself.</p>
+The options <a href="#target-div">target</a>, <a href="#targetFormat">targetFormat</a>, <a href="#targetKeep">targetKeep</a>, <a href="#targetText">targetText</a> and <a href="#targetType">targetType</a> are abstractions of this callback. You can do it by yourself.</p>
 
 <div id="mouseover"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -551,7 +557,6 @@ When you enable this option the <a href="#half">half</a> options is automaticall
   <span class="nx">cancelOff</span>  <span class="o">:</span> <span class="s1">'cancel-off.png'</span><span class="p">,</span>
   <span class="nx">cancelOn</span>   <span class="o">:</span> <span class="s1">'cancel-on.png'</span><span class="p">,</span>
   <span class="nx">path</span>       <span class="o">:</span> <span class="s1">'demo/images'</span><span class="p">,</span>
-  <span class="nx">size</span>       <span class="o">:</span> <span class="mi">24</span><span class="p">,</span>
   <span class="nx">starHalf</span>   <span class="o">:</span> <span class="s1">'star-half.png'</span><span class="p">,</span>
   <span class="nx">starOff</span>    <span class="o">:</span> <span class="s1">'star-off.png'</span><span class="p">,</span>
   <span class="nx">starOn</span>     <span class="o">:</span> <span class="s1">'star-on.png'</span><span class="p">,</span>
@@ -664,9 +669,6 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <div class="highlight"><pre><span class="nx">single</span><span class="o">:</span> <span class="kc">false</span>
 </pre></div>
 <p>Enables just a single star selection.</p>
-<div class="highlight"><pre><span class="nx">size</span><span class="o">:</span> <span class="mi">16</span>
-</pre></div>
-<p>The size of the icons that will be used.</p>
 <div class="highlight"><pre><span class="nx">space</span><span class="o">:</span> <span class="kc">true</span>
 </pre></div>
 <p>Puts space between the icons.</p>
@@ -694,9 +696,6 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <div class="highlight"><pre><span class="nx">targetType</span><span class="o">:</span> <span class="s1">'hint'</span>
 </pre></div>
 <p>Option to choose if <a href="target">target</a> will receive hint or the score number.</p>
-<div class="highlight"><pre><span class="nx">width</span><span class="o">:</span> <span class="kc">undefined</span>
-</pre></div>
-<p>Manually adjust the width for the project.</p>
 
 <h1>Functions</h1>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'score'</span><span class="p">);</span>
@@ -812,7 +811,31 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 
 <section class="comments">
   <ol>
-    <li id="comment-754" class="comment">
+    <li id="comment-756" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/3150fd42a3442786a74afdae5c6a93d9?d=mm" title="anon">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">anon</a>
+      
+      
+      
+    </header>
+
+    <p>Wow, I'm impressed. This is very nice</p>
+
+
+    <footer>
+      <a href="#comment-756" class="anchor" title="Link to this comment">#756</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-754" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/ae4944c7330826ba11eb7b3d099e8e8b?d=mm" title="Waleed">
   </div>
@@ -839,6 +862,36 @@ When you enable this option the <a href="#half">half</a> options is automaticall
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-762" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Waleed,</p>
+
+<p>The <a href="#comment-752">same request</a> of Alex.<br>
+Please, open an issue.</p>
+
+
+    <footer>
+      <a href="#comment-762" class="anchor" title="Link to this comment">#762</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 <li id="comment-752" class="comment">
   <div class="avatar">
@@ -865,6 +918,36 @@ When you enable this option the <a href="#half">half</a> options is automaticall
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-761" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>alex,</p>
+
+<p>It is a lot more code and I don't know if is a good idea.<br>
+The plugins is big enough. But open an issue and lats watch the +1's.</p>
+
+
+    <footer>
+      <a href="#comment-761" class="anchor" title="Link to this comment">#761</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 <li id="comment-751" class="comment">
   <div class="avatar">
@@ -896,35 +979,35 @@ Shawn</p>
     </footer>
   </div>
 
-</li>
-<li id="comment-750" class="comment">
+    <ol>
+      <li id="comment-760" class="comment">
   <div class="avatar">
-    <img alt="" src="http://www.gravatar.com/avatar/4634c4710a9ee6f9002ce1d20228a9eb?d=mm" title="Elad">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
   </div>
 
   <div class="body">
     <header>
-      <a href="javascript:void(0);">Elad</a>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
       
-      
+      <span class="flag author">author</span>
       
     </header>
 
-    <p>This time the code is attached:</p>
-<div class="highlight"><pre><span class="err">$</span><span class="p">(</span><span class="c1">'#starRating').raty({</span>
-<span class="w">    </span><span class="nl">click:</span><span class="w"> </span><span class="vg">function</span><span class="p">(</span><span class="vg">score</span><span class="p">,</span><span class="w"> </span><span class="vg">evt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="err">$</span><span class="p">(</span><span class="c1">'#starRating').raty('readOnly', true);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">});</span>
-</pre></div>
+    <p>Shawn,</p>
+
+<p>Could you open an issue?</p>
+
 
     <footer>
-      <a href="#comment-750" class="anchor" title="Link to this comment">#750</a>
+      <a href="#comment-760" class="anchor" title="Link to this comment">#760</a>
       
       
     </footer>
   </div>
 
+</li>
+
+    </ol>
 </li>
 <li id="comment-749" class="comment">
   <div class="avatar">
@@ -944,15 +1027,14 @@ Shawn</p>
 <p>I am trying to change the to readonly onclick but it is not working.</p>
 
 <p>Here is my code (my div's ID is starRating):</p>
-
-<script>
-    $('#starRating').raty({
-        click: function(score, evt) {
-        $('#starRating').raty('readOnly', true);
-        }
-      });
-</script>
-
+<div class="highlight"><pre><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#starRating'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+    <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'#starRating'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'readOnly'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
 <p>What am I doing wrong?</p>
 
 
@@ -963,6 +1045,35 @@ Shawn</p>
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-759" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Elad,</p>
+
+<p>I run you code and it works.</p>
+
+
+    <footer>
+      <a href="#comment-759" class="anchor" title="Link to this comment">#759</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 <li id="comment-747" class="comment">
   <div class="avatar">
@@ -991,6 +1102,35 @@ Shawn</p>
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-757" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Teo Dragovic,</p>
+
+<p>Yes, use the version 2.6.0 with option <code>starType</code>.</p>
+
+
+    <footer>
+      <a href="#comment-757" class="anchor" title="Link to this comment">#757</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 <li id="comment-721" class="comment">
   <div class="avatar">
@@ -1120,29 +1260,28 @@ But the next time a pull request is a polite thanks.</p>
 
 <p>I undo those changes and I use the single=true option now.</p>
 
-<p>But the mouseOver behavior was bothering me, so I added  the code on _bindOver: function() { :</p>
-
-<p>else {<br>
-  if(!self.opt.single){<br>
-          methods._fill.call(self, score);<br>
-  }<br>
-        }</p>
-
-<p>and to have the mark action onclick I added the same mouseOut bind to onClick bind:</p>
-
-<p>if(self.opt.single){<br>
-  $(this).on('click.raty', function(evt) {<br>
-          var score = parseFloat(self.score.val()) || undefined;</p>
-<div class="highlight"><pre><span class="w">      </span><span class="vg">methods</span><span class="o">.</span><span class="vg">_apply</span><span class="o">.</span><span class="vg">call</span><span class="p">(</span><span class="vg">self</span><span class="p">,</span><span class="w"> </span><span class="vg">score</span><span class="p">);</span>
-<span class="w">      </span><span class="vg">methods</span><span class="o">.</span><span class="vg">_target</span><span class="o">.</span><span class="vg">call</span><span class="p">(</span><span class="vg">self</span><span class="p">,</span><span class="w"> </span><span class="vg">score</span><span class="p">,</span><span class="w"> </span><span class="vg">evt</span><span class="p">);</span>
-
-<span class="w">      </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">self</span><span class="o">.</span><span class="vg">opt</span><span class="o">.</span><span class="vg">mouseout</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="vg">self</span><span class="o">.</span><span class="vg">opt</span><span class="o">.</span><span class="vg">mouseout</span><span class="o">.</span><span class="vg">call</span><span class="p">(</span><span class="vg">self</span><span class="p">,</span><span class="w"> </span><span class="vg">score</span><span class="p">,</span><span class="w"> </span><span class="vg">evt</span><span class="p">);</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
+<p>But the mouseOver behavior was bothering me, so I added  the code on</p>
+<div class="highlight"><pre><span class="nx">_bindOver</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="o">:</span>
+<span class="k">else</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">self</span><span class="p">.</span><span class="nx">opt</span><span class="p">.</span><span class="nx">single</span><span class="p">){</span>
+    <span class="nx">methods</span><span class="p">.</span><span class="nx">_fill</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">score</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
-<p>}</p>
+<p>and to have the mark action onclick I added the same mouseOut bind to onClick bind:</p>
+<div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">opt</span><span class="p">.</span><span class="nx">single</span><span class="p">){</span>
+  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click.raty'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">score</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">score</span><span class="p">.</span><span class="nx">val</span><span class="p">())</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">;</span>
 
+      <span class="nx">methods</span><span class="p">.</span><span class="nx">_apply</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">score</span><span class="p">);</span>
+      <span class="nx">methods</span><span class="p">.</span><span class="nx">_target</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">opt</span><span class="p">.</span><span class="nx">mouseout</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">opt</span><span class="p">.</span><span class="nx">mouseout</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
 <p>Now I have a very different behavior when using SINGLE.</p>
 
 <p>Cheers!</p>
@@ -3270,13 +3409,10 @@ $('#size').raty({
   cancelOff : 'cancel-off.png',
   cancelOn  : 'cancel-on.png',
   half      : true,
-  size      : 24,
   starHalf  : 'star-half.png',
   starOff   : 'star-off.png',
   starOn    : 'star-on.png'
 });
-
-$('#width').raty({ width: 150 });
 
 $('#target-div').raty({
   cancel : true,
@@ -3320,6 +3456,10 @@ $('#targetFormat').raty({
   targetFormat : 'Rating: {score}'
 });
 
+$('#targetScore').raty({
+  targetScore: '#target-score'
+});
+
 $('#mouseover').raty({
   mouseover: function(score, evt) {
     alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
@@ -3333,18 +3473,17 @@ $('#mouseout').raty({
 });
 
 $('#precision').raty({
-    cancel     : true,
-    cancelOff  : 'cancel-off.png',
-    cancelOn   : 'cancel-on.png',
-    path       : 'demo/images',
-    size       : 24,
-    starHalf   : 'star-half.png',
-    starOff    : 'star-off.png',
-    starOn     : 'star-on.png',
-    target     : '#precision-hint',
-    targetKeep : true,
+  cancel     : true,
+  cancelOff  : 'cancel-off.png',
+  cancelOn   : 'cancel-on.png',
+  path       : 'demo/images',
+  starHalf   : 'star-half.png',
+  starOff    : 'star-off.png',
+  starOn     : 'star-on.png',
+  target     : '#precision-hint',
+  targetKeep : true,
 
-    precision  : true
+  precision  : true
 });
 
 $('#space').raty({ space: false });
@@ -3363,7 +3502,6 @@ $('#functions').raty({
   cancelOn   : 'cancel-on.png',
   path       : 'demo/images',
   precision  : true,
-  size       : 24,
   starHalf   : 'star-half.png',
   starOff    : 'star-off.png',
   starOn     : 'star-on.png',
