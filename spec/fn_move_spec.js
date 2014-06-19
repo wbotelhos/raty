@@ -35,26 +35,52 @@ describe('#move', function() {
   });
 
   describe('with float score', function() {
-    it ('moves to the right point', function(done) {
-      // given
-      this.el.raty({
-        precision  : true,
-        target     : '#target',
-        targetType : 'number'
+    context('with one decimal', function() {
+      it ('moves to the right point', function(done) {
+        // given
+        this.el.raty({
+          precision  : true,
+          target     : '#target',
+          targetType : 'number'
+        });
+
+        var star = this.el.children('img:first'),
+            that = this;
+
+        // when
+        setTimeout(function() {
+          that.el.raty('move', 1.7);
+
+          // then
+          expect(that.target.text()).toEqual('1.7');
+
+          done()
+        }, 100);
       });
+    });
 
-      var star = this.el.children('img:first'),
-          that = this;
+    context('with two decimal', function() {
+      it ('moves to the right point', function(done) {
+        // given
+        this.el.raty({
+          precision  : true,
+          target     : '#target',
+          targetType : 'number'
+        });
 
-      // when
-      setTimeout(function() {
-        that.el.raty('move', 1.7);
+        var star = this.el.children('img:first'),
+            that = this;
 
-        // then
-        expect(that.target.text()).toEqual('1.7');
+        // when
+        setTimeout(function() {
+          that.el.raty('move', 1.79);
 
-        done()
-      }, 100);
+          // then
+          expect(that.target.text()).toEqual('1.7');
+
+          done()
+        }, 100);
+      });
     });
   });
 
