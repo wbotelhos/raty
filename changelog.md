@@ -4,6 +4,9 @@
 
 ### Fixes
 
++ Function `move` was loosing precision with float with more then one digit;
++ Function `move` was loosing the saved `options` data.
+
 ### Changes
 
 + If you returns `false` into `click` callback, the action will be prevented.
