@@ -22,15 +22,15 @@ describe('#move', function() {
       var star = this.el.children('img:first'),
           that = this;
 
-      // when
       setTimeout(function() {
+        // when
         that.el.raty('move', 1);
 
         // then
         expect(that.target.text()).toEqual('1.0');
 
         done();
-      }, 100);
+      }, 1);
     });
   });
 
@@ -47,15 +47,15 @@ describe('#move', function() {
         var star = this.el.children('img:first'),
             that = this;
 
-        // when
         setTimeout(function() {
+          // when
           that.el.raty('move', 1.7);
 
           // then
           expect(that.target.text()).toEqual('1.7');
 
           done()
-        }, 100);
+        }, 1);
       });
     });
 
@@ -71,15 +71,15 @@ describe('#move', function() {
         var star = this.el.children('img:first'),
             that = this;
 
-        // when
         setTimeout(function() {
+          // when
           that.el.raty('move', 1.79);
 
           // then
           expect(that.target.text()).toEqual('1.7');
 
           done()
-        }, 100);
+        }, 1);
       });
     });
   });
@@ -96,15 +96,15 @@ describe('#move', function() {
       var star = this.el.children('img:first'),
           that = this;
 
-      // when
       setTimeout(function() {
+        // when
         that.el.raty('move', '1.7');
 
         // then
         expect(that.target.text()).toEqual('1.7');
 
         done()
-      }, 100);
+      }, 1);
     });
   });
 
@@ -120,15 +120,15 @@ describe('#move', function() {
       var star = this.el.children('img:first'),
           that = this;
 
-      // when
       setTimeout(function() {
+        // when
         that.el.raty('move', 6.7);
 
         // then
         expect(that.target.text()).toEqual('5.0');
 
         done()
-      }, 100);
+      }, 1);
     });
   });
 
@@ -136,14 +136,23 @@ describe('#move', function() {
     beforeEach(function() {
       this.target1 = Helper.create('#target1');
       this.target2 = Helper.create('#target2');
-      this.el1     = Helper.create('.el', { 'data-target': '#target1' });
-      this.el2     = Helper.create('.el', { 'data-target': '#target2' });
+      this.el1     = Helper.create('.el', 'div', { 'data-target': '#target1' });
+      this.el2     = Helper.create('.el', 'div', { 'data-target': '#target2' });
+    });
+
+    afterEach(function() {
+      this.target1.remove();
+      this.target2.remove();
+      this.el1.remove();
+      this.el2.remove();
     });
 
     // TODO: set taget as callback.
     // TODO: set taget as object.
-    xit ('moves to the right point on all of them', function(done) {
+    it ('moves to the right point on all of them', function(done) {
       // given
+      this.el = $('.el');
+
       this.el.raty({
         precision  : true,
         target     : function() {
@@ -155,8 +164,8 @@ describe('#move', function() {
       var star = this.el.children('img:first'),
           that = this;
 
-      // when
       setTimeout(function() {
+        // when
         that.el.raty('move', 1.7);
 
         // then
@@ -164,7 +173,7 @@ describe('#move', function() {
         expect(that.target2.text()).toEqual('1.7');
 
         done()
-      }, 100);
+      }, 1);
     });
   });
 });
