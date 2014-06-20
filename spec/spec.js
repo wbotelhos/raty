@@ -866,7 +866,7 @@ describe('Integration', function() {
           var score = self.raty('score');
 
           // then
-          expect(score).toEqual(self.data('options').numberMax);
+          expect(score).toEqual(self[0].opt.numberMax);
         });
       });
     });
