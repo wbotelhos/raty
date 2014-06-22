@@ -16,7 +16,13 @@
 
   "devDependencies": {
     "karma": "0.12",
+    "karma-chrome-launcher": "0.1",
     "karma-firefox-launcher": "0.1",
+    "karma-ie-launcher": "0.1",
+    "karma-opera-launcher": "0.1",
+    "karma-phantomjs-launcher": "0.1",
+    "karma-safari-launcher": "0.1",
+
     "karma-jasmine": "0.2"
   },
 
