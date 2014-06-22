@@ -88,7 +88,7 @@ targetKeep  : false                                          // If the last rati
 targetScore : undefined                                      // Element selector where the score will be filled, instead of creating a new hidden field (scoreName option).
 targetText  : ''                                             // Default text setted on target.
 targetType  : 'hint'                                         // Option to choose if target will receive hint o 'score' type.
-starType    : 'img'                                          // The type of the star, img as default, could also be whatever element
+starType    : 'img'                                          // Element used to represent a star.
 ```
 
 ## Functions
