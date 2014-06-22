@@ -51,4 +51,19 @@ describe('#getFirstDecimal', function() {
       expect(decimal).toEqual(1);
     });
   });
+
+  context('with float round bug with more than three nines consecutives', function() {
+    it ('is the first decimal rounded', function() {
+      // given
+      var number = 0.1999999999999998;
+
+      this.el.raty();
+
+      // when
+      var decimal = this.el.raty('_getFirstDecimal', number);
+
+      // then
+      expect(decimal).toEqual(2);
+    });
+  });
 });

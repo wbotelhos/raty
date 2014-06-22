@@ -58,6 +58,23 @@ Helper = {
     return this._append(type, attrs);
   },
 
+  move: function(el, integer, decimal) {
+    var
+      stars    = el.children('img:not(.raty-cancel)'),
+      star     = stars.eq(integer),
+      width    = star[0].width || parseFloat(star.css('font-size'));
+      fraction = width / 10,
+      left     = star.offset().left,
+      percent  = left + fraction * decimal + 0.1,
+      evt      = $.Event('mousemove', { pageX: percent });
+
+    if (console && console.log) {
+      console.debug(integer + '.' + decimal, ':', 'left:', left, 'width:', width, 'fraction:', fraction, 'pageX:', percent);
+    }
+
+    star.trigger(evt);
+  },
+
   target: function(id, type, options) {
     type = type || 'div';
 

@@ -9,66 +9,66 @@ describe('#set', function() {
     Helper.clear();
   });
 
-  xit ('is chainable', function() {
+  it ('is chainable', function() {
     // given
-    var self = this.el.raty();
+    this.el.raty();
 
     // when
-    var ref = self.raty('set', {});
+    var ref = this.el.raty('set', {});
 
     // then
-    expect(ref).toBe(self);
+    expect(ref).toBe(this.el);
   });
 
-  xit ('changes the declared options', function() {
+  it ('changes the declared options', function() {
     // given
-    var self = this.el.raty();
+    this.el.raty();
 
     // when
-    var ref = self.raty('set', { scoreName: 'other' });
+    var ref = this.el.raty('set', { scoreName: 'other' });
 
     // then
     expect(ref.children('input')).toHaveAttr('name', 'other');
   });
 
-  xit ('keeps the other options', function() {
+  it ('keeps the other options', function() {
     // given
-    var self = this.el.raty({ number: 6 });
+    this.el.raty({ number: 6 });
 
     // when
-    var ref = self.raty('set', { scoreName: 'other' });
+    var ref = this.el.raty('set', { scoreName: 'other' });
 
     // then
     expect(ref.children('img').length).toEqual(6);
   });
 
   context('with external bind on wrapper', function() {
-    xit ('is kept', function() {
+    it ('is kept', function() {
       // given
-      var self = this.el.on('click', function() {
+      this.el.on('click', function() {
         $(this).data('trigged', true);
       }).raty();
 
-      self.raty('set', {});
+      this.el.raty('set', {});
 
       // when
-      self.trigger('click');
+      this.el.trigger('click');
 
       // then
-      expect(self.data('trigged')).toBeTruthy();
+      expect(this.el.data('trigged')).toBeTruthy();
     });
   });
 
   context('when :readOnly by function', function() {
     it ('is removes the readonly data info', function() {
       // given
-      var self = this.el.raty().raty('readOnly', true);
+      this.el.raty().raty('readOnly', true);
 
       // when
-      var ref = self.raty('set', { readOnly: false });
+      var ref = this.el.raty('set', { readOnly: false });
 
       // then
-      expect(self).not.toHaveData('readonly');
+      expect(this.el).not.toHaveData('readonly');
     });
   });
 });

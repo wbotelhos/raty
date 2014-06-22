@@ -10,6 +10,17 @@ describe('#move', function() {
     Helper.clear();
   });
 
+  it ('sets *move to true then turns it false ', function() {
+    // given
+    this.el.raty();
+
+    // when
+    this.el.raty('move', 1);
+
+    // then
+    expect(this.el[0].move).toBeFalsy();
+  });
+
   describe('with interger score', function() {
     it ('moves to the right point', function(done) {
       // given
@@ -30,7 +41,7 @@ describe('#move', function() {
         expect(that.target.text()).toEqual('1.0');
 
         done();
-      }, 1);
+      }, 100);
     });
   });
 
@@ -55,7 +66,7 @@ describe('#move', function() {
           expect(that.target.text()).toEqual('1.7');
 
           done()
-        }, 1);
+        }, 100);
       });
     });
 
@@ -79,7 +90,7 @@ describe('#move', function() {
           expect(that.target.text()).toEqual('1.7');
 
           done()
-        }, 1);
+        }, 100);
       });
     });
   });
@@ -104,7 +115,7 @@ describe('#move', function() {
         expect(that.target.text()).toEqual('1.7');
 
         done()
-      }, 1);
+      }, 100);
     });
   });
 
@@ -128,7 +139,7 @@ describe('#move', function() {
         expect(that.target.text()).toEqual('5.0');
 
         done()
-      }, 1);
+      }, 100);
     });
   });
 
@@ -173,7 +184,7 @@ describe('#move', function() {
         expect(that.target2.text()).toEqual('1.7');
 
         done()
-      }, 1);
+      }, 100);
     });
   });
 });

@@ -4,14 +4,17 @@
 
 ### Fixes
 
-+ Function `move` was loosing precision with float with more then one digit;
-+ Function `move` was loosing the saved `options` data.
++ Function `move` was losing precision with float with more then one digit;
++ Function `move` was losing the saved `options` data.
 
 ### Changes
 
-+ If you returns `false` into `click` callback, the action will be prevented.
++ If you returns `false` into `click` callback, the action will be prevented;
++ When `precision` is on it won't force `targetType` to be `score` anymore.
 
 ### News
+
++ Added support to float `hints`;
 
 ## 2.6.0
 

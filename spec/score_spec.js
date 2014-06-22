@@ -62,4 +62,16 @@ describe('#score', function() {
       expect(this.el.children('input')).toHaveAttr('readonly', 'readonly');
     });
   });
+
+  context('with value greater then numbers', function() {
+    it ('receives the number of star as value', function() {
+      // given
+
+      // when
+      this.el.raty({ score: 100 });
+
+      // then
+      expect(this.el[0].opt.score).toEqual(this.el[0].opt.number);
+    });
+  });
 });
