@@ -476,7 +476,7 @@ For the <a href="#cancel">cancel</a> button the value is empty.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">cancel</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">target</span>     <span class="o">:</span> <span class="s1">'#hint'</span><span class="p">,</span>
-  <span class="nx">targetType</span> <span class="o">:</span> <span class="s1">'number'</span>
+  <span class="nx">targetType</span> <span class="o">:</span> <span class="s1">'score'</span>
 <span class="p">});</span>
 </pre></div>
 <h1>Target Keep</h1>
@@ -551,7 +551,7 @@ The arguments is the same of the <a href="#mouseover">mouseover</a> callback.</p
 <div id="mouseout"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">mouseout</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'ID: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">"\nscore: "</span> <span class="o">+</span> <span class="nx">score</span> <span class="o">+</span> <span class="s2">"\nevent: "</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </pre></div>
@@ -823,7 +823,215 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 
 <section class="comments">
   <ol>
-    <li id="comment-756" class="comment">
+    <li id="comment-768" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/f8c18f2fb33110004b53df292ce7d566?d=mm" title="James">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">James</a>
+      
+      
+      
+    </header>
+
+    <p>Hello,</p>
+
+<p>I have created a very simple page. But it doesn't work with score attribute. I cannot find where the problem is. It will show 5 grey stars, but it should show 3 yellow stars. </p>
+
+<pre><code>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Star Rating</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+
+
+
+<div id="score"></div>
+<script type="text/javascript">
+$.fn.raty.defaults.path = 'js/images';
+$(function() {
+    $('#score').raty({ score: 3 });
+});
+</script>
+
+
+</code></pre>
+
+
+    <footer>
+      <a href="#comment-768" class="anchor" title="Link to this comment">#768</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-767" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/a93750d68359fd4a954113b17b8d1d25?d=mm" title="Muhammad Saleh">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Muhammad Saleh</a>
+      
+      
+      
+    </header>
+
+    <p>Quick tip for anyone who will use Raty in RTL application<br>
+you will find that the half star icon will work properly in LTR as it will be flipped in RTL</p>
+
+<p>To fix that don't create a new image just use this snippet:</p>
+
+<p>img[src$="star-half.png"]{<br>
+  -moz-transform: scaleX(-1);<br>
+    -webkit-transform: scaleX(-1);<br>
+    -o-transform: scaleX(-1);<br>
+    transform: scaleX(-1);<br>
+    -ms-filter: fliph; /<em>IE</em>/<br>
+    filter: fliph; /<em>IE</em>/<br>
+}</p>
+
+<p>The previous snippet will flip the image horizontally and it's cross browser.</p>
+
+<p>Happy Coding!</p>
+
+
+    <footer>
+      <a href="#comment-767" class="anchor" title="Link to this comment">#767</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-765" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/fa61aa1d27df09f36563b340156ee5d1?d=mm" title="Naseer">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http:learn.ecozlabs.com" target="_blank">Naseer</a>
+      
+      
+      
+    </header>
+
+    <p>The click callback is not working with other options. My code is...</p>
+
+<p>$(document).ready(function() {<br>
+                                                        $('#star-&lt;?php echo $result['ItemId']; ?&gt;').raty(<br>
+                                                                  {<br>
+                                                                      readOnly : true,<br>
+                                                                      score : &lt;?php echo $result['StarRating']; ?&gt;,<br>
+                                                                      hints : ['&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars', '&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars', '&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars', '&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars', '&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars'],<br>
+                                                                      precision : true,<br>
+                                                                      click : function() {<br>
+                                                                          alert('score: ');<br>
+                                                                      }<br>
+                                                                  });<br>
+                                                    });</p>
+
+
+    <footer>
+      <a href="#comment-765" class="anchor" title="Link to this comment">#765</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-764" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/39a3c4ee3b965521c0663bae4c8312b6?d=mm" title="Websun">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://websuntaraporn.com/" target="_blank">Websun</a>
+      
+      
+      
+    </header>
+
+    <p>Hi,<br>
+How can I start using this Raty? What else do I need other than jquery.js and jquery.raty.js?<br>
+Sorry if this question looks silly.</p>
+
+
+    <footer>
+      <a href="#comment-764" class="anchor" title="Link to this comment">#764</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-766" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/a93750d68359fd4a954113b17b8d1d25?d=mm" title="Muhammad Saleh">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Muhammad Saleh</a>
+      
+      
+      
+    </header>
+
+    <p>Websun,<br>
+You will also need the images for the<br>
+star on<br>
+star off<br>
+star half</p>
+
+<p>and you may skip the fonts ;) I did that</p>
+
+
+    <footer>
+      <a href="#comment-766" class="anchor" title="Link to this comment">#766</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-763" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/5ca422fa639219f682462cf9a95f687b?d=mm" title="Tom">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">Tom</a>
+      
+      
+      
+    </header>
+
+    <p>Is it possible to turn off the hints all together?<br>
+When I pass null and it shows the 'score', it's not showing the fraction amount. I.e. a score of 3.5 for the hint is showing as 3. As such, I'd like to turn it off.</p>
+
+
+    <footer>
+      <a href="#comment-763" class="anchor" title="Link to this comment">#763</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-756" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/3150fd42a3442786a74afdae5c6a93d9?d=mm" title="anon">
   </div>
@@ -3364,7 +3572,7 @@ $('#starHalf').raty({
 
 $('#click').raty({
   click: function(score, evt) {
-    alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
+    alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt.type);
   }
 });
 
@@ -3481,13 +3689,13 @@ $('#targetScore').raty({
 
 $('#mouseover').raty({
   mouseover: function(score, evt) {
-    alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
+    alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt.type);
   }
 });
 
 $('#mouseout').raty({
   mouseout: function(score, evt) {
-    alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
+    alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt.type);
   }
 });
 
@@ -3527,8 +3735,15 @@ $('#functions').raty({
   target     : '#functions-hint',
   targetKeep : true,
   click: function(score, evt) {
-    alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
-  }
+    alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt.type);
+  },
+  hints: [
+    ['bad 1'      , 'bad 2'      , 'bad 3'      , 'bad 4'      , 'bad 5'      , 'bad 6'      , 'bad 7'      , 'bad 8'      , 'bad 9'      , 'bad'      ], 
+    ['poor 1'     , 'poor 2'     , 'poor 3'     , 'poor 4'     , 'poor 5'     , 'poor 6'     , 'poor 7'     , 'poor 8'     , 'poor 9'     , 'poor'     ], 
+    ['regular 1'  , 'regular 2'  , 'regular 3'  , 'regular 4'  , 'regular 5'  , 'regular 6'  , 'regular 7'  , 'regular 8'  , 'regular 9'  , 'regular'  ], 
+    ['good 1'     , 'good 2'     , 'good 3'     , 'good 4'     , 'good 5'     , 'good 6'     , 'good 7'     , 'good 8'     , 'good 9'     , 'good'     ], 
+    ['gorgeous 1' , 'gorgeous 2' , 'gorgeous 3' , 'gorgeous 4' , 'gorgeous 5' , 'gorgeous 6' , 'gorgeous 7' , 'gorgeous 8' , 'gorgeous 9' , 'gorgeous' ]
+  ]
 });
 
 $('#score-function-run').on('click', function() {
