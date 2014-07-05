@@ -58,17 +58,33 @@ Helper = {
     return this._append(type, attrs);
   },
 
-  move: function(el, integer, decimal) {
+  click: function(el, integer, decimal) {
+    this.mouseTrigger('mousemove', el, integer, decimal);
+    this.mouseTrigger('click', el, integer, decimal);
+  },
+
+  mouseData: function(el, integer, decimal) {
     var
       stars    = el.children('img:not(.raty-cancel)'),
       star     = stars.eq(integer),
       width    = star[0].width || parseFloat(star.css('font-size'));
       fraction = width / 10,
       left     = star.offset().left,
-      percent  = left + fraction * decimal + 0.1,
-      evt      = $.Event('mousemove', { pageX: percent });
+      pageX    = left + fraction * decimal + 0.1;
 
-    star.trigger(evt);
+    return { el: star, pageX: pageX }
+  },
+
+  mouseTrigger: function(action, el, integer, decimal) {
+    var
+      data  = this.mouseData(el, integer, decimal),
+      evt   = $.Event(action, { pageX: data.pageX });
+
+    data.el.trigger(evt);
+  },
+
+  mousemove: function(el, integer, decimal) {
+    this.mouseTrigger('mousemove', el, integer, decimal);
   },
 
   target: function(id, type, options) {

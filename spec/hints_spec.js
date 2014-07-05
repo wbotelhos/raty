@@ -802,7 +802,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 0);
+          Helper.mousemove(this.el, 1, 0);
 
           // then
           expect(this.target.text()).toEqual('half');
@@ -820,7 +820,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 0);
+          Helper.mousemove(this.el, 1, 0);
 
           // then
           expect(star[0].title).toEqual('half');
@@ -838,7 +838,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 1);
+          Helper.mousemove(this.el, 1, 1);
 
           // then
           expect(this.target.text()).toEqual('half');
@@ -856,7 +856,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 1);
+          Helper.mousemove(this.el, 1, 1);
 
           // then
           expect(star[0].title).toEqual('half');
@@ -874,7 +874,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 2);
+          Helper.mousemove(this.el, 1, 2);
 
           // then
           expect(this.target.text()).toEqual('half');
@@ -892,7 +892,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 2);
+          Helper.mousemove(this.el, 1, 2);
 
           // then
           expect(star[0].title).toEqual('half');
@@ -910,7 +910,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 3);
+          Helper.mousemove(this.el, 1, 3);
 
           // then
           expect(this.target.text()).toEqual('half');
@@ -928,7 +928,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 3);
+          Helper.mousemove(this.el, 1, 3);
 
           // then
           expect(star[0].title).toEqual('half');
@@ -946,7 +946,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 4);
+          Helper.mousemove(this.el, 1, 4);
 
           // then
           expect(this.target.text()).toEqual('half');
@@ -964,7 +964,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 4);
+          Helper.mousemove(this.el, 1, 4);
 
           // then
           expect(star[0].title).toEqual('half');
@@ -982,7 +982,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 5);
+          Helper.mousemove(this.el, 1, 5);
 
           // then
           expect(this.target.text()).toEqual('half');
@@ -1000,7 +1000,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 5);
+          Helper.mousemove(this.el, 1, 5);
 
           // then
           expect(star[0].title).toEqual('half');
@@ -1018,7 +1018,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 6);
+          Helper.mousemove(this.el, 1, 6);
 
           // then
           expect(this.target.text()).toEqual('integer');
@@ -1036,7 +1036,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 6);
+          Helper.mousemove(this.el, 1, 6);
 
           // then
           expect(star[0].title).toEqual('integer');
@@ -1054,7 +1054,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 7);
+          Helper.mousemove(this.el, 1, 7);
 
           // then
           expect(this.target.text()).toEqual('integer');
@@ -1072,7 +1072,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 7);
+          Helper.mousemove(this.el, 1, 7);
 
           // then
           expect(star[0].title).toEqual('integer');
@@ -1090,7 +1090,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 8);
+          Helper.mousemove(this.el, 1, 8);
 
           // then
           expect(this.target.text()).toEqual('integer');
@@ -1108,7 +1108,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 8);
+          Helper.mousemove(this.el, 1, 8);
 
           // then
           expect(star[0].title).toEqual('integer');
@@ -1126,7 +1126,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 9);
+          Helper.mousemove(this.el, 1, 9);
 
           // then
           expect(this.target.text()).toEqual('integer');
@@ -1144,7 +1144,7 @@ describe('#hints', function() {
           var star = this.el.children().eq(1);
 
           // when
-          Helper.move(this.el, 1, 9);
+          Helper.mousemove(this.el, 1, 9);
 
           // then
           expect(star[0].title).toEqual('integer');
@@ -2044,7 +2044,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 0);
+          Helper.mousemove(this.el, 1, 0);
 
           // then
           expect(this.target.text()).toEqual('1,1');
@@ -2060,7 +2060,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 0);
+          Helper.mousemove(this.el, 1, 0);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,1');
@@ -2078,7 +2078,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 1);
+          Helper.mousemove(this.el, 1, 1);
 
           // then
           expect(this.target.text()).toEqual('1,2');
@@ -2094,7 +2094,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 1);
+          Helper.mousemove(this.el, 1, 1);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,2');
@@ -2112,7 +2112,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 2);
+          Helper.mousemove(this.el, 1, 2);
 
           // then
           expect(this.target.text()).toEqual('1,3');
@@ -2128,7 +2128,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 2);
+          Helper.mousemove(this.el, 1, 2);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,3');
@@ -2146,7 +2146,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 3);
+          Helper.mousemove(this.el, 1, 3);
 
           // then
           expect(this.target.text()).toEqual('1,4');
@@ -2162,7 +2162,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 3);
+          Helper.mousemove(this.el, 1, 3);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,4');
@@ -2180,7 +2180,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 4);
+          Helper.mousemove(this.el, 1, 4);
 
           // then
           expect(this.target.text()).toEqual('1,5');
@@ -2196,7 +2196,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 4);
+          Helper.mousemove(this.el, 1, 4);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,5');
@@ -2214,7 +2214,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 5);
+          Helper.mousemove(this.el, 1, 5);
 
           // then
           expect(this.target.text()).toEqual('1,6');
@@ -2230,7 +2230,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 5);
+          Helper.mousemove(this.el, 1, 5);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,6');
@@ -2248,7 +2248,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 6);
+          Helper.mousemove(this.el, 1, 6);
 
           // then
           expect(this.target.text()).toEqual('1,7');
@@ -2264,7 +2264,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 6);
+          Helper.mousemove(this.el, 1, 6);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,7');
@@ -2282,7 +2282,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 7);
+          Helper.mousemove(this.el, 1, 7);
 
           // then
           expect(this.target.text()).toEqual('1,8');
@@ -2298,7 +2298,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 7);
+          Helper.mousemove(this.el, 1, 7);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,8');
@@ -2316,7 +2316,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 8);
+          Helper.mousemove(this.el, 1, 8);
 
           // then
           expect(this.target.text()).toEqual('1,9');
@@ -2332,7 +2332,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 8);
+          Helper.mousemove(this.el, 1, 8);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,9');
@@ -2350,7 +2350,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 9);
+          Helper.mousemove(this.el, 1, 9);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -2366,7 +2366,7 @@ describe('#hints', function() {
           });
 
           // when
-          Helper.move(this.el, 1, 9);
+          Helper.mousemove(this.el, 1, 9);
 
           // then
           expect(this.el.children()[1].title).toEqual('2,0');
