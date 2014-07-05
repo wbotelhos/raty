@@ -176,7 +176,7 @@ describe('#cancel', function() {
       expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
     });
 
-    context('with stars on before', function() {
+    context('with stars turned on', function() {
       it ('turns on the star again', function() {
         // given
         this.el.raty({ score: 5, cancel: true });

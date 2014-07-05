@@ -405,6 +405,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.1);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
+        });
       });
 
       context('on 1.2', function() {
@@ -422,6 +440,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,5');
+        });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.2);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
         });
       });
 
@@ -441,6 +477,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.3);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
+        });
       });
 
       context('on 1.4', function() {
@@ -458,6 +512,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,5');
+        });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.4);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
         });
       });
 
@@ -477,6 +549,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.5);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
+        });
       });
 
       context('on 1.6', function() {
@@ -494,6 +584,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('2,0');
+        });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.6);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
         });
       });
 
@@ -513,6 +621,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.7);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
+        });
       });
 
       context('on 1.8', function() {
@@ -530,6 +656,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('2,0');
+        });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.8);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
         });
       });
 
@@ -549,6 +693,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.9);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
+        });
       });
 
       context('on 2.0', function() {
@@ -567,9 +729,27 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('changes the title to first position', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 2.0);
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
+        });
       });
 
-      context('on 1', function() {
+      context('on 2', function() {
         it ('receives the second position', function() {
           // given
           this.el.raty({
@@ -585,6 +765,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+      });
+
+      it ('changes the title to first position', function() {
+        // given
+        this.el.raty({
+          half       : true,
+          hints      : [null, ['1,5', '2,0']],
+          target     : '#target',
+          targetKeep : true
+        });
+
+        // when
+        this.el.raty('move', 2);
+
+        // then
+        var star = this.el.children().eq(1);
+
+        expect(star[0].title).toEqual('2,0');
       });
     });
 
@@ -609,6 +807,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('half');
         });
+
+        it ('receives the first position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 0);
+
+          // then
+          expect(star[0].title).toEqual('half');
+        });
       });
 
       context('on 1.1 fraction', function() {
@@ -626,6 +842,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('half');
+        });
+
+        it ('receives the first position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 1);
+
+          // then
+          expect(star[0].title).toEqual('half');
         });
       });
 
@@ -645,6 +879,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('half');
         });
+
+        it ('receives the first position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 2);
+
+          // then
+          expect(star[0].title).toEqual('half');
+        });
       });
 
       context('on 1.3 fraction', function() {
@@ -662,6 +914,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('half');
+        });
+
+        it ('receives the first position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 3);
+
+          // then
+          expect(star[0].title).toEqual('half');
         });
       });
 
@@ -681,6 +951,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('half');
         });
+
+        it ('receives the first position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 4);
+
+          // then
+          expect(star[0].title).toEqual('half');
+        });
       });
 
       context('on 1.5 fraction', function() {
@@ -698,6 +986,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('half');
+        });
+
+        it ('receives the first position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 5);
+
+          // then
+          expect(star[0].title).toEqual('half');
         });
       });
 
@@ -717,6 +1023,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('integer');
         });
+
+        it ('receives the second position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 6);
+
+          // then
+          expect(star[0].title).toEqual('integer');
+        });
       });
 
       context('on 1.7 fraction', function() {
@@ -734,6 +1058,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('integer');
+        });
+
+        it ('receives the second position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 7);
+
+          // then
+          expect(star[0].title).toEqual('integer');
         });
       });
 
@@ -753,6 +1095,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('integer');
         });
+
+        it ('receives the second position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 8);
+
+          // then
+          expect(star[0].title).toEqual('integer');
+        });
       });
 
       context('on 1.9 fraction', function() {
@@ -770,6 +1130,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('integer');
+        });
+
+        it ('receives the second position as title', function() {
+          // given
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['half', 'integer']],
+            target     : '#target',
+            targetKeep : true
+          });
+
+          var star = this.el.children().eq(1);
+
+          // when
+          Helper.move(this.el, 1, 9);
+
+          // then
+          expect(star[0].title).toEqual('integer');
         });
       });
     });
@@ -795,6 +1173,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('receives the first position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.1,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
+        });
       });
 
       context('on 1.2', function() {
@@ -812,6 +1208,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,5');
+        });
+
+        it ('receives the first position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.2,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
         });
       });
 
@@ -831,6 +1245,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('receives the first position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.3,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
+        });
       });
 
       context('on 1.4', function() {
@@ -848,6 +1280,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,5');
+        });
+
+        it ('receives the first position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.4,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
         });
       });
 
@@ -867,6 +1317,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('receives the first position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.5,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('1,5');
+        });
       });
 
       context('on 1.6', function() {
@@ -884,6 +1352,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('2,0');
+        });
+
+        it ('receives the second position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.6,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
         });
       });
 
@@ -903,6 +1389,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('receives the second position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.7,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
+        });
       });
 
       context('on 1.8', function() {
@@ -920,6 +1424,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('2,0');
+        });
+
+        it ('receives the second position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.8,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
         });
       });
 
@@ -939,6 +1461,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('receives the second position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 1.9,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
+        });
       });
 
       context('on 2.0', function() {
@@ -957,6 +1497,24 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('receives the second position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 2.0,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
+        });
       });
 
       context('on 2', function() {
@@ -974,6 +1532,24 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('2,0');
+        });
+
+        it ('receives the second position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            half       : true,
+            hints      : [null, ['1,5', '2,0']],
+            score      : 2,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          var star = this.el.children().eq(1);
+
+          expect(star[0].title).toEqual('2,0');
         });
       });
     })
@@ -1093,6 +1669,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,1');
         });
+
+        it ('receives the [1][0] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.1);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,1');
+        });
       });
 
       context('on 1.2', function() {
@@ -1110,6 +1702,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,2');
+        });
+
+        it ('receives the [1][1] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.2);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,2');
         });
       });
 
@@ -1129,6 +1737,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,3');
         });
+
+        it ('receives the [1][2] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.3);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,3');
+        });
       });
 
       context('on 1.4', function() {
@@ -1146,6 +1770,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,4');
+        });
+
+        it ('receives the [1][3] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.4);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,4');
         });
       });
 
@@ -1165,6 +1805,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('receives the [1][4] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.5);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,5');
+        });
       });
 
       context('on 1.6', function() {
@@ -1182,6 +1838,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,6');
+        });
+
+        it ('receives the [1][5] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.6);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,6');
         });
       });
 
@@ -1201,6 +1873,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,7');
         });
+
+        it ('receives the [1][7] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.7);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,7');
+        });
       });
 
       context('on 1.8', function() {
@@ -1218,6 +1906,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,8');
+        });
+
+        it ('receives the [1][7] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.8);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,8');
         });
       });
 
@@ -1237,9 +1941,25 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,9');
         });
+
+        it ('receives the [1][8] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 1.9);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,9');
+        });
       });
 
-      context('on 1.0', function() {
+      context('on 2.0', function() {
         it ('receives the [1][9] position', function() {
           // given
           this.el.raty({
@@ -1255,9 +1975,25 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('receives the [1][9] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 2.0);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('2,0');
+        });
       });
 
-      context('on 1', function() {
+      context('on 2', function() {
         it ('receives the [1][9] position', function() {
           // given
           this.el.raty({
@@ -1272,6 +2008,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('2,0');
+        });
+
+        it ('receives the [1][9] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          this.el.raty('move', 2);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('2,0');
         });
       });
     });
@@ -1297,6 +2049,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,1');
         });
+
+        it ('receives the [1][0] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 0);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,1');
+        });
       });
 
       context('on 1.1 fraction', function() {
@@ -1314,6 +2082,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,2');
+        });
+
+        it ('receives the [1][1] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 1);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,2');
         });
       });
 
@@ -1333,6 +2117,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,3');
         });
+
+        it ('receives the [1][2] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 2);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,3');
+        });
       });
 
       context('on 1.3 fraction', function() {
@@ -1350,6 +2150,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,4');
+        });
+
+        it ('receives the [1][3] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 3);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,4');
         });
       });
 
@@ -1369,6 +2185,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('receives the [1][4] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 4);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,5');
+        });
       });
 
       context('on 1.5 fraction', function() {
@@ -1386,6 +2218,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,6');
+        });
+
+        it ('receives the [1][5] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 5);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,6');
         });
       });
 
@@ -1405,6 +2253,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,7');
         });
+
+        it ('receives the [1][6] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 6);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,7');
+        });
       });
 
       context('on 1.7 fraction', function() {
@@ -1422,6 +2286,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,8');
+        });
+
+        it ('receives the [1][7] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 7);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,8');
         });
       });
 
@@ -1441,6 +2321,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,9');
         });
+
+        it ('receives the [1][8] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 8);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,9');
+        });
       });
 
       context('on 1.9 fraction', function() {
@@ -1458,6 +2354,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('2,0');
+        });
+
+        it ('receives the [1][9] position as title', function() {
+          // given
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // when
+          Helper.move(this.el, 1, 9);
+
+          // then
+          expect(this.el.children()[1].title).toEqual('2,0');
         });
       });
     });
@@ -1483,6 +2395,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,1');
         });
+
+        it ('receives the [1][0] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.1,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,1');
+        });
       });
 
       context('on 1.2', function() {
@@ -1500,6 +2428,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,2');
+        });
+
+        it ('receives the [1][1] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.2,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,2');
         });
       });
 
@@ -1519,6 +2463,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,3');
         });
+
+        it ('receives the [1][2] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.3,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,3');
+        });
       });
 
       context('on 1.4', function() {
@@ -1536,6 +2496,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,4');
+        });
+
+        it ('receives the [1][3] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.4,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,4');
         });
       });
 
@@ -1555,6 +2531,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,5');
         });
+
+        it ('receives the [1][4] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.5,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,5');
+        });
       });
 
       context('on 1.6', function() {
@@ -1572,6 +2564,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,6');
+        });
+
+        it ('receives the [1][5] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.6,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,6');
         });
       });
 
@@ -1591,6 +2599,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,7');
         });
+
+        it ('receives the [1][6] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.7,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,7');
+        });
       });
 
       context('on 1.8', function() {
@@ -1608,6 +2632,22 @@ describe('#hints', function() {
 
           // then
           expect(this.target.text()).toEqual('1,8');
+        });
+
+        it ('receives the [1][7] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.8,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,8');
         });
       });
 
@@ -1627,6 +2667,22 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('1,9');
         });
+
+        it ('receives the [1][8] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1.9,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('1,9');
+        });
       });
 
       context('on 1.0', function() {
@@ -1645,9 +2701,25 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('receives the [1][9] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 2.0,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('2,0');
+        });
       });
 
-      context('on 1', function() {
+      context('on 2', function() {
         it ('receives the [1][9] position', function() {
           // given
 
@@ -1663,7 +2735,51 @@ describe('#hints', function() {
           // then
           expect(this.target.text()).toEqual('2,0');
         });
+
+        it ('receives the [1][9] position as title', function() {
+          // given
+
+          // when
+          this.el.raty({
+            hints      : [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
+            precision  : true,
+            score      : 1,
+            target     : '#target',
+            targetKeep : true
+          });
+
+          // then
+          expect(this.el.children()[1].title).toEqual('2,0');
+        });
       });
-    })
+    });
+
+    context('on leave', function() {
+      it ('reset all stars to the last hint', function() {
+        // given
+        this.el.raty({
+          hints     : null,
+          precision : true
+        });
+
+        var stars = this.el.children();
+
+        this.el.raty('move', 4.1);
+        this.el.raty('move', 3.1);
+        this.el.raty('move', 2.1);
+        this.el.raty('move', 1.1);
+        this.el.raty('move', 0.1);
+
+        // when
+        this.el.trigger('mouseleave');
+
+        // then
+        expect(stars[0].title).toEqual('1');
+        expect(stars[1].title).toEqual('2');
+        expect(stars[2].title).toEqual('3');
+        expect(stars[3].title).toEqual('4');
+        expect(stars[4].title).toEqual('5');
+      });
+    });
   });
 });

@@ -68,10 +68,6 @@ Helper = {
       percent  = left + fraction * decimal + 0.1,
       evt      = $.Event('mousemove', { pageX: percent });
 
-    if (console && console.log) {
-      console.debug(integer + '.' + decimal, ':', 'left:', left, 'width:', width, 'fraction:', fraction, 'pageX:', percent);
-    }
-
     star.trigger(evt);
   },
 
