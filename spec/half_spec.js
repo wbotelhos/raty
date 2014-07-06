@@ -50,6 +50,56 @@ describe('#half', function() {
   });
 
   context('as *true', function() {
+    context('on click', function() {
+      context('into half area', function() {
+        it ('receives the half value', function() {
+          // given
+          this.el.raty({
+            half     : true,
+            halfShow : true
+          });
+
+          // when
+          Helper.click(this.el, 1, 5);
+
+          // then
+          expect(this.el.children('input').val()).toEqual('1.5');
+        });
+      });
+
+      context('into round area', function() {
+        it ('receives the rounded value', function() {
+          // given
+          this.el.raty({
+            half     : true,
+            halfShow : true
+          });
+
+          // when
+          Helper.click(this.el, 1, 9);
+
+          // then
+          expect(this.el.children('input').val()).toEqual('2');
+        });
+      });
+
+      context('into zero position', function() {
+        it ('receives the half value', function() {
+          // given
+          this.el.raty({
+            half     : true,
+            halfShow : true
+          });
+
+          // when
+          Helper.click(this.el, 1, 0);
+
+          // then
+          expect(this.el.children('input').val()).toEqual('1');
+        });
+      });
+    });
+
     context('and :halfShow', function() {
       context('as *false', function() {
         it ('ignores the round down while less down limit', function() {

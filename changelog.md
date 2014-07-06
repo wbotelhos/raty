@@ -5,7 +5,9 @@
 ### Fixes
 
 + Function `move` was losing precision with float with more then one digit;
-+ Function `move` was losing the saved `options` data.
++ Function `move` was losing the saved `options` data;
++ With `half` enable, mousemove was not changing to full star after 0.5 point;
++ With `half` enable, score field was receiving precision value. (reported by hoangnham01)
 
 ### Changes
 
