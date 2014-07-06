@@ -72,6 +72,10 @@ Helper = {
       left     = star.offset().left,
       pageX    = left + fraction * decimal + 0.1;
 
+    if (console && console.log) {
+      console.debug(integer + '.' + decimal, ':', 'left:', left, 'width:', width, 'fraction (width/10):', fraction, 'pageX:', pageX, 'fractions (decimal * fraction)', decimal * fraction);
+    }
+
     return { el: star, pageX: pageX }
   },
 
