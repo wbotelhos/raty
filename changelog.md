@@ -1,6 +1,6 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
-## The winter is coming...
+## 2.7.0
 
 ### Fixes
 

@@ -9,7 +9,7 @@
 ## Version
 
 ```
-@version  2.6.0
+@version  2.7.0
 @since    2010.06.11
 @author   Washington Botelho
 @doc      wbotelhos.com/raty

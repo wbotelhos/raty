@@ -13,16 +13,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 
-<link href="demo/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
 
 <title>jQuery Raty | A Star Rating Plugin - Washington Botelho</title>
 
 <meta content="authenticity_token" name="csrf-param">
 
 
-  <link href="demo/stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="stylesheets/labs.css" media="screen" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" href="lib/jquery.raty.css">
+<link rel="stylesheet" href="../lib/jquery.raty.css">
 <style>.functions .demo {
   margin-bottom: 10px;
 }
@@ -68,8 +68,8 @@ div.hint {
 }
 </style>
 
-<script src="vendor/jquery.js"></script><script src="lib/jquery.raty.js"></script>
-<script src="demo/javascripts/labs.js" type="text/javascript"></script>
+<script src="../vendor/jquery.js"></script><script src="../lib/jquery.raty.js"></script>
+<script src="javascripts/labs.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -81,7 +81,7 @@ div.hint {
 </div>
 
     <nav role="navigation" class="navigation">
-  <a href="http://github.com/wbotelhos/archive/2.6.0.zip" class="download" title="Download version 2.6.0"><i class="i-file-zip"></i> v2.6.0</a>
+  <a href="http://github.com/wbotelhos/archive/2.7.0.zip" class="download" title="Download version 2.7.0"><i class="i-file-zip"></i> v2.7.0</a>
   <a href="http://github.com/wbotelhos/raty" class="i-github" target="blank" title="Github &lt;http://github.com/wbotelhos/raty&gt;"></a>
   <a href="http://wbotelhos.com/labs" class="labs i-labs" target="blank" title="Labs &lt;http://wbotelhos.com/labs&gt;"></a>
 
@@ -839,28 +839,12 @@ When you enable this option the <a href="#half">half</a> options is automaticall
     <p>Hello,</p>
 
 <p>I have created a very simple page. But it doesn't work with score attribute. I cannot find where the problem is. It will show 5 grey stars, but it should show 3 yellow stars. </p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="s1">'js/images'</span><span class="p">;</span>
 
-<pre><code>
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Star Rating</title>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/jquery.raty.min.js"></script>
-
-
-
-<div id="score"></div>
-<script type="text/javascript">
-$.fn.raty.defaults.path = 'js/images';
-$(function() {
-    $('#score').raty({ score: 3 });
-});
-</script>
-
-
-</code></pre>
-
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#score'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">score</span><span class="o">:</span> <span class="mi">3</span> <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
 
     <footer>
       <a href="#comment-768" class="anchor" title="Link to this comment">#768</a>
@@ -869,6 +853,36 @@ $(function() {
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-773" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>James,</p>
+
+<p>The options <code>score</code> just do the rating.<br>
+If you want to change the numbe of stars, use the option <code>number</code>.</p>
+
+
+    <footer>
+      <a href="#comment-773" class="anchor" title="Link to this comment">#773</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 <li id="comment-767" class="comment">
   <div class="avatar">
@@ -887,16 +901,15 @@ $(function() {
 you will find that the half star icon will work properly in LTR as it will be flipped in RTL</p>
 
 <p>To fix that don't create a new image just use this snippet:</p>
-
-<p>img[src$="star-half.png"]{<br>
-  -moz-transform: scaleX(-1);<br>
-    -webkit-transform: scaleX(-1);<br>
-    -o-transform: scaleX(-1);<br>
-    transform: scaleX(-1);<br>
-    -ms-filter: fliph; /<em>IE</em>/<br>
-    filter: fliph; /<em>IE</em>/<br>
-}</p>
-
+<div class="highlight"><pre><span class="nt">img</span><span class="o">[</span><span class="nt">src</span><span class="o">$=</span><span class="s2">"star-half.png"</span><span class="o">]</span><span class="p">{</span>
+  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">scaleX</span><span class="p">(</span><span class="m">-1</span><span class="p">);</span>
+    <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">scaleX</span><span class="p">(</span><span class="m">-1</span><span class="p">);</span>
+    <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">scaleX</span><span class="p">(</span><span class="m">-1</span><span class="p">);</span>
+    <span class="n">transform</span><span class="o">:</span> <span class="n">scaleX</span><span class="p">(</span><span class="m">-1</span><span class="p">);</span>
+    <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">filter</span><span class="o">:</span> <span class="n">fliph</span><span class="p">;</span> <span class="c">/*IE*/</span>
+    <span class="n">filter</span><span class="o">:</span> <span class="n">fliph</span><span class="p">;</span> <span class="c">/*IE*/</span>
+<span class="p">}</span>
+</pre></div>
 <p>The previous snippet will flip the image horizontally and it's cross browser.</p>
 
 <p>Happy Coding!</p>
@@ -909,6 +922,35 @@ you will find that the half star icon will work properly in LTR as it will be fl
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-772" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Muhammad Saleh,</p>
+
+<p>Thanks! (:</p>
+
+
+    <footer>
+      <a href="#comment-772" class="anchor" title="Link to this comment">#772</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 <li id="comment-765" class="comment">
   <div class="avatar">
@@ -924,20 +966,18 @@ you will find that the half star icon will work properly in LTR as it will be fl
     </header>
 
     <p>The click callback is not working with other options. My code is...</p>
-
-<p>$(document).ready(function() {<br>
-                                                        $('#star-&lt;?php echo $result['ItemId']; ?&gt;').raty(<br>
-                                                                  {<br>
-                                                                      readOnly : true,<br>
-                                                                      score : &lt;?php echo $result['StarRating']; ?&gt;,<br>
-                                                                      hints : ['&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars', '&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars', '&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars', '&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars', '&lt;?php echo $result['StarRating']; ?&gt; out of 5 stars'],<br>
-                                                                      precision : true,<br>
-                                                                      click : function() {<br>
-                                                                          alert('score: ');<br>
-                                                                      }<br>
-                                                                  });<br>
-                                                    });</p>
-
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#star-&lt;?php echo $result['</span><span class="nx">ItemId</span><span class="s1">']; ?&gt;'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+    <span class="nx">readOnly</span>  <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">score</span>     <span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">echo</span> <span class="nx">$result</span><span class="p">[</span><span class="s1">'StarRating'</span><span class="p">];</span> <span class="o">?&gt;</span><span class="p">,</span>
+    <span class="nx">hints</span>     <span class="o">:</span> <span class="p">[</span><span class="s1">'&lt;?php echo $result['</span><span class="nx">StarRating</span><span class="s1">']; ?&gt; out of 5 stars'</span><span class="p">,</span> <span class="s1">'&lt;?php echo $result['</span><span class="nx">StarRating</span><span class="s1">']; ?&gt; out of 5 stars'</span><span class="p">,</span> <span class="s1">'&lt;?php echo $result['</span><span class="nx">StarRating</span><span class="s1">']; ?&gt; out of 5 stars'</span><span class="p">,</span> <span class="s1">'&lt;?php echo $result['</span><span class="nx">StarRating</span><span class="s1">']; ?&gt; out of 5 stars'</span><span class="p">,</span> <span class="s1">'&lt;?php echo $result['</span><span class="nx">StarRating</span><span class="s1">']; ?&gt; out of 5 stars'</span><span class="p">],</span>
+    <span class="nx">precision</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">click</span>     <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="s1">'score: '</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
 
     <footer>
       <a href="#comment-765" class="anchor" title="Link to this comment">#765</a>
@@ -946,6 +986,37 @@ you will find that the half star icon will work properly in LTR as it will be fl
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-771" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Naseer,</p>
+
+<p>First, when you have a doubt try to do a simpler example as possible.<br>
+I don't know if some of your dynamic PHP variable is breaking something.<br>
+Put some code on a live example on web then pass us the link.</p>
+
+
+    <footer>
+      <a href="#comment-771" class="anchor" title="Link to this comment">#771</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 <li id="comment-764" class="comment">
   <div class="avatar">
@@ -973,7 +1044,39 @@ Sorry if this question looks silly.</p>
   </div>
 
     <ol>
-      <li id="comment-766" class="comment">
+      <li id="comment-770" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Websun,</p>
+
+<p>The best way to know how to use Raty is check this demo page. But basically is this:</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"jquery.js"</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"jquery.raty.js"</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span class="nt">&lt;div&gt;&lt;/div&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">();</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-770" class="anchor" title="Link to this comment">#770</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+<li id="comment-766" class="comment">
   <div class="avatar">
     <img alt="" src="http://www.gravatar.com/avatar/a93750d68359fd4a954113b17b8d1d25?d=mm" title="Muhammad Saleh">
   </div>
@@ -986,8 +1089,9 @@ Sorry if this question looks silly.</p>
       
     </header>
 
-    <p>Websun,<br>
-You will also need the images for the<br>
+    <p>Websun,</p>
+
+<p>You will also need the images for the<br>
 star on<br>
 star off<br>
 star half</p>
@@ -1030,6 +1134,36 @@ When I pass null and it shows the 'score', it's not showing the fraction amount.
     </footer>
   </div>
 
+    <ol>
+      <li id="comment-769" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>Tom,</p>
+
+<p>The version 2.7.0 will suport fraction hint.<br>
+You can use the code from master to test it before the official release.</p>
+
+
+    <footer>
+      <a href="#comment-769" class="anchor" title="Link to this comment">#769</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
 </li>
 <li id="comment-756" class="comment">
   <div class="avatar">
@@ -1737,7 +1871,7 @@ Thanks in advance!</p>
 
     <p>Joey,</p>
 
-<p>The score element is create only if you don't provide a valid (existent) target score: <a href="https://github.com/wbotelhos/blob/master/lib/jquery.raty.js#L215">https://github.com/wbotelhos/blob/master/lib/jquery.raty.js#L215</a></p>
+<p>The score element is create only if you don't provide a valid (existent) target score: <a href="https://github.com/wbotelhos/blob/master/../lib/jquery.raty.js#L215">https://github.com/wbotelhos/blob/master/../lib/jquery.raty.js#L215</a></p>
 
 
     <footer>
@@ -1912,6 +2046,81 @@ You can set it to read-only the time you want, but the time and how you want to 
 
     <footer>
       <a href="#comment-737" class="anchor" title="Link to this comment">#737</a>
+      
+      
+    </footer>
+  </div>
+
+</li>
+
+    </ol>
+</li>
+<li id="comment-706" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/ba7b758a7f5ffafb168fce7e02a5420a?d=mm" title="José Leite">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="javascript:void(0);">José Leite</a>
+      
+      
+      
+    </header>
+
+    <p>Washington Botelho,</p>
+
+<p>I wrote the following code:</p>
+<div class="highlight"><pre><span class="p">{{</span><span class="k">if</span> <span class="nx">comments</span><span class="o">:</span><span class="p">}}</span>
+  <span class="p">{{</span><span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">comment</span> <span class="k">in</span> <span class="nx">enumerate</span><span class="p">(</span><span class="nx">comments</span><span class="p">)</span><span class="o">:</span><span class="p">}}</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"badge badge-warning"</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"star{{idx}}"</span><span class="o">&gt;</span><span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+
+    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'#star{{idx}}'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> 
+        <span class="nx">numberMax</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+        <span class="nx">score</span><span class="o">:</span> <span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span> 
+      <span class="p">});</span>
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+  <span class="p">{{</span><span class="nx">pass</span><span class="p">}}</span>
+<span class="p">{{</span><span class="nx">pass</span><span class="p">}}</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-706" class="anchor" title="Link to this comment">#706</a>
+      
+      
+    </footer>
+  </div>
+
+    <ol>
+      <li id="comment-730" class="comment">
+  <div class="avatar">
+    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
+  </div>
+
+  <div class="body">
+    <header>
+      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
+      
+      <span class="flag author">author</span>
+      
+    </header>
+
+    <p>José Leite,</p>
+
+<p>Build your HTML elements first, then after apply Raty using class and getting the rating from data attribute, like so:</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-rating=</span><span class="s">"{{= comment.rating}}"</span> <span class="na">class=</span><span class="s">"badge badge-warning"</span><span class="nt">&gt;</span>{{= comment.rating}}<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.badge'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+  <span class="nx">score</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'data-rating'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+    <footer>
+      <a href="#comment-730" class="anchor" title="Link to this comment">#730</a>
       
       
     </footer>
@@ -3408,84 +3617,6 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
     </footer>
   </div>
 
-    <ol>
-      <li id="comment-706" class="comment">
-  <div class="avatar">
-    <img alt="" src="http://www.gravatar.com/avatar/ba7b758a7f5ffafb168fce7e02a5420a?d=mm" title="José Leite">
-  </div>
-
-  <div class="body">
-    <header>
-      <a href="javascript:void(0);">José Leite</a>
-      
-      
-      
-    </header>
-
-    <p>Washington Botelho,</p>
-
-<p>I wrote the following code:</p>
-<div class="highlight"><pre><span class="p">{{</span><span class="k">if</span> <span class="nx">comments</span><span class="o">:</span><span class="p">}}</span>
-  <span class="p">{{</span><span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">comment</span> <span class="k">in</span> <span class="nx">enumerate</span><span class="p">(</span><span class="nx">comments</span><span class="p">)</span><span class="o">:</span><span class="p">}}</span>
-    <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"badge badge-warning"</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"star{{idx}}"</span><span class="o">&gt;</span><span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
-
-    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-      <span class="nx">$</span><span class="p">(</span><span class="s1">'#star{{idx}}'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> 
-        <span class="nx">numberMax</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-        <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
-        <span class="nx">score</span><span class="o">:</span> <span class="p">{{</span><span class="o">=</span><span class="nx">comment</span><span class="p">.</span><span class="nx">rating</span><span class="p">}}</span> 
-      <span class="p">});</span>
-    <span class="o">&lt;</span><span class="err">/script&gt;</span>
-  <span class="p">{{</span><span class="nx">pass</span><span class="p">}}</span>
-<span class="p">{{</span><span class="nx">pass</span><span class="p">}}</span>
-</pre></div>
-
-    <footer>
-      <a href="#comment-706" class="anchor" title="Link to this comment">#706</a>
-      
-      
-    </footer>
-  </div>
-
-    <ol>
-      <li id="comment-730" class="comment">
-  <div class="avatar">
-    <img alt="" src="http://www.gravatar.com/avatar/9ba395435487e85de7df942b77a75674?d=mm" title="Washington Botelho">
-  </div>
-
-  <div class="body">
-    <header>
-      <a href="http://wbotelhos.com" target="_blank">Washington Botelho</a>
-      
-      <span class="flag author">author</span>
-      
-    </header>
-
-    <p>José Leite,</p>
-
-<p>Build your HTML elements first, then after apply Raty using class and getting the rating from data attribute, like so:</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-rating=</span><span class="s">"{{= comment.rating}}"</span> <span class="na">class=</span><span class="s">"badge badge-warning"</span><span class="nt">&gt;</span>{{= comment.rating}}<span class="nt">&lt;/div&gt;</span>
-</pre></div>
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.badge'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
-  <span class="nx">score</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'data-rating'</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</pre></div>
-
-    <footer>
-      <a href="#comment-730" class="anchor" title="Link to this comment">#730</a>
-      
-      
-    </footer>
-  </div>
-
-</li>
-
-    </ol>
-</li>
-
-    </ol>
 </li>
 
   </ol>
@@ -3507,7 +3638,7 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
   </div>
 
   <script>
-  $.fn.raty.defaults.path = 'lib/images';
+  $.fn.raty.defaults.path = '../lib/images';
 
   $(function() {
     $('#default').raty();
@@ -3560,14 +3691,17 @@ $('#round').raty({
   score : 3.26
 });
 
-$('#half').raty({ half: true });
+$('#half').raty({
+  half  : true,
+  hints : [['bad 1/2', 'bad'], ['poor 1/2', 'poor'], ['regular 1/2', 'regular'], ['good 1/2', 'good'], ['gorgeous 1/2', 'gorgeous']]
+});
 
 $('#starHalf').raty({
   half     : true,
   path     : null,
   starHalf : 'demo/images/star-half-mono.png',
-  starOff  : 'lib/images/star-off.png',
-  starOn   : 'lib/images/star-on.png'
+  starOff  : '../lib/images/star-off.png',
+  starOn   : '../lib/images/star-on.png'
 });
 
 $('#click').raty({
@@ -3614,13 +3748,13 @@ $('#cancel-off-and-cancel-on').raty({
   cancelOff : 'demo/images/cancel-custom-off.png',
   cancelOn  : 'demo/images/cancel-custom-on.png',
   path      : null,
-  starOff   : 'lib/images/star-off.png',
-  starOn    : 'lib/images/star-on.png'
+  starOff   : '../lib/images/star-off.png',
+  starOn    : '../lib/images/star-on.png'
 });
 
 $('#iconRange').raty({
   path      : null,
-  starOff   : 'lib/images/star-off.png',
+  starOff   : '../lib/images/star-off.png',
   iconRange : [
     { range: 1, on: 'demo/images/1.png', off: 'demo/images/0.png' },
     { range: 2, on: 'demo/images/2.png', off: 'demo/images/0.png' },
