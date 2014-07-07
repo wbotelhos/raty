@@ -19,6 +19,11 @@
 
 + jquery.js
 
+##Bower install
+
+-	simple install using ```bower install raty.js```
+- 	see http://bower.io/ for more information.
+
 ## Usage with Image
 
 - jquery.raty.js
