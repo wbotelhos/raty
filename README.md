@@ -21,8 +21,8 @@
 
 ## Bower Install
 
--simple install using ```bower install raty```
--see http://bower.io/ for more information.
+- simple install using ```bower install raty```
+- see http://bower.io/ for more information.
 
 ## Usage with Image
 
