@@ -33,7 +33,7 @@
 
   "engines"     : { "node" : "0.10" },
   "homepage"    : "https://github.com/wbotelhos/raty",
-  "keywords"    : ["raty", "rating", "star"],
+  "keywords"    : ["classificacao", "classificar", "javascript", "jquery", "library", "plugin", "rating", "raty", "star", "staring", "votar", "voto"],
   "license"     : "MIT",
   "main"        : "lib/jquery.raty.js",
   "maintainers" : ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
