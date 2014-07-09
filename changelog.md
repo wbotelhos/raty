@@ -1,5 +1,15 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+## The Winter is coming...
+
+### Fixes
+
+### Changes
+
+### News
+
++ Added Bower package; (yadhu)
+
 ## 2.7.0
 
 ### Fixes
