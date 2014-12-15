@@ -30,7 +30,9 @@
   "license": "MIT",
   "main": [
     "lib/jquery.raty.js",
-    "lib/jquery.raty.css"
+    "lib/jquery.raty.css",
+    "lib/fonts/*",
+    "lib/images/*"
   ],
   "name": "raty",
 }
