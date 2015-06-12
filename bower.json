@@ -12,5 +12,4 @@
   "license"      : "MIT",
   "main"         : "lib/jquery.raty.js",
   "name"         : "raty",
-  "version"      : "2.7.0"
 }
