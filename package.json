@@ -37,7 +37,7 @@
   "license"     : "MIT",
   "main"        : "lib/jquery.raty.js",
   "maintainers" : ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
-  "name"        : "raty",
+  "name"        : "raty-js",
 
   "repository": {
     "type" : "git",
