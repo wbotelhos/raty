@@ -48,5 +48,5 @@
     "test": "node_modules/karma/bin/karma start spec/karma.conf.js"
   },
 
-  "version": "2.7.0"
+  "version": "2.7.1"
 }

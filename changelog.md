@@ -1,14 +1,15 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
-## The Winter is coming...
+## 2.7.1
 
 ### Fixes
 
-### Changes
++ Fix `readOnly` when using fonts; (Amaia Baigorri)
 
 ### News
 
 + Added Bower package; (yadhu)
++ Added `path` options as callback; (tyler-king)
 
 ## 2.7.0
 
