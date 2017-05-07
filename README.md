@@ -125,10 +125,6 @@ $('div').raty('move', number);           // Move the mouse to the given score po
 
 [Check it out](http://github.com/wbotelhos/raty/graphs/contributors)
 
-## Licence
-
-[The MIT License](http://opensource.org/licenses/MIT)
-
 ## Love it!
 
 Via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=raty) or [Gratipay](https://gratipay.com/~wbotelhos). Thanks! (:
