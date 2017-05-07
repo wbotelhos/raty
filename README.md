@@ -131,4 +131,4 @@ $('div').raty('move', number);           // Move the mouse to the given score po
 
 ## Love it!
 
-Via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=jQuery%20Raty) or [Gittip](http://www.gittip.com/wbotelhos). Thanks! (:
+Via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=raty) or [Gratipay](https://gratipay.com/~wbotelhos). Thanks! (:
