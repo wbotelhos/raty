@@ -568,7 +568,7 @@ When you enable this option the <a href="#half">half</a> options is automaticall
   <span class="nx">cancel</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">cancelOff</span>  <span class="o">:</span> <span class="s1">'cancel-off.png'</span><span class="p">,</span>
   <span class="nx">cancelOn</span>   <span class="o">:</span> <span class="s1">'cancel-on.png'</span><span class="p">,</span>
-  <span class="nx">path</span>       <span class="o">:</span> <span class="s1">'demo/images'</span><span class="p">,</span>
+  <span class="nx">path</span>       <span class="o">:</span> <span class="s1">'images'</span><span class="p">,</span>
   <span class="nx">starHalf</span>   <span class="o">:</span> <span class="s1">'star-half.png'</span><span class="p">,</span>
   <span class="nx">starOff</span>    <span class="o">:</span> <span class="s1">'star-off.png'</span><span class="p">,</span>
   <span class="nx">starOn</span>     <span class="o">:</span> <span class="s1">'star-on.png'</span><span class="p">,</span>
@@ -594,7 +594,7 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 </pre></div>
 <h1>Star Type</h1>
 
-<p>It lets you to change the star element type. Changing it from <code>img</code> to <code>i</code>, for example, gives you the change to use font instead image. There is a sample CSS (<code>demo/stylesheets/jquery.raty.css</code>) using a sample fonts (<code>demo/fonts/jquery.raty.[eot|svg|ttf|woff]</code>).</p>
+<p>It lets you to change the star element type. Changing it from <code>img</code> to <code>i</code>, for example, gives you the change to use font instead image. There is a sample CSS (<code>stylesheets/jquery.raty.css</code>) using a sample fonts (<code>fonts/jquery.raty.[eot|svg|ttf|woff]</code>).</p>
 
 <p>To be easier to use, we replace the dot (.) extension to hyphen (-), so you do not need to change the original names, just set the names to your fonts. We recommend you use the <a href="http://icomoon.io">Ico Moon</a> app to be possible to download only the icons you need and rename it.</p>
 
@@ -3699,7 +3699,7 @@ $('#half').raty({
 $('#starHalf').raty({
   half     : true,
   path     : null,
-  starHalf : 'demo/images/star-half-mono.png',
+  starHalf : 'images/star-half-mono.png',
   starOff  : '../lib/images/star-off.png',
   starOn   : '../lib/images/star-on.png'
 });
@@ -3720,7 +3720,7 @@ $('#click-prevent').raty({
 $('#hints').raty({ hints: ['a', null, '', undefined, '*_*']});
 
 $('#star-off-and-star-on').raty({
-  path    : 'demo/images',
+  path    : 'images',
   starOff : 'off.png',
   starOn  : 'on.png'
 });
@@ -3738,15 +3738,15 @@ $('#cancelPlace').raty({
 });
 
 $('#star-off-and-star-on').raty({
-  path    : 'demo/images',
+  path    : 'images',
   starOff : 'off.png',
   starOn  : 'on.png'
 });
 
 $('#cancel-off-and-cancel-on').raty({
   cancel    : true,
-  cancelOff : 'demo/images/cancel-custom-off.png',
-  cancelOn  : 'demo/images/cancel-custom-on.png',
+  cancelOff : 'images/cancel-custom-off.png',
+  cancelOn  : 'images/cancel-custom-on.png',
   path      : null,
   starOff   : '../lib/images/star-off.png',
   starOn    : '../lib/images/star-on.png'
@@ -3756,16 +3756,16 @@ $('#iconRange').raty({
   path      : null,
   starOff   : '../lib/images/star-off.png',
   iconRange : [
-    { range: 1, on: 'demo/images/1.png', off: 'demo/images/0.png' },
-    { range: 2, on: 'demo/images/2.png', off: 'demo/images/0.png' },
-    { range: 3, on: 'demo/images/3.png', off: 'demo/images/0.png' },
-    { range: 4, on: 'demo/images/4.png', off: 'demo/images/0.png' },
-    { range: 5, on: 'demo/images/5.png', off: 'demo/images/0.png' }
+    { range: 1, on: 'images/1.png', off: 'images/0.png' },
+    { range: 2, on: 'images/2.png', off: 'images/0.png' },
+    { range: 3, on: 'images/3.png', off: 'images/0.png' },
+    { range: 4, on: 'images/4.png', off: 'images/0.png' },
+    { range: 5, on: 'images/5.png', off: 'images/0.png' }
   ]
 });
 
 $('#size').raty({
-  path      : 'demo/images',
+  path      : 'images',
   cancel    : true,
   cancelOff : 'cancel-off.png',
   cancelOn  : 'cancel-on.png',
@@ -3837,7 +3837,7 @@ $('#precision').raty({
   cancel     : true,
   cancelOff  : 'cancel-off.png',
   cancelOn   : 'cancel-on.png',
-  path       : 'demo/images',
+  path       : 'images',
   starHalf   : 'star-half.png',
   starOff    : 'star-off.png',
   starOn     : 'star-on.png',
@@ -3861,7 +3861,7 @@ $('#functions').raty({
   cancel     : true,
   cancelOff  : 'cancel-off.png',
   cancelOn   : 'cancel-on.png',
-  path       : 'demo/images',
+  path       : 'images',
   precision  : true,
   starHalf   : 'star-half.png',
   starOff    : 'star-off.png',
