@@ -29,7 +29,8 @@
     "test": "spec"
   },
   "engines": {
-    "node": "7.x"
+    "node": "^8",
+    "npm": "^5"
   },
   "homepage": "https://github.com/wbotelhos/raty",
   "keywords": [
