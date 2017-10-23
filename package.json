@@ -6,7 +6,7 @@
   },
 
   "contributors": ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
-  "demos":        ["demo.html"],
+  "demos":        ["demo/index.html"],
 
   "dependencies": {
     "jquery": "^3.2.1"
