@@ -9,6 +9,17 @@ describe('#cancelPlace', function() {
     Helper.clear();
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    this.el = Helper._append('div', { 'data-cancel-place': 'custom' });
+
+    // when
+    this.el.raty();
+
+    // then
+    expect(this.el[0].opt.cancelPlace).toEqual('custom');
+  });
+
   context('when left', function() {
     it ('is prepended', function() {
       // given

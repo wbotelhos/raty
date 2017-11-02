@@ -9,6 +9,17 @@ describe('#readOnly', function() {
     Helper.clear();
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-readonly': true });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.readonly).toEqual(true);
+  });
+
   context('on true', function() {
     it ('sets score as readonly', function() {
       // given

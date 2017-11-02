@@ -38,4 +38,15 @@ describe('#number', function() {
     // then
     expect(this.el[0].opt.number).toEqual(1);
   });
+
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-number': 3 });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.number).toEqual(3);
+  });
 });

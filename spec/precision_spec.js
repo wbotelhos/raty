@@ -20,6 +20,17 @@ describe('#precision', function() {
     expect(this.el[0].opt.half).toBeTruthy();
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-precision': true });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.precision).toEqual(true);
+  });
+
   context('with :target', function() {
     context('and :targetKeep', function() {
       context('and :targetType as score', function() {

@@ -24,6 +24,17 @@ describe('#cancel', function() {
     expect(cancel).toHaveAttr('src', '../lib/images/cancel-off.png');
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    this.el = Helper._append('div', { 'data-cancel': true });
+
+    // when
+    this.el.raty();
+
+    // then
+    expect(this.el[0].opt.cancel).toEqual(true);
+  });
+
   context('on mouseover', function() {
     it ('turns on', function() {
       // given
