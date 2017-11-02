@@ -1,5 +1,11 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+## 2.8.0
+
+### News
+
++ Add support to configure options via `$.data()`;
+
 ## 2.7.1
 
 ### Fixes
