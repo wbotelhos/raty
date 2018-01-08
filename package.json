@@ -58,7 +58,7 @@
     "url": "https://github.com/wbotelhos/raty"
   },
   "scripts": {
-    "test": "node_modules/karma/bin/karma start spec/karma.conf.js"
+    "test": "node_modules/karma/bin/karma start karma.conf.js"
   },
   "version": "2.8.0"
 }
