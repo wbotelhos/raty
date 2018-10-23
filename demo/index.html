@@ -112,15 +112,15 @@ div.hint {
 </pre></div>
 <h1>Score</h1>
 
-<p>Used when we want starts with a saved rating.</p>
+<p>Used when we want stars with a saved rating.</p>
 
 <div id="score"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">score</span><span class="o">:</span> <span class="mi">3</span> <span class="p">});</span>
 </pre></div>
 <h1>Score callback</h1>
 
-<p>If you need to start you score depending of a dynamic value, you can to use callback for it.<br>
-You can pass any value for it, not necessarily a data- value. You can use a field value for example.</p>
+<p>If you need the starting score to be based on a dynamic value, you can to use callback for it.<br>
+You can pass any value for it, not necessarily a data value, for example you can use a field value.</p>
 
 <div id="score-callback" data-score="1"></div>
 <div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-score=</span><span class="s">"1"</span><span class="nt">&gt;&lt;/div&gt;</span>
@@ -160,7 +160,7 @@ You can pass any value for it, not necessarily a data- value. You can use a fiel
 </pre></div>
 <h1>Number Max</h1>
 
-<p>Change the maximum of start that can be created.</p>
+<p>Change the max number of stars that can be created.</p>
 
 <div id="numberMax"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -170,8 +170,8 @@ You can pass any value for it, not necessarily a data- value. You can use a fiel
 </pre></div>
 <h1>Read Only</h1>
 
-<p>You can prevent users to vote. It can be applied with or without <a href="#score">score</a> and all stars will receives the <a href="#hints">hint</a> corresponding of the selected star.<br>
-Stop the mouse over the stars to see:</p>
+<p>You can prevent users from voting. It can be applied with or without a <a href="#score">score</a> and all aditional stars will show the grey &quot;<a href="#hints">hint</a>&quot; stars.<br>
+Move the mouse over the stars to see:</p>
 
 <div id="readOnly"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">score</span><span class="o">:</span> <span class="mi">3</span> <span class="p">});</span>
@@ -187,22 +187,22 @@ Stop the mouse over the stars to see:</p>
   <span class="p">}</span>
 <span class="p">});</span>
 </pre></div>
-<h1>No Rated Message</h1>
+<h1>Not Rated Message</h1>
 
 <p>If <a href="#readOnly">readOnly</a> is enabled and there is no <a href="#score">score</a>, the <a href="#hint">hint</a> "Not rated yet!" will be shown for all stars. But you can change it.<br>
-Stop the mouse over the star to see:</p>
+Hover the mouse over the star to see:</p>
 
 <div id="noRatedMsg"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">readOnly</span>   <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">noRatedMsg</span> <span class="o">:</span> <span class="s2">"I'am readOnly and I haven't rated yet!"</span>
+  <span class="nx">noRatedMsg</span> <span class="o">:</span> <span class="s2">"I'm readOnly and I haven't rated yet!"</span>
 <span class="p">});</span>
 </pre></div>
 <h1>Half Show</h1>
 
 <p>You can represent a float <a href="#score">score</a> as a half star icon.<br>
-This options is just to <strong>show</strong> the half star. If you want enable the vote with half star on mouseover, please check the option <a href="#half">half</a>.<br>
-The <code>round</code> options showed belows is just for the <strong>icon</strong>, the score keeps as <strong>float</strong> always.</p>
+This option is just to <strong>show</strong> the half star. If you want enable voting with half stars on mouseover, please check the option <a href="#half">half</a>.<br>
+The <code>round</code> options showed below are just for the <strong>icon</strong>, the score remains a <strong>float</strong> always.</p>
 
 <h2>Enabled</h2>
 
@@ -219,7 +219,7 @@ The <code>round</code> options showed belows is just for the <strong>icon</stron
 </pre></div>
 <h2>Disabled</h2>
 
-<p>The rules becomes:</p>
+<p>The rules become:</p>
 
 <ul>
 <li>Down: score &lt; x.6 the star will be rounded down;</li>
@@ -235,9 +235,9 @@ The <code>round</code> options showed belows is just for the <strong>icon</stron
 <h1>Round</h1>
 
 <p>You can customize the round values of the <a href="#halfShow">halfShow</a> option.<br>
-We changed the default interval [x.25 .. x.76], now x.26 will round down instead of to be a half star.<br>
+We changed the default interval [x.25 .. x.76], now x.26 will round down instead being the default half star.<br>
 Remember that the <code>full</code> attribute is used only when halfShow is disabled.<br>
-You can specify just the attribute you want to change and keeps the others as default.</p>
+You can specify just the attribute you want to change and keep the others as their defaults.</p>
 
 <div id="round"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -247,8 +247,8 @@ You can specify just the attribute you want to change and keeps the others as de
 </pre></div>
 <h1>Half</h1>
 
-<p>Enables the half star mouseover to be possible vote with half values.<br>
-If you want to vote with more precison than half value, please check the option <a href="#precision">precision</a>.</p>
+<p>Enables the half star mouseover to make voting with half values possible.<br>
+If you want to vote with more precison than a half value, please check the option <a href="#precision">precision</a>.</p>
 
 <div id="half"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">half</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
@@ -256,7 +256,7 @@ If you want to vote with more precison than half value, please check the option 
 <h1>Star Half</h1>
 
 <p>Changes the name of the half star.<br>
-Pay attention, when you want specify a different icon with a different directory, you must to set the <a href="#path">path</a> option to <code>null</code> to avoid it to be prepended on your path and, consequently, specify all other icons with explicit original path.</p>
+Pay attention, when you want specify a different icon with a different directory, you must to set the <a href="#path">path</a> option to <code>null</code> to avoid prepending the star's origintal path to your path. You will then have to specify all other icons with their explicit original path.</p>
 
 <div id="starHalf"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -264,7 +264,7 @@ Pay attention, when you want specify a different icon with a different directory
   <span class="nx">starHalf</span> <span class="o">:</span> <span class="s1">'star-half-mono.png'</span>
 <span class="p">});</span>
 </pre></div>
-<p>You can to use the size of icon you want.</p>
+<p>You can change the size of the icon.</p>
 
 <div id="size"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -275,8 +275,8 @@ Pay attention, when you want specify a different icon with a different directory
 </pre></div>
 <h1>Click</h1>
 
-<p>Callback to handle the <a href="#score">score</a> and the click <code>event</code> on click action.<br>
-You can mension the Raty element (DOM) itself using <code>this</code>.</p>
+<p>You can write a callback to handle the <a href="#score">score</a> and the click <code>event</code> on click events.<br>
+You can reference the Raty element (DOM) itself using <code>this</code>.</p>
 
 <div id="click"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -287,7 +287,7 @@ You can mension the Raty element (DOM) itself using <code>this</code>.</p>
 </pre></div>
 <h1>Click Prevent</h1>
 
-<p>If you return <code>false</code> into callback, the click action will be prevented.</p>
+<p>If you return <code>false</code> into the callback, the click event will be prevented.</p>
 
 <div id="click-prevent"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -310,14 +310,14 @@ If you pass <code>undefined</code>, this position will be ignored and receive th
 
 <p>Changes the path where your icons are located.<br>
 Set it only if you want the same path for all icons.<br>
-Don't mind about the last slash of the path, if you don't put it, it will be setted for you.</p>
+Don't wrry about the last slash of the path, if you fail to include this it will be automtaically set.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">'assets/images'</span> <span class="p">});</span>
 </pre></div>
 <p>Now we have the following full paths: <strong>assets/images/star-on.png</strong>, <strong>assets/images/star-off.png</strong> and so.</p>
 
 <h1>Path Callback</h1>
 
-<p>You can set the path dinamically using callback.</p>
+<p>You can set the path dynamically using callback.</p>
 <div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">data-path=</span><span class="s">"assets/images"</span><span class="nt">&gt;&lt;/div&gt;</span>
 </pre></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -328,7 +328,7 @@ Don't mind about the last slash of the path, if you don't put it, it will be set
 </pre></div>
 <h1>Star Off and Star On</h1>
 
-<p>Changes the name of the star on and star off.</p>
+<p>Changes the star icon to lightbulbs.</p>
 
 <div id="star-off-and-star-on"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -346,8 +346,8 @@ Inside the <a href="#click">click</a> callback the argument code receives the va
 </pre></div>
 <h1>Cancel Hint</h1>
 
-<p>Like the stars, the <a href="#cancel">cancel</a> button have a hint too, and you can change it.<br>
-Stop the mouse over the cancel button to see:</p>
+<p>Like the stars, the <a href="#cancel">cancel</a> button has a hint too and you can change it.<br>
+Hover the mouse over the cancel button to see:</p>
 
 <div id="cancelHint"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -367,7 +367,7 @@ Stop the mouse over the cancel button to see:</p>
 </pre></div>
 <h1>Cancel off and Cancel On</h1>
 
-<p>Changes the on and off icon of the <a href="#cancel">cancel</a> button.</p>
+<p>Changes icon of the <a href="#cancel">cancel</a> button.</p>
 
 <div id="cancel-off-and-cancel-on"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -378,10 +378,10 @@ Stop the mouse over the cancel button to see:</p>
 </pre></div>
 <h1>Icon Range</h1>
 
-<p>It's an array of objects where each one represents a custom icon.<br>
-The <code>range</code> attribute is until wich position the icon will be displayed.<br>
-The <code>on</code> attribute is the active icon.<br>
-The <code>off</code> attribute is the inactive icon.</p>
+<p>Is an array of objects where each one represents a custom icon.<br>
+The <code>range</code> attribute is where the icon will be displayed (out of the five stars)<br>
+The <code>on</code> attribute is the active icon when hovering.<br>
+The <code>off</code> attribute is the default icon.</p>
 
 <div id="iconRange"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -410,7 +410,7 @@ If the value <code>on</code> or <code>off</code> is omitted then the attribute <
 
 <h1>Target</h1>
 
-<p>Some place to display the <a href="#hints">hints</a> or the <a href="#cancelHint">cancelHint</a>.</p>
+<p>Displays the <a href="#hints">hints</a> or the <a href="#cancelHint">cancelHint</a>.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
   <span class="nx">cancel</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">target</span> <span class="o">:</span> <span class="s1">'#hint'</span>
@@ -466,8 +466,8 @@ If the value <code>on</code> or <code>off</code> is omitted then the attribute <
 </pre></div>
 <h1>Target Type</h1>
 
-<p>You have the option <code>hint</code> or <code>score</code> to chosse.<br>
-You can choose to see the <a href="#score">score</a> instead the <a href="#hints">hints</a> using the value <code>score</code>.<br>
+<p>You have the options of <code>hint</code> or <code>score</code>:<br>
+If you choose to see the <a href="#score">score</a> instead the <a href="#hints">hints</a> using the value <code>score</code> you will get the numerical value of the star.<br>
 For the <a href="#cancel">cancel</a> button the value is empty.</p>
 
 <div id="targetType"></div>
@@ -481,7 +481,7 @@ For the <a href="#cancel">cancel</a> button the value is empty.</p>
 </pre></div>
 <h1>Target Keep</h1>
 
-<p>If you want to keep the <a href="#score">score</a> into the hint box after you do the rating, turn on this option.</p>
+<p>If you want the <a href="#score">score</a> to remain in the hint box after providing the rating, turn on this option.</p>
 
 <div id="targetKeep"></div>
 
@@ -494,8 +494,8 @@ For the <a href="#cancel">cancel</a> button the value is empty.</p>
 </pre></div>
 <h1>Target Text</h1>
 
-<p>Normally all <a href="#target-div">target</a> is keeped blank if you don't use the <a href="#targetKeep">targetKeep</a> option.<br>
-If you want a default content you can use this option.</p>
+<p> <a href="#target-div">Target</a> content will blank if you don't use the <a href="#targetKeep">targetKeep</a> option, after rolling the mouse away from the ratings.<br>
+If you want a message to show by default you can use this option.</p>
 
 <div id="targetText"></div>
 
@@ -507,7 +507,7 @@ If you want a default content you can use this option.</p>
 </pre></div>
 <h1>Target Format</h1>
 
-<p>You can choose a template to be merged with your hints and displayed on <a href="#target-div">target</a>.</p>
+<p>You can choose a template to be merged with your hints and displayed in the <a href="#target-div">target</a>.</p>
 
 <div id="targetFormat"></div>
 
@@ -519,9 +519,9 @@ If you want a default content you can use this option.</p>
 </pre></div>
 <h1>Target Score</h1>
 
-<p>You can keep the score value inside the binded element by default or choose where to put it.<br>
+<p>You can keep the score value inside the blank element by default or choose where to put it.<br>
 If you change the score target, the default score field won't be created.<br>
-It is not like <a href="#target-div">target</a> option for display purpose, it is the real current score data.</p>
+This is not a <a href="#target-div">target</a> option for display only, it is the real current score data.</p>
 
 <div id="targetScore"></div>
 
@@ -532,9 +532,9 @@ It is not like <a href="#target-div">target</a> option for display purpose, it i
 </pre></div>
 <h1>Mouseover</h1>
 
-<p>You can handle the action on mouseover.<br>
-The arguments is the same of the <a href="#click">click</a> callback.<br>
-The options <a href="#target-div">target</a>, <a href="#targetFormat">targetFormat</a>, <a href="#targetKeep">targetKeep</a>, <a href="#targetText">targetText</a> and <a href="#targetType">targetType</a> are abstractions of this callback. You can do it by yourself.</p>
+<p>You can handle events on mouseover.<br>
+The argument is the same as the <a href="#click">click</a> callback.<br>
+The optios <a href="#target-div">target</a>, <a href="#targetFormat">targetFormat</a>, <a href="#targetKeep">targetKeep</a>, <a href="#targetText">targetText</a> and <a href="#targetType">targetType</a> are abstractions of this callback.</p>
 
 <div id="mouseover"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -545,8 +545,8 @@ The options <a href="#target-div">target</a>, <a href="#targetFormat">targetForm
 </pre></div>
 <h1>Mouseout</h1>
 
-<p>You can handle the action on mouseout.<br>
-The arguments is the same of the <a href="#mouseover">mouseover</a> callback.</p>
+<p>You can handle events on mouseout.<br>
+The arguments are the same as in the <a href="#mouseover">mouseover</a> callback.</p>
 
 <div id="mouseout"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -557,9 +557,9 @@ The arguments is the same of the <a href="#mouseover">mouseover</a> callback.</p
 </pre></div>
 <h1>Precision</h1>
 
-<p>You can get the right position of the cursor to get a precision <a href="#score">score</a>.<br>
-The star is represented just as half and full star, but the <a href="#score">score</a> is saved with precision.<br>
-When you enable this option the <a href="#half">half</a> options is automatically enabled and <a href="#targetType">targetType</a> is changed to <code>score</code>.</p>
+<p>You can get the exact position of the cursor to get a precise <a href="#score">score</a>.<br>
+The score is still represented in full and half stars, but the <a href="#score">score</a> is saved as a float.<br>
+When you enable this option the <a href="#half">half</a> optionn is automatically enabled and <a href="#targetType">targetType</a> is changed to <code>score</code>.</p>
 
 <div id="precision"></div>
 
@@ -580,23 +580,23 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 </pre></div>
 <h1>Space</h1>
 
-<p>You can take off the space between the star.</p>
+<p>You can remove excess space between stars.</p>
 
 <div id="space"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#space'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">space</span><span class="o">:</span> <span class="kc">false</span> <span class="p">});</span>
 </pre></div>
 <h1>Single</h1>
 
-<p>You can turn on just the mouseovered star instead all from the first until that one.</p>
+<p>You can speficy that only the current star being hovered over should be illuminated, instead all preceding stars.</p>
 
 <div id="single"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#single'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span> <span class="nx">single</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
 </pre></div>
 <h1>Star Type</h1>
 
-<p>It lets you to change the star element type. Changing it from <code>img</code> to <code>i</code>, for example, gives you the change to use font instead image. There is a sample CSS (<code>stylesheets/jquery.raty.css</code>) using a sample fonts (<code>fonts/jquery.raty.[eot|svg|ttf|woff]</code>).</p>
+<p>Lets you to change the star element type. Changing it from <code>img</code> to <code>i</code>, for example, changes from an image to a glyph. There is a sample stylesheet (<code>stylesheets/jquery.raty.css</code>) using a sample fonts (<code>fonts/jquery.raty.[eot|svg|ttf|woff]</code>).</p>
 
-<p>To be easier to use, we replace the dot (.) extension to hyphen (-), so you do not need to change the original names, just set the names to your fonts. We recommend you use the <a href="http://icomoon.io">Ico Moon</a> app to be possible to download only the icons you need and rename it.</p>
+<p>To be easier to use, we replaced the dot (.) extension to a hyphen (-), so you do not need to change the original names, just set the names to your fonts. We recommend you use the <a href="http://icomoon.io">Ico Moon</a> app which allows you to download the relevant icons only and rename them.</p>
 
 <div id="starType"></div>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
@@ -607,7 +607,7 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 </pre></div>
 <h1>Changing the settings globally</h1>
 
-<p>You can change any option mentioning the scope <code>$.fn.raty.defaults.OPTION = VALUE;</code>. It must be called before you bind the plugin.</p>
+<p>You can change any options globally <code>$.fn.raty.defaults.OPTION = VALUE;</code>. It must be called before you bind the plugin.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="nx">assets</span><span class="p">;</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">raty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">cancel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 </pre></div>
@@ -620,7 +620,7 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <p>Name of cancel's class.</p>
 <div class="highlight"><pre><span class="nx">cancelHint</span><span class="o">:</span> <span class="s1">'Cancel this rating!'</span>
 </pre></div>
-<p>The cancel's button hint.</p>
+<p>The cancel button's hint.</p>
 <div class="highlight"><pre><span class="nx">cancelOff</span><span class="o">:</span> <span class="s1">'cancel-off.png'</span>
 </pre></div>
 <p>Icon used on active cancel.</p>
@@ -629,7 +629,7 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <p>Icon used inactive cancel.</p>
 <div class="highlight"><pre><span class="nx">cancelPlace</span><span class="o">:</span> <span class="s1">'left'</span>
 </pre></div>
-<p>Cancel's button position.</p>
+<p>Cancel button's position.</p>
 <div class="highlight"><pre><span class="nx">click</span><span class="o">:</span> <span class="kc">undefined</span>
 </pre></div>
 <p>Callback executed on rating click.</p>
@@ -644,7 +644,7 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <p>Hints used on each star.</p>
 <div class="highlight"><pre><span class="nx">iconRange</span><span class="o">:</span> <span class="kc">undefined</span>
 </pre></div>
-<p>Object list with position and icon on and off to do a mixed icons.</p>
+<p>Object list with position and icon on and off (for mixed icons).</p>
 <div class="highlight"><pre><span class="nx">mouseout</span><span class="o">:</span> <span class="kc">undefined</span>
 </pre></div>
 <p>Callback executed on mouseout.</p>
@@ -653,25 +653,25 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <p>Callback executed on mouseover.</p>
 <div class="highlight"><pre><span class="nx">noRatedMsg</span><span class="o">:</span> <span class="s1">'Not rated yet!'</span>
 </pre></div>
-<p>Hint for no rated elements when it's <a href="#readOnly">readOnly</a>.</p>
+<p>Hint for non rated elements when it's <a href="#readOnly">readOnly</a>.</p>
 <div class="highlight"><pre><span class="nx">number</span><span class="o">:</span> <span class="mi">5</span>
 </pre></div>
 <p>Number of stars that will be presented.</p>
 <div class="highlight"><pre><span class="nx">numberMax</span><span class="o">:</span> <span class="mi">20</span>
 </pre></div>
-<p>Max of star the option <a href="#number">number</a> can creates.</p>
+<p>Max number of stars the option <a href="#number">number</a> will create.</p>
 <div class="highlight"><pre><span class="nx">path</span><span class="o">:</span> <span class="kc">undefined</span>
 </pre></div>
-<p>A global locate where the icon will be looked.</p>
+<p>A global path where the icon will be found.</p>
 <div class="highlight"><pre><span class="nx">precision</span><span class="o">:</span> <span class="kc">false</span>
 </pre></div>
-<p>Enables the selection of a precision score.</p>
+<p>Enables the selection of a percise score.</p>
 <div class="highlight"><pre><span class="nx">readOnly</span><span class="o">:</span> <span class="kc">false</span>
 </pre></div>
 <p>Turns the rating read-only.</p>
 <div class="highlight"><pre><span class="nx">round</span><span class="o">:</span> <span class="p">{</span> <span class="nx">down</span><span class="o">:</span> <span class="p">.</span><span class="mi">25</span><span class="p">,</span> <span class="nx">full</span><span class="o">:</span> <span class="p">.</span><span class="mi">6</span><span class="p">,</span> <span class="nx">up</span><span class="o">:</span> <span class="p">.</span><span class="mi">76</span> <span class="p">}</span>
 </pre></div>
-<p>Included values attributes to do the <a href="#score">score</a> round math.</p>
+<p>Includes value attributes to do the <a href="#score">score</a> rounding math.</p>
 <div class="highlight"><pre><span class="nx">score</span><span class="o">:</span> <span class="kc">undefined</span>
 </pre></div>
 <p>Initial rating.</p>
@@ -680,7 +680,7 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <p>Name of the hidden field that holds the score value.</p>
 <div class="highlight"><pre><span class="nx">single</span><span class="o">:</span> <span class="kc">false</span>
 </pre></div>
-<p>Enables just a single star selection.</p>
+<p>Enables single star selection.</p>
 <div class="highlight"><pre><span class="nx">space</span><span class="o">:</span> <span class="kc">true</span>
 </pre></div>
 <p>Puts space between the icons.</p>
@@ -701,39 +701,39 @@ When you enable this option the <a href="#half">half</a> options is automaticall
 <p>Template to interpolate the <a href="#score">score</a> in.</p>
 <div class="highlight"><pre><span class="nx">targetKeep</span><span class="o">:</span> <span class="kc">false</span>
 </pre></div>
-<p>If the last rating value will be keeped after mouseout.</p>
+<p>If the last rating value will be keept on mouseout.</p>
 <div class="highlight"><pre><span class="nx">targetText</span><span class="o">:</span> <span class="s1">''</span>
 </pre></div>
-<p>Default text setted on <a href="target">target</a>.</p>
+<p>Default text in a <a href="target">target</a>.</p>
 <div class="highlight"><pre><span class="nx">targetType</span><span class="o">:</span> <span class="s1">'hint'</span>
 </pre></div>
-<p>Option to choose if <a href="target">target</a> will receive hint or the score number.</p>
+<p>Option to choose if <a href="target">target</a> will receive a hint or the score number.</p>
 
 <h1>Functions</h1>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'score'</span><span class="p">);</span>
 </pre></div>
-<p>Get the current score. If there is no score then undefined will be returned.</p>
+<p>Get the current score, if there is no score then <code>undefined</code> will be returned.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'score'</span><span class="p">,</span> <span class="nx">number</span><span class="p">);</span>
 </pre></div>
 <p>Set a score.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">number</span><span class="p">);</span>
 </pre></div>
-<p>Click on some star. It always call the click callback if it exists.</p>
+<p>Click on a star, it always call the click callback if one exists.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'readOnly'</span><span class="p">,</span> <span class="kr">boolean</span><span class="p">);</span>
 </pre></div>
 <p>Change the read-only state.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'cancel'</span><span class="p">,</span> <span class="kr">boolean</span><span class="p">);</span>
 </pre></div>
-<p>Cancel the rating. The boolean parameter tells if the click will be called or not. If you ommit it, false it will be.</p>
+<p>Cancel the rating. The boolean parameter determines if the click will be called or not. If you ommit it, it will always be false.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'reload'</span><span class="p">);</span>
 </pre></div>
-<p>Reload the rating with the same configuration it was binded.</p>
+<p>Reload the rating with the same configuration in it's original binding.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'set'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">option</span><span class="o">:</span> <span class="nx">value</span> <span class="p">});</span>
 </pre></div>
-<p>Reset the rating with new configurations. Only options especified will be overrided.</p>
+<p>Reset the rating with new configurations. Only options specified will be overridden.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">);</span>
 </pre></div>
-<p>Destroy the bind and gives you the raw element before the bind.</p>
+<p>Destroy the bind and get the raw element before binding.</p>
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#star'</span><span class="p">).</span><span class="nx">raty</span><span class="p">(</span><span class="s1">'move'</span><span class="p">,</span> <span class="nx">number</span><span class="p">);</span>
 </pre></div>
 <p>Move the mouse to the given score point position.</p>
@@ -3676,10 +3676,10 @@ $('#readOnly-callback').raty({
 
 $('#noRatedMsg').raty({
   readOnly   : true,
-  noRatedMsg : "I'am readOnly and I haven't rated yet!"
+  noRatedMsg : "I'm readOnly and I haven't rated yet!"
 });
 
-$('#halfShow-true').raty({ score: 3.26 });
+$('#halfShow-true').raty({ score: 4.570 });
 
 $('#halfShow-false').raty({
   halfShow : false,
@@ -3693,6 +3693,7 @@ $('#round').raty({
 
 $('#half').raty({
   half  : true,
+  score : 3.5,
   hints : [['bad 1/2', 'bad'], ['poor 1/2', 'poor'], ['regular 1/2', 'regular'], ['good 1/2', 'good'], ['gorgeous 1/2', 'gorgeous']]
 });
 
