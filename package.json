@@ -10,7 +10,7 @@
     "demo/index.html"
   ],
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.3.1"
   },
   "description": "jQuery Raty - A Star Rating Plugin",
   "devDependencies": {
