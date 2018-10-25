@@ -3,7 +3,7 @@
   "description": "jQuery Raty - A Star Rating Plugin",
 
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.3.1"
   },
 
   "homepage": "https://github.com/wbotelhos/raty",
