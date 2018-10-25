@@ -1,11 +1,15 @@
 # jQuery Raty - A Star Rating Plugin
 
-[![Build Status](https://img.shields.io/travis/wbotelhos/raty/master.svg)](https://travis-ci.org/wbotelhos/raty "Travis CI")
+[![Build Status](https://travis-ci.org/wbotelhos/raty.svg)](https://travis-ci.org/wbotelhos/raty)
 [![NPM Version](https://badge.fury.io/js/raty-js.svg)](https://badge.fury.io/js/raty-js)
-[![Dependency](https://david-dm.org/wbotelhos/raty.svg)](https://david-dm.org/wbotelhos/raty "Dependency Status")
-[![Dev Dependency](https://david-dm.org/wbotelhos/raty/dev-status.svg)](https://david-dm.org/wbotelhos/raty#info=devDependencies "Dev Dependency Status")
+[![Dependency](https://david-dm.org/wbotelhos/raty.svg)](https://david-dm.org/wbotelhos/raty)
+[![Dev Dependency](https://david-dm.org/wbotelhos/raty/dev-status.svg)](https://david-dm.org/wbotelhos/raty#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/wbotelhos/raty.png)](https://codeclimate.com/github/wbotelhos/raty)
-[![Support jQuery Raty](http://img.shields.io/gittip/wbotelhos.svg)](https://gratipay.com/~wbotelhos)
+[![Patreon](https://img.shields.io/badge/donate-%3C3-brightgreen.svg)](https://www.patreon.com/wbotelhos)
+
+## Rails Rating?
+
+This is **Rating**: https://github.com/wbotelhos/rating :star:
 
 ## Usage with Image
 
@@ -100,11 +104,3 @@ $('div').raty('destroy');                // Destroy the bind and give you the ra
 
 $('div').raty('move', number);           // Move the mouse to the given score point position.
 ```
-
-## Contributors
-
-[Check it out](http://github.com/wbotelhos/raty/graphs/contributors)
-
-## Love it!
-
-Via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=raty) or [Gratipay](https://gratipay.com/raty). Thanks! (:
