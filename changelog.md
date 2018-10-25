@@ -1,5 +1,11 @@
 # jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
 
+## 2.9.0
+
+### Changes
+
++ Drops `engines` from `package.json` for a greater flexibility;
+
 ## 2.8.0
 
 ### News
