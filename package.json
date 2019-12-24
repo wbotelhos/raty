@@ -10,14 +10,14 @@
     "demo/index.html"
   ],
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.4.1"
   },
   "description": "jQuery Raty - A Star Rating Plugin",
   "devDependencies": {
     "jasmine-core": "^2.99.1",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
-    "karma-firefox-launcher": "^1.1.0",
+    "karma-firefox-launcher": "^1.2.0",
     "karma-ie-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.2",
     "karma-opera-launcher": "^1.0.0",
