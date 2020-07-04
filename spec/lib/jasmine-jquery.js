@@ -1,7 +1,7 @@
 /*!
 Jasmine-jQuery: a set of jQuery helpers for Jasmine tests.
 
-Version 2.1.0
+Version 2.1.1
 
 https://github.com/velesin/jasmine-jquery
 
@@ -27,7 +27,13 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-+function (window, jasmine, $) { "use strict";
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports && typeof exports !== 'undefined') {
+    factory(root, root.jasmine, require('jquery'));
+  } else {
+    factory(root, root.jasmine, root.jQuery);
+  }
+}((function() {return this; })(), function (window, jasmine, $) { "use strict";
 
   jasmine.spiedEventsKey = function (selector, eventName) {
     return [$(selector).selector, eventName].toString()
@@ -125,6 +131,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         async: false, // must be synchronous to guarantee that no tests are run before fixture is loaded
         cache: false,
         url: url,
+        dataType: 'html',
         success: function (data, status, $xhr) {
           htmlText = $xhr.responseText
         }
@@ -144,7 +151,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 htmlText += '<script>' + $xhr.responseText + '</script>'
             },
             error: function ($xhr, status, err) {
-                throw new Error('Script could not be loaded: ' + scriptSrc + ' (status: ' + status + ', message: ' + err.message + ')')
+                throw new Error('Script could not be loaded: ' + url + ' (status: ' + status + ', message: ' + err.message + ')')
             }
         });
       })
@@ -283,7 +290,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   jasmine.jQuery.events = {
     spyOn: function (selector, eventName) {
       var handler = function (e) {
-        data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] = jasmine.util.argsToArray(arguments)
+        var calls = (typeof data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] !== 'undefined') ? data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)].calls : 0
+        data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] = {
+          args: jasmine.util.argsToArray(arguments),
+          calls: ++calls
+        }
       }
 
       $(selector).on(eventName, handler)
@@ -295,12 +306,22 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         handler: handler,
         reset: function (){
           delete data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)]
+        },
+        calls: {
+          count: function () {
+              return data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] ?
+                data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)].calls : 0;
+          },
+          any: function () {
+              return data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] ?
+                !!data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)].calls : false;
+          }
         }
       }
     },
 
     args: function (selector, eventName) {
-      var actualArgs = data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)]
+      var actualArgs = data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)].args
 
       if (!actualArgs) {
         throw "There is no spy for " + eventName + " on " + selector.toString() + ". Make sure to create a spy using spyOnEvent."
@@ -319,19 +340,22 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       if (Object.prototype.toString.call(expectedArgs) !== '[object Array]')
         actualArgs = actualArgs[0]
 
-      return util.equals(expectedArgs, actualArgs, customEqualityTesters)
+      return util.equals(actualArgs, expectedArgs, customEqualityTesters)
     },
 
     wasPrevented: function (selector, eventName) {
-      var args = data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)]
+      var spiedEvent = data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)]
+        , args = (jasmine.util.isUndefined(spiedEvent)) ? {} : spiedEvent.args
         , e = args ? args[0] : undefined
 
       return e && e.isDefaultPrevented()
     },
 
     wasStopped: function (selector, eventName) {
-      var args = data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)]
+      var spiedEvent = data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)]
+        , args = (jasmine.util.isUndefined(spiedEvent)) ? {} : spiedEvent.args
         , e = args ? args[0] : undefined
+
       return e && e.isPropagationStopped()
     },
 
@@ -361,11 +385,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       toHaveCss: function () {
         return {
           compare: function (actual, css) {
-            for (var prop in css){
+            var stripCharsRegex = /[\s;\"\']/g
+            for (var prop in css) {
               var value = css[prop]
               // see issue #147 on gh
-              ;if (value === 'auto' && $(actual).get(0).style[prop] === 'auto') continue
-              if ($(actual).css(prop) !== value) return { pass: false }
+              ;if ((value === 'auto') && ($(actual).get(0).style[prop] === 'auto')) continue
+              var actualStripped = $(actual).css(prop).replace(stripCharsRegex, '')
+              var valueStripped = value.replace(stripCharsRegex, '')
+              if (actualStripped !== valueStripped) return { pass: false }
             }
             return { pass: true }
           }
@@ -482,12 +509,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       toHaveText: function () {
         return {
           compare: function (actual, text) {
-            var trimmedText = $.trim($(actual).text())
+            var actualText = $(actual).text()
+            var trimmedText = $.trim(actualText)
 
             if (text && $.isFunction(text.test)) {
-              return { pass: text.test(trimmedText) }
+              return { pass: text.test(actualText) || text.test(trimmedText) }
             } else {
-              return { pass: trimmedText == text }
+              return { pass: (actualText == text || trimmedText == text) }
             }
           }
         }
@@ -526,7 +554,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       toContainElement: function () {
         return {
           compare: function (actual, selector) {
-            if (window.debug) debugger
             return { pass: $(actual).find(selector).length }
           }
         }
@@ -559,6 +586,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       toHandle: function () {
         return {
           compare: function (actual, event) {
+            if ( !actual || actual.length === 0 ) return { pass: false };
             var events = $._data($(actual).get(0), "events")
 
             if (!events || !event || typeof event !== "string") {
@@ -589,6 +617,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       toHandleWith: function () {
         return {
           compare: function (actual, eventName, eventHandler) {
+            if ( !actual || actual.length === 0 ) return { pass: false };
             var normalizedEventName = eventName.split('.')[0]
               , stack = $._data($(actual).get(0), "events")[normalizedEventName]
 
@@ -722,7 +751,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          var $a = $(a)
 
          if (b instanceof $)
-           return $a.length == b.length && a.is(b)
+           return $a.length == b.length && $a.is(b)
 
          return $a.is(b);
        }
@@ -730,16 +759,16 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        if (b instanceof $ || jasmine.isDomNode(b)) {
          var $b = $(b)
 
-         if (a instanceof jQuery)
+         if (a instanceof $)
            return a.length == $b.length && $b.is(a)
 
-         return $(b).is(a);
+         return $b.is(a);
        }
      }
     })
 
     jasmine.getEnv().addCustomEqualityTester(function (a, b) {
-     if (a instanceof jQuery && b instanceof jQuery && a.size() == b.size())
+     if (a instanceof $ && b instanceof $ && a.size() == b.size())
         return a.is(b)
     })
   })
@@ -809,5 +838,4 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   window.getJSONFixture = function (url) {
     return jasmine.getJSONFixtures().proxyCallTo_('read', arguments)[url]
   }
-}(window, window.jasmine, window.jQuery);
-
+}));
