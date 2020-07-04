@@ -1,5 +1,3 @@
-# jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
-
 ## 2.9.0
 
 ### Changes
