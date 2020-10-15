@@ -248,6 +248,22 @@ describe('Integration', function() {
       });
 
       context('on click', function() {
+        it ('turns on the star', function() {
+          // given
+          var self  = $('#element').raty({ single: true });
+          var stars = self.children('img');
+
+          // when
+          stars.eq(2).trigger('mouseover').trigger('click');
+
+          // then
+          expect(stars.eq(0)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(1)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(2)).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars.eq(3)).toHaveAttr('src', '../lib/images/star-off.png');
+          expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
+        });
+
         context('on mouseout', function() {
           it ('keeps the score', function() {
             // given
