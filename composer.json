@@ -1,13 +1,12 @@
 {
-	"description": "jQuery Raty - A Star Rating Plugin",
-	"homepage":    "https://github.com/wbotelhos/raty",
-	"license":     "MIT",
-	"name":        "wbotelhos/raty",
-
   "authors": [
-		{ "homepage": "http://wbotelhos.com", "name": "Washington Botelho" }
-	],
-
+    {
+      "homepage": "http://wbotelhos.com",
+      "name": "Washington Botelho"
+    }
+  ],
+  "description": "jQuery Raty - A Star Rating Plugin",
+  "homepage": "https://github.com/wbotelhos/raty",
   "keywords": [
     "classificacao",
     "classificar",
@@ -21,5 +20,7 @@
     "staring",
     "votar",
     "voto"
-  ]
+  ],
+  "license": "MIT",
+  "name": "wbotelhos/raty"
 }
