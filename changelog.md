@@ -1,3 +1,14 @@
+## Unreleased
+
+### Changes
+
+### News
+
+### Fixes
+
+- Grammars fixes; [#217](https://github.com/wbotelhos/raty/pull/217) by [tfantina](https://github.com/tfantina)
+- When using `single` options the click was not turning the star on; [#155](https://github.com/wbotelhos/raty/pull/155) by [henrikhannemose](https://github.com/henrikhannemose)
+
 ## 2.9.0
 
 ### Changes
