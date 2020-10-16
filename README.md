@@ -1,9 +1,7 @@
 # jQuery Raty - A Star Rating Plugin
 
-[![Build Status](https://travis-ci.org/wbotelhos/raty.svg)](https://travis-ci.org/wbotelhos/raty)
+![CI](https://github.com/wbotelhos/raty/workflows/CI/badge.svg?)
 [![NPM Version](https://badge.fury.io/js/raty-js.svg)](https://badge.fury.io/js/raty-js)
-[![Dependency](https://david-dm.org/wbotelhos/raty.svg)](https://david-dm.org/wbotelhos/raty)
-[![Dev Dependency](https://david-dm.org/wbotelhos/raty/dev-status.svg)](https://david-dm.org/wbotelhos/raty#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/wbotelhos/raty.png)](https://codeclimate.com/github/wbotelhos/raty)
 [![Patreon](https://img.shields.io/badge/donate-%3C3-brightgreen.svg)](https://www.patreon.com/wbotelhos)
 
