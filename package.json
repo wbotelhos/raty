@@ -12,7 +12,7 @@
   "dependencies": {
     "jquery": "^3.5.1"
   },
-  "description": "jQuery Raty - A Star Rating Plugin",
+  "description": "Raty - A Star Rating Plugin",
   "devDependencies": {
     "jasmine-core": "^3.6.0",
     "karma": "^5.2.3",

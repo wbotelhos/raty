@@ -2,7 +2,7 @@
   "authors": [
     "Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"
   ],
-  "description": "jQuery Raty - A Star Rating Plugin",
+  "description": "Raty - A Star Rating Plugin",
   "dependencies": {
     "jquery": "^3.3.1"
   },

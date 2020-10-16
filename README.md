@@ -1,4 +1,4 @@
-# jQuery Raty - A Star Rating Plugin
+# Raty - A Star Rating Plugin
 
 ![CI](https://github.com/wbotelhos/raty/workflows/CI/badge.svg?)
 [![NPM Version](https://badge.fury.io/js/raty-js.svg)](https://badge.fury.io/js/raty-js)
