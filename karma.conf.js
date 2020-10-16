@@ -17,8 +17,6 @@ module.exports = function(config) {
 
     frameworks: ['jasmine'],
     logLevel:   config.LOG_ERROR,
-    port:       9876,
-    reporters:  ['dots'],
     singleRun:  true
   });
 };
