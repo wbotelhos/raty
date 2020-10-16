@@ -1,6 +1,6 @@
 # Raty - A Star Rating Plugin
 
-![CI](https://github.com/wbotelhos/raty/workflows/CI/badge.svg?)
+[![CI](https://github.com/wbotelhos/raty/workflows/CI/badge.svg?)](https://github.com/wbotelhos/raty/actions?query=workflow%3ACI)
 [![NPM Version](https://badge.fury.io/js/raty-js.svg)](https://badge.fury.io/js/raty-js)
 [![Code Climate](https://codeclimate.com/github/wbotelhos/raty.png)](https://codeclimate.com/github/wbotelhos/raty)
 [![Patreon](https://img.shields.io/badge/donate-%3C3-brightgreen.svg)](https://www.patreon.com/wbotelhos)
