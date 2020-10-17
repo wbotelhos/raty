@@ -1,4 +1,25 @@
-# jQuery Raty - A Star Rating Plugin - http://wbotelhos.com/raty
+## Unreleased
+
+### Changes
+
+### News
+
+### Fixes
+
+- Grammars fixes; [#217](https://github.com/wbotelhos/raty/pull/217) by [tfantina](https://github.com/tfantina)
+- When using `single` options the click was not turning the star on; [#155](https://github.com/wbotelhos/raty/pull/155) by [henrikhannemose](https://github.com/henrikhannemose)
+
+## 2.9.0
+
+### Changes
+
++ Drops `engines` from `package.json` for a greater flexibility;
+
+## 2.8.0
+
+### News
+
++ Add support to configure options via `$.data()`;
 
 ## 2.7.1
 

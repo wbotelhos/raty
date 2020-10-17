@@ -39,6 +39,17 @@ describe('#score', function() {
     expect(this.el[0].opt.score).toEqual(1);
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-score': 3 });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.score).toEqual(3);
+  });
+
   context('with negative number', function() {
     it ('does not set the score', function() {
       // given

@@ -1,52 +1,56 @@
 {
   "author": "Washington Botelho",
-
   "bugs": {
     "url": "https://github.com/wbotelhos/raty/issues"
   },
-
-  "contributors": ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
-  "demos":        ["demo.html"],
-
+  "contributors": [
+    "Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"
+  ],
+  "demos": [
+    "demo/index.html"
+  ],
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.5.1"
   },
-
-  "description": "jQuery Raty - A Star Rating Plugin",
-
+  "description": "Raty - A Star Rating Plugin",
   "devDependencies": {
-    "jasmine-core":             "^2.6.1",
-    "karma-chrome-launcher":    "^2.1.1",
-    "karma-firefox-launcher":   "^1.0.1",
-    "karma-ie-launcher":        "^1.0.0",
-    "karma-jasmine":            "^1.1.0",
-    "karma-opera-launcher":     "^1.0.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-safari-launcher":    "^1.0.0",
-    "karma":                    "^1.7.0"
+    "jasmine-core": "^3.6.0",
+    "karma": "^5.2.3",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^1.3.0",
+    "karma-jasmine": "^4.0.1"
   },
-
   "directories": {
-    "lib":  "lib",
+    "lib": "lib",
     "test": "spec"
   },
-
-  "engines":     { "node" : "7.10" },
-  "homepage":    "https://github.com/wbotelhos/raty",
-  "keywords":    ["classificacao", "classificar", "javascript", "jquery", "library", "plugin", "rating", "raty", "star", "staring", "votar", "voto"],
-  "license":     "MIT",
-  "main":        "lib/jquery.raty.js",
-  "maintainers": ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
-  "name":        "raty-js",
-
+  "homepage": "https://github.com/wbotelhos/raty",
+  "keywords": [
+    "classificacao",
+    "classificar",
+    "javascript",
+    "jquery",
+    "library",
+    "plugin",
+    "rating",
+    "raty",
+    "star",
+    "staring",
+    "votar",
+    "voto"
+  ],
+  "license": "MIT",
+  "main": "lib/jquery.raty.js",
+  "maintainers": [
+    "Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"
+  ],
+  "name": "raty-js",
   "repository": {
     "type": "git",
-    "url":  "https://github.com/wbotelhos/raty"
+    "url": "https://github.com/wbotelhos/raty"
   },
-
   "scripts": {
-    "test": "node_modules/karma/bin/karma start spec/karma.conf.js"
+    "test": "node_modules/karma/bin/karma start karma.conf.js"
   },
-
-  "version": "2.7.1"
+  "version": "2.9.0"
 }

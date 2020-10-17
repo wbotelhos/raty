@@ -9,6 +9,17 @@ describe('#starOn', function() {
     Helper.clear();
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-star-on': 'custom' });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.starOn).toEqual('custom');
+  });
+
   context('on mouseover', function() {
     it ('changes the stars on', function() {
       // given

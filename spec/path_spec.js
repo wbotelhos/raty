@@ -19,6 +19,17 @@ describe('#path', function() {
     expect(this.el.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-path': 'custom' });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.path).toEqual('custom/');
+  });
+
   context('without slash on the final', function() {
     it ('receives the slash', function() {
       // given

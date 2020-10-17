@@ -9,6 +9,17 @@ describe('#half', function() {
     Helper.clear();
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-cancel-class': true });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.cancelClass).toEqual(true);
+  });
+
   context('as *false', function() {
     context('and :halfShow', function() {
       context('as *false', function() {

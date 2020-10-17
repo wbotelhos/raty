@@ -9,6 +9,17 @@ describe('#starType', function() {
     Helper.clear();
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-star-type': 'b' });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.starType).toEqual('b');
+  });
+
   context('when is "img"', function() {
     it ('does not changes the :path to blank', function() {
       // given

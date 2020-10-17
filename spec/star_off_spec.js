@@ -20,6 +20,17 @@ describe('#numberMax', function() {
     expect(self.children('img')).toHaveAttr('src', '../lib/images/star-half.png');
   });
 
+  it ('accepts data attribute', function() {
+    // given
+    var el = Helper._append('div', { 'data-star-off': 'custom' });
+
+    // when
+    el.raty();
+
+    // then
+    expect(el[0].opt.starOff).toEqual('custom');
+  });
+
   context('with :starType', function() {
     it ('uses the given element', function() {
       // given

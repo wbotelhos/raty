@@ -1,5 +1,9 @@
 isClear = true;
 
+afterEach(function() {
+  $.fn.raty.defaults.path = undefined;
+});
+
 Helper = {
   _append: function(type, attrs) {
     return $('<' + type + '/>', attrs).appendTo('body');
