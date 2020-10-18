@@ -16,7 +16,7 @@ describe('#fn_setScore', function() {
     this.el.raty({ score: 1 });
 
     // then
-    expect(this.el.data('raty').fnScore(.toEqual(1);
+    expect(this.el.data('raty').fnScore).toEqual(1);
   });
 
   describe('with :readOnly', function() {

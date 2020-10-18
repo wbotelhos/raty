@@ -1,10 +1,11 @@
 describe('Integration', function() {
   beforeEach(function() {
-    build();
+    $('body').append('<div id="element"></div>');
   });
 
   afterEach(function() {
-    clear();
+    $('#element').remove();
+    $('#hint').remove();
   });
 
   describe('options', function() {
@@ -14,7 +15,7 @@ describe('Integration', function() {
 
     describe('#targetText', function() {
       beforeEach(function() {
-        buildDivTarget();
+        $('body').append('<div id="hint"></div>');
       });
 
       it ('set target with none value', function() {
@@ -32,7 +33,7 @@ describe('Integration', function() {
     describe('#targetFormat', function() {
       context('with :target', function() {
         beforeEach(function() {
-          buildDivTarget();
+          $('body').append('<div id="hint"></div>');
         });
 
         it ('stars empty', function() {
@@ -63,9 +64,9 @@ describe('Integration', function() {
           it ('clears the target', function() {
             // given
             var self = $('#element').raty({
-                  target      : '#hint',
-                  targetFormat: 'score: {score}'
-                });
+              target      : '#hint',
+              targetFormat: 'score: {score}'
+            });
 
             // when
             self.children('img:first').trigger('mouseover').trigger('mouseout');
@@ -79,10 +80,10 @@ describe('Integration', function() {
               it ('clears the target', function() {
                 // given
                 var self = $('#element').raty({
-                      target      : '#hint',
-                      targetFormat: 'score: {score}',
-                      targetKeep  : true
-                    });
+                  target      : '#hint',
+                  targetFormat: 'score: {score}',
+                  targetKeep  : true
+                });
 
                 // when
                 self.children('img:first').trigger('mouseover').trigger('mouseleave');
@@ -96,11 +97,11 @@ describe('Integration', function() {
               it ('keeps the template', function() {
                 // given
                 var self = $('#element').raty({
-                      score       : 1,
-                      target      : '#hint',
-                      targetFormat: 'score: {score}',
-                      targetKeep  : true
-                    });
+                  score       : 1,
+                  target      : '#hint',
+                  targetFormat: 'score: {score}',
+                  targetKeep  : true
+                });
 
                 // when
                 self.children('img:first').trigger('mouseover').trigger('mouseleave');
@@ -137,8 +138,8 @@ describe('Integration', function() {
       it ('changes the place where score will be setted', function() {
         // given
         var
-          self = $('#element').raty({ targetScore: '#score' }),
-          stars = self.children('img');
+          self = $('#element').raty({ targetScore: '#score' });
+        var stars = self.children('img');
 
         // when
         stars.eq(0).trigger('click');
@@ -206,8 +207,8 @@ describe('Integration', function() {
       context('on mouseover', function() {
         it ('turns on just one icon', function() {
           // given
-          var self = $('#element').raty({ single: true }),
-              stars = self.children('img');
+          var self = $('#element').raty({ single: true });
+          var stars = self.children('img');
 
           // when
           stars.eq(2).trigger('mouseover');
@@ -224,15 +225,15 @@ describe('Integration', function() {
           it ('shows just on icon', function() {
             // given
             var self = $('#element').raty({
-                  iconRange  : [
-                    { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                    { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                    { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                    { range: 5, on: 'star-on.png', off: 'star-off.png' }
-                  ],
-                  single     : true
-                }),
-                stars = self.children('img');
+              iconRange  : [
+                { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                { range: 5, on: 'star-on.png', off: 'star-off.png' }
+              ],
+              single     : true
+            });
+            var stars = self.children('img');
 
             // when
             stars.eq(3).trigger('mouseover');
@@ -267,8 +268,8 @@ describe('Integration', function() {
         context('on mouseout', function() {
           it ('keeps the score', function() {
             // given
-            var self = $('#element').raty({ single: true }),
-                stars = self.children('img');
+            var self = $('#element').raty({ single: true });
+            var stars = self.children('img');
 
             // when
             stars.eq(2).trigger('mouseover').trigger('click').trigger('mouseleave');
@@ -285,15 +286,15 @@ describe('Integration', function() {
             it ('keeps the score', function() {
               // given
               var self = $('#element').raty({
-                    single    : true,
-                    iconRange  : [
-                      { range: 2, on: 'a.png', off: 'a-off.png' },
-                      { range: 3, on: 'b.png', off: 'b-off.png' },
-                      { range: 4, on: 'c.png', off: 'c-off.png' },
-                      { range: 5, on: 'd.png', off: 'd-off.png' }
-                    ]
-                  }),
-                  stars = self.children('img');
+                single    : true,
+                iconRange  : [
+                  { range: 2, on: 'a.png', off: 'a-off.png' },
+                  { range: 3, on: 'b.png', off: 'b-off.png' },
+                  { range: 4, on: 'c.png', off: 'c-off.png' },
+                  { range: 5, on: 'd.png', off: 'd-off.png' }
+                ]
+              });
+              var stars = self.children('img');
 
               // when
               stars.eq(3).trigger('mouseover').trigger('click').trigger('mouseleave');
@@ -359,14 +360,14 @@ describe('Integration', function() {
         it ('uses the on icon', function() {
           // given
           var self = $('#element').raty({
-              iconRange: [
-                { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                { range: 5, on: 'star-on.png', off: 'star-off.png' }
-              ]
-            }),
-            stars = self.children('img');
+            iconRange: [
+              { range: 2, on: 'star-on.png', off: 'star-off.png' },
+              { range: 3, on: 'star-on.png', off: 'star-off.png' },
+              { range: 4, on: 'star-on.png', off: 'star-off.png' },
+              { range: 5, on: 'star-on.png', off: 'star-off.png' }
+            ]
+          });
+          var stars = self.children('img');
 
           // when
           stars.eq(4).trigger('mouseover');
@@ -383,14 +384,14 @@ describe('Integration', function() {
           it ('uses the :starOn icon', function() {
             // given
             var self = $('#element').raty({
-                  iconRange: [
-                    { range: 2, off: 'star-off.png', on: 'star-on.png' },
-                    { range: 3, off: 'star-off.png', on: 'star-on.png' },
-                    { range: 4, off: 'star-off.png', on: 'star-on.png' },
-                    { range: 5, off: 'star-off.png' }
-                  ]
-                }),
-                stars = self.children('img');
+              iconRange: [
+                { range: 2, off: 'star-off.png', on: 'star-on.png' },
+                { range: 3, off: 'star-off.png', on: 'star-on.png' },
+                { range: 4, off: 'star-off.png', on: 'star-on.png' },
+                { range: 5, off: 'star-off.png' }
+              ]
+            });
+            var stars = self.children('img');
 
             // when
             stars.eq(4).trigger('mouseover');
@@ -409,14 +410,14 @@ describe('Integration', function() {
         it ('changes to off icons', function() {
           // given
           var self = $('#element').raty({
-                iconRange: [
-                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 5, on: 'star-on.png', off: 'star-off.png' },
-                ]
-              }),
-              stars = self.children('img');
+            iconRange: [
+              { range: 2, on: 'star-on.png', off: 'star-off.png' },
+              { range: 3, on: 'star-on.png', off: 'star-off.png' },
+              { range: 4, on: 'star-on.png', off: 'star-off.png' },
+              { range: 5, on: 'star-on.png', off: 'star-off.png' },
+            ]
+          });
+          var stars = self.children('img');
 
           // when
           stars.eq(4).trigger('mouseover');
@@ -434,14 +435,14 @@ describe('Integration', function() {
         it ('keeps the score value', function() {
           // given
           var self = $('#element').raty({
-                iconRange  : [
-                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 5, on: 'star-on.png', off: 'star-off.png' }
-                ],
-                score      : 1
-              });
+            iconRange  : [
+              { range: 2, on: 'star-on.png', off: 'star-off.png' },
+              { range: 3, on: 'star-on.png', off: 'star-off.png' },
+              { range: 4, on: 'star-on.png', off: 'star-off.png' },
+              { range: 5, on: 'star-on.png', off: 'star-off.png' }
+            ],
+            score      : 1
+          });
 
           // when
           self.children('img').eq(4).trigger('mouseover');
@@ -456,14 +457,14 @@ describe('Integration', function() {
           it ('uses the :starOff icon', function() {
             // given
             var self = $('#element').raty({
-                iconRange: [
-                  { range: 2, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 3, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 4, on: 'star-on.png', off: 'star-off.png' },
-                  { range: 5, on: 'star-on.png' }
-                ]
-              }),
-              img = self.children('img').eq(4);
+              iconRange: [
+                { range: 2, on: 'star-on.png', off: 'star-off.png' },
+                { range: 3, on: 'star-on.png', off: 'star-off.png' },
+                { range: 4, on: 'star-on.png', off: 'star-off.png' },
+                { range: 5, on: 'star-on.png' }
+              ]
+            });
+            var img = self.children('img').eq(4);
 
             // when
             img.trigger('mouseover');
@@ -509,8 +510,8 @@ describe('Integration', function() {
       self.raty();
 
       // then
-      var stars  = self.eq(0).children('img'),
-          score = self.eq(0).children('input');
+      var stars  = self.eq(0).children('img');
+      var score = self.eq(0).children('input');
 
       expect(stars.eq(0)).toHaveAttr('title', 'bad');
       expect(stars.eq(1)).toHaveAttr('title', 'poor');
@@ -571,7 +572,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ score: 1 });
 
           // when
-          var score = self.data('raty').score();
+          var score = self.data('raty').fnScore();
 
           // then
           expect(score).toEqual(1);
@@ -584,7 +585,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ score: 1.5 });
 
           // when
-          var score = self.data('raty').score();
+          var score = self.data('raty').fnScore();
 
           // then
           expect(score).toEqual(1.5);
@@ -597,7 +598,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ score: 0 });
 
           // when
-          var score = self.data('raty').score();
+          var score = self.data('raty').fnScore();
 
           // then
           expect(score).toBeUndefined();
@@ -610,7 +611,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ number: 50, score: 50 });
 
           // when
-          var score = self.data('raty').score();
+          var score = self.data('raty').fnScore();
 
           // then
           expect(score).toEqual(self.data('raty').opt.numberMax);
@@ -628,7 +629,7 @@ describe('Integration', function() {
         });
 
         // when
-        self.data('raty').click(, 1);
+        self.data('raty').click(1);
 
         // then
         expect(self.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
@@ -644,10 +645,10 @@ describe('Integration', function() {
         });
 
         // when
-        self.data('raty').click(, 1);
+        self.data('raty').click(1);
 
         // then
-        expect(this.el.data('raty').opt.result).toEqual(1);
+        expect(this.el.data('raty').result).toEqual(1);
       });
 
       it ('receives the event', function() {
@@ -659,7 +660,7 @@ describe('Integration', function() {
         });
 
         // when
-        self.data('raty').click(, 1);
+        self.data('raty').click(1);
 
         // then
         expect(self.data('evt').type).toEqual('click');
@@ -671,7 +672,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ readOnly: true });
 
           // when
-          self.data('raty').click(, 1);
+          self.data('raty').click(1);
 
           // then
           expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
@@ -684,7 +685,7 @@ describe('Integration', function() {
           var self = $('#element').raty();
 
           // when
-          var lambda = function() { self.data('raty').click(, 1); };
+          var lambda = function() { self.data('raty').click(1); };
 
           // then
           expect(lambda).not.toThrow();
@@ -693,7 +694,7 @@ describe('Integration', function() {
 
       context('with :target', function() {
         beforeEach(function() {
-          buildDivTarget();
+          $('body').append('<div id="hint"></div>');
         });
 
         context('and :targetKeep', function() {
@@ -706,7 +707,7 @@ describe('Integration', function() {
             });
 
             // when
-            self.data('raty').click(, 1);
+            self.data('raty').click(1);
 
             // then
             expect($('#hint')).toHaveHtml('bad');
@@ -741,10 +742,10 @@ describe('Integration', function() {
       context('when :readOnly by function', function() {
         it ('is removes the readonly data info', function() {
           // given
-          var self = $('#element').raty().data('raty').readOnly(, true);
+          var self = $('#element').raty().data('raty').readOnly(true);
 
           // when
-          var ref = self.data('raty').reload();
+          self.data('raty').reload();
 
           // then
           expect(self).not.toHaveData('readonly');
@@ -758,7 +759,7 @@ describe('Integration', function() {
         var self = $('#element').raty();
 
         // when
-        var el = self.data('raty').destroy();
+        var el = self.data('raty').fnDestroy();
 
         // then
         expect(el[0]).toBe(self[0]);
@@ -769,7 +770,7 @@ describe('Integration', function() {
         var self = $('#element').raty();
 
         // when
-        self.data('raty').destroy();
+        self.data('raty').fnDestroy();
 
         // then
         expect(self).toBeEmpty();
@@ -778,12 +779,12 @@ describe('Integration', function() {
       it ('removes the trigger mouseleave', function() {
         // given
         var self = $('#element').raty({
-              mouseout: function() {
-                $(this).data('mouseleave', true);
-              }
-            });
+          mouseout: function() {
+            $(this).data('mouseleave', true);
+          }
+        });
 
-        self.data('raty').destroy();
+        self.data('raty').fnDestroy();
 
         // when
         self.trigger('mouseleave');
@@ -797,7 +798,7 @@ describe('Integration', function() {
         var self = $('#element').css({ cursor: 'help' }).raty();
 
         // when
-        self.data('raty').destroy();
+        self.data('raty').fnDestroy();
 
         // then
         expect(self[0].style.cursor).toEqual('help');

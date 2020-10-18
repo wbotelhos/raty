@@ -15,7 +15,7 @@ describe('#fn_cancel', function() {
       this.el.raty({ readOnly: true, score: 5 });
 
       // when
-      this.el.data('raty').cancel(
+      this.el.data('raty').fnCancel();
 
       // then
       expect(this.el.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
@@ -26,7 +26,7 @@ describe('#fn_cancel', function() {
       this.el.raty({ readOnly: true, score: 5 });
 
       // when
-      this.el.data('raty').cancel(
+      this.el.data('raty').fnCancel();
 
       // then
       expect(this.el.children('input')).toHaveValue('5');
@@ -45,7 +45,7 @@ describe('#fn_cancel', function() {
         });
 
         // when
-        this.el.data('raty').cancel(false);
+        this.el.data('raty').fnCancel(false);
 
         // then
         expect(this.el.data('clicked')).toBeFalsy();
@@ -68,7 +68,7 @@ describe('#fn_cancel', function() {
               });
 
               // when
-              this.el.data('raty').cancel(
+              this.el.data('raty').fnCancel();
 
               // then
               expect(this.target.text()).toEqual('targetText');
@@ -89,7 +89,7 @@ describe('#fn_cancel', function() {
         });
 
         // when
-        this.el.data('raty').cancel(true);
+        this.el.data('raty').fnCancel(true);
 
         // then
         expect(this.el.data('clicked')).toBeTruthy();
@@ -112,7 +112,7 @@ describe('#fn_cancel', function() {
               });
 
               // when
-              this.el.data('raty').cancel(true);
+              this.el.data('raty').fnCancel(true);
 
               // then
               expect(this.target.text()).toEqual('targetText');

@@ -23,8 +23,8 @@ describe('stars', function() {
   context('on click', function() {
     it ('changes the score', function() {
       // given
-      var self  = this.el.raty(),
-          stars = self.children('img');
+      var self  = this.el.raty();
+      var stars = self.children('img');
 
       // when
       stars.last().trigger('click');
@@ -37,8 +37,8 @@ describe('stars', function() {
   context('on mouseover', function() {
     it ('turns on the stars', function() {
       // given
-      var self  = this.el.raty(),
-          stars = self.children('img');
+      var self  = this.el.raty();
+      var stars = self.children('img');
 
       // when
       stars.last().trigger('mouseover');
@@ -50,8 +50,8 @@ describe('stars', function() {
     context('and mouseout', function() {
       it ('turns off all stars', function() {
         // given
-        var self  = this.el.raty(),
-            stars = self.children('img');
+        var self  = this.el.raty();
+        var stars = self.children('img');
 
         // when
         stars.last().trigger('mouseover').trigger('mouseout');
@@ -64,8 +64,8 @@ describe('stars', function() {
     context('and click', function() {
       it ('changes the score', function() {
         // given
-        var self  = this.el.raty(),
-            stars = self.children('img');
+        var self  = this.el.raty();
+        var stars = self.children('img');
 
         // when
         stars.last().trigger('mouseover').trigger('click');
@@ -77,8 +77,8 @@ describe('stars', function() {
       context('and mouseout', function() {
         it ('keeps the stars on', function() {
           // given
-          var self  = this.el.raty(),
-              stars = self.children('img');
+          var self  = this.el.raty();
+          var stars = self.children('img');
 
           // when
           stars.last().trigger('mouseover').trigger('click').trigger('mouseout');

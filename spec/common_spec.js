@@ -21,8 +21,8 @@ describe('common', function() {
   context('on click without mouseover', function() {
     it ('changes the stars to on', function() {
       // given
-      var self  = this.el.raty(),
-          stars = self.children('img');
+      var self  = this.el.raty();
+      var stars = self.children('img');
 
       // when
       stars.last().trigger('click');

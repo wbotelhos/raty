@@ -38,8 +38,8 @@ describe('#starType', function() {
       this.el.raty();
 
       // then
-      var stars = this.el.children('img'),
-          score = this.el.children('input');
+      var stars = this.el.children('img');
+      var score = this.el.children('input');
 
       expect(stars.eq(0)).toHaveAttr('title', 'bad');
       expect(stars.eq(1)).toHaveAttr('title', 'poor');
@@ -78,8 +78,8 @@ describe('#starType', function() {
       this.el.raty({ starType: 'i' });
 
       // then
-      var stars = this.el.children('i'),
-          score = this.el.children('input');
+      var stars = this.el.children('i');
+      var score = this.el.children('input');
 
       expect(stars.eq(0)).toHaveAttr('title', 'bad');
       expect(stars.eq(1)).toHaveAttr('title', 'poor');

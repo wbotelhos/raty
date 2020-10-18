@@ -68,8 +68,8 @@ describe('#cancel', function() {
         this.el.raty({ score: 3, cancel: true });
 
         var
-          cancel = this.el.children('.raty-cancel'),
-          stars  = this.el.children('img:not(.raty-cancel)');
+          cancel = this.el.children('.raty-cancel');
+        var stars  = this.el.children('img:not(.raty-cancel)');
 
         // when
         cancel.trigger('mouseover');
@@ -167,8 +167,8 @@ describe('#cancel', function() {
 
       var cancel = this.el.children('.raty-cancel');
 
-        // when
-        cancel.trigger('mouseleave');
+      // when
+      cancel.trigger('mouseleave');
 
       // then
       expect(cancel).toHaveAttr('src', '../lib/images/cancel-off.png');
@@ -193,8 +193,8 @@ describe('#cancel', function() {
         this.el.raty({ score: 5, cancel: true });
 
         var
-          cancel = this.el.children('.raty-cancel'),
-          stars  = this.el.children('img:not(.raty-cancel)');
+          cancel = this.el.children('.raty-cancel');
+        var stars  = this.el.children('img:not(.raty-cancel)');
 
         // when
         cancel.trigger('mouseleave');
@@ -211,9 +211,9 @@ describe('#cancel', function() {
       this.el.raty({ cancel: true, score: 1 });
 
       var
-        cancel = this.el.children('.raty-cancel'),
-        input  = this.el.children('input'),
-        stars  = this.el.children('img:not(.raty-cancel)');
+        cancel = this.el.children('.raty-cancel');
+      var input  = this.el.children('input');
+      var stars  = this.el.children('img:not(.raty-cancel)');
 
       // when
       cancel.trigger('click').trigger('mouseleave');
@@ -244,9 +244,9 @@ describe('#cancel', function() {
         this.el.raty({ cancel: true, readOnly: true, score: 5 });
 
         var
-          cancel = this.el.children('.raty-cancel'),
-          input  = this.el.children('input'),
-          stars  = this.el.children('img:not(.raty-cancel)');
+          cancel = this.el.children('.raty-cancel');
+        var input  = this.el.children('input');
+        var stars  = this.el.children('img:not(.raty-cancel)');
 
         // when
         cancel.trigger('click').trigger('mouseleave');

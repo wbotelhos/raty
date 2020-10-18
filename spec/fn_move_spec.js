@@ -30,8 +30,9 @@ describe('#move', function() {
         targetType : 'number'
       });
 
-      var star = this.el.children('img:first'),
-          that = this;
+      this.el.children('img:first');
+
+      var that = this;
 
       setTimeout(function() {
         // when
@@ -55,8 +56,9 @@ describe('#move', function() {
           targetType : 'number'
         });
 
-        var star = this.el.children('img:first'),
-            that = this;
+        this.el.children('img:first');
+
+        var that = this;
 
         setTimeout(function() {
           // when
@@ -65,7 +67,7 @@ describe('#move', function() {
           // then
           expect(that.target.text()).toEqual('1.7');
 
-          done()
+          done();
         }, 100);
       });
     });
@@ -79,8 +81,9 @@ describe('#move', function() {
           targetType : 'number'
         });
 
-        var star = this.el.children('img:first'),
-            that = this;
+        this.el.children('img:first');
+
+        var that = this;
 
         setTimeout(function() {
           // when
@@ -89,7 +92,7 @@ describe('#move', function() {
           // then
           expect(that.target.text()).toEqual('1.7');
 
-          done()
+          done();
         }, 100);
       });
     });
@@ -104,8 +107,9 @@ describe('#move', function() {
         targetType : 'number'
       });
 
-      var star = this.el.children('img:first'),
-          that = this;
+      this.el.children('img:first');
+
+      var that = this;
 
       setTimeout(function() {
         // when
@@ -114,7 +118,7 @@ describe('#move', function() {
         // then
         expect(that.target.text()).toEqual('1.7');
 
-        done()
+        done();
       }, 100);
     });
   });
@@ -128,8 +132,9 @@ describe('#move', function() {
         targetType : 'number'
       });
 
-      var star = this.el.children('img:first'),
-          that = this;
+      this.el.children('img:first');
+
+      var that = this;
 
       setTimeout(function() {
         // when
@@ -138,7 +143,7 @@ describe('#move', function() {
         // then
         expect(that.target.text()).toEqual('5.0');
 
-        done()
+        done();
       }, 100);
     });
   });

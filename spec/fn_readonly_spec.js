@@ -10,7 +10,7 @@ describe('#fn readOnly', function() {
   });
 
   context('on true', function() {
-    xit ('sets score as readonly', function() {
+    it ('sets score as readonly', function() {
       // given
       this.el.raty();
 
@@ -21,7 +21,7 @@ describe('#fn readOnly', function() {
       expect(this.el.children('input')).toHaveAttr('readonly', 'readonly');
     });
 
-    xit ('removes the pointer cursor', function() {
+    it ('removes the pointer cursor', function() {
       // given
       this.el.raty();
 
@@ -34,7 +34,7 @@ describe('#fn readOnly', function() {
     });
 
     context('without rating', function() {
-      xit ('Applies the :noRatedMsg on stars', function() {
+      it ('Applies the :noRatedMsg on stars', function() {
         // given
         this.el.raty();
 
@@ -46,9 +46,9 @@ describe('#fn readOnly', function() {
       });
     });
 
-    xit ('does not trigger mouseover', function() {
+    it ('does not trigger mouseover', function() {
       // given
-      this.el.raty()
+      this.el.raty();
 
       var stars = this.el.children('img');
 
@@ -79,7 +79,7 @@ describe('#fn readOnly', function() {
     });
 
     context('with :cancel', function() {
-      xit ('hides the button', function() {
+      it ('hides the button', function() {
         // given
         this.el.raty({ cancel: true });
 
@@ -92,7 +92,7 @@ describe('#fn readOnly', function() {
     });
 
     context('with external bind on wrapper', function() {
-      xit ('is kept', function() {
+      it ('is kept', function() {
         // given
         this.el.on('click', function() {
           $(this).data('trigged', true);
@@ -109,13 +109,13 @@ describe('#fn readOnly', function() {
     });
 
     context('with external bind on stars', function() {
-      xit ('keeps it', function() {
+      it ('keeps it', function() {
         // given
         this.el.raty();
 
         var
-          star = this.el.children('img'),
-          that = this;
+          star = this.el.children('img');
+        var that = this;
 
         star.on('click', function() {
           that.el.data('trigged', true);
@@ -134,7 +134,7 @@ describe('#fn readOnly', function() {
     context('with :halfShow', function() {
       context('as *true', function() {
         context('with :score as integer', function() {
-          xit ('applies the score hint', function() {
+          it ('applies the score hint', function() {
             // given
             this.el.raty({
               halfShow : true,
@@ -151,7 +151,7 @@ describe('#fn readOnly', function() {
         });
 
         context('with :score as float', function() {
-          xit ('applies the score hint', function() {
+          it ('applies the score hint', function() {
             // given
             this.el.raty({
               halfShow : true,
@@ -172,7 +172,7 @@ describe('#fn readOnly', function() {
     context('with :half', function() {
       context('as *true', function() {
         context('with :score as integer', function() {
-          xit ('applies the score hint', function() {
+          it ('applies the score hint', function() {
             // given
             this.el.raty({
               half  : true,
@@ -189,7 +189,7 @@ describe('#fn readOnly', function() {
         });
 
         context('with :score as float', function() {
-          xit ('applies the score hint', function() {
+          it ('applies the score hint', function() {
             // given
             this.el.raty({
               half  : true,
@@ -212,7 +212,7 @@ describe('#fn readOnly', function() {
         context('and :targetType', function() {
           context('as *hint', function() {
             context('with :score as integer', function() {
-              xit ('applies the 10 - 1 decimal hint', function() {
+              it ('applies the 10 - 1 decimal hint', function() {
                 // given
                 this.el.raty({
                   hints      : [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
@@ -236,7 +236,7 @@ describe('#fn readOnly', function() {
             });
 
             context('with :score as float', function() {
-              xit ('applies the 1 - 1 decimal hint', function() {
+              it ('applies the 1 - 1 decimal hint', function() {
                 // given
                 this.el.raty({
                   hints      : [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
@@ -262,7 +262,7 @@ describe('#fn readOnly', function() {
 
           context('as *score', function() {
             context('with :score as integer', function() {
-              xit ('applies the score', function() {
+              it ('applies the score', function() {
                 // given
                 this.el.raty({
                   hints      : [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
@@ -286,7 +286,7 @@ describe('#fn readOnly', function() {
             });
 
             context('with :score as float', function() {
-              xit ('applies the score', function() {
+              it ('applies the score', function() {
                 // given
                 this.el.raty({
                   hints      : [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
@@ -315,9 +315,9 @@ describe('#fn readOnly', function() {
   });
 
   context('on false', function() {
-    xit ('removes the :readOnly of the score', function() {
+    it ('removes the :readOnly of the score', function() {
       // given
-      this.el.raty({ readOnly: true })
+      this.el.raty({ readOnly: true });
 
       var input = this.el.children('input');
 
@@ -329,7 +329,7 @@ describe('#fn readOnly', function() {
       expect(input).not.toHaveProp('readonly', 'readonly');
     });
 
-    xit ('applies the pointer cursor on wrapper', function() {
+    it ('applies the pointer cursor on wrapper', function() {
       // given
       this.el.raty({ readOnly: true });
 
@@ -340,7 +340,7 @@ describe('#fn readOnly', function() {
       expect(this.el).toHaveCss({ cursor: 'pointer' });
     });
 
-    xit ('Removes the :noRatedMsg from stars', function() {
+    it ('Removes the :noRatedMsg from stars', function() {
       // given
       this.el.raty({ readOnly: true });
 
@@ -357,7 +357,7 @@ describe('#fn readOnly', function() {
       expect(stars[4].title).toEqual('gorgeous');
     });
 
-    xit ('triggers mouseover', function() {
+    it ('triggers mouseover', function() {
       // given
       this.el.raty({ readOnly: true });
 
@@ -372,7 +372,7 @@ describe('#fn readOnly', function() {
       expect(stars.first()).toHaveAttr('src', '../lib/images/star-on.png');
     });
 
-    xit ('triggers click', function() {
+    it ('triggers click', function() {
       // given
       this.el.raty({ readOnly: true });
 
@@ -388,7 +388,7 @@ describe('#fn readOnly', function() {
     });
 
     context('with :score', function() {
-      xit ('removes the score title off the stars', function() {
+      it ('removes the score title off the stars', function() {
         // given
         this.el.raty({ readOnly: true, score: 3 });
 
@@ -407,7 +407,7 @@ describe('#fn readOnly', function() {
     });
 
     context('with :cancel', function() {
-      xit ('shows the button', function(done) {
+      it ('shows the button', function(done) {
         // given
         var that = this;
 
@@ -424,13 +424,13 @@ describe('#fn readOnly', function() {
         }, 100);
       });
 
-      xit ('rebinds the mouseover', function() {
+      it ('rebinds the mouseover', function() {
         // given
         this.el.raty({ readOnly: true, cancel: true });
 
         var
-          cancel = this.el.children('.raty-cancel'),
-          stars  = this.el.children('img:not(.raty-cancel)');
+          cancel = this.el.children('.raty-cancel');
+        var stars  = this.el.children('img:not(.raty-cancel)');
 
         this.el.data('raty').readOnly(false);
 
@@ -442,13 +442,13 @@ describe('#fn readOnly', function() {
         expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
       });
 
-      xit ('rebinds the click', function() {
+      it ('rebinds the click', function() {
         // given
         this.el.raty({ cancel: true, readOnly: true, score: 5 });
 
         var
-          cancel = this.el.children('.raty-cancel'),
-          stars  = this.el.children('img:not(.raty-cancel)');
+          cancel = this.el.children('.raty-cancel');
+        var stars  = this.el.children('img:not(.raty-cancel)');
 
         this.el.data('raty').readOnly(false);
 

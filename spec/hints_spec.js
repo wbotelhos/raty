@@ -23,8 +23,8 @@ describe('#hints', function() {
 
           // then
           var
-            expected = [null, null],
-            hints    = this.el.data('raty').opt.hints;
+            expected = [null, null];
+          var hints    = this.el.data('raty').opt.hints;
 
           expect(hints[0]).toEqual(expected);
           expect(hints[1]).toEqual(expected);
@@ -316,8 +316,8 @@ describe('#hints', function() {
 
         // then
         var
-          expected = [null, null],
-          hints    = this.el.data('raty').opt.hints;
+          expected = [null, null];
+        var hints    = this.el.data('raty').opt.hints;
 
         expect(hints[0]).toEqual(expected);
         expect(hints[1]).toEqual(expected);
@@ -1552,7 +1552,7 @@ describe('#hints', function() {
           expect(star[0].title).toEqual('2,0');
         });
       });
-    })
+    });
   });
 
   context('with :precision', function() {
@@ -1568,8 +1568,8 @@ describe('#hints', function() {
 
         // then
         var
-          expected = [null, null, null, null, null, null, null, null, null, null],
-          hints    = this.el.data('raty').opt.hints;
+          expected = [null, null, null, null, null, null, null, null, null, null];
+        var hints    = this.el.data('raty').opt.hints;
 
         expect(hints[0]).toEqual(expected);
         expect(hints[1]).toEqual(expected);
@@ -1612,9 +1612,9 @@ describe('#hints', function() {
 
         // then
         var
-          expectedHint = ['hint', 'hint', 'hint', 'hint', 'hint', 'hint', 'hint', 'hint', 'hint', 'hint'],
-          expectedNull = [null, null, null, null, null, null, null, null, null, null],
-          hints        = this.el.data('raty').opt.hints;
+          expectedHint = ['hint', 'hint', 'hint', 'hint', 'hint', 'hint', 'hint', 'hint', 'hint', 'hint'];
+        var expectedNull = [null, null, null, null, null, null, null, null, null, null];
+        var hints        = this.el.data('raty').opt.hints;
 
         expect(hints[0]).toEqual(expectedNull);
         expect(hints[1]).toEqual(expectedNull);
@@ -1636,9 +1636,9 @@ describe('#hints', function() {
 
         // then
         var
-          expectedHint = [null, 'two', null, 'four', 'four', 'four', 'four', 'four', 'four', 'four'],
-          expectedNull = [null, null, null, null, null, null, null, null, null, null],
-          hints        = this.el.data('raty').opt.hints;
+          expectedHint = [null, 'two', null, 'four', 'four', 'four', 'four', 'four', 'four', 'four'];
+        var expectedNull = [null, null, null, null, null, null, null, null, null, null];
+        var hints        = this.el.data('raty').opt.hints;
 
         expect(hints[0]).toEqual(expectedNull);
         expect(hints[1]).toEqual(expectedNull);

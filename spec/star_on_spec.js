@@ -23,8 +23,8 @@ describe('#starOn', function() {
   context('on mouseover', function() {
     it ('changes the stars on', function() {
       // given
-      var self  = this.el.raty({ starOn: 'star-half.png' }),
-          stars = self.children('img');
+      var self  = this.el.raty({ starOn: 'star-half.png' });
+      var stars = self.children('img');
 
       // when
       stars.last().trigger('mouseover');
@@ -36,8 +36,8 @@ describe('#starOn', function() {
     context('with :starType', function() {
       it ('uses the given element', function() {
         // given
-        var self  = this.el.raty({ starType: 'i' }),
-            stars = self.children('i');
+        var self  = this.el.raty({ starType: 'i' });
+        var stars = self.children('i');
 
         // when
         stars.last().trigger('mouseover');
@@ -52,8 +52,8 @@ describe('#starOn', function() {
 
       it ('normalizes the class name', function() {
         // given
-        var self  = this.el.raty({ starType: 'i' }),
-            stars = self.children('i');
+        var self  = this.el.raty({ starType: 'i' });
+        var stars = self.children('i');
 
         // when
         stars.last().trigger('mouseover');
@@ -64,8 +64,8 @@ describe('#starOn', function() {
 
       it ('does not create "src" attribute', function() {
         // given
-        var self  = this.el.raty({ starType: 'i' }),
-            stars = self.children('i');
+        var self  = this.el.raty({ starType: 'i' });
+        var stars = self.children('i');
 
         // when
         stars.last().trigger('mouseover');
@@ -76,8 +76,8 @@ describe('#starOn', function() {
 
       it ('creates "data-alt" attribute', function() {
         // given
-        var self  = this.el.raty({ starType: 'i' }),
-            stars = self.children('i');
+        var self  = this.el.raty({ starType: 'i' });
+        var stars = self.children('i');
 
         // when
         stars.last().trigger('mouseover');
@@ -88,8 +88,8 @@ describe('#starOn', function() {
 
       it ('does not create "alt" attribute', function() {
         // given
-        var self  = this.el.raty({ starType: 'i' }),
-            stars = self.children('i');
+        var self  = this.el.raty({ starType: 'i' });
+        var stars = self.children('i');
 
         // when
         stars.last().trigger('mouseover');

@@ -69,7 +69,7 @@ describe('#mouseout', function() {
   context('when acts on :cancel', function() {
     it ('receives the event', function() {
       // given
-      var raty = this.el.raty({
+      this.el.raty({
         cancel   : true,
         mouseout : function(_, evt) {
           this.evt = evt;
