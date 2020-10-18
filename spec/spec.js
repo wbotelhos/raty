@@ -18,7 +18,7 @@ describe('Integration', function() {
         $('body').append('<div id="hint"></div>');
       });
 
-      xit ('set target with none value', function() {
+      it ('set target with none value', function() {
         // given
         var self = $('#element');
 
@@ -36,7 +36,7 @@ describe('Integration', function() {
           $('body').append('<div id="hint"></div>');
         });
 
-        xit ('stars empty', function() {
+        it ('stars empty', function() {
           // given
           var self = $('#element');
 
@@ -48,7 +48,7 @@ describe('Integration', function() {
         });
 
         context('on mouseover', function() {
-          xit ('set target with format on mouseover', function() {
+          it ('set target with format on mouseover', function() {
             // given
             var self = $('#element').raty({ target: '#hint', targetFormat: 'score: {score}' });
 
@@ -61,7 +61,7 @@ describe('Integration', function() {
         });
 
         context('on mouseout', function() {
-          xit ('clears the target', function() {
+          it ('clears the target', function() {
             // given
             var self = $('#element').raty({
               target      : '#hint',
@@ -77,7 +77,7 @@ describe('Integration', function() {
 
           context('with :targetKeep', function() {
             context('without score', function() {
-              xit ('clears the target', function() {
+              it ('clears the target', function() {
                 // given
                 var self = $('#element').raty({
                   target      : '#hint',
@@ -94,7 +94,7 @@ describe('Integration', function() {
             });
 
             context('with score', function() {
-              xit ('keeps the template', function() {
+              it ('keeps the template', function() {
                 // given
                 var self = $('#element').raty({
                   score       : 1,
@@ -124,7 +124,7 @@ describe('Integration', function() {
         this.score.remove();
       });
 
-      xit ('avoids the creation of default score field', function() {
+      it ('avoids the creation of default score field', function() {
         // given
         var self = $('#element');
 
@@ -135,7 +135,7 @@ describe('Integration', function() {
         expect(self.children('input')).not.toExist();
       });
 
-      xit ('changes the place where score will be setted', function() {
+      it ('changes the place where score will be setted', function() {
         // given
         var
           self = $('#element').raty({ targetScore: '#score' });
@@ -205,7 +205,7 @@ describe('Integration', function() {
 
     describe('#single', function() {
       context('on mouseover', function() {
-        xit ('turns on just one icon', function() {
+        it ('turns on just one icon', function() {
           // given
           var self = $('#element').raty({ single: true });
           var stars = self.children('img');
@@ -222,7 +222,7 @@ describe('Integration', function() {
         });
 
         context('with :iconRange', function() {
-          xit ('shows just on icon', function() {
+          it ('shows just on icon', function() {
             // given
             var self = $('#element').raty({
               iconRange  : [
@@ -249,7 +249,7 @@ describe('Integration', function() {
       });
 
       context('on click', function() {
-        xit ('turns on the star', function() {
+        it ('turns on the star', function() {
           // given
           var self  = $('#element').raty({ single: true });
           var stars = self.children('img');
@@ -266,7 +266,7 @@ describe('Integration', function() {
         });
 
         context('on mouseout', function() {
-          xit ('keeps the score', function() {
+          it ('keeps the score', function() {
             // given
             var self = $('#element').raty({ single: true });
             var stars = self.children('img');
@@ -283,7 +283,7 @@ describe('Integration', function() {
           });
 
           context('and :iconRange', function() {
-            xit ('keeps the score', function() {
+            it ('keeps the score', function() {
               // given
               var self = $('#element').raty({
                 single    : true,
@@ -312,7 +312,7 @@ describe('Integration', function() {
     });
 
     describe('#iconRange', function() {
-      xit ('uses icon intervals', function() {
+      it ('uses icon intervals', function() {
         // given
         var self = $('#element');
 
@@ -337,7 +337,7 @@ describe('Integration', function() {
       });
 
       context('when off icon is not especified', function() {
-        xit ('uses the :starOff icon', function() {
+        it ('uses the :starOff icon', function() {
           // given
           var self = $('#element');
 
@@ -357,7 +357,7 @@ describe('Integration', function() {
       });
 
       context('on mouseover', function() {
-        xit ('uses the on icon', function() {
+        it ('uses the on icon', function() {
           // given
           var self = $('#element').raty({
             iconRange: [
@@ -381,7 +381,7 @@ describe('Integration', function() {
         });
 
         context('when on icon is not especified', function() {
-          xit ('uses the :starOn icon', function() {
+          it ('uses the :starOn icon', function() {
             // given
             var self = $('#element').raty({
               iconRange: [
@@ -407,7 +407,7 @@ describe('Integration', function() {
       });
 
       context('on mouseout', function() {
-        xit ('changes to off icons', function() {
+        it ('changes to off icons', function() {
           // given
           var self = $('#element').raty({
             iconRange: [
@@ -432,7 +432,7 @@ describe('Integration', function() {
           expect(stars.eq(4)).toHaveAttr('src', '../lib/images/star-off.png');
         });
 
-        xit ('keeps the score value', function() {
+        it ('keeps the score value', function() {
           // given
           var self = $('#element').raty({
             iconRange  : [
@@ -454,7 +454,7 @@ describe('Integration', function() {
         });
 
         context('when off icon is not especified', function() {
-          xit ('uses the :starOff icon', function() {
+          it ('uses the :starOff icon', function() {
             // given
             var self = $('#element').raty({
               iconRange: [
@@ -502,7 +502,7 @@ describe('Integration', function() {
       expect(els.eq(1)[0]).toBe(self.eq(1)[0]);
     });
 
-    xit ('creates the default markup', function() {
+    it ('creates the default markup', function() {
       // given
       var self = $('.element');
 
@@ -544,7 +544,7 @@ describe('Integration', function() {
     });
 
     describe('GET #score', function() {
-      xit ('accepts number as string', function() {
+      it ('accepts number as string', function() {
         // given
         var self = $('#element');
 
@@ -555,7 +555,7 @@ describe('Integration', function() {
         expect(self.children('input')).toHaveValue('1');
       });
 
-      xit ('accepts float string', function() {
+      it ('accepts float string', function() {
         // given
         var self = $('#element');
 
@@ -567,7 +567,7 @@ describe('Integration', function() {
       });
 
       context('with integer score', function() {
-        xit ('gets as int', function() {
+        it ('gets as int', function() {
           // given
           var self = $('#element').raty({ score: 1 });
 
@@ -580,7 +580,7 @@ describe('Integration', function() {
       });
 
       context('with float score', function() {
-        xit ('gets as float', function() {
+        it ('gets as float', function() {
           // given
           var self = $('#element').raty({ score: 1.5 });
 
@@ -606,7 +606,7 @@ describe('Integration', function() {
       });
 
       context('with score greater than :numberMax', function() {
-        xit ('gets the max', function() {
+        it ('gets the max', function() {
           // given
           var self = $('#element').raty({ number: 50, score: 50 });
 
@@ -620,7 +620,7 @@ describe('Integration', function() {
     });
 
     describe('#click', function() {
-      xit ('clicks on star', function() {
+      it ('clicks on star', function() {
         // given
         var self = $('#element').raty({
           click: function() {
@@ -651,7 +651,7 @@ describe('Integration', function() {
         expect(self[0].result).toEqual(1);
       });
 
-      xit ('receives the event', function() {
+      it ('receives the event', function() {
         // given
         var self = $('#element').raty({
           click: function(score, evt) {
@@ -667,7 +667,7 @@ describe('Integration', function() {
       });
 
       describe('with :readOnly', function() {
-        xit ('does not set the score', function() {
+        it ('does not set the score', function() {
           // given
           var self = $('#element').raty({ readOnly: true });
 
@@ -698,7 +698,7 @@ describe('Integration', function() {
         });
 
         context('and :targetKeep', function() {
-          xit ('sets the score on target', function() {
+          it ('sets the score on target', function() {
             // given
             var self = $('#element').raty({
               target    : '#hint',
