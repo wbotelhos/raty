@@ -184,4 +184,18 @@ describe('#click', function() {
       expect(this.el[0].called).toEqual(true);
     });
   });
+
+  context('on click without mouseover', function() {
+    it ('changes the stars to on', function() {
+      // given
+      var self  = this.el.raty();
+      var stars = self.children('img');
+
+      // when
+      stars.last().trigger('click');
+
+      // then
+      expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+    });
+  });
 });

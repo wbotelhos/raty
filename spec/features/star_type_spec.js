@@ -9,6 +9,19 @@ describe('#starType', function() {
     Helper.clear();
   });
 
+  context('when actived', function() {
+    it('disable the width property', function() {
+      // given
+      var self = this.el;
+
+      // when
+      self.raty({ starType: 'i' });
+
+      // then
+      expect(self[0].style.width).toEqual('');
+    });
+  });
+
   it ('accepts data attribute', function() {
     // given
     var el = Helper._append('div', { 'data-star-type': 'b' });
