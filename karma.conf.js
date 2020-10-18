@@ -9,9 +9,8 @@ module.exports = function(config) {
       'vendor/*.js',
       'lib/*.css',
       'lib/*.js',
-      'spec/lib/jasmine-jquery.js',
+      'spec/vendor/jasmine-jquery.js',
       'spec/lib/helper.js',
-      'spec/options_spec.js',
       'spec/*spec.js'
     ],
 
