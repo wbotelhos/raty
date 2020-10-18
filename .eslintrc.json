@@ -11,10 +11,13 @@
     "afterEach": false,
     "beforeEach": false,
     "context": true,
+    "define": false,
     "describe": false,
     "expect": false,
     "Helper": true,
     "it": false,
+    "module": false,
+    "require": false,
     "xit": false
   },
 
