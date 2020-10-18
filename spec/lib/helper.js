@@ -48,8 +48,10 @@ Helper = {
   },
 
   clear: function() {
-    for (var i = 0; i < this.ids.length; i++) {
-      $(this.ids[i]).remove();
+    if (this.ids) {
+      for (var i = 0; i < this.ids.length; i++) {
+        $(this.ids[i]).remove();
+      }
     }
   },
 
