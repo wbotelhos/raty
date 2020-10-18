@@ -1,6 +1,6 @@
 describe('#score', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -36,7 +36,7 @@ describe('#score', function() {
     this.el.raty({ score: function() { return 1; } });
 
     // then
-    expect(this.el[0].opt.score).toEqual(1);
+    expect(this.el.data('raty').opt.score).toEqual(1);
   });
 
   it ('accepts data attribute', function() {
@@ -47,7 +47,7 @@ describe('#score', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.score).toEqual(3);
+    expect(el.data('raty').opt.score).toEqual(3);
   });
 
   context('with negative number', function() {
@@ -82,7 +82,7 @@ describe('#score', function() {
       this.el.raty({ score: 100 });
 
       // then
-      expect(this.el[0].opt.score).toEqual(this.el[0].opt.number);
+      expect(this.el.data('raty').opt.score).toEqual(this.el.data('raty').opt.number);
     });
   });
 });

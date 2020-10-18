@@ -9,10 +9,7 @@ describe('options', function() {
 
   it ('has the right default values', function() {
     // given
-    var raty = $.fn.raty;
-
-    // when
-    var opt = raty.defaults;
+    var opt = $.raty;
 
     // then
     expect(opt.cancel).toBeFalsy();

@@ -1,6 +1,6 @@
 describe('#mouseover', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -13,7 +13,7 @@ describe('#mouseover', function() {
     // given
     this.el.raty({
       mouseover: function(score) {
-        $(this).data('score', score);
+        this.result = score;
       }
     });
 
@@ -23,14 +23,14 @@ describe('#mouseover', function() {
     star.trigger('mouseover');
 
     // then
-    expect(this.el.data('score')).toEqual(5);
+    expect(this.el[0].result).toEqual(5);
   });
 
   it ('receives the mouse event', function() {
     // given
     this.el.raty({
       mouseover: function(_, evt) {
-        $(this).data('evt', evt);
+        this.result = evt;
       }
     });
 
@@ -40,7 +40,7 @@ describe('#mouseover', function() {
     star.trigger('mouseover');
 
     // then
-    expect(this.el.data('evt').type).toEqual('mouseover');
+    expect(this.el[0].result.type).toEqual('mouseover');
   });
 
   context('with :cancel', function() {
@@ -49,7 +49,7 @@ describe('#mouseover', function() {
       this.el.raty({
         cancel    : true,
         mouseover : function(score) {
-          $(this).data('score', score);
+          this.result = score;
         }
       });
 
@@ -59,7 +59,7 @@ describe('#mouseover', function() {
       cancel.trigger('mouseover');
 
       // then
-      expect(this.el.data('score')).toBeNull();
+      expect(this.el[0].result).toBeNull();
     });
   });
 });

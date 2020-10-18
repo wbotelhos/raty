@@ -1,6 +1,6 @@
 describe('#starOn', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -17,7 +17,7 @@ describe('#starOn', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.starOn).toEqual('custom');
+    expect(el.data('raty').opt.starOn).toEqual('custom');
   });
 
   context('on mouseover', function() {

@@ -1,6 +1,6 @@
 describe('#set', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -14,7 +14,7 @@ describe('#set', function() {
     this.el.raty();
 
     // when
-    var ref = this.el.raty('set', {});
+    var ref = this.el.data('raty').set({});
 
     // then
     expect(ref).toBe(this.el);
@@ -25,7 +25,7 @@ describe('#set', function() {
     this.el.raty();
 
     // when
-    var ref = this.el.raty('set', { scoreName: 'other' });
+    var ref = this.el.data('raty').set({ scoreName: 'other' });
 
     // then
     expect(ref.children('input')).toHaveAttr('name', 'other');
@@ -36,7 +36,7 @@ describe('#set', function() {
     this.el.raty({ number: 6 });
 
     // when
-    var ref = this.el.raty('set', { scoreName: 'other' });
+    var ref = this.el.data('raty').set({ scoreName: 'other' });
 
     // then
     expect(ref.children('img').length).toEqual(6);
@@ -49,7 +49,7 @@ describe('#set', function() {
         $(this).data('trigged', true);
       }).raty();
 
-      this.el.raty('set', {});
+      this.el.data('raty').set({});
 
       // when
       this.el.trigger('click');
@@ -62,10 +62,10 @@ describe('#set', function() {
   context('when :readOnly by function', function() {
     it ('is removes the readonly data info', function() {
       // given
-      this.el.raty().raty('readOnly', true);
+      this.el.raty().data('raty').readOnly(true);
 
       // when
-      var ref = this.el.raty('set', { readOnly: false });
+      var ref = this.el.data('raty').set({ readOnly: false });
 
       // then
       expect(this.el).not.toHaveData('readonly');

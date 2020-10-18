@@ -1,6 +1,6 @@
 describe('#scoreName', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
   });
 
   afterEach(function() {
@@ -26,6 +26,6 @@ describe('#scoreName', function() {
     this.el.raty({ scoreName: function() { return 'double'; } });
 
     // then
-    expect(this.el[0].opt.scoreName).toEqual('double');
+    expect(this.el.data('raty').opt.scoreName).toEqual('double');
   });
 });

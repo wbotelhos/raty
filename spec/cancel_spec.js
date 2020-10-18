@@ -1,6 +1,6 @@
 describe('#cancel', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -32,7 +32,7 @@ describe('#cancel', function() {
     this.el.raty();
 
     // then
-    expect(this.el[0].opt.cancel).toEqual(true);
+    expect(this.el.data('raty').opt.cancel).toEqual(true);
   });
 
   context('on mouseover', function() {
@@ -59,7 +59,7 @@ describe('#cancel', function() {
       cancel.trigger('mouseover');
 
       // then
-      expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
+      expect(cancel).toHaveClass(this.el.data('raty').opt.cancelClass);
     });
 
     context('with stars on', function() {
@@ -103,7 +103,7 @@ describe('#cancel', function() {
         cancel.trigger('mouseover');
 
         // then
-        expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
+        expect(cancel).toHaveClass(this.el.data('raty').opt.cancelClass);
       });
 
       it ('sets class replacing dot to hiphen', function() {
@@ -184,7 +184,7 @@ describe('#cancel', function() {
       cancel.trigger('mouseleave');
 
       // then
-      expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
+      expect(cancel).toHaveClass(this.el.data('raty').opt.cancelClass);
     });
 
     context('with stars turned on', function() {
@@ -232,7 +232,7 @@ describe('#cancel', function() {
       var cancel = this.el.children('.raty-cancel');
 
       // when
-      this.el.raty('readOnly', true);
+      this.el.data('raty').readOnly(true);
 
       // then
       expect(cancel).toBeHidden();
@@ -264,7 +264,7 @@ describe('#cancel', function() {
       this.el.raty({ cancel: true });
 
       // when
-      this.el.raty('readOnly', true);
+      this.el.data('raty').readOnly(true);
 
       // then
       expect(this.el.children('.raty-cancel')).toBeHidden();
@@ -292,7 +292,7 @@ describe('#cancel', function() {
       cancel.trigger('mouseleave');
 
       // then
-      expect(cancel).toHaveClass(this.el[0].opt.cancelClass);
+      expect(cancel).toHaveClass(this.el.data('raty').opt.cancelClass);
     });
 
     it ('sets class replacing dot to hiphen', function() {

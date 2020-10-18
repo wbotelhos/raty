@@ -1,6 +1,6 @@
 describe('#path', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -27,7 +27,7 @@ describe('#path', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.path).toEqual('custom/');
+    expect(el.data('raty').opt.path).toEqual('custom/');
   });
 
   context('without slash on the final', function() {
@@ -38,7 +38,7 @@ describe('#path', function() {
       this.el.raty({ path: '../demo/images' });
 
       // then
-      expect(this.el[0].opt.path).toEqual('../demo/images/');
+      expect(this.el.data('raty').opt.path).toEqual('../demo/images/');
     });
   });
 
@@ -50,7 +50,7 @@ describe('#path', function() {
       this.el.raty({ path: '../demo/images/' });
 
       // then
-      expect(this.el[0].opt.path).toEqual('../demo/images/');
+      expect(this.el.data('raty').opt.path).toEqual('../demo/images/');
     });
   });
 
@@ -68,7 +68,7 @@ describe('#path', function() {
 
   context('as undefined', function() {
     beforeEach(function() {
-      $.fn.raty.defaults.path = undefined;
+      $.raty.path = undefined;
     });
 
     it ('replace to an empty string', function() {

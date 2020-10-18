@@ -22,6 +22,6 @@ describe('#cancelClass', function() {
     this.el.raty();
 
     // then
-    expect(this.el[0].opt.cancelClass).toEqual('custom');
+    expect(this.el.data('raty').opt.cancelClass).toEqual('custom');
   });
 });

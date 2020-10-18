@@ -1,6 +1,6 @@
 describe('#half', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -17,7 +17,7 @@ describe('#half', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.cancelClass).toEqual(true);
+    expect(el.data('raty').opt.cancelClass).toEqual(true);
   });
 
   context('as *false', function() {
@@ -566,7 +566,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.1);
+              this.el.data('raty').fnMove(1.1);
 
               // then
               expect(this.el.children(':eq(1)')).toHaveAttr('src', '../lib/images/star-half.png');
@@ -584,7 +584,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.2);
+              this.el.data('raty').fnMove(1.2);
 
               // then
               expect(this.el.children(':eq(1)')).toHaveAttr('src', '../lib/images/star-half.png');
@@ -602,7 +602,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.3);
+              this.el.data('raty').fnMove(1.3);
 
               // then
               expect(this.el.children(':eq(1)')).toHaveAttr('src', '../lib/images/star-half.png');
@@ -620,7 +620,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.4);
+              this.el.data('raty').fnMove(1.4);
 
               // then
               expect(this.el.children(':eq(1)')).toHaveAttr('src', '../lib/images/star-half.png');
@@ -638,7 +638,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.5);
+              this.el.data('raty').fnMove(1.5);
 
               // then
               expect(this.el.children(':eq(1)')).toHaveAttr('src', '../lib/images/star-half.png');
@@ -656,7 +656,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.6);
+              this.el.data('raty').fnMove(1.6);
 
               // then
               expect(this.target.text()).toEqual('2,0');
@@ -674,7 +674,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.7);
+              this.el.data('raty').fnMove(1.7);
 
               // then
               expect(this.target.text()).toEqual('2,0');
@@ -692,7 +692,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.8);
+              this.el.data('raty').fnMove(1.8);
 
               // then
               expect(this.target.text()).toEqual('2,0');
@@ -710,7 +710,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 1.9);
+              this.el.data('raty').fnMove(1.9);
 
               // then
               expect(this.target.text()).toEqual('2,0');
@@ -728,7 +728,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 2.0);
+              this.el.data('raty').fnMove(2.0);
 
               // then
               expect(this.target.text()).toEqual('2,0');
@@ -746,7 +746,7 @@ describe('#half', function() {
               });
 
               // when
-              this.el.raty('move', 2);
+              this.el.data('raty').fnMove(2);
 
               // then
               expect(this.target.text()).toEqual('2,0');

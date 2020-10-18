@@ -1,6 +1,6 @@
 describe('#cancelHint', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
   });
 
   afterEach(function() {
@@ -26,6 +26,6 @@ describe('#cancelHint', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.cancelHint).toEqual('custom');
+    expect(el.data('raty').opt.cancelHint).toEqual('custom');
   });
 });

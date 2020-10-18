@@ -15,7 +15,7 @@ describe('#getFirstDecimal', function() {
       this.el.raty();
 
       // when
-      var decimal = this.el.raty('_getFirstDecimal', number);
+      var decimal = this.el.data('raty')._getFirstDecimal(number);
 
       // then
       expect(decimal).toEqual(0);
@@ -30,7 +30,7 @@ describe('#getFirstDecimal', function() {
       this.el.raty();
 
       // when
-      var decimal = this.el.raty('_getFirstDecimal', number);
+      var decimal = this.el.data('raty')._getFirstDecimal(number);
 
       // then
       expect(decimal).toEqual(1);
@@ -45,7 +45,7 @@ describe('#getFirstDecimal', function() {
       this.el.raty();
 
       // when
-      var decimal = this.el.raty('_getFirstDecimal', number);
+      var decimal = this.el.data('raty')._getFirstDecimal(number);
 
       // then
       expect(decimal).toEqual(1);
@@ -60,7 +60,7 @@ describe('#getFirstDecimal', function() {
       this.el.raty();
 
       // when
-      var decimal = this.el.raty('_getFirstDecimal', number);
+      var decimal = this.el.data('raty')._getFirstDecimal(number);
 
       // then
       expect(decimal).toEqual(2);

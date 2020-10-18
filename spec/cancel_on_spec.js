@@ -1,6 +1,6 @@
 describe('#cancelOn', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
   });
 
   afterEach(function() {
@@ -30,6 +30,6 @@ describe('#cancelOn', function() {
     this.el.raty();
 
     // then
-    expect(this.el[0].opt.cancelOn).toEqual('custom');
+    expect(this.el.data('raty').opt.cancelOn).toEqual('custom');
   });
 });

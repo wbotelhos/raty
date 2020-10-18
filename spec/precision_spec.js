@@ -1,6 +1,6 @@
 describe('#precision', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el     = Helper.create('#el', 'div', { 'data-target': '#target' });
     this.target = Helper.target('#target');
@@ -17,7 +17,7 @@ describe('#precision', function() {
     this.el.raty({ precision: true });
 
     // then
-    expect(this.el[0].opt.half).toBeTruthy();
+    expect(this.el.data('raty').opt.half).toBeTruthy();
   });
 
   it ('accepts data attribute', function() {
@@ -28,7 +28,7 @@ describe('#precision', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.precision).toEqual(true);
+    expect(el.data('raty').opt.precision).toEqual(true);
   });
 
   context('with :target', function() {
@@ -70,7 +70,7 @@ describe('#precision', function() {
 
             setTimeout(function() {
               // when
-              that.el.raty('move', 1.23);
+              that.el.data('raty').fnMove(1.23);
 
               // then
               expect(that.target).toHaveHtml('1.2');
@@ -228,7 +228,7 @@ describe('#precision', function() {
 
               setTimeout(function() {
                 // when
-                that.el.raty('move', 1.1);
+                that.el.data('raty').fnMove(1.1);
 
                 // then
                 expect(that.target).toHaveHtml('second');
@@ -255,7 +255,7 @@ describe('#precision', function() {
 
               setTimeout(function() {
                 // when
-                that.el.raty('move', 1.19);
+                that.el.data('raty').fnMove(1.19);
 
                 // then
                 expect(that.target).toHaveHtml('second');
@@ -281,14 +281,14 @@ describe('#precision', function() {
               }
             });
 
-            var cancel = this.el.children('.' + this.el[0].opt.cancelClass);
+            var cancel = this.el.children('.' + this.el.data('raty').opt.cancelClass);
 
             setTimeout(function() {
               // when
               cancel.trigger('mouseover');
 
               // then
-              expect(that.target).toHaveHtml(that.el[0].opt.cancelHint);
+              expect(that.target).toHaveHtml(that.el.data('raty').opt.cancelHint);
 
               done();
             }, 100);

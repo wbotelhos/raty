@@ -1,7 +1,7 @@
 isClear = true;
 
 afterEach(function() {
-  $.fn.raty.defaults.path = undefined;
+  $.raty.path = undefined;
 });
 
 Helper = {

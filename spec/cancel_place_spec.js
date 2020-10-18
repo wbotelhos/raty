@@ -1,6 +1,6 @@
 describe('#cancelPlace', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -17,7 +17,7 @@ describe('#cancelPlace', function() {
     this.el.raty();
 
     // then
-    expect(this.el[0].opt.cancelPlace).toEqual('custom');
+    expect(this.el.data('raty').opt.cancelPlace).toEqual('custom');
   });
 
   context('when left', function() {

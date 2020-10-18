@@ -1,6 +1,6 @@
 describe('#numberMax', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -28,7 +28,7 @@ describe('#numberMax', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.starOff).toEqual('custom');
+    expect(el.data('raty').opt.starOff).toEqual('custom');
   });
 
   context('with :starType', function() {

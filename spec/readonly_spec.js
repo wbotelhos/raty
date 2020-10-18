@@ -1,6 +1,6 @@
 describe('#readOnly', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -17,7 +17,7 @@ describe('#readOnly', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.readonly).toEqual(true);
+    expect(el.data('raty').opt.readonly).toEqual(true);
   });
 
   context('on true', function() {
@@ -50,7 +50,7 @@ describe('#readOnly', function() {
         this.el.raty({ readOnly: true });
 
         // then
-        expect(this.el.children('img')).toHaveAttr('title', this.el[0].opt.noRatedMsg);
+        expect(this.el.children('img')).toHaveAttr('title', 'Not rated yet!');
       });
     });
 
@@ -252,7 +252,7 @@ describe('#readOnly', function() {
       var input = this.el.children('input');
 
       // when
-      this.el.raty('readOnly', false);
+      this.el.data('raty').readOnly(false);
 
       // then
       expect(input).not.toHaveAttr('readonly', 'readonly');
@@ -264,7 +264,7 @@ describe('#readOnly', function() {
       this.el.raty({ readOnly: true });
 
       // when
-      this.el.raty('readOnly', false);
+      this.el.data('raty').readOnly(false);
 
       // then
       expect(this.el).toHaveCss({ cursor: 'pointer' });
@@ -277,7 +277,7 @@ describe('#readOnly', function() {
       var stars = this.el.children('img');
 
       // when
-      this.el.raty('readOnly', false);
+      this.el.data('raty').readOnly(false);
 
       // then
       expect(stars[0]).toHaveAttr('title', 'bad');
@@ -293,7 +293,7 @@ describe('#readOnly', function() {
 
       var stars = this.el.children('img');
 
-      this.el.raty('readOnly', false);
+      this.el.data('raty').readOnly(false);
 
       // when
       stars.first().trigger('mouseover');
@@ -308,7 +308,7 @@ describe('#readOnly', function() {
 
       var star = this.el.children('img:first');
 
-      this.el.raty('readOnly', false);
+      this.el.data('raty').readOnly(false);
 
       // when
       star.trigger('click');
@@ -325,7 +325,7 @@ describe('#readOnly', function() {
         var stars = this.el.children('img');
 
         // when
-        this.el.raty('readOnly', false);
+        this.el.data('raty').readOnly(false);
 
         // then
         expect(stars[0]).toHaveAttr('title', 'bad');
@@ -345,7 +345,7 @@ describe('#readOnly', function() {
 
         setTimeout(function() {
           // when
-          that.el.raty('readOnly', false);
+          that.el.data('raty').readOnly(false);
 
           // then
           expect(that.el.children('.raty-cancel')).toBeVisible();
@@ -362,7 +362,7 @@ describe('#readOnly', function() {
           cancel = this.el.children('.raty-cancel'),
           stars  = this.el.children('img:not(.raty-cancel)');
 
-        this.el.raty('readOnly', false);
+        this.el.data('raty').readOnly(false);
 
         // when
         cancel.trigger('mouseover');
@@ -380,7 +380,7 @@ describe('#readOnly', function() {
           cancel = this.el.children('.raty-cancel'),
           stars  = this.el.children('img:not(.raty-cancel)');
 
-        this.el.raty('readOnly', false);
+        this.el.data('raty').readOnly(false);
 
         // when
         cancel.trigger('click').trigger('mouseout');

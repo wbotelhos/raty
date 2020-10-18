@@ -1,6 +1,6 @@
 describe('#mouseout', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -13,7 +13,7 @@ describe('#mouseout', function() {
     // given
     this.el.raty({
       mouseout: function(score, evt) {
-        $(this).data('evt', evt);
+        this.result = evt;
       }
     });
 
@@ -23,7 +23,7 @@ describe('#mouseout', function() {
     star.trigger('mouseout');
 
     // then
-    expect(this.el.data('evt').type).toEqual('mouseout');
+    expect(this.el[0].result.type).toEqual('mouseout');
   });
 
   context('without score', function() {
@@ -32,7 +32,7 @@ describe('#mouseout', function() {
       this.el.raty({
         cancel  : true,
         mouseout: function(score) {
-          $(this).data('score', score);
+          this.result = score;
         }
       });
 
@@ -42,7 +42,7 @@ describe('#mouseout', function() {
       star.trigger('mouseout');
 
       // then
-      expect(this.el.data('score')).toBeUndefined();
+      expect(this.el[0].result).toBeUndefined();
     });
   });
 
@@ -52,7 +52,7 @@ describe('#mouseout', function() {
       this.el.raty({
         score    : 1,
         mouseout : function(score) {
-          $(this).data('score', score);
+          this.result = score;
         }
       });
 
@@ -62,17 +62,17 @@ describe('#mouseout', function() {
       star.trigger('mouseout');
 
       // then
-      expect(this.el.data('score')).toEqual(1);
+      expect(typeof this.el[0].result).toEqual('number');
     });
   });
 
   context('when acts on :cancel', function() {
     it ('receives the event', function() {
       // given
-      this.el.raty({
+      var raty = this.el.raty({
         cancel   : true,
         mouseout : function(_, evt) {
-          $(this).data('evt', evt);
+          this.evt = evt;
         }
       });
 
@@ -82,7 +82,7 @@ describe('#mouseout', function() {
       cancel.trigger('mouseout');
 
       // then
-      expect(this.el.data('evt').type).toEqual('mouseout');
+      expect(this.el[0].evt.type).toEqual('mouseout');
     });
 
     context('without score', function() {
@@ -91,7 +91,7 @@ describe('#mouseout', function() {
         this.el.raty({
           cancel   : true,
           mouseout : function(score) {
-            $(this).data('score', score);
+            this.result = score;
           }
         });
 
@@ -101,7 +101,7 @@ describe('#mouseout', function() {
         cancel.trigger('mouseout');
 
         // then
-        expect(this.el.data('score')).toBeUndefined();
+        expect(this.el[0].result).toBeUndefined();
       });
     });
 
@@ -112,7 +112,7 @@ describe('#mouseout', function() {
           score    : 1,
           cancel   : true,
           mouseout : function(score) {
-            $(this).data('score', score);
+            this.result = score;
           }
         });
 
@@ -122,7 +122,7 @@ describe('#mouseout', function() {
         cancel.trigger('mouseout');
 
         // then
-        expect(typeof this.el.data('score')).toEqual('number');
+        expect(typeof this.el[0].result).toEqual('number');
       });
     });
   });

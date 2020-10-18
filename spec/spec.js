@@ -9,7 +9,7 @@ describe('Integration', function() {
 
   describe('options', function() {
     beforeEach(function() {
-      $.fn.raty.defaults.path = '../lib/images';
+      $.raty.path = '../lib/images';
     });
 
     describe('#targetText', function() {
@@ -480,7 +480,7 @@ describe('Integration', function() {
 
   describe('class bind', function() {
     beforeEach(function() {
-      $.fn.raty.defaults.path = '../lib/images';
+      $.raty.path = '../lib/images';
 
       $('body').append('<div class="element"></div><div class="element"></div>');
     });
@@ -539,7 +539,7 @@ describe('Integration', function() {
 
   describe('functions', function() {
     beforeEach(function() {
-      $.fn.raty.defaults.path = '../lib/images';
+      $.raty.path = '../lib/images';
     });
 
     describe('GET #score', function() {
@@ -571,7 +571,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ score: 1 });
 
           // when
-          var score = self.raty('score');
+          var score = self.data('raty').score();
 
           // then
           expect(score).toEqual(1);
@@ -584,7 +584,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ score: 1.5 });
 
           // when
-          var score = self.raty('score');
+          var score = self.data('raty').score();
 
           // then
           expect(score).toEqual(1.5);
@@ -597,7 +597,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ score: 0 });
 
           // when
-          var score = self.raty('score');
+          var score = self.data('raty').score();
 
           // then
           expect(score).toBeUndefined();
@@ -610,10 +610,10 @@ describe('Integration', function() {
           var self = $('#element').raty({ number: 50, score: 50 });
 
           // when
-          var score = self.raty('score');
+          var score = self.data('raty').score();
 
           // then
-          expect(score).toEqual(self[0].opt.numberMax);
+          expect(score).toEqual(self.data('raty').opt.numberMax);
         });
       });
     });
@@ -628,7 +628,7 @@ describe('Integration', function() {
         });
 
         // when
-        self.raty('click', 1);
+        self.data('raty').click(, 1);
 
         // then
         expect(self.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
@@ -639,15 +639,15 @@ describe('Integration', function() {
         // given
         var self = $('#element').raty({
           click: function(score) {
-            $(this).data('score', score);
+            this.result = score;
           }
         });
 
         // when
-        self.raty('click', 1);
+        self.data('raty').click(, 1);
 
         // then
-        expect(self.data('score')).toEqual(1);
+        expect(this.el.data('raty').opt.result).toEqual(1);
       });
 
       it ('receives the event', function() {
@@ -659,7 +659,7 @@ describe('Integration', function() {
         });
 
         // when
-        self.raty('click', 1);
+        self.data('raty').click(, 1);
 
         // then
         expect(self.data('evt').type).toEqual('click');
@@ -671,7 +671,7 @@ describe('Integration', function() {
           var self = $('#element').raty({ readOnly: true });
 
           // when
-          self.raty('click', 1);
+          self.data('raty').click(, 1);
 
           // then
           expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
@@ -684,7 +684,7 @@ describe('Integration', function() {
           var self = $('#element').raty();
 
           // when
-          var lambda = function() { self.raty('click', 1); };
+          var lambda = function() { self.data('raty').click(, 1); };
 
           // then
           expect(lambda).not.toThrow();
@@ -706,7 +706,7 @@ describe('Integration', function() {
             });
 
             // when
-            self.raty('click', 1);
+            self.data('raty').click(, 1);
 
             // then
             expect($('#hint')).toHaveHtml('bad');
@@ -721,7 +721,7 @@ describe('Integration', function() {
         var self = $('#element').raty();
 
         // when
-        var ref = self.raty('reload');
+        var ref = self.data('raty').reload();
 
         // then
         expect(ref).toBe(self);
@@ -732,7 +732,7 @@ describe('Integration', function() {
         var self = $('#element').raty({ number: 6 });
 
         // when
-        var ref = self.raty('reload');
+        var ref = self.data('raty').reload();
 
         // then
         expect(ref.children('img').length).toEqual(6);
@@ -741,10 +741,10 @@ describe('Integration', function() {
       context('when :readOnly by function', function() {
         it ('is removes the readonly data info', function() {
           // given
-          var self = $('#element').raty().raty('readOnly', true);
+          var self = $('#element').raty().data('raty').readOnly(, true);
 
           // when
-          var ref = self.raty('reload');
+          var ref = self.data('raty').reload();
 
           // then
           expect(self).not.toHaveData('readonly');
@@ -758,7 +758,7 @@ describe('Integration', function() {
         var self = $('#element').raty();
 
         // when
-        var el = self.raty('destroy');
+        var el = self.data('raty').destroy();
 
         // then
         expect(el[0]).toBe(self[0]);
@@ -769,7 +769,7 @@ describe('Integration', function() {
         var self = $('#element').raty();
 
         // when
-        self.raty('destroy');
+        self.data('raty').destroy();
 
         // then
         expect(self).toBeEmpty();
@@ -783,7 +783,7 @@ describe('Integration', function() {
               }
             });
 
-        self.raty('destroy');
+        self.data('raty').destroy();
 
         // when
         self.trigger('mouseleave');
@@ -797,7 +797,7 @@ describe('Integration', function() {
         var self = $('#element').css({ cursor: 'help' }).raty();
 
         // when
-        self.raty('destroy');
+        self.data('raty').destroy();
 
         // then
         expect(self[0].style.cursor).toEqual('help');

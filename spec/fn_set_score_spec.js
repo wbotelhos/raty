@@ -1,6 +1,6 @@
 describe('#fn_setScore', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -16,7 +16,7 @@ describe('#fn_setScore', function() {
     this.el.raty({ score: 1 });
 
     // then
-    expect(this.el.raty('score')).toEqual(1);
+    expect(this.el.data('raty').fnScore(.toEqual(1);
   });
 
   describe('with :readOnly', function() {
@@ -25,7 +25,7 @@ describe('#fn_setScore', function() {
       this.el.raty({ readOnly: true });
 
       // when
-      this.el.raty('score', 5);
+      this.el.data('raty').fnScore(5);
 
       // then
       expect(this.el.children('input')).toHaveValue('');
@@ -45,7 +45,7 @@ describe('#fn_setScore', function() {
         this.el.raty({ target: '#target' });
 
         // when
-        var lambda = function() { that.el.raty('score', 6); };
+        var lambda = function() { that.el.data('raty').fnScore(6); };
 
         // then
         expect(lambda).not.toThrow();
@@ -65,10 +65,10 @@ describe('#fn_setScore', function() {
               });
 
               // when
-              this.el.raty('score', 6);
+              this.el.data('raty').fnScore(6);
 
               // then
-              expect(this.target.text()).toEqual(this.el[0].opt.number.toString());
+              expect(this.target.text()).toEqual(this.el.data('raty').opt.number.toString());
             });
 
             it ('sets the :score on target', function() {
@@ -80,7 +80,7 @@ describe('#fn_setScore', function() {
               });
 
               // when
-              this.el.raty('score', 1);
+              this.el.data('raty').fnScore(1);
 
               // then
               expect(this.target.text()).toEqual('1');

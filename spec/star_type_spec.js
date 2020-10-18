@@ -1,6 +1,6 @@
 describe('#starType', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -17,7 +17,7 @@ describe('#starType', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.starType).toEqual('b');
+    expect(el.data('raty').opt.starType).toEqual('b');
   });
 
   context('when is "img"', function() {
@@ -28,7 +28,7 @@ describe('#starType', function() {
       this.el.raty({ path: 'path', starType: 'i' });
 
       // then
-      expect(this.el[0].opt.path).toEqual('');
+      expect(this.el.data('raty').opt.path).toEqual('');
     });
 
     it ('creates the default markup', function() {
@@ -68,7 +68,7 @@ describe('#starType', function() {
       this.el.raty({ path: 'path', starType: 'i' });
 
       // then
-      expect(this.el[0].opt.path).toEqual('');
+      expect(this.el.data('raty').opt.path).toEqual('');
     });
 
     it ('creates the default markup', function() {
@@ -109,7 +109,7 @@ describe('#starType', function() {
         var stars = this.el.children('i');
 
         // when
-        this.el.raty('move', 4.5);
+        this.el.data('raty').fnMove(4.5);
 
         // then
         expect(stars[0]).toHaveClass('star-on-png');

@@ -1,6 +1,6 @@
 describe('#number', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -36,7 +36,7 @@ describe('#number', function() {
     this.el.raty({ number: function() { return 1; } });
 
     // then
-    expect(this.el[0].opt.number).toEqual(1);
+    expect(this.el.data('raty').opt.number).toEqual(1);
   });
 
   it ('accepts data attribute', function() {
@@ -47,6 +47,6 @@ describe('#number', function() {
     el.raty();
 
     // then
-    expect(el[0].opt.number).toEqual(3);
+    expect(el.data('raty').opt.number).toEqual(3);
   });
 });

@@ -1,6 +1,6 @@
 describe('#click', function() {
   beforeEach(function() {
-    $.fn.raty.defaults.path = '../lib/images';
+    $.raty.path = '../lib/images';
 
     this.el = Helper.create('#el');
   });
@@ -13,7 +13,7 @@ describe('#click', function() {
     // given
     this.el.raty({
       click: function() {
-        $(this).data('called', true);
+        this.called = true;
       }
     });
 
@@ -23,14 +23,14 @@ describe('#click', function() {
     star.trigger('click');
 
     // then
-    expect(this.el.data('called')).toBeTruthy();
+    expect(this.el[0].called).toBeTruthy();
   });
 
   it ('has "this" as context', function() {
     // given
     this.el.raty({
       click: function() {
-        $(this).data('this', this);
+        this.result = this;
       }
     });
 
@@ -40,14 +40,15 @@ describe('#click', function() {
     star.trigger('click');
 
     // then
-    expect(this.el.data('this')).toBe(this.el[0]);
+
+    expect(this.el[0].result).toBe(this.el[0]);
   });
 
   it ('receives the score as argument', function() {
     // given
     this.el.raty({
       click: function(score) {
-        $(this).data('result', score);
+        this.result = score;
       }
     });
 
@@ -57,7 +58,7 @@ describe('#click', function() {
     star.trigger('click');
 
     // then
-    expect(this.el.data('result')).toEqual(5);
+    expect(this.el[0].result).toEqual(5);
   });
 
   context('with return as undefined', function() {
@@ -170,7 +171,7 @@ describe('#click', function() {
       this.el.raty({
         cancel : true,
         click  : function() {
-          $(this).data('called', true);
+          this.called = true;
         }
       });
 
@@ -180,7 +181,7 @@ describe('#click', function() {
       cancel.trigger('click');
 
       // then
-      expect(this.el.data('called')).toBeTruthy();
+      expect(this.el[0].called).toEqual(true);
     });
   });
 });
