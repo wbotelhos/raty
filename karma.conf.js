@@ -3,7 +3,7 @@ module.exports = function(config) {
 
   config.set({
     autoWatch: true,
-    browsers:  ['Firefox'],
+    browsers:  ['Chrome', 'Firefox'],
 
     files: [
       'vendor/*.js',
