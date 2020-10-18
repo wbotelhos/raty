@@ -3638,7 +3638,7 @@ Get the <a href="#score">score</a> value and manipulate it with jQuery.</p>
   </div>
 
   <script>
-  $.fn.raty.defaults.path = '../lib/images';
+  $.raty.path = '../lib/images';
 
   $(function() {
     $('#default').raty();
@@ -3679,7 +3679,7 @@ $('#noRatedMsg').raty({
   noRatedMsg : "I'm readOnly and I haven't rated yet!"
 });
 
-$('#halfShow-true').raty({ score: 4.570 });
+$('#halfShow-true').raty({ score: 3.26 });
 
 $('#halfShow-false').raty({
   halfShow : false,
@@ -3882,50 +3882,50 @@ $('#functions').raty({
 });
 
 $('#score-function-run').on('click', function() {
-  $('#functions').raty('score', $('#' + this.id.replace('-run', '')).val());
+  $('#functions').data('raty').fnScore($('#' + this.id.replace('-run', '')).val());
 });
 
 $('#click-function-run').on('click', function() {
-  $('#functions').raty('click', $('#' + this.id.replace('-run', '')).val());
+  $('#functions').data('raty').click($('#' + this.id.replace('-run', '')).val());
 });
 
 $('#readOnly-function-run').on('click', function() {
 var isReadOnly = $('#' + this.id.replace('-run', '')).val() === 'true';
 
-  $('#functions').raty('readOnly', isReadOnly);
+  $('#functions').data('raty').readOnly(isReadOnly);
 });
 
 $('#cancel-function-run').on('click', function() {
 var isTrigger = $('#' + this.id.replace('-run', '')).val() === 'true';
 
-  $('#functions').raty('cancel', isTrigger);
+  $('#functions').data('raty').fnCancel(isTrigger);
 });
 
 $('#reload-function-run').on('click', function() {
-  $('#functions').raty('reload');
+  $('#functions').data('raty').reload();
 });
 
 $('#get-score-function-run').on('click', function() {
-  alert('score: ' + $('#functions').raty('score'));
+  alert('score: ' + $('#functions').data('raty').fnScore());
 });
 
 $('#set-score-function-run').on('click', function() {
-  $('#functions').raty('score', $('#' + this.id.replace('-run', '')).val());
+  $('#functions').data('raty').fnScore($('#' + this.id.replace('-run', '')).val());
 });
 
 $('#set-function-run').on('click', function() {
   var options = $('#' + this.id.replace('-run', '').val()),
-      command = "$('#functions').raty('set', " + options + ");";
+      command = "$('#functions').data('raty').set(" + options + ");";
 
   eval(command);
 });
 
 $('#destroy-function-run').on('click', function() {
-  $('#functions').raty('destroy');
+  $('#functions').data('raty').fnDestroy();
 });
 
 $('#move-function-run').on('click', function() {
-  $('#functions').raty('move', $('#' + this.id.replace('-run', '')).val());
+  $('#functions').data('raty').fnMove($('#' + this.id.replace('-run', '')).val());
 });
   });
 </script>
