@@ -40,7 +40,7 @@ describe('#fn_cancel', function() {
         this.el.raty({
           score: 1,
           click: function() {
-            $(this).data('clicked', true);
+            this.clicked = true;
           }
         });
 
@@ -48,7 +48,7 @@ describe('#fn_cancel', function() {
         this.el.data('raty').fnCancel(false);
 
         // then
-        expect(this.el.data('clicked')).toBeFalsy();
+        expect(this.el[0].clicked).toBeFalsy();
       });
 
       context('with :target', function() {
@@ -84,7 +84,7 @@ describe('#fn_cancel', function() {
         this.el.raty({
           score: 1,
           click: function() {
-            $(this).data('clicked', true);
+            this.clicked = true;
           }
         });
 
@@ -92,7 +92,7 @@ describe('#fn_cancel', function() {
         this.el.data('raty').fnCancel(true);
 
         // then
-        expect(this.el.data('clicked')).toBeTruthy();
+        expect(this.el[0].clicked).toBeTruthy();
       });
 
       context('with :target', function() {
