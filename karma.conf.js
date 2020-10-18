@@ -11,7 +11,7 @@ module.exports = function(config) {
       'lib/*.js',
       'spec/vendor/jasmine-jquery.js',
       'spec/lib/helper.js',
-      'spec/*spec.js'
+      'spec/**/*spec.js'
     ],
 
     frameworks: ['jasmine'],
