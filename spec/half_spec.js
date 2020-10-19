@@ -76,6 +76,21 @@ describe('#half', function() {
           // then
           expect(this.el.children('input').val()).toEqual('1.5');
         });
+
+        it ('gives a callback the rounded value', function() {
+          // given
+          this.el.raty({
+            half     : true,
+            halfShow : true,
+            click    : function(score) {
+              // then
+              expect(score).toEqual(1.5);
+            }
+          });
+
+          // when
+          Helper.click(this.el, 1, 5);
+        });
       });
 
       context('into round area', function() {
@@ -91,6 +106,21 @@ describe('#half', function() {
 
           // then
           expect(this.el.children('input').val()).toEqual('2');
+        });
+
+        it ('gives a callback the rounded value', function() {
+          // given
+          this.el.raty({
+            half:     true,
+            halfShow: true,
+            click: function(score) {
+              // then
+              expect(score).toEqual(2);
+            }
+          });
+
+          // when
+          Helper.click(this.el, 1, 9);
         });
       });
 
