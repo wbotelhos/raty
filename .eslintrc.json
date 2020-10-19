@@ -18,6 +18,7 @@
     "it": false,
     "module": false,
     "require": false,
+    "spyOn": false,
     "xit": false
   },
 

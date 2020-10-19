@@ -20,7 +20,7 @@ describe('#fn_setScore', function() {
   });
 
   describe('with :readOnly', function() {
-    xit ('does not set the score', function() {
+    it ('does not set the score', function() {
       // given
       this.el.raty({ readOnly: true });
 
@@ -38,7 +38,7 @@ describe('#fn_setScore', function() {
     });
 
     context('and :score greater then :number', function() {
-      xit ('does not throw error', function() {
+      it ('does not throw error', function() {
         // given
         var that = this;
 
@@ -56,7 +56,7 @@ describe('#fn_setScore', function() {
       context('as *score', function() {
         context('and :targetKeep', function() {
           context('as *true', function() {
-            xit ('sets the value equal :number', function() {
+            it ('sets the value equal :number', function() {
               // given
               this.el.raty({
                 target     : '#target',
@@ -71,7 +71,7 @@ describe('#fn_setScore', function() {
               expect(this.target.text()).toEqual(this.el.data('raty').opt.number.toString());
             });
 
-            xit ('sets the :score on target', function() {
+            it ('sets the :score on target', function() {
               // given
               this.el.raty({
                 target     : '#target',

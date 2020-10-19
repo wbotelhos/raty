@@ -11,11 +11,11 @@ module.exports = function(config) {
       'lib/*.js',
       'spec/vendor/jasmine-jquery.js',
       'spec/lib/helper.js',
-      'spec/**/*spec.js'
+      'spec/**/*[sS]pec.js'
     ],
 
     frameworks: ['jasmine'],
-    logLevel:   config.LOG_ERROR,
-    singleRun:  true
+    logLevel:   config.LOG_DISABLE,
+    singleRun:  false
   });
 };
