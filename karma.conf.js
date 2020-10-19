@@ -16,6 +16,6 @@ module.exports = function(config) {
 
     frameworks: ['jasmine'],
     logLevel:   config.LOG_DISABLE,
-    singleRun:  false
+    singleRun:  true
   });
 };
