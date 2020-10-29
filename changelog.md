@@ -2,8 +2,10 @@
 
 ### Break Change
 
-- Option `reload` was removed;
-- Option `set` was removed;
+- Function `destroy` was removed;
+- Function `reload` was removed;
+- Function `set` was removed;
+- Functions now is accessed via `element.data('raty').FUNCTION_NAME()`;
 - Option `cancel` was renamed to `cancelButton`;
 
 ### Bugfix
