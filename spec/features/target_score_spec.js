@@ -4,14 +4,14 @@ describe('#targetScore', function() {
 
     $('body').append('<div id="element"></div>');
 
-    this.score = $('<input id="score" type="text" />').appendTo('body');
+    this.scoreField = $('<input id="score" type="text" />').appendTo('body');
   });
 
   afterEach(function() {
     $('#element').remove();
     $('#hint').remove();
 
-    this.score.remove();
+    this.scoreField.remove();
   });
 
   it ('avoids the creation of default score field', function() {
@@ -35,6 +35,6 @@ describe('#targetScore', function() {
     stars.eq(0).trigger('click');
 
     // then
-    expect(this.score).toHaveValue('1');
+    expect(this.scoreField).toHaveValue('1');
   });
 });
