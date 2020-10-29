@@ -38,7 +38,7 @@ describe('get #score', function() {
       var self = $('#element').raty({ score: 1 });
 
       // when
-      var score = self.data('raty').fnScore();
+      var score = self.data('raty').score();
 
       // then
       expect(score).toEqual(1);
@@ -51,7 +51,7 @@ describe('get #score', function() {
       var self = $('#element').raty({ score: 1.5 });
 
       // when
-      var score = self.data('raty').fnScore();
+      var score = self.data('raty').score();
 
       // then
       expect(score).toEqual(1.5);
@@ -64,7 +64,7 @@ describe('get #score', function() {
       var self = $('#element').raty({ score: 0 });
 
       // when
-      var score = self.data('raty').fnScore();
+      var score = self.data('raty').score();
 
       // then
       expect(score).toBeUndefined();
@@ -77,7 +77,7 @@ describe('get #score', function() {
       var self = $('#element').raty({ number: 50, score: 50 });
 
       // when
-      var score = self.data('raty').fnScore();
+      var score = self.data('raty').score();
 
       // then
       expect(score).toEqual(self.data('raty').opt.numberMax);
