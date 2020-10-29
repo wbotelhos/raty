@@ -70,7 +70,7 @@ describe('#_starName', function() {
 
     context ('when move function is triggered', function() {
       beforeEach(function() {
-        this.move = true;
+        this.isMove = true;
       });
 
       context ('when decimal is bigger than 0.5', function() {
@@ -83,7 +83,7 @@ describe('#_starName', function() {
           var element  = this.el[0];
           var instance = new $.raty.Raty(element);
 
-          instance.move = this.move;
+          instance.isMove = this.isMove;
 
           // when
           var star = instance._starName(this.decimal, this.evt);
@@ -99,7 +99,7 @@ describe('#_starName', function() {
           var element  = this.el[0];
           var instance = new $.raty.Raty(element);
 
-          instance.move = this.move;
+          instance.isMove = this.isMove;
 
           // when
           var star = instance._starName(this.decimal, this.evt);
@@ -115,7 +115,7 @@ describe('#_starName', function() {
           var element  = this.el[0];
           var instance = new $.raty.Raty(element);
 
-          instance.move = this.move;
+          instance.isMove = this.isMove;
 
           // when
           var star = instance._starName(this.decimal, this.evt);
@@ -128,7 +128,7 @@ describe('#_starName', function() {
 
     context ('when move function is not triggered', function() {
       beforeEach(function() {
-        this.move = false;
+        this.isMove = false;
       });
 
       context ('when decimal is less than option round.down', function() {
@@ -142,7 +142,7 @@ describe('#_starName', function() {
           var element  = this.el[0];
           var instance = new $.raty.Raty(element);
 
-          instance.move           = this.move;
+          instance.isMove           = this.isMove;
           instance.opt.round.down = this.roundDown;
 
           // when
@@ -164,7 +164,7 @@ describe('#_starName', function() {
           var element  = this.el[0];
           var instance = new $.raty.Raty(element);
 
-          instance.move           = this.move;
+          instance.isMove           = this.isMove;
           instance.opt.round.down = this.roundDown;
 
           // when
@@ -196,7 +196,7 @@ describe('#_starName', function() {
               var element  = this.el[0];
               var instance = new $.raty.Raty(element);
 
-              instance.move           = this.move;
+              instance.isMove           = this.isMove;
               instance.opt.halfShow   = this.halfShow;
               instance.opt.round.down = this.roundDown;
               instance.opt.round.up   = this.roundUp;
@@ -224,7 +224,7 @@ describe('#_starName', function() {
                 var element  = this.el[0];
                 var instance = new $.raty.Raty(element);
 
-                instance.move           = this.move;
+                instance.isMove           = this.isMove;
                 instance.opt.halfShow   = this.halfShow;
                 instance.opt.round.down = this.roundDown;
                 instance.opt.round.full = this.roundFull;
@@ -248,7 +248,7 @@ describe('#_starName', function() {
                 var element  = this.el[0];
                 var instance = new $.raty.Raty(element);
 
-                instance.move           = this.move;
+                instance.isMove           = this.isMove;
                 instance.opt.halfShow   = this.halfShow;
                 instance.opt.round.down = this.roundDown;
                 instance.opt.round.full = this.roundFull;
@@ -272,7 +272,7 @@ describe('#_starName', function() {
                 var element  = this.el[0];
                 var instance = new $.raty.Raty(element);
 
-                instance.move           = this.move;
+                instance.isMove           = this.isMove;
                 instance.opt.halfShow   = this.halfShow;
                 instance.opt.round.down = this.roundDown;
                 instance.opt.round.full = this.roundFull;
@@ -302,7 +302,7 @@ describe('#_starName', function() {
                 var element  = this.el[0];
                 var instance = new $.raty.Raty(element);
 
-                instance.move           = this.move;
+                instance.isMove           = this.isMove;
                 instance.opt.halfShow   = this.halfShow;
                 instance.opt.round.down = this.roundDown;
                 instance.opt.round.full = this.roundFull;
@@ -326,7 +326,7 @@ describe('#_starName', function() {
                 var element  = this.el[0];
                 var instance = new $.raty.Raty(element);
 
-                instance.move           = this.move;
+                instance.isMove           = this.isMove;
                 instance.opt.halfShow   = this.halfShow;
                 instance.opt.round.down = this.roundDown;
                 instance.opt.round.full = this.roundFull;
@@ -350,7 +350,7 @@ describe('#_starName', function() {
                 var element  = this.el[0];
                 var instance = new $.raty.Raty(element);
 
-                instance.move           = this.move;
+                instance.isMove           = this.isMove;
                 instance.opt.halfShow   = this.halfShow;
                 instance.opt.round.down = this.roundDown;
                 instance.opt.round.full = this.roundFull;
@@ -381,7 +381,7 @@ describe('#_starName', function() {
               var element  = this.el[0];
               var instance = new $.raty.Raty(element);
 
-              instance.move           = this.move;
+              instance.isMove           = this.isMove;
               instance.opt.halfShow   = this.halfShow;
               instance.opt.round.down = this.roundDown;
               instance.opt.round.full = this.roundFull;
@@ -404,7 +404,7 @@ describe('#_starName', function() {
               var element  = this.el[0];
               var instance = new $.raty.Raty(element);
 
-              instance.move           = this.move;
+              instance.isMove           = this.isMove;
               instance.opt.halfShow   = this.halfShow;
               instance.opt.round.down = this.roundDown;
               instance.opt.round.full = this.roundFull;
@@ -427,7 +427,7 @@ describe('#_starName', function() {
               var element  = this.el[0];
               var instance = new $.raty.Raty(element);
 
-              instance.move           = this.move;
+              instance.isMove           = this.isMove;
               instance.opt.halfShow   = this.halfShow;
               instance.opt.round.down = this.roundDown;
               instance.opt.round.full = this.roundFull;

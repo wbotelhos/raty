@@ -122,7 +122,7 @@ describe('#starType', function() {
         var stars = this.el.children('i');
 
         // when
-        this.el.data('raty').fnMove(4.5);
+        this.el.data('raty').move(4.5);
 
         // then
         expect(stars[0]).toHaveClass('star-on-png');

@@ -70,7 +70,7 @@ describe('#precision', function() {
 
             setTimeout(function() {
               // when
-              that.el.data('raty').fnMove(1.23);
+              that.el.data('raty').move(1.23);
 
               // then
               expect(that.target).toHaveHtml('1.2');
@@ -228,7 +228,7 @@ describe('#precision', function() {
 
               setTimeout(function() {
                 // when
-                that.el.data('raty').fnMove(1.1);
+                that.el.data('raty').move(1.1);
 
                 // then
                 expect(that.target).toHaveHtml('second');
@@ -255,7 +255,7 @@ describe('#precision', function() {
 
               setTimeout(function() {
                 // when
-                that.el.data('raty').fnMove(1.19);
+                that.el.data('raty').move(1.19);
 
                 // then
                 expect(that.target).toHaveHtml('second');

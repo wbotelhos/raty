@@ -400,7 +400,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.1);
+          this.el.data('raty').move(1.1);
 
           // then
           expect(this.target.text()).toEqual('1,5');
@@ -416,7 +416,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.1);
+          this.el.data('raty').move(1.1);
 
           // then
           var star = this.el.children().eq(1);
@@ -436,7 +436,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.2);
+          this.el.data('raty').move(1.2);
 
           // then
           expect(this.target.text()).toEqual('1,5');
@@ -452,7 +452,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.2);
+          this.el.data('raty').move(1.2);
 
           // then
           var star = this.el.children().eq(1);
@@ -472,7 +472,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.3);
+          this.el.data('raty').move(1.3);
 
           // then
           expect(this.target.text()).toEqual('1,5');
@@ -488,7 +488,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.3);
+          this.el.data('raty').move(1.3);
 
           // then
           var star = this.el.children().eq(1);
@@ -508,7 +508,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.4);
+          this.el.data('raty').move(1.4);
 
           // then
           expect(this.target.text()).toEqual('1,5');
@@ -524,7 +524,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.4);
+          this.el.data('raty').move(1.4);
 
           // then
           var star = this.el.children().eq(1);
@@ -544,7 +544,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.5);
+          this.el.data('raty').move(1.5);
 
           // then
           expect(this.target.text()).toEqual('1,5');
@@ -560,7 +560,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.5);
+          this.el.data('raty').move(1.5);
 
           // then
           var star = this.el.children().eq(1);
@@ -580,7 +580,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.6);
+          this.el.data('raty').move(1.6);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -596,7 +596,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.6);
+          this.el.data('raty').move(1.6);
 
           // then
           var star = this.el.children().eq(1);
@@ -616,7 +616,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.7);
+          this.el.data('raty').move(1.7);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -632,7 +632,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.7);
+          this.el.data('raty').move(1.7);
 
           // then
           var star = this.el.children().eq(1);
@@ -652,7 +652,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.8);
+          this.el.data('raty').move(1.8);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -668,7 +668,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.8);
+          this.el.data('raty').move(1.8);
 
           // then
           var star = this.el.children().eq(1);
@@ -688,7 +688,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.9);
+          this.el.data('raty').move(1.9);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -704,7 +704,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.9);
+          this.el.data('raty').move(1.9);
 
           // then
           var star = this.el.children().eq(1);
@@ -724,7 +724,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(2.0);
+          this.el.data('raty').move(2.0);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -740,7 +740,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(2.0);
+          this.el.data('raty').move(2.0);
 
           // then
           var star = this.el.children().eq(1);
@@ -760,7 +760,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(2);
+          this.el.data('raty').move(2);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -777,7 +777,7 @@ describe('#hints', function() {
         });
 
         // when
-        this.el.data('raty').fnMove(2);
+        this.el.data('raty').move(2);
 
         // then
         var star = this.el.children().eq(1);
@@ -1664,7 +1664,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.1);
+          this.el.data('raty').move(1.1);
 
           // then
           expect(this.target.text()).toEqual('1,1');
@@ -1680,7 +1680,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.1);
+          this.el.data('raty').move(1.1);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,1');
@@ -1698,7 +1698,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.2);
+          this.el.data('raty').move(1.2);
 
           // then
           expect(this.target.text()).toEqual('1,2');
@@ -1714,7 +1714,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.2);
+          this.el.data('raty').move(1.2);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,2');
@@ -1732,7 +1732,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.3);
+          this.el.data('raty').move(1.3);
 
           // then
           expect(this.target.text()).toEqual('1,3');
@@ -1748,7 +1748,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.3);
+          this.el.data('raty').move(1.3);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,3');
@@ -1766,7 +1766,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.4);
+          this.el.data('raty').move(1.4);
 
           // then
           expect(this.target.text()).toEqual('1,4');
@@ -1782,7 +1782,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.4);
+          this.el.data('raty').move(1.4);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,4');
@@ -1800,7 +1800,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.5);
+          this.el.data('raty').move(1.5);
 
           // then
           expect(this.target.text()).toEqual('1,5');
@@ -1816,7 +1816,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.5);
+          this.el.data('raty').move(1.5);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,5');
@@ -1834,7 +1834,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.6);
+          this.el.data('raty').move(1.6);
 
           // then
           expect(this.target.text()).toEqual('1,6');
@@ -1850,7 +1850,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.6);
+          this.el.data('raty').move(1.6);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,6');
@@ -1868,7 +1868,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.7);
+          this.el.data('raty').move(1.7);
 
           // then
           expect(this.target.text()).toEqual('1,7');
@@ -1884,7 +1884,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.7);
+          this.el.data('raty').move(1.7);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,7');
@@ -1902,7 +1902,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.8);
+          this.el.data('raty').move(1.8);
 
           // then
           expect(this.target.text()).toEqual('1,8');
@@ -1918,7 +1918,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.8);
+          this.el.data('raty').move(1.8);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,8');
@@ -1936,7 +1936,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.9);
+          this.el.data('raty').move(1.9);
 
           // then
           expect(this.target.text()).toEqual('1,9');
@@ -1952,7 +1952,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(1.9);
+          this.el.data('raty').move(1.9);
 
           // then
           expect(this.el.children()[1].title).toEqual('1,9');
@@ -1970,7 +1970,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(2.0);
+          this.el.data('raty').move(2.0);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -1986,7 +1986,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(2.0);
+          this.el.data('raty').move(2.0);
 
           // then
           expect(this.el.children()[1].title).toEqual('2,0');
@@ -2004,7 +2004,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(2);
+          this.el.data('raty').move(2);
 
           // then
           expect(this.target.text()).toEqual('2,0');
@@ -2020,7 +2020,7 @@ describe('#hints', function() {
           });
 
           // when
-          this.el.data('raty').fnMove(2);
+          this.el.data('raty').move(2);
 
           // then
           expect(this.el.children()[1].title).toEqual('2,0');
@@ -2764,11 +2764,11 @@ describe('#hints', function() {
 
         var stars = this.el.children();
 
-        this.el.data('raty').fnMove(4.1);
-        this.el.data('raty').fnMove(3.1);
-        this.el.data('raty').fnMove(2.1);
-        this.el.data('raty').fnMove(1.1);
-        this.el.data('raty').fnMove(0.1);
+        this.el.data('raty').move(4.1);
+        this.el.data('raty').move(3.1);
+        this.el.data('raty').move(2.1);
+        this.el.data('raty').move(1.1);
+        this.el.data('raty').move(0.1);
 
         // when
         this.el.trigger('mouseleave');

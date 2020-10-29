@@ -15,10 +15,10 @@ describe('#move', function() {
     this.el.raty();
 
     // when
-    this.el.data('raty').fnMove(1);
+    this.el.data('raty').move(1);
 
     // then
-    expect(this.el[0].move).toBeFalsy();
+    expect(this.el[0].isMove).toBeFalsy();
   });
 
   describe('with interger score', function() {
@@ -36,7 +36,7 @@ describe('#move', function() {
 
       setTimeout(function() {
         // when
-        that.el.data('raty').fnMove(1);
+        that.el.data('raty').move(1);
 
         // then
         expect(that.target.text()).toEqual('1.0');
@@ -62,7 +62,7 @@ describe('#move', function() {
 
         setTimeout(function() {
           // when
-          that.el.data('raty').fnMove(1.7);
+          that.el.data('raty').move(1.7);
 
           // then
           expect(that.target.text()).toEqual('1.7');
@@ -87,7 +87,7 @@ describe('#move', function() {
 
         setTimeout(function() {
           // when
-          that.el.data('raty').fnMove(1.79);
+          that.el.data('raty').move(1.79);
 
           // then
           expect(that.target.text()).toEqual('1.7');
@@ -113,7 +113,7 @@ describe('#move', function() {
 
       setTimeout(function() {
         // when
-        that.el.data('raty').fnMove('1.7');
+        that.el.data('raty').move('1.7');
 
         // then
         expect(that.target.text()).toEqual('1.7');
@@ -138,7 +138,7 @@ describe('#move', function() {
 
       setTimeout(function() {
         // when
-        that.el.data('raty').fnMove(6.7);
+        that.el.data('raty').move(6.7);
 
         // then
         expect(that.target.text()).toEqual('5.0');
