@@ -12,7 +12,7 @@ describe('#cancelOff', function() {
     this.el = Helper.create('#el');
 
     // when
-    this.el.raty({ cancel: true, cancelOff: 'star-half.png' });
+    this.el.raty({ cancelButton: true, cancelOff: 'star-half.png' });
 
     // then
     var cancel = this.el.children('.raty-cancel');
@@ -25,7 +25,7 @@ describe('#cancelOff', function() {
     this.el = Helper._append('div', { 'data-cancel-off': 'custom.png' });
 
     // when
-    this.el.raty({ cancel: true });
+    this.el.raty({ cancelButton: true });
 
     // then
     var cancel = this.el.children('.raty-cancel');

@@ -272,11 +272,11 @@ describe('#precision', function() {
             var that = this;
 
             this.el.raty({
-              cancel     : true,
-              precision  : true,
-              targetKeep : true,
-              targetType : 'hint',
-              target     : function() {
+              cancelButton: true,
+              precision: true,
+              targetKeep: true,
+              targetType: 'hint',
+              target: function() {
                 return this.getAttribute('data-target');
               }
             });

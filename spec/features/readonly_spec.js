@@ -86,7 +86,7 @@ describe('#readOnly', function() {
         // given
 
         // when
-        this.el.raty({ cancel: true, readOnly: true });
+        this.el.raty({ cancelButton: true, readOnly: true });
 
         // then
         expect(this.el.children('.raty-cancel')).toBeHidden();
@@ -341,7 +341,7 @@ describe('#readOnly', function() {
         // given
         var that = this;
 
-        that.el.raty({ cancel: true, readOnly: true });
+        that.el.raty({ cancelButton: true, readOnly: true });
 
         setTimeout(function() {
           // when
@@ -356,7 +356,7 @@ describe('#readOnly', function() {
 
       it ('rebinds the mouseover', function() {
         // given
-        this.el.raty({ readOnly: true, cancel: true });
+        this.el.raty({ readOnly: true, cancelButton: true });
 
         var
           cancel = this.el.children('.raty-cancel');
@@ -374,7 +374,7 @@ describe('#readOnly', function() {
 
       it ('rebinds the click', function() {
         // given
-        this.el.raty({ cancel: true, readOnly: true, score: 5 });
+        this.el.raty({ cancelButton: true, readOnly: true, score: 5 });
 
         var
           cancel = this.el.children('.raty-cancel');

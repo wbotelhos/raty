@@ -81,7 +81,7 @@ describe('#fn readOnly', function() {
     context('with :cancel', function() {
       it ('hides the button', function() {
         // given
-        this.el.raty({ cancel: true });
+        this.el.raty({ cancelButton: true });
 
         // when
         this.el.data('raty').readOnly(true);
@@ -411,7 +411,7 @@ describe('#fn readOnly', function() {
         // given
         var that = this;
 
-        that.el.raty({ cancel: true, readOnly: true });
+        that.el.raty({ cancelButton: true, readOnly: true });
 
         setTimeout(function() {
           // when
@@ -426,7 +426,7 @@ describe('#fn readOnly', function() {
 
       it ('rebinds the mouseover', function() {
         // given
-        this.el.raty({ readOnly: true, cancel: true });
+        this.el.raty({ readOnly: true, cancelButton: true });
 
         var
           cancel = this.el.children('.raty-cancel');
@@ -444,7 +444,7 @@ describe('#fn readOnly', function() {
 
       it ('rebinds the click', function() {
         // given
-        this.el.raty({ cancel: true, readOnly: true, score: 5 });
+        this.el.raty({ cancelButton: true, readOnly: true, score: 5 });
 
         var
           cancel = this.el.children('.raty-cancel');

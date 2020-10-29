@@ -78,7 +78,7 @@ describe('#_create', function() {
     it ('does not calls :_createCancel', function() {
       // given
       var element  = this.el[0];
-      var options  = { cancel: true };
+      var options  = { cancelButton: true };
       var instance = new $.raty.Raty(element, options);
 
       spyOn($.raty.Raty.prototype , '_createCancel');
@@ -95,7 +95,7 @@ describe('#_create', function() {
     it ('calls :_createCancel', function() {
       // given
       var element  = this.el[0];
-      var options  = { cancel: false };
+      var options  = { cancelButton: false };
       var instance = new $.raty.Raty(element, options);
 
       spyOn($.raty.Raty.prototype , '_createCancel');

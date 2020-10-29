@@ -25,7 +25,7 @@ describe('#cancelPlace', function() {
       // given
 
       // when
-      this.el.raty({ cancel: true, cancelPlace: 'left' });
+      this.el.raty({ cancelButton: true, cancelPlace: 'left' });
 
       // then
       expect(this.el.children('img:first')).toHaveClass('raty-cancel');
@@ -37,7 +37,7 @@ describe('#cancelPlace', function() {
       // given
 
       // when
-      this.el.raty({ cancel: true, cancelPlace: 'right' });
+      this.el.raty({ cancelButton: true, cancelPlace: 'right' });
 
       // then
       expect(this.el.children('img:last')).toHaveClass('raty-cancel');

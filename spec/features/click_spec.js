@@ -169,8 +169,8 @@ describe('#click', function() {
     it ('executes the callback', function() {
       // given
       this.el.raty({
-        cancel : true,
-        click  : function() {
+        cancelButton: true,
+        click: function() {
           this.called = true;
         }
       });

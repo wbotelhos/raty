@@ -12,7 +12,7 @@ describe('#cancelHint', function() {
     var el = Helper.create('#el');
 
     // when
-    el.raty({ cancel: true, cancelHint: 'double' });
+    el.raty({ cancelButton: true, cancelHint: 'double' });
 
     // then
     expect(el.children('.raty-cancel')).toHaveAttr('title', 'double');

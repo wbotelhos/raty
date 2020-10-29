@@ -8,7 +8,7 @@ describe('#cancelClass', function() {
     this.el = Helper.create('#el');
 
     // when
-    this.el.raty({ cancel: true, cancelClass: 'custom-class' });
+    this.el.raty({ cancelButton: true, cancelClass: 'custom-class' });
 
     // then
     expect(this.el.find('.custom-class').attr('alt')).toEqual('x');

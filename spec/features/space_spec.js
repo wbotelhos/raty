@@ -28,7 +28,7 @@ describe('#space', function() {
         var self = $('#element');
 
         // when
-        self.raty({ cancel: true, space: true });
+        self.raty({ cancelButton: true, space: true });
 
         // then
         expect(self.text().length).toEqual(5);
@@ -54,7 +54,7 @@ describe('#space', function() {
         var self = $('#element');
 
         // when
-        self.raty({ cancel: true, space: false });
+        self.raty({ cancelButton: true, space: false });
 
         // then
         expect(self.text().length).toEqual(1);

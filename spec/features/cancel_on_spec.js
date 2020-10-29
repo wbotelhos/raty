@@ -11,7 +11,7 @@ describe('#cancelOn', function() {
     // given
     this.el = Helper.create('#el');
 
-    this.el.raty({ cancel: true, cancelOn: 'star-half.png' });
+    this.el.raty({ cancelButton: true, cancelOn: 'star-half.png' });
 
     var cancel = this.el.children('.raty-cancel');
 

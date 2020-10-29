@@ -87,7 +87,7 @@ describe('#path', function() {
       // given
 
       // when
-      this.el.raty({ cancel: true, path: '../demo/images' });
+      this.el.raty({ cancelButton: true, path: '../demo/images' });
 
       // then
       expect(this.el.children('.raty-cancel')).toHaveAttr('src', '../demo/images/cancel-off.png');

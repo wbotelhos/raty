@@ -30,7 +30,7 @@ describe('#mouseout', function() {
     it ('receives undefined', function() {
       // given
       this.el.raty({
-        cancel  : true,
+        cancelButton: true,
         mouseout: function(score) {
           this.result = score;
         }
@@ -70,8 +70,8 @@ describe('#mouseout', function() {
     it ('receives the event', function() {
       // given
       this.el.raty({
-        cancel   : true,
-        mouseout : function(_, evt) {
+        cancelButton: true,
+        mouseout: function(_, evt) {
           this.evt = evt;
         }
       });
@@ -89,8 +89,8 @@ describe('#mouseout', function() {
       it ('receives undefined', function() {
         // given
         this.el.raty({
-          cancel   : true,
-          mouseout : function(score) {
+          cancelButton: true,
+          mouseout: function(score) {
             this.result = score;
           }
         });
@@ -109,9 +109,9 @@ describe('#mouseout', function() {
       it ('receives the score value as number', function() {
         // given
         this.el.raty({
-          score    : 1,
-          cancel   : true,
-          mouseout : function(score) {
+          score: 1,
+          cancelButton: true,
+          mouseout: function(score) {
             this.result = score;
           }
         });

@@ -12,7 +12,7 @@ describe('options', function() {
     var opt = $.raty;
 
     // then
-    expect(opt.cancel).toBeFalsy();
+    expect(opt.cancelButton).toBeFalsy();
     expect(opt.cancelClass).toEqual('raty-cancel');
     expect(opt.cancelHint).toEqual('Cancel this rating!');
     expect(opt.cancelOff).toEqual('cancel-off.png');

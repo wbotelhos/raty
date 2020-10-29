@@ -40,7 +40,7 @@ describe('#targetType', function() {
     context('with :cancel', function() {
       it ('receives the :cancelHint', function() {
         // given
-        this.el.raty({ cancel: true, target: '#' + this.target[0].id, targetType: 'hint' });
+        this.el.raty({ cancelButton: true, target: '#' + this.target[0].id, targetType: 'hint' });
 
         var cancel = this.el.children('.raty-cancel');
 
@@ -70,7 +70,7 @@ describe('#targetType', function() {
     context('with :cancel', function() {
       it ('receives the :cancelHint', function() {
         // given
-        this.el.raty({ cancel: true, target: '#' + this.target[0].id, targetType: 'score' });
+        this.el.raty({ cancelButton: true, target: '#' + this.target[0].id, targetType: 'score' });
 
         var cancel = this.el.children('.raty-cancel');
 

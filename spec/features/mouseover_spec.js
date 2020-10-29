@@ -47,8 +47,8 @@ describe('#mouseover', function() {
     it ('receives null as score', function() {
       // given
       this.el.raty({
-        cancel    : true,
-        mouseover : function(score) {
+        cancelButton: true,
+        mouseover: function(score) {
           this.result = score;
         }
       });

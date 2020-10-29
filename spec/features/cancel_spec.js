@@ -13,7 +13,7 @@ describe('#cancel', function() {
     // given
 
     // when
-    this.el.raty({ cancel: true });
+    this.el.raty({ cancelButton: true });
 
     // then
     var cancel = this.el.children('.raty-cancel');
@@ -38,7 +38,7 @@ describe('#cancel', function() {
   context('on mouseover', function() {
     it ('turns on', function() {
       // given
-      this.el.raty({ cancel: true });
+      this.el.raty({ cancelButton: true });
 
       var cancel = this.el.children('.raty-cancel');
 
@@ -51,7 +51,7 @@ describe('#cancel', function() {
 
     it ('keeps the :cancelClass', function() {
       // given
-      this.el.raty({ cancel: true });
+      this.el.raty({ cancelButton: true });
 
       var cancel = this.el.children('.raty-cancel');
 
@@ -65,7 +65,7 @@ describe('#cancel', function() {
     context('with stars on', function() {
       it ('turns off the stars', function() {
         // given
-        this.el.raty({ score: 3, cancel: true });
+        this.el.raty({ score: 3, cancelButton: true });
 
         var
           cancel = this.el.children('.raty-cancel');
@@ -82,7 +82,7 @@ describe('#cancel', function() {
     context('with :starType', function() {
       it ('uses the given element', function() {
         // given
-        this.el.raty({ cancel: true, starType: 'i' });
+        this.el.raty({ cancelButton: true, starType: 'i' });
 
         var cancel = this.el.children('.raty-cancel');
 
@@ -95,7 +95,7 @@ describe('#cancel', function() {
 
       it ('keeps the :cancelClass', function() {
         // given
-        this.el.raty({ cancel: true, starType: 'i' });
+        this.el.raty({ cancelButton: true, starType: 'i' });
 
         var cancel = this.el.children('.raty-cancel');
 
@@ -108,7 +108,7 @@ describe('#cancel', function() {
 
       it ('sets class replacing dot to hiphen', function() {
         // given
-        this.el.raty({ cancel: true, starType: 'i' });
+        this.el.raty({ cancelButton: true, starType: 'i' });
 
         var cancel = this.el.children('.raty-cancel');
 
@@ -121,7 +121,7 @@ describe('#cancel', function() {
 
       it ('does not set "src" attribute', function() {
         // given
-        this.el.raty({ cancel: true, starType: 'i' });
+        this.el.raty({ cancelButton: true, starType: 'i' });
 
         var cancel = this.el.children('.raty-cancel');
 
@@ -134,7 +134,7 @@ describe('#cancel', function() {
 
       it ('sets "data-alt" attribute', function() {
         // given
-        this.el.raty({ cancel: true, starType: 'i' });
+        this.el.raty({ cancelButton: true, starType: 'i' });
 
         var cancel = this.el.children('.raty-cancel');
 
@@ -147,7 +147,7 @@ describe('#cancel', function() {
 
       it ('does not set "alt" attribute', function() {
         // given
-        this.el.raty({ cancel: true, starType: 'i' });
+        this.el.raty({ cancelButton: true, starType: 'i' });
 
         var cancel = this.el.children('.raty-cancel');
 
@@ -163,7 +163,7 @@ describe('#cancel', function() {
   context('on mouseleave', function() {
     it ('turns off', function() {
       // given
-      this.el.raty({ cancel: true });
+      this.el.raty({ cancelButton: true });
 
       var cancel = this.el.children('.raty-cancel');
 
@@ -176,7 +176,7 @@ describe('#cancel', function() {
 
     it ('keeps the :cancelClass', function() {
       // given
-      this.el.raty({ cancel: true });
+      this.el.raty({ cancelButton: true });
 
       var cancel = this.el.children('.raty-cancel');
 
@@ -190,7 +190,7 @@ describe('#cancel', function() {
     context('with stars turned on', function() {
       it ('turns on the star again', function() {
         // given
-        this.el.raty({ score: 5, cancel: true });
+        this.el.raty({ score: 5, cancelButton: true });
 
         var
           cancel = this.el.children('.raty-cancel');
@@ -208,7 +208,7 @@ describe('#cancel', function() {
   context('on click', function() {
     it ('cancel the rating', function() {
       // given
-      this.el.raty({ cancel: true, score: 1 });
+      this.el.raty({ cancelButton: true, score: 1 });
 
       var
         cancel = this.el.children('.raty-cancel');
@@ -227,7 +227,7 @@ describe('#cancel', function() {
   context('when starts :readOnly', function() {
     it ('starts hidden', function() {
       // given
-      this.el.raty({ cancel: true, readOnly: true });
+      this.el.raty({ cancelButton: true, readOnly: true });
 
       var cancel = this.el.children('.raty-cancel');
 
@@ -241,7 +241,7 @@ describe('#cancel', function() {
     context('on click', function() {
       it ('does not cancel the rating', function() {
         // given
-        this.el.raty({ cancel: true, readOnly: true, score: 5 });
+        this.el.raty({ cancelButton: true, readOnly: true, score: 5 });
 
         var
           cancel = this.el.children('.raty-cancel');
@@ -261,7 +261,7 @@ describe('#cancel', function() {
   context('when become :readOnly', function() {
     it ('becomes hidden', function() {
       // given
-      this.el.raty({ cancel: true });
+      this.el.raty({ cancelButton: true });
 
       // when
       this.el.data('raty').readOnly(true);
@@ -276,7 +276,7 @@ describe('#cancel', function() {
       // given
 
       // when
-      this.el.raty({ cancel: true, starType: 'i' });
+      this.el.raty({ cancelButton: true, starType: 'i' });
 
       // then
       expect(this.el.children('.raty-cancel')[0].tagName).toEqual('I');
@@ -284,7 +284,7 @@ describe('#cancel', function() {
 
     it ('keeps the :cancelClass', function() {
       // given
-      this.el.raty({ cancel: true, starType: 'i' });
+      this.el.raty({ cancelButton: true, starType: 'i' });
 
       var cancel = this.el.children('.raty-cancel');
 
@@ -299,7 +299,7 @@ describe('#cancel', function() {
       // given
 
       // when
-      this.el.raty({ cancel: true, starType: 'i' });
+      this.el.raty({ cancelButton: true, starType: 'i' });
 
       // then
       expect(this.el.children('.raty-cancel')).toHaveClass('cancel-off-png');
@@ -309,7 +309,7 @@ describe('#cancel', function() {
       // given
 
       // when
-      this.el.raty({ cancel: true, starType: 'i' });
+      this.el.raty({ cancelButton: true, starType: 'i' });
 
       // then
       expect(this.el.children('.raty-cancel')).not.toHaveProp('src');
@@ -319,7 +319,7 @@ describe('#cancel', function() {
       // given
 
       // when
-      this.el.raty({ cancel: true, starType: 'i' });
+      this.el.raty({ cancelButton: true, starType: 'i' });
 
       // then
       expect(this.el.children('.raty-cancel')).toHaveAttr('data-alt', 'x');
@@ -329,7 +329,7 @@ describe('#cancel', function() {
       // given
 
       // when
-      this.el.raty({ cancel: true, starType: 'i' });
+      this.el.raty({ cancelButton: true, starType: 'i' });
 
       // then
       expect(this.el.children('.raty-cancel')).not.toHaveProp('alt');
