@@ -46,7 +46,7 @@ describe('#_starName', function() {
 
     context ('when decimal is less than 0.5', function() {
       beforeEach(function() {
-        this.decimal = .49
+        this.decimal = .49;
       });
 
       it ('returns starHalf', function() {
@@ -133,6 +133,7 @@ describe('#_starName', function() {
 
       context ('when decimal is less than option round.down', function() {
         beforeEach(function() {
+          this.decimal   = .51;
           this.roundDown = this.decimal + .1;
         });
 
@@ -154,6 +155,7 @@ describe('#_starName', function() {
 
       context ('when decimal is equal option round.down', function() {
         beforeEach(function() {
+          this.decimal   = .51;
           this.roundDown = this.decimal;
         });
 
