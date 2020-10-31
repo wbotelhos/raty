@@ -6,7 +6,7 @@ module.exports = function(config) {
     browsers:  ['Chrome', 'Firefox'],
 
     files: [
-      'vendor/*.js',
+      'node_modules/jquery/dist/jquery.min.js',
       'lib/*.css',
       'lib/*.js',
       'spec/vendor/jasmine-jquery.js',
