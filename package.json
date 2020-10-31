@@ -4,7 +4,7 @@
     "url": "https://github.com/wbotelhos/raty/issues"
   },
   "contributors": [
-    "Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"
+    "Washington Botelho <wbotelhos@gmail.com> (https://www.wbotelhos.com)"
   ],
   "demos": [
     "demo/index.html"
@@ -14,6 +14,7 @@
   },
   "description": "Raty - A Star Rating Plugin",
   "devDependencies": {
+    "eslint": "^7.11.0",
     "jasmine-core": "^3.6.0",
     "karma": "^5.2.3",
     "karma-chrome-launcher": "^3.1.0",
@@ -42,7 +43,7 @@
   "license": "MIT",
   "main": "lib/jquery.raty.js",
   "maintainers": [
-    "Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"
+    "Washington Botelho <wbotelhos@gmail.com> (https://www.wbotelhos.com)"
   ],
   "name": "raty-js",
   "repository": {
@@ -52,5 +53,5 @@
   "scripts": {
     "test": "node_modules/karma/bin/karma start karma.conf.js"
   },
-  "version": "2.9.0"
+  "version": "3.0.0"
 }

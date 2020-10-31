@@ -1,10 +1,10 @@
 {
   "authors": [
-    "Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"
+    "Washington Botelho <wbotelhos@gmail.com> (https://www.wbotelhos.com)"
   ],
   "description": "Raty - A Star Rating Plugin",
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.5.1"
   },
   "homepage": "https://github.com/wbotelhos/raty",
   "ignore": [
