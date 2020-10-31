@@ -13,9 +13,9 @@ describe('#_adjustHints', function() {
       it ('receives an empty array', function() {
         // given
         var
-          element  = this.el[0],
-          options  = { half: half, halfShow: halfShow, hints: hints },
-          instance = new $.raty.Raty(element, options);
+          element  = this.el[0];
+        var options  = { half: half, halfShow: halfShow, hints: hints };
+        var instance = new $.raty.Raty(element, options);
 
         // when
         instance._adjustHints();
@@ -30,9 +30,9 @@ describe('#_adjustHints', function() {
 
       it ('receives an empty array', function() {
         // given
-          var element  = this.el[0];
-          var options  = { half: half, halfShow: halfShow, hints: hints };
-          var instance = new $.raty.Raty(element, options);
+        var element  = this.el[0];
+        var options  = { half: half, halfShow: halfShow, hints: hints };
+        var instance = new $.raty.Raty(element, options);
 
         // when
         instance._adjustHints();

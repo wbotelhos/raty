@@ -26,7 +26,7 @@ describe('#_adjustNumber', function() {
       var instance = new $.raty.Raty(element, options);
 
       // when
-      var result = instance._adjustNumber();
+      instance._adjustNumber();
 
       // then
       expect(instance.opt.number).toEqual(2);

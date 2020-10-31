@@ -38,7 +38,6 @@ describe('#_attributesForIndex', function() {
     it ('does not use data-alt', function() {
       // given
       var element  = this.el[0];
-      var name     = 'starOff';
       var options  = { starType: 'img' };
       var index    = 1;
       var instance = new $.raty.Raty(element, options);
@@ -53,7 +52,6 @@ describe('#_attributesForIndex', function() {
     it ('does not use class', function() {
       // given
       var element  = this.el[0];
-      var name     = 'starOff';
       var options  = { starType: 'img' };
       var index    = 1;
       var instance = new $.raty.Raty(element, options);
@@ -118,7 +116,6 @@ describe('#_attributesForIndex', function() {
     it ('does not use alt', function() {
       // given
       var element  = this.el[0];
-      var name     = 'starOff';
       var options  = { starType: 'i' };
       var index    = 1;
       var instance = new $.raty.Raty(element, options);
@@ -133,7 +130,6 @@ describe('#_attributesForIndex', function() {
     it ('does not use src', function() {
       // given
       var element  = this.el[0];
-      var name     = 'starOff';
       var options  = { starType: 'i' };
       var index    = 1;
       var instance = new $.raty.Raty(element, options);

@@ -1,4 +1,4 @@
-function context(description, spec) {
+function context(description, spec) { // eslint-disable-line no-redeclare, no-unused-vars
   describe(description, spec);
 }
 
@@ -6,7 +6,7 @@ afterEach(function() {
   $.raty.path = undefined;
 });
 
-var Helper = {
+var Helper = { // eslint-disable-line no-redeclare, no-unused-vars
   _append: function(type, attrs) {
     return $('<' + type + '/>', attrs).appendTo('body');
   },
