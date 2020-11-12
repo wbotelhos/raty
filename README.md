@@ -1,8 +1,8 @@
 # Raty - A Star Rating Plugin
 
-[![CI](https://github.com/wbotelhos/raty/workflows/CI/badge.svg?)](https://github.com/wbotelhos/raty/actions?query=workflow%3ACI)
+[![CI](https://github.com/wbotelhos/raty/workflows/CI/badge.svg)](https://github.com/wbotelhos/raty/actions)
 [![NPM Version](https://badge.fury.io/js/raty-js.svg)](https://badge.fury.io/js/raty-js)
-[![Code Climate](https://codeclimate.com/github/wbotelhos/raty.png)](https://codeclimate.com/github/wbotelhos/raty)
+[![Maintainability](https://codeclimate.com/github/wbotelhos/raty.png)](https://codeclimate.com/github/wbotelhos/raty)
 [![Sponsor](https://img.shields.io/badge/sponsor-%3C3-green)](https://www.patreon.com/wbotelhos)
 
 ## Rails Rating?
