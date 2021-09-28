@@ -1,3 +1,13 @@
+## 3.1.0
+
+### News
+
+- Adds `iconRangeSame` option where the previous stars will be the same as the selected one; [#135](https://github.com/wbotelhos/raty/issues/135) by [viniciusjl](https://github.com/viniciusjl)
+
+### Update
+
+- Adds CSS, Images and Fonts to Bower; [#161](https://github.com/wbotelhos/raty/pull/161) by [juriejan](https://github.com/juriejan)
+
 ## 3.0.0
 
 ### Break Change
