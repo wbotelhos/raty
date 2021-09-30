@@ -1,3 +1,9 @@
+## 3.1.1
+
+### Bugfix
+
+- Fix invalid Bower JSON; [#232](https://github.com/wbotelhos/raty/pull/232) by [Nimmer](https://github.com/Nimmer)
+
 ## 3.1.0
 
 ### News
