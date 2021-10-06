@@ -46,7 +46,7 @@ $('div').raty({ starType: 'i' });
 
 | Property       | Default                                        |Description                                                      |
 |----------------|------------------------------------------------|-----------------------------------------------------------------|
-|`cancel`        |`false`                                         |Creates a cancel button to cancel the rating.                    |
+|`cancelButton`  |`false`                                         |Creates a cancel button to cancel the rating.                    |
 |`cancelClass`   |`'raty-cancel'`                                 |Name of cancel's class.                                          |
 |`cancelHint`    |`'Cancel this rating!'`                         |The cancel's button hint.                                        |
 |`cancelOff`     |`'cancel-off.png'`                              |Icon used on active cancel.                                      |
