@@ -1,35 +1,16 @@
 {
   "env": {
-    "browser": true
   },
-
-  "extends": "eslint:recommended",
-
+  "extends": [
+    "prettier"
+  ],
   "globals": {
-    "$": false,
-    "afterEach": false,
-    "beforeEach": false,
-    "context": true,
-    "define": false,
-    "describe": false,
-    "expect": false,
-    "Helper": true,
-    "it": false,
-    "module": false,
-    "require": false,
-    "spyOn": false,
-    "xit": false
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
-
   "parserOptions": {
-    "ecmaVersion": 12
+    "ecmaVersion": 2015,
+    "sourceType": "module"
   },
-
-  "rules": {
-    "indent":          ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "one-var":         ["error", "never"],
-    "quotes":          ["error", "single"],
-    "semi":            ["error", "always"]
-  }
+  "rules": {}
 }
