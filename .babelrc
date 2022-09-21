@@ -1,0 +1,7 @@
+//module types 'commonjs', 'amd', 'umd', 'systemjs' "auto"
+{
+  "presets": [
+    ["@babel/preset-env",{"modules":false}]
+  ],
+  "comments":false
+}

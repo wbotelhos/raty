@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./raty.css"/>
-    <script src="./Raty.js"></script>
+    <script src="./build/raty.module.min.js" type="module"></script>
 </head>
 <body>
     <div></div>
 
-    <script>
-    const raty=new Raty("div",{path:"./images",half :true});
+    <script type="module">
+        import Raty from "./build/raty.module.min.js";
+    const raty=new Raty("div",{path:"./images",half :true,score:3});
     </script>
 </body>
 </html>
