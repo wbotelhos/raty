@@ -53,12 +53,10 @@ gulp.task(modules[5],async()=>{
         .pipe(gulp.dest('./lib/js/build/', { overwrite: true }))
 });
 
-gulp.task('build', gulp.parallel(modules));
+const exe = gulp.parallel(modules);
+
+gulp.task('build', exe);
 
 gulp.task("watch", async ()=>{
-    gulp.watch(['lib/js/*.js', '!lib/js/build/*.js'],(cb)=>{
-        const done=gulp.parallel(modules);
-        done();
-        cb();
-});
+    gulp.watch(['lib/js/*.js', '!lib/js/build/*.js'], exe);
 });
