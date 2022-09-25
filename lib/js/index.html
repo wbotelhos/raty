@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./raty.css"/>
-    <script src="./build/raty.module.min.js" type="module"></script>
+    <script src="./Raty.js" type="module"></script>
 </head>
 <body>
     <div></div>
 
     <script type="module">
-        import Raty from "./build/raty.module.min.js";
-    const raty=new Raty("div",{path:"./images",half :true,score:3});
+        import Raty from "./Raty.js";
+    const raty=new Raty("div",{path:"./images",
+  cancelButton: true,
+  half:         true,
+  starType:     'i'
+});
     </script>
 </body>
 </html>
