@@ -955,63 +955,72 @@
     </div>
   </div>
   <script>
-    $.raty.path = 'images';
-
     $(function () {
-      $('#default').raty();
+      new Raty('#default', { path: 'images' });
 
-      $('#data-support').raty();
+      new Raty('#data-support', { path: 'images' });
 
-      $('#score').raty({ score: 3 });
+      new Raty('#score', { path: 'images', score: 3 });
 
-      $('#score-callback').raty({
+      new Raty('#score-callback', {
+        path: 'images',
+
         score: function () {
           return $(this).attr('data-score');
         },
       });
 
-      $('#scoreName').raty({ scoreName: 'entity[score]' });
+      new Raty('#scoreName', { path: 'images', scoreName: 'entity[score]' });
 
-      $('#number').raty({ number: 10 });
+      new Raty('#number', { number: 10, path: 'images' });
 
-      $('#number-callback').raty({
+      new Raty('#number-callback', {
         number: function () {
           return 3;
         },
+
+        path: 'images',
       });
 
-      $('#numberMax').raty({
+      new Raty('#numberMax', {
         numberMax: 5,
         number: 100,
+        path: 'images',
       });
 
-      $('#readOnly').raty({ readOnly: true, score: 3 });
+      new Raty('#readOnly', { readOnly: true, score: 3 });
 
-      $('#readOnly-callback').raty({
+      new Raty('#readOnly-callback', {
+        path: 'images',
+
         readOnly: function () {
           return true;
         },
       });
 
-      $('#noRatedMsg').raty({
+      new Raty('#noRatedMsg', {
         readOnly: true,
         noRatedMsg: "I'm readOnly and I haven't rated yet!",
+        path: 'images',
       });
 
-      $('#halfShow-true').raty({ score: 1.26 });
+      new Raty('#halfShow-true', { path: 'images', score: 1.26 });
 
-      $('#halfShow-false').raty({
+      new Raty('#halfShow-false', {
         halfShow: false,
+        path: 'images',
         score: 1.59,
       });
 
-      $('#round').raty({
+      new Raty('#round', {
+        path: 'images',
         round: { down: 0.27, up: 0.76 },
         score: 1.26,
       });
 
-      $('#half').raty({
+      new Raty('#half', {
         half: true,
+
         hints: [
           ['bad 1/2', 'bad'],
           ['poor 1/2', 'poor'],
@@ -1019,9 +1028,10 @@
           ['good 1/2', 'good'],
           ['gorgeous 1/2', 'gorgeous'],
         ],
+        path: 'images',
       });
 
-      $('#starHalf').raty({
+      new Raty('#starHalf', {
         half: true,
         path: null,
         starHalf: 'https://cdn.jsdelivr.net/npm/raty-js@2.8.0/demo/images/star-half-mono.png',
@@ -1029,40 +1039,44 @@
         starOn: 'https://cdn.jsdelivr.net/npm/raty-js@2.8.0/lib/images/star-on.png',
       });
 
-      $('#click').raty({
+      new Raty('#click', {
         click: function (score, evt) {
           alert('ID: ' + this.id + '\nscore: ' + score + '\nevent: ' + evt.type);
         },
+        path: 'images',
       });
 
-      $('#click-prevent').raty({
+      new Raty('#click-prevent', {
         click: function (score, evt) {
           alert('Score will not change.');
           return false;
         },
+        path: 'images',
       });
 
-      $('#hints').raty({ hints: ['a', null, '', undefined, '*_*'] });
+      new Raty('#hints', { hints: ['a', null, '', undefined, '*_*'], path: 'images' });
 
-      $('#cancelButton').raty({ cancelButton: true });
+      new Raty('#cancelButton', { cancelButton: true, path: 'images' });
 
-      $('#cancelButtonHint').raty({
+      new Raty('#cancelButtonHint', {
         cancelButton: true,
         cancelHint: 'My cancel hint!',
+        path: 'images',
       });
 
-      $('#cancelButtonPlace').raty({
+      new Raty('#cancelButtonPlace', {
         cancelButton: true,
         cancelPlace: 'right',
+        path: 'images',
       });
 
-      $('#star-off-and-star-on').raty({
+      new Raty('#star-off-and-star-on', {
         path: 'https://cdn.jsdelivr.net/npm/raty-js@2.8.0/demo/images',
         starOff: 'off.png',
         starOn: 'on.png',
       });
 
-      $('#cancel-off-and-cancel-on').raty({
+      new Raty('#cancel-off-and-cancel-on', {
         cancelButton: true,
         cancelOff: 'https://cdn.jsdelivr.net/npm/raty-js@2.8.0/demo/images/cancel-custom-off.png',
         cancelOn: 'https://cdn.jsdelivr.net/npm/raty-js@2.8.0/demo/images/cancel-custom-on.png',
@@ -1071,7 +1085,7 @@
         starOn: 'https://cdn.jsdelivr.net/npm/raty-js@2.8.0/lib/images/star-on.png',
       });
 
-      $('#iconRange').raty({
+      new Raty('#iconRange', {
         path: null,
         starOff: 'https://cdn.jsdelivr.net/npm/raty-js@2.8.0/lib/images/star-off.png',
         iconRange: [
@@ -1103,7 +1117,7 @@
         ],
       });
 
-      $('#size').raty({
+      new Raty('#size', {
         path: 'https://cdn.jsdelivr.net/npm/raty-js@2.8.0/demo/images',
         cancelButton: true,
         cancelOff: 'cancel-off.png',
@@ -1114,65 +1128,76 @@
         starOn: 'star-on.png',
       });
 
-      $('#target-div').raty({
+      new Raty('#target-div', {
         cancelButton: true,
+        path: 'images',
         target: '#target-div-hint',
       });
 
-      $('#target-text').raty({
+      new Raty('#target-text', {
         cancelButton: true,
+        path: 'images',
         target: '#target-text-hint',
       });
 
-      $('#target-textarea').raty({
+      new Raty('#target-textarea', {
         cancelButton: true,
+        path: 'images',
         target: '#target-textarea-hint',
       });
 
-      $('#target-select').raty({
+      new Raty('#target-select', {
         cancelButton: true,
+        path: 'images',
         target: '#target-select-hint',
       });
 
-      $('#targetType').raty({
+      new Raty('#targetType', {
         cancelButton: true,
+        path: 'images',
         target: '#targetType-hint',
         targetType: 'score',
       });
 
-      $('#targetKeep').raty({
+      new Raty('#targetKeep', {
         cancelButton: true,
+        path: 'images',
         target: '#targetKeep-hint',
         targetKeep: true,
       });
 
-      $('#targetText').raty({
+      new Raty('#targetText', {
+        path: 'images',
         target: '#targetText-hint',
         targetText: '--',
       });
 
-      $('#targetFormat').raty({
+      new Raty('#targetFormat', {
+        path: 'images',
         target: '#targetFormat-hint',
         targetFormat: 'Rating: {score}',
       });
 
-      $('#targetScore').raty({
+      new Raty('#targetScore', {
+        path: 'images',
         targetScore: '#target-score',
       });
 
-      $('#mouseover').raty({
+      new Raty('#mouseover', {
         mouseover: function (score, evt) {
           alert('ID: ' + this.id + '\nscore: ' + score + '\nevent: ' + evt.type);
         },
+        path: 'images',
       });
 
-      $('#mouseout').raty({
+      new Raty('#mouseout', {
         mouseout: function (score, evt) {
           alert('ID: ' + this.id + '\nscore: ' + score + '\nevent: ' + evt.type);
         },
+        path: 'images',
       });
 
-      $('#precision').raty({
+      new Raty('#precision', {
         cancelButton: true,
         cancelOff: 'cancel-off.png',
         cancelOn: 'cancel-on.png',
@@ -1186,17 +1211,18 @@
         precision: true,
       });
 
-      $('#space').raty({ space: false });
+      new Raty('#space', { path: 'images', space: false });
 
-      $('#single').raty({ single: true });
+      new Raty('#single', { path: 'images', single: true });
 
-      $('#starType').raty({
+      new Raty('#starType', {
         cancelButton: true,
         half: true,
+        path: 'images',
         starType: 'i',
       });
 
-      $('#functions').raty({
+      new Raty('#functions', {
         cancel: true,
         cancelOff: 'cancel-off.png',
         cancelOn: 'cancel-on.png',
