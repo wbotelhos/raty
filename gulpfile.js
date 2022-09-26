@@ -64,5 +64,5 @@ const tasks = gulp.parallel(['amd', 'umd', 'commonjs', 'systemjs', 'es6', 'es5',
 gulp.task('build', tasks);
 
 gulp.task('watch', async () => {
-  gulp.watch(['lib/*.js', '!lib/build/*.js'], tasks);
+  gulp.watch(['lib/*.js', '!lib/build/*.js'], { awaitWriteFinish:true , ignoreInitial: false,}, tasks);
 });

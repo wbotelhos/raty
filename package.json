@@ -64,7 +64,7 @@
   },
   "scripts": {
     "build": "gulp build",
-    "test": "node_modules/karma/bin/karma start karma.conf.js",
+    "test": "karma start",
     "watch": "gulp watch"
   },
   "version": "3.1.1"
