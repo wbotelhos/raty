@@ -8,7 +8,7 @@ module.exports = function (config) {
     files: [
       'node_modules/jquery/dist/jquery.min.js',
       'lib/*.css',
-      'lib/*.js',
+      'lib/js/build/raty.js',
       'spec/vendor/jasmine-jquery.js',
       'spec/helper.js',
       'spec/**/*[sS]pec.js',
