@@ -1,7 +1,7 @@
 const babel = require('gulp-babel');
 const gulp = require('gulp');
 const rename = require('gulp-rename');
-const source = gulp.src('./lib/js/Raty.js');
+const source = gulp.src('./lib/js/raty.js');
 const uglifyJS = require('gulp-uglify');
 
 gulp.task('amd', async () => {
@@ -59,15 +59,7 @@ gulp.task('es5-test', async () => {
     .pipe(gulp.dest('./lib/js/build/', { overwrite: true }));
 });
 
-const tasks = gulp.parallel([
-  'amd',
-  'umd',
-  'commonjs',
-  'systemjs',
-  'es6',
-  'es5',
-  'es5-test',
-]);
+const tasks = gulp.parallel(['amd', 'umd', 'commonjs', 'systemjs', 'es6', 'es5', 'es5-test']);
 
 gulp.task('build', tasks);
 
