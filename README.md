@@ -11,12 +11,12 @@ This is **Rating**: https://github.com/wbotelhos/rating :star:
 
 ## Usage with Image
 
-- jquery.raty.js
+- raty.js
 - star-off.png
 - star-on.png
 
 ```html
-<script src="jquery.raty.js"></script>
+<script src="raty.js"></script>
 
 <div></div>
 ```
@@ -27,13 +27,13 @@ $('div').raty();
 
 ## Usage with Font
 
-- jquery.raty.js
-- jquery.raty.[eot|svg|ttf|woff]
-- jquery.raty.css
+- raty.js
+- raty.[eot|svg|ttf|woff]
+- raty.css
 
 ```html
-<link rel="stylesheet" href="jquery.raty.css">
-<script src="jquery.raty.js"></script>
+<link rel="stylesheet" href="raty.css">
+<script src="raty.js"></script>
 
 <div></div>
 ```

@@ -1,7 +1,7 @@
 const babel = require('gulp-babel');
 const gulp = require('gulp');
 const rename = require('gulp-rename');
-const source = gulp.src('./lib/js/raty.js');
+const source = gulp.src('./lib/raty.js');
 const uglifyJS = require('gulp-uglify');
 
 gulp.task('amd', async () => {
@@ -9,7 +9,7 @@ gulp.task('amd', async () => {
     .pipe(babel({ plugins: ['@babel/plugin-transform-modules-amd'] }))
     .pipe(uglifyJS())
     .pipe(rename('raty.amd.min.js'))
-    .pipe(gulp.dest('./lib/js/build/', { overwrite: true }));
+    .pipe(gulp.dest('./lib/build/', { overwrite: true }));
 });
 
 gulp.task('umd', async () => {
@@ -17,7 +17,7 @@ gulp.task('umd', async () => {
     .pipe(babel({ plugins: ['@babel/plugin-transform-modules-umd'] }))
     .pipe(uglifyJS())
     .pipe(rename('raty.umd.min.js'))
-    .pipe(gulp.dest('./lib/js/build/', { overwrite: true }));
+    .pipe(gulp.dest('./lib/build/', { overwrite: true }));
 });
 
 gulp.task('commonjs', async () => {
@@ -25,7 +25,7 @@ gulp.task('commonjs', async () => {
     .pipe(babel({ plugins: ['@babel/plugin-transform-modules-commonjs'] }))
     .pipe(uglifyJS())
     .pipe(rename('raty.commonjs.min.js'))
-    .pipe(gulp.dest('./lib/js/build/', { overwrite: true }));
+    .pipe(gulp.dest('./lib/build/', { overwrite: true }));
 });
 
 gulp.task('systemjs', async () => {
@@ -33,7 +33,7 @@ gulp.task('systemjs', async () => {
     .pipe(babel({ plugins: ['@babel/plugin-transform-modules-systemjs'] }))
     .pipe(uglifyJS())
     .pipe(rename('raty.systemjs.min.js'))
-    .pipe(gulp.dest('./lib/js/build/', { overwrite: true }));
+    .pipe(gulp.dest('./lib/build/', { overwrite: true }));
 });
 
 gulp.task('es6', async () => {
@@ -41,7 +41,7 @@ gulp.task('es6', async () => {
     .pipe(babel())
     .pipe(uglifyJS())
     .pipe(rename('raty.module.min.js'))
-    .pipe(gulp.dest('./lib/js/build/', { overwrite: true }));
+    .pipe(gulp.dest('./lib/build/', { overwrite: true }));
 });
 
 gulp.task('es5', async () => {
@@ -49,14 +49,14 @@ gulp.task('es5', async () => {
     .pipe(babel({ plugins: ['babel-plugin-remove-import-export'] }))
     .pipe(uglifyJS())
     .pipe(rename('raty.min.js'))
-    .pipe(gulp.dest('./lib/js/build/', { overwrite: true }));
+    .pipe(gulp.dest('./lib/build/', { overwrite: true }));
 });
 
 gulp.task('es5-test', async () => {
   source
     .pipe(babel({ plugins: ['babel-plugin-remove-import-export'] }))
     .pipe(rename('raty.js'))
-    .pipe(gulp.dest('./lib/js/build/', { overwrite: true }));
+    .pipe(gulp.dest('./lib/build/', { overwrite: true }));
 });
 
 const tasks = gulp.parallel(['amd', 'umd', 'commonjs', 'systemjs', 'es6', 'es5', 'es5-test']);
@@ -64,5 +64,5 @@ const tasks = gulp.parallel(['amd', 'umd', 'commonjs', 'systemjs', 'es6', 'es5',
 gulp.task('build', tasks);
 
 gulp.task('watch', async () => {
-  gulp.watch(['lib/js/*.js', '!lib/js/build/*.js'], tasks);
+  gulp.watch(['lib/*.js', '!lib/build/*.js'], tasks);
 });
