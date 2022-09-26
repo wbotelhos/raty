@@ -23,13 +23,13 @@
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
     "@babel/register": "^7.18.9",
-    "eslint": "^8.23.0",
+    "eslint": "^8.24.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "jasmine-core": "^4.3.0",
-    "karma": "^6.4.0",
+    "jasmine-core": "^4.4.0",
+    "karma": "^6.4.1",
     "karma-chrome-launcher": "^3.1.1",
     "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "^5.1.0"
@@ -64,9 +64,9 @@
     "url": "https://github.com/wbotelhos/raty"
   },
   "scripts": {
-    "test": "node_modules/karma/bin/karma start karma.conf.js",
     "build": "gulp build",
-    "watch":"gulp watch"
+    "test": "node_modules/karma/bin/karma start karma.conf.js",
+    "watch": "gulp watch"
   },
   "version": "3.1.1"
 }
