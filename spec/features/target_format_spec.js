@@ -1,7 +1,9 @@
 describe('#targetFormat', function () {
   beforeEach(function () {
-    $('body').append('<div id="element"></div>');
-    $('body').append('<div id="hint"></div>');
+    var body = $('body');
+
+    body.append('<div id="element"></div>');
+    body.append('<div id="hint"></div>');
   });
 
   afterEach(function () {
@@ -11,25 +13,25 @@ describe('#targetFormat', function () {
 
   xit('stars empty', function () {
     // given
-    var raty = new Raty('#element', { target: '#hint', targetFormat: 'score: {score}' });
+    var raty = new Raty('#element', { target: '#hint', targetFormat: 'score: {score}' }).init();
 
     // when
     raty.init();
 
     // then
-    expect($('#hint')).toBeEmpty();
+    expect(document.querySelector('#hint').innerHTML).toEqual('');
   });
 
   context('on mouseover', function () {
     xit('set target with format on mouseover', function () {
       // given
-      var raty = new Raty('#element', { target: '#hint', targetFormat: 'score: {score}' });
+      var raty = new Raty('#element', { target: '#hint', targetFormat: 'score: {score}' }).init();
 
       // when
-      Helper.trigger(raty.self.querySelector('img:first-child'), 'mouseover');
+      Helper.trigger(raty.self.querySelector('img'), 'mouseover');
 
       // then
-      expect($('#hint')).toHaveHtml('score: bad');
+      expect(document.querySelector('#hint').innerHTML).toEqual('score: bad');
     });
   });
 
@@ -39,16 +41,14 @@ describe('#targetFormat', function () {
       var raty = new Raty('#element', {
         target: '#hint',
         targetFormat: 'score: {score}',
-      });
+      }).init();
 
       // when
-      var star = raty.self.querySelector('img:first-child');
-
-      Helper.trigger(star, 'mouseover');
-      Helper.trigger(star, 'mouseleave');
+      Helper.trigger(raty.self, 'mouseover');
+      Helper.trigger(raty.self, 'mouseleave');
 
       // then
-      expect($('#hint')).toBeEmpty();
+      expect(document.querySelector('#hint').innerText).toEqual('');
     });
 
     context('with :targetKeep', function () {
@@ -59,16 +59,14 @@ describe('#targetFormat', function () {
             target: '#hint',
             targetFormat: 'score: {score}',
             targetKeep: true,
-          });
+          }).init();
 
           // when
-          var star = raty.self.querySelector('img:first-child');
-
-          Helper.trigger(star, 'mouseover');
-          Helper.trigger(star, 'mouseleave');
+          Helper.trigger(raty.self, 'mouseover');
+          Helper.trigger(raty.self, 'mouseleave');
 
           // then
-          expect($('#hint')).toBeEmpty();
+          expect(document.querySelector('#hint').innerHTML).toEqual('');
         });
       });
 
@@ -80,16 +78,14 @@ describe('#targetFormat', function () {
             target: '#hint',
             targetFormat: 'score: {score}',
             targetKeep: true,
-          });
+          }).init();
 
           // when
-          var star = raty.self.querySelector('img:first-child');
-
-          Helper.trigger(star, 'mouseover');
-          Helper.trigger(star, 'mouseleave');
+          Helper.trigger(raty.self, 'mouseover');
+          Helper.trigger(raty.self, 'mouseleave');
 
           // then
-          expect($('#hint')).toHaveHtml('score: bad');
+          expect(document.querySelector('#hint').innerHTML).toEqual('score: bad');
         });
       });
     });

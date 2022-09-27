@@ -12,7 +12,7 @@ describe('#targetType', function () {
 
       // when
       var lambda = function () {
-        var raty = new Raty('#el', { target: '#missing' });
+        var raty = new Raty('#el', { target: '#missing' }).inxit();
       };
 
       // then
@@ -23,7 +23,7 @@ describe('#targetType', function () {
   context('as *hint', function () {
     xit('receives the hint', function () {
       // given
-      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'hint' });
+      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'hint' }).inxit();
 
       var star = Helper.last(raty.self.querySelectorAll('img'));
 
@@ -37,7 +37,7 @@ describe('#targetType', function () {
     context('with :cancel', function () {
       xit('receives the :cancelHint', function () {
         // given
-        var raty = new Raty('#el', { cancelButton: true, target: '#' + this.target[0].id, targetType: 'hint' });
+        var raty = new Raty('#el', { cancelButton: true, target: '#' + this.target[0].id, targetType: 'hint' }).inxit();
 
         var cancel = raty.self.querySelector('.raty-cancel');
 
@@ -53,7 +53,7 @@ describe('#targetType', function () {
   context('as *score', function () {
     xit('receives the score', function () {
       // given
-      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'score' });
+      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'score' }).inxit();
 
       var star = Helper.last(raty.self.querySelectorAll('img'));
 
@@ -67,7 +67,11 @@ describe('#targetType', function () {
     context('with :cancel', function () {
       xit('receives the :cancelHint', function () {
         // given
-        var raty = new Raty('#el', { cancelButton: true, target: '#' + this.target[0].id, targetType: 'score' });
+        var raty = new Raty('#el', {
+          cancelButton: true,
+          target: '#' + this.target[0].id,
+          targetType: 'score',
+        }).inxit();
 
         var cancel = raty.self.querySelector('.raty-cancel');
 

@@ -21,7 +21,7 @@ describe('#starOn', function () {
       var stars = self.children('img');
 
       // when
-      Helper.trigger(stars.last(), 'mouseover');
+      Helper.trigger(Helper.last(stars), 'mouseover');
 
       // then
       expect(Helper.extension(stars.src)).toEqual('star-half.png');
@@ -34,7 +34,7 @@ describe('#starOn', function () {
         var stars = self.children('i');
 
         // when
-        Helper.trigger(stars.last(), 'mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars[0].tagName).toEqual('I');
@@ -50,7 +50,7 @@ describe('#starOn', function () {
         var stars = self.children('i');
 
         // when
-        Helper.trigger(stars.last(), 'mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars).toHaveClass('star-on-png');
@@ -62,7 +62,7 @@ describe('#starOn', function () {
         var stars = self.children('i');
 
         // when
-        Helper.trigger(stars.last(), 'mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars).not.toHaveAttr('src');
@@ -74,7 +74,7 @@ describe('#starOn', function () {
         var stars = self.children('i');
 
         // when
-        Helper.trigger(stars.last(), 'mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars).toHaveAttr('data-alt');
@@ -86,7 +86,7 @@ describe('#starOn', function () {
         var stars = self.children('i');
 
         // when
-        Helper.trigger(stars.last(), 'mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars).not.toHaveAttr('alt');

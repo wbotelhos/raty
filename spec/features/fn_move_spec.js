@@ -25,8 +25,6 @@ describe('#move', function () {
         targetType: 'number',
       });
 
-      raty.self.querySelector('img:first-child');
-
       var that = this;
 
       setTimeout(function () {
@@ -51,8 +49,6 @@ describe('#move', function () {
           targetType: 'number',
         });
 
-        raty.self.querySelector('img:first-child');
-
         var that = this;
 
         setTimeout(function () {
@@ -75,8 +71,6 @@ describe('#move', function () {
           target: '#target',
           targetType: 'number',
         });
-
-        raty.self.querySelector('img:first-child');
 
         var that = this;
 
@@ -102,8 +96,6 @@ describe('#move', function () {
         targetType: 'number',
       });
 
-      raty.self.querySelector('img:first-child');
-
       var that = this;
 
       setTimeout(function () {
@@ -126,8 +118,6 @@ describe('#move', function () {
         target: '#target',
         targetType: 'number',
       });
-
-      raty.self.querySelector('img:first-child');
 
       var that = this;
 

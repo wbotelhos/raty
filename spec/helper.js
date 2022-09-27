@@ -4,7 +4,7 @@ function context(description, spec) {
 }
 
 afterEach(function () {
-  // Helper.clear();
+  Helper.clear();
 });
 
 var Helper = {

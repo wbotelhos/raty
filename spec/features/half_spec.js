@@ -159,7 +159,7 @@ describe('#half', function () {
           });
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-off.png');
+          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
           expect(raty.self.querySelector('input')).toHaveValue('0.24');
         });
 
@@ -175,7 +175,7 @@ describe('#half', function () {
           });
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-off.png');
+          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
           expect(raty.self.querySelector('input').value).toEqual('0.26');
         });
 
@@ -191,7 +191,7 @@ describe('#half', function () {
           });
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-on.png');
+          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
           expect(raty.self.querySelector('input').value).toEqual('0.6');
         });
 
@@ -207,7 +207,7 @@ describe('#half', function () {
           });
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-on.png');
+          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
           expect(raty.self.querySelector('input').value).toEqual('0.75');
         });
 
@@ -223,7 +223,7 @@ describe('#half', function () {
           });
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-on.png');
+          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
         });
       });
 
@@ -241,7 +241,7 @@ describe('#half', function () {
             });
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-off.png');
+            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
           });
 
           xit('receives half while greater then down limit', function () {
@@ -256,7 +256,7 @@ describe('#half', function () {
             });
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-half.png');
+            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
           });
 
           xit('receives half while equal full limit, ignoring it', function () {
@@ -271,7 +271,7 @@ describe('#half', function () {
             });
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-half.png');
+            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
           });
 
           xit('receives half while greater than down limxit and less than up limit', function () {
@@ -286,7 +286,7 @@ describe('#half', function () {
             });
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-half.png');
+            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
           });
 
           xit('receives full while equal or greater than up limit', function () {
@@ -301,7 +301,7 @@ describe('#half', function () {
             });
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img:first-child').src)).toEqual('star-on.png');
+            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
           });
 
           context('with :target', function () {

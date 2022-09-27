@@ -5,7 +5,7 @@ describe('stars', function () {
 
   xit('starts all off', function () {
     // given / when
-    var raty = new Raty('#el');
+    var raty = new Raty('#el').init();
 
     // then
     expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
@@ -14,11 +14,11 @@ describe('stars', function () {
   context('on click', function () {
     xit('changes the score', function () {
       // given
-      var raty = new Raty('#el');
-      var stars = raty.self.querySelector('img');
+      var raty = new Raty('#el').init();
+      var stars = raty.self.querySelectorAll('img');
 
       // when
-      stars.last().trigger('click');
+      Helper.trigger(Helper.last(stars), 'click');
 
       // then
       expect(raty.self.querySelector('input')).toHaveValue('5');
@@ -28,54 +28,72 @@ describe('stars', function () {
   context('on mouseover', function () {
     xit('turns on the stars', function () {
       // given
-      var raty = new Raty('#el');
-      var stars = raty.self.querySelector('img');
+      var raty = new Raty('#el').init();
+      var stars = raty.self.querySelectorAll('img');
 
       // when
-      Helper.trigger(stars.last(), 'mouseover');
+      Helper.trigger(Helper.last(stars), 'mouseover');
 
       // then
-      expect(Helper.extension(stars.src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
     });
 
     context('and mouseout', function () {
       xit('turns off all stars', function () {
         // given
-        var raty = new Raty('#el');
-        var stars = raty.self.querySelector('img');
+        var raty = new Raty('#el').init();
+        var stars = raty.self.querySelectorAll('img');
 
         // when
-        stars.last().trigger('mouseover').trigger('mouseout');
+        Helper.trigger(raty.self, 'mouseover');
+        Helper.trigger(raty.self, 'mouseout');
 
         // then
-        expect(Helper.extension(stars.src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
       });
     });
 
     context('and click', function () {
       xit('changes the score', function () {
         // given
-        var raty = new Raty('#el');
-        var stars = raty.self.querySelector('img');
+        var raty = new Raty('#el').init();
+        var stars = raty.self.querySelectorAll('img');
+        var star = Helper.last(stars);
 
         // when
-        stars.last().trigger('mouseover').trigger('click');
+        Helper.trigger(star, 'mouseover');
+        Helper.trigger(star, 'click');
 
         // then
-        expect(raty.self.querySelector('input')).toHaveValue('5');
+        expect(raty.self.querySelector('input').value).toEqual('5');
       });
 
       context('and mouseout', function () {
         xit('keeps the stars on', function () {
           // given
-          var raty = new Raty('#el');
-          var stars = raty.self.querySelector('img');
+          var raty = new Raty('#el').init();
+          var stars = raty.self.querySelectorAll('img');
+          var star = Helper.last(stars);
 
           // when
-          stars.last().trigger('mouseover').trigger('click').trigger('mouseout');
+          Helper.trigger(star, 'mouseover');
+          Helper.trigger(star, 'click');
+          Helper.trigger(star, 'mouseout');
 
           // then
-          expect(Helper.extension(stars.src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[1].src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
         });
       });
     });

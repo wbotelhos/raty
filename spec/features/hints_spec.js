@@ -81,7 +81,7 @@ describe('#hints', function () {
             raty.init();
 
             // then
-            expect(raty.self.querySelector('img:first-child').title).toEqual('1');
+            expect(raty.self.querySelector('img').title).toEqual('1');
           });
         });
 
@@ -94,7 +94,7 @@ describe('#hints', function () {
             raty.init();
 
             // then
-            expect(raty.self.querySelector('img:first-child').title).toEqual('half');
+            expect(raty.self.querySelector('img').title).toEqual('half');
           });
         });
 
@@ -107,7 +107,7 @@ describe('#hints', function () {
             raty.init();
 
             // then
-            expect(raty.self.querySelector('img:first-child')[0].title).toEqual('one');
+            expect(raty.self.querySelector('img')[0].title).toEqual('one');
           });
         });
 
@@ -175,7 +175,7 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          expect(raty.self.querySelector('img:first-child').title).toEqual('bad');
+          expect(raty.self.querySelector('img').title).toEqual('bad');
         });
       });
 
@@ -206,7 +206,7 @@ describe('#hints', function () {
             raty.init();
 
             // then
-            expect(raty.self.querySelector('img:first-child').title).toEqual('');
+            expect(raty.self.querySelector('img').title).toEqual('');
           });
         });
 
@@ -219,7 +219,7 @@ describe('#hints', function () {
             raty.init();
 
             // then
-            expect(raty.self.querySelector('img:first-child').title).toEqual('1');
+            expect(raty.self.querySelector('img').title).toEqual('1');
           });
         });
 

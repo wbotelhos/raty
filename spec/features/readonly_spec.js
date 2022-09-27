@@ -301,7 +301,7 @@ describe('#readOnly', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
-      var star = raty.self.querySelector('img:first-child');
+      var star = raty.self.querySelector('img');
 
       raty.readOnly(false);
 
