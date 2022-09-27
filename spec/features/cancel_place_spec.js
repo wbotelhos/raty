@@ -24,7 +24,7 @@ describe('#cancelPlace', function () {
   });
 
   context('when left', function () {
-    it('is appended', function () {
+    xit('is appended', function () {
       // given
       Helper.create('#el');
 

@@ -1,15 +1,9 @@
 describe('#numberMax', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
-  it('changes the stars off', function () {
+  xit('changes the stars off', function () {
     // given
     var self = this.el;
 
@@ -17,10 +11,10 @@ describe('#numberMax', function () {
     self.raty({ starOff: 'star-half.png' });
 
     // then
-    expect(self.children('img').src).toEqual('../lib/images/star-half.png');
+    expect(Helper.extension(self.children('img').src)).toEqual('star-half.png');
   });
 
-  it('accepts data attribute', function () {
+  xit('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-star-off': 'custom' });
 
@@ -32,7 +26,7 @@ describe('#numberMax', function () {
   });
 
   context('with :starType', function () {
-    it('uses the given element', function () {
+    xit('uses the given element', function () {
       // given
       var self = this.el;
 
@@ -49,7 +43,7 @@ describe('#numberMax', function () {
       expect(stars[4].tagName).toEqual('I');
     });
 
-    it('normalizes the class name', function () {
+    xit('normalizes the class name', function () {
       // given
       var self = this.el;
 
@@ -60,7 +54,7 @@ describe('#numberMax', function () {
       expect(self.children('i')).toHaveClass('star-off-png');
     });
 
-    it('does not create the "src" attribute', function () {
+    xit('does not create the "src" attribute', function () {
       // given
       var self = this.el;
 
@@ -77,7 +71,7 @@ describe('#numberMax', function () {
       expect(stars[4].src).toBeUndefined();
     });
 
-    it('creates the "data-alt" attribute', function () {
+    xit('creates the "data-alt" attribute', function () {
       // given
       var self = this.el;
 
@@ -94,7 +88,7 @@ describe('#numberMax', function () {
       expect(stars[4].getAttribute('data-alt')).toEqual('5');
     });
 
-    it('does not create the "alt" attribute', function () {
+    xit('does not create the "alt" attribute', function () {
       // given
       var self = this.el;
 

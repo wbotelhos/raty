@@ -1,15 +1,9 @@
 describe('#numberMax', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
-  it('limits the max of "number" option', function () {
+  xit('limits the max of "number" option', function () {
     // given
     var self = this.el;
 
@@ -20,7 +14,7 @@ describe('#numberMax', function () {
     expect(self.data('raty').opt.number).toEqual(1);
   });
 
-  it('limits the min of "number" option', function () {
+  xit('limits the min of "number" option', function () {
     // given
     var self = this.el;
 

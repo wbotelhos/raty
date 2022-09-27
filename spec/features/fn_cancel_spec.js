@@ -1,27 +1,26 @@
 describe('#fn_cancel', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
   describe('with :readOnly', function () {
-    it('does turns the stars off', function () {
+    xit('does not cancel', function () {
       // given
       var raty = new Raty('#el', { readOnly: true, score: 5 });
+      var stars = raty.self.querySelectorAll('img');
 
       // when
       raty.cancel();
 
       // then
-      expect(raty.self.querySelector('img').src).toEqual('../lib/images/star-on.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
     });
 
-    it('does not remove the score input value', function () {
+    xit('does not remove the score input value', function () {
       // given
       var raty = new Raty('#el', { readOnly: true, score: 5 });
 
@@ -35,7 +34,7 @@ describe('#fn_cancel', function () {
 
   context('with click trigger', function () {
     context('as *false', function () {
-      it('does not triggers click callback', function () {
+      xit('does not triggers click callback', function () {
         // given
         var raty = new Raty('#el', {
           score: 1,
@@ -58,7 +57,7 @@ describe('#fn_cancel', function () {
 
         context('and :targetKeep', function () {
           context('as *true', function () {
-            it('sets the :targetText on target', function () {
+            xit('sets the :targetText on target', function () {
               // given
               var raty = new Raty('#el', {
                 cancel: true,
@@ -79,7 +78,7 @@ describe('#fn_cancel', function () {
     });
 
     context('as *true', function () {
-      it('triggers the :click callback', function () {
+      xit('triggers the :click callback', function () {
         // given
         var raty = new Raty('#el', {
           score: 1,
@@ -102,7 +101,7 @@ describe('#fn_cancel', function () {
 
         context('and :targetKeep', function () {
           context('as *true', function () {
-            it('sets the :targetText on target', function () {
+            xit('sets the :targetText on target', function () {
               // given
               var raty = new Raty('#el', {
                 cancel: true,

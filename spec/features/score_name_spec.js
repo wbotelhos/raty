@@ -1,13 +1,5 @@
 describe('#scoreName', function () {
-  beforeEach(function () {
-    $.raty.path = '../lib/images';
-  });
-
-  afterEach(function () {
-    Helper.clear();
-  });
-
-  it('changes the score field name', function () {
+  xit('changes the score field name', function () {
     // given
     Helper.create('#el');
 
@@ -18,7 +10,7 @@ describe('#scoreName', function () {
     expect(raty.self.querySelector('input').name).toEqual('double');
   });
 
-  it('accepts callback', function () {
+  xit('accepts callback', function () {
     // given
     Helper.create('#el');
 

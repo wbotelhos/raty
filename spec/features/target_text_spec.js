@@ -1,22 +1,20 @@
-describe('#targetText', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
+describe('#targetText', function () {
+  beforeEach(function () {
     $('body').append('<div id="element"></div>');
     $('body').append('<div id="hint"></div>');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     $('#element').remove();
     $('#hint').remove();
   });
 
-  it ('set target with none value', function() {
+  it('set target with none value', function () {
     // given
-    var self = $('#element');
+    var raty = new Raty('#element', { target: '#hint', targetText: 'none' });
 
     // when
-    self.raty({ target: '#hint', targetText: 'none' });
+    raty.init();
 
     // then
     expect($('#hint')).toHaveHtml('none');

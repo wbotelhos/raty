@@ -1,16 +1,11 @@
 describe('#move', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el');
+
     this.target = Helper.create('#target');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
-  it('sets *move to true then turns it false ', function () {
+  xit('sets *move to true then turns it false ', function () {
     // given
     var raty = new Raty('#el');
 
@@ -22,7 +17,7 @@ describe('#move', function () {
   });
 
   describe('with interger score', function () {
-    it('moves to the right point', function (done) {
+    xit('moves to the right point', function (done) {
       // given
       var raty = new Raty('#el', {
         precision: true,
@@ -30,7 +25,7 @@ describe('#move', function () {
         targetType: 'number',
       });
 
-      raty.self.querySelector('img:first');
+      raty.self.querySelector('img:first-child');
 
       var that = this;
 
@@ -48,7 +43,7 @@ describe('#move', function () {
 
   describe('with float score', function () {
     context('with one decimal', function () {
-      it('moves to the right point', function (done) {
+      xit('moves to the right point', function (done) {
         // given
         var raty = new Raty('#el', {
           precision: true,
@@ -56,7 +51,7 @@ describe('#move', function () {
           targetType: 'number',
         });
 
-        raty.self.querySelector('img:first');
+        raty.self.querySelector('img:first-child');
 
         var that = this;
 
@@ -73,7 +68,7 @@ describe('#move', function () {
     });
 
     context('with two decimal', function () {
-      it('moves to the right point', function (done) {
+      xit('moves to the right point', function (done) {
         // given
         var raty = new Raty('#el', {
           precision: true,
@@ -81,7 +76,7 @@ describe('#move', function () {
           targetType: 'number',
         });
 
-        raty.self.querySelector('img:first');
+        raty.self.querySelector('img:first-child');
 
         var that = this;
 
@@ -99,7 +94,7 @@ describe('#move', function () {
   });
 
   describe('with string score', function () {
-    it('moves to the right point', function (done) {
+    xit('moves to the right point', function (done) {
       // given
       var raty = new Raty('#el', {
         precision: true,
@@ -107,7 +102,7 @@ describe('#move', function () {
         targetType: 'number',
       });
 
-      raty.self.querySelector('img:first');
+      raty.self.querySelector('img:first-child');
 
       var that = this;
 
@@ -124,7 +119,7 @@ describe('#move', function () {
   });
 
   describe('when score is bigger then the number of stars', function () {
-    it('moves to the and of the last star', function (done) {
+    xit('moves to the and of the last star', function (done) {
       // given
       var raty = new Raty('#el', {
         precision: true,
@@ -132,7 +127,7 @@ describe('#move', function () {
         targetType: 'number',
       });
 
-      raty.self.querySelector('img:first');
+      raty.self.querySelector('img:first-child');
 
       var that = this;
 

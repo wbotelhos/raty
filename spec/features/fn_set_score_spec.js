@@ -1,15 +1,9 @@
 describe('#fn_setScore', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
-  it('sets the score', function () {
+  xit('sets the score', function () {
     // given
 
     // when
@@ -20,7 +14,7 @@ describe('#fn_setScore', function () {
   });
 
   describe('with :readOnly', function () {
-    it('does not set the score', function () {
+    xit('does not set the score', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
@@ -38,7 +32,7 @@ describe('#fn_setScore', function () {
     });
 
     context('and :score greater then :number', function () {
-      it('does not throw error', function () {
+      xit('does not throw error', function () {
         // given
         var that = this;
 
@@ -58,7 +52,7 @@ describe('#fn_setScore', function () {
       context('as *score', function () {
         context('and :targetKeep', function () {
           context('as *true', function () {
-            it('sets the value equal :number', function () {
+            xit('sets the value equal :number', function () {
               // given
               var raty = new Raty('#el', {
                 target: '#target',
@@ -73,7 +67,7 @@ describe('#fn_setScore', function () {
               expect(this.target.text()).toEqual(raty.opt.number.toString());
             });
 
-            it('sets the :score on target', function () {
+            xit('sets the :score on target', function () {
               // given
               var raty = new Raty('#el', {
                 target: '#target',

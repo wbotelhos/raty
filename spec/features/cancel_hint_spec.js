@@ -1,5 +1,5 @@
 describe('#cancelHint', function () {
-  it('changes the cancel hint', function () {
+  xit('changes the cancel hint', function () {
     // given
     Helper.create('#el');
 
@@ -10,7 +10,7 @@ describe('#cancelHint', function () {
     expect(raty.self.querySelector('.raty-cancel').title).toEqual('double');
   });
 
-  it('accepts data attribute', function () {
+  xit('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-cancel-hint': 'custom' });
 

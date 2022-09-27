@@ -1,20 +1,18 @@
-describe('#targetScore', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
+describe('#targetScore', function () {
+  beforeEach(function () {
     $('body').append('<div id="element"></div>');
 
     this.scoreField = $('<input id="score" type="text" />').appendTo('body');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     $('#element').remove();
     $('#hint').remove();
 
     this.scoreField.remove();
   });
 
-  it ('avoids the creation of default score field', function() {
+  xit('avoids the creation of default score field', function () {
     // given
     var self = $('#element');
 
@@ -25,10 +23,9 @@ describe('#targetScore', function() {
     expect(self.children('input')).not.toExist();
   });
 
-  it ('changes the place where score will be setted', function() {
+  xit('changes the place where score will be setted', function () {
     // given
-    var
-      self = $('#element').raty({ targetScore: '#score' });
+    var self = $('#element').raty({ targetScore: '#score' });
     var stars = self.children('img');
 
     // when

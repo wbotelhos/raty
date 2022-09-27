@@ -1,16 +1,10 @@
 describe('#starType', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
   context('when actived', function () {
-    it('disable the width property', function () {
+    xit('disable the width property', function () {
       // given
       var self = this.el;
 
@@ -22,7 +16,7 @@ describe('#starType', function () {
     });
   });
 
-  it('accepts data attribute', function () {
+  xit('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-star-type': 'b' });
 
@@ -34,7 +28,7 @@ describe('#starType', function () {
   });
 
   context('when is "img"', function () {
-    it('does not changes the :path to blank', function () {
+    xit('does not changes the :path to blank', function () {
       // given
 
       // when
@@ -44,7 +38,7 @@ describe('#starType', function () {
       expect(raty.opt.path).toEqual('');
     });
 
-    it('creates the default markup', function () {
+    xit('creates the default markup', function () {
       // given
 
       // when
@@ -66,15 +60,15 @@ describe('#starType', function () {
       expect(stars.eq(3).alt).toEqual('4');
       expect(stars.eq(4).alt).toEqual('5');
 
-      expect(stars.src).toEqual('../lib/images/star-off.png');
+      expect(Helper.extension(stars.src)).toEqual('star-off.png');
       expect(score.type).toEqual('hidden');
       expect(score.name).toEqual('score');
-      expect(score.val()).toEqual('');
+      expect(score.value).toEqual('');
     });
   });
 
   context('when is other element', function () {
-    it('changes the :path to blank', function () {
+    xit('changes the :path to blank', function () {
       // given
 
       // when
@@ -84,7 +78,7 @@ describe('#starType', function () {
       expect(raty.opt.path).toEqual('');
     });
 
-    it('creates the default markup', function () {
+    xit('creates the default markup', function () {
       // given
 
       // when
@@ -111,11 +105,11 @@ describe('#starType', function () {
 
       expect(score.type).toEqual('hidden');
       expect(score.name).toEqual('score');
-      expect(score.val()).toEqual('');
+      expect(score.value).toEqual('');
     });
 
     context('with :half true', function () {
-      it('fills half star', function () {
+      xit('fills half star', function () {
         // given
         var raty = new Raty('#el', { half: true, starType: 'i' });
 

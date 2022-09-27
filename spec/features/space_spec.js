@@ -1,17 +1,15 @@
-describe('#space', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
+describe('#space', function () {
+  beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     $('#element').remove();
     $('#hint').remove();
   });
 
-  context('when off', function() {
-    it('keeps the spaces', function() {
+  context('when off', function () {
+    xit('keeps the spaces', function () {
       // given
       var self = $('#element');
 
@@ -22,8 +20,8 @@ describe('#space', function() {
       expect(self.text().length).toEqual(4);
     });
 
-    context('with :cancel', function() {
-      it('adds on more space', function() {
+    context('with :cancel', function () {
+      xit('adds on more space', function () {
         // given
         var self = $('#element');
 
@@ -36,8 +34,8 @@ describe('#space', function() {
     });
   });
 
-  context('when off', function() {
-    it('takes off the spaces', function() {
+  context('when off', function () {
+    xit('takes off the spaces', function () {
       // given
       var self = $('#element');
 
@@ -48,8 +46,8 @@ describe('#space', function() {
       expect(self.text().length).toEqual(0);
     });
 
-    context('with :cancel', function() {
-      it('keeps the cancel space', function() {
+    context('with :cancel', function () {
+      xit('keeps the cancel space', function () {
         // given
         var self = $('#element');
 

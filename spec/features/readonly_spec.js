@@ -1,27 +1,21 @@
 describe('#readOnly', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
-  it('accepts data attribute', function () {
+  xit('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-readonly': true });
 
     // when
-    var raty = new Raty('#el', );
+    var raty = new Raty('#el');
 
     // then
     expect(raty.opt.readonly).toEqual(true);
   });
 
   context('on true', function () {
-    it('sets score as readonly', function () {
+    xit('sets score as readonly', function () {
       // given
 
       // when
@@ -31,7 +25,7 @@ describe('#readOnly', function () {
       expect(raty.self.querySelector('input').readonly).toEqual('readonly');
     });
 
-    it('removes the pointer cursor', function () {
+    xit('removes the pointer cursor', function () {
       // given
 
       // when
@@ -43,7 +37,7 @@ describe('#readOnly', function () {
     });
 
     context('without rating', function () {
-      it('Applies the :noRatedMsg on stars', function () {
+      xit('Applies the :noRatedMsg on stars', function () {
         // given
 
         // when
@@ -54,20 +48,20 @@ describe('#readOnly', function () {
       });
     });
 
-    it('does not trigger mouseover', function () {
+    xit('does not trigger mouseover', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
       var stars = raty.self.querySelector('img');
 
       // when
-      stars.first().trigger('mouseover');
+      Helper.trigger(stars.first(), 'mouseover');
 
       // then
-      expect(stars.src).toEqual('../lib/images/star-off.png');
+      expect(Helper.extension(stars.src)).toEqual('star-off.png');
     });
 
-    it('does not trigger click', function () {
+    xit('does not trigger click', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
@@ -77,12 +71,12 @@ describe('#readOnly', function () {
       stars.first().trigger('click');
 
       // then
-      expect(stars.src).toEqual('../lib/images/star-off.png');
-      expect(raty.self.querySelector('input').val()).toEqual('');
+      expect(Helper.extension(stars.src)).toEqual('star-off.png');
+      expect(raty.self.querySelector('input').value).toEqual('');
     });
 
     context('with :cancel', function () {
-      it('hides the button', function () {
+      xit('hides the button', function () {
         // given
 
         // when
@@ -94,7 +88,7 @@ describe('#readOnly', function () {
     });
 
     context('with external bind on wrapper', function () {
-      it('is kept', function () {
+      xit('is kept', function () {
         // given
         this.el
           .on('click', function () {
@@ -111,7 +105,7 @@ describe('#readOnly', function () {
     });
 
     context('with external bind on stars', function () {
-      it('keeps it', function () {
+      xit('keeps it', function () {
         // given
         var raty = new Raty('#el', { readOnly: true });
 
@@ -133,7 +127,7 @@ describe('#readOnly', function () {
     context('with :halfShow', function () {
       context('as *true', function () {
         context('with :score as integer', function () {
-          it('applies the score hint', function () {
+          xit('applies the score hint', function () {
             // given
 
             // when
@@ -150,7 +144,7 @@ describe('#readOnly', function () {
         });
 
         context('with :score as float', function () {
-          it('applies the score hint', function () {
+          xit('applies the score hint', function () {
             // given
 
             // when
@@ -171,7 +165,7 @@ describe('#readOnly', function () {
     context('with :half', function () {
       context('as *true', function () {
         context('with :score as integer', function () {
-          it('applies the score hint', function () {
+          xit('applies the score hint', function () {
             // given
 
             // when
@@ -188,7 +182,7 @@ describe('#readOnly', function () {
         });
 
         context('with :score as float', function () {
-          it('applies the score hint', function () {
+          xit('applies the score hint', function () {
             // given
 
             // when
@@ -209,7 +203,7 @@ describe('#readOnly', function () {
     context('with :precision', function () {
       context('as *true', function () {
         context('with :score as integer', function () {
-          it('applies the score hint', function () {
+          xit('applies the score hint', function () {
             // given
 
             // when
@@ -226,7 +220,7 @@ describe('#readOnly', function () {
         });
 
         context('with :score as float', function () {
-          it('applies the score hint', function () {
+          xit('applies the score hint', function () {
             // given
 
             // when
@@ -246,7 +240,7 @@ describe('#readOnly', function () {
   });
 
   context('on false', function () {
-    it('removes the :readOnly of the score', function () {
+    xit('removes the :readOnly of the score', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
@@ -260,7 +254,7 @@ describe('#readOnly', function () {
       expect(input).not.toHaveProp('readonly', 'readonly');
     });
 
-    it('applies the pointer cursor on wrapper', function () {
+    xit('applies the pointer cursor on wrapper', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
@@ -271,7 +265,7 @@ describe('#readOnly', function () {
       expect(this.el).toHaveCss({ cursor: 'pointer' });
     });
 
-    it('Removes the :noRatedMsg from stars', function () {
+    xit('Removes the :noRatedMsg from stars', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
@@ -288,7 +282,7 @@ describe('#readOnly', function () {
       expect(stars[4].title).toEqual('gorgeous');
     });
 
-    it('triggers mouseover', function () {
+    xit('triggers mouseover', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
@@ -297,17 +291,17 @@ describe('#readOnly', function () {
       raty.readOnly(false);
 
       // when
-      stars.first().trigger('mouseover');
+      Helper.trigger(stars.first(), 'mouseover');
 
       // then
-      expect(stars.first().src).toEqual('../lib/images/star-on.png');
+      expect(Helper.extension(stars.first().src)).toEqual('star-on.png');
     });
 
-    it('triggers click', function () {
+    xit('triggers click', function () {
       // given
       var raty = new Raty('#el', { readOnly: true });
 
-      var star = raty.self.querySelector('img:first');
+      var star = raty.self.querySelector('img:first-child');
 
       raty.readOnly(false);
 
@@ -319,7 +313,7 @@ describe('#readOnly', function () {
     });
 
     context('with :score', function () {
-      it('removes the score title off the stars', function () {
+      xit('removes the score title off the stars', function () {
         // given
         var raty = new Raty('#el', { readOnly: true, score: 3 });
 
@@ -338,11 +332,11 @@ describe('#readOnly', function () {
     });
 
     context('with :cancel', function () {
-      it('shows the button', function (done) {
+      xit('shows the button', function (done) {
         // given
         var that = this;
 
-        that.var raty = new Raty('#el', { cancelButton: true, readOnly: true });
+        var raty = new Raty('#el', { cancelButton: true, readOnly: true });
 
         setTimeout(function () {
           // when
@@ -355,7 +349,7 @@ describe('#readOnly', function () {
         }, 100);
       });
 
-      it('rebinds the mouseover', function () {
+      xit('rebinds the mouseover', function () {
         // given
         var raty = new Raty('#el', { readOnly: true, cancelButton: true });
 
@@ -365,14 +359,14 @@ describe('#readOnly', function () {
         raty.readOnly(false);
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(cancel.src).toEqual('../lib/images/cancel-on.png');
-        expect(stars.src).toEqual('../lib/images/star-off.png');
+        expect(Helper.extension(cancel.src)).toEqual('cancel-on.png');
+        expect(Helper.extension(stars.src)).toEqual('star-off.png');
       });
 
-      it('rebinds the click', function () {
+      xit('rebinds the click', function () {
         // given
         var raty = new Raty('#el', { cancelButton: true, readOnly: true, score: 5 });
 
@@ -385,7 +379,7 @@ describe('#readOnly', function () {
         cancel.trigger('click').trigger('mouseout');
 
         // then
-        expect(stars.src).toEqual('../lib/images/star-off.png');
+        expect(Helper.extension(stars.src)).toEqual('star-off.png');
       });
     });
   });

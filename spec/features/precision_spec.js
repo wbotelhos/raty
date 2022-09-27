@@ -1,16 +1,11 @@
 describe('#precision', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el', 'div', { 'data-target': '#target' });
+
     this.target = Helper.target('#target');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
-  it('enables the :half options', function () {
+  xit('enables the :half options', function () {
     // given
 
     // when
@@ -20,7 +15,7 @@ describe('#precision', function () {
     expect(raty.opt.half).toBeTruthy();
   });
 
-  it('accepts data attribute', function () {
+  xit('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-precision': true });
 
@@ -35,7 +30,7 @@ describe('#precision', function () {
     context('and :targetKeep', function () {
       context('and :targetType as score', function () {
         context('on :score', function () {
-          it('sets the float with one fractional number', function () {
+          xit('sets the float with one fractional number', function () {
             // given
 
             // when
@@ -55,7 +50,7 @@ describe('#precision', function () {
         });
 
         context('on mouseover', function () {
-          it('sets the float with one fractional number', function (done) {
+          xit('sets the float with one fractional number', function (done) {
             // given
             var that = this;
 
@@ -84,7 +79,7 @@ describe('#precision', function () {
       context('and :targetType as hint', function () {
         context('on :score', function () {
           context('with one float digit', function () {
-            it('gets the [integer][float] position of :hints', function () {
+            xit('gets the [integer][float] position of :hints', function () {
               // given
 
               // when
@@ -105,7 +100,7 @@ describe('#precision', function () {
           });
 
           context('with integer digit is zero', function () {
-            it('gets the [integer][last item] position of :hints', function () {
+            xit('gets the [integer][last item] position of :hints', function () {
               // given
 
               // when
@@ -126,7 +121,7 @@ describe('#precision', function () {
           });
 
           context('with float digit is zero', function () {
-            it('gets the [integer][last item] position of :hints', function () {
+            xit('gets the [integer][last item] position of :hints', function () {
               // given
 
               // when
@@ -147,7 +142,7 @@ describe('#precision', function () {
           });
 
           context('with one float digit as string', function () {
-            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
+            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
 
               // when
@@ -168,7 +163,7 @@ describe('#precision', function () {
           });
 
           context('with two float digits', function () {
-            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
+            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
 
               // when
@@ -189,7 +184,7 @@ describe('#precision', function () {
           });
 
           context('with two float digits as string', function () {
-            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
+            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
 
               // when
@@ -212,7 +207,7 @@ describe('#precision', function () {
 
         context('on mouseover', function () {
           context('with one float digit', function () {
-            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
+            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
               // given
               var that = this;
 
@@ -239,7 +234,7 @@ describe('#precision', function () {
           });
 
           context('with two float digits', function () {
-            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
+            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
               // given
               var that = this;
 
@@ -267,7 +262,7 @@ describe('#precision', function () {
         });
 
         context('with :cancel', function () {
-          it('shows :cancelHint', function (done) {
+          xit('shows :cancelHint', function (done) {
             // given
             var that = this;
 
@@ -285,7 +280,7 @@ describe('#precision', function () {
 
             setTimeout(function () {
               // when
-              cancel.trigger('mouseover');
+              Helper.trigger(cancel, 'mouseover');
 
               // then
               expect(that.target).toHaveHtml(that.raty.opt.cancelHint);

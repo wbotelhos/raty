@@ -1,15 +1,9 @@
 describe('#score', function () {
   beforeEach(function () {
-    $.raty.path = '../lib/images';
-
     Helper.create('#el');
   });
 
-  afterEach(function () {
-    Helper.clear();
-  });
-
-  it('can be initialized on bind', function () {
+  xit('can be initialized on bind', function () {
     // given
 
     // when
@@ -19,17 +13,17 @@ describe('#score', function () {
     expect(raty.self.querySelector('input')).toHaveValue('1');
   });
 
-  it('turns on stars', function () {
+  xit('turns on stars', function () {
     // given
 
     // when
     var raty = new Raty('#el', { score: 5 });
 
     // then
-    expect(raty.self.querySelector('img').src).toEqual('../lib/images/star-on.png');
+    expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
   });
 
-  it('accepts callback', function () {
+  xit('accepts callback', function () {
     // given
 
     // when
@@ -43,7 +37,7 @@ describe('#score', function () {
     expect(raty.opt.score).toEqual(1);
   });
 
-  it('accepts data attribute', function () {
+  xit('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-score': 3 });
 
@@ -55,7 +49,7 @@ describe('#score', function () {
   });
 
   context('with negative number', function () {
-    it('does not set the score', function () {
+    xit('does not set the score', function () {
       // given
 
       // when
@@ -67,7 +61,7 @@ describe('#score', function () {
   });
 
   context('with :readOnly', function () {
-    it('becomes readOnly too', function () {
+    xit('becomes readOnly too', function () {
       // given
 
       // when
@@ -79,7 +73,7 @@ describe('#score', function () {
   });
 
   context('with value greater then numbers', function () {
-    it('receives the number of star as value', function () {
+    xit('receives the number of star as value', function () {
       // given
 
       // when

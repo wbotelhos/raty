@@ -15,7 +15,7 @@ describe('#cancel', function () {
     expect(Helper.extension(cancel.src)).toEqual('cancel-off.png');
   });
 
-  it('accepts data attribute', function () {
+  xit('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-cancel': true });
 
@@ -32,14 +32,13 @@ describe('#cancel', function () {
       Helper.create('#el');
 
       var raty = new Raty('#el', { cancelButton: true }).init();
-
       var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
-      cancel.trigger('mouseover');
+      Helper.trigger(cancel, 'mouseover');
 
       // then
-      expect(cancel.src).toEqual('../lib/images/cancel-on.png');
+      expect(Helper.extension(cancel.src)).toEqual('cancel-on.png');
     });
 
     xit('keeps the :cancelClass', function () {
@@ -51,14 +50,14 @@ describe('#cancel', function () {
       var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
-      cancel.trigger('mouseover');
+      Helper.trigger(cancel, 'mouseover');
 
       // then
       expect(cancel).toHaveClass(raty.opt.cancelClass);
     });
 
     context('with stars on', function () {
-      xit('turns off the stars', function () {
+      it('turns off the stars', function () {
         // given
         Helper.create('#el');
 
@@ -68,10 +67,10 @@ describe('#cancel', function () {
         var stars = raty.self.querySelector('img:not(.raty-cancel)');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(stars.src).toEqual('../lib/images/star-off.png');
+        expect(Helper.extension(stars.src)).toEqual('star-off.png');
       });
     });
 
@@ -85,7 +84,7 @@ describe('#cancel', function () {
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
         expect(cancel[0].tagName).toEqual('I');
@@ -100,7 +99,7 @@ describe('#cancel', function () {
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
         expect(cancel).toHaveClass(raty.opt.cancelClass);
@@ -115,7 +114,7 @@ describe('#cancel', function () {
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
         expect(cancel).toHaveClass('cancel-on-png');
@@ -130,7 +129,7 @@ describe('#cancel', function () {
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
         expect(cancel).not.toHaveAttr('src');
@@ -145,7 +144,7 @@ describe('#cancel', function () {
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
         expect(cancel).toHaveAttr('data-alt');
@@ -160,7 +159,7 @@ describe('#cancel', function () {
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
         expect(cancel).not.toHaveAttr('alt');
@@ -181,7 +180,7 @@ describe('#cancel', function () {
       cancel.trigger('mouseleave');
 
       // then
-      expect(cancel.src).toEqual('../lib/images/cancel-off.png');
+      expect(Helper.extension(cancel.src)).toEqual('cancel-off.png');
     });
 
     xit('keeps the :cancelClass', function () {
@@ -213,7 +212,7 @@ describe('#cancel', function () {
         cancel.trigger('mouseleave');
 
         // then
-        expect(stars.src).toEqual('../lib/images/star-on.png');
+        expect(Helper.extension(stars.src)).toEqual('star-on.png');
       });
     });
   });
@@ -233,7 +232,7 @@ describe('#cancel', function () {
       cancel.trigger('click').trigger('mouseleave');
 
       // then
-      expect(stars.src).toEqual('../lib/images/star-off.png');
+      expect(Helper.extension(stars.src)).toEqual('star-off.png');
       expect(input).toHaveValue('');
     });
   });
@@ -269,7 +268,7 @@ describe('#cancel', function () {
         cancel.trigger('click').trigger('mouseleave');
 
         // then
-        expect(stars.src).toEqual('../lib/images/star-on.png');
+        expect(Helper.extension(stars.src)).toEqual('star-on.png');
         expect(input).toHaveValue('5');
       });
     });

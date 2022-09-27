@@ -51,6 +51,12 @@ var Helper = {
     return extensions.length === 1 ? extensions[0] : extensions;
   },
 
+  last: function (items) {
+    var size = items.length;
+
+    return items[size - 1];
+  },
+
   mouseData: function (el, integer, decimal) {
     var stars = el.children('img:not(.raty-cancel)');
     var star = stars.eq(integer);
@@ -88,6 +94,10 @@ var Helper = {
     }
 
     return this._append(type, attrs);
+  },
+
+  trigger: function (el, eventName) {
+    el.dispatchEvent(new Event(eventName));
   },
 
   // private
