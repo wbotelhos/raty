@@ -1,15 +1,14 @@
-describe('options', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
+describe('options', function () {
+  beforeEach(function () {
+    // Helper.create('#el');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('has the right default values', function() {
+  it('has the right default values', function () {
     // given
-    var opt = $.raty;
+    var raty = new Raty('#el');
+
+    // when
+    var opt = raty.opt;
 
     // then
     expect(opt.cancelButton).toBeFalsy();
@@ -21,7 +20,7 @@ describe('options', function() {
     expect(opt.click).toBeUndefined();
     expect(opt.half).toBeFalsy();
     expect(opt.halfShow).toBeTruthy();
-    expect(opt.hints).toContain('bad', 'poor', 'regular', 'good', 'gorgeous');
+    expect(opt.hints).toEqual(['bad', 'poor', 'regular', 'good', 'gorgeous']);
     expect(opt.iconRange).toBeUndefined();
     expect(opt.mouseover).toBeUndefined();
     expect(opt.noRatedMsg).toEqual('Not rated yet!');

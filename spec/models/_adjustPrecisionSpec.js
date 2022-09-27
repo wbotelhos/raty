@@ -1,18 +1,18 @@
-describe('#_adjustPrecision', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
+describe('#_adjustPrecision', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  it ('sets *half to true', function() {
+  it('sets *half to true', function () {
     // given
-    var element  = this.el[0];
-    var options  = { half: false };
-    var instance = new $.raty.Raty(element, options);
+
+    var options = { half: false };
+    var raty = new Raty('#el', options);
 
     // when
-    instance._adjustPrecision();
+    raty._adjustPrecision();
 
     // then
-    expect(instance.opt.half).toBeTruthy();
+    expect(raty.opt.half).toBeTruthy();
   });
 });

@@ -3,6 +3,10 @@ function context(description, spec) {
   describe(description, spec);
 }
 
+afterEach(function () {
+  Helper.clear();
+});
+
 var Helper = {
   clear: function () {
     if (this.ids) {
