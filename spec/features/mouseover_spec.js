@@ -11,7 +11,7 @@ describe('#mouseover', function () {
       },
     });
 
-    var star = raty.self.querySelector('img:last-child');
+    var star = Helper.last(raty.self.querySelectorAll('img'));
 
     // when
     Helper.trigger(star, 'mouseover');
@@ -28,7 +28,7 @@ describe('#mouseover', function () {
       },
     });
 
-    var star = raty.self.querySelector('img:last-child');
+    var star = Helper.last(raty.self.querySelectorAll('img'));
 
     // when
     Helper.trigger(star, 'mouseover');

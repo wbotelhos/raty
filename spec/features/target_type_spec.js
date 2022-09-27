@@ -25,7 +25,7 @@ describe('#targetType', function () {
       // given
       var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'hint' });
 
-      var star = raty.self.querySelector('img:last-child');
+      var star = Helper.last(raty.self.querySelectorAll('img'));
 
       // when
       Helper.trigger(star, 'mouseover');
@@ -55,7 +55,7 @@ describe('#targetType', function () {
       // given
       var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'score' });
 
-      var star = raty.self.querySelector('img:last-child');
+      var star = Helper.last(raty.self.querySelectorAll('img'));
 
       // when
       Helper.trigger(star, 'mouseover');

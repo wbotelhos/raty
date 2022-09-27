@@ -11,7 +11,7 @@ describe('#mouseout', function () {
       },
     });
 
-    var star = raty.self.querySelector('img:last-child');
+    var star = Helper.last(raty.self.querySelectorAll('img'));
 
     // when
     star.trigger('mouseout');
@@ -30,7 +30,7 @@ describe('#mouseout', function () {
         },
       });
 
-      var star = raty.self.querySelector('img:last-child');
+      var star = Helper.last(raty.self.querySelectorAll('img'));
 
       // when
       star.trigger('mouseout');
@@ -50,7 +50,7 @@ describe('#mouseout', function () {
         },
       });
 
-      var star = raty.self.querySelector('img:last-child');
+      var star = Helper.last(raty.self.querySelectorAll('img'));
 
       // when
       star.trigger('mouseout');

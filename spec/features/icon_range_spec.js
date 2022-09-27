@@ -25,11 +25,11 @@ describe('#iconRange', function () {
     // then
     var stars = self.children('img');
 
-    expect(Helper.extension(stars.eq(0).src)).toEqual('star-off.png');
-    expect(Helper.extension(stars.eq(1).src)).toEqual('star-off.png');
-    expect(Helper.extension(stars.eq(2).src)).toEqual('cancel-off.png');
-    expect(Helper.extension(stars.eq(3).src)).toEqual('cancel-on.png');
-    expect(Helper.extension(stars.eq(4).src)).toEqual('star-half.png');
+    expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+    expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+    expect(Helper.extension(stars[2].src)).toEqual('cancel-off.png');
+    expect(Helper.extension(stars[3].src)).toEqual('cancel-on.png');
+    expect(Helper.extension(stars[4].src)).toEqual('star-half.png');
   });
 
   context('when off icon is not especified', function () {
@@ -48,7 +48,7 @@ describe('#iconRange', function () {
       });
 
       // then
-      expect(Helper.extension(self.children('img').eq(4).src)).toEqual('star-off.png');
+      expect(Helper.extension(self.children('img')[4].src)).toEqual('star-off.png');
     });
   });
 
@@ -66,14 +66,14 @@ describe('#iconRange', function () {
       var stars = self.children('img');
 
       // when
-      Helper.trigger(stars.eq(4), 'mouseover');
+      Helper.trigger(stars[4], 'mouseover');
 
       // then
-      expect(Helper.extension(stars.eq(0).src)).toEqual('star-on.png');
-      expect(Helper.extension(stars.eq(1).src)).toEqual('star-on.png');
-      expect(Helper.extension(stars.eq(2).src)).toEqual('star-on.png');
-      expect(Helper.extension(stars.eq(3).src)).toEqual('star-on.png');
-      expect(Helper.extension(stars.eq(4).src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
     });
 
     context('when on icon is not especified', function () {
@@ -90,14 +90,14 @@ describe('#iconRange', function () {
         var stars = self.children('img');
 
         // when
-        Helper.trigger(stars.eq(4), 'mouseover');
+        Helper.trigger(stars[4], 'mouseover');
 
         // then
-        expect(Helper.extension(stars.eq(0).src)).toEqual('star-on.png');
-        expect(Helper.extension(stars.eq(1).src)).toEqual('star-on.png');
-        expect(Helper.extension(stars.eq(2).src)).toEqual('star-on.png');
-        expect(Helper.extension(stars.eq(3).src)).toEqual('star-on.png');
-        expect(Helper.extension(stars.eq(4).src)).toEqual('star-on.png');
+        expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+        expect(Helper.extension(stars[1].src)).toEqual('star-on.png');
+        expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+        expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+        expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
       });
     });
   });
@@ -116,16 +116,16 @@ describe('#iconRange', function () {
       var stars = self.children('img');
 
       // when
-      Helper.trigger(stars.eq(4), 'mouseover');
+      Helper.trigger(stars[4], 'mouseover');
 
       self.trigger('mouseleave');
 
       // then
-      expect(Helper.extension(stars.eq(0).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(1).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(2).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(3).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(4).src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
     });
 
     xit('keeps the score value', function () {
@@ -141,7 +141,7 @@ describe('#iconRange', function () {
       });
 
       // when
-      Helper.trigger(self.children('img').eq(4), 'mouseover');
+      Helper.trigger(self.children('img')[4], 'mouseover');
 
       self.trigger('mouseleave');
 
@@ -160,7 +160,7 @@ describe('#iconRange', function () {
             { range: 5, on: 'star-on.png' },
           ],
         });
-        var img = self.children('img').eq(4);
+        var img = self.children('img')[4];
 
         // when
         Helper.trigger(img, 'mouseover');

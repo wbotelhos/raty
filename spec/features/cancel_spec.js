@@ -57,7 +57,7 @@ describe('#cancel', function () {
     });
 
     context('with stars on', function () {
-      it('turns off the stars', function () {
+      xit('turns off the stars', function () {
         // given
         Helper.create('#el');
 

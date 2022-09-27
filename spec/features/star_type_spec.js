@@ -48,17 +48,17 @@ describe('#starType', function () {
       var stars = raty.self.querySelector('img');
       var score = raty.self.querySelector('input');
 
-      expect(stars.eq(0).title).toEqual('bad');
-      expect(stars.eq(1).title).toEqual('poor');
-      expect(stars.eq(2).title).toEqual('regular');
-      expect(stars.eq(3).title).toEqual('good');
-      expect(stars.eq(4).title).toEqual('gorgeous');
+      expect(stars[0].title).toEqual('bad');
+      expect(stars[1].title).toEqual('poor');
+      expect(stars[2].title).toEqual('regular');
+      expect(stars[3].title).toEqual('good');
+      expect(stars[4].title).toEqual('gorgeous');
 
-      expect(stars.eq(0).alt).toEqual('1');
-      expect(stars.eq(1).alt).toEqual('2');
-      expect(stars.eq(2).alt).toEqual('3');
-      expect(stars.eq(3).alt).toEqual('4');
-      expect(stars.eq(4).alt).toEqual('5');
+      expect(stars[0].alt).toEqual('1');
+      expect(stars[1].alt).toEqual('2');
+      expect(stars[2].alt).toEqual('3');
+      expect(stars[3].alt).toEqual('4');
+      expect(stars[4].alt).toEqual('5');
 
       expect(Helper.extension(stars.src)).toEqual('star-off.png');
       expect(score.type).toEqual('hidden');
@@ -88,17 +88,17 @@ describe('#starType', function () {
       var stars = raty.self.querySelector('i');
       var score = raty.self.querySelector('input');
 
-      expect(stars.eq(0).title).toEqual('bad');
-      expect(stars.eq(1).title).toEqual('poor');
-      expect(stars.eq(2).title).toEqual('regular');
-      expect(stars.eq(3).title).toEqual('good');
-      expect(stars.eq(4).title).toEqual('gorgeous');
+      expect(stars[0].title).toEqual('bad');
+      expect(stars[1].title).toEqual('poor');
+      expect(stars[2].title).toEqual('regular');
+      expect(stars[3].title).toEqual('good');
+      expect(stars[4].title).toEqual('gorgeous');
 
-      expect(stars.eq(0).data - alt).toEqual('1');
-      expect(stars.eq(1).data - alt).toEqual('2');
-      expect(stars.eq(2).data - alt).toEqual('3');
-      expect(stars.eq(3).data - alt).toEqual('4');
-      expect(stars.eq(4).data - alt).toEqual('5');
+      expect(stars[0].data - alt).toEqual('1');
+      expect(stars[1].data - alt).toEqual('2');
+      expect(stars[2].data - alt).toEqual('3');
+      expect(stars[3].data - alt).toEqual('4');
+      expect(stars[4].data - alt).toEqual('5');
 
       expect(stars).not.toHaveAttr('alt');
       expect(stars).not.toHaveAttr('src');

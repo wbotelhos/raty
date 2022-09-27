@@ -14,22 +14,22 @@ describe('#targetScore', function () {
 
   xit('avoids the creation of default score field', function () {
     // given
-    var self = $('#element');
+    var raty = new Raty('#element', { targetScore: '#score' });
 
     // when
-    self.raty({ targetScore: '#score' });
+    raty.init();
 
     // then
-    expect(self.children('input')).not.toExist();
+    expect(raty.self.querySelector('input')).toEqual(null);
   });
 
   xit('changes the place where score will be setted', function () {
     // given
-    var self = $('#element').raty({ targetScore: '#score' });
-    var stars = self.children('img');
+    var raty = new Raty('#element', { targetScore: '#score' }).init();
+    var star = raty.self.querySelector('img');
 
     // when
-    stars.eq(0).trigger('click');
+    Helper.trigger(star, 'click');
 
     // then
     expect(this.scoreField).toHaveValue('1');

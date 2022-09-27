@@ -1,12 +1,12 @@
 describe('#target', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   context('on mouseover', function () {
     context('with callback', function () {
       beforeEach(function () {
-        this.el[0].setAttribute('data-target', '#target');
+        this.el[0].setAttribute('data-target-selector', '#target');
 
         this.target = Helper.target('#target');
       });
@@ -15,17 +15,19 @@ describe('#target', function () {
         // given
         var raty = new Raty('#el', {
           target: function () {
-            return this.getAttribute('data-target');
+            return this.getAttribute('data-target-selector');
           },
-        });
+        }).init();
 
-        var star = raty.self.querySelector('img:last-child');
+        var star = Helper.last(raty.self.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
 
         // then
-        expect(this.target).toHaveHtml('gorgeous');
+        debugger;
+
+        expect(this.target[0].innerHTML).toEqual('gorgeous');
       });
     });
 
@@ -36,9 +38,8 @@ describe('#target', function () {
 
       xit('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id });
-
-        var star = raty.self.querySelector('img:last-child');
+        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+        var star = Helper.last(raty.self.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -55,9 +56,8 @@ describe('#target', function () {
 
       xit('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id });
-
-        var star = raty.self.querySelector('img:last-child');
+        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+        var star = Helper.last(raty.self.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -74,9 +74,8 @@ describe('#target', function () {
 
       xit('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id });
-
-        var star = raty.self.querySelector('img:last-child');
+        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+        var star = Helper.last(raty.self.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -93,9 +92,8 @@ describe('#target', function () {
 
       xit('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id });
-
-        var star = raty.self.querySelector('img:last-child');
+        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+        var star = Helper.last(raty.self.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -111,17 +109,19 @@ describe('#target', function () {
           this.target = Helper.target('#target');
         });
 
-        xit('gets clear', function () {
+        it('gets clear', function () {
           // given
-          var raty = new Raty('#el', { target: '#' + this.target[0].id });
-
-          var star = raty.self.querySelector('img:last-child');
+          var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+          var star = raty.self.querySelector('img');
 
           // when
-          star.trigger('mouseover').trigger('mouseout');
+          Helper.trigger(star, 'mouseover');
+          Helper.trigger(star, 'mouseout');
 
           // then
-          expect(this.target).toBeEmpty();
+          debugger;
+
+          expect(this.target[0].innerHTML).toEqual('');
         });
       });
 
@@ -132,9 +132,9 @@ describe('#target', function () {
 
         xit('gets clear', function () {
           // given
-          var raty = new Raty('#el', { target: '#' + this.target[0].id });
+          var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
-          var star = raty.self.querySelector('img:last-child');
+          var star = Helper.last(raty.self.querySelectorAll('img'));
 
           // when
           star.trigger('mouseover').trigger('mouseout');
@@ -151,9 +151,9 @@ describe('#target', function () {
 
         xit('gets clear', function () {
           // given
-          var raty = new Raty('#el', { target: '#' + this.target[0].id });
+          var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
-          var star = raty.self.querySelector('img:last-child');
+          var star = Helper.last(raty.self.querySelectorAll('img'));
 
           // when
           star.trigger('mouseover').trigger('mouseout');
@@ -170,9 +170,9 @@ describe('#target', function () {
 
         xit('gets clear', function () {
           // given
-          var raty = new Raty('#el', { target: '#' + this.target[0].id });
+          var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
-          var star = raty.self.querySelector('img:last-child');
+          var star = Helper.last(raty.self.querySelectorAll('img'));
 
           // when
           star.trigger('mouseover').trigger('mouseout');
@@ -192,9 +192,9 @@ describe('#target', function () {
 
           xit('gets clear', function () {
             // given
-            var raty = new Raty('#el', { target: '#' + this.target[0].id });
+            var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
-            var star = raty.self.querySelector('img:last-child');
+            var star = Helper.last(raty.self.querySelectorAll('img'));
 
             // when
             star.trigger('mouseover').trigger('click').trigger('mouseout');
@@ -211,9 +211,9 @@ describe('#target', function () {
 
           xit('gets clear', function () {
             // given
-            var raty = new Raty('#el', { target: '#' + this.target[0].id });
+            var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
-            var star = raty.self.querySelector('img:last-child');
+            var star = Helper.last(raty.self.querySelectorAll('img'));
 
             // when
             star.trigger('mouseover').trigger('click').trigger('mouseout');
@@ -230,9 +230,9 @@ describe('#target', function () {
 
           xit('gets clear', function () {
             // given
-            var raty = new Raty('#el', { target: '#' + this.target[0].id });
+            var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
-            var star = raty.self.querySelector('img:last-child');
+            var star = Helper.last(raty.self.querySelectorAll('img'));
 
             // when
             star.trigger('mouseover').trigger('click').trigger('mouseout');
@@ -249,9 +249,9 @@ describe('#target', function () {
 
           xit('gets clear', function () {
             // given
-            var raty = new Raty('#el', { target: '#' + this.target[0].id });
+            var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
-            var star = raty.self.querySelector('img:last-child');
+            var star = Helper.last(raty.self.querySelectorAll('img'));
 
             // when
             star.trigger('mouseover').trigger('click').trigger('mouseout');

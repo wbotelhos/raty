@@ -15,14 +15,14 @@ describe('#single', function () {
       var stars = self.children('img');
 
       // when
-      Helper.trigger(stars.eq(2), 'mouseover');
+      Helper.trigger(stars[2], 'mouseover');
 
       // then
-      expect(Helper.extension(stars.eq(0).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(1).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(2).src)).toEqual('star-on.png');
-      expect(Helper.extension(stars.eq(3).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(4).src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
     });
 
     context('with :iconRange', function () {
@@ -40,14 +40,14 @@ describe('#single', function () {
         var stars = self.children('img');
 
         // when
-        Helper.trigger(stars.eq(3), 'mouseover');
+        Helper.trigger(stars[3], 'mouseover');
 
         // then
-        expect(Helper.extension(stars.eq(0).src)).toEqual('star-off.png');
-        expect(Helper.extension(stars.eq(1).src)).toEqual('star-off.png');
-        expect(Helper.extension(stars.eq(2).src)).toEqual('star-off.png');
-        expect(Helper.extension(stars.eq(3).src)).toEqual('star-on.png');
-        expect(Helper.extension(stars.eq(4).src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+        expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
       });
     });
   });
@@ -59,14 +59,14 @@ describe('#single', function () {
       var stars = self.children('img');
 
       // when
-      stars.eq(2).trigger('mouseover').trigger('click');
+      stars[2].trigger('mouseover').trigger('click');
 
       // then
-      expect(Helper.extension(stars.eq(0).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(1).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(2).src)).toEqual('star-on.png');
-      expect(Helper.extension(stars.eq(3).src)).toEqual('star-off.png');
-      expect(Helper.extension(stars.eq(4).src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
     });
 
     context('on mouseout', function () {
@@ -76,14 +76,14 @@ describe('#single', function () {
         var stars = self.children('img');
 
         // when
-        stars.eq(2).trigger('mouseover').trigger('click').trigger('mouseleave');
+        stars[2].trigger('mouseover').trigger('click').trigger('mouseleave');
 
         // then
-        expect(Helper.extension(stars.eq(0).src)).toEqual('star-off.png');
-        expect(Helper.extension(stars.eq(1).src)).toEqual('star-off.png');
-        expect(Helper.extension(stars.eq(2).src)).toEqual('star-on.png');
-        expect(Helper.extension(stars.eq(3).src)).toEqual('star-off.png');
-        expect(Helper.extension(stars.eq(4).src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+        expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
       });
 
       context('and :iconRange', function () {
@@ -101,14 +101,14 @@ describe('#single', function () {
           var stars = self.children('img');
 
           // when
-          stars.eq(3).trigger('mouseover').trigger('click').trigger('mouseleave');
+          stars[3].trigger('mouseover').trigger('click').trigger('mouseleave');
 
           // then
-          expect(Helper.extension(stars.eq(0).src)).toEqual('a-off.png');
-          expect(Helper.extension(stars.eq(1).src)).toEqual('a-off.png');
-          expect(Helper.extension(stars.eq(2).src)).toEqual('b-off.png');
-          expect(Helper.extension(stars.eq(3).src)).toEqual('c.png');
-          expect(Helper.extension(stars.eq(4).src)).toEqual('d-off.png');
+          expect(Helper.extension(stars[0].src)).toEqual('a-off.png');
+          expect(Helper.extension(stars[1].src)).toEqual('a-off.png');
+          expect(Helper.extension(stars[2].src)).toEqual('b-off.png');
+          expect(Helper.extension(stars[3].src)).toEqual('c.png');
+          expect(Helper.extension(stars[4].src)).toEqual('d-off.png');
         });
       });
     });
