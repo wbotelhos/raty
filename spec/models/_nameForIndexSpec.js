@@ -1,99 +1,96 @@
-describe('#_nameForIndex', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
+describe('#_nameForIndex', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  context('when score is null', function() {
-    it ('returns :starOff', function() {
+  context('when score is null', function () {
+    it('returns :starOff', function () {
       // given
-      var element  = this.el[0];
-      var options  = {};
-      var index    = 'double';
-      var instance = new $.raty.Raty(element, options);
 
-      instance.opt.score = null;
+      var options = {};
+      var index = 'double';
+      var raty = new Raty('#el', options);
+
+      raty.opt.score = null;
 
       // when
-      var name = instance._nameForIndex(index);
+      var name = raty._nameForIndex(index);
 
       // then
       expect(name).toEqual('starOff');
     });
   });
 
-  context('when score is undefined', function() {
-    it ('returns :starOff', function() {
+  context('when score is undefined', function () {
+    it('returns :starOff', function () {
       // given
-      var element  = this.el[0];
-      var options  = {};
-      var index    = 'double';
-      var instance = new $.raty.Raty(element, options);
 
-      delete instance.opt.score;
+      var options = {};
+      var index = 'double';
+      var raty = new Raty('#el', options);
+
+      delete raty.opt.score;
 
       // when
-      var name = instance._nameForIndex(index);
+      var name = raty._nameForIndex(index);
 
       // then
       expect(name).toEqual('starOff');
     });
   });
 
-  context('when has score', function() {
-    context('and score is less than index', function() {
+  context('when has score', function () {
+    context('and score is less than index', function () {
       var index = 2;
       var score = 1;
 
-      it ('returns :starOff', function() {
+      it('returns :starOff', function () {
         // given
-        var element  = this.el[0];
-        var options  = {};
-        var instance = new $.raty.Raty(element, options);
+        var options = {};
+        var raty = new Raty('#el', options);
 
-        instance.opt.score = score;
+        raty.opt.score = score;
 
         // when
-        var name = instance._nameForIndex(index);
+        var name = raty._nameForIndex(index);
 
         // then
         expect(name).toEqual('starOff');
       });
     });
 
-    context('and score is equal index', function() {
+    context('and score is equal index', function () {
       var index = 1;
       var score = 1;
 
-      it ('returns :starOff', function() {
+      it('returns :starOff', function () {
         // given
-        var element  = this.el[0];
-        var options  = {};
-        var instance = new $.raty.Raty(element, options);
+        var options = {};
+        var raty = new Raty('#el', options);
 
-        instance.opt.score = score;
+        raty.opt.score = score;
 
         // when
-        var name = instance._nameForIndex(index);
+        var name = raty._nameForIndex(index);
 
         // then
         expect(name).toEqual('starOn');
       });
     });
 
-    context('and score is greater then index', function() {
+    context('and score is greater then index', function () {
       var index = 1;
       var score = 2;
 
-      it ('returns :starOff', function() {
+      it('returns :starOff', function () {
         // given
-        var element  = this.el[0];
-        var options  = {};
-        var instance = new $.raty.Raty(element, options);
+        var options = {};
+        var raty = new Raty('#el', options);
 
-        instance.opt.score = score;
+        raty.opt.score = score;
 
         // when
-        var name = instance._nameForIndex(index);
+        var name = raty._nameForIndex(index);
 
         // then
         expect(name).toEqual('starOn');

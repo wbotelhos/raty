@@ -1,35 +1,41 @@
-describe('#_adjustStarName', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
+describe('#_adjustStarName', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  it ('set *path to empty', function() {
+  it('set *path to empty', function () {
     // given
-    var element  = this.el[0];
-    var options  = { path: 'path' };
-    var instance = new $.raty.Raty(element, options);
+
+    var options = { path: 'path' };
+    var raty = new Raty('#el', options);
 
     // when
-    instance._adjustStarName();
+    raty._adjustStarName();
 
     // then
-    expect(instance.opt.path).toEqual('');
+    expect(raty.opt.path).toEqual('');
   });
 
-  it ('replaces "." to "-" on stars name', function() {
+  it('replaces "." to "-" on stars name', function () {
     // given
-    var element  = this.el[0];
-    var options  = { cancelOff: 'x.x', cancelOn: 'x.x', starHalf: 'x.x', starOff: 'x.x', starOn: 'x.x' };
-    var instance = new $.raty.Raty(element, options);
+
+    var options = {
+      cancelOff: 'x.x',
+      cancelOn: 'x.x',
+      starHalf: 'x.x',
+      starOff: 'x.x',
+      starOn: 'x.x',
+    };
+    var raty = new Raty('#el', options);
 
     // when
-    instance._adjustStarName();
+    raty._adjustStarName();
 
     // then
-    expect(instance.opt.cancelOff).toEqual('x-x');
-    expect(instance.opt.cancelOn).toEqual('x-x');
-    expect(instance.opt.starHalf).toEqual('x-x');
-    expect(instance.opt.starOff).toEqual('x-x');
-    expect(instance.opt.starOn).toEqual('x-x');
+    expect(raty.opt.cancelOff).toEqual('x-x');
+    expect(raty.opt.cancelOn).toEqual('x-x');
+    expect(raty.opt.starHalf).toEqual('x-x');
+    expect(raty.opt.starOff).toEqual('x-x');
+    expect(raty.opt.starOn).toEqual('x-x');
   });
 });

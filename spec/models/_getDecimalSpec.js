@@ -1,53 +1,51 @@
-describe('#_getDecimal', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
+describe('#_getDecimal', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  context('when number is an integer', function() {
+  context('when number is an integer', function () {
     var number = 0;
 
-    it ('returns the first fraction', function() {
+    it('returns the first fraction', function () {
       // given
-      var element  = this.el[0];
-      var options  = {};
-      var instance = new $.raty.Raty(element, options);
+
+      var options = {};
+      var raty = new Raty('#el', options);
 
       // when
-      var decimal = instance._getDecimal(number, 1);
+      var decimal = raty._getDecimal(number, 1);
 
       // then
       expect(decimal).toEqual(0);
     });
   });
 
-  context('when number is a float', function() {
-    context('with 1 fraction', function() {
+  context('when number is a float', function () {
+    context('with 1 fraction', function () {
       var number = 0.1;
 
-      it ('returns the first fraction', function() {
+      it('returns the first fraction', function () {
         // given
-        var element  = this.el[0];
-        var options  = {};
-        var instance = new $.raty.Raty(element, options);
+        var options = {};
+        var raty = new Raty('#el', options);
 
         // when
-        var decimal = instance._getDecimal(number, 1);
+        var decimal = raty._getDecimal(number, 1);
 
         // then
         expect(decimal).toEqual(1);
       });
 
-      context('when has four 9 consecutives', function() {
+      context('when has four 9 consecutives', function () {
         var number = 0.19999;
 
-        it ('increments the first decimal', function() {
+        it('increments the first decimal', function () {
           // given
-          var element  = this.el[0];
-          var options  = {};
-          var instance = new $.raty.Raty(element, options);
+          var options = {};
+          var raty = new Raty('#el', options);
 
           // when
-          var decimal = instance._getDecimal(number, 1);
+          var decimal = raty._getDecimal(number, 1);
 
           // then
           expect(decimal).toEqual(2);
@@ -55,33 +53,31 @@ describe('#_getDecimal', function() {
       });
     });
 
-    context('with 2 fraction', function() {
+    context('with 2 fraction', function () {
       var number = 0.12;
 
-      it ('returns the first fraction', function() {
+      it('returns the first fraction', function () {
         // given
-        var element  = this.el[0];
-        var options  = {};
-        var instance = new $.raty.Raty(element, options);
+        var options = {};
+        var raty = new Raty('#el', options);
 
         // when
-        var decimal = instance._getDecimal(number, 2);
+        var decimal = raty._getDecimal(number, 2);
 
         // then
         expect(decimal).toEqual(12);
       });
 
-      context('when has four 9 consecutives', function() {
+      context('when has four 9 consecutives', function () {
         var number = 0.19999;
 
-        it ('increments the first decimal', function() {
+        it('increments the first decimal', function () {
           // given
-          var element  = this.el[0];
-          var options  = {};
-          var instance = new $.raty.Raty(element, options);
+          var options = {};
+          var raty = new Raty('#el', options);
 
           // when
-          var decimal = instance._getDecimal(number, 2);
+          var decimal = raty._getDecimal(number, 2);
 
           // then
           expect(decimal).toEqual(20);

@@ -1,48 +1,50 @@
-describe('#_createStars', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
+describe('#_createStars', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  context('with :number as 3', function() {
-    it ('creates 3 stars', function() {
+  context('with :number as 3', function () {
+    it('creates 3 stars', function () {
       // given
-      var element  = this.el[0];
-      var options  = { number: 3 };
-      var instance = new $.raty.Raty(element, options);
+
+      var options = { number: 3 };
+      var raty = new Raty('#el', options);
 
       // when
-      instance._createStars();
+      raty._createStars();
 
       // then
-      expect(instance.self.children().length).toEqual(3);
+      expect(raty.self.querySelectorAll(raty.opt.starType).length).toEqual(3);
     });
 
-    it ('sets the right attributes', function() {
+    it('sets the right attributes', function () {
       // given
-      var element  = this.el[0];
-      var options  = {};
-      var instance = new $.raty.Raty(element, options);
 
-      spyOn($.raty.Raty.prototype, '_attributesForIndex').and.returnValue({ alt: 'alt' });
+      var options = {};
+      var raty = new Raty('#el', options);
+
+      spyOn(raty, '_attributesForIndex').and.returnValue({
+        alt: 'alt',
+      });
 
       // when
-      instance._createStars();
+      raty._createStars();
 
       // then
-      expect(instance.self.children()).toHaveAttr('alt', 'alt');
+      expect(raty.self.querySelectorAll(raty.opt.starType)).toHaveAttr('alt', 'alt');
     });
 
-    it ('uses the :starType to build the star', function() {
+    it('uses the :starType to build the star', function () {
       // given
-      var element  = this.el[0];
-      var options  = { starType: 'li' };
-      var instance = new $.raty.Raty(element, options);
+
+      var options = { starType: 'li' };
+      var raty = new Raty('#el', options);
 
       // when
-      instance._createStars();
+      raty._createStars();
 
       // then
-      var stars = instance.self.children();
+      var stars = raty.self.querySelectorAll(raty.opt.starType);
 
       expect(stars[0].tagName).toEqual('LI');
       expect(stars[1].tagName).toEqual('LI');
@@ -51,53 +53,51 @@ describe('#_createStars', function() {
       expect(stars[4].tagName).toEqual('LI');
     });
 
-    context('with :space as true', function() {
-      it ('puts one space between the stars', function() {
+    context('with :space as true', function () {
+      it('puts one space between the stars', function () {
         // given
-        var element  = this.el[0];
-        var options  = { number: 2, space: true };
-        var instance = new $.raty.Raty(element, options);
-        var regex    = /<[a-zA-Z]+>&nbsp;<[a-zA-Z]+>/;
+        var options = { number: 2, space: true };
+        var raty = new Raty('#el', options);
+        var regex = /.+&nbsp;.+/;
 
-        spyOn($.raty.Raty.prototype, '_attributesForIndex').and.returnValue({});
+        spyOn(raty, '_attributesForIndex').and.returnValue({});
 
         // when
-        instance._createStars();
+        raty._createStars();
 
         // then
-        expect(regex.test(instance.self.html())).toBeTruthy();
+        expect(regex.test(raty.self.innerHTML)).toEqual(true);
       });
     });
 
-    context('with :space as false', function() {
-      it ('does not puts space between the stars', function() {
+    context('with :space as false', function () {
+      it('does not puts space between the stars', function () {
         // given
-        var element  = this.el[0];
-        var options  = { number: 2, space: true };
-        var instance = new $.raty.Raty(element, options);
-        var regex    = /<[a-zA-Z]+>&nbsp;<[a-zA-Z]+>/;
+        var options = { number: 2, space: true };
+        var raty = new Raty('#el', options);
+        var regex = /.+&nbsp;.+/;
 
-        spyOn($.raty.Raty.prototype, '_attributesForIndex').and.returnValue({});
+        spyOn(raty, '_attributesForIndex').and.returnValue({});
 
         // when
-        instance._createStars();
+        raty._createStars();
 
         // then
-        expect(regex.test(instance.self.html())).toBeTruthy();
+        expect(regex.test(raty.self.innerHTML)).toEqual(true);
       });
     });
 
-    it ('saves the stars on instance', function() {
+    it('saves the stars on raty', function () {
       // given
-      var element  = this.el[0];
-      var options  = {};
-      var instance = new $.raty.Raty(element, options);
+
+      var options = {};
+      var raty = new Raty('#el', options);
 
       // when
-      instance._createStars();
+      raty._createStars();
 
       // then
-      expect(instance.stars).toEqual(instance.self.children());
+      expect(raty.stars).toEqual(raty.self.querySelectorAll(raty.opt.starType));
     });
   });
 });
