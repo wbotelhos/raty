@@ -1,37 +1,37 @@
-describe('#click', function() {
-  beforeEach(function() {
+describe('#click', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
     $('body').append('<div id="element"></div>');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     $('#element').remove();
     $('#hint').remove();
   });
 
-  it ('clicks on star', function() {
+  it('clicks on star', function () {
     // given
     var self = $('#element').raty({
-      click: function() {
+      click: function () {
         $(this).data('clicked', true);
-      }
+      },
     });
 
     // when
     self.data('raty').click(1);
 
     // then
-    expect(self.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
+    expect(self.children('img').src).toEqual('../lib/images/star-on.png');
     expect(self.data('clicked')).toBeTruthy();
   });
 
-  it ('receives the score', function() {
+  it('receives the score', function () {
     // given
     var self = $('#element').raty({
-      click: function(score) {
+      click: function (score) {
         this.result = score;
-      }
+      },
     });
 
     // when
@@ -41,12 +41,12 @@ describe('#click', function() {
     expect(self[0].result).toEqual(1);
   });
 
-  it ('receives the event', function() {
+  it('receives the event', function () {
     // given
     var self = $('#element').raty({
-      click: function(score, evt) {
+      click: function (score, evt) {
         $(this).data('evt', evt);
-      }
+      },
     });
 
     // when
@@ -56,8 +56,8 @@ describe('#click', function() {
     expect(self.data('evt').type).toEqual('click');
   });
 
-  describe('with :readOnly', function() {
-    it ('does not set the score', function() {
+  describe('with :readOnly', function () {
+    it('does not set the score', function () {
       // given
       var self = $('#element').raty({ readOnly: true });
 
@@ -65,35 +65,37 @@ describe('#click', function() {
       self.data('raty').click(1);
 
       // then
-      expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
+      expect(self.children('img').src).toEqual('../lib/images/star-off.png');
     });
   });
 
-  context('without :click', function() {
-    it('ignores the callback', function() {
+  context('without :click', function () {
+    it('ignores the callback', function () {
       // given
       var self = $('#element').raty();
 
       // when
-      var lambda = function() { self.data('raty').click(1); };
+      var lambda = function () {
+        self.data('raty').click(1);
+      };
 
       // then
       expect(lambda).not.toThrow();
     });
   });
 
-  context('with :target', function() {
-    beforeEach(function() {
+  context('with :target', function () {
+    beforeEach(function () {
       $('body').append('<div id="hint"></div>');
     });
 
-    context('and :targetKeep', function() {
-      it ('sets the score on target', function() {
+    context('and :targetKeep', function () {
+      it('sets the score on target', function () {
         // given
         var self = $('#element').raty({
-          target    : '#hint',
+          target: '#hint',
           targetKeep: true,
-          click     : function() { }
+          click: function () {},
         });
 
         // when

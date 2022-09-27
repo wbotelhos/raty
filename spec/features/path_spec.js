@@ -1,108 +1,108 @@
-describe('#path', function() {
-  beforeEach(function() {
+describe('#path', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  it ('changes the path', function() {
+  it('changes the path', function () {
     // given
 
     // when
-    this.el.raty({ path: '../demo/images' });
+    var raty = new Raty('#el', { path: '../demo/images' });
 
     // then
-    expect(this.el.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
+    expect(raty.self.querySelector('img').src).toEqual('../demo/images/star-off.png');
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    var el = Helper._append('div', { 'data-path': 'custom' });
+    Helper._append('div', { 'data-path': 'custom' });
 
     // when
-    el.raty();
+    var raty = new Raty('#el');
 
     // then
-    expect(el.data('raty').opt.path).toEqual('custom/');
+    expect(raty.opt.path).toEqual('custom/');
   });
 
-  context('without slash on the final', function() {
-    it ('receives the slash', function() {
+  context('without slash on the final', function () {
+    it('receives the slash', function () {
       // given
 
       // when
-      this.el.raty({ path: '../demo/images' });
+      var raty = new Raty('#el', { path: '../demo/images' });
 
       // then
-      expect(this.el.data('raty').opt.path).toEqual('../demo/images/');
+      expect(raty.opt.path).toEqual('../demo/images/');
     });
   });
 
-  context('with slash on the final', function() {
-    it ('is keeped', function() {
+  context('with slash on the final', function () {
+    it('is keeped', function () {
       // given
 
       // when
-      this.el.raty({ path: '../demo/images/' });
+      var raty = new Raty('#el', { path: '../demo/images/' });
 
       // then
-      expect(this.el.data('raty').opt.path).toEqual('../demo/images/');
+      expect(raty.opt.path).toEqual('../demo/images/');
     });
   });
 
-  context('as null', function() {
-    it ('replace to an empty string', function() {
+  context('as null', function () {
+    it('replace to an empty string', function () {
       // given
 
       // when
-      this.el.raty({ path: null });
+      var raty = new Raty('#el', { path: null });
 
       // then
-      expect(this.el.children('img')).toHaveAttr('src', 'star-off.png');
+      expect(raty.self.querySelector('img').src).toEqual('star-off.png');
     });
   });
 
-  context('as undefined', function() {
-    beforeEach(function() {
+  context('as undefined', function () {
+    beforeEach(function () {
       $.raty.path = undefined;
     });
 
-    it ('replace to an empty string', function() {
+    it('replace to an empty string', function () {
       // given
 
       // when
-      this.el.raty();
+      var raty = new Raty('#el');
 
       // then
-      expect(this.el.children('img')).toHaveAttr('src', 'star-off.png');
+      expect(raty.self.querySelector('img').src).toEqual('star-off.png');
     });
   });
 
-  context('with :cancel', function() {
-    it ('changes the path', function() {
+  context('with :cancel', function () {
+    it('changes the path', function () {
       // given
 
       // when
-      this.el.raty({ cancelButton: true, path: '../demo/images' });
+      var raty = new Raty('#el', { cancelButton: true, path: '../demo/images' });
 
       // then
-      expect(this.el.children('.raty-cancel')).toHaveAttr('src', '../demo/images/cancel-off.png');
+      expect(raty.self.querySelectorAll('.raty-cancel').src).toEqual('../demo/images/cancel-off.png');
     });
   });
 
-  context('with :iconRange', function() {
-    it ('changes the path', function() {
+  context('with :iconRange', function () {
+    it('changes the path', function () {
       // given
 
       // when
-      this.el.raty({ iconRange: [{ range: 1 }], path: '../demo/images' });
+      var raty = new Raty('#el', { iconRange: [{ range: 1 }], path: '../demo/images' });
 
       // then
-      expect(this.el.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
+      expect(raty.self.querySelector('img').src).toEqual('../demo/images/star-off.png');
     });
   });
 });

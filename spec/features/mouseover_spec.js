@@ -1,23 +1,23 @@
-describe('#mouseover', function() {
-  beforeEach(function() {
+describe('#mouseover', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  it ('receives the score as int', function() {
+  it('receives the score as int', function () {
     // given
-    this.el.raty({
-      mouseover: function(score) {
+    var raty = new Raty('#el', {
+      mouseover: function (score) {
         this.result = score;
-      }
+      },
     });
 
-    var star = this.el.children('img:last');
+    var star = raty.self.querySelector('img:last');
 
     // when
     star.trigger('mouseover');
@@ -26,15 +26,15 @@ describe('#mouseover', function() {
     expect(this.el[0].result).toEqual(5);
   });
 
-  it ('receives the mouse event', function() {
+  it('receives the mouse event', function () {
     // given
-    this.el.raty({
-      mouseover: function(_, evt) {
+    var raty = new Raty('#el', {
+      mouseover: function (_, evt) {
         this.result = evt;
-      }
+      },
     });
 
-    var star = this.el.children('img:last');
+    var star = raty.self.querySelector('img:last');
 
     // when
     star.trigger('mouseover');
@@ -43,17 +43,17 @@ describe('#mouseover', function() {
     expect(this.el[0].result.type).toEqual('mouseover');
   });
 
-  context('with :cancel', function() {
-    it ('receives null as score', function() {
+  context('with :cancel', function () {
+    it('receives null as score', function () {
       // given
-      this.el.raty({
+      var raty = new Raty('#el', {
         cancelButton: true,
-        mouseover: function(score) {
+        mouseover: function (score) {
           this.result = score;
-        }
+        },
       });
 
-      var cancel = this.el.children('.raty-cancel');
+      var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
       cancel.trigger('mouseover');

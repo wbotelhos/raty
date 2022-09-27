@@ -1,31 +1,23 @@
-describe('#cancelHint', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-  });
-
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('changes the cancel hint', function() {
+describe('#cancelHint', function () {
+  it('changes the cancel hint', function () {
     // given
-    var el = Helper.create('#el');
+    Helper.create('#el');
 
     // when
-    el.raty({ cancelButton: true, cancelHint: 'double' });
+    var raty = new Raty('#el', { cancelButton: true, cancelHint: 'double', path: '../lib/images' }).init();
 
     // then
-    expect(el.children('.raty-cancel')).toHaveAttr('title', 'double');
+    expect(raty.self.querySelector('.raty-cancel').title).toEqual('double');
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    var el = Helper._append('div', { 'data-cancel-hint': 'custom' });
+    Helper._append('div', { 'data-cancel-hint': 'custom' });
 
     // when
-    el.raty();
+    var raty = new Raty('[data-cancel-hint]', { path: '../lib/images' }).init();
 
     // then
-    expect(el.data('raty').opt.cancelHint).toEqual('custom');
+    expect(raty.opt.cancelHint).toEqual('custom');
   });
 });

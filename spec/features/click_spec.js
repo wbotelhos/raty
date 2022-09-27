@@ -1,23 +1,23 @@
-describe('#click', function() {
-  beforeEach(function() {
+describe('#click', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  it ('is called on star click', function() {
+  it('is called on star click', function () {
     // given
-    this.el.raty({
-      click: function() {
+    var raty = new Raty('#el', {
+      click: function () {
         this.called = true;
-      }
-    });
+      },
+    }).init();
 
-    var star = this.el.children('img:last');
+    var star = raty.self.querySelector('img:last');
 
     // when
     star.trigger('click');
@@ -26,15 +26,15 @@ describe('#click', function() {
     expect(this.el[0].called).toBeTruthy();
   });
 
-  it ('has "this" as context', function() {
+  it('has "this" as context', function () {
     // given
-    this.el.raty({
-      click: function() {
+    var raty = new Raty('#el', {
+      click: function () {
         this.result = this;
-      }
-    });
+      },
+    }).init();
 
-    var star = this.el.children('img:last');
+    var star = raty.self.querySelector('img:last');
 
     // when
     star.trigger('click');
@@ -44,15 +44,15 @@ describe('#click', function() {
     expect(this.el[0].result).toBe(this.el[0]);
   });
 
-  it ('receives the score as argument', function() {
+  it('receives the score as argument', function () {
     // given
-    this.el.raty({
-      click: function(score) {
+    var raty = new Raty('#el', {
+      click: function (score) {
         this.result = score;
-      }
-    });
+      },
+    }).init();
 
-    var star = this.el.children('img:last');
+    var star = raty.self.querySelector('img:last');
 
     // when
     star.trigger('click');
@@ -61,121 +61,121 @@ describe('#click', function() {
     expect(this.el[0].result).toEqual(5);
   });
 
-  context('with return as undefined', function() {
-    it ('executes click behavior', function() {
+  context('with return as undefined', function () {
+    it('executes click behavior', function () {
       // given
-      this.el.raty({
-        click: function() {}
-      });
+      var raty = new Raty('#el', {
+        click: function () {},
+      }).init();
 
-      var star = this.el.children('img:last');
+      var star = raty.self.querySelector('img:last');
 
       // when
       star.trigger('click');
 
       // then
-      expect(this.el.children('input')).toHaveValue('5');
+      expect(raty.self.querySelector('input')).toHaveValue('5');
     });
 
-    it ('turns on the stars', function() {
+    it('turns on the stars', function () {
       // given
-      this.el.raty({
-        click: function() {}
-      });
+      var raty = new Raty('#el', {
+        click: function () {},
+      }).init();
 
-      var stars = this.el.children('img');
+      var stars = raty.self.querySelector('img');
 
       // when
       stars.first().trigger('click');
 
       // then
-      expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+      expect(stars.src).toEqual('../lib/images/star-on.png');
     });
   });
 
-  context('with return as true', function() {
-    it ('applies the score', function() {
+  context('with return as true', function () {
+    it('applies the score', function () {
       // given
-      this.el.raty({
-        click: function() {
+      var raty = new Raty('#el', {
+        click: function () {
           return true;
-        }
-      });
+        },
+      }).init();
 
-      var star = this.el.children('img:last');
+      var star = raty.self.querySelector('img:last');
 
       // when
       star.trigger('click');
 
       // then
-      expect(this.el.children('input')).toHaveValue('5');
+      expect(raty.self.querySelector('input')).toHaveValue('5');
     });
 
-    it ('turns on the stars', function() {
+    it('turns on the stars', function () {
       // given
-      this.el.raty({
-        click: function() {
+      var raty = new Raty('#el', {
+        click: function () {
           return true;
-        }
-      });
+        },
+      }).init();
 
-      var stars = this.el.children('img');
+      var stars = raty.self.querySelector('img');
 
       // when
       stars.first().trigger('click');
 
       // then
-      expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+      expect(stars.src).toEqual('../lib/images/star-on.png');
     });
   });
 
-  context('with return as false', function() {
-    it ('does not applies the score', function() {
+  context('with return as false', function () {
+    it('does not applies the score', function () {
       // given
-      this.el.raty({
-        click: function() {
+      var raty = new Raty('#el', {
+        click: function () {
           return false;
-        }
-      });
+        },
+      }).init();
 
-      var star = this.el.children('img:last');
+      var star = raty.self.querySelector('img:last');
 
       // when
       star.trigger('click');
 
       // then
-      expect(this.el.children('input')).toHaveValue('');
+      expect(raty.self.querySelector('input')).toHaveValue('');
     });
 
-    it ('does not turns on the stars', function() {
+    it('does not turns on the stars', function () {
       // given
-      this.el.raty({
-        click: function() {
+      var raty = new Raty('#el', {
+        click: function () {
           return false;
-        }
-      });
+        },
+      }).init();
 
-      var stars = this.el.children('img');
+      var stars = raty.self.querySelector('img');
 
       // when
       stars.first().trigger('click');
 
       // then
-      expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
+      expect(stars.src).toEqual('../lib/images/star-off.png');
     });
   });
 
-  context('with :cancel', function() {
-    it ('executes the callback', function() {
+  context('with :cancel', function () {
+    it('executes the callback', function () {
       // given
-      this.el.raty({
+      var raty = new Raty('#el', {
         cancelButton: true,
-        click: function() {
+        click: function () {
           this.called = true;
-        }
-      });
+        },
+      }).init();
 
-      var cancel = this.el.children('.raty-cancel');
+      var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
       cancel.trigger('click');
@@ -185,17 +185,17 @@ describe('#click', function() {
     });
   });
 
-  context('on click without mouseover', function() {
-    it ('changes the stars to on', function() {
+  context('on click without mouseover', function () {
+    it('changes the stars to on', function () {
       // given
-      var self  = this.el.raty();
+      var raty = new Raty('#el');
       var stars = self.children('img');
 
       // when
       stars.last().trigger('click');
 
       // then
-      expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+      expect(stars.src).toEqual('../lib/images/star-on.png');
     });
   });
 });

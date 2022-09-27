@@ -1,27 +1,23 @@
-describe('#cancelClass', function() {
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('changes the class', function() {
+describe('#cancelClass', function () {
+  it('changes the class', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     // when
-    this.el.raty({ cancelButton: true, cancelClass: 'custom-class' });
+    var raty = new Raty('#el', { cancelButton: true, cancelClass: 'custom-class' }).init();
 
     // then
-    expect(this.el.find('.custom-class').attr('alt')).toEqual('x');
+    expect(raty.self.querySelector('.custom-class').alt).toEqual('x');
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    this.el = Helper._append('div', { 'data-cancel-class': 'custom' });
+    Helper._append('div', { 'data-cancel-class': 'custom' });
 
     // when
-    this.el.raty();
+    var raty = new Raty('[data-cancel-class]').init();
 
     // then
-    expect(this.el.data('raty').opt.cancelClass).toEqual('custom');
+    expect(raty.opt.cancelClass).toEqual('custom');
   });
 });

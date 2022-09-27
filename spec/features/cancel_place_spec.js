@@ -1,46 +1,40 @@
-describe('#cancelPlace', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
-  });
-
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('accepts data attribute', function() {
+describe('#cancelPlace', function () {
+  xit('accepts data attribute', function () {
     // given
-    this.el = Helper._append('div', { 'data-cancel-place': 'custom' });
+    Helper._append('div', { 'data-cancel-place': 'custom' });
 
     // when
-    this.el.raty();
+    var raty = new Raty('[data-cancel-place]').init();
 
     // then
-    expect(this.el.data('raty').opt.cancelPlace).toEqual('custom');
+    expect(raty.opt.cancelPlace).toEqual('custom');
   });
 
-  context('when left', function() {
-    it ('is prepended', function() {
+  context('when left', function () {
+    xit('is prepended', function () {
       // given
+      Helper.create('#el');
 
       // when
-      this.el.raty({ cancelButton: true, cancelPlace: 'left' });
+      var raty = new Raty('#el', { cancelButton: true, cancelPlace: 'left' }).init();
 
       // then
-      expect(this.el.children('img:first')).toHaveClass('raty-cancel');
+      expect(raty.self.querySelector('img').classList.contains('raty-cancel')).toEqual(true);
     });
   });
 
-  context('when left', function() {
-    it ('is appended', function() {
+  context('when left', function () {
+    it('is appended', function () {
       // given
+      Helper.create('#el');
 
       // when
-      this.el.raty({ cancelButton: true, cancelPlace: 'right' });
+      var raty = new Raty('#el', { cancelButton: true, cancelPlace: 'right' }).init();
 
       // then
-      expect(this.el.children('img:last')).toHaveClass('raty-cancel');
+      var stars = raty.self.querySelectorAll('img');
+
+      expect(stars[stars.length - 1].classList.contains('raty-cancel')).toEqual(true);
     });
   });
 });

@@ -1,31 +1,31 @@
-describe('#target', function() {
-  beforeEach(function() {
+describe('#target', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  context('on mouseover', function() {
-    context('with callback', function() {
-      beforeEach(function() {
+  context('on mouseover', function () {
+    context('with callback', function () {
+      beforeEach(function () {
         this.el[0].setAttribute('data-target', '#target');
 
         this.target = Helper.target('#target');
       });
 
-      it ('accepts the return as value', function() {
+      it('accepts the return as value', function () {
         // given
-        this.el.raty({
-          target: function() {
+        var raty = new Raty('#el', {
+          target: function () {
             return this.getAttribute('data-target');
-          }
+          },
         });
 
-        var star = this.el.children('img:last');
+        var star = raty.self.querySelector('img:last');
 
         // when
         star.trigger('mouseover');
@@ -35,16 +35,16 @@ describe('#target', function() {
       });
     });
 
-    context('as div', function() {
-      beforeEach(function() {
+    context('as div', function () {
+      beforeEach(function () {
         this.target = Helper.target('#target');
       });
 
-      it ('sets the hint', function() {
+      it('sets the hint', function () {
         // given
-        this.el.raty({ target: '#' + this.target[0].id });
+        var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-        var star = this.el.children('img:last');
+        var star = raty.self.querySelector('img:last');
 
         // when
         star.trigger('mouseover');
@@ -54,16 +54,16 @@ describe('#target', function() {
       });
     });
 
-    context('as input', function() {
-      beforeEach(function() {
+    context('as input', function () {
+      beforeEach(function () {
         this.target = Helper.target('#target', 'input');
       });
 
-      it ('sets the hint', function() {
+      it('sets the hint', function () {
         // given
-        this.el.raty({ target: '#' + this.target[0].id });
+        var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-        var star = this.el.children('img:last');
+        var star = raty.self.querySelector('img:last');
 
         // when
         star.trigger('mouseover');
@@ -73,16 +73,16 @@ describe('#target', function() {
       });
     });
 
-    context('as textarea', function() {
-      beforeEach(function() {
+    context('as textarea', function () {
+      beforeEach(function () {
         this.target = Helper.target('#target', 'textarea');
       });
 
-      it ('sets the hint', function() {
+      it('sets the hint', function () {
         // given
-        this.el.raty({ target: '#' + this.target[0].id });
+        var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-        var star = this.el.children('img:last');
+        var star = raty.self.querySelector('img:last');
 
         // when
         star.trigger('mouseover');
@@ -92,16 +92,16 @@ describe('#target', function() {
       });
     });
 
-    context('as select', function() {
-      beforeEach(function() {
+    context('as select', function () {
+      beforeEach(function () {
         this.target = Helper.target('#target', 'select');
       });
 
-      it ('sets the hint', function() {
+      it('sets the hint', function () {
         // given
-        this.el.raty({ target: '#' + this.target[0].id });
+        var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-        var star = this.el.children('img:last');
+        var star = raty.self.querySelector('img:last');
 
         // when
         star.trigger('mouseover');
@@ -111,17 +111,17 @@ describe('#target', function() {
       });
     });
 
-    context('and mouseout', function() {
-      context('as div', function() {
-        beforeEach(function() {
+    context('and mouseout', function () {
+      context('as div', function () {
+        beforeEach(function () {
           this.target = Helper.target('#target');
         });
 
-        it ('gets clear', function() {
+        it('gets clear', function () {
           // given
-          this.el.raty({ target: '#' + this.target[0].id });
+          var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-          var star = this.el.children('img:last');
+          var star = raty.self.querySelector('img:last');
 
           // when
           star.trigger('mouseover').trigger('mouseout');
@@ -131,16 +131,16 @@ describe('#target', function() {
         });
       });
 
-      context('as textarea', function() {
-        beforeEach(function() {
+      context('as textarea', function () {
+        beforeEach(function () {
           this.target = Helper.target('#textarea');
         });
 
-        it ('gets clear', function() {
+        it('gets clear', function () {
           // given
-          this.el.raty({ target: '#' + this.target[0].id });
+          var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-          var star = this.el.children('img:last');
+          var star = raty.self.querySelector('img:last');
 
           // when
           star.trigger('mouseover').trigger('mouseout');
@@ -150,16 +150,16 @@ describe('#target', function() {
         });
       });
 
-      context('as input', function() {
-        beforeEach(function() {
+      context('as input', function () {
+        beforeEach(function () {
           this.target = Helper.target('#target', 'input');
         });
 
-        it ('gets clear', function() {
+        it('gets clear', function () {
           // given
-          this.el.raty({ target: '#' + this.target[0].id });
+          var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-          var star = this.el.children('img:last');
+          var star = raty.self.querySelector('img:last');
 
           // when
           star.trigger('mouseover').trigger('mouseout');
@@ -169,16 +169,16 @@ describe('#target', function() {
         });
       });
 
-      context('as select', function() {
-        beforeEach(function() {
+      context('as select', function () {
+        beforeEach(function () {
           this.target = Helper.target('#select');
         });
 
-        it ('gets clear', function() {
+        it('gets clear', function () {
           // given
-          this.el.raty({ target: '#' + this.target[0].id });
+          var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-          var star = this.el.children('img:last');
+          var star = raty.self.querySelector('img:last');
 
           // when
           star.trigger('mouseover').trigger('mouseout');
@@ -189,18 +189,18 @@ describe('#target', function() {
       });
     });
 
-    context('and click', function() {
-      context('and mouseout', function() {
-        context('as div', function() {
-          beforeEach(function() {
+    context('and click', function () {
+      context('and mouseout', function () {
+        context('as div', function () {
+          beforeEach(function () {
             this.target = Helper.target('#target');
           });
 
-          it ('gets clear', function() {
+          it('gets clear', function () {
             // given
-            this.el.raty({ target: '#' + this.target[0].id });
+            var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-            var star = this.el.children('img:last');
+            var star = raty.self.querySelector('img:last');
 
             // when
             star.trigger('mouseover').trigger('click').trigger('mouseout');
@@ -210,16 +210,16 @@ describe('#target', function() {
           });
         });
 
-        context('as textarea', function() {
-          beforeEach(function() {
+        context('as textarea', function () {
+          beforeEach(function () {
             this.target = Helper.target('#textarea');
           });
 
-          it ('gets clear', function() {
+          it('gets clear', function () {
             // given
-            this.el.raty({ target: '#' + this.target[0].id });
+            var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-            var star = this.el.children('img:last');
+            var star = raty.self.querySelector('img:last');
 
             // when
             star.trigger('mouseover').trigger('click').trigger('mouseout');
@@ -229,16 +229,16 @@ describe('#target', function() {
           });
         });
 
-        context('as input', function() {
-          beforeEach(function() {
+        context('as input', function () {
+          beforeEach(function () {
             this.target = Helper.target('#target', 'input');
           });
 
-          it ('gets clear', function() {
+          it('gets clear', function () {
             // given
-            this.el.raty({ target: '#' + this.target[0].id });
+            var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-            var star = this.el.children('img:last');
+            var star = raty.self.querySelector('img:last');
 
             // when
             star.trigger('mouseover').trigger('click').trigger('mouseout');
@@ -248,16 +248,16 @@ describe('#target', function() {
           });
         });
 
-        context('as select', function() {
-          beforeEach(function() {
+        context('as select', function () {
+          beforeEach(function () {
             this.target = Helper.target('#select');
           });
 
-          it ('gets clear', function() {
+          it('gets clear', function () {
             // given
-            this.el.raty({ target: '#' + this.target[0].id });
+            var raty = new Raty('#el', { target: '#' + this.target[0].id });
 
-            var star = this.el.children('img:last');
+            var star = raty.self.querySelector('img:last');
 
             // when
             star.trigger('mouseover').trigger('click').trigger('mouseout');

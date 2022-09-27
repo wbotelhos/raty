@@ -1,15 +1,15 @@
-describe('stars', function() {
-  beforeEach(function() {
+describe('stars', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  it ('starts all off', function() {
+  it('starts all off', function () {
     // given
     var self = this.el;
 
@@ -17,13 +17,13 @@ describe('stars', function() {
     self.raty();
 
     // then
-    expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
+    expect(self.children('img').src).toEqual( '../lib/images/star-off.png');
   });
 
-  context('on click', function() {
-    it ('changes the score', function() {
+  context('on click', function () {
+    it('changes the score', function () {
       // given
-      var self  = this.el.raty();
+      var self = var raty = new Raty('#el', );
       var stars = self.children('img');
 
       // when
@@ -34,37 +34,37 @@ describe('stars', function() {
     });
   });
 
-  context('on mouseover', function() {
-    it ('turns on the stars', function() {
+  context('on mouseover', function () {
+    it('turns on the stars', function () {
       // given
-      var self  = this.el.raty();
+      var self = var raty = new Raty('#el', );
       var stars = self.children('img');
 
       // when
       stars.last().trigger('mouseover');
 
       // then
-      expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+      expect(stars.src).toEqual( '../lib/images/star-on.png');
     });
 
-    context('and mouseout', function() {
-      it ('turns off all stars', function() {
+    context('and mouseout', function () {
+      it('turns off all stars', function () {
         // given
-        var self  = this.el.raty();
+        var self = var raty = new Raty('#el', );
         var stars = self.children('img');
 
         // when
         stars.last().trigger('mouseover').trigger('mouseout');
 
         // then
-        expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(stars.src).toEqual( '../lib/images/star-off.png');
       });
     });
 
-    context('and click', function() {
-      it ('changes the score', function() {
+    context('and click', function () {
+      it('changes the score', function () {
         // given
-        var self  = this.el.raty();
+        var self = var raty = new Raty('#el', );
         var stars = self.children('img');
 
         // when
@@ -74,17 +74,17 @@ describe('stars', function() {
         expect(self.children('input')).toHaveValue('5');
       });
 
-      context('and mouseout', function() {
-        it ('keeps the stars on', function() {
+      context('and mouseout', function () {
+        it('keeps the stars on', function () {
           // given
-          var self  = this.el.raty();
+          var self = var raty = new Raty('#el', );
           var stars = self.children('img');
 
           // when
           stars.last().trigger('mouseover').trigger('click').trigger('mouseout');
 
           // then
-          expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(stars.src).toEqual( '../lib/images/star-on.png');
         });
       });
     });

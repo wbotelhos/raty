@@ -1,23 +1,23 @@
-describe('#mouseout', function() {
-  beforeEach(function() {
+describe('#mouseout', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  it ('receives the mouse event', function() {
+  it('receives the mouse event', function () {
     // given
-    this.el.raty({
-      mouseout: function(score, evt) {
+    var raty = new Raty('#el', {
+      mouseout: function (score, evt) {
         this.result = evt;
-      }
+      },
     });
 
-    var star = this.el.children('img:last');
+    var star = raty.self.querySelector('img:last');
 
     // when
     star.trigger('mouseout');
@@ -26,17 +26,17 @@ describe('#mouseout', function() {
     expect(this.el[0].result.type).toEqual('mouseout');
   });
 
-  context('without score', function() {
-    it ('receives undefined', function() {
+  context('without score', function () {
+    it('receives undefined', function () {
       // given
-      this.el.raty({
+      var raty = new Raty('#el', {
         cancelButton: true,
-        mouseout: function(score) {
+        mouseout: function (score) {
           this.result = score;
-        }
+        },
       });
 
-      var star = this.el.children('img:last');
+      var star = raty.self.querySelector('img:last');
 
       // when
       star.trigger('mouseout');
@@ -46,17 +46,17 @@ describe('#mouseout', function() {
     });
   });
 
-  context('with score', function() {
-    it ('receives the score value as number', function() {
+  context('with score', function () {
+    it('receives the score value as number', function () {
       // given
-      this.el.raty({
-        score    : 1,
-        mouseout : function(score) {
+      var raty = new Raty('#el', {
+        score: 1,
+        mouseout: function (score) {
           this.result = score;
-        }
+        },
       });
 
-      var star = this.el.children('img:last');
+      var star = raty.self.querySelector('img:last');
 
       // when
       star.trigger('mouseout');
@@ -66,17 +66,17 @@ describe('#mouseout', function() {
     });
   });
 
-  context('when acts on :cancel', function() {
-    it ('receives the event', function() {
+  context('when acts on :cancel', function () {
+    it('receives the event', function () {
       // given
-      this.el.raty({
+      var raty = new Raty('#el', {
         cancelButton: true,
-        mouseout: function(_, evt) {
+        mouseout: function (_, evt) {
           this.evt = evt;
-        }
+        },
       });
 
-      var cancel = this.el.children('.raty-cancel');
+      var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
       cancel.trigger('mouseout');
@@ -85,17 +85,17 @@ describe('#mouseout', function() {
       expect(this.el[0].evt.type).toEqual('mouseout');
     });
 
-    context('without score', function() {
-      it ('receives undefined', function() {
+    context('without score', function () {
+      it('receives undefined', function () {
         // given
-        this.el.raty({
+        var raty = new Raty('#el', {
           cancelButton: true,
-          mouseout: function(score) {
+          mouseout: function (score) {
             this.result = score;
-          }
+          },
         });
 
-        var cancel = this.el.children('.raty-cancel');
+        var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
         cancel.trigger('mouseout');
@@ -105,18 +105,18 @@ describe('#mouseout', function() {
       });
     });
 
-    context('with score', function() {
-      it ('receives the score value as number', function() {
+    context('with score', function () {
+      it('receives the score value as number', function () {
         // given
-        this.el.raty({
+        var raty = new Raty('#el', {
           score: 1,
           cancelButton: true,
-          mouseout: function(score) {
+          mouseout: function (score) {
             this.result = score;
-          }
+          },
         });
 
-        var cancel = this.el.children('.raty-cancel');
+        var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
         cancel.trigger('mouseout');

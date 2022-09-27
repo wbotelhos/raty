@@ -1,15 +1,15 @@
-describe('#numberMax', function() {
-  beforeEach(function() {
+describe('#numberMax', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  it ('changes the stars off', function() {
+  it('changes the stars off', function () {
     // given
     var self = this.el;
 
@@ -17,22 +17,22 @@ describe('#numberMax', function() {
     self.raty({ starOff: 'star-half.png' });
 
     // then
-    expect(self.children('img')).toHaveAttr('src', '../lib/images/star-half.png');
+    expect(self.children('img').src).toEqual('../lib/images/star-half.png');
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    var el = Helper._append('div', { 'data-star-off': 'custom' });
+    Helper._append('div', { 'data-star-off': 'custom' });
 
     // when
-    el.raty();
+    var raty = new Raty('#el');
 
     // then
-    expect(el.data('raty').opt.starOff).toEqual('custom');
+    expect(raty.opt.starOff).toEqual('custom');
   });
 
-  context('with :starType', function() {
-    it ('uses the given element', function() {
+  context('with :starType', function () {
+    it('uses the given element', function () {
       // given
       var self = this.el;
 
@@ -49,7 +49,7 @@ describe('#numberMax', function() {
       expect(stars[4].tagName).toEqual('I');
     });
 
-    it ('normalizes the class name', function() {
+    it('normalizes the class name', function () {
       // given
       var self = this.el;
 
@@ -60,7 +60,7 @@ describe('#numberMax', function() {
       expect(self.children('i')).toHaveClass('star-off-png');
     });
 
-    it ('does not create the "src" attribute', function() {
+    it('does not create the "src" attribute', function () {
       // given
       var self = this.el;
 
@@ -77,7 +77,7 @@ describe('#numberMax', function() {
       expect(stars[4].src).toBeUndefined();
     });
 
-    it ('creates the "data-alt" attribute', function() {
+    it('creates the "data-alt" attribute', function () {
       // given
       var self = this.el;
 
@@ -94,7 +94,7 @@ describe('#numberMax', function() {
       expect(stars[4].getAttribute('data-alt')).toEqual('5');
     });
 
-    it ('does not create the "alt" attribute', function() {
+    it('does not create the "alt" attribute', function () {
       // given
       var self = this.el;
 

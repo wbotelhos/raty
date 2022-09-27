@@ -1,52 +1,56 @@
-describe('#number', function() {
-  beforeEach(function() {
+describe('#number', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
 
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  it ('changes the number of stars', function() {
+  it('changes the number of stars', function () {
     // given
 
     // when
-    this.el.raty({ number: 1 });
+    var raty = new Raty('#el', { number: 1 });
 
     // then
-    expect(this.el.children('img').length).toEqual(1);
+    expect(raty.self.querySelector('img').length).toEqual(1);
   });
 
-  it ('accepts number as string', function() {
+  it('accepts number as string', function () {
     // given
 
     // when
-    this.el.raty({ number: '1' });
+    var raty = new Raty('#el', { number: '1' });
 
     // then
-    expect(this.el.children('img').length).toEqual(1);
+    expect(raty.self.querySelector('img').length).toEqual(1);
   });
 
-  it ('accepts callback', function() {
+  it('accepts callback', function () {
     // given
 
     // when
-    this.el.raty({ number: function() { return 1; } });
+    var raty = new Raty('#el', {
+      number: function () {
+        return 1;
+      },
+    });
 
     // then
-    expect(this.el.data('raty').opt.number).toEqual(1);
+    expect(raty.opt.number).toEqual(1);
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    var el = Helper._append('div', { 'data-number': 3 });
+    Helper._append('div', { 'data-number': 3 });
 
     // when
-    el.raty();
+    var raty = new Raty('#el');
 
     // then
-    expect(el.data('raty').opt.number).toEqual(3);
+    expect(raty.opt.number).toEqual(3);
   });
 });

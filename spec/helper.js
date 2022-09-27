@@ -31,6 +31,26 @@ var Helper = {
     this.mouseTrigger('click', el, integer, decimal);
   },
 
+  extension: function (elements) {
+    var items;
+
+    if (Object.prototype.toString.call(items) === '[object Array]') {
+      items = elements;
+    } else {
+      items = [elements];
+    }
+
+    var extensions = [];
+
+    items.forEach((item) => {
+      var paths = item.split('/');
+
+      extensions.push(paths[paths.length - 1]);
+    });
+
+    return extensions.length === 1 ? extensions[0] : extensions;
+  },
+
   mouseData: function (el, integer, decimal) {
     var stars = el.children('img:not(.raty-cancel)');
     var star = stars.eq(integer);

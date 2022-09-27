@@ -1,31 +1,35 @@
-describe('#scoreName', function() {
-  beforeEach(function() {
+describe('#scoreName', function () {
+  beforeEach(function () {
     $.raty.path = '../lib/images';
   });
 
-  afterEach(function() {
+  afterEach(function () {
     Helper.clear();
   });
 
-  it ('changes the score field name', function() {
+  it('changes the score field name', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     // when
-    this.el.raty({ scoreName: 'double' });
+    var raty = new Raty('#el', { scoreName: 'double' });
 
     // then
-    expect(this.el.children('input')).toHaveAttr('name', 'double');
+    expect(raty.self.querySelector('input').name).toEqual('double');
   });
 
-  it ('accepts callback', function() {
+  it('accepts callback', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     // when
-    this.el.raty({ scoreName: function() { return 'double'; } });
+    var raty = new Raty('#el', {
+      scoreName: function () {
+        return 'double';
+      },
+    });
 
     // then
-    expect(this.el.data('raty').opt.scoreName).toEqual('double');
+    expect(raty.opt.scoreName).toEqual('double');
   });
 });
