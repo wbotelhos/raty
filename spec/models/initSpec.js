@@ -53,8 +53,7 @@ describe('#init', function () {
   context('when *starType is "img"', function () {
     it('does not calls :_adjustStarName', function () {
       // given
-      var options = { starType: 'img' };
-      var raty = new Raty('#el', options);
+      var raty = new Raty('#el', { starType: 'img' });
 
       spyOn(raty, '_adjustStarName');
 
