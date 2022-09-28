@@ -23,7 +23,7 @@ describe('#iconRange', function () {
     });
 
     // then
-    var stars = self.children('img');
+    var stars = raty.self.querySelectorAll('img');
 
     expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
     expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
@@ -48,7 +48,7 @@ describe('#iconRange', function () {
       });
 
       // then
-      expect(Helper.extension(self.children('img')[4].src)).toEqual('star-off.png');
+      expect(Helper.extension(self.querySelectorAll('img')[4].src)).toEqual('star-off.png');
     });
   });
 
@@ -63,7 +63,7 @@ describe('#iconRange', function () {
           { range: 5, on: 'star-on.png', off: 'star-off.png' },
         ],
       });
-      var stars = self.children('img');
+      var stars = raty.self.querySelectorAll('img');
 
       // when
       Helper.trigger(stars[4], 'mouseover');
@@ -87,7 +87,7 @@ describe('#iconRange', function () {
             { range: 5, off: 'star-off.png' },
           ],
         });
-        var stars = self.children('img');
+        var stars = raty.self.querySelectorAll('img');
 
         // when
         Helper.trigger(stars[4], 'mouseover');
@@ -113,7 +113,7 @@ describe('#iconRange', function () {
           { range: 5, on: 'star-on.png', off: 'star-off.png' },
         ],
       });
-      var stars = self.children('img');
+      var stars = raty.self.querySelectorAll('img');
 
       // when
       Helper.trigger(stars[4], 'mouseover');
@@ -141,7 +141,7 @@ describe('#iconRange', function () {
       });
 
       // when
-      Helper.trigger(self.children('img')[4], 'mouseover');
+      Helper.trigger(self.querySelectorAll('img')[4], 'mouseover');
 
       self.trigger('mouseleave');
 
@@ -160,7 +160,7 @@ describe('#iconRange', function () {
             { range: 5, on: 'star-on.png' },
           ],
         });
-        var img = self.children('img')[4];
+        var img = raty.self.querySelectorAll('img')[4];
 
         // when
         Helper.trigger(img, 'mouseover');

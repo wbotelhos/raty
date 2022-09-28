@@ -1,17 +1,21 @@
-describe('#numberMax', function () {
-  beforeEach(function () {
-    Helper.create('#el');
-  });
-
+describe('#starOff', function () {
   xit('changes the stars off', function () {
     // given
-    var self = this.el;
+    Helper.create('#el');
+
+    var raty = new Raty('#el', { starOff: 'star-half.png' });
 
     // when
-    self.raty({ starOff: 'star-half.png' });
+    raty.init();
 
     // then
-    expect(Helper.extension(self.children('img').src)).toEqual('star-half.png');
+    var stars = raty.self.querySelectorAll('img');
+
+    expect(Helper.extension(stars[0].src)).toEqual('star-half.png');
+    expect(Helper.extension(stars[1].src)).toEqual('star-half.png');
+    expect(Helper.extension(stars[2].src)).toEqual('star-half.png');
+    expect(Helper.extension(stars[3].src)).toEqual('star-half.png');
+    expect(Helper.extension(stars[4].src)).toEqual('star-half.png');
   });
 
   xit('accepts data attribute', function () {
@@ -19,7 +23,7 @@ describe('#numberMax', function () {
     Helper._append('div', { 'data-star-off': 'custom' });
 
     // when
-    var raty = new Raty('#el');
+    var raty = new Raty('[data-star-off]');
 
     // then
     expect(raty.opt.starOff).toEqual('custom');
@@ -28,13 +32,15 @@ describe('#numberMax', function () {
   context('with :starType', function () {
     xit('uses the given element', function () {
       // given
-      var self = this.el;
+      Helper.create('#el');
+
+      var raty = new Raty('#el', { starType: 'i' });
 
       // when
-      self.raty({ starType: 'i' });
+      raty.init();
 
       // then
-      var stars = self.children('i');
+      var stars = raty.self.querySelectorAll('i');
 
       expect(stars[0].tagName).toEqual('I');
       expect(stars[1].tagName).toEqual('I');
@@ -45,24 +51,34 @@ describe('#numberMax', function () {
 
     xit('normalizes the class name', function () {
       // given
-      var self = this.el;
+      Helper.create('#el');
+
+      var raty = new Raty('#el', { starType: 'i' });
 
       // when
-      self.raty({ starType: 'i' });
+      raty.init();
 
       // then
-      expect(self.children('i')).toHaveClass('star-off-png');
+      var stars = raty.self.querySelectorAll('i');
+
+      expect(stars[0].classList.contains('star-off-png')).toEqual(true);
+      expect(stars[1].classList.contains('star-off-png')).toEqual(true);
+      expect(stars[2].classList.contains('star-off-png')).toEqual(true);
+      expect(stars[3].classList.contains('star-off-png')).toEqual(true);
+      expect(stars[4].classList.contains('star-off-png')).toEqual(true);
     });
 
     xit('does not create the "src" attribute', function () {
       // given
-      var self = this.el;
+      Helper.create('#el');
+
+      var raty = new Raty('#el', { starType: 'i' });
 
       // when
-      self.raty({ starType: 'i' });
+      raty.init();
 
       // then
-      var stars = self.children('i');
+      var stars = raty.self.querySelectorAll('i');
 
       expect(stars[0].src).toBeUndefined();
       expect(stars[1].src).toBeUndefined();
@@ -73,13 +89,15 @@ describe('#numberMax', function () {
 
     xit('creates the "data-alt" attribute', function () {
       // given
-      var self = this.el;
+      Helper.create('#el');
+
+      var raty = new Raty('#el', { starType: 'i' });
 
       // when
-      self.raty({ starType: 'i' });
+      raty.init();
 
       // then
-      var stars = self.children('i');
+      var stars = raty.self.querySelectorAll('i');
 
       expect(stars[0].getAttribute('data-alt')).toEqual('1');
       expect(stars[1].getAttribute('data-alt')).toEqual('2');
@@ -90,13 +108,21 @@ describe('#numberMax', function () {
 
     xit('does not create the "alt" attribute', function () {
       // given
-      var self = this.el;
+      Helper.create('#el');
+
+      var raty = new Raty('#el', { starType: 'i' });
 
       // when
-      self.raty({ starType: 'i' });
+      raty.init();
 
       // then
-      expect(self.children('i')).not.toHaveAttr('alt');
+      var stars = raty.self.querySelectorAll('i');
+
+      expect(stars[0].alt).toEqual(undefined);
+      expect(stars[1].alt).toEqual(undefined);
+      expect(stars[2].alt).toEqual(undefined);
+      expect(stars[3].alt).toEqual(undefined);
+      expect(stars[4].alt).toEqual(undefined);
     });
   });
 });

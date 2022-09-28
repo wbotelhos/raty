@@ -11,25 +11,25 @@ describe('#space', function () {
   context('when off', function () {
     xit('keeps the spaces', function () {
       // given
-      var self = $('#element');
+      var raty = new Raty('#element', { space: true });
 
       // when
-      self.raty({ space: true });
+      raty.init();
 
       // then
-      expect(self.text().length).toEqual(4);
+      expect(raty.self.innerText.length).toEqual(4);
     });
 
     context('with :cancel', function () {
       xit('adds on more space', function () {
         // given
-        var self = $('#element');
+        var raty = new Raty('#element', { cancelButton: true, space: true });
 
         // when
-        self.raty({ cancelButton: true, space: true });
+        raty.init();
 
         // then
-        expect(self.text().length).toEqual(5);
+        expect(raty.self.innerText.length).toEqual(5);
       });
     });
   });
@@ -37,25 +37,25 @@ describe('#space', function () {
   context('when off', function () {
     xit('takes off the spaces', function () {
       // given
-      var self = $('#element');
+      var raty = new Raty('#element', { space: false });
 
       // when
-      self.raty({ space: false });
+      raty.init();
 
       // then
-      expect(self.text().length).toEqual(0);
+      expect(raty.self.innerText.length).toEqual(0);
     });
 
     context('with :cancel', function () {
       xit('keeps the cancel space', function () {
         // given
-        var self = $('#element');
+        var raty = new Raty('#element', { cancelButton: true, space: false });
 
         // when
-        self.raty({ cancelButton: true, space: false });
+        raty.init();
 
         // then
-        expect(self.text().length).toEqual(1);
+        expect(raty.self.innerText.length).toEqual(1);
       });
     });
   });

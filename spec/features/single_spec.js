@@ -12,7 +12,7 @@ describe('#single', function () {
     xit('turns on just one icon', function () {
       // given
       var self = $('#element').raty({ single: true });
-      var stars = self.children('img');
+      var stars = raty.self.querySelectorAll('img');
 
       // when
       Helper.trigger(stars[2], 'mouseover');
@@ -37,7 +37,7 @@ describe('#single', function () {
           ],
           single: true,
         });
-        var stars = self.children('img');
+        var stars = raty.self.querySelectorAll('img');
 
         // when
         Helper.trigger(stars[3], 'mouseover');
@@ -56,7 +56,7 @@ describe('#single', function () {
     xit('turns on the star', function () {
       // given
       var self = $('#element').raty({ single: true });
-      var stars = self.children('img');
+      var stars = raty.self.querySelectorAll('img');
 
       // when
       stars[2].trigger('mouseover').trigger('click');
@@ -73,7 +73,7 @@ describe('#single', function () {
       xit('keeps the score', function () {
         // given
         var self = $('#element').raty({ single: true });
-        var stars = self.children('img');
+        var stars = raty.self.querySelectorAll('img');
 
         // when
         stars[2].trigger('mouseover').trigger('click').trigger('mouseleave');
@@ -98,7 +98,7 @@ describe('#single', function () {
               { range: 5, on: 'd.png', off: 'd-off.png' },
             ],
           });
-          var stars = self.children('img');
+          var stars = raty.self.querySelectorAll('img');
 
           // when
           stars[3].trigger('mouseover').trigger('click').trigger('mouseleave');

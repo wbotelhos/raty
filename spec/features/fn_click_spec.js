@@ -20,7 +20,7 @@ describe('#click', function () {
     self.data('raty').click(1);
 
     // then
-    expect(Helper.extension(self.children('img').src)).toEqual('star-on.png');
+    expect(Helper.extension(self.querySelectorAll('img').src)).toEqual('star-on.png');
     expect(self.data('clicked')).toBeTruthy();
   });
 
@@ -63,7 +63,7 @@ describe('#click', function () {
       self.data('raty').click(1);
 
       // then
-      expect(Helper.extension(self.children('img').src)).toEqual('star-off.png');
+      expect(Helper.extension(self.querySelectorAll('img').src)).toEqual('star-off.png');
     });
   });
 
