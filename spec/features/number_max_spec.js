@@ -5,23 +5,23 @@ describe('#numberMax', function () {
 
   xit('limits the max of "number" option', function () {
     // given
-    var self = this.el;
+    var raty = new Raty('#el', { number: 2, numberMax: 1 });
 
     // when
-    self.raty({ number: 2, numberMax: 1 });
+    raty.init();
 
     // then
-    expect(self.data('raty').opt.number).toEqual(1);
+    expect(raty.opt.number).toEqual(1);
   });
 
   xit('limits the min of "number" option', function () {
     // given
-    var self = this.el;
+    var raty = new Raty('#el', { number: -1 });
 
     // when
-    self.raty({ number: -1 });
+    raty.init();
 
     // then
-    expect(self.data('raty').opt.number).toEqual(1);
+    expect(raty.opt.number).toEqual(1);
   });
 });

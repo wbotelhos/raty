@@ -28,7 +28,7 @@ describe('#fn_cancel', function () {
       raty.cancel();
 
       // then
-      expect(raty.self.querySelector('input')).toHaveValue('5');
+      expect(raty.self.querySelector('input').value).toEqual('5');
     });
   });
 
@@ -47,7 +47,7 @@ describe('#fn_cancel', function () {
         raty.cancel(false);
 
         // then
-        expect(this.el[0].clicked).toBeFalsy();
+        expect(raty.self.clicked).toBeFalsy();
       });
 
       context('with :target', function () {
@@ -91,7 +91,7 @@ describe('#fn_cancel', function () {
         raty.cancel(true);
 
         // then
-        expect(this.el[0].clicked).toBeTruthy();
+        expect(raty.self.clicked).toEqual(true);
       });
 
       context('with :target', function () {

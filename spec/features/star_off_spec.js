@@ -80,11 +80,11 @@ describe('#starOff', function () {
       // then
       var stars = raty.self.querySelectorAll('i');
 
-      expect(stars[0].src).toBeUndefined();
-      expect(stars[1].src).toBeUndefined();
-      expect(stars[2].src).toBeUndefined();
-      expect(stars[3].src).toBeUndefined();
-      expect(stars[4].src).toBeUndefined();
+      expect(stars[0].src).toEqual(undefined);
+      expect(stars[1].src).toEqual(undefined);
+      expect(stars[2].src).toEqual(undefined);
+      expect(stars[3].src).toEqual(undefined);
+      expect(stars[4].src).toEqual(undefined);
     });
 
     xit('creates the "data-alt" attribute', function () {

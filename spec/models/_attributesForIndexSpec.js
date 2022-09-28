@@ -46,7 +46,7 @@ describe('#_attributesForIndex', function () {
       var attributes = raty._attributesForIndex(index);
 
       // then
-      expect(attributes['data-alt']).toBeUndefined();
+      expect(attributes['data-alt']).toEqual(undefined);
     });
 
     xit('does not use class', function () {
@@ -60,7 +60,7 @@ describe('#_attributesForIndex', function () {
       var attributes = raty._attributesForIndex(index);
 
       // then
-      expect(attributes['class']).toBeUndefined();
+      expect(attributes['class']).toEqual(undefined);
     });
 
     xit('sets title with _getHint and given index', function () {
@@ -128,7 +128,7 @@ describe('#_attributesForIndex', function () {
       var attributes = raty._attributesForIndex(index);
 
       // then
-      expect(attributes.alt).toBeUndefined();
+      expect(attributes.alt).toEqual(undefined);
     });
 
     xit('does not use src', function () {
@@ -142,7 +142,7 @@ describe('#_attributesForIndex', function () {
       var attributes = raty._attributesForIndex(index);
 
       // then
-      expect(attributes.src).toBeUndefined();
+      expect(attributes.src).toEqual(undefined);
     });
 
     xit('sets title with _getHint and given index', function () {

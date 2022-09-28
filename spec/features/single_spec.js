@@ -11,7 +11,7 @@ describe('#single', function () {
   context('on mouseover', function () {
     xit('turns on just one icon', function () {
       // given
-      var self = $('#element').raty({ single: true });
+      var raty = new Raty('#element', { single: true }).init();
       var stars = raty.self.querySelectorAll('img');
 
       // when
@@ -28,7 +28,7 @@ describe('#single', function () {
     context('with :iconRange', function () {
       xit('shows just on icon', function () {
         // given
-        var self = $('#element').raty({
+        var raty = new Raty('#element', {
           iconRange: [
             { range: 2, on: 'star-on.png', off: 'star-off.png' },
             { range: 3, on: 'star-on.png', off: 'star-off.png' },
@@ -36,7 +36,8 @@ describe('#single', function () {
             { range: 5, on: 'star-on.png', off: 'star-off.png' },
           ],
           single: true,
-        });
+        }).init();
+
         var stars = raty.self.querySelectorAll('img');
 
         // when
@@ -55,11 +56,12 @@ describe('#single', function () {
   context('on click', function () {
     xit('turns on the star', function () {
       // given
-      var self = $('#element').raty({ single: true });
+      var raty = new Raty('#element', { single: true }).init();
       var stars = raty.self.querySelectorAll('img');
 
       // when
-      stars[2].trigger('mouseover').trigger('click');
+      Helper.trigger(stars[2], 'mouseover');
+      Helper.trigger(stars[2], 'click');
 
       // then
       expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
@@ -72,11 +74,13 @@ describe('#single', function () {
     context('on mouseout', function () {
       xit('keeps the score', function () {
         // given
-        var self = $('#element').raty({ single: true });
+        var raty = new Raty('#element', { single: true }).init();
         var stars = raty.self.querySelectorAll('img');
 
         // when
-        stars[2].trigger('mouseover').trigger('click').trigger('mouseleave');
+        Helper.trigger(stars[2], 'mouseover');
+        Helper.trigger(stars[2], 'click');
+        Helper.trigger(stars[2], 'mouseleave');
 
         // then
         expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
@@ -89,7 +93,7 @@ describe('#single', function () {
       context('and :iconRange', function () {
         xit('keeps the score', function () {
           // given
-          var self = $('#element').raty({
+          var raty = new Raty('#element', {
             single: true,
             iconRange: [
               { range: 2, on: 'a.png', off: 'a-off.png' },
@@ -97,11 +101,14 @@ describe('#single', function () {
               { range: 4, on: 'c.png', off: 'c-off.png' },
               { range: 5, on: 'd.png', off: 'd-off.png' },
             ],
-          });
+          }).init();
+
           var stars = raty.self.querySelectorAll('img');
 
           // when
-          stars[3].trigger('mouseover').trigger('click').trigger('mouseleave');
+          Helper.trigger(stars[3], 'mouseover');
+          Helper.trigger(stars[3], 'click');
+          Helper.trigger(stars[3], 'mouseleave');
 
           // then
           expect(Helper.extension(stars[0].src)).toEqual('a-off.png');

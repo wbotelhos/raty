@@ -14,7 +14,7 @@ describe('#_adjustedScore', function () {
       var value = raty._adjustedScore(score);
 
       // then
-      expect(value).toBeUndefined();
+      expect(value).toEqual(undefined);
     });
   });
 
@@ -29,7 +29,7 @@ describe('#_adjustedScore', function () {
       var value = raty._adjustedScore(score);
 
       // then
-      expect(value).toBeUndefined();
+      expect(value).toEqual(undefined);
     });
   });
 

@@ -146,7 +146,7 @@ describe('#iconRange', function () {
       self.trigger('mouseleave');
 
       // then
-      expect(self.children('input')).toHaveValue('1');
+      expect(self.children('input').value).toEqual('1');
     });
 
     context('when off icon is not especified', function () {

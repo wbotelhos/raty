@@ -233,7 +233,7 @@ describe('#cancel', function () {
 
       // then
       expect(Helper.extension(stars.src)).toEqual('star-off.png');
-      expect(input).toHaveValue('');
+      expect(input.value).toEqual('');
     });
   });
 
@@ -269,7 +269,7 @@ describe('#cancel', function () {
 
         // then
         expect(Helper.extension(stars.src)).toEqual('star-on.png');
-        expect(input).toHaveValue('5');
+        expect(input.value).toEqual('5');
       });
     });
   });

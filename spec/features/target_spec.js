@@ -6,7 +6,7 @@ describe('#target', function () {
   context('on mouseover', function () {
     context('with callback', function () {
       beforeEach(function () {
-        this.el[0].setAttribute('data-target-selector', '#target');
+        raty.self.setAttribute('data-target-selector', '#target');
 
         this.target = Helper.target('#target');
       });
@@ -44,7 +44,7 @@ describe('#target', function () {
         Helper.trigger(star, 'mouseover');
 
         // then
-        expect(this.target).toHaveHtml('gorgeous');
+        expect(this.target[0].innerHTML).toEqual('gorgeous');
       });
     });
 
@@ -62,7 +62,7 @@ describe('#target', function () {
         Helper.trigger(star, 'mouseover');
 
         // then
-        expect(this.target).toHaveValue('gorgeous');
+        expect(this.target.value).toEqual('gorgeous');
       });
     });
 
@@ -80,7 +80,7 @@ describe('#target', function () {
         Helper.trigger(star, 'mouseover');
 
         // then
-        expect(this.target).toHaveValue('gorgeous');
+        expect(this.target.value).toEqual('gorgeous');
       });
     });
 
@@ -98,7 +98,7 @@ describe('#target', function () {
         Helper.trigger(star, 'mouseover');
 
         // then
-        expect(this.target).toHaveValue('gorgeous');
+        expect(this.target.value).toEqual('gorgeous');
       });
     });
 

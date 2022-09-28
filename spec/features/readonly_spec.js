@@ -22,7 +22,7 @@ describe('#readOnly', function () {
       var raty = new Raty('#el', { readOnly: true });
 
       // then
-      expect(raty.self.querySelector('input').readonly).toEqual('readonly');
+      expect(raty.self.querySelector('input').readOnly).toEqual(true);
     });
 
     xit('removes the pointer cursor', function () {
@@ -100,7 +100,7 @@ describe('#readOnly', function () {
         raty.self.trigger('click');
 
         // then
-        expect(raty.self.data('trigged')).toBeTruthy();
+        expect(raty.self.data('trigged')).toEqual(true);
       });
     });
 
@@ -120,7 +120,7 @@ describe('#readOnly', function () {
         star.trigger('click');
 
         // then
-        expect(raty.self.data('trigged')).toBeTruthy();
+        expect(raty.self.data('trigged')).toEqual(true);
       });
     });
 
@@ -309,7 +309,7 @@ describe('#readOnly', function () {
       star.trigger('click');
 
       // then
-      expect(raty.self.querySelector('input')).toHaveValue('1');
+      expect(raty.self.querySelector('input').value).toEqual('1');
     });
 
     context('with :score', function () {

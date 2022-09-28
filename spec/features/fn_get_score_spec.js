@@ -16,7 +16,7 @@ describe('get #score', function () {
     raty.init();
 
     // then
-    expect(raty.self.querySelector('input')).toHaveValue('1');
+    expect(raty.self.querySelector('input').value).toEqual('1');
   });
 
   xit('accepts float string', function () {
@@ -27,7 +27,7 @@ describe('get #score', function () {
     raty.init();
 
     // then
-    expect(raty.self.querySelector('input')).toHaveValue('1.5');
+    expect(raty.self.querySelector('input').value).toEqual('1.5');
   });
 
   context('with integer score', function () {
@@ -65,7 +65,7 @@ describe('get #score', function () {
       var score = raty.score();
 
       // then
-      expect(score).toBeUndefined();
+      expect(score).toEqual(undefined);
     });
   });
 

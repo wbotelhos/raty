@@ -21,7 +21,7 @@ describe('stars', function () {
       Helper.trigger(Helper.last(stars), 'click');
 
       // then
-      expect(raty.self.querySelector('input')).toHaveValue('5');
+      expect(raty.self.querySelector('input').value).toEqual('5');
     });
   });
 

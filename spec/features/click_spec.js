@@ -17,7 +17,7 @@ describe('#click', function () {
     Helper.trigger(star, 'click');
 
     // then
-    expect(raty.self.called).toBeTruthy();
+    expect(raty.self.called).toEqual(true);
   });
 
   xit('has "this" as context', function () {
@@ -66,7 +66,7 @@ describe('#click', function () {
       Helper.trigger(star, 'click');
 
       // then
-      expect(raty.self.querySelector('input')).toHaveValue('5');
+      expect(raty.self.querySelector('input').value).toEqual('5');
     });
 
     xit('turns on the stars', function () {
@@ -104,7 +104,7 @@ describe('#click', function () {
       Helper.trigger(star, 'click');
 
       // then
-      expect(raty.self.querySelector('input')).toHaveValue('5');
+      expect(raty.self.querySelector('input').value).toEqual('5');
     });
 
     xit('turns on the stars', function () {

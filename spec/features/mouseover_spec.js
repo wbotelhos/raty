@@ -9,7 +9,7 @@ describe('#mouseover', function () {
       mouseover: function (score) {
         this.result = score;
       },
-    });
+    }).init();
 
     var star = Helper.last(raty.self.querySelectorAll('img'));
 
@@ -17,7 +17,7 @@ describe('#mouseover', function () {
     Helper.trigger(star, 'mouseover');
 
     // then
-    expect(this.el[0].result).toEqual(5);
+    expect(raty.self.result).toEqual(5);
   });
 
   xit('receives the mouse event', function () {
@@ -26,7 +26,7 @@ describe('#mouseover', function () {
       mouseover: function (_, evt) {
         this.result = evt;
       },
-    });
+    }).init();
 
     var star = Helper.last(raty.self.querySelectorAll('img'));
 
@@ -34,7 +34,7 @@ describe('#mouseover', function () {
     Helper.trigger(star, 'mouseover');
 
     // then
-    expect(this.el[0].result.type).toEqual('mouseover');
+    expect(raty.self.result.type).toEqual('mouseover');
   });
 
   context('with :cancel', function () {
@@ -45,7 +45,7 @@ describe('#mouseover', function () {
         mouseover: function (score) {
           this.result = score;
         },
-      });
+      }).init();
 
       var cancel = raty.self.querySelector('.raty-cancel');
 
@@ -53,7 +53,7 @@ describe('#mouseover', function () {
       Helper.trigger(cancel, 'mouseover');
 
       // then
-      expect(this.el[0].result).toBeNull();
+      expect(raty.self.result).toBeNull();
     });
   });
 });

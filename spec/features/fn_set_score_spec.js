@@ -22,7 +22,7 @@ describe('#fn_setScore', function () {
       raty.score(5);
 
       // then
-      expect(raty.self.querySelector('input')).toHaveValue('');
+      expect(raty.self.querySelector('input').value).toEqual('');
     });
   });
 

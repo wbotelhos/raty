@@ -17,6 +17,6 @@ describe('#targetText', function () {
     raty.init();
 
     // then
-    expect($('#hint')).toHaveHtml('none');
+    expect($('#hint')[0].innerHTML).toEqual('none');
   });
 });

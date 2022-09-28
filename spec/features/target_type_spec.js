@@ -31,7 +31,7 @@ describe('#targetType', function () {
       Helper.trigger(star, 'mouseover');
 
       // then
-      expect(this.target).toHaveHtml('gorgeous');
+      expect(this.target[0].innerHTML).toEqual('gorgeous');
     });
 
     context('with :cancel', function () {
@@ -45,7 +45,7 @@ describe('#targetType', function () {
         Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(this.target).toHaveHtml('Cancel this rating!');
+        expect(this.target[0].innerHTML).toEqual('Cancel this rating!');
       });
     });
   });
@@ -79,7 +79,7 @@ describe('#targetType', function () {
         Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(this.target).toHaveHtml('Cancel this rating!');
+        expect(this.target[0].innerHTML).toEqual('Cancel this rating!');
       });
     });
   });

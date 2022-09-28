@@ -13,6 +13,6 @@ describe('#_adjustPrecision', function () {
     raty._adjustPrecision();
 
     // then
-    expect(raty.opt.half).toBeTruthy();
+    expect(raty.opt.half).toEqual(true);
   });
 });

@@ -28,7 +28,7 @@ describe('#_executeCallbacks', function () {
         raty._executeCallbacks();
 
         // then
-        expect(raty.opt.number).toBeUndefined();
+        expect(raty.opt.number).toEqual(undefined);
       });
     });
 

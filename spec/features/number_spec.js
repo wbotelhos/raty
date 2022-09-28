@@ -1,37 +1,42 @@
 describe('#number', function () {
-  beforeEach(function () {
-    Helper.create('#el');
-  });
-
   xit('changes the number of stars', function () {
     // given
+    Helper.create('#el');
 
-    // when
     var raty = new Raty('#el', { number: 1 });
 
+    // when
+    raty.init();
+
     // then
-    expect(raty.self.querySelector('img').length).toEqual(1);
+    expect(raty.self.querySelectorAll('img').length).toEqual(1);
   });
 
   xit('accepts number as string', function () {
     // given
+    Helper.create('#el');
 
-    // when
     var raty = new Raty('#el', { number: '1' });
 
+    // when
+    raty.init();
+
     // then
-    expect(raty.self.querySelector('img').length).toEqual(1);
+    expect(raty.self.querySelectorAll('img').length).toEqual(1);
   });
 
   xit('accepts callback', function () {
     // given
+    Helper.create('#el');
 
-    // when
     var raty = new Raty('#el', {
       number: function () {
         return 1;
       },
     });
+
+    // when
+    raty.init();
 
     // then
     expect(raty.opt.number).toEqual(1);
@@ -41,8 +46,10 @@ describe('#number', function () {
     // given
     Helper._append('div', { 'data-number': 3 });
 
+    var raty = new Raty('[data-number]');
+
     // when
-    var raty = new Raty('#el');
+    raty.init();
 
     // then
     expect(raty.opt.number).toEqual(3);

@@ -13,7 +13,7 @@ describe('#move', function () {
     raty.move(1);
 
     // then
-    expect(this.el[0].isMove).toBeFalsy();
+    expect(raty.self.isMove).toBeFalsy();
   });
 
   describe('with interger score', function () {

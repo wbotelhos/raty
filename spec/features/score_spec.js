@@ -1,23 +1,25 @@
 describe('#score', function () {
-  beforeEach(function () {
-    Helper.create('#el');
-  });
-
   xit('can be initialized on bind', function () {
     // given
+    Helper.create('#el');
 
-    // when
     var raty = new Raty('#el', { score: 1 });
 
+    // when
+    raty.init();
+
     // then
-    expect(raty.self.querySelector('input')).toHaveValue('1');
+    expect(raty.self.querySelector('input').value).toEqual('1');
   });
 
   xit('turns on stars', function () {
     // given
+    Helper.create('#el');
+
+    var raty = new Raty('#el', { score: 5 });
 
     // when
-    var raty = new Raty('#el', { score: 5 });
+    raty.init();
 
     // then
     expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
@@ -25,13 +27,16 @@ describe('#score', function () {
 
   xit('accepts callback', function () {
     // given
+    Helper.create('#el');
 
-    // when
     var raty = new Raty('#el', {
       score: function () {
         return 1;
       },
     });
+
+    // when
+    raty.init();
 
     // then
     expect(raty.opt.score).toEqual(1);
@@ -42,7 +47,7 @@ describe('#score', function () {
     Helper._append('div', { 'data-score': 3 });
 
     // when
-    var raty = new Raty('#el');
+    var raty = new Raty('[data-score]');
 
     // then
     expect(raty.opt.score).toEqual(3);
@@ -51,33 +56,42 @@ describe('#score', function () {
   context('with negative number', function () {
     xit('does not set the score', function () {
       // given
+      Helper.create('#el');
 
-      // when
       var raty = new Raty('#el', { score: -1 });
 
+      // when
+      raty.init();
+
       // then
-      expect(raty.self.querySelector('input')).toHaveValue('');
+      expect(raty.self.querySelector('input').value).toEqual('');
     });
   });
 
   context('with :readOnly', function () {
     xit('becomes readOnly too', function () {
       // given
+      Helper.create('#el');
 
-      // when
       var raty = new Raty('#el', { readOnly: true });
 
+      // when
+      raty.init();
+
       // then
-      expect(raty.self.querySelector('input').readonly).toEqual('readonly');
+      expect(raty.self.querySelector('input').readOnly).toEqual(true);
     });
   });
 
   context('with value greater then numbers', function () {
     xit('receives the number of star as value', function () {
       // given
+      Helper.create('#el');
+
+      var raty = new Raty('#el', { score: 100 });
 
       // when
-      var raty = new Raty('#el', { score: 100 });
+      raty.init();
 
       // then
       expect(raty.opt.score).toEqual(raty.opt.number);

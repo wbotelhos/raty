@@ -12,6 +12,7 @@ describe('#_parseOptions', function () {
       param2: 'false',
       param3: '',
       param4: 'b',
+      param5: '3',
     });
 
     // then
@@ -20,6 +21,7 @@ describe('#_parseOptions', function () {
       param2: false,
       param3: '',
       param4: 'b',
+      param5: 3,
     });
   });
 });

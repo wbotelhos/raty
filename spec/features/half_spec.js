@@ -160,7 +160,7 @@ describe('#half', function () {
 
           // then
           expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
-          expect(raty.self.querySelector('input')).toHaveValue('0.24');
+          expect(raty.self.querySelector('input').value).toEqual('0.24');
         });
 
         xit('ignores half while greater then down limit', function () {
@@ -326,7 +326,7 @@ describe('#half', function () {
                     });
 
                     // then
-                    expect(this.target).toHaveHtml('1.5');
+                    expect(this.target[0].innerHTML).toEqual('1.5');
                   });
                 });
 
@@ -352,7 +352,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('two');
+                        expect(this.target[0].innerHTML).toEqual('two');
                       });
                     });
 
@@ -375,7 +375,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('two');
+                        expect(this.target[0].innerHTML).toEqual('two');
                       });
                     });
 
@@ -398,7 +398,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('one and half');
+                        expect(this.target[0].innerHTML).toEqual('one and half');
                       });
                     });
                   });
@@ -425,7 +425,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('two');
+                        expect(this.target[0].innerHTML).toEqual('two');
                       });
                     });
 
@@ -448,7 +448,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('two');
+                        expect(this.target[0].innerHTML).toEqual('two');
                       });
                     });
 
@@ -471,7 +471,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('two');
+                        expect(this.target[0].innerHTML).toEqual('two');
                       });
                     });
                   });
@@ -498,7 +498,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('two');
+                        expect(this.target[0].innerHTML).toEqual('two');
                       });
                     });
 
@@ -521,7 +521,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('two');
+                        expect(this.target[0].innerHTML).toEqual('two');
                       });
                     });
 
@@ -544,7 +544,7 @@ describe('#half', function () {
                         });
 
                         // then
-                        expect(this.target).toHaveHtml('two');
+                        expect(this.target[0].innerHTML).toEqual('two');
                       });
                     });
                   });

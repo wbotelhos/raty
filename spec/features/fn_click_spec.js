@@ -21,7 +21,7 @@ describe('#click', function () {
 
     // then
     expect(Helper.extension(self.querySelectorAll('img').src)).toEqual('star-on.png');
-    expect(self.data('clicked')).toBeTruthy();
+    expect(self.data('clicked')).toEqual(true);
   });
 
   xit('receives the score', function () {
@@ -100,7 +100,7 @@ describe('#click', function () {
         self.data('raty').click(1);
 
         // then
-        expect($('#hint')).toHaveHtml('bad');
+        expect($('#hint')[0].innerHTML).toEqual('bad');
       });
     });
   });

@@ -32,6 +32,6 @@ describe('#targetScore', function () {
     Helper.trigger(star, 'click');
 
     // then
-    expect(this.scoreField).toHaveValue('1');
+    expect(this.scoreField.value).toEqual('1');
   });
 });
