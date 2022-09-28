@@ -15,8 +15,17 @@
 <body>
   <div id="el"></div>
 
+  <div data-raty></div>
+  <div data-raty></div>
+
   <script>
-    new Raty("#el", { path: './images', cancelButton: true,half:true ,starType:"i"}).init();
+    new Raty(document.querySelector('#el'), { path: './images' }).init();
+
+    var items = [];
+
+    document.querySelectorAll('[data-raty]').forEach(function(element) {
+      items.push(new Raty(element, { path: './images' }).init());
+    });
   </script>
 </body>
 </html>
