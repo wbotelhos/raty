@@ -1,27 +1,27 @@
 describe('#starType', function () {
-  beforeEach(function () {
-    Helper.create('#el');
-  });
-
   context('when actived', function () {
     xit('disable the width property', function () {
       // given
-      var self = this.el;
+      Helper.create('#el');
+
+      var raty = new Raty('#el', { starType: 'i' });
 
       // when
-      self.raty({ starType: 'i' });
+      raty.init();
 
       // then
-      expect(self[0].style.width).toEqual('');
+      expect(raty.self.style.width).toEqual('');
     });
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-star-type': 'b' });
 
+    var raty = new Raty('[data-star-type]');
+
     // when
-    var raty = new Raty('#el');
+    raty.init();
 
     // then
     expect(raty.opt.starType).toEqual('b');
@@ -30,6 +30,7 @@ describe('#starType', function () {
   context('when is "img"', function () {
     xit('does not changes the :path to blank', function () {
       // given
+      Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { path: 'path', starType: 'i' });
@@ -40,6 +41,7 @@ describe('#starType', function () {
 
     xit('creates the default markup', function () {
       // given
+      Helper.create('#el');
 
       // when
       var raty = new Raty('#el');
@@ -70,6 +72,7 @@ describe('#starType', function () {
   context('when is other element', function () {
     xit('changes the :path to blank', function () {
       // given
+      Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { path: 'path', starType: 'i' });
@@ -80,6 +83,7 @@ describe('#starType', function () {
 
     xit('creates the default markup', function () {
       // given
+      Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { starType: 'i' });
@@ -111,6 +115,8 @@ describe('#starType', function () {
     context('with :half true', function () {
       xit('fills half star', function () {
         // given
+        Helper.create('#el');
+
         var raty = new Raty('#el', { half: true, starType: 'i' });
 
         var stars = raty.self.querySelector('i');

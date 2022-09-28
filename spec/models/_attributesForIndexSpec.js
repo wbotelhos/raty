@@ -4,7 +4,7 @@ describe('#_attributesForIndex', function () {
   });
 
   context('when :starType is img', function () {
-    it('uses alt attribute with given index', function () {
+    xit('uses alt attribute with given index', function () {
       // given
 
       var options = { starType: 'img' };
@@ -18,7 +18,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes.alt).toEqual(index);
     });
 
-    it('uses src with :path and returned _nameForIndex', function () {
+    xit('uses src with :path and returned _nameForIndex', function () {
       // given
 
       var name = 'starOff';
@@ -35,7 +35,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes.src).toEqual('pathstarOff');
     });
 
-    it('does not use data-alt', function () {
+    xit('does not use data-alt', function () {
       // given
 
       var options = { starType: 'img' };
@@ -49,7 +49,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes['data-alt']).toBeUndefined();
     });
 
-    it('does not use class', function () {
+    xit('does not use class', function () {
       // given
 
       var options = { starType: 'img' };
@@ -63,7 +63,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes['class']).toBeUndefined();
     });
 
-    it('sets title with _getHint and given index', function () {
+    xit('sets title with _getHint and given index', function () {
       // given
 
       var hint = 'double';
@@ -84,7 +84,7 @@ describe('#_attributesForIndex', function () {
   });
 
   context('when :starType is not img', function () {
-    it('uses data-alt attribute with given index', function () {
+    xit('uses data-alt attribute with given index', function () {
       // given
 
       var options = { starType: 'i' };
@@ -98,7 +98,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes['data-alt']).toEqual(index);
     });
 
-    it('uses class with property name returned _nameForIndex', function () {
+    xit('uses class with property name returned _nameForIndex', function () {
       // given
 
       var name = 'starOff';
@@ -117,7 +117,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes['class']).toEqual(raty.opt.starOff);
     });
 
-    it('does not use alt', function () {
+    xit('does not use alt', function () {
       // given
 
       var options = { starType: 'i' };
@@ -131,7 +131,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes.alt).toBeUndefined();
     });
 
-    it('does not use src', function () {
+    xit('does not use src', function () {
       // given
 
       var options = { starType: 'i' };
@@ -145,7 +145,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes.src).toBeUndefined();
     });
 
-    it('sets title with _getHint and given index', function () {
+    xit('sets title with _getHint and given index', function () {
       // given
 
       var hint = 'double';

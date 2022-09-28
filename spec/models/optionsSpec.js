@@ -3,7 +3,7 @@ describe('options', function () {
     Helper.create('#el');
   });
 
-  it('has the right default values', function () {
+  xit('has the right default values', function () {
     // given
     var raty = new Raty('#el');
 

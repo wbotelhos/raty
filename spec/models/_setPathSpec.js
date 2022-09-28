@@ -4,7 +4,7 @@ describe('#_setPath', function () {
   });
 
   context('when path is null', function () {
-    it('sets to an empty string', function () {
+    xit('sets to an empty string', function () {
       // given
 
       var options = {};
@@ -21,7 +21,7 @@ describe('#_setPath', function () {
   });
 
   context('when path is undefined', function () {
-    it('sets to an empty string', function () {
+    xit('sets to an empty string', function () {
       // given
 
       var options = {};
@@ -39,7 +39,7 @@ describe('#_setPath', function () {
 
   context('when path is defined', function () {
     context('with a slash at end', function () {
-      it('keeps the same value', function () {
+      xit('keeps the same value', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
@@ -55,7 +55,7 @@ describe('#_setPath', function () {
     });
 
     context('without a slash at end', function () {
-      it('appends a slash', function () {
+      xit('appends a slash', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);

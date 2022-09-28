@@ -4,7 +4,7 @@ describe('#_adjustedScore', function () {
   });
 
   context('when score is null', function () {
-    it('returns undefined', function () {
+    xit('returns undefined', function () {
       // given
       var options = {};
       var score = null;
@@ -19,7 +19,7 @@ describe('#_adjustedScore', function () {
   });
 
   context('when score is undefined', function () {
-    it('returns undefined', function () {
+    xit('returns undefined', function () {
       // given
       var options = {};
       var score = undefined;
@@ -34,7 +34,7 @@ describe('#_adjustedScore', function () {
   });
 
   context('when score is less than zero', function () {
-    it('returns the zero', function () {
+    xit('returns the zero', function () {
       // given
       var options = { number: 1 };
       var score = -1;
@@ -49,7 +49,7 @@ describe('#_adjustedScore', function () {
   });
 
   context('when score is equal zero', function () {
-    it('returns the zero', function () {
+    xit('returns the zero', function () {
       // given
       var options = { number: 1 };
       var score = 0;
@@ -64,7 +64,7 @@ describe('#_adjustedScore', function () {
   });
 
   context('when score is more than *number', function () {
-    it('returns the number', function () {
+    xit('returns the number', function () {
       // given
       var options = { number: 1 };
       var score = 2;

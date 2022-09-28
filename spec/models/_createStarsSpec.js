@@ -4,7 +4,7 @@ describe('#_createStars', function () {
   });
 
   context('with :number as 3', function () {
-    it('creates 3 stars', function () {
+    xit('creates 3 stars', function () {
       // given
 
       var options = { number: 3 };
@@ -17,7 +17,7 @@ describe('#_createStars', function () {
       expect(raty.self.querySelectorAll(raty.opt.starType).length).toEqual(3);
     });
 
-    it('sets the right attributes', function () {
+    xit('sets the right attributes', function () {
       // given
 
       var options = {};
@@ -34,7 +34,7 @@ describe('#_createStars', function () {
       expect(raty.self.querySelectorAll(raty.opt.starType)).toHaveAttr('alt', 'alt');
     });
 
-    it('uses the :starType to build the star', function () {
+    xit('uses the :starType to build the star', function () {
       // given
 
       var options = { starType: 'li' };
@@ -54,7 +54,7 @@ describe('#_createStars', function () {
     });
 
     context('with :space as true', function () {
-      it('puts one space between the stars', function () {
+      xit('puts one space between the stars', function () {
         // given
         var options = { number: 2, space: true };
         var raty = new Raty('#el', options);
@@ -71,7 +71,7 @@ describe('#_createStars', function () {
     });
 
     context('with :space as false', function () {
-      it('does not puts space between the stars', function () {
+      xit('does not puts space between the stars', function () {
         // given
         var options = { number: 2, space: true };
         var raty = new Raty('#el', options);
@@ -87,7 +87,7 @@ describe('#_createStars', function () {
       });
     });
 
-    it('saves the stars on raty', function () {
+    xit('saves the stars on raty', function () {
       // given
 
       var options = {};

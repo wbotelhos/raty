@@ -13,7 +13,7 @@ describe('#_starName', function () {
         this.decimal = 0.51;
       });
 
-      it('returns startOn', function () {
+      xit('returns startOn', function () {
         // given
         var raty = new Raty('#el');
 
@@ -30,7 +30,7 @@ describe('#_starName', function () {
         this.decimal = 0.5;
       });
 
-      it('returns starHalf', function () {
+      xit('returns starHalf', function () {
         // given
         var raty = new Raty('#el');
 
@@ -47,7 +47,7 @@ describe('#_starName', function () {
         this.decimal = 0.49;
       });
 
-      it('returns starHalf', function () {
+      xit('returns starHalf', function () {
         // given
         var raty = new Raty('#el');
 
@@ -75,7 +75,7 @@ describe('#_starName', function () {
           this.decimal = 0.51;
         });
 
-        it('returns startOn', function () {
+        xit('returns startOn', function () {
           // given
           var raty = new Raty('#el');
 
@@ -90,7 +90,7 @@ describe('#_starName', function () {
       });
 
       context('when decimal is equal 0.5', function () {
-        it('returns starHalf', function () {
+        xit('returns starHalf', function () {
           // given
           var raty = new Raty('#el');
 
@@ -105,7 +105,7 @@ describe('#_starName', function () {
       });
 
       context('when decimal is less than 0.5', function () {
-        it('returns starHalf', function () {
+        xit('returns starHalf', function () {
           // given
           var raty = new Raty('#el');
 
@@ -131,7 +131,7 @@ describe('#_starName', function () {
           this.roundDown = this.decimal + 0.1;
         });
 
-        it('returns undefined', function () {
+        xit('returns undefined', function () {
           // given
           var raty = new Raty('#el');
 
@@ -152,7 +152,7 @@ describe('#_starName', function () {
           this.roundDown = this.decimal;
         });
 
-        it('returns undefined', function () {
+        xit('returns undefined', function () {
           // given
           var raty = new Raty('#el');
 
@@ -183,7 +183,7 @@ describe('#_starName', function () {
               this.roundUp = this.decimal + 0.1;
             });
 
-            it('returns starHalf', function () {
+            xit('returns starHalf', function () {
               // given
               var raty = new Raty('#el');
 
@@ -210,7 +210,7 @@ describe('#_starName', function () {
                 this.roundFull = this.decimal + 0.1;
               });
 
-              it('returns starOff', function () {
+              xit('returns starOff', function () {
                 // given
                 var raty = new Raty('#el');
 
@@ -233,7 +233,7 @@ describe('#_starName', function () {
                 this.roundFull = this.decimal;
               });
 
-              it('returns starOn', function () {
+              xit('returns starOn', function () {
                 // given
                 var raty = new Raty('#el');
 
@@ -256,7 +256,7 @@ describe('#_starName', function () {
                 this.roundFull = this.decimal - 0.1;
               });
 
-              it('returns starOn', function () {
+              xit('returns starOn', function () {
                 // given
                 var raty = new Raty('#el');
 
@@ -285,7 +285,7 @@ describe('#_starName', function () {
                 this.roundFull = this.decimal + 0.1;
               });
 
-              it('returns starOff', function () {
+              xit('returns starOff', function () {
                 // given
                 var raty = new Raty('#el');
 
@@ -308,7 +308,7 @@ describe('#_starName', function () {
                 this.roundFull = this.decimal;
               });
 
-              it('returns starOn', function () {
+              xit('returns starOn', function () {
                 // given
                 var raty = new Raty('#el');
 
@@ -331,7 +331,7 @@ describe('#_starName', function () {
                 this.roundFull = this.decimal - 0.1;
               });
 
-              it('returns starOn', function () {
+              xit('returns starOn', function () {
                 // given
                 var raty = new Raty('#el');
 
@@ -361,7 +361,7 @@ describe('#_starName', function () {
               this.roundFull = this.decimal + 0.1;
             });
 
-            it('returns starOff', function () {
+            xit('returns starOff', function () {
               // given
               var raty = new Raty('#el');
 
@@ -383,7 +383,7 @@ describe('#_starName', function () {
               this.roundFull = this.decimal;
             });
 
-            it('returns starOn', function () {
+            xit('returns starOn', function () {
               // given
               var raty = new Raty('#el');
 
@@ -405,7 +405,7 @@ describe('#_starName', function () {
               this.roundFull = this.decimal - 0.1;
             });
 
-            it('returns starOn', function () {
+            xit('returns starOn', function () {
               // given
               var raty = new Raty('#el');
 

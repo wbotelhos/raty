@@ -3,7 +3,7 @@ describe('#_adjustStarName', function () {
     Helper.create('#el');
   });
 
-  it('set *path to empty', function () {
+  xit('set *path to empty', function () {
     // given
 
     var options = { path: 'path' };
@@ -16,7 +16,7 @@ describe('#_adjustStarName', function () {
     expect(raty.opt.path).toEqual('');
   });
 
-  it('replaces "." to "-" on stars name', function () {
+  xit('replaces "." to "-" on stars name', function () {
     // given
 
     var options = {

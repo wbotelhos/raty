@@ -25,7 +25,6 @@ describe('#target', function () {
         Helper.trigger(star, 'mouseover');
 
         // then
-        debugger;
 
         expect(this.target[0].innerHTML).toEqual('gorgeous');
       });

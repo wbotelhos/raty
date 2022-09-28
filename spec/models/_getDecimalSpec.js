@@ -6,7 +6,7 @@ describe('#_getDecimal', function () {
   context('when number is an integer', function () {
     var number = 0;
 
-    it('returns the first fraction', function () {
+    xit('returns the first fraction', function () {
       // given
 
       var options = {};
@@ -24,7 +24,7 @@ describe('#_getDecimal', function () {
     context('with 1 fraction', function () {
       var number = 0.1;
 
-      it('returns the first fraction', function () {
+      xit('returns the first fraction', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
@@ -39,7 +39,7 @@ describe('#_getDecimal', function () {
       context('when has four 9 consecutives', function () {
         var number = 0.19999;
 
-        it('increments the first decimal', function () {
+        xit('increments the first decimal', function () {
           // given
           var options = {};
           var raty = new Raty('#el', options);
@@ -56,7 +56,7 @@ describe('#_getDecimal', function () {
     context('with 2 fraction', function () {
       var number = 0.12;
 
-      it('returns the first fraction', function () {
+      xit('returns the first fraction', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
@@ -71,7 +71,7 @@ describe('#_getDecimal', function () {
       context('when has four 9 consecutives', function () {
         var number = 0.19999;
 
-        it('increments the first decimal', function () {
+        xit('increments the first decimal', function () {
           // given
           var options = {};
           var raty = new Raty('#el', options);

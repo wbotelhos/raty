@@ -1,5 +1,5 @@
 describe('#_isTrue', function () {
-  it('return a boolean type', function () {
+  xit('return a boolean type', function () {
     // given
     Helper.create('#el');
 

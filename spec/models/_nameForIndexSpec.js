@@ -4,7 +4,7 @@ describe('#_nameForIndex', function () {
   });
 
   context('when score is null', function () {
-    it('returns :starOff', function () {
+    xit('returns :starOff', function () {
       // given
 
       var options = {};
@@ -22,7 +22,7 @@ describe('#_nameForIndex', function () {
   });
 
   context('when score is undefined', function () {
-    it('returns :starOff', function () {
+    xit('returns :starOff', function () {
       // given
 
       var options = {};
@@ -44,7 +44,7 @@ describe('#_nameForIndex', function () {
       var index = 2;
       var score = 1;
 
-      it('returns :starOff', function () {
+      xit('returns :starOff', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
@@ -63,7 +63,7 @@ describe('#_nameForIndex', function () {
       var index = 1;
       var score = 1;
 
-      it('returns :starOff', function () {
+      xit('returns :starOff', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
@@ -82,7 +82,7 @@ describe('#_nameForIndex', function () {
       var index = 1;
       var score = 2;
 
-      it('returns :starOff', function () {
+      xit('returns :starOff', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
