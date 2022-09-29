@@ -74,7 +74,6 @@ describe('#half', function () {
             halfShow: true,
           }).init();
 
-          debugger;
           // when
           Helper.click(this.el, 1, 5);
 

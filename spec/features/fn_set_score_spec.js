@@ -7,7 +7,7 @@ describe('#fn_setScore', function () {
     // given
 
     // when
-    var raty = new Raty('#el', { score: 1 });
+    var raty = new Raty('#el', { score: 1 }).inxit();
 
     // then
     expect(raty.score()).toEqual(1);
@@ -16,7 +16,7 @@ describe('#fn_setScore', function () {
   describe('with :readOnly', function () {
     xit('does not set the score', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true });
+      var raty = new Raty('#el', { readOnly: true }).inxit();
 
       // when
       raty.score(5);
@@ -36,11 +36,11 @@ describe('#fn_setScore', function () {
         // given
         var that = this;
 
-        var raty = new Raty('#el', { target: '#target' });
+        var raty = new Raty('#el', { target: '#target' }).inxit();
 
         // when
         var lambda = function () {
-          that.el.data('raty').score(6);
+          raty.score(6);
         };
 
         // then
@@ -54,11 +54,7 @@ describe('#fn_setScore', function () {
           context('as *true', function () {
             xit('sets the value equal :number', function () {
               // given
-              var raty = new Raty('#el', {
-                target: '#target',
-                targetType: 'score',
-                targetKeep: true,
-              });
+              var raty = new Raty('#el', { target: '#target', targetType: 'score', targetKeep: true }).inxit();
 
               // when
               raty.score(6);
@@ -69,11 +65,7 @@ describe('#fn_setScore', function () {
 
             xit('sets the :score on target', function () {
               // given
-              var raty = new Raty('#el', {
-                target: '#target',
-                targetType: 'score',
-                targetKeep: true,
-              });
+              var raty = new Raty('#el', { target: '#target', targetType: 'score', targetKeep: true }).inxit();
 
               // when
               raty.score(1);

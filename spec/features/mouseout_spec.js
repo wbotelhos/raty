@@ -7,8 +7,6 @@ describe('#mouseout', function () {
     // given
     var raty = new Raty('#el', {
       mouseout: function (score, evt) {
-        debugger;
-
         this.result = evt;
       },
     }).init();
