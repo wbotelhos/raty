@@ -1,6 +1,6 @@
 describe('#readOnly', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   xit('accepts data attribute', function () {

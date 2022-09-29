@@ -1,6 +1,6 @@
 describe('#_adjustStarName', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   xit('set *path to empty', function () {

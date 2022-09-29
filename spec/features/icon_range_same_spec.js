@@ -20,12 +20,12 @@ describe('#iconRangeSame', function () {
           { range: 4, on: 'star-off.png', off: 'star-off.png' },
           { range: 5, on: 'star-on.png', off: 'star-off.png' },
         ],
-      });
+      }).init();
 
       var stars = raty.self.querySelectorAll('img');
 
       // when
-      stars[0].dispatchEvent(new MouseEvent('mouseover'));
+      Helper.trigger(stars[0], 'mouseover');
 
       // then
       expect(stars[0].src).toMatch('star-on.png');
@@ -48,7 +48,7 @@ describe('#iconRangeSame', function () {
           { range: 4, on: 'star-off.png', off: 'star-off.png' },
           { range: 5, on: 'star-on.png', off: 'star-off.png' },
         ],
-      });
+      }).init();
 
       var stars = raty.self.querySelectorAll('img');
 
@@ -76,7 +76,7 @@ describe('#iconRangeSame', function () {
           { range: 4, on: 'star-off.png', off: 'star-off.png' },
           { range: 5, on: 'star-on.png', off: 'star-off.png' },
         ],
-      });
+      }).init();
 
       var stars = raty.self.querySelectorAll('img');
 
@@ -105,14 +105,14 @@ describe('#iconRangeSame', function () {
             { range: 4, on: 'star-off.png', off: 'star-off.png' },
             { range: 5, on: 'star-on.png', off: 'star-off.png' },
           ],
-        });
+        }).init();
 
         var stars = raty.self.querySelectorAll('img');
 
-        stars[4].dispatchEvent(new MouseEvent('mouseover'));
+        Helper.trigger(stars[4], 'mouseover');
 
         // when
-        self[0].dispatchEvent(new MouseEvent('mouseout'));
+        Helper.trigger(raty.self, 'mouseleave');
 
         // then
         expect(stars[0].src).toMatch('star-off.png');
@@ -135,14 +135,14 @@ describe('#iconRangeSame', function () {
             { range: 4, on: 'star-off.png', off: 'star-off.png' },
             { range: 5, on: 'star-on.png', off: 'star-off.png' },
           ],
-        });
+        }).init();
 
         var stars = raty.self.querySelectorAll('img');
 
         Helper.trigger(stars[4], 'click');
 
         // when
-        Helper.trigger(stars[0], 'mouseout');
+        Helper.trigger(raty.self, 'mouseleave');
 
         // then
         expect(stars[0].src).toMatch('star-on.png');
@@ -169,7 +169,7 @@ describe('#iconRangeSame', function () {
               { range: 4, on: 'star-on.png', off: 'star-off.png' },
               { range: 5, on: 'star-on.png', off: 'star-off.png' },
             ],
-          });
+          }).init();
 
           var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
 
@@ -200,7 +200,7 @@ describe('#iconRangeSame', function () {
               { range: 4, on: 'star-on.png', off: 'star-off.png' },
               { range: 5, on: 'star-on.png', off: 'star-off.png' },
             ],
-          });
+          }).init();
 
           var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
 
@@ -211,7 +211,7 @@ describe('#iconRangeSame', function () {
           cancel.dispatchEvent(new MouseEvent('mouseover'));
 
           // when
-          self[0].dispatchEvent(new MouseEvent('mouseout'));
+          Helper.trigger(raty.self, 'mouseleave');
 
           // then
           expect(stars[0].src).toMatch('star-on.png');
@@ -235,7 +235,7 @@ describe('#iconRangeSame', function () {
               { range: 4, on: 'star-on.png', off: 'star-off.png' },
               { range: 5, on: 'star-on.png', off: 'star-off.png' },
             ],
-          });
+          }).init();
 
           var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
 
@@ -243,7 +243,8 @@ describe('#iconRangeSame', function () {
 
           // when
           document.querySelector('.raty-cancel').click();
-          self[0].dispatchEvent(new MouseEvent('mouseout'));
+
+          Helper.trigger(raty.self, 'mouseleave');
 
           // then
           expect(stars[0].src).toMatch('star-off.png');
@@ -269,7 +270,7 @@ describe('#iconRangeSame', function () {
           { range: 4, on: 'star-on.png', off: 'star-off.png' },
           { range: 5, on: 'star-on.png', off: 'star-off.png' },
         ],
-      });
+      }).init();
 
       var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
 

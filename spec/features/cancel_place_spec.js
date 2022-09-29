@@ -13,7 +13,7 @@ describe('#cancelPlace', function () {
   context('when left', function () {
     xit('is prepended', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { cancelButton: true, cancelPlace: 'left' }).init();
@@ -26,7 +26,7 @@ describe('#cancelPlace', function () {
   context('when left', function () {
     xit('is appended', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { cancelButton: true, cancelPlace: 'right' }).init();

@@ -1,7 +1,7 @@
 describe('#number', function () {
   xit('changes the number of stars', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     var raty = new Raty('#el', { number: 1 });
 
@@ -14,7 +14,7 @@ describe('#number', function () {
 
   xit('accepts number as string', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     var raty = new Raty('#el', { number: '1' });
 
@@ -27,7 +27,7 @@ describe('#number', function () {
 
   xit('accepts callback', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     var raty = new Raty('#el', {
       number: function () {

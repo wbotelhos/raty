@@ -12,7 +12,7 @@ describe('#half', function () {
 
   context('as *false', function () {
     beforeEach(function () {
-      Helper.create('#el');
+      this.el = Helper.create('#el');
     });
 
     context('and :halfShow', function () {
@@ -72,8 +72,9 @@ describe('#half', function () {
           var raty = new Raty('#el', {
             half: true,
             halfShow: true,
-          });
+          }).init();
 
+          debugger;
           // when
           Helper.click(this.el, 1, 5);
 
@@ -90,7 +91,7 @@ describe('#half', function () {
               // then
               expect(score).toEqual(1.5);
             },
-          });
+          }).init();
 
           // when
           Helper.click(this.el, 1, 5);
@@ -103,7 +104,7 @@ describe('#half', function () {
           var raty = new Raty('#el', {
             half: true,
             halfShow: true,
-          });
+          }).init();
 
           // when
           Helper.click(this.el, 1, 9);
@@ -121,7 +122,7 @@ describe('#half', function () {
               // then
               expect(score).toEqual(2);
             },
-          });
+          }).init();
 
           // when
           Helper.click(this.el, 1, 9);
@@ -134,7 +135,7 @@ describe('#half', function () {
           var raty = new Raty('#el', {
             half: true,
             halfShow: true,
-          });
+          }).init();
 
           // when
           Helper.click(this.el, 1, 0);
@@ -156,7 +157,7 @@ describe('#half', function () {
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
             score: 0.24,
-          });
+          }).init();
 
           // then
           expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
@@ -172,7 +173,7 @@ describe('#half', function () {
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
             score: 0.26,
-          });
+          }).init();
 
           // then
           expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
@@ -188,14 +189,14 @@ describe('#half', function () {
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
             score: 0.6,
-          });
+          }).init();
 
           // then
           expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
           expect(raty.self.querySelector('input').value).toEqual('0.6');
         });
 
-        xit('ignores half while greater than down limxit and less than up limit', function () {
+        xit('ignores half while greater than down limit and less than up limit', function () {
           // given
 
           // when
@@ -204,7 +205,7 @@ describe('#half', function () {
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
             score: 0.75,
-          });
+          }).init();
 
           // then
           expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
@@ -220,7 +221,7 @@ describe('#half', function () {
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
             score: 0.76,
-          });
+          }).init();
 
           // then
           expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
@@ -238,7 +239,7 @@ describe('#half', function () {
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
               score: 0.24,
-            });
+            }).init();
 
             // then
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
@@ -253,7 +254,7 @@ describe('#half', function () {
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
               score: 0.26,
-            });
+            }).init();
 
             // then
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
@@ -268,13 +269,13 @@ describe('#half', function () {
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
               score: 0.6,
-            });
+            }).init();
 
             // then
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
           });
 
-          xit('receives half while greater than down limxit and less than up limit', function () {
+          xit('receives half while greater than down limit and less than up limit', function () {
             // given
 
             // when
@@ -283,7 +284,7 @@ describe('#half', function () {
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
               score: 0.75,
-            });
+            }).init();
 
             // then
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
@@ -298,7 +299,7 @@ describe('#half', function () {
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
               score: 0.76,
-            });
+            }).init();
 
             // then
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
@@ -323,7 +324,7 @@ describe('#half', function () {
                       target: '#target',
                       targetKeep: true,
                       targetType: 'score',
-                    });
+                    }).init();
 
                     // then
                     expect(this.target[0].innerHTML).toEqual('1.5');
@@ -349,7 +350,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('two');
@@ -372,7 +373,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('two');
@@ -395,7 +396,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('one and half');
@@ -422,7 +423,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('two');
@@ -445,7 +446,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('two');
@@ -468,7 +469,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('two');
@@ -495,7 +496,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('two');
@@ -518,7 +519,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('two');
@@ -541,7 +542,7 @@ describe('#half', function () {
                           target: '#target',
                           targetKeep: true,
                           targetType: 'hint',
-                        });
+                        }).init();
 
                         // then
                         expect(this.target[0].innerHTML).toEqual('two');
@@ -567,13 +568,13 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.1);
 
               // then
-              expect(Helper.extension(raty.self.querySelector(':eq(1)').src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
             });
           });
 
@@ -585,7 +586,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.2);
@@ -603,7 +604,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.3);
@@ -621,7 +622,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.4);
@@ -639,7 +640,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.5);
@@ -657,7 +658,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.6);
@@ -675,7 +676,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.7);
@@ -693,7 +694,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.8);
@@ -711,7 +712,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(1.9);
@@ -729,7 +730,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(2.0);
@@ -747,7 +748,7 @@ describe('#half', function () {
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               raty.move(2);
@@ -771,7 +772,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 0);
@@ -789,7 +790,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 1);
@@ -807,7 +808,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 2);
@@ -825,7 +826,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 3);
@@ -843,7 +844,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 4);
@@ -861,7 +862,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 5);
@@ -879,7 +880,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 6);
@@ -897,7 +898,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 7);
@@ -915,7 +916,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 8);
@@ -933,7 +934,7 @@ describe('#half', function () {
                 hints: [null, ['half', 'integer']],
                 target: '#target',
                 targetKeep: true,
-              });
+              }).init();
 
               // when
               Helper.mousemove(this.el, 1, 9);

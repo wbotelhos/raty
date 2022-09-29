@@ -1,6 +1,6 @@
 describe('#numberMax', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   xit('limits the max of "number" option', function () {

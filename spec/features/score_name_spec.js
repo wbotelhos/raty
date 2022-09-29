@@ -1,7 +1,7 @@
 describe('#scoreName', function () {
   xit('changes the score field name', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     // when
     var raty = new Raty('#el', { scoreName: 'double' });
@@ -12,7 +12,7 @@ describe('#scoreName', function () {
 
   xit('accepts callback', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     // when
     var raty = new Raty('#el', {

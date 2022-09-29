@@ -1,6 +1,6 @@
 describe('stars', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   xit('starts all off', function () {

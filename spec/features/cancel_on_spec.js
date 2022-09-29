@@ -1,7 +1,7 @@
 describe('#cancelOn', function () {
   xit('changes the icon', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     var raty = new Raty('#el', { cancelButton: true, cancelOn: 'star-half.png' }).init();
     var cancel = raty.self.querySelector('.raty-cancel');

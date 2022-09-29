@@ -2,7 +2,7 @@ describe('#starType', function () {
   context('when actived', function () {
     xit('disable the width property', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { starType: 'i' }).init();
 
@@ -30,7 +30,7 @@ describe('#starType', function () {
   context('when is "img"', function () {
     xit('does not changes the :path to blank', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { path: 'path', starType: 'img' }).init();
@@ -41,7 +41,7 @@ describe('#starType', function () {
 
     xit('creates the default markup', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { path: 'path', starType: 'img' }).init();
@@ -77,7 +77,7 @@ describe('#starType', function () {
   context('when is other element', function () {
     xit('changes the :path to blank', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { path: 'path', starType: 'i' }).init();
@@ -88,7 +88,7 @@ describe('#starType', function () {
 
     xit('creates the default markup', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       // when
       var raty = new Raty('#el', { starType: 'i' }).init();
@@ -120,7 +120,7 @@ describe('#starType', function () {
     context('with :half true', function () {
       xit('fills half star', function () {
         // given
-        Helper.create('#el');
+        this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { half: true, starType: 'i' }).init();
         var stars = raty.self.querySelectorAll('i');

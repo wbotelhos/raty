@@ -1,6 +1,6 @@
 describe('#fn readOnly', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   context('on true', function () {

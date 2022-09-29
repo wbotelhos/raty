@@ -1,6 +1,6 @@
 describe('markup', function () {
   beforeEach(function () {
-    $('body').append('<div class="element"></div><div class="element"></div>');
+    $('body').append('<div data-raty></div><div data-raty></div>');
   });
 
   afterEach(function () {
@@ -9,33 +9,51 @@ describe('markup', function () {
 
   xit('creates the default markup', function () {
     // given / when
-    var raty = new Raty('.element').init();
+    var ratys = [];
+
+    document.querySelectorAll('[data-raty]').forEach(function (element) {
+      ratys.push(new Raty(element).init());
+    });
 
     // then
-    var stars = raty.self[0].children('img');
-    var score = raty.self[0].children('input');
+    var starsOne = ratys[0].self.querySelectorAll('img');
 
-    expect(stars[0].title).toEqual('bad');
-    expect(stars[1].title).toEqual('poor');
-    expect(stars[2].title).toEqual('regular');
-    expect(stars[3].title).toEqual('good');
-    expect(stars[4].title).toEqual('gorgeous');
-    expect(Helper.extension(stars.src)).toEqual('star-off.png');
-    expect(score.type).toEqual('hidden');
-    expect(score.name).toEqual('score');
-    expect(score.value).toEqual('');
+    expect(starsOne[0].title).toEqual('bad');
+    expect(starsOne[1].title).toEqual('poor');
+    expect(starsOne[2].title).toEqual('regular');
+    expect(starsOne[3].title).toEqual('good');
+    expect(starsOne[4].title).toEqual('gorgeous');
 
-    stars = raty.self[1].children('img');
-    score = raty.self[0].children('input');
+    expect(Helper.extension(starsOne[0].getAttribute('src'))).toEqual('star-off.png');
+    expect(Helper.extension(starsOne[1].getAttribute('src'))).toEqual('star-off.png');
+    expect(Helper.extension(starsOne[2].getAttribute('src'))).toEqual('star-off.png');
+    expect(Helper.extension(starsOne[3].getAttribute('src'))).toEqual('star-off.png');
+    expect(Helper.extension(starsOne[4].getAttribute('src'))).toEqual('star-off.png');
 
-    expect(stars[0].title).toEqual('bad');
-    expect(stars[1].title).toEqual('poor');
-    expect(stars[2].title).toEqual('regular');
-    expect(stars[3].title).toEqual('good');
-    expect(stars[4].title).toEqual('gorgeous');
-    expect(Helper.extension(stars.src)).toEqual('star-off.png');
-    expect(score.type).toEqual('hidden');
-    expect(score.name).toEqual('score');
-    expect(score.value).toEqual('');
+    var scoreOne = ratys[0].self.querySelector('input');
+
+    expect(scoreOne.type).toEqual('hidden');
+    expect(scoreOne.name).toEqual('score');
+    expect(scoreOne.value).toEqual('');
+
+    var starsOne = ratys[1].self.querySelectorAll('img');
+
+    expect(starsOne[0].title).toEqual('bad');
+    expect(starsOne[1].title).toEqual('poor');
+    expect(starsOne[2].title).toEqual('regular');
+    expect(starsOne[3].title).toEqual('good');
+    expect(starsOne[4].title).toEqual('gorgeous');
+
+    expect(Helper.extension(starsOne[0].getAttribute('src'))).toEqual('star-off.png');
+    expect(Helper.extension(starsOne[1].getAttribute('src'))).toEqual('star-off.png');
+    expect(Helper.extension(starsOne[2].getAttribute('src'))).toEqual('star-off.png');
+    expect(Helper.extension(starsOne[3].getAttribute('src'))).toEqual('star-off.png');
+    expect(Helper.extension(starsOne[4].getAttribute('src'))).toEqual('star-off.png');
+
+    var scoreOne = ratys[0].self.querySelector('input');
+
+    expect(scoreOne.type).toEqual('hidden');
+    expect(scoreOne.name).toEqual('score');
+    expect(scoreOne.value).toEqual('');
   });
 });

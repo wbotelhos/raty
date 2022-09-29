@@ -1,7 +1,7 @@
 describe('#_isTrue', function () {
   xit('return a boolean type', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     var raty = new Raty('#el');
 

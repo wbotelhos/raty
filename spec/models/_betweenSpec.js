@@ -1,6 +1,6 @@
 describe('#_between', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   context('when value is less than min', function () {

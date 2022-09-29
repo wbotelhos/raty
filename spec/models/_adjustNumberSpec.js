@@ -1,6 +1,6 @@
 describe('#_adjustNumber', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   context('when :number is less than 1', function () {

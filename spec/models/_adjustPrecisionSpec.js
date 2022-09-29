@@ -1,6 +1,6 @@
 describe('#_adjustPrecision', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   xit('sets *half to true', function () {

@@ -1,7 +1,7 @@
 describe('#cancelHint', function () {
   xit('changes the cancel hint', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     // when
     var raty = new Raty('#el', { cancelButton: true, cancelHint: 'double', path: '../lib/images' }).init();

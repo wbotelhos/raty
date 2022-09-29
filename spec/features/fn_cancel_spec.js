@@ -1,6 +1,6 @@
 describe('#fn_cancel', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   describe('with :readOnly', function () {

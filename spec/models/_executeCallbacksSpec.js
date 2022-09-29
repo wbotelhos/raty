@@ -1,6 +1,6 @@
 describe('#_executeCallbacks', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   context('when options should compute, not evaluate at runtime, the return and it is a function', function () {

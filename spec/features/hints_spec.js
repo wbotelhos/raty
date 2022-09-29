@@ -1,6 +1,7 @@
+// TODO: failing since icon is not rendering (Karma render when test finish) so move'ish can't reach it
 describe('#hints', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   context('with :halfShow', function () {
@@ -68,7 +69,7 @@ describe('#hints', function () {
             raty.init();
 
             // then
-            expect(raty.self.querySelector('img').title).toEqual('bad');
+            expect(raty.self.querySelector('img').title).toEqual('1');
           });
         });
 
@@ -107,14 +108,14 @@ describe('#hints', function () {
             raty.init();
 
             // then
-            expect(raty.self.querySelector('img')[0].title).toEqual('one');
+            expect(raty.self.querySelector('img').title).toEqual('one');
           });
         });
 
         context('with less hints than stars', function () {
-          xit('receives the default hint value', function () {
+          xit('receives the score value', function () {
             // given
-            var raty = new Raty('#el', { halfShow: true, hints: ['1', '2', '3', '4'] });
+            var raty = new Raty('#el', { halfShow: true, hints: ['a', 'b', 'c', 'd'] });
 
             // when
             raty.init();
@@ -122,11 +123,11 @@ describe('#hints', function () {
             // then
             var stars = raty.self.querySelectorAll('img');
 
-            expect(stars[0].title).toEqual('1');
-            expect(stars[1].title).toEqual('2');
-            expect(stars[2].title).toEqual('3');
-            expect(stars[3].title).toEqual('4');
-            expect(stars[4].title).toEqual('gorgeous');
+            expect(stars[0].title).toEqual('a');
+            expect(stars[1].title).toEqual('b');
+            expect(stars[2].title).toEqual('c');
+            expect(stars[3].title).toEqual('d');
+            expect(stars[4].title).toEqual('5');
           });
         });
 
@@ -175,7 +176,7 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          expect(raty.self.querySelector('img').title).toEqual('bad');
+          expect(raty.self.querySelector('img').title).toEqual('1');
         });
       });
 
@@ -224,9 +225,9 @@ describe('#hints', function () {
         });
 
         context('with less hints than stars', function () {
-          xit('receives the default hint value', function () {
+          xit('receives the score value', function () {
             // given
-            var raty = new Raty('#el', { halfShow: false, hints: ['1', '2', '3', '4'] });
+            var raty = new Raty('#el', { halfShow: false, hints: ['a', 'b', 'c', 'd'] });
 
             // when
             raty.init();
@@ -234,11 +235,11 @@ describe('#hints', function () {
             // then
             var stars = raty.self.querySelectorAll('img');
 
-            expect(stars[0].title).toEqual('1');
-            expect(stars[1].title).toEqual('2');
-            expect(stars[2].title).toEqual('3');
-            expect(stars[3].title).toEqual('4');
-            expect(stars[4].title).toEqual('gorgeous');
+            expect(stars[0].title).toEqual('a');
+            expect(stars[1].title).toEqual('b');
+            expect(stars[2].title).toEqual('c');
+            expect(stars[3].title).toEqual('d');
+            expect(stars[4].title).toEqual('5');
           });
         });
 
@@ -297,11 +298,11 @@ describe('#hints', function () {
         // then
         var hints = raty.opt.hints;
 
-        expect(hints[0]).toEqual(['bad', 'bad']);
-        expect(hints[1]).toEqual(['poor', 'poor']);
-        expect(hints[2]).toEqual(['regular', 'regular']);
-        expect(hints[3]).toEqual(['good', 'good']);
-        expect(hints[4]).toEqual(['gorgeous', 'gorgeous']);
+        expect(hints[0]).toEqual([null, null]);
+        expect(hints[1]).toEqual([null, null]);
+        expect(hints[2]).toEqual([null, null]);
+        expect(hints[3]).toEqual([null, null]);
+        expect(hints[4]).toEqual([null, null]);
       });
     });
 
@@ -342,6 +343,7 @@ describe('#hints', function () {
         this.target = Helper.create('#target');
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.1', function () {
         xit('receives the second position', function () {
           // given
@@ -356,7 +358,7 @@ describe('#hints', function () {
           raty.move(1.1);
 
           // then
-          expect(this.target.text()).toEqual('1,5');
+          expect(this.target[0].innerText).toEqual('1,5');
         });
 
         xit('changes the title to first position', function () {
@@ -372,12 +374,13 @@ describe('#hints', function () {
           raty.move(1.1);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.2', function () {
         xit('receives the first position', function () {
           // given
@@ -408,12 +411,13 @@ describe('#hints', function () {
           raty.move(1.2);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.3', function () {
         xit('receives the first position', function () {
           // given
@@ -444,12 +448,13 @@ describe('#hints', function () {
           raty.move(1.3);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.4', function () {
         xit('receives the first position', function () {
           // given
@@ -480,12 +485,13 @@ describe('#hints', function () {
           raty.move(1.4);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.5', function () {
         xit('receives the first position', function () {
           // given
@@ -516,12 +522,13 @@ describe('#hints', function () {
           raty.move(1.5);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.6', function () {
         xit('receives the second position', function () {
           // given
@@ -552,12 +559,13 @@ describe('#hints', function () {
           raty.move(1.6);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.7', function () {
         xit('receives the second position', function () {
           // given
@@ -588,12 +596,13 @@ describe('#hints', function () {
           raty.move(1.7);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.8', function () {
         xit('receives the second position', function () {
           // given
@@ -624,12 +633,13 @@ describe('#hints', function () {
           raty.move(1.8);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.9', function () {
         xit('receives the second position', function () {
           // given
@@ -660,12 +670,13 @@ describe('#hints', function () {
           raty.move(1.9);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 2.0', function () {
         xit('receives the second position', function () {
           // given
@@ -696,12 +707,13 @@ describe('#hints', function () {
           raty.move(2.0);
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 2', function () {
         xit('receives the second position', function () {
           // given
@@ -720,6 +732,7 @@ describe('#hints', function () {
         });
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       xit('changes the title to first position', function () {
         // given
         var raty = new Raty('#el', {
@@ -733,9 +746,9 @@ describe('#hints', function () {
         raty.move(2);
 
         // then
-        var star = raty.self.querySelector()[1];
+        var star = raty.self.querySelectorAll('img')[1];
 
-        expect(star[0].title).toEqual('2,0');
+        expect(star.title).toEqual('2,0');
       });
     });
 
@@ -744,6 +757,7 @@ describe('#hints', function () {
         this.target = Helper.create('#target');
       });
 
+      // TODO: failing: icon is not rendered so move can't reach it
       context('on 1.0 fraction', function () {
         xit('receives the first position', function () {
           // given
@@ -770,13 +784,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 0);
 
           // then
-          expect(star[0].title).toEqual('half');
+          expect(star.title).toEqual('half');
         });
       });
 
@@ -806,13 +820,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 1);
 
           // then
-          expect(star[0].title).toEqual('half');
+          expect(star.title).toEqual('half');
         });
       });
 
@@ -842,13 +856,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 2);
 
           // then
-          expect(star[0].title).toEqual('half');
+          expect(star.title).toEqual('half');
         });
       });
 
@@ -878,13 +892,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 3);
 
           // then
-          expect(star[0].title).toEqual('half');
+          expect(star.title).toEqual('half');
         });
       });
 
@@ -914,13 +928,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 4);
 
           // then
-          expect(star[0].title).toEqual('half');
+          expect(star.title).toEqual('half');
         });
       });
 
@@ -950,13 +964,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 5);
 
           // then
-          expect(star[0].title).toEqual('half');
+          expect(star.title).toEqual('half');
         });
       });
 
@@ -986,13 +1000,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 6);
 
           // then
-          expect(star[0].title).toEqual('integer');
+          expect(star.title).toEqual('integer');
         });
       });
 
@@ -1022,13 +1036,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 7);
 
           // then
-          expect(star[0].title).toEqual('integer');
+          expect(star.title).toEqual('integer');
         });
       });
 
@@ -1058,13 +1072,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 8);
 
           // then
-          expect(star[0].title).toEqual('integer');
+          expect(star.title).toEqual('integer');
         });
       });
 
@@ -1094,13 +1108,13 @@ describe('#hints', function () {
             targetKeep: true,
           }).init();
 
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
           // when
           Helper.mousemove(this.el, 1, 9);
 
           // then
-          expect(star[0].title).toEqual('integer');
+          expect(star.title).toEqual('integer');
         });
       });
     });
@@ -1142,9 +1156,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
@@ -1180,9 +1194,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
@@ -1218,9 +1232,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
@@ -1256,9 +1270,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
@@ -1294,9 +1308,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('1,5');
+          expect(star.title).toEqual('1,5');
         });
       });
 
@@ -1332,9 +1346,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
@@ -1370,9 +1384,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
@@ -1408,9 +1422,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
@@ -1446,9 +1460,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
@@ -1484,9 +1498,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
 
@@ -1522,9 +1536,9 @@ describe('#hints', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector()[1];
+          var star = raty.self.querySelectorAll('img')[1];
 
-          expect(star[0].title).toEqual('2,0');
+          expect(star.title).toEqual('2,0');
         });
       });
     });
@@ -1537,7 +1551,7 @@ describe('#hints', function () {
         var raty = new Raty('#el', {
           hints: null,
           precision: true,
-        }).init();
+        });
 
         // when
         raty.init();
@@ -1560,7 +1574,7 @@ describe('#hints', function () {
         var raty = new Raty('#el', {
           hints: [],
           precision: true,
-        }).init();
+        });
 
         // when
         raty.init();
@@ -1604,7 +1618,7 @@ describe('#hints', function () {
         var raty = new Raty('#el', {
           hints: [null, null, 'hint', null, null],
           precision: true,
-        }).init();
+        });
 
         // when
         raty.init();
@@ -1628,7 +1642,7 @@ describe('#hints', function () {
         var raty = new Raty('#el', {
           hints: [null, null, [null, 'two', null, 'four', undefined], null, null],
           precision: true,
-        }).init();
+        });
 
         // when
         raty.init();
@@ -1681,7 +1695,7 @@ describe('#hints', function () {
           raty.move(1.1);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,1');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,1');
         });
       });
 
@@ -1715,7 +1729,7 @@ describe('#hints', function () {
           raty.move(1.2);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,2');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,2');
         });
       });
 
@@ -1749,7 +1763,7 @@ describe('#hints', function () {
           raty.move(1.3);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,3');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,3');
         });
       });
 
@@ -1783,7 +1797,7 @@ describe('#hints', function () {
           raty.move(1.4);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,4');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,4');
         });
       });
 
@@ -1817,7 +1831,7 @@ describe('#hints', function () {
           raty.move(1.5);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,5');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,5');
         });
       });
 
@@ -1851,7 +1865,7 @@ describe('#hints', function () {
           raty.move(1.6);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,6');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,6');
         });
       });
 
@@ -1885,7 +1899,7 @@ describe('#hints', function () {
           raty.move(1.7);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,7');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,7');
         });
       });
 
@@ -1919,7 +1933,7 @@ describe('#hints', function () {
           raty.move(1.8);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,8');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,8');
         });
       });
 
@@ -1953,7 +1967,7 @@ describe('#hints', function () {
           raty.move(1.9);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,9');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,9');
         });
       });
 
@@ -1987,7 +2001,7 @@ describe('#hints', function () {
           raty.move(2.0);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('2,0');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('2,0');
         });
       });
 
@@ -2021,7 +2035,7 @@ describe('#hints', function () {
           raty.move(2);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('2,0');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('2,0');
         });
       });
     });
@@ -2061,12 +2075,12 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 0);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,1');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,1');
         });
       });
 
       context('on 1.1 fraction', function () {
-        xit('receives the [1][1] position', function () {
+        it('receives the [1][1] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2095,7 +2109,8 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 1);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,2');
+          debugger;
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,2');
         });
       });
 
@@ -2129,7 +2144,7 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 2);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,3');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,3');
         });
       });
 
@@ -2163,7 +2178,7 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 3);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,4');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,4');
         });
       });
 
@@ -2197,7 +2212,7 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 4);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,5');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,5');
         });
       });
 
@@ -2231,7 +2246,7 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 5);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,6');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,6');
         });
       });
 
@@ -2265,7 +2280,7 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 6);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,7');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,7');
         });
       });
 
@@ -2299,7 +2314,7 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 7);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,8');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,8');
         });
       });
 
@@ -2333,7 +2348,7 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 8);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,9');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,9');
         });
       });
 
@@ -2367,7 +2382,7 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 9);
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('2,0');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('2,0');
         });
       });
     });
@@ -2407,7 +2422,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,1');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,1');
         });
       });
 
@@ -2441,7 +2456,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,2');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,2');
         });
       });
 
@@ -2475,7 +2490,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,3');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,3');
         });
       });
 
@@ -2509,7 +2524,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,4');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,4');
         });
       });
 
@@ -2543,7 +2558,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,5');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,5');
         });
       });
 
@@ -2577,7 +2592,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,6');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,6');
         });
       });
 
@@ -2611,7 +2626,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,7');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,7');
         });
       });
 
@@ -2645,7 +2660,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,8');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,8');
         });
       });
 
@@ -2679,7 +2694,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('1,9');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,9');
         });
       });
 
@@ -2713,7 +2728,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('2,0');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('2,0');
         });
       });
 
@@ -2747,7 +2762,7 @@ describe('#hints', function () {
           }).init();
 
           // then
-          expect(raty.self.querySelector()[1].title).toEqual('2,0');
+          expect(raty.self.querySelectorAll('img')[1].title).toEqual('2,0');
         });
       });
     });

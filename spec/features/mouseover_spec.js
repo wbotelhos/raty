@@ -1,6 +1,6 @@
 describe('#mouseover', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   xit('receives the score as int', function () {

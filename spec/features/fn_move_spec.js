@@ -1,6 +1,6 @@
 describe('#move', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     this.target = Helper.create('#target');
   });

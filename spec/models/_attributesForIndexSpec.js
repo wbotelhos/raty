@@ -1,6 +1,6 @@
 describe('#_attributesForIndex', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   context('when :starType is img', function () {

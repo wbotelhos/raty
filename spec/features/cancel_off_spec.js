@@ -1,7 +1,7 @@
 describe('#cancelOff', function () {
   xit('changes the icon', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     // when
     var raty = new Raty('#el', { cancelButton: true, cancelOff: 'star-half.png', path: '../lib/images' }).init();

@@ -1,6 +1,6 @@
 describe('#_adjustHints', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   context('when :halfShow and :half is false', function () {

@@ -1,7 +1,7 @@
 describe('#cancelClass', function () {
   xit('changes the class', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     // when
     var raty = new Raty('#el', { cancelButton: true, cancelClass: 'custom-class' }).init();

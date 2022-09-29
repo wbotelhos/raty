@@ -1,6 +1,6 @@
 describe('#fn_setScore', function () {
   beforeEach(function () {
-    Helper.create('#el');
+    this.el = Helper.create('#el');
   });
 
   xit('sets the score', function () {

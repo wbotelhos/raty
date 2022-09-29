@@ -1,7 +1,7 @@
 describe('#score', function () {
   xit('can be initialized on bind', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     var raty = new Raty('#el', { score: 1 });
 
@@ -14,7 +14,7 @@ describe('#score', function () {
 
   xit('turns on stars', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     var raty = new Raty('#el', { score: 5 });
 
@@ -27,7 +27,7 @@ describe('#score', function () {
 
   xit('accepts callback', function () {
     // given
-    Helper.create('#el');
+    this.el = Helper.create('#el');
 
     var raty = new Raty('#el', {
       score: function () {
@@ -56,7 +56,7 @@ describe('#score', function () {
   context('with negative number', function () {
     xit('does not set the score', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { score: -1 });
 
@@ -71,7 +71,7 @@ describe('#score', function () {
   context('with :readOnly', function () {
     xit('becomes readOnly too', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { readOnly: true });
 
@@ -86,7 +86,7 @@ describe('#score', function () {
   context('with value greater then numbers', function () {
     xit('receives the number of star as value', function () {
       // given
-      Helper.create('#el');
+      this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { score: 100 });
 
