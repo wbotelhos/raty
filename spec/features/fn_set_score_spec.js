@@ -1,4 +1,4 @@
-xdescribe('#fn_setScore', function () {
+describe('#fn_setScore', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

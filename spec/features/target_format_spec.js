@@ -1,4 +1,4 @@
-xdescribe('#targetFormat', function () {
+describe('#targetFormat', function () {
   beforeEach(function () {
     var body = $('body');
 

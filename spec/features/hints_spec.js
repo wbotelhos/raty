@@ -3,7 +3,7 @@ describe('#hints', function () {
     this.el = Helper.create('#el');
   });
 
-  xcontext('with :halfShow', function () {
+  context('with :halfShow', function () {
     context('as *true', function () {
       context('when null', function () {
         it('initializes all with null', function () {
@@ -266,7 +266,7 @@ describe('#hints', function () {
   });
 
   context('with :half', function () {
-    xcontext('and value is null', function () {
+    context('and value is null', function () {
       it('populates all with null', function () {
         // given
         var raty = new Raty('#el', { half: true, hints: null });
@@ -286,7 +286,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('and value is an empty array', function () {
+    context('and value is an empty array', function () {
       it('populates all float arrays with original hint', function () {
         // given
         var raty = new Raty('#el', { half: true, hints: [] });
@@ -305,7 +305,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('with some integer hint', function () {
+    context('with some integer hint', function () {
       it('populates all group with given hint', function () {
         // given
         var raty = new Raty('#el', { half: true, hints: ['hint'] });
@@ -321,7 +321,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('with some float hint', function () {
+    context('with some float hint', function () {
       it('populates the other with last defined hint', function () {
         // given
         var raty = new Raty('#el', { half: true, hints: [['hint']] });
@@ -337,7 +337,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('on #move', function () {
+    context('on #move', function () {
       beforeEach(function () {
         this.target = Helper.create('#target');
       });
@@ -739,13 +739,14 @@ describe('#hints', function () {
       });
     });
 
+    // TODO: mousemove event is not working during test
     context('on mousemove', function () {
       beforeEach(function () {
         this.target = Helper.create('#target');
       });
 
       context('on 1.0 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -761,7 +762,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -781,7 +782,7 @@ describe('#hints', function () {
       });
 
       context('on 1.1 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -797,7 +798,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -817,7 +818,7 @@ describe('#hints', function () {
       });
 
       context('on 1.2 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -833,7 +834,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -853,7 +854,7 @@ describe('#hints', function () {
       });
 
       context('on 1.3 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -869,7 +870,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -889,7 +890,7 @@ describe('#hints', function () {
       });
 
       context('on 1.4 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -905,7 +906,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -925,7 +926,7 @@ describe('#hints', function () {
       });
 
       context('on 1.5 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -941,7 +942,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -961,7 +962,7 @@ describe('#hints', function () {
       });
 
       context('on 1.6 fraction', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -977,7 +978,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('integer');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -997,7 +998,7 @@ describe('#hints', function () {
       });
 
       context('on 1.7 fraction', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -1013,7 +1014,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('integer');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -1033,7 +1034,7 @@ describe('#hints', function () {
       });
 
       context('on 1.8 fraction', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -1049,7 +1050,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('integer');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -1069,7 +1070,7 @@ describe('#hints', function () {
       });
 
       context('on 1.9 fraction', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -1085,7 +1086,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('integer');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -1105,7 +1106,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('on :score', function () {
+    context('on :score', function () {
       beforeEach(function () {
         this.target = Helper.create('#target');
       });
@@ -1531,7 +1532,7 @@ describe('#hints', function () {
   });
 
   context('with :precision', function () {
-    xcontext('and value is null', function () {
+    context('and value is null', function () {
       it('populates all with null', function () {
         // given
         var raty = new Raty('#el', {
@@ -1554,7 +1555,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('and value is an empty array', function () {
+    context('and value is an empty array', function () {
       it('populates all float arrays with original hint', function () {
         // given
         var raty = new Raty('#el', {
@@ -1598,7 +1599,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('with some integer hint', function () {
+    context('with some integer hint', function () {
       it('populates all group with given hint', function () {
         // given
         var raty = new Raty('#el', {
@@ -1622,7 +1623,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('with some float hint', function () {
+    context('with some float hint', function () {
       it('populates the other with last defined hint', function () {
         // given
         var raty = new Raty('#el', {
@@ -1630,14 +1631,15 @@ describe('#hints', function () {
           precision: true,
         });
 
+        var expectedHint = [null, 'two', null, 'four', 'four', 'four', 'four', 'four', 'four', 'four'];
+        var expectedNull = [null, null, null, null, null, null, null, null, null, null];
+
         // when
         raty.init();
 
         // then
-        var expectedHint = [null, 'two', null, 'four', 'four', 'four', 'four', 'four', 'four', 'four'];
-        var expectedNull = [null, null, null, null, null, null, null, null, null, null];
         var hints = raty.opt.hints;
-
+        debugger;
         expect(hints[0]).toEqual(expectedNull);
         expect(hints[1]).toEqual(expectedNull);
         expect(hints[2]).toEqual(expectedHint);
@@ -1646,7 +1648,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('on #move', function () {
+    context('on #move', function () {
       beforeEach(function () {
         this.target = Helper.create('#target');
       });
@@ -2026,13 +2028,14 @@ describe('#hints', function () {
       });
     });
 
+    // TODO: mousemove event is not working during test
     context('on mousemove', function () {
       beforeEach(function () {
         this.target = Helper.create('#target');
       });
 
       context('on 1.0 fraction', function () {
-        xit('receives the [1][0] position', function () {
+        it('receives the [1][0] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2048,7 +2051,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,1');
         });
 
-        xit('receives the [1][0] position as title', function () {
+        it('receives the [1][0] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2066,7 +2069,7 @@ describe('#hints', function () {
       });
 
       context('on 1.1 fraction', function () {
-        xit('receives the [1][1] position', function () {
+        it('receives the [1][1] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2082,7 +2085,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,2');
         });
 
-        xit('receives the [1][1] position as title', function () {
+        it('receives the [1][1] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2100,7 +2103,7 @@ describe('#hints', function () {
       });
 
       context('on 1.2 fraction', function () {
-        xit('receives the [1][2] position', function () {
+        it('receives the [1][2] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2116,7 +2119,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,3');
         });
 
-        xit('receives the [1][2] position as title', function () {
+        it('receives the [1][2] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2134,7 +2137,7 @@ describe('#hints', function () {
       });
 
       context('on 1.3 fraction', function () {
-        xit('receives the [1][3] position', function () {
+        it('receives the [1][3] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2150,7 +2153,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,4');
         });
 
-        xit('receives the [1][3] position as title', function () {
+        it('receives the [1][3] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2168,7 +2171,7 @@ describe('#hints', function () {
       });
 
       context('on 1.4 fraction', function () {
-        xit('receives the [1][4] position', function () {
+        it('receives the [1][4] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2184,7 +2187,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the [1][4] position as title', function () {
+        it('receives the [1][4] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2202,7 +2205,7 @@ describe('#hints', function () {
       });
 
       context('on 1.5 fraction', function () {
-        xit('receives the [1][5] position', function () {
+        it('receives the [1][5] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2218,7 +2221,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,6');
         });
 
-        xit('receives the [1][5] position as title', function () {
+        it('receives the [1][5] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2236,7 +2239,7 @@ describe('#hints', function () {
       });
 
       context('on 1.6 fraction', function () {
-        xit('receives the [1][6] position', function () {
+        it('receives the [1][6] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2252,7 +2255,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,7');
         });
 
-        xit('receives the [1][6] position as title', function () {
+        it('receives the [1][6] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2270,7 +2273,7 @@ describe('#hints', function () {
       });
 
       context('on 1.7 fraction', function () {
-        xit('receives the [1][7] position', function () {
+        it('receives the [1][7] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2286,7 +2289,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,8');
         });
 
-        xit('receives the [1][7] position as title', function () {
+        it('receives the [1][7] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2304,7 +2307,7 @@ describe('#hints', function () {
       });
 
       context('on 1.8 fraction', function () {
-        xit('receives the [1][8] position', function () {
+        it('receives the [1][8] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2320,7 +2323,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,9');
         });
 
-        xit('receives the [1][8] position as title', function () {
+        it('receives the [1][8] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2338,7 +2341,7 @@ describe('#hints', function () {
       });
 
       context('on 1.9 fraction', function () {
-        xit('receives the [1][9] position', function () {
+        it('receives the [1][9] position', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2354,7 +2357,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the [1][9] position as title', function () {
+        it('receives the [1][9] position as title', function () {
           // given
           var raty = new Raty('#el', {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2372,7 +2375,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('on score', function () {
+    context('on score', function () {
       beforeEach(function () {
         this.target = Helper.create('#target');
       });
@@ -2752,7 +2755,7 @@ describe('#hints', function () {
       });
     });
 
-    xcontext('on leave', function () {
+    context('on leave', function () {
       it('reset all stars to the last hint', function () {
         // given
         var raty = new Raty('#el', {

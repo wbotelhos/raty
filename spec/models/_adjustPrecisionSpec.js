@@ -1,4 +1,4 @@
-xdescribe('#_adjustPrecision', function () {
+describe('#_adjustPrecision', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

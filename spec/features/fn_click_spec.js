@@ -1,4 +1,4 @@
-xdescribe('#click', function () {
+describe('#click', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });

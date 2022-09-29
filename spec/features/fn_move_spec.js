@@ -1,4 +1,4 @@
-xdescribe('#move', function () {
+describe('#move', function () {
   beforeEach(function () {
     Helper.create('#el');
 

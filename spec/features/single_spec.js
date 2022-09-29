@@ -1,4 +1,4 @@
-xdescribe('#single', function () {
+describe('#single', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });

@@ -1,4 +1,4 @@
-xdescribe('#targetText', function () {
+describe('#targetText', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
     $('body').append('<div id="hint"></div>');

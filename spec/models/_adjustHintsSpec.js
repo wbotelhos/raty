@@ -1,4 +1,4 @@
-xdescribe('#_adjustHints', function () {
+describe('#_adjustHints', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

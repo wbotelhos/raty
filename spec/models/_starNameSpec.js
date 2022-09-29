@@ -1,4 +1,4 @@
-xdescribe('#_starName', function () {
+describe('#_starName', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

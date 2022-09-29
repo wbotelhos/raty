@@ -1,5 +1,5 @@
 describe('#half', function () {
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-cancel-class': true });
 
@@ -17,7 +17,7 @@ describe('#half', function () {
 
     context('and :halfShow', function () {
       context('as *false', function () {
-        xit('rounds down while less the full limit', function () {
+        it('rounds down while less the full limit', function () {
           // given
           var raty = new Raty('#el', {
             half: false,
@@ -39,7 +39,7 @@ describe('#half', function () {
           expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
         });
 
-        xit('rounds full when equal the full limit', function () {
+        it('rounds full when equal the full limit', function () {
           // given
           var raty = new Raty('#el', {
             half: false,
@@ -67,7 +67,7 @@ describe('#half', function () {
 
     context('on click', function () {
       context('into half area', function () {
-        xit('receives the half value', function () {
+        it('receives the half value', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -81,7 +81,7 @@ describe('#half', function () {
           expect(raty.self.querySelector('input').value).toEqual('1.5');
         });
 
-        xit('gives a callback the rounded value', function () {
+        it('gives a callback the rounded value', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -98,7 +98,7 @@ describe('#half', function () {
       });
 
       context('into round area', function () {
-        xit('receives the rounded value', function () {
+        it('receives the rounded value', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -112,7 +112,7 @@ describe('#half', function () {
           expect(raty.self.querySelector('input').value).toEqual('2');
         });
 
-        xit('gives a callback the rounded value', function () {
+        it('gives a callback the rounded value', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -129,7 +129,7 @@ describe('#half', function () {
       });
 
       context('into zero position', function () {
-        xit('receives the half value', function () {
+        it('receives the half value', function () {
           // given
           var raty = new Raty('#el', {
             half: true,
@@ -147,7 +147,7 @@ describe('#half', function () {
 
     context('and :halfShow', function () {
       context('as *false', function () {
-        xit('ignores the round down while less down limit', function () {
+        it('ignores the round down while less down limit', function () {
           // given
 
           // when
@@ -163,7 +163,7 @@ describe('#half', function () {
           expect(raty.self.querySelector('input').value).toEqual('0.24');
         });
 
-        xit('ignores half while greater then down limit', function () {
+        it('ignores half while greater then down limit', function () {
           // given
 
           // when
@@ -179,7 +179,7 @@ describe('#half', function () {
           expect(raty.self.querySelector('input').value).toEqual('0.26');
         });
 
-        xit('ignores half while equal full limit, ignoring it', function () {
+        it('ignores half while equal full limit, ignoring it', function () {
           // given
 
           // when
@@ -195,7 +195,7 @@ describe('#half', function () {
           expect(raty.self.querySelector('input').value).toEqual('0.6');
         });
 
-        xit('ignores half while greater than down limit and less than up limit', function () {
+        it('ignores half while greater than down limit and less than up limit', function () {
           // given
 
           // when
@@ -211,7 +211,7 @@ describe('#half', function () {
           expect(raty.self.querySelector('input').value).toEqual('0.75');
         });
 
-        xit('ignores full while equal or greater than up limit', function () {
+        it('ignores full while equal or greater than up limit', function () {
           // given
 
           // when
@@ -229,7 +229,7 @@ describe('#half', function () {
 
       context('as *true', function () {
         context('on :score', function () {
-          xit('rounds down while less down limit', function () {
+          it('rounds down while less down limit', function () {
             // given
 
             // when
@@ -244,7 +244,7 @@ describe('#half', function () {
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
           });
 
-          xit('receives half while greater then down limit', function () {
+          it('receives half while greater then down limit', function () {
             // given
 
             // when
@@ -259,7 +259,7 @@ describe('#half', function () {
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
           });
 
-          xit('receives half while equal full limit, ignoring it', function () {
+          it('receives half while equal full limit, ignoring it', function () {
             // given
 
             // when
@@ -274,7 +274,7 @@ describe('#half', function () {
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
           });
 
-          xit('receives half while greater than down limit and less than up limit', function () {
+          it('receives half while greater than down limit and less than up limit', function () {
             // given
 
             // when
@@ -289,7 +289,7 @@ describe('#half', function () {
             expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
           });
 
-          xit('receives full while equal or greater than up limit', function () {
+          it('receives full while equal or greater than up limit', function () {
             // given
 
             // when
@@ -312,7 +312,7 @@ describe('#half', function () {
             context('and :targetKeep', function () {
               context('and :targetType', function () {
                 context('as *score', function () {
-                  xit('shows the 0.5 float', function () {
+                  it('shows the 0.5 float', function () {
                     // given
 
                     // when
@@ -337,7 +337,7 @@ describe('#half', function () {
                     context('with only integer hints', function () {
                       var hints = ['one', 'two', 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][0] hint', function () {
+                      it('shows this hint as [1][0] hint', function () {
                         // given
 
                         // when
@@ -359,7 +359,7 @@ describe('#half', function () {
                     context('with one float hint', function () {
                       var hints = ['one', ['two'], 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][0] hint', function () {
+                      it('shows this hint as [1][0] hint', function () {
                         // given
 
                         // when
@@ -382,7 +382,7 @@ describe('#half', function () {
                     context('with two float hints', function () {
                       var hints = ['one', ['one and half', 'two'], 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][0] hint', function () {
+                      it('shows this hint as [1][0] hint', function () {
                         // given
 
                         // when
@@ -409,7 +409,7 @@ describe('#half', function () {
                     context('with only integer hints', function () {
                       var hints = ['one', 'two', 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][1] hint', function () {
+                      it('shows this hint as [1][1] hint', function () {
                         // given
 
                         // when
@@ -432,7 +432,7 @@ describe('#half', function () {
                     context('with one float hint', function () {
                       var hints = ['one', ['two'], 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][1] hint', function () {
+                      it('shows this hint as [1][1] hint', function () {
                         // given
 
                         // when
@@ -455,7 +455,7 @@ describe('#half', function () {
                     context('with two float hints', function () {
                       var hints = ['one', ['one and half', 'two'], 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][1] hint', function () {
+                      it('shows this hint as [1][1] hint', function () {
                         // given
 
                         // when
@@ -482,7 +482,7 @@ describe('#half', function () {
                     context('with only integer hints', function () {
                       var hints = ['one', 'two', 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][1] hint', function () {
+                      it('shows this hint as [1][1] hint', function () {
                         // given
 
                         // when
@@ -505,7 +505,7 @@ describe('#half', function () {
                     context('with one float hint', function () {
                       var hints = ['one', ['two'], 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][1] hint', function () {
+                      it('shows this hint as [1][1] hint', function () {
                         // given
 
                         // when
@@ -528,7 +528,7 @@ describe('#half', function () {
                     context('with two float hints', function () {
                       var hints = ['one', ['one and half', 'two'], 'three', 'four', 'five'];
 
-                      xit('shows this hint as [1][1] hint', function () {
+                      it('shows this hint as [1][1] hint', function () {
                         // given
 
                         // when
@@ -560,7 +560,7 @@ describe('#half', function () {
           });
 
           context('on 1.1', function () {
-            xit('receives the half star', function () {
+            it('receives the half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -578,7 +578,7 @@ describe('#half', function () {
           });
 
           context('on 1.2', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -591,12 +591,12 @@ describe('#half', function () {
               raty.move(1.2);
 
               // then
-              expect(Helper.extension(raty.self.querySelector(':eq(1)').src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.self.querySelectorAll('img')[1].src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.3', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -609,12 +609,12 @@ describe('#half', function () {
               raty.move(1.3);
 
               // then
-              expect(Helper.extension(raty.self.querySelector(':eq(1)').src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.self.querySelectorAll('img')[1].src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.4', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -627,12 +627,12 @@ describe('#half', function () {
               raty.move(1.4);
 
               // then
-              expect(Helper.extension(raty.self.querySelector(':eq(1)').src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.self.querySelectorAll('img')[1].src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.5', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -645,12 +645,12 @@ describe('#half', function () {
               raty.move(1.5);
 
               // then
-              expect(Helper.extension(raty.self.querySelector(':eq(1)').src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.self.querySelectorAll('img')[1].src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.6', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -668,7 +668,7 @@ describe('#half', function () {
           });
 
           context('on 1.7', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -686,7 +686,7 @@ describe('#half', function () {
           });
 
           context('on 1.8', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -704,7 +704,7 @@ describe('#half', function () {
           });
 
           context('on 1.9', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -722,7 +722,7 @@ describe('#half', function () {
           });
 
           context('on 2.0', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -740,7 +740,7 @@ describe('#half', function () {
           });
 
           context('on 2', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -764,7 +764,7 @@ describe('#half', function () {
           });
 
           context('on 1.0 fraction', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -782,7 +782,7 @@ describe('#half', function () {
           });
 
           context('on 1.1 fraction', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -800,7 +800,7 @@ describe('#half', function () {
           });
 
           context('on 1.2 fraction', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -818,7 +818,7 @@ describe('#half', function () {
           });
 
           context('on 1.3 fraction', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -836,7 +836,7 @@ describe('#half', function () {
           });
 
           context('on 1.4 fraction', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -854,7 +854,7 @@ describe('#half', function () {
           });
 
           context('on 1.5 fraction', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -872,7 +872,7 @@ describe('#half', function () {
           });
 
           context('on 1.6 fraction', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -890,7 +890,7 @@ describe('#half', function () {
           });
 
           context('on 1.7 fraction', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -908,7 +908,7 @@ describe('#half', function () {
           });
 
           context('on 1.8 fraction', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,
@@ -926,7 +926,7 @@ describe('#half', function () {
           });
 
           context('on 1.9 fraction', function () {
-            xit('receives the full star', function () {
+            it('receives the full star', function () {
               // given
               var raty = new Raty('#el', {
                 half: true,

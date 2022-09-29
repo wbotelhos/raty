@@ -1,4 +1,4 @@
-xdescribe('#cancel', function () {
+describe('#cancel', function () {
   it('creates the element', function () {
     // given
     this.el = Helper.create('#el');

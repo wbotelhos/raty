@@ -1,4 +1,4 @@
-xdescribe('#cancelClass', function () {
+describe('#cancelClass', function () {
   it('changes the class', function () {
     // given
     this.el = Helper.create('#el');

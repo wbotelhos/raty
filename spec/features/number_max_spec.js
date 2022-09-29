@@ -1,4 +1,4 @@
-xdescribe('#numberMax', function () {
+describe('#numberMax', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

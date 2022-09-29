@@ -1,4 +1,4 @@
-xdescribe('#_parseOptions', function () {
+describe('#_parseOptions', function () {
   it('parses options', function () {
     // given
     this.el = Helper.create('#el');

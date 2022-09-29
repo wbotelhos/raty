@@ -1,4 +1,4 @@
-xdescribe('#cancelHint', function () {
+describe('#cancelHint', function () {
   it('changes the cancel hint', function () {
     // given
     this.el = Helper.create('#el');

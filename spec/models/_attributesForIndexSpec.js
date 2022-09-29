@@ -1,4 +1,4 @@
-xdescribe('#_attributesForIndex', function () {
+describe('#_attributesForIndex', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

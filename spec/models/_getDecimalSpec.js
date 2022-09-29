@@ -1,4 +1,4 @@
-xdescribe('#_getDecimal', function () {
+describe('#_getDecimal', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

@@ -1,4 +1,4 @@
-xdescribe('markup', function () {
+describe('markup', function () {
   beforeEach(function () {
     $('body').append('<div data-raty></div><div data-raty></div>');
   });

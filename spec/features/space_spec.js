@@ -1,4 +1,4 @@
-xdescribe('#space', function () {
+describe('#space', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });

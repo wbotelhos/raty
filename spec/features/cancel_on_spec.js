@@ -1,4 +1,4 @@
-xdescribe('#cancelOn', function () {
+describe('#cancelOn', function () {
   it('changes the icon', function () {
     // given
     this.el = Helper.create('#el');

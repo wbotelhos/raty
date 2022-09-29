@@ -1,4 +1,4 @@
-xdescribe('#precision', function () {
+describe('#precision', function () {
   beforeEach(function () {
     this.el = Helper.create('#el', 'div', { 'data-target': '#target' });
     this.target = Helper.create('#target');
@@ -273,10 +273,8 @@ xdescribe('#precision', function () {
         });
 
         context('with :cancel', function () {
-          it('shows :cancelHint', function (done) {
+          it('shows :cancelHint', function () {
             // given
-            var that = this;
-
             var raty = new Raty('#el', {
               cancelButton: true,
               precision: true,
@@ -285,19 +283,15 @@ xdescribe('#precision', function () {
               target: function () {
                 return this.getAttribute('data-target');
               },
-            });
+            }).init();
 
-            var cancel = raty.self.querySelectorAll('.' + raty.opt.cancelClass);
+            var cancel = raty.self.querySelector('img');
 
-            setTimeout(function () {
-              // when
-              Helper.trigger(cancel, 'mouseover');
+            // when
+            Helper.trigger(cancel, 'mouseover');
 
-              // then
-              expect(that.target).toHaveHtml(that.raty.opt.cancelHint);
-
-              done();
-            }, 100);
+            // then
+            expect(this.target).toHaveHtml(raty.opt.cancelHint);
           });
         });
       });

@@ -1,4 +1,4 @@
-xdescribe('#starType', function () {
+describe('#starType', function () {
   context('when actived', function () {
     it('disable the width property', function () {
       // given

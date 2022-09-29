@@ -1,4 +1,4 @@
-xdescribe('#path', function () {
+describe('#path', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

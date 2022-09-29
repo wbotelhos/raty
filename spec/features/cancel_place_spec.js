@@ -1,4 +1,4 @@
-xdescribe('#cancelPlace', function () {
+describe('#cancelPlace', function () {
   it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-cancel-place': 'custom' });

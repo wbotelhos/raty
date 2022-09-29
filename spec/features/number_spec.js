@@ -1,4 +1,4 @@
-xdescribe('#number', function () {
+describe('#number', function () {
   it('changes the number of stars', function () {
     // given
     this.el = Helper.create('#el');

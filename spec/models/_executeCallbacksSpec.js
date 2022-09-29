@@ -1,4 +1,4 @@
-xdescribe('#_executeCallbacks', function () {
+describe('#_executeCallbacks', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });

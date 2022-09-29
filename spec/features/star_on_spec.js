@@ -1,4 +1,4 @@
-xdescribe('#starOn', function () {
+describe('#starOn', function () {
   it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-star-on': 'custom' });

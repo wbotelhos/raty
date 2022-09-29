@@ -1,4 +1,4 @@
-xdescribe('#score', function () {
+describe('#score', function () {
   it('can be initialized on bind', function () {
     // given
     this.el = Helper.create('#el');

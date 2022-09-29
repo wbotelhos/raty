@@ -1,4 +1,4 @@
-xdescribe('#scoreName', function () {
+describe('#scoreName', function () {
   it('changes the score field name', function () {
     // given
     this.el = Helper.create('#el');

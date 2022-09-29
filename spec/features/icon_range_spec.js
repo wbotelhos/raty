@@ -1,4 +1,4 @@
-xdescribe('#iconRange', function () {
+describe('#iconRange', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });

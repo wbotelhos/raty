@@ -1,4 +1,4 @@
-xdescribe('#targetScore', function () {
+describe('#targetScore', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
 

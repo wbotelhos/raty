@@ -1,4 +1,4 @@
-xdescribe('#readOnly', function () {
+describe('#readOnly', function () {
   it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-readonly': true });

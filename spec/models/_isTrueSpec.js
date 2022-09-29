@@ -1,4 +1,4 @@
-xdescribe('#_isTrue', function () {
+describe('#_isTrue', function () {
   it('return a boolean type', function () {
     // given
     this.el = Helper.create('#el');
