@@ -1,17 +1,11 @@
 describe('#targetText', function () {
   beforeEach(function () {
-    $('body').append('<div id="element"></div>');
-    $('body').append('<div id="hint"></div>');
-  });
-
-  afterEach(function () {
-    $('#element').remove();
-    $('#hint').remove();
+    $('body').append('<div id="element"></div>').append('<div id="hint"></div>');
   });
 
   it('set target with none value', function () {
     // given
-    var raty = new Raty(document.querySelector('#element', { target: '#hint'), targetText: 'none' });
+    var raty = new Raty(document.querySelector('#element'), { target: '#hint', targetText: 'none' });
 
     // when
     raty.init();

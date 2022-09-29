@@ -1,12 +1,12 @@
 describe('#precision', function () {
   beforeEach(function () {
-    this.el = Helper.create(document.querySelector('#el'), 'div', { 'data-target': '#target' });
+    this.el = Helper.create('#el', 'div', { 'data-target': '#target' });
     this.target = Helper.create('#target');
   });
 
   it('enables the :half options', function () {
     // given
-    Helper.create(document.querySelector('#el'), 'div', { 'data-target': '#target' });
+    Helper.create('#el', 'div', { 'data-target': '#target' });
 
     var raty = new Raty(document.querySelector('#el'), { precision: true });
 
