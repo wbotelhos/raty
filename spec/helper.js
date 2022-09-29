@@ -9,7 +9,7 @@ function xcontext(description, spec) {
 }
 
 afterEach(function () {
-  Helper.clear();
+  document.body.innerHTML = '';
 });
 
 var Helper = {
