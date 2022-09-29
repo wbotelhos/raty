@@ -46,7 +46,7 @@ describe('get #score', function () {
   context('with float score', function () {
     xit('gets as float', function () {
       // given
-      var raty = new Raty('#element', { score: 1.5 });
+      var raty = new Raty('#element', { score: 1.5 }).init();
 
       // when
       var score = raty.score();

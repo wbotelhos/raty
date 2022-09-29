@@ -1,19 +1,19 @@
 describe('#move', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     this.target = Helper.create('#target');
   });
 
   xit('sets *move to true then turns it false ', function () {
     // given
-    var raty = new Raty('#el');
+    var raty = new Raty('#el').init();
 
     // when
     raty.move(1);
 
     // then
-    expect(raty.self.isMove).toBeFalsy();
+    expect(raty.self.isMove).toEqual(false);
   });
 
   describe('with interger score', function () {
@@ -23,13 +23,13 @@ describe('#move', function () {
         precision: true,
         target: '#target',
         targetType: 'number',
-      });
+      }).init();
 
       var that = this;
 
       setTimeout(function () {
         // when
-        that.el.data('raty').move(1);
+        raty.move(1);
 
         // then
         expect(that.target.text()).toEqual('1.0');
@@ -47,13 +47,13 @@ describe('#move', function () {
           precision: true,
           target: '#target',
           targetType: 'number',
-        });
+        }).init();
 
         var that = this;
 
         setTimeout(function () {
           // when
-          that.el.data('raty').move(1.7);
+          raty.move(1.7);
 
           // then
           expect(that.target.text()).toEqual('1.7');
@@ -70,13 +70,13 @@ describe('#move', function () {
           precision: true,
           target: '#target',
           targetType: 'number',
-        });
+        }).init();
 
         var that = this;
 
         setTimeout(function () {
           // when
-          that.el.data('raty').move(1.79);
+          raty.move(1.79);
 
           // then
           expect(that.target.text()).toEqual('1.7');
@@ -94,13 +94,13 @@ describe('#move', function () {
         precision: true,
         target: '#target',
         targetType: 'number',
-      });
+      }).init();
 
       var that = this;
 
       setTimeout(function () {
         // when
-        that.el.data('raty').move('1.7');
+        raty.move('1.7');
 
         // then
         expect(that.target.text()).toEqual('1.7');
@@ -117,13 +117,13 @@ describe('#move', function () {
         precision: true,
         target: '#target',
         targetType: 'number',
-      });
+      }).init();
 
       var that = this;
 
       setTimeout(function () {
         // when
-        that.el.data('raty').move(6.7);
+        raty.move(6.7);
 
         // then
         expect(that.target.text()).toEqual('5.0');

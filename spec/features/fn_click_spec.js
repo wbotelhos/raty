@@ -10,67 +10,80 @@ describe('#click', function () {
 
   xit('clicks on star', function () {
     // given
-    var self = $('#element').raty({
+    var raty = new Raty('#element', {
       click: function () {
-        $(this).data('clicked', true);
+        this.dataset.clicked = true;
       },
-    });
+    }).init();
+
+    var stars = raty.self.querySelectorAll('img');
 
     // when
-    self.data('raty').click(1);
+    raty.click(1);
 
     // then
-    expect(Helper.extension(self.querySelectorAll('img').src)).toEqual('star-on.png');
-    expect(self.data('clicked')).toEqual(true);
+    expect(stars[0].getAttribute('src')).toEqual('star-on.png');
+    expect(stars[1].getAttribute('src')).toEqual('star-off.png');
+    expect(stars[2].getAttribute('src')).toEqual('star-off.png');
+    expect(stars[3].getAttribute('src')).toEqual('star-off.png');
+    expect(stars[4].getAttribute('src')).toEqual('star-off.png');
+
+    expect(raty.self.dataset.clicked).toEqual('true');
   });
 
   xit('receives the score', function () {
     // given
-    var self = $('#element').raty({
+    var raty = new Raty('#element', {
       click: function (score) {
         this.result = score;
       },
-    });
+    }).init();
 
     // when
-    self.data('raty').click(1);
+    raty.click(1);
 
     // then
-    expect(self[0].result).toEqual(1);
+    expect(raty.self.result).toEqual(1);
   });
 
   xit('receives the event', function () {
     // given
-    var self = $('#element').raty({
+    var raty = new Raty('#element', {
       click: function (score, evt) {
-        $(this).data('evt', evt);
+        this.dataset.type = evt.type;
       },
-    });
+    }).init();
 
     // when
-    self.data('raty').click(1);
+    raty.click(1);
 
     // then
-    expect(self.data('evt').type).toEqual('click');
+    expect(raty.self.dataset.type).toEqual('click');
   });
 
   describe('with :readOnly', function () {
     xit('does not set the score', function () {
       // given
-      var self = $('#element').raty({ readOnly: true });
+      var raty = new Raty('#element', { readOnly: true }).init();
+
+      var stars = raty.self.querySelectorAll('img');
 
       // when
-      self.data('raty').click(1);
+      raty.click(1);
 
       // then
-      expect(Helper.extension(self.querySelectorAll('img').src)).toEqual('star-off.png');
+      expect(stars[0].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[1].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[2].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[3].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[4].getAttribute('src')).toEqual('star-off.png');
     });
   });
 
   context('without :click', function () {
     xit('ignores the callback', function () {
       // given
-      var raty = new Raty('#element').iunit();
+      var raty = new Raty('#element').init();
 
       // when
       var lambda = function () {
@@ -90,14 +103,14 @@ describe('#click', function () {
     context('and :targetKeep', function () {
       xit('sets the score on target', function () {
         // given
-        var self = $('#element').raty({
+        var raty = new Raty('#element', {
           target: '#hint',
           targetKeep: true,
           click: function () {},
-        });
+        }).init();
 
         // when
-        self.data('raty').click(1);
+        raty.click(1);
 
         // then
         expect($('#hint')[0].innerHTML).toEqual('bad');

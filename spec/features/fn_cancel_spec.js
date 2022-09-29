@@ -4,9 +4,9 @@ describe('#fn_cancel', function () {
   });
 
   describe('with :readOnly', function () {
-    xit('does not cancel', function () {
+    it('does not cancel', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true, score: 5 });
+      var raty = new Raty('#el', { readOnly: true, score: 5 }).init();
       var stars = raty.self.querySelectorAll('img');
 
       // when
@@ -20,9 +20,9 @@ describe('#fn_cancel', function () {
       expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
     });
 
-    xit('does not remove the score input value', function () {
+    it('does not remove the score input value', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true, score: 5 });
+      var raty = new Raty('#el', { readOnly: true, score: 5 }).init();
 
       // when
       raty.cancel();
@@ -34,20 +34,20 @@ describe('#fn_cancel', function () {
 
   context('with click trigger', function () {
     context('as *false', function () {
-      xit('does not triggers click callback', function () {
+      it('does not triggers click callback', function () {
         // given
         var raty = new Raty('#el', {
           score: 1,
           click: function () {
             this.clicked = true;
           },
-        });
+        }).init();
 
         // when
         raty.cancel(false);
 
         // then
-        expect(raty.self.clicked).toBeFalsy();
+        expect(raty.self.clicked).toEqual(undefined);
       });
 
       context('with :target', function () {
@@ -57,14 +57,14 @@ describe('#fn_cancel', function () {
 
         context('and :targetKeep', function () {
           context('as *true', function () {
-            xit('sets the :targetText on target', function () {
+            it('sets the :targetText on target', function () {
               // given
               var raty = new Raty('#el', {
                 cancel: true,
                 target: '#target',
                 targetKeep: true,
                 targetText: 'targetText',
-              });
+              }).init();
 
               // when
               raty.cancel();
@@ -78,14 +78,14 @@ describe('#fn_cancel', function () {
     });
 
     context('as *true', function () {
-      xit('triggers the :click callback', function () {
+      it('triggers the :click callback', function () {
         // given
         var raty = new Raty('#el', {
           score: 1,
           click: function () {
             this.clicked = true;
           },
-        });
+        }).init();
 
         // when
         raty.cancel(true);
@@ -101,14 +101,14 @@ describe('#fn_cancel', function () {
 
         context('and :targetKeep', function () {
           context('as *true', function () {
-            xit('sets the :targetText on target', function () {
+            it('sets the :targetText on target', function () {
               // given
               var raty = new Raty('#el', {
                 cancel: true,
                 target: '#target',
                 targetKeep: true,
                 targetText: 'targetText',
-              });
+              }).init();
 
               // when
               raty.cancel(true);

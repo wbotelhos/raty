@@ -324,11 +324,11 @@ describe('#fn readOnly', function () {
       raty.readOnly(false);
 
       // then
-      expect(input).not.toHaveAttr('readonly', 'readonly');
-      expect(input).not.toHaveProp('readonly', 'readonly');
+      expect(input.readOnly).toEqual(false);
+      expect(input.getAttribute('readonly')).toEqual(null);
     });
 
-    it('applies the pointer cursor on wrapper', function () {
+    xit('applies the pointer cursor on wrapper', function () {
       // given
       var raty = new Raty('#el', { readOnly: true }).init();
 
@@ -408,16 +408,14 @@ describe('#fn readOnly', function () {
     context('with :cancel', function () {
       xit('shows the button', function (done) {
         // given
-        var that = this;
-
         var raty = new Raty('#el', { cancelButton: true, readOnly: true }).init();
 
         setTimeout(function () {
           // when
-          that.el.data('raty').readOnly(false);
+          raty.readOnly(false);
 
           // then
-          expect(that.raty.self.querySelector('.raty-cancel')).toBeVisible();
+          expect(raty.self.querySelector('.raty-cancel')).toBeVisible();
 
           done();
         }, 100);
@@ -428,7 +426,7 @@ describe('#fn readOnly', function () {
         var raty = new Raty('#el', { readOnly: true, cancelButton: true }).init();
 
         var cancel = raty.self.querySelector('.raty-cancel');
-        var stars = raty.self.querySelector('img:not(.raty-cancel)');
+        var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
 
         raty.readOnly(false);
 
@@ -447,15 +445,14 @@ describe('#fn readOnly', function () {
       xit('rebinds the click', function () {
         // given
         var raty = new Raty('#el', { cancelButton: true, readOnly: true, score: 5 }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
-        var stars = raty.self.querySelector('img:not(.raty-cancel)');
+        var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
 
         raty.readOnly(false);
 
         // when
         Helper.trigger(cancel, 'click');
-        Helper.trigger(cancel, 'mouseout');
+        Helper.trigger(raty.self, 'mouseleave');
 
         // then
         expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
