@@ -7,6 +7,7 @@ module.exports = function (config) {
 
     files: [
       { included: false, pattern: 'lib/images/*.png', served: true, watched: false },
+      { included: false, pattern: 'lib/fonts/*', served: true, watched: false },
       'node_modules/jquery/dist/jquery.min.js',
       'lib/*.css',
       'lib/build/raty.js',

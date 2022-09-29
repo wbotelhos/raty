@@ -3,6 +3,11 @@ function context(description, spec) {
   describe(description, spec);
 }
 
+function xcontext(description, spec) {
+  // eslint-disable-line no-redeclare, no-unused-vars
+  xdescribe(description, spec);
+}
+
 afterEach(function () {
   Helper.clear();
 });
