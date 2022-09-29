@@ -1,4 +1,4 @@
-describe('#click', function () {
+xdescribe('#click', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });
@@ -8,7 +8,7 @@ describe('#click', function () {
     $('#hint').remove();
   });
 
-  xit('clicks on star', function () {
+  it('clicks on star', function () {
     // given
     var raty = new Raty('#element', {
       click: function () {
@@ -31,7 +31,7 @@ describe('#click', function () {
     expect(raty.self.dataset.clicked).toEqual('true');
   });
 
-  xit('receives the score', function () {
+  it('receives the score', function () {
     // given
     var raty = new Raty('#element', {
       click: function (score) {
@@ -46,7 +46,7 @@ describe('#click', function () {
     expect(raty.self.result).toEqual(1);
   });
 
-  xit('receives the event', function () {
+  it('receives the event', function () {
     // given
     var raty = new Raty('#element', {
       click: function (score, evt) {
@@ -62,7 +62,7 @@ describe('#click', function () {
   });
 
   describe('with :readOnly', function () {
-    xit('does not set the score', function () {
+    it('does not set the score', function () {
       // given
       var raty = new Raty('#element', { readOnly: true }).init();
 
@@ -81,7 +81,7 @@ describe('#click', function () {
   });
 
   context('without :click', function () {
-    xit('ignores the callback', function () {
+    it('ignores the callback', function () {
       // given
       var raty = new Raty('#element').init();
 
@@ -101,7 +101,7 @@ describe('#click', function () {
     });
 
     context('and :targetKeep', function () {
-      xit('sets the score on target', function () {
+      it('sets the score on target', function () {
         // given
         var raty = new Raty('#element', {
           target: '#hint',

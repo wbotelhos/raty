@@ -1,9 +1,9 @@
-describe('#click', function () {
+xdescribe('#click', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('is called on star click', function () {
+  it('is called on star click', function () {
     // given
     var raty = new Raty('#el', {
       click: function () {
@@ -20,7 +20,7 @@ describe('#click', function () {
     expect(raty.self.called).toEqual(true);
   });
 
-  xit('has "this" as context', function () {
+  it('has "this" as context', function () {
     // given
     var raty = new Raty('#el', {
       click: function () {
@@ -37,7 +37,7 @@ describe('#click', function () {
     expect(raty.self.result).toBe(document.querySelector('#el'));
   });
 
-  xit('receives the score as argument', function () {
+  it('receives the score as argument', function () {
     // given
     var raty = new Raty('#el', {
       click: function (score) {
@@ -54,7 +54,7 @@ describe('#click', function () {
   });
 
   context('with return as undefined', function () {
-    xit('executes click behavior', function () {
+    it('executes click behavior', function () {
       // given
       var raty = new Raty('#el', {
         click: function () {},
@@ -69,7 +69,7 @@ describe('#click', function () {
       expect(raty.self.querySelector('input').value).toEqual('5');
     });
 
-    xit('turns on the stars', function () {
+    it('turns on the stars', function () {
       // given
       var raty = new Raty('#el', {
         click: function () {},
@@ -90,7 +90,7 @@ describe('#click', function () {
   });
 
   context('with return as true', function () {
-    xit('applies the score', function () {
+    it('applies the score', function () {
       // given
       var raty = new Raty('#el', {
         click: function () {
@@ -107,7 +107,7 @@ describe('#click', function () {
       expect(raty.self.querySelector('input').value).toEqual('5');
     });
 
-    xit('turns on the stars', function () {
+    it('turns on the stars', function () {
       // given
       var raty = new Raty('#el', {
         click: function () {
@@ -130,7 +130,7 @@ describe('#click', function () {
   });
 
   context('with return as false', function () {
-    xit('does not applies the score', function () {
+    it('does not applies the score', function () {
       // given
       var raty = new Raty('#el', {
         click: function () {
@@ -147,7 +147,7 @@ describe('#click', function () {
       expect(raty.self.querySelector('input').value).toEqual('');
     });
 
-    xit('does not turns on the stars', function () {
+    it('does not turns on the stars', function () {
       // given
       var raty = new Raty('#el', {
         click: function () {
@@ -170,7 +170,7 @@ describe('#click', function () {
   });
 
   context('with :cancel', function () {
-    xit('executes the callback', function () {
+    it('executes the callback', function () {
       // given
       var raty = new Raty('#el', {
         cancelButton: true,
@@ -189,7 +189,7 @@ describe('#click', function () {
   });
 
   context('on click without mouseover', function () {
-    xit('changes the stars to on', function () {
+    it('changes the stars to on', function () {
       // given
       var raty = new Raty('#el').init();
       var stars = raty.self.querySelectorAll('img');

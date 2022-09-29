@@ -1,35 +1,39 @@
-describe('#readOnly', function () {
-  beforeEach(function () {
-    this.el = Helper.create('#el');
-  });
-
-  xit('accepts data attribute', function () {
+xdescribe('#readOnly', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-readonly': true });
 
+    var raty = new Raty('[data-readonly]');
+
     // when
-    var raty = new Raty('#el');
+    raty.init();
 
     // then
     expect(raty.opt.readonly).toEqual(true);
   });
 
   context('on true', function () {
-    xit('sets score as readonly', function () {
+    beforeEach(function () {
+      this.el = Helper.create('#el');
+    });
+
+    it('sets score as readonly', function () {
       // given
+      var raty = new Raty('#el', { readOnly: true });
 
       // when
-      var raty = new Raty('#el', { readOnly: true });
+      raty.init();
 
       // then
       expect(raty.self.querySelector('input').readOnly).toEqual(true);
     });
 
-    xit('removes the pointer cursor', function () {
+    it('removes the pointer cursor', function () {
       // given
+      var raty = new Raty('#el', { readOnly: true });
 
       // when
-      var raty = new Raty('#el', { readOnly: true });
+      raty.init();
 
       // then
       expect(this.el).not.toHaveCss({ cursor: 'pointer' });
@@ -37,50 +41,59 @@ describe('#readOnly', function () {
     });
 
     context('without rating', function () {
-      xit('Applies the :noRatedMsg on stars', function () {
+      it('Applies the :noRatedMsg on stars', function () {
         // given
+        var raty = new Raty('#el', { readOnly: true });
 
         // when
-        var raty = new Raty('#el', { readOnly: true });
+        raty.init();
 
         // then
         expect(raty.self.querySelector('img').title).toEqual('Not rated yet!');
       });
     });
 
-    xit('does not trigger mouseover', function () {
+    it('does not trigger mouseover', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true });
-
-      var stars = raty.self.querySelector('img');
+      var raty = new Raty('#el', { readOnly: true }).init();
+      var stars = raty.self.querySelectorAll('img');
 
       // when
-      Helper.trigger(stars.first(), 'mouseover');
+      Helper.trigger(stars[0], 'mouseover');
 
       // then
-      expect(Helper.extension(stars.src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
     });
 
-    xit('does not trigger click', function () {
+    it('does not trigger click', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true });
-
-      var stars = raty.self.querySelector('img');
+      var raty = new Raty('#el', { readOnly: true }).init();
+      var stars = raty.self.querySelectorAll('img');
 
       // when
-      stars.first().trigger('click');
+      Helper.trigger(stars[0], 'click');
 
       // then
-      expect(Helper.extension(stars.src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
+
       expect(raty.self.querySelector('input').value).toEqual('');
     });
 
     context('with :cancel', function () {
-      xit('hides the button', function () {
+      it('hides the button', function () {
         // given
+        var raty = new Raty('#el', { cancelButton: true, readOnly: true });
 
         // when
-        var raty = new Raty('#el', { cancelButton: true, readOnly: true });
+        raty.init();
 
         // then
         expect(raty.self.querySelectorAll('.raty-cancel')).toBeHidden();
@@ -88,49 +101,46 @@ describe('#readOnly', function () {
     });
 
     context('with external bind on wrapper', function () {
-      xit('is kept', function () {
+      it('is kept', function () {
         // given
-        this.el
-          .on('click', function () {
-            $(this).data('trigged', true);
-          })
-          .raty({ readOnly: true });
+        this.el.on('click', function () {
+          $(this).data('trigged', true);
+        });
+
+        var raty = new Raty('#el', { readOnly: true }).init();
 
         // when
-        raty.self.trigger('click');
+        this.el.click();
 
         // then
-        expect(raty.self.data('trigged')).toEqual(true);
+        expect(this.el.data('trigged')).toEqual(true);
       });
     });
 
     context('with external bind on stars', function () {
-      xit('keeps it', function () {
+      it('keeps it', function () {
         // given
-        var raty = new Raty('#el', { readOnly: true });
-
+        var raty = new Raty('#el', { readOnly: true }).init();
         var star = raty.self.querySelector('img');
         var that = this;
 
-        star.on('click', function () {
+        star.addEventListener('click', function () {
           that.el.data('trigged', true);
         });
 
         // when
-        star.trigger('click');
+        Helper.trigger(star, 'click');
 
         // then
-        expect(raty.self.data('trigged')).toEqual(true);
+        expect(that.el.data('trigged')).toEqual(true);
       });
     });
 
     context('with :halfShow', function () {
       context('as *true', function () {
         context('with :score as integer', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
-
-            // when
             var raty = new Raty('#el', {
               halfShow: true,
               hints: [['half', 'one']],
@@ -138,22 +148,26 @@ describe('#readOnly', function () {
               score: 1,
             });
 
+            // when
+            raty.init();
+
             // then
             expect(raty.self.querySelector('img').title).toEqual('one');
           });
         });
 
         context('with :score as float', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
-
-            // when
             var raty = new Raty('#el', {
               halfShow: true,
               hints: [['half', 'one']],
               readOnly: true,
               score: 0.5,
             });
+
+            // when
+            raty.init();
 
             // then
             expect(raty.self.querySelector('img').title).toEqual('half');
@@ -165,10 +179,8 @@ describe('#readOnly', function () {
     context('with :half', function () {
       context('as *true', function () {
         context('with :score as integer', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
-
-            // when
             var raty = new Raty('#el', {
               half: true,
               hints: [['half', 'one']],
@@ -176,22 +188,26 @@ describe('#readOnly', function () {
               score: 1,
             });
 
+            // when
+            raty.init();
+
             // then
             expect(raty.self.querySelector('img').title).toEqual('one');
           });
         });
 
         context('with :score as float', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
-
-            // when
             var raty = new Raty('#el', {
               half: true,
               hints: [['half', 'one']],
               readOnly: true,
               score: 0.5,
             });
+
+            // when
+            raty.init();
 
             // then
             expect(raty.self.querySelector('img').title).toEqual('half');
@@ -203,10 +219,8 @@ describe('#readOnly', function () {
     context('with :precision', function () {
       context('as *true', function () {
         context('with :score as integer', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
-
-            // when
             var raty = new Raty('#el', {
               hints: [['zero.one', 'zero.two']],
               precision: true,
@@ -214,22 +228,26 @@ describe('#readOnly', function () {
               score: 1,
             });
 
+            // when
+            raty.init();
+
             // then
             expect(raty.self.querySelector('img').title).toEqual('zero.two');
           });
         });
 
         context('with :score as float', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
-
-            // when
             var raty = new Raty('#el', {
               hints: [['zero.one', 'zero.two']],
               precision: true,
               readOnly: true,
               score: 0.1,
             });
+
+            // when
+            raty.init();
 
             // then
             expect(raty.self.querySelector('img').title).toEqual('zero.one');
@@ -240,10 +258,13 @@ describe('#readOnly', function () {
   });
 
   context('on false', function () {
-    xit('removes the :readOnly of the score', function () {
-      // given
-      var raty = new Raty('#el', { readOnly: true });
+    beforeEach(function () {
+      this.el = Helper.create('#el');
+    });
 
+    it('removes the :readOnly of the score', function () {
+      // given
+      var raty = new Raty('#el', { readOnly: true }).init();
       var input = raty.self.querySelector('input');
 
       // when
@@ -254,9 +275,9 @@ describe('#readOnly', function () {
       expect(input).not.toHaveProp('readonly', 'readonly');
     });
 
-    xit('applies the pointer cursor on wrapper', function () {
+    it('applies the pointer cursor on wrapper', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true });
+      var raty = new Raty('#el', { readOnly: true }).init();
 
       // when
       raty.readOnly(false);
@@ -265,11 +286,10 @@ describe('#readOnly', function () {
       expect(this.el).toHaveCss({ cursor: 'pointer' });
     });
 
-    xit('Removes the :noRatedMsg from stars', function () {
+    it('Removes the :noRatedMsg from stars', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true });
-
-      var stars = raty.self.querySelector('img');
+      var raty = new Raty('#el', { readOnly: true }).init();
+      var stars = raty.self.querySelectorAll('img');
 
       // when
       raty.readOnly(false);
@@ -282,42 +302,41 @@ describe('#readOnly', function () {
       expect(stars[4].title).toEqual('gorgeous');
     });
 
-    xit('triggers mouseover', function () {
+    it('triggers mouseover', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true });
-
-      var stars = raty.self.querySelector('img');
+      var raty = new Raty('#el', { readOnly: true }).init();
+      var star = raty.self.querySelector('img');
 
       raty.readOnly(false);
 
       // when
-      Helper.trigger(stars.first(), 'mouseover');
+      Helper.trigger(star, 'mouseover');
 
       // then
-      expect(Helper.extension(stars.first().src)).toEqual('star-on.png');
+      expect(star.getAttribute('src')).toEqual('star-on.png');
     });
 
-    xit('triggers click', function () {
+    it('triggers click', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true });
+      var raty = new Raty('#el', { readOnly: true }).init();
 
       var star = raty.self.querySelector('img');
 
       raty.readOnly(false);
 
       // when
-      star.trigger('click');
+      Helper.trigger(star, 'click');
 
       // then
       expect(raty.self.querySelector('input').value).toEqual('1');
     });
 
     context('with :score', function () {
-      xit('removes the score title off the stars', function () {
+      it('removes the score title off the stars', function () {
         // given
-        var raty = new Raty('#el', { readOnly: true, score: 3 });
+        var raty = new Raty('#el', { readOnly: true, score: 3 }).init();
 
-        var stars = raty.self.querySelector('img');
+        var stars = raty.self.querySelectorAll('img');
 
         // when
         raty.readOnly(false);
@@ -332,26 +351,20 @@ describe('#readOnly', function () {
     });
 
     context('with :cancel', function () {
-      xit('shows the button', function (done) {
+      it('shows the button', function () {
         // given
-        var that = this;
+        var raty = new Raty('#el', { cancelButton: true, readOnly: true }).init();
 
-        var raty = new Raty('#el', { cancelButton: true, readOnly: true });
+        // when
+        raty.readOnly(false);
 
-        setTimeout(function () {
-          // when
-          that.el.data('raty').readOnly(false);
-
-          // then
-          expect(that.raty.self.querySelector('.raty-cancel')).toBeVisible();
-
-          done();
-        }, 100);
+        // then
+        expect(raty.self.querySelector('.raty-cancel')).toBeVisible();
       });
 
-      xit('rebinds the mouseover', function () {
+      it('rebinds the mouseover', function () {
         // given
-        var raty = new Raty('#el', { readOnly: true, cancelButton: true });
+        var raty = new Raty('#el', { readOnly: true, cancelButton: true }).init();
 
         var cancel = raty.self.querySelector('.raty-cancel');
         var stars = raty.self.querySelector('img:not(.raty-cancel)');
@@ -366,20 +379,25 @@ describe('#readOnly', function () {
         expect(Helper.extension(stars.src)).toEqual('star-off.png');
       });
 
-      xit('rebinds the click', function () {
+      it('rebinds the click', function () {
         // given
-        var raty = new Raty('#el', { cancelButton: true, readOnly: true, score: 5 });
-
-        var cancel = raty.self.querySelector('.raty-cancel');
-        var stars = raty.self.querySelector('img:not(.raty-cancel)');
+        var raty = new Raty('#el', { cancelButton: true, readOnly: true, score: 5 }).init();
 
         raty.readOnly(false);
 
+        var cancel = raty.self.querySelector('.raty-cancel');
+        var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
+
         // when
-        cancel.trigger('click').trigger('mouseout');
+        cancel.click();
+        Helper.trigger(raty.self, 'mouseleave');
 
         // then
-        expect(Helper.extension(stars.src)).toEqual('star-off.png');
+        expect(stars[0].getAttribute('src')).toEqual('star-off.png');
+        expect(stars[1].getAttribute('src')).toEqual('star-off.png');
+        expect(stars[2].getAttribute('src')).toEqual('star-off.png');
+        expect(stars[3].getAttribute('src')).toEqual('star-off.png');
+        expect(stars[4].getAttribute('src')).toEqual('star-off.png');
       });
     });
   });

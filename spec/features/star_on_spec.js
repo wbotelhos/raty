@@ -1,5 +1,5 @@
-describe('#starOn', function () {
-  xit('accepts data attribute', function () {
+xdescribe('#starOn', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-star-on': 'custom' });
 
@@ -15,7 +15,7 @@ describe('#starOn', function () {
       this.el = Helper.create('#el');
     });
 
-    xit('changes the stars on', function () {
+    it('changes the stars on', function () {
       // given
       var raty = new Raty('#el', { starOn: 'star-half.png' }).init();
       var stars = raty.self.querySelectorAll('img');
@@ -32,7 +32,7 @@ describe('#starOn', function () {
     });
 
     context('with :starType', function () {
-      xit('uses the given element', function () {
+      it('uses the given element', function () {
         // given
         var raty = new Raty('#el', { starType: 'i' }).init();
         var stars = raty.self.querySelectorAll('i');
@@ -48,7 +48,7 @@ describe('#starOn', function () {
         expect(stars[4].tagName).toEqual('I');
       });
 
-      xit('normalizes the class name', function () {
+      it('normalizes the class name', function () {
         // given
         var raty = new Raty('#el', { starType: 'i' }).init();
         var stars = raty.self.querySelectorAll('i');
@@ -60,7 +60,7 @@ describe('#starOn', function () {
         expect(stars).toHaveClass('star-on-png');
       });
 
-      xit('does not create "src" attribute', function () {
+      it('does not create "src" attribute', function () {
         // given
         var raty = new Raty('#el', { starType: 'i' }).init();
         var stars = raty.self.querySelectorAll('i');
@@ -72,7 +72,7 @@ describe('#starOn', function () {
         expect(stars).not.toHaveAttr('src');
       });
 
-      xit('creates "data-alt" attribute', function () {
+      it('creates "data-alt" attribute', function () {
         // given
         var raty = new Raty('#el', { starType: 'i' }).init();
         var stars = raty.self.querySelectorAll('i');
@@ -84,7 +84,7 @@ describe('#starOn', function () {
         expect(stars).toHaveAttr('data-alt');
       });
 
-      xit('does not create "alt" attribute', function () {
+      it('does not create "alt" attribute', function () {
         // given
         var raty = new Raty('#el', { starType: 'i' }).init();
         var stars = raty.self.querySelectorAll('i');

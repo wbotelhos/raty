@@ -1,4 +1,4 @@
-describe('#_adjustHints', function () {
+xdescribe('#_adjustHints', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
@@ -10,7 +10,7 @@ describe('#_adjustHints', function () {
     context('and hints is null', function () {
       var hints = null;
 
-      xit('receives an empty array', function () {
+      it('receives an empty array', function () {
         // given
         var options = { half: half, halfShow: halfShow, hints: hints };
         var raty = new Raty('#el', options);
@@ -26,7 +26,7 @@ describe('#_adjustHints', function () {
     context('and hints is empty', function () {
       var hints = '';
 
-      xit('receives an empty array', function () {
+      it('receives an empty array', function () {
         // given
         var options = { half: half, halfShow: halfShow, hints: hints };
         var raty = new Raty('#el', options);
@@ -40,7 +40,7 @@ describe('#_adjustHints', function () {
     });
 
     context('and hints is undefined', function () {
-      xit('receives an empty array', function () {
+      it('receives an empty array', function () {
         // given
         var options = { half: half, halfShow: halfShow };
         var raty = new Raty('#el', options);
@@ -62,7 +62,7 @@ describe('#_adjustHints', function () {
     context('and hints is string or number', function () {
       var hints = [1, '2', 3, '4', 5];
 
-      xit('uses the hint on the first and second position', function () {
+      it('uses the hint on the first and second position', function () {
         // given
         var options = { halfShow: halfShow, hints: hints };
         var raty = new Raty('#el', options);
@@ -86,7 +86,7 @@ describe('#_adjustHints', function () {
     context('and hints is an array of one position of string or number', function () {
       var hints = [[1], ['2'], [3], ['4'], [5]];
 
-      xit('replicates the first position to second one', function () {
+      it('replicates the first position to second one', function () {
         // given
         var options = { halfShow: halfShow, hints: hints };
         var raty = new Raty('#el', options);
@@ -116,7 +116,7 @@ describe('#_adjustHints', function () {
         [4.5, 5],
       ];
 
-      xit('keeps the original values', function () {
+      it('keeps the original values', function () {
         // given
         var options = { halfShow: halfShow, hints: hints };
         var raty = new Raty('#el', options);
@@ -138,7 +138,7 @@ describe('#_adjustHints', function () {
         [4.5, 5, 'extra'],
       ];
 
-      xit('removes the extra hints', function () {
+      it('removes the extra hints', function () {
         // given
         var options = { halfShow: halfShow, hints: hints };
         var raty = new Raty('#el', options);

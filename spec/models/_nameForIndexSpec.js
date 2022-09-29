@@ -1,10 +1,10 @@
-describe('#_nameForIndex', function () {
+xdescribe('#_nameForIndex', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
   context('when score is null', function () {
-    xit('returns :starOff', function () {
+    it('returns :starOff', function () {
       // given
 
       var options = {};
@@ -22,7 +22,7 @@ describe('#_nameForIndex', function () {
   });
 
   context('when score is undefined', function () {
-    xit('returns :starOff', function () {
+    it('returns :starOff', function () {
       // given
 
       var options = {};
@@ -44,7 +44,7 @@ describe('#_nameForIndex', function () {
       var index = 2;
       var score = 1;
 
-      xit('returns :starOff', function () {
+      it('returns :starOff', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
@@ -63,7 +63,7 @@ describe('#_nameForIndex', function () {
       var index = 1;
       var score = 1;
 
-      xit('returns :starOff', function () {
+      it('returns :starOff', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
@@ -82,7 +82,7 @@ describe('#_nameForIndex', function () {
       var index = 1;
       var score = 2;
 
-      xit('returns :starOff', function () {
+      it('returns :starOff', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);

@@ -1,5 +1,5 @@
-describe('#starOff', function () {
-  xit('changes the stars off', function () {
+xdescribe('#starOff', function () {
+  it('changes the stars off', function () {
     // given
     this.el = Helper.create('#el');
 
@@ -18,7 +18,7 @@ describe('#starOff', function () {
     expect(Helper.extension(stars[4].src)).toEqual('star-half.png');
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-star-off': 'custom' });
 
@@ -30,7 +30,7 @@ describe('#starOff', function () {
   });
 
   context('with :starType', function () {
-    xit('uses the given element', function () {
+    it('uses the given element', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -49,7 +49,7 @@ describe('#starOff', function () {
       expect(stars[4].tagName).toEqual('I');
     });
 
-    xit('normalizes the class name', function () {
+    it('normalizes the class name', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -68,7 +68,7 @@ describe('#starOff', function () {
       expect(stars[4].classList.contains('star-off-png')).toEqual(true);
     });
 
-    xit('does not create the "src" attribute', function () {
+    it('does not create the "src" attribute', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -87,7 +87,7 @@ describe('#starOff', function () {
       expect(stars[4].src).toEqual(undefined);
     });
 
-    xit('creates the "data-alt" attribute', function () {
+    it('creates the "data-alt" attribute', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -106,7 +106,7 @@ describe('#starOff', function () {
       expect(stars[4].getAttribute('data-alt')).toEqual('5');
     });
 
-    xit('does not create the "alt" attribute', function () {
+    it('does not create the "alt" attribute', function () {
       // given
       this.el = Helper.create('#el');
 

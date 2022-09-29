@@ -1,5 +1,10 @@
-describe('#precision', function () {
-  xit('enables the :half options', function () {
+xdescribe('#precision', function () {
+  beforeEach(function () {
+    this.el = Helper.create('#el', 'div', { 'data-target': '#target' });
+    this.target = Helper.create('#target');
+  });
+
+  it('enables the :half options', function () {
     // given
     Helper.create('#el', 'div', { 'data-target': '#target' });
 
@@ -12,7 +17,7 @@ describe('#precision', function () {
     expect(raty.opt.half).toEqual(true);
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-precision': true });
 
@@ -26,16 +31,10 @@ describe('#precision', function () {
   });
 
   context('with :target', function () {
-    beforeEach(function () {
-      Helper.create('#el', 'div', { 'data-target': '#target' });
-
-      this.target = Helper.target('#target');
-    });
-
     context('and :targetKeep', function () {
       context('and :targetType as score', function () {
         context('on :score', function () {
-          xit('sets the float with one fractional number', function () {
+          it('sets the float with one fractional number', function () {
             // given
             var raty = new Raty('#el', {
               precision: true,
@@ -56,7 +55,7 @@ describe('#precision', function () {
         });
 
         context('on mouseover', function () {
-          xit('sets the float with one fractional number', function (done) {
+          it('sets the float with one fractional number', function (done) {
             // given
             var raty = new Raty('#el', {
               precision: true,
@@ -85,7 +84,7 @@ describe('#precision', function () {
       context('and :targetType as hint', function () {
         context('on :score', function () {
           context('with one float digit', function () {
-            xit('gets the [integer][float] position of :hints', function () {
+            it('gets the [integer][float] position of :hints', function () {
               // given
               var raty = new Raty('#el', {
                 hints: ['first', ['second']],
@@ -107,7 +106,7 @@ describe('#precision', function () {
           });
 
           context('with integer digit is zero', function () {
-            xit('gets the [integer][last item] position of :hints', function () {
+            it('gets the [integer][last item] position of :hints', function () {
               // given
               var raty = new Raty('#el', {
                 hints: ['first', 'second'],
@@ -129,7 +128,7 @@ describe('#precision', function () {
           });
 
           context('with float digit is zero', function () {
-            xit('gets the [integer][last item] position of :hints', function () {
+            it('gets the [integer][last item] position of :hints', function () {
               // given
               var raty = new Raty('#el', {
                 hints: ['first', 'second'],
@@ -151,7 +150,7 @@ describe('#precision', function () {
           });
 
           context('with one float digit as string', function () {
-            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
               var raty = new Raty('#el', {
                 hints: ['first', ['second']],
@@ -173,7 +172,7 @@ describe('#precision', function () {
           });
 
           context('with two float digits', function () {
-            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
               var raty = new Raty('#el', {
                 hints: ['first', ['second']],
@@ -195,7 +194,7 @@ describe('#precision', function () {
           });
 
           context('with two float digits as string', function () {
-            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
               var raty = new Raty('#el', {
                 hints: ['first', ['second']],
@@ -219,7 +218,7 @@ describe('#precision', function () {
 
         context('on mouseover', function () {
           context('with one float digit', function () {
-            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
               // given
               var raty = new Raty('#el', {
                 hints: ['first', ['second']],
@@ -246,7 +245,7 @@ describe('#precision', function () {
           });
 
           context('with two float digits', function () {
-            xit('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
               // given
               var raty = new Raty('#el', {
                 hints: ['first', ['second']],
@@ -274,7 +273,7 @@ describe('#precision', function () {
         });
 
         context('with :cancel', function () {
-          xit('shows :cancelHint', function (done) {
+          it('shows :cancelHint', function (done) {
             // given
             var that = this;
 

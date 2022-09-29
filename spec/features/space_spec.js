@@ -1,4 +1,4 @@
-describe('#space', function () {
+xdescribe('#space', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });
@@ -9,7 +9,7 @@ describe('#space', function () {
   });
 
   context('when off', function () {
-    xit('keeps the spaces', function () {
+    it('keeps the spaces', function () {
       // given
       var raty = new Raty('#element', { space: true });
 
@@ -21,7 +21,7 @@ describe('#space', function () {
     });
 
     context('with :cancel', function () {
-      xit('adds on more space', function () {
+      it('adds on more space', function () {
         // given
         var raty = new Raty('#element', { cancelButton: true, space: true });
 
@@ -35,7 +35,7 @@ describe('#space', function () {
   });
 
   context('when off', function () {
-    xit('takes off the spaces', function () {
+    it('takes off the spaces', function () {
       // given
       var raty = new Raty('#element', { space: false });
 
@@ -47,7 +47,7 @@ describe('#space', function () {
     });
 
     context('with :cancel', function () {
-      xit('keeps the cancel space', function () {
+      it('keeps the cancel space', function () {
         // given
         var raty = new Raty('#element', { cancelButton: true, space: false });
 

@@ -1,5 +1,5 @@
-describe('#number', function () {
-  xit('changes the number of stars', function () {
+xdescribe('#number', function () {
+  it('changes the number of stars', function () {
     // given
     this.el = Helper.create('#el');
 
@@ -12,7 +12,7 @@ describe('#number', function () {
     expect(raty.self.querySelectorAll('img').length).toEqual(1);
   });
 
-  xit('accepts number as string', function () {
+  it('accepts number as string', function () {
     // given
     this.el = Helper.create('#el');
 
@@ -25,7 +25,7 @@ describe('#number', function () {
     expect(raty.self.querySelectorAll('img').length).toEqual(1);
   });
 
-  xit('accepts callback', function () {
+  it('accepts callback', function () {
     // given
     this.el = Helper.create('#el');
 
@@ -42,7 +42,7 @@ describe('#number', function () {
     expect(raty.opt.number).toEqual(1);
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-number': 3 });
 

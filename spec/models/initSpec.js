@@ -1,9 +1,9 @@
-describe('#init', function () {
+xdescribe('#init', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('calls all necessary methods', function () {
+  it('calls all necessary methods', function () {
     // given
 
     var raty = new Raty('#el', { score: 1 });
@@ -39,7 +39,7 @@ describe('#init', function () {
     expect(raty.self.style.cursor).toEqual('pointer');
   });
 
-  xit('returns the raty instance', function () {
+  it('returns the raty instance', function () {
     // given
     var raty = new Raty('#el', { score: 1 });
 
@@ -51,7 +51,7 @@ describe('#init', function () {
   });
 
   context('when *starType is "img"', function () {
-    xit('does not calls :_adjustStarName', function () {
+    it('does not calls :_adjustStarName', function () {
       // given
       var raty = new Raty('#el', { starType: 'img' });
 
@@ -66,7 +66,7 @@ describe('#init', function () {
   });
 
   context('when *starType is not "img"', function () {
-    xit('calls :_adjustStarName', function () {
+    it('calls :_adjustStarName', function () {
       // given
 
       var options = { starType: 'i' };
@@ -83,7 +83,7 @@ describe('#init', function () {
   });
 
   context('when *cancel is true', function () {
-    xit('does not calls :_createCancel', function () {
+    it('does not calls :_createCancel', function () {
       // given
 
       var options = { cancelButton: true };
@@ -100,7 +100,7 @@ describe('#init', function () {
   });
 
   context('when *cancel is false', function () {
-    xit('calls :_createCancel', function () {
+    it('calls :_createCancel', function () {
       // given
 
       var options = { cancelButton: false };
@@ -117,7 +117,7 @@ describe('#init', function () {
   });
 
   context('when *precision is true', function () {
-    xit('does not calls :_adjustPrecision', function () {
+    it('does not calls :_adjustPrecision', function () {
       // given
 
       var options = { precision: true };
@@ -134,7 +134,7 @@ describe('#init', function () {
   });
 
   context('when *precision is false', function () {
-    xit('calls :_adjustPrecision', function () {
+    it('calls :_adjustPrecision', function () {
       // given
 
       var options = { precision: false };
@@ -151,7 +151,7 @@ describe('#init', function () {
   });
 
   context('when *readOnly is true', function () {
-    xit('calls :_lock', function () {
+    it('calls :_lock', function () {
       // given
 
       var raty = new Raty('#el', { readOnly: true });
@@ -165,7 +165,7 @@ describe('#init', function () {
       expect(raty._lock).toHaveBeenCalled();
     });
 
-    xit('does not call :_binds', function () {
+    it('does not call :_binds', function () {
       // given
 
       var raty = new Raty('#el', { readOnly: true });
@@ -179,7 +179,7 @@ describe('#init', function () {
       expect(raty._binds).not.toHaveBeenCalled();
     });
 
-    xit('does not set cursor style to pointer', function () {
+    it('does not set cursor style to pointer', function () {
       // given
 
       var raty = new Raty('#el', { readOnly: true });
@@ -193,7 +193,7 @@ describe('#init', function () {
   });
 
   context('when *readOnly is false', function () {
-    xit('does not call :_lock', function () {
+    it('does not call :_lock', function () {
       // given
 
       var raty = new Raty('#el', { readOnly: false });
@@ -207,7 +207,7 @@ describe('#init', function () {
       expect(raty._lock).not.toHaveBeenCalled();
     });
 
-    xit('calls :_binds', function () {
+    it('calls :_binds', function () {
       // given
 
       var raty = new Raty('#el', { readOnly: false });
@@ -221,7 +221,7 @@ describe('#init', function () {
       expect(raty._binds).toHaveBeenCalled();
     });
 
-    xit('sets cursor style to pointer', function () {
+    it('sets cursor style to pointer', function () {
       // given
 
       var raty = new Raty('#el', { readOnly: false });

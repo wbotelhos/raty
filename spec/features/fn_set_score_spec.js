@@ -1,22 +1,22 @@
-describe('#fn_setScore', function () {
+xdescribe('#fn_setScore', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('sets the score', function () {
+  it('sets the score', function () {
     // given
 
     // when
-    var raty = new Raty('#el', { score: 1 }).inxit();
+    var raty = new Raty('#el', { score: 1 }).init();
 
     // then
     expect(raty.score()).toEqual(1);
   });
 
   describe('with :readOnly', function () {
-    xit('does not set the score', function () {
+    it('does not set the score', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true }).inxit();
+      var raty = new Raty('#el', { readOnly: true }).init();
 
       // when
       raty.score(5);
@@ -32,11 +32,11 @@ describe('#fn_setScore', function () {
     });
 
     context('and :score greater then :number', function () {
-      xit('does not throw error', function () {
+      it('does not throw error', function () {
         // given
         var that = this;
 
-        var raty = new Raty('#el', { target: '#target' }).inxit();
+        var raty = new Raty('#el', { target: '#target' }).init();
 
         // when
         var lambda = function () {
@@ -52,9 +52,9 @@ describe('#fn_setScore', function () {
       context('as *score', function () {
         context('and :targetKeep', function () {
           context('as *true', function () {
-            xit('sets the value equal :number', function () {
+            it('sets the value equal :number', function () {
               // given
-              var raty = new Raty('#el', { target: '#target', targetType: 'score', targetKeep: true }).inxit();
+              var raty = new Raty('#el', { target: '#target', targetType: 'score', targetKeep: true }).init();
 
               // when
               raty.score(6);
@@ -63,9 +63,9 @@ describe('#fn_setScore', function () {
               expect(this.target.text()).toEqual(raty.opt.number.toString());
             });
 
-            xit('sets the :score on target', function () {
+            it('sets the :score on target', function () {
               // given
-              var raty = new Raty('#el', { target: '#target', targetType: 'score', targetKeep: true }).inxit();
+              var raty = new Raty('#el', { target: '#target', targetType: 'score', targetKeep: true }).init();
 
               // when
               raty.score(1);

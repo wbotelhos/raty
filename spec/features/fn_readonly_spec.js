@@ -1,10 +1,10 @@
-describe('#fn readOnly', function () {
+xdescribe('#fn readOnly', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
   context('on true', function () {
-    xit('sets score as readonly', function () {
+    it('sets score as readonly', function () {
       // given
       var raty = new Raty('#el').init();
 
@@ -15,7 +15,7 @@ describe('#fn readOnly', function () {
       expect(raty.self.querySelector('input').readOnly).toEqual(true);
     });
 
-    xit('disables the mouse interaction', function () {
+    it('disables the mouse interaction', function () {
       // given
       var raty = new Raty('#el').init();
 
@@ -27,7 +27,7 @@ describe('#fn readOnly', function () {
     });
 
     context('without rating', function () {
-      xit('Applies the :noRatedMsg on stars', function () {
+      it('Applies the :noRatedMsg on stars', function () {
         // given
         var raty = new Raty('#el').init();
 
@@ -39,7 +39,7 @@ describe('#fn readOnly', function () {
       });
     });
 
-    xit('triggers mouseover since it is not unbind anymore but pointer events ', function () {
+    it('triggers mouseover since it is not unbind anymore but pointer events ', function () {
       // given
       var raty = new Raty('#el').init();
       var stars = raty.self.querySelectorAll('img');
@@ -57,7 +57,7 @@ describe('#fn readOnly', function () {
       expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
     });
 
-    xit('does not trigger click', function () {
+    it('does not trigger click', function () {
       // given
       var raty = new Raty('#el').init();
       var stars = raty.self.querySelectorAll('img');
@@ -78,7 +78,7 @@ describe('#fn readOnly', function () {
     });
 
     context('with :cancel', function () {
-      xit('hides the button', function () {
+      it('hides the button', function () {
         // given
         var raty = new Raty('#el', { cancelButton: true }).init();
 
@@ -91,7 +91,7 @@ describe('#fn readOnly', function () {
     });
 
     context('with external bind on wrapper', function () {
-      xit('is kept', function () {
+      it('is kept', function () {
         // given
         this.el.on('click', function () {
           this.dataset.trigged = true;
@@ -110,7 +110,7 @@ describe('#fn readOnly', function () {
     });
 
     context('with external bind on stars', function () {
-      xit('keeps it', function () {
+      it('keeps it', function () {
         // given
         var raty = new Raty('#el').init();
         var star = raty.self.querySelector('img');
@@ -133,7 +133,7 @@ describe('#fn readOnly', function () {
     context('with :halfShow', function () {
       context('as *true', function () {
         context('with :score as integer', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
             var raty = new Raty('#el', {
               halfShow: true,
@@ -150,7 +150,7 @@ describe('#fn readOnly', function () {
         });
 
         context('with :score as float', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
             var raty = new Raty('#el', {
               halfShow: true,
@@ -171,7 +171,7 @@ describe('#fn readOnly', function () {
     context('with :half', function () {
       context('as *true', function () {
         context('with :score as integer', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
             var raty = new Raty('#el', {
               half: true,
@@ -188,7 +188,7 @@ describe('#fn readOnly', function () {
         });
 
         context('with :score as float', function () {
-          xit('applies the score hint', function () {
+          it('applies the score hint', function () {
             // given
             var raty = new Raty('#el', {
               half: true,
@@ -211,7 +211,7 @@ describe('#fn readOnly', function () {
         context('and :targetType', function () {
           context('as *hint', function () {
             context('with :score as integer', function () {
-              xit('applies the 10 - 1 decimal hint', function () {
+              it('applies the 10 - 1 decimal hint', function () {
                 // given
                 var raty = new Raty('#el', {
                   hints: [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
@@ -235,7 +235,7 @@ describe('#fn readOnly', function () {
             });
 
             context('with :score as float', function () {
-              xit('applies the 1 - 1 decimal hint', function () {
+              it('applies the 1 - 1 decimal hint', function () {
                 // given
                 var raty = new Raty('#el', {
                   hints: [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
@@ -261,7 +261,7 @@ describe('#fn readOnly', function () {
 
           context('as *score', function () {
             context('with :score as integer', function () {
-              xit('applies the score', function () {
+              it('applies the score', function () {
                 // given
                 var raty = new Raty('#el', {
                   hints: [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
@@ -285,7 +285,7 @@ describe('#fn readOnly', function () {
             });
 
             context('with :score as float', function () {
-              xit('applies the score', function () {
+              it('applies the score', function () {
                 // given
                 var raty = new Raty('#el', {
                   hints: [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
@@ -314,7 +314,7 @@ describe('#fn readOnly', function () {
   });
 
   context('on false', function () {
-    xit('removes the :readOnly of the score', function () {
+    it('removes the :readOnly of the score', function () {
       // given
       var raty = new Raty('#el', { readOnly: true }).init();
 
@@ -328,7 +328,7 @@ describe('#fn readOnly', function () {
       expect(input.getAttribute('readonly')).toEqual(null);
     });
 
-    xit('applies the pointer cursor on wrapper', function () {
+    it('applies the pointer cursor on wrapper', function () {
       // given
       var raty = new Raty('#el', { readOnly: true }).init();
 
@@ -339,7 +339,7 @@ describe('#fn readOnly', function () {
       expect(raty.self.style.cursor).toEqual('pointer');
     });
 
-    xit('Removes the :noRatedMsg from stars', function () {
+    it('Removes the :noRatedMsg from stars', function () {
       // given
       var raty = new Raty('#el', { readOnly: true }).init();
 
@@ -356,7 +356,7 @@ describe('#fn readOnly', function () {
       expect(stars[4].title).toEqual('gorgeous');
     });
 
-    xit('triggers mouseover', function () {
+    it('triggers mouseover', function () {
       // given
       var raty = new Raty('#el', { readOnly: true }).init();
 
@@ -371,7 +371,7 @@ describe('#fn readOnly', function () {
       expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
     });
 
-    xit('triggers click', function () {
+    it('triggers click', function () {
       // given
       var raty = new Raty('#el', { readOnly: true }).init();
 
@@ -387,7 +387,7 @@ describe('#fn readOnly', function () {
     });
 
     context('with :score', function () {
-      xit('removes the score title off the stars', function () {
+      it('removes the score title off the stars', function () {
         // given
         var raty = new Raty('#el', { readOnly: true, score: 3 }).init();
 
@@ -406,7 +406,7 @@ describe('#fn readOnly', function () {
     });
 
     context('with :cancel', function () {
-      xit('shows the button', function (done) {
+      it('shows the button', function (done) {
         // given
         var raty = new Raty('#el', { cancelButton: true, readOnly: true }).init();
 
@@ -421,7 +421,7 @@ describe('#fn readOnly', function () {
         }, 100);
       });
 
-      xit('rebinds the mouseover', function () {
+      it('rebinds the mouseover', function () {
         // given
         var raty = new Raty('#el', { readOnly: true, cancelButton: true }).init();
 
@@ -442,7 +442,7 @@ describe('#fn readOnly', function () {
         expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
       });
 
-      xit('rebinds the click', function () {
+      it('rebinds the click', function () {
         // given
         var raty = new Raty('#el', { cancelButton: true, readOnly: true, score: 5 }).init();
         var cancel = raty.self.querySelector('.raty-cancel');

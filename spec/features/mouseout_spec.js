@@ -1,9 +1,9 @@
-describe('#mouseout', function () {
+xdescribe('#mouseout', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('receives the mouse event', function () {
+  it('receives the mouse event', function () {
     // given
     var raty = new Raty('#el', {
       mouseout: function (score, evt) {
@@ -19,7 +19,7 @@ describe('#mouseout', function () {
   });
 
   context('without score', function () {
-    xit('receives undefined', function () {
+    it('receives undefined', function () {
       // given
       var raty = new Raty('#el', {
         cancelButton: true,
@@ -37,7 +37,7 @@ describe('#mouseout', function () {
   });
 
   context('with score', function () {
-    xit('receives the score value as number', function () {
+    it('receives the score value as number', function () {
       // given
       var raty = new Raty('#el', {
         score: 1,
@@ -55,7 +55,7 @@ describe('#mouseout', function () {
   });
 
   context('when acts on :cancel', function () {
-    xit('receives the event', function () {
+    it('receives the event', function () {
       // given
       var raty = new Raty('#el', {
         cancelButton: true,
@@ -74,7 +74,7 @@ describe('#mouseout', function () {
     });
 
     context('without score', function () {
-      xit('receives undefined', function () {
+      it('receives undefined', function () {
         // given
         var raty = new Raty('#el', {
           cancelButton: true,
@@ -94,7 +94,7 @@ describe('#mouseout', function () {
     });
 
     context('with score', function () {
-      xit('receives the score value as number', function () {
+      it('receives the score value as number', function () {
         // given
         var raty = new Raty('#el', {
           score: 1,

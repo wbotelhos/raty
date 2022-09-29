@@ -1,10 +1,10 @@
-describe('#_adjustNumber', function () {
+xdescribe('#_adjustNumber', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
   context('when :number is less than 1', function () {
-    xit('receives 1', function () {
+    it('receives 1', function () {
       // given
 
       var options = { number: 0 };
@@ -19,7 +19,7 @@ describe('#_adjustNumber', function () {
   });
 
   context('when :number is more than :numberMax', function () {
-    xit('returns the max', function () {
+    it('returns the max', function () {
       // given
 
       var options = { number: 5, numberMax: 2 };

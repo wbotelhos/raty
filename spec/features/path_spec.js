@@ -1,9 +1,9 @@
-describe('#path', function () {
+xdescribe('#path', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('changes the path', function () {
+  it('changes the path', function () {
     // given
     var raty = new Raty('#el', { path: '../demo/images' });
 
@@ -20,7 +20,7 @@ describe('#path', function () {
     expect(stars[4].getAttribute('src')).toEqual('../demo/images/star-off.png');
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-path': 'custom' });
 
@@ -34,7 +34,7 @@ describe('#path', function () {
   });
 
   context('without slash on the final', function () {
-    xit('receives the slash', function () {
+    it('receives the slash', function () {
       // given
       var raty = new Raty('#el', { path: '../demo/images' });
 
@@ -47,7 +47,7 @@ describe('#path', function () {
   });
 
   context('with slash on the final', function () {
-    xit('is keeped', function () {
+    it('is keeped', function () {
       // given
       var raty = new Raty('#el', { path: '../demo/images/' });
 
@@ -60,7 +60,7 @@ describe('#path', function () {
   });
 
   context('as null', function () {
-    xit('replace to an empty string', function () {
+    it('replace to an empty string', function () {
       // given
       var raty = new Raty('#el', { path: null });
 
@@ -79,7 +79,7 @@ describe('#path', function () {
   });
 
   context('as undefined', function () {
-    xit('replace to an empty string', function () {
+    it('replace to an empty string', function () {
       // given
       var raty = new Raty('#el');
 
@@ -98,7 +98,7 @@ describe('#path', function () {
   });
 
   context('with :cancel', function () {
-    xit('changes the path', function () {
+    it('changes the path', function () {
       // given
       var raty = new Raty('#el', { cancelButton: true, path: '../demo/images' });
 
@@ -111,7 +111,7 @@ describe('#path', function () {
   });
 
   context('with :iconRange', function () {
-    xit('changes the path', function () {
+    it('changes the path', function () {
       // given
       var raty = new Raty('#el', { iconRange: [{ range: 1 }], path: '../demo/images' });
 

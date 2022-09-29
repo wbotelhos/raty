@@ -1,4 +1,4 @@
-describe('#_between', function () {
+xdescribe('#_between', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
@@ -8,7 +8,7 @@ describe('#_between', function () {
     var min = 1;
     var number = 0;
 
-    xit('returns the min', function () {
+    it('returns the min', function () {
       // given
 
       var options = {};
@@ -27,7 +27,7 @@ describe('#_between', function () {
     var min = 1;
     var number = 3;
 
-    xit('returns the min', function () {
+    it('returns the min', function () {
       // given
 
       var options = {};

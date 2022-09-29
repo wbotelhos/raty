@@ -1,5 +1,5 @@
-describe('#cancel', function () {
-  xit('creates the element', function () {
+xdescribe('#cancel', function () {
+  it('creates the element', function () {
     // given
     this.el = Helper.create('#el');
 
@@ -15,7 +15,7 @@ describe('#cancel', function () {
     expect(Helper.extension(cancel.src)).toEqual('cancel-off.png');
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-cancel': true });
 
@@ -27,7 +27,7 @@ describe('#cancel', function () {
   });
 
   context('on mouseover', function () {
-    xit('turns on', function () {
+    it('turns on', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -41,7 +41,7 @@ describe('#cancel', function () {
       expect(Helper.extension(cancel.src)).toEqual('cancel-on.png');
     });
 
-    xit('keeps the :cancelClass', function () {
+    it('keeps the :cancelClass', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -57,45 +57,47 @@ describe('#cancel', function () {
     });
 
     context('with stars on', function () {
-      xit('turns off the stars', function () {
+      it('turns off the stars', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { score: 3, cancelButton: true }).init();
 
         var cancel = raty.self.querySelector('.raty-cancel');
-        var stars = raty.self.querySelector('img:not(.raty-cancel)');
+        var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
 
         // when
         Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(Helper.extension(stars.src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
       });
     });
 
     context('with :starType', function () {
-      xit('uses the given element', function () {
+      it('uses the given element', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { cancelButton: true, starType: 'i' }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
         Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(cancel[0].tagName).toEqual('I');
+        expect(cancel.tagName).toEqual('I');
       });
 
-      xit('keeps the :cancelClass', function () {
+      it('keeps the :cancelClass', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { cancelButton: true, starType: 'i' }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
@@ -105,12 +107,11 @@ describe('#cancel', function () {
         expect(cancel).toHaveClass(raty.opt.cancelClass);
       });
 
-      xit('sets class replacing dot to hiphen', function () {
+      it('sets class replacing dot to hiphen', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { cancelButton: true, starType: 'i' }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
@@ -120,12 +121,11 @@ describe('#cancel', function () {
         expect(cancel).toHaveClass('cancel-on-png');
       });
 
-      xit('does not set "src" attribute', function () {
+      it('does not set "src" attribute', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { cancelButton: true, starType: 'i' }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
@@ -135,12 +135,11 @@ describe('#cancel', function () {
         expect(cancel).not.toHaveAttr('src');
       });
 
-      xit('sets "data-alt" attribute', function () {
+      it('sets "data-alt" attribute', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { cancelButton: true, starType: 'i' }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
@@ -150,12 +149,11 @@ describe('#cancel', function () {
         expect(cancel).toHaveAttr('data-alt');
       });
 
-      xit('does not set "alt" attribute', function () {
+      it('does not set "alt" attribute', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { cancelButton: true, starType: 'i' }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
 
         // when
@@ -168,48 +166,45 @@ describe('#cancel', function () {
   });
 
   context('on mouseleave', function () {
-    xit('turns off', function () {
+    it('turns off', function () {
       // given
       this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { cancelButton: true }).init();
-
       var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
-      cancel.trigger('mouseleave');
+      Helper.trigger(raty.self, 'mouseleave');
 
       // then
       expect(Helper.extension(cancel.src)).toEqual('cancel-off.png');
     });
 
-    xit('keeps the :cancelClass', function () {
+    it('keeps the :cancelClass', function () {
       // given
       this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { cancelButton: true }).init();
-
       var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
-      cancel.trigger('mouseleave');
+      Helper.trigger(raty.self, 'mouseleave');
 
       // then
       expect(cancel).toHaveClass(raty.opt.cancelClass);
     });
 
     context('with stars turned on', function () {
-      xit('turns on the star again', function () {
+      it('turns on the star again', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { score: 5, cancelButton: true }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
         var stars = raty.self.querySelector('img:not(.raty-cancel)');
 
         // when
-        cancel.trigger('mouseleave');
+        Helper.trigger(raty.self, 'mouseleave');
 
         // then
         expect(Helper.extension(stars.src)).toEqual('star-on.png');
@@ -218,32 +213,36 @@ describe('#cancel', function () {
   });
 
   context('on click', function () {
-    xit('cancel the rating', function () {
+    it('cancel the rating', function () {
       // given
       this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { cancelButton: true, score: 1 }).init();
-
       var cancel = raty.self.querySelector('.raty-cancel');
       var input = raty.self.querySelector('input');
-      var stars = raty.self.querySelector('img:not(.raty-cancel)');
+      var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
 
       // when
-      cancel.trigger('click').trigger('mouseleave');
+      Helper.trigger(cancel, 'click');
+      Helper.trigger(raty.self, 'mouseleave');
 
       // then
-      expect(Helper.extension(stars.src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
+
       expect(input.value).toEqual('');
     });
   });
 
   context('when starts :readOnly', function () {
-    xit('starts hidden', function () {
+    it('starts hidden', function () {
       // given
       this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { cancelButton: true, readOnly: true }).init();
-
       var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
@@ -254,18 +253,18 @@ describe('#cancel', function () {
     });
 
     context('on click', function () {
-      xit('does not cancel the rating', function () {
+      it('does not cancel the rating', function () {
         // given
         this.el = Helper.create('#el');
 
         var raty = new Raty('#el', { cancelButton: true, readOnly: true, score: 5 }).init();
-
         var cancel = raty.self.querySelector('.raty-cancel');
         var input = raty.self.querySelector('input');
         var stars = raty.self.querySelector('img:not(.raty-cancel)');
 
         // when
-        cancel.trigger('click').trigger('mouseleave');
+        Helper.trigger(cancel, 'click');
+        Helper.trigger(raty.self, 'mouseleave');
 
         // then
         expect(Helper.extension(stars.src)).toEqual('star-on.png');
@@ -275,7 +274,7 @@ describe('#cancel', function () {
   });
 
   context('when become :readOnly', function () {
-    xit('becomes hidden', function () {
+    it('becomes hidden', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -290,7 +289,7 @@ describe('#cancel', function () {
   });
 
   context('with :starType', function () {
-    xit('uses the given element', function () {
+    it('uses the given element', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -301,22 +300,21 @@ describe('#cancel', function () {
       expect(raty.self.querySelectorAll('.raty-cancel')[0].tagName).toEqual('I');
     });
 
-    xit('keeps the :cancelClass', function () {
+    it('keeps the :cancelClass', function () {
       // given
       this.el = Helper.create('#el');
 
       var raty = new Raty('#el', { cancelButton: true, starType: 'i' }).init();
-
       var cancel = raty.self.querySelector('.raty-cancel');
 
       // when
-      cancel.trigger('mouseleave');
+      Helper.trigger(raty.self, 'mouseleave');
 
       // then
       expect(cancel).toHaveClass(raty.opt.cancelClass);
     });
 
-    xit('sets class replacing dot to hiphen', function () {
+    it('sets class replacing dot to hiphen', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -327,7 +325,7 @@ describe('#cancel', function () {
       expect(raty.self.querySelectorAll('.raty-cancel')).toHaveClass('cancel-off-png');
     });
 
-    xit('does not set "src" attribute', function () {
+    it('does not set "src" attribute', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -338,7 +336,7 @@ describe('#cancel', function () {
       expect(raty.self.querySelectorAll('.raty-cancel')).not.toHaveProp('src');
     });
 
-    xit('sets "data-alt" attribute', function () {
+    it('sets "data-alt" attribute', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -346,10 +344,10 @@ describe('#cancel', function () {
       var raty = new Raty('#el', { cancelButton: true, starType: 'i' }).init();
 
       // then
-      expect(raty.self.querySelectorAll('.raty-cancel').data - alt).toEqual('x');
+      expect(raty.self.querySelector('.raty-cancel').getAttribute('data-alt')).toEqual('x');
     });
 
-    xit('does not set "alt" attribute', function () {
+    it('does not set "alt" attribute', function () {
       // given
       this.el = Helper.create('#el');
 

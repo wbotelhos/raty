@@ -1,4 +1,4 @@
-describe('#targetScore', function () {
+xdescribe('#targetScore', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
 
@@ -12,7 +12,7 @@ describe('#targetScore', function () {
     this.scoreField.remove();
   });
 
-  xit('avoids the creation of default score field', function () {
+  it('avoids the creation of default score field', function () {
     // given
     var raty = new Raty('#element', { targetScore: '#score' });
 
@@ -23,7 +23,7 @@ describe('#targetScore', function () {
     expect(raty.self.querySelector('input')).toEqual(null);
   });
 
-  xit('changes the place where score will be setted', function () {
+  it('changes the place where score will be setted', function () {
     // given
     var raty = new Raty('#element', { targetScore: '#score' }).init();
     var star = raty.self.querySelector('img');
@@ -32,6 +32,6 @@ describe('#targetScore', function () {
     Helper.trigger(star, 'click');
 
     // then
-    expect(this.scoreField.value).toEqual('1');
+    expect(document.querySelector('#score').value).toEqual('1');
   });
 });

@@ -1,5 +1,5 @@
-describe('#cancelOn', function () {
-  xit('changes the icon', function () {
+xdescribe('#cancelOn', function () {
+  it('changes the icon', function () {
     // given
     this.el = Helper.create('#el');
 
@@ -13,7 +13,7 @@ describe('#cancelOn', function () {
     expect(cancel.src.split('/').slice(-1)).toEqual(['star-half.png']);
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-cancel-on': 'custom' });
 

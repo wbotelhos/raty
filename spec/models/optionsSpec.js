@@ -1,9 +1,9 @@
-describe('options', function () {
+xdescribe('options', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('has the right default values', function () {
+  it('has the right default values', function () {
     // given
     var raty = new Raty('#el');
 

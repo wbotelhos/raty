@@ -1,4 +1,4 @@
-describe('#iconRange', function () {
+xdescribe('#iconRange', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });
@@ -8,7 +8,7 @@ describe('#iconRange', function () {
     $('#hint').remove();
   });
 
-  xit('uses icon intervals', function () {
+  it('uses icon intervals', function () {
     // given
     var raty = new Raty('#element', {
       iconRange: [
@@ -33,7 +33,7 @@ describe('#iconRange', function () {
   });
 
   context('when off icon is not especified', function () {
-    xit('uses the :starOff icon', function () {
+    it('uses the :starOff icon', function () {
       // given
       var raty = new Raty('#element', {
         iconRange: [
@@ -53,7 +53,7 @@ describe('#iconRange', function () {
   });
 
   context('on mouseover', function () {
-    xit('uses the on icon', function () {
+    it('uses the on icon', function () {
       // given
       var raty = new Raty('#element', {
         iconRange: [
@@ -78,7 +78,7 @@ describe('#iconRange', function () {
     });
 
     context('when on icon is not especified', function () {
-      xit('uses the :starOn icon', function () {
+      it('uses the :starOn icon', function () {
         // given
         var raty = new Raty('#element', {
           iconRange: [
@@ -105,7 +105,7 @@ describe('#iconRange', function () {
   });
 
   context('on mouseout', function () {
-    xit('changes to off icons', function () {
+    it('changes to off icons', function () {
       // given
       var raty = new Raty('#element', {
         iconRange: [
@@ -130,7 +130,7 @@ describe('#iconRange', function () {
       expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
     });
 
-    xit('keeps the score value', function () {
+    it('keeps the score value', function () {
       // given
       var raty = new Raty('#element', {
         iconRange: [
@@ -151,7 +151,7 @@ describe('#iconRange', function () {
     });
 
     context('when off icon is not especified', function () {
-      xit('uses the :starOff icon', function () {
+      it('uses the :starOff icon', function () {
         // given
         var raty = new Raty('#element', {
           iconRange: [

@@ -1,4 +1,4 @@
-describe('#targetFormat', function () {
+xdescribe('#targetFormat', function () {
   beforeEach(function () {
     var body = $('body');
 
@@ -11,7 +11,7 @@ describe('#targetFormat', function () {
     $('#hint').remove();
   });
 
-  xit('stars empty', function () {
+  it('stars empty', function () {
     // given
     var raty = new Raty('#element', { target: '#hint', targetFormat: 'score: {score}' }).init();
 
@@ -23,7 +23,7 @@ describe('#targetFormat', function () {
   });
 
   context('on mouseover', function () {
-    xit('set target with format on mouseover', function () {
+    it('set target with format on mouseover', function () {
       // given
       var raty = new Raty('#element', { target: '#hint', targetFormat: 'score: {score}' }).init();
 
@@ -36,7 +36,7 @@ describe('#targetFormat', function () {
   });
 
   context('on mouseout', function () {
-    xit('clears the target', function () {
+    it('clears the target', function () {
       // given
       var raty = new Raty('#element', {
         target: '#hint',
@@ -53,7 +53,7 @@ describe('#targetFormat', function () {
 
     context('with :targetKeep', function () {
       context('without score', function () {
-        xit('clears the target', function () {
+        it('clears the target', function () {
           // given
           var raty = new Raty('#element', {
             target: '#hint',
@@ -71,7 +71,7 @@ describe('#targetFormat', function () {
       });
 
       context('with score', function () {
-        xit('keeps the template', function () {
+        it('keeps the template', function () {
           // given
           var raty = new Raty('#element', {
             score: 1,

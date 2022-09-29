@@ -1,9 +1,9 @@
-describe('#mouseover', function () {
+xdescribe('#mouseover', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('receives the score as int', function () {
+  it('receives the score as int', function () {
     // given
     var raty = new Raty('#el', {
       mouseover: function (score) {
@@ -20,7 +20,7 @@ describe('#mouseover', function () {
     expect(raty.self.result).toEqual(5);
   });
 
-  xit('receives the mouse event', function () {
+  it('receives the mouse event', function () {
     // given
     var raty = new Raty('#el', {
       mouseover: function (_, evt) {
@@ -38,7 +38,7 @@ describe('#mouseover', function () {
   });
 
   context('with :cancel', function () {
-    xit('receives null as score', function () {
+    it('receives null as score', function () {
       // given
       var raty = new Raty('#el', {
         cancelButton: true,

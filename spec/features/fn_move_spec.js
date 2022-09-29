@@ -1,11 +1,11 @@
-describe('#move', function () {
+xdescribe('#move', function () {
   beforeEach(function () {
     Helper.create('#el');
 
     this.target = Helper.create('#target');
   });
 
-  xit('sets *move to true then turns it false ', function () {
+  it('sets *move to true then turns it false ', function () {
     // given
     var raty = new Raty('#el').init();
 
@@ -17,7 +17,7 @@ describe('#move', function () {
   });
 
   describe('with interger score', function () {
-    xit('moves to the right point', function (done) {
+    it('moves to the right point', function (done) {
       // given
       var raty = new Raty('#el', {
         precision: true,
@@ -41,7 +41,7 @@ describe('#move', function () {
 
   describe('with float score', function () {
     context('with one decimal', function () {
-      xit('moves to the right point', function (done) {
+      it('moves to the right point', function (done) {
         // given
         var raty = new Raty('#el', {
           precision: true,
@@ -64,7 +64,7 @@ describe('#move', function () {
     });
 
     context('with two decimal', function () {
-      xit('moves to the right point', function (done) {
+      it('moves to the right point', function (done) {
         // given
         var raty = new Raty('#el', {
           precision: true,
@@ -88,7 +88,7 @@ describe('#move', function () {
   });
 
   describe('with string score', function () {
-    xit('moves to the right point', function (done) {
+    it('moves to the right point', function (done) {
       // given
       var raty = new Raty('#el', {
         precision: true,
@@ -111,7 +111,7 @@ describe('#move', function () {
   });
 
   describe('when score is bigger then the number of stars', function () {
-    xit('moves to the and of the last star', function (done) {
+    it('moves to the and of the last star', function (done) {
       // given
       var raty = new Raty('#el', {
         precision: true,

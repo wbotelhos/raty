@@ -1,4 +1,4 @@
-describe('#targetText', function () {
+xdescribe('#targetText', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
     $('body').append('<div id="hint"></div>');
@@ -9,7 +9,7 @@ describe('#targetText', function () {
     $('#hint').remove();
   });
 
-  xit('set target with none value', function () {
+  it('set target with none value', function () {
     // given
     var raty = new Raty('#element', { target: '#hint', targetText: 'none' });
 

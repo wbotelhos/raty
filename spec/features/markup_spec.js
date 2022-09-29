@@ -1,4 +1,4 @@
-describe('markup', function () {
+xdescribe('markup', function () {
   beforeEach(function () {
     $('body').append('<div data-raty></div><div data-raty></div>');
   });
@@ -7,7 +7,7 @@ describe('markup', function () {
     $('.element').remove();
   });
 
-  xit('creates the default markup', function () {
+  it('creates the default markup', function () {
     // given / when
     var ratys = [];
 

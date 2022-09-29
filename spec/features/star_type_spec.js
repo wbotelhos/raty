@@ -1,6 +1,6 @@
-describe('#starType', function () {
+xdescribe('#starType', function () {
   context('when actived', function () {
-    xit('disable the width property', function () {
+    it('disable the width property', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -14,7 +14,7 @@ describe('#starType', function () {
     });
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-star-type': 'b' });
 
@@ -28,18 +28,20 @@ describe('#starType', function () {
   });
 
   context('when is "img"', function () {
-    xit('does not changes the :path to blank', function () {
+    it('does not changes the :path to blank', function () {
       // given
       this.el = Helper.create('#el');
 
+      var raty = new Raty('#el', { path: 'path', starType: 'img' });
+
       // when
-      var raty = new Raty('#el', { path: 'path', starType: 'img' }).init();
+      raty.init();
 
       // then
-      expect(raty.opt.path).toEqual('');
+      expect(raty.opt.path).toEqual('path/');
     });
 
-    xit('creates the default markup', function () {
+    it('creates the default markup', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -75,7 +77,7 @@ describe('#starType', function () {
   });
 
   context('when is other element', function () {
-    xit('changes the :path to blank', function () {
+    it('changes the :path to blank', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -86,7 +88,7 @@ describe('#starType', function () {
       expect(raty.opt.path).toEqual('');
     });
 
-    xit('creates the default markup', function () {
+    it('creates the default markup', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -118,7 +120,7 @@ describe('#starType', function () {
     });
 
     context('with :half true', function () {
-      xit('fills half star', function () {
+      it('fills half star', function () {
         // given
         this.el = Helper.create('#el');
 

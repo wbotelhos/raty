@@ -1,4 +1,4 @@
-describe('#target', function () {
+xdescribe('#target', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
@@ -6,12 +6,12 @@ describe('#target', function () {
   context('on mouseover', function () {
     context('with callback', function () {
       beforeEach(function () {
-        raty.self.setAttribute('data-target-selector', '#target');
+        this.el[0].setAttribute('data-target-selector', '#target');
 
         this.target = Helper.target('#target');
       });
 
-      xit('accepts the return as value', function () {
+      it('accepts the return as value', function () {
         // given
         var raty = new Raty('#el', {
           target: function () {
@@ -35,9 +35,9 @@ describe('#target', function () {
         this.target = Helper.target('#target');
       });
 
-      xit('sets the hint', function () {
+      it('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id }).inxit();
+        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
         var star = Helper.last(raty.self.querySelectorAll('img'));
 
         // when
@@ -53,16 +53,16 @@ describe('#target', function () {
         this.target = Helper.target('#target', 'input');
       });
 
-      xit('sets the hint', function () {
+      it('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id }).inxit();
+        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
         var star = Helper.last(raty.self.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
 
         // then
-        expect(this.target.value).toEqual('gorgeous');
+        expect(document.querySelector('#target').value).toEqual('gorgeous');
       });
     });
 
@@ -71,7 +71,7 @@ describe('#target', function () {
         this.target = Helper.target('#target', 'textarea');
       });
 
-      xit('sets the hint', function () {
+      it('sets the hint', function () {
         // given
         var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
         var star = Helper.last(raty.self.querySelectorAll('img'));
@@ -80,7 +80,7 @@ describe('#target', function () {
         Helper.trigger(star, 'mouseover');
 
         // then
-        expect(this.target.value).toEqual('gorgeous');
+        expect(document.querySelector('#target').value).toEqual('gorgeous');
       });
     });
 
@@ -89,7 +89,7 @@ describe('#target', function () {
         this.target = Helper.target('#target', 'select');
       });
 
-      xit('sets the hint', function () {
+      it('sets the hint', function () {
         // given
         var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
         var star = Helper.last(raty.self.querySelectorAll('img'));
@@ -98,7 +98,7 @@ describe('#target', function () {
         Helper.trigger(star, 'mouseover');
 
         // then
-        expect(this.target.value).toEqual('gorgeous');
+        expect(document.querySelector('#target').value).toEqual('gorgeous');
       });
     });
 
@@ -108,7 +108,7 @@ describe('#target', function () {
           this.target = Helper.target('#target');
         });
 
-        xit('gets clear', function () {
+        it('gets clear', function () {
           // given
           var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
@@ -126,7 +126,7 @@ describe('#target', function () {
           this.target = Helper.target('#textarea');
         });
 
-        xit('gets clear', function () {
+        it('gets clear', function () {
           // given
           var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
@@ -144,7 +144,7 @@ describe('#target', function () {
           this.target = Helper.target('#target', 'input');
         });
 
-        xit('gets clear', function () {
+        it('gets clear', function () {
           // given
           var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
@@ -161,7 +161,7 @@ describe('#target', function () {
           this.target = Helper.target('#select');
         });
 
-        xit('gets clear', function () {
+        it('gets clear', function () {
           // given
           var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
@@ -181,7 +181,7 @@ describe('#target', function () {
             this.target = Helper.target('#target');
           });
 
-          xit('gets clear', function () {
+          it('gets clear', function () {
             // given
             var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
@@ -200,7 +200,7 @@ describe('#target', function () {
             this.target = Helper.target('#textarea');
           });
 
-          xit('gets clear', function () {
+          it('gets clear', function () {
             // given
             var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
@@ -219,7 +219,7 @@ describe('#target', function () {
             this.target = Helper.target('#target', 'input');
           });
 
-          xit('gets clear', function () {
+          it('gets clear', function () {
             // given
             var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 
@@ -240,7 +240,7 @@ describe('#target', function () {
             this.target = Helper.target('#select');
           });
 
-          xit('gets clear', function () {
+          it('gets clear', function () {
             // given
             var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
 

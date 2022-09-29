@@ -1,4 +1,4 @@
-describe('#iconRangeSame', function () {
+xdescribe('#iconRangeSame', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });
@@ -9,7 +9,7 @@ describe('#iconRangeSame', function () {
   });
 
   describe('when first star is chosen', function () {
-    xit('repeats the range icon', function () {
+    it('repeats the range icon', function () {
       // given
       var raty = new Raty('#element', {
         iconRangeSame: true,
@@ -37,7 +37,7 @@ describe('#iconRangeSame', function () {
   });
 
   describe('when a middle star is chosen', function () {
-    xit('repeats the range icon', function () {
+    it('repeats the range icon', function () {
       // given
       var raty = new Raty('#element', {
         iconRangeSame: true,
@@ -65,7 +65,7 @@ describe('#iconRangeSame', function () {
   });
 
   describe('when the last star is chosen', function () {
-    xit('repeats the range icon', function () {
+    it('repeats the range icon', function () {
       // given
       var raty = new Raty('#element', {
         iconRangeSame: true,
@@ -94,7 +94,7 @@ describe('#iconRangeSame', function () {
 
   describe('when mouse out', function () {
     describe('after mouse over', function () {
-      xit('removes the range icon', function () {
+      it('removes the range icon', function () {
         // given
         var raty = new Raty('#element', {
           iconRangeSame: true,
@@ -124,7 +124,7 @@ describe('#iconRangeSame', function () {
     });
 
     describe('after rating', function () {
-      xit('keeps the selection', function () {
+      it('keeps the selection', function () {
         // given
         var raty = new Raty('#element', {
           iconRangeSame: true,
@@ -157,7 +157,7 @@ describe('#iconRangeSame', function () {
   describe('with cancel option', function () {
     describe('after rating', function () {
       describe('when mouse over', function () {
-        xit('removes the range icon', function () {
+        it('removes the range icon', function () {
           // given
           var raty = new Raty('#element', {
             cancelButton: true,
@@ -188,7 +188,7 @@ describe('#iconRangeSame', function () {
       });
 
       describe('when mouse over and out', function () {
-        xit('puts the selection back', function () {
+        it('puts the selection back', function () {
           // given
           var raty = new Raty('#element', {
             cancelButton: true,
@@ -223,7 +223,7 @@ describe('#iconRangeSame', function () {
       });
 
       describe('when click on cancel button and mouse out', function () {
-        xit('removes the range icon', function () {
+        it('removes the range icon', function () {
           // given
           var raty = new Raty('#element', {
             cancelButton: true,
@@ -258,7 +258,7 @@ describe('#iconRangeSame', function () {
   });
 
   describe('when call cancel method', function () {
-    xit('removes the range icon', function () {
+    it('removes the range icon', function () {
       // given
       var raty = new Raty('#element', {
         cancelButton: true,

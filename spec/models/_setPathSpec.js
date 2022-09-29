@@ -1,10 +1,10 @@
-describe('#_setPath', function () {
+xdescribe('#_setPath', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
   context('when path is null', function () {
-    xit('sets to an empty string', function () {
+    it('sets to an empty string', function () {
       // given
 
       var options = {};
@@ -21,7 +21,7 @@ describe('#_setPath', function () {
   });
 
   context('when path is undefined', function () {
-    xit('sets to an empty string', function () {
+    it('sets to an empty string', function () {
       // given
 
       var options = {};
@@ -39,7 +39,7 @@ describe('#_setPath', function () {
 
   context('when path is defined', function () {
     context('with a slash at end', function () {
-      xit('keeps the same value', function () {
+      it('keeps the same value', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);
@@ -55,7 +55,7 @@ describe('#_setPath', function () {
     });
 
     context('without a slash at end', function () {
-      xit('appends a slash', function () {
+      it('appends a slash', function () {
         // given
         var options = {};
         var raty = new Raty('#el', options);

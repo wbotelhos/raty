@@ -1,5 +1,5 @@
-describe('#cancelPlace', function () {
-  xit('accepts data attribute', function () {
+xdescribe('#cancelPlace', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-cancel-place': 'custom' });
 
@@ -11,7 +11,7 @@ describe('#cancelPlace', function () {
   });
 
   context('when left', function () {
-    xit('is prepended', function () {
+    it('is prepended', function () {
       // given
       this.el = Helper.create('#el');
 
@@ -24,7 +24,7 @@ describe('#cancelPlace', function () {
   });
 
   context('when left', function () {
-    xit('is appended', function () {
+    it('is appended', function () {
       // given
       this.el = Helper.create('#el');
 

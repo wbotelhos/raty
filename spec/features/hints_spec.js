@@ -2109,7 +2109,6 @@ describe('#hints', function () {
           Helper.mousemove(this.el, 1, 1);
 
           // then
-          debugger;
           expect(raty.self.querySelectorAll('img')[1].title).toEqual('1,2');
         });
       });

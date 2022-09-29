@@ -1,9 +1,9 @@
-describe('#_adjustStarName', function () {
+xdescribe('#_adjustStarName', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('set *path to empty', function () {
+  it('set *path to empty', function () {
     // given
 
     var options = { path: 'path' };
@@ -16,7 +16,7 @@ describe('#_adjustStarName', function () {
     expect(raty.opt.path).toEqual('');
   });
 
-  xit('replaces "." to "-" on stars name', function () {
+  it('replaces "." to "-" on stars name', function () {
     // given
 
     var options = {

@@ -1,5 +1,5 @@
-describe('#_parseOptions', function () {
-  xit('parses options', function () {
+xdescribe('#_parseOptions', function () {
+  it('parses options', function () {
     // given
     this.el = Helper.create('#el');
 

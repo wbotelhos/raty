@@ -1,5 +1,5 @@
-describe('#cancelClass', function () {
-  xit('changes the class', function () {
+xdescribe('#cancelClass', function () {
+  it('changes the class', function () {
     // given
     this.el = Helper.create('#el');
 
@@ -10,7 +10,7 @@ describe('#cancelClass', function () {
     expect(raty.self.querySelector('.custom-class').alt).toEqual('x');
   });
 
-  xit('accepts data attribute', function () {
+  it('accepts data attribute', function () {
     // given
     Helper._append('div', { 'data-cancel-class': 'custom' });
 

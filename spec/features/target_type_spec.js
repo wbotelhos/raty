@@ -1,4 +1,4 @@
-describe('#targetType', function () {
+xdescribe('#targetType', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
 
@@ -6,13 +6,13 @@ describe('#targetType', function () {
   });
 
   context('target missing', function () {
-    xit('throws error', function () {
+    it('throws error', function () {
       // given
       var that = this;
 
       // when
       var lambda = function () {
-        var raty = new Raty('#el', { target: '#missing' }).inxit();
+        var raty = new Raty('#el', { target: '#missing' }).init();
       };
 
       // then
@@ -21,9 +21,9 @@ describe('#targetType', function () {
   });
 
   context('as *hint', function () {
-    xit('receives the hint', function () {
+    it('receives the hint', function () {
       // given
-      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'hint' }).inxit();
+      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'hint' }).init();
 
       var star = Helper.last(raty.self.querySelectorAll('img'));
 
@@ -35,9 +35,9 @@ describe('#targetType', function () {
     });
 
     context('with :cancel', function () {
-      xit('receives the :cancelHint', function () {
+      it('receives the :cancelHint', function () {
         // given
-        var raty = new Raty('#el', { cancelButton: true, target: '#' + this.target[0].id, targetType: 'hint' }).inxit();
+        var raty = new Raty('#el', { cancelButton: true, target: '#' + this.target[0].id, targetType: 'hint' }).init();
 
         var cancel = raty.self.querySelector('.raty-cancel');
 
@@ -51,9 +51,9 @@ describe('#targetType', function () {
   });
 
   context('as *score', function () {
-    xit('receives the score', function () {
+    it('receives the score', function () {
       // given
-      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'score' }).inxit();
+      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'score' }).init();
 
       var star = Helper.last(raty.self.querySelectorAll('img'));
 
@@ -65,13 +65,13 @@ describe('#targetType', function () {
     });
 
     context('with :cancel', function () {
-      xit('receives the :cancelHint', function () {
+      it('receives the :cancelHint', function () {
         // given
         var raty = new Raty('#el', {
           cancelButton: true,
           target: '#' + this.target[0].id,
           targetType: 'score',
-        }).inxit();
+        }).init();
 
         var cancel = raty.self.querySelector('.raty-cancel');
 

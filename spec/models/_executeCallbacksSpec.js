@@ -1,10 +1,10 @@
-describe('#_executeCallbacks', function () {
+xdescribe('#_executeCallbacks', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
   context('when options should compute, not evaluate at runtime, the return and it is a function', function () {
-    xit('uses the given return', function () {
+    it('uses the given return', function () {
       // given
       var raty = new Raty('#el', {
         number: function () {
@@ -20,7 +20,7 @@ describe('#_executeCallbacks', function () {
     });
 
     context('whe there is not return', function () {
-      xit('is undefined', function () {
+      it('is undefined', function () {
         // given
         var raty = new Raty('#el', { number: function () {} });
 
@@ -33,7 +33,7 @@ describe('#_executeCallbacks', function () {
     });
 
     context('when options is not a function', function () {
-      xit('keeps the given value', function () {
+      it('keeps the given value', function () {
         // given
         var raty = new Raty('#el', { number: 16 });
 
@@ -47,7 +47,7 @@ describe('#_executeCallbacks', function () {
   });
 
   context('when options is not no allow list', function () {
-    xit('keeps the given value', function () {
+    it('keeps the given value', function () {
       // given
 
       var raty = new Raty('#el', { denied: 'default' });

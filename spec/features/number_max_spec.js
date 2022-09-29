@@ -1,9 +1,9 @@
-describe('#numberMax', function () {
+xdescribe('#numberMax', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('limits the max of "number" option', function () {
+  it('limits the max of "number" option', function () {
     // given
     var raty = new Raty('#el', { number: 2, numberMax: 1 });
 
@@ -14,7 +14,7 @@ describe('#numberMax', function () {
     expect(raty.opt.number).toEqual(1);
   });
 
-  xit('limits the min of "number" option', function () {
+  it('limits the min of "number" option', function () {
     // given
     var raty = new Raty('#el', { number: -1 });
 

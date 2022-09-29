@@ -8,7 +8,7 @@ describe('get #score', function () {
     $('#hint').remove();
   });
 
-  xit('accepts number as string', function () {
+  it('accepts number as string', function () {
     // given
     var raty = new Raty('#element', { score: '1' });
 
@@ -19,7 +19,7 @@ describe('get #score', function () {
     expect(raty.self.querySelector('input').value).toEqual('1');
   });
 
-  xit('accepts float string', function () {
+  it('accepts float string', function () {
     // given
     var raty = new Raty('#element', { score: '1.5' });
 
@@ -31,7 +31,7 @@ describe('get #score', function () {
   });
 
   context('with integer score', function () {
-    xit('gets as int', function () {
+    it('gets as int', function () {
       // given
       var raty = new Raty('#element', { score: 1 }).init();
 
@@ -44,7 +44,7 @@ describe('get #score', function () {
   });
 
   context('with float score', function () {
-    xit('gets as float', function () {
+    it('gets as float', function () {
       // given
       var raty = new Raty('#element', { score: 1.5 }).init();
 
@@ -57,7 +57,7 @@ describe('get #score', function () {
   });
 
   context('with score zero', function () {
-    xit('returns an undefined value because it does not exist', function () {
+    it('returns an undefined value because it does not exist', function () {
       // given
       var raty = new Raty('#element', { score: 0 }).init();
 
@@ -70,7 +70,7 @@ describe('get #score', function () {
   });
 
   context('with score greater than :numberMax', function () {
-    xit('gets the max', function () {
+    it('gets the max', function () {
       // given
       var raty = new Raty('#element', { number: 50, score: 50 }).init();
 

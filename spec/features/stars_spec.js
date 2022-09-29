@@ -1,9 +1,9 @@
-describe('stars', function () {
+xdescribe('stars', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
-  xit('starts all off', function () {
+  it('starts all off', function () {
     // given / when
     var raty = new Raty('#el').init();
 
@@ -12,7 +12,7 @@ describe('stars', function () {
   });
 
   context('on click', function () {
-    xit('changes the score', function () {
+    it('changes the score', function () {
       // given
       var raty = new Raty('#el').init();
       var stars = raty.self.querySelectorAll('img');
@@ -26,7 +26,7 @@ describe('stars', function () {
   });
 
   context('on mouseover', function () {
-    xit('turns on the stars', function () {
+    it('turns on the stars', function () {
       // given
       var raty = new Raty('#el').init();
       var stars = raty.self.querySelectorAll('img');
@@ -43,7 +43,7 @@ describe('stars', function () {
     });
 
     context('and mouseout', function () {
-      xit('turns off all stars', function () {
+      it('turns off all stars', function () {
         // given
         var raty = new Raty('#el').init();
         var stars = raty.self.querySelectorAll('img');
@@ -62,7 +62,7 @@ describe('stars', function () {
     });
 
     context('and click', function () {
-      xit('changes the score', function () {
+      it('changes the score', function () {
         // given
         var raty = new Raty('#el').init();
         var stars = raty.self.querySelectorAll('img');
@@ -77,7 +77,7 @@ describe('stars', function () {
       });
 
       context('and mouseout', function () {
-        xit('keeps the stars on', function () {
+        it('keeps the stars on', function () {
           // given
           var raty = new Raty('#el').init();
           var stars = raty.self.querySelectorAll('img');

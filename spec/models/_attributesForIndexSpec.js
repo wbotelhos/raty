@@ -1,10 +1,10 @@
-describe('#_attributesForIndex', function () {
+xdescribe('#_attributesForIndex', function () {
   beforeEach(function () {
     this.el = Helper.create('#el');
   });
 
   context('when :starType is img', function () {
-    xit('uses alt attribute with given index', function () {
+    it('uses alt attribute with given index', function () {
       // given
 
       var options = { starType: 'img' };
@@ -18,7 +18,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes.alt).toEqual(index);
     });
 
-    xit('uses src with :path and returned _nameForIndex', function () {
+    it('uses src with :path and returned _nameForIndex', function () {
       // given
 
       var name = 'starOff';
@@ -35,7 +35,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes.src).toEqual('pathstarOff');
     });
 
-    xit('does not use data-alt', function () {
+    it('does not use data-alt', function () {
       // given
 
       var options = { starType: 'img' };
@@ -49,7 +49,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes['data-alt']).toEqual(undefined);
     });
 
-    xit('does not use class', function () {
+    it('does not use class', function () {
       // given
 
       var options = { starType: 'img' };
@@ -63,7 +63,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes['class']).toEqual(undefined);
     });
 
-    xit('sets title with _getHint and given index', function () {
+    it('sets title with _getHint and given index', function () {
       // given
 
       var hint = 'double';
@@ -84,7 +84,7 @@ describe('#_attributesForIndex', function () {
   });
 
   context('when :starType is not img', function () {
-    xit('uses data-alt attribute with given index', function () {
+    it('uses data-alt attribute with given index', function () {
       // given
 
       var options = { starType: 'i' };
@@ -98,7 +98,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes['data-alt']).toEqual(index);
     });
 
-    xit('uses class with property name returned _nameForIndex', function () {
+    it('uses class with property name returned _nameForIndex', function () {
       // given
 
       var name = 'starOff';
@@ -117,7 +117,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes['class']).toEqual(raty.opt.starOff);
     });
 
-    xit('does not use alt', function () {
+    it('does not use alt', function () {
       // given
 
       var options = { starType: 'i' };
@@ -131,7 +131,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes.alt).toEqual(undefined);
     });
 
-    xit('does not use src', function () {
+    it('does not use src', function () {
       // given
 
       var options = { starType: 'i' };
@@ -145,7 +145,7 @@ describe('#_attributesForIndex', function () {
       expect(attributes.src).toEqual(undefined);
     });
 
-    xit('sets title with _getHint and given index', function () {
+    it('sets title with _getHint and given index', function () {
       // given
 
       var hint = 'double';

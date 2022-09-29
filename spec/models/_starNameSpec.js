@@ -75,7 +75,7 @@ describe('#_starName', function () {
           this.decimal = 0.51;
         });
 
-        xit('returns startOn', function () {
+        it('returns startOn', function () {
           // given
           var raty = new Raty('#el');
 

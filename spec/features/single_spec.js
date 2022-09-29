@@ -1,4 +1,4 @@
-describe('#single', function () {
+xdescribe('#single', function () {
   beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });
@@ -9,7 +9,7 @@ describe('#single', function () {
   });
 
   context('on mouseover', function () {
-    xit('turns on just one icon', function () {
+    it('turns on just one icon', function () {
       // given
       var raty = new Raty('#element', { single: true }).init();
       var stars = raty.self.querySelectorAll('img');
@@ -26,7 +26,7 @@ describe('#single', function () {
     });
 
     context('with :iconRange', function () {
-      xit('shows just on icon', function () {
+      it('shows just on icon', function () {
         // given
         var raty = new Raty('#element', {
           iconRange: [
@@ -54,7 +54,7 @@ describe('#single', function () {
   });
 
   context('on click', function () {
-    xit('turns on the star', function () {
+    it('turns on the star', function () {
       // given
       var raty = new Raty('#element', { single: true }).init();
       var stars = raty.self.querySelectorAll('img');
@@ -72,7 +72,7 @@ describe('#single', function () {
     });
 
     context('on mouseout', function () {
-      xit('keeps the score', function () {
+      it('keeps the score', function () {
         // given
         var raty = new Raty('#element', { single: true }).init();
         var stars = raty.self.querySelectorAll('img');
@@ -91,7 +91,7 @@ describe('#single', function () {
       });
 
       context('and :iconRange', function () {
-        xit('keeps the score', function () {
+        it('keeps the score', function () {
           // given
           var raty = new Raty('#element', {
             single: true,
