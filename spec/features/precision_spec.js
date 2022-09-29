@@ -1,14 +1,14 @@
 describe('#precision', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el', 'div', { 'data-target': '#target' });
+    this.el = Helper.create(document.querySelector('#el'), 'div', { 'data-target': '#target' });
     this.target = Helper.create('#target');
   });
 
   it('enables the :half options', function () {
     // given
-    Helper.create('#el', 'div', { 'data-target': '#target' });
+    Helper.create(document.querySelector('#el'), 'div', { 'data-target': '#target' });
 
-    var raty = new Raty('#el', { precision: true });
+    var raty = new Raty(document.querySelector('#el'), { precision: true });
 
     // when
     raty.init();
@@ -21,7 +21,7 @@ describe('#precision', function () {
     // given
     Helper._append('div', { 'data-precision': true });
 
-    var raty = new Raty('[data-precision]');
+    var raty = new Raty(document.querySelector('[data-precision]'));
 
     // when
     raty.init();
@@ -36,7 +36,7 @@ describe('#precision', function () {
         context('on :score', function () {
           it('sets the float with one fractional number', function () {
             // given
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               precision: true,
               score: 1.2,
               targetKeep: true,
@@ -57,7 +57,7 @@ describe('#precision', function () {
         context('on mouseover', function () {
           it('sets the float with one fractional number', function (done) {
             // given
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               precision: true,
               targetKeep: true,
               targetType: 'score',
@@ -86,7 +86,7 @@ describe('#precision', function () {
           context('with one float digit', function () {
             it('gets the [integer][float] position of :hints', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', ['second']],
                 precision: true,
                 score: 1.1,
@@ -108,7 +108,7 @@ describe('#precision', function () {
           context('with integer digit is zero', function () {
             it('gets the [integer][last item] position of :hints', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', 'second'],
                 precision: true,
                 score: 0,
@@ -130,7 +130,7 @@ describe('#precision', function () {
           context('with float digit is zero', function () {
             it('gets the [integer][last item] position of :hints', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', 'second'],
                 precision: true,
                 score: 1.0,
@@ -152,7 +152,7 @@ describe('#precision', function () {
           context('with one float digit as string', function () {
             it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', ['second']],
                 precision: true,
                 score: '1.1',
@@ -174,7 +174,7 @@ describe('#precision', function () {
           context('with two float digits', function () {
             it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', ['second']],
                 precision: true,
                 score: 1.19,
@@ -196,7 +196,7 @@ describe('#precision', function () {
           context('with two float digits as string', function () {
             it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', ['second']],
                 precision: true,
                 score: '1.19',
@@ -220,7 +220,7 @@ describe('#precision', function () {
           context('with one float digit', function () {
             it('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', ['second']],
                 precision: true,
                 targetKeep: true,
@@ -247,7 +247,7 @@ describe('#precision', function () {
           context('with two float digits', function () {
             it('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', ['second']],
                 precision: true,
                 targetKeep: true,
@@ -275,7 +275,7 @@ describe('#precision', function () {
         context('with :cancel', function () {
           it('shows :cancelHint', function () {
             // given
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               cancelButton: true,
               precision: true,
               targetKeep: true,
@@ -285,7 +285,7 @@ describe('#precision', function () {
               },
             }).init();
 
-            var cancel = raty.self.querySelector('img');
+            var cancel = raty.element.querySelector('img');
 
             // when
             Helper.trigger(cancel, 'mouseover');

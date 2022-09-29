@@ -3,33 +3,33 @@ describe('#score', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', { score: 1 });
+    var raty = new Raty(document.querySelector('#el'), { score: 1 });
 
     // when
     raty.init();
 
     // then
-    expect(raty.self.querySelector('input').value).toEqual('1');
+    expect(raty.element.querySelector('input').value).toEqual('1');
   });
 
   it('turns on stars', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', { score: 5 });
+    var raty = new Raty(document.querySelector('#el'), { score: 5 });
 
     // when
     raty.init();
 
     // then
-    expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
+    expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-on.png');
   });
 
   it('accepts callback', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', {
+    var raty = new Raty(document.querySelector('#el'), {
       score: function () {
         return 1;
       },
@@ -47,7 +47,7 @@ describe('#score', function () {
     Helper._append('div', { 'data-score': 3 });
 
     // when
-    var raty = new Raty('[data-score]');
+    var raty = new Raty(document.querySelector('[data-score]'));
 
     // then
     expect(raty.opt.score).toEqual(3);
@@ -58,13 +58,13 @@ describe('#score', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { score: -1 });
+      var raty = new Raty(document.querySelector('#el'), { score: -1 });
 
       // when
       raty.init();
 
       // then
-      expect(raty.self.querySelector('input').value).toEqual('');
+      expect(raty.element.querySelector('input').value).toEqual('');
     });
   });
 
@@ -73,13 +73,13 @@ describe('#score', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { readOnly: true });
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true });
 
       // when
       raty.init();
 
       // then
-      expect(raty.self.querySelector('input').readOnly).toEqual(true);
+      expect(raty.element.querySelector('input').readOnly).toEqual(true);
     });
   });
 
@@ -88,7 +88,7 @@ describe('#score', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { score: 100 });
+      var raty = new Raty(document.querySelector('#el'), { score: 100 });
 
       // when
       raty.init();

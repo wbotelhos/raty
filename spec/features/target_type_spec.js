@@ -12,7 +12,7 @@ describe('#targetType', function () {
 
       // when
       var lambda = function () {
-        var raty = new Raty('#el', { target: '#missing' }).init();
+        var raty = new Raty(document.querySelector('#el'), { target: '#missing' }).init();
       };
 
       // then
@@ -23,9 +23,12 @@ describe('#targetType', function () {
   context('as *hint', function () {
     it('receives the hint', function () {
       // given
-      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'hint' }).init();
+      var raty = new Raty(document.querySelector('#el'), {
+        target: '#' + this.target[0].id,
+        targetType: 'hint',
+      }).init();
 
-      var star = Helper.last(raty.self.querySelectorAll('img'));
+      var star = Helper.last(raty.element.querySelectorAll('img'));
 
       // when
       Helper.trigger(star, 'mouseover');
@@ -37,9 +40,13 @@ describe('#targetType', function () {
     context('with :cancel', function () {
       it('receives the :cancelHint', function () {
         // given
-        var raty = new Raty('#el', { cancelButton: true, target: '#' + this.target[0].id, targetType: 'hint' }).init();
+        var raty = new Raty(document.querySelector('#el'), {
+          cancelButton: true,
+          target: '#' + this.target[0].id,
+          targetType: 'hint',
+        }).init();
 
-        var cancel = raty.self.querySelector('.raty-cancel');
+        var cancel = raty.element.querySelector('.raty-cancel');
 
         // when
         Helper.trigger(cancel, 'mouseover');
@@ -53,9 +60,12 @@ describe('#targetType', function () {
   context('as *score', function () {
     it('receives the score', function () {
       // given
-      var raty = new Raty('#el', { target: '#' + this.target[0].id, targetType: 'score' }).init();
+      var raty = new Raty(document.querySelector('#el'), {
+        target: '#' + this.target[0].id,
+        targetType: 'score',
+      }).init();
 
-      var star = Helper.last(raty.self.querySelectorAll('img'));
+      var star = Helper.last(raty.element.querySelectorAll('img'));
 
       // when
       Helper.trigger(star, 'mouseover');
@@ -67,13 +77,13 @@ describe('#targetType', function () {
     context('with :cancel', function () {
       it('receives the :cancelHint', function () {
         // given
-        var raty = new Raty('#el', {
+        var raty = new Raty(document.querySelector('#el'), {
           cancelButton: true,
           target: '#' + this.target[0].id,
           targetType: 'score',
         }).init();
 
-        var cancel = raty.self.querySelector('.raty-cancel');
+        var cancel = raty.element.querySelector('.raty-cancel');
 
         // when
         Helper.trigger(cancel, 'mouseover');

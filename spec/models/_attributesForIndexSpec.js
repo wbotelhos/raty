@@ -9,7 +9,7 @@ describe('#_attributesForIndex', function () {
 
       var options = { starType: 'img' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var attributes = raty._attributesForIndex(index);
@@ -24,7 +24,7 @@ describe('#_attributesForIndex', function () {
       var name = 'starOff';
       var options = { path: 'path', starOff: 'starOff', starType: 'img' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       spyOn(raty, '_nameForIndex').and.returnValue(name);
 
@@ -40,7 +40,7 @@ describe('#_attributesForIndex', function () {
 
       var options = { starType: 'img' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var attributes = raty._attributesForIndex(index);
@@ -54,7 +54,7 @@ describe('#_attributesForIndex', function () {
 
       var options = { starType: 'img' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var attributes = raty._attributesForIndex(index);
@@ -69,7 +69,7 @@ describe('#_attributesForIndex', function () {
       var hint = 'double';
       var options = { starType: 'img' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       raty.init();
 
@@ -89,7 +89,7 @@ describe('#_attributesForIndex', function () {
 
       var options = { starType: 'i' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var attributes = raty._attributesForIndex(index);
@@ -104,7 +104,7 @@ describe('#_attributesForIndex', function () {
       var name = 'starOff';
       var options = { starType: 'i' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       raty.init();
 
@@ -122,7 +122,7 @@ describe('#_attributesForIndex', function () {
 
       var options = { starType: 'i' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var attributes = raty._attributesForIndex(index);
@@ -136,7 +136,7 @@ describe('#_attributesForIndex', function () {
 
       var options = { starType: 'i' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var attributes = raty._attributesForIndex(index);
@@ -151,7 +151,7 @@ describe('#_attributesForIndex', function () {
       var hint = 'double';
       var options = { starType: 'i' };
       var index = 1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       raty.init();
 

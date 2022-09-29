@@ -13,13 +13,13 @@ describe('#target', function () {
 
       it('accepts the return as value', function () {
         // given
-        var raty = new Raty('#el', {
+        var raty = new Raty(document.querySelector('#el'), {
           target: function () {
             return this.getAttribute('data-target-selector');
           },
         }).init();
 
-        var star = Helper.last(raty.self.querySelectorAll('img'));
+        var star = Helper.last(raty.element.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -37,8 +37,8 @@ describe('#target', function () {
 
       it('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
-        var star = Helper.last(raty.self.querySelectorAll('img'));
+        var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
+        var star = Helper.last(raty.element.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -55,8 +55,8 @@ describe('#target', function () {
 
       it('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
-        var star = Helper.last(raty.self.querySelectorAll('img'));
+        var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
+        var star = Helper.last(raty.element.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -73,8 +73,8 @@ describe('#target', function () {
 
       it('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
-        var star = Helper.last(raty.self.querySelectorAll('img'));
+        var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
+        var star = Helper.last(raty.element.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -91,8 +91,8 @@ describe('#target', function () {
 
       it('sets the hint', function () {
         // given
-        var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
-        var star = Helper.last(raty.self.querySelectorAll('img'));
+        var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
+        var star = Helper.last(raty.element.querySelectorAll('img'));
 
         // when
         Helper.trigger(star, 'mouseover');
@@ -110,11 +110,11 @@ describe('#target', function () {
 
         it('gets clear', function () {
           // given
-          var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+          var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
 
           // when
-          Helper.trigger(raty.self, 'mouseover');
-          Helper.trigger(raty.self, 'mouseout');
+          Helper.trigger(raty.element, 'mouseover');
+          Helper.trigger(raty.element, 'mouseout');
 
           // then
           expect(this.target[0].innerHTML).toEqual('');
@@ -128,11 +128,11 @@ describe('#target', function () {
 
         it('gets clear', function () {
           // given
-          var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+          var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
 
           // when
-          Helper.trigger(raty.self, 'mouseover');
-          Helper.trigger(raty.self, 'mouseout');
+          Helper.trigger(raty.element, 'mouseover');
+          Helper.trigger(raty.element, 'mouseout');
 
           // then
           expect(this.target[0].innerHTML).toEqual('');
@@ -146,10 +146,10 @@ describe('#target', function () {
 
         it('gets clear', function () {
           // given
-          var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+          var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
 
           // when
-          Helper.trigger(raty.self, 'mouseover');
+          Helper.trigger(raty.element, 'mouseover');
 
           // then
           expect(this.target[0].innerHTML).toEqual('');
@@ -163,10 +163,10 @@ describe('#target', function () {
 
         it('gets clear', function () {
           // given
-          var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+          var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
 
           // when
-          Helper.trigger(raty.self, 'mouseout');
+          Helper.trigger(raty.element, 'mouseout');
 
           // then
           expect(this.target[0].innerHTML).toEqual('');
@@ -183,12 +183,12 @@ describe('#target', function () {
 
           it('gets clear', function () {
             // given
-            var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+            var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
 
             // when
-            Helper.trigger(raty.self, 'mouseover');
-            Helper.trigger(raty.self, 'click');
-            Helper.trigger(raty.self, 'mouseout');
+            Helper.trigger(raty.element, 'mouseover');
+            Helper.trigger(raty.element, 'click');
+            Helper.trigger(raty.element, 'mouseout');
 
             // then
             expect(this.target[0].innerHTML).toEqual('');
@@ -202,12 +202,12 @@ describe('#target', function () {
 
           it('gets clear', function () {
             // given
-            var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+            var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
 
             // when
-            Helper.trigger(raty.self, 'mouseover');
-            Helper.trigger(raty.self, 'click');
-            Helper.trigger(raty.self, 'mouseout');
+            Helper.trigger(raty.element, 'mouseover');
+            Helper.trigger(raty.element, 'click');
+            Helper.trigger(raty.element, 'mouseout');
 
             // then
             expect(this.target[0].innerHTML).toEqual('');
@@ -221,14 +221,14 @@ describe('#target', function () {
 
           it('gets clear', function () {
             // given
-            var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+            var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
 
-            var star = Helper.last(raty.self.querySelectorAll('img'));
+            var star = Helper.last(raty.element.querySelectorAll('img'));
 
             // when
-            Helper.trigger(raty.self, 'mouseover');
-            Helper.trigger(raty.self, 'click');
-            Helper.trigger(raty.self, 'mouseout');
+            Helper.trigger(raty.element, 'mouseover');
+            Helper.trigger(raty.element, 'click');
+            Helper.trigger(raty.element, 'mouseout');
 
             // then
             expect(this.target[0].innerHTML).toEqual('');
@@ -242,12 +242,12 @@ describe('#target', function () {
 
           it('gets clear', function () {
             // given
-            var raty = new Raty('#el', { target: '#' + this.target[0].id }).init();
+            var raty = new Raty(document.querySelector('#el'), { target: '#' + this.target[0].id }).init();
 
             // when
-            Helper.trigger(raty.self, 'mouseover');
-            Helper.trigger(raty.self, 'click');
-            Helper.trigger(raty.self, 'mouseout');
+            Helper.trigger(raty.element, 'mouseover');
+            Helper.trigger(raty.element, 'click');
+            Helper.trigger(raty.element, 'mouseout');
 
             // then
             expect(this.target[0].innerHTML).toEqual('');

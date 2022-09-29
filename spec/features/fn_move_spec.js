@@ -7,19 +7,19 @@ describe('#move', function () {
 
   it('sets *move to true then turns it false ', function () {
     // given
-    var raty = new Raty('#el').init();
+    var raty = new Raty(document.querySelector('#el')).init();
 
     // when
     raty.move(1);
 
     // then
-    expect(raty.self.isMove).toEqual(false);
+    expect(raty.element.isMove).toEqual(false);
   });
 
   describe('with interger score', function () {
     it('moves to the right point', function (done) {
       // given
-      var raty = new Raty('#el', {
+      var raty = new Raty(document.querySelector('#el'), {
         precision: true,
         target: '#target',
         targetType: 'number',
@@ -43,7 +43,7 @@ describe('#move', function () {
     context('with one decimal', function () {
       it('moves to the right point', function (done) {
         // given
-        var raty = new Raty('#el', {
+        var raty = new Raty(document.querySelector('#el'), {
           precision: true,
           target: '#target',
           targetType: 'number',
@@ -66,7 +66,7 @@ describe('#move', function () {
     context('with two decimal', function () {
       it('moves to the right point', function (done) {
         // given
-        var raty = new Raty('#el', {
+        var raty = new Raty(document.querySelector('#el'), {
           precision: true,
           target: '#target',
           targetType: 'number',
@@ -90,7 +90,7 @@ describe('#move', function () {
   describe('with string score', function () {
     it('moves to the right point', function (done) {
       // given
-      var raty = new Raty('#el', {
+      var raty = new Raty(document.querySelector('#el'), {
         precision: true,
         target: '#target',
         targetType: 'number',
@@ -113,7 +113,7 @@ describe('#move', function () {
   describe('when score is bigger then the number of stars', function () {
     it('moves to the and of the last star', function (done) {
       // given
-      var raty = new Raty('#el', {
+      var raty = new Raty(document.querySelector('#el'), {
         precision: true,
         target: '#target',
         targetType: 'number',

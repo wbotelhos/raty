@@ -6,43 +6,43 @@ describe('#fn readOnly', function () {
   context('on true', function () {
     it('sets score as readonly', function () {
       // given
-      var raty = new Raty('#el').init();
+      var raty = new Raty(document.querySelector('#el')).init();
 
       // when
       raty.readOnly(true);
 
       // then
-      expect(raty.self.querySelector('input').readOnly).toEqual(true);
+      expect(raty.element.querySelector('input').readOnly).toEqual(true);
     });
 
     it('disables the mouse interaction', function () {
       // given
-      var raty = new Raty('#el').init();
+      var raty = new Raty(document.querySelector('#el')).init();
 
       // when
       raty.readOnly(true);
 
       // then
-      expect(raty.self.style.pointerEvents).toEqual('none');
+      expect(raty.element.style.pointerEvents).toEqual('none');
     });
 
     context('without rating', function () {
       it('Applies the :noRatedMsg on stars', function () {
         // given
-        var raty = new Raty('#el').init();
+        var raty = new Raty(document.querySelector('#el')).init();
 
         // when
         raty.readOnly(true);
 
         // then
-        expect(raty.self.querySelector('img').title).toEqual(raty.opt.noRatedMsg);
+        expect(raty.element.querySelector('img').title).toEqual(raty.opt.noRatedMsg);
       });
     });
 
     it('triggers mouseover since it is not unbind anymore but pointer events ', function () {
       // given
-      var raty = new Raty('#el').init();
-      var stars = raty.self.querySelectorAll('img');
+      var raty = new Raty(document.querySelector('#el')).init();
+      var stars = raty.element.querySelectorAll('img');
 
       raty.readOnly(true);
 
@@ -59,8 +59,8 @@ describe('#fn readOnly', function () {
 
     it('does not trigger click', function () {
       // given
-      var raty = new Raty('#el').init();
-      var stars = raty.self.querySelectorAll('img');
+      var raty = new Raty(document.querySelector('#el')).init();
+      var stars = raty.element.querySelectorAll('img');
 
       raty.readOnly(true);
 
@@ -74,19 +74,19 @@ describe('#fn readOnly', function () {
       expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
       expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
 
-      expect(raty.self.querySelector('input').value).toEqual('');
+      expect(raty.element.querySelector('input').value).toEqual('');
     });
 
     context('with :cancel', function () {
       it('hides the button', function () {
         // given
-        var raty = new Raty('#el', { cancelButton: true }).init();
+        var raty = new Raty(document.querySelector('#el'), { cancelButton: true }).init();
 
         // when
         raty.readOnly(true);
 
         // then
-        expect(raty.self.querySelector('.raty-cancel')).toBeHidden();
+        expect(raty.element.querySelector('.raty-cancel')).toBeHidden();
       });
     });
 
@@ -97,7 +97,7 @@ describe('#fn readOnly', function () {
           this.dataset.trigged = true;
         });
 
-        var raty = new Raty('#el').init();
+        var raty = new Raty(document.querySelector('#el')).init();
 
         raty.readOnly(true);
 
@@ -112,8 +112,8 @@ describe('#fn readOnly', function () {
     context('with external bind on stars', function () {
       it('keeps it', function () {
         // given
-        var raty = new Raty('#el').init();
-        var star = raty.self.querySelector('img');
+        var raty = new Raty(document.querySelector('#el')).init();
+        var star = raty.element.querySelector('img');
         var that = this;
 
         star.addEventListener('click', function () {
@@ -135,7 +135,7 @@ describe('#fn readOnly', function () {
         context('with :score as integer', function () {
           it('applies the score hint', function () {
             // given
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               halfShow: true,
               hints: [['half', 'one']],
               score: 1,
@@ -145,14 +145,14 @@ describe('#fn readOnly', function () {
             raty.readOnly(true);
 
             // then
-            expect(raty.self.querySelector('img').title).toEqual('one');
+            expect(raty.element.querySelector('img').title).toEqual('one');
           });
         });
 
         context('with :score as float', function () {
           it('applies the score hint', function () {
             // given
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               halfShow: true,
               hints: [['half', 'one']],
               score: 0.5,
@@ -162,7 +162,7 @@ describe('#fn readOnly', function () {
             raty.readOnly(true);
 
             // then
-            expect(raty.self.querySelector('img').title).toEqual('half');
+            expect(raty.element.querySelector('img').title).toEqual('half');
           });
         });
       });
@@ -173,7 +173,7 @@ describe('#fn readOnly', function () {
         context('with :score as integer', function () {
           it('applies the score hint', function () {
             // given
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               half: true,
               hints: [['half', 'one']],
               score: 1,
@@ -183,14 +183,14 @@ describe('#fn readOnly', function () {
             raty.readOnly(true);
 
             // then
-            expect(raty.self.querySelector('img').title).toEqual('one');
+            expect(raty.element.querySelector('img').title).toEqual('one');
           });
         });
 
         context('with :score as float', function () {
           it('applies the score hint', function () {
             // given
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               half: true,
               hints: [['half', 'one']],
               score: 0.5,
@@ -200,7 +200,7 @@ describe('#fn readOnly', function () {
             raty.readOnly(true);
 
             // then
-            expect(raty.self.querySelector('img').title).toEqual('half');
+            expect(raty.element.querySelector('img').title).toEqual('half');
           });
         });
       });
@@ -213,14 +213,14 @@ describe('#fn readOnly', function () {
             context('with :score as integer', function () {
               it('applies the 10 - 1 decimal hint', function () {
                 // given
-                var raty = new Raty('#el', {
+                var raty = new Raty(document.querySelector('#el'), {
                   hints: [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
                   precision: true,
                   score: 1,
                   targetType: 'hint',
                 }).init();
 
-                var stars = raty.self.querySelectorAll('img');
+                var stars = raty.element.querySelectorAll('img');
 
                 // when
                 raty.readOnly(true);
@@ -237,14 +237,14 @@ describe('#fn readOnly', function () {
             context('with :score as float', function () {
               it('applies the 1 - 1 decimal hint', function () {
                 // given
-                var raty = new Raty('#el', {
+                var raty = new Raty(document.querySelector('#el'), {
                   hints: [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
                   precision: true,
                   score: 0.1,
                   targetType: 'hint',
                 }).init();
 
-                var stars = raty.self.querySelectorAll('img');
+                var stars = raty.element.querySelectorAll('img');
 
                 // when
                 raty.readOnly(true);
@@ -263,14 +263,14 @@ describe('#fn readOnly', function () {
             context('with :score as integer', function () {
               it('applies the score', function () {
                 // given
-                var raty = new Raty('#el', {
+                var raty = new Raty(document.querySelector('#el'), {
                   hints: [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
                   precision: true,
                   score: 1,
                   targetType: 'score',
                 }).init();
 
-                var stars = raty.self.querySelectorAll('img');
+                var stars = raty.element.querySelectorAll('img');
 
                 // when
                 raty.readOnly(true);
@@ -287,14 +287,14 @@ describe('#fn readOnly', function () {
             context('with :score as float', function () {
               it('applies the score', function () {
                 // given
-                var raty = new Raty('#el', {
+                var raty = new Raty(document.querySelector('#el'), {
                   hints: [['bad 1', 'bad 2', 'bad 3', 'bad 4', 'bad 5', 'bad 6', 'bad 7', 'bad 8', 'bad 9', 'bad']],
                   precision: true,
                   score: 0.1,
                   targetType: 'score',
                 }).init();
 
-                var stars = raty.self.querySelectorAll('img');
+                var stars = raty.element.querySelectorAll('img');
 
                 // when
                 raty.readOnly(true);
@@ -316,9 +316,9 @@ describe('#fn readOnly', function () {
   context('on false', function () {
     it('removes the :readOnly of the score', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true }).init();
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
 
-      var input = raty.self.querySelector('input');
+      var input = raty.element.querySelector('input');
 
       // when
       raty.readOnly(false);
@@ -330,20 +330,20 @@ describe('#fn readOnly', function () {
 
     it('applies the pointer cursor on wrapper', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true }).init();
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
 
       // when
       raty.readOnly(false);
 
       // then
-      expect(raty.self.style.cursor).toEqual('pointer');
+      expect(raty.element.style.cursor).toEqual('pointer');
     });
 
     it('Removes the :noRatedMsg from stars', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true }).init();
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
 
-      var stars = raty.self.querySelectorAll('img');
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       raty.readOnly(false);
@@ -358,9 +358,9 @@ describe('#fn readOnly', function () {
 
     it('triggers mouseover', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true }).init();
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
 
-      var stars = raty.self.querySelectorAll('img');
+      var stars = raty.element.querySelectorAll('img');
 
       raty.readOnly(false);
 
@@ -373,9 +373,9 @@ describe('#fn readOnly', function () {
 
     it('triggers click', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true }).init();
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
 
-      var star = raty.self.querySelector('img');
+      var star = raty.element.querySelector('img');
 
       raty.readOnly(false);
 
@@ -383,15 +383,15 @@ describe('#fn readOnly', function () {
       Helper.trigger(star, 'click');
 
       // then
-      expect(raty.self.querySelector('input').value).toEqual('1');
+      expect(raty.element.querySelector('input').value).toEqual('1');
     });
 
     context('with :score', function () {
       it('removes the score title off the stars', function () {
         // given
-        var raty = new Raty('#el', { readOnly: true, score: 3 }).init();
+        var raty = new Raty(document.querySelector('#el'), { readOnly: true, score: 3 }).init();
 
-        var stars = raty.self.querySelectorAll('img');
+        var stars = raty.element.querySelectorAll('img');
 
         // when
         raty.readOnly(false);
@@ -408,14 +408,14 @@ describe('#fn readOnly', function () {
     context('with :cancel', function () {
       it('shows the button', function (done) {
         // given
-        var raty = new Raty('#el', { cancelButton: true, readOnly: true }).init();
+        var raty = new Raty(document.querySelector('#el'), { cancelButton: true, readOnly: true }).init();
 
         setTimeout(function () {
           // when
           raty.readOnly(false);
 
           // then
-          expect(raty.self.querySelector('.raty-cancel')).toBeVisible();
+          expect(raty.element.querySelector('.raty-cancel')).toBeVisible();
 
           done();
         }, 100);
@@ -423,10 +423,10 @@ describe('#fn readOnly', function () {
 
       it('rebinds the mouseover', function () {
         // given
-        var raty = new Raty('#el', { readOnly: true, cancelButton: true }).init();
+        var raty = new Raty(document.querySelector('#el'), { readOnly: true, cancelButton: true }).init();
 
-        var cancel = raty.self.querySelector('.raty-cancel');
-        var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
+        var cancel = raty.element.querySelector('.raty-cancel');
+        var stars = raty.element.querySelectorAll('img:not(.raty-cancel)');
 
         raty.readOnly(false);
 
@@ -444,15 +444,15 @@ describe('#fn readOnly', function () {
 
       it('rebinds the click', function () {
         // given
-        var raty = new Raty('#el', { cancelButton: true, readOnly: true, score: 5 }).init();
-        var cancel = raty.self.querySelector('.raty-cancel');
-        var stars = raty.self.querySelectorAll('img:not(.raty-cancel)');
+        var raty = new Raty(document.querySelector('#el'), { cancelButton: true, readOnly: true, score: 5 }).init();
+        var cancel = raty.element.querySelector('.raty-cancel');
+        var stars = raty.element.querySelectorAll('img:not(.raty-cancel)');
 
         raty.readOnly(false);
 
         // when
         Helper.trigger(cancel, 'click');
-        Helper.trigger(raty.self, 'mouseleave');
+        Helper.trigger(raty.element, 'mouseleave');
 
         // then
         expect(Helper.extension(stars[0].src)).toEqual('star-off.png');

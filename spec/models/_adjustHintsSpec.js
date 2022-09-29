@@ -13,7 +13,7 @@ describe('#_adjustHints', function () {
       it('receives an empty array', function () {
         // given
         var options = { half: half, halfShow: halfShow, hints: hints };
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         // when
         raty._adjustHints();
@@ -29,7 +29,7 @@ describe('#_adjustHints', function () {
       it('receives an empty array', function () {
         // given
         var options = { half: half, halfShow: halfShow, hints: hints };
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         // when
         raty._adjustHints();
@@ -43,7 +43,7 @@ describe('#_adjustHints', function () {
       it('receives an empty array', function () {
         // given
         var options = { half: half, halfShow: halfShow };
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         delete raty.opt.hints;
 
@@ -65,7 +65,7 @@ describe('#_adjustHints', function () {
       it('uses the hint on the first and second position', function () {
         // given
         var options = { halfShow: halfShow, hints: hints };
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         // when
         raty._adjustHints();
@@ -89,7 +89,7 @@ describe('#_adjustHints', function () {
       it('replicates the first position to second one', function () {
         // given
         var options = { halfShow: halfShow, hints: hints };
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         // when
         raty._adjustHints();
@@ -119,7 +119,7 @@ describe('#_adjustHints', function () {
       it('keeps the original values', function () {
         // given
         var options = { halfShow: halfShow, hints: hints };
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         // when
         raty._adjustHints();
@@ -141,7 +141,7 @@ describe('#_adjustHints', function () {
       it('removes the extra hints', function () {
         // given
         var options = { halfShow: halfShow, hints: hints };
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         // when
         raty._adjustHints();

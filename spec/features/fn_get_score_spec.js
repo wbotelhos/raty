@@ -10,30 +10,30 @@ describe('get #score', function () {
 
   it('accepts number as string', function () {
     // given
-    var raty = new Raty('#element', { score: '1' });
+    var raty = new Raty(document.querySelector('#element'), { score: '1' });
 
     // when
     raty.init();
 
     // then
-    expect(raty.self.querySelector('input').value).toEqual('1');
+    expect(raty.element.querySelector('input').value).toEqual('1');
   });
 
   it('accepts float string', function () {
     // given
-    var raty = new Raty('#element', { score: '1.5' });
+    var raty = new Raty(document.querySelector('#element'), { score: '1.5' });
 
     // when
     raty.init();
 
     // then
-    expect(raty.self.querySelector('input').value).toEqual('1.5');
+    expect(raty.element.querySelector('input').value).toEqual('1.5');
   });
 
   context('with integer score', function () {
     it('gets as int', function () {
       // given
-      var raty = new Raty('#element', { score: 1 }).init();
+      var raty = new Raty(document.querySelector('#element'), { score: 1 }).init();
 
       // when
       var score = raty.score();
@@ -46,7 +46,7 @@ describe('get #score', function () {
   context('with float score', function () {
     it('gets as float', function () {
       // given
-      var raty = new Raty('#element', { score: 1.5 }).init();
+      var raty = new Raty(document.querySelector('#element'), { score: 1.5 }).init();
 
       // when
       var score = raty.score();
@@ -59,7 +59,7 @@ describe('get #score', function () {
   context('with score zero', function () {
     it('returns an undefined value because it does not exist', function () {
       // given
-      var raty = new Raty('#element', { score: 0 }).init();
+      var raty = new Raty(document.querySelector('#element'), { score: 0 }).init();
 
       // when
       var score = raty.score();
@@ -72,7 +72,7 @@ describe('get #score', function () {
   context('with score greater than :numberMax', function () {
     it('gets the max', function () {
       // given
-      var raty = new Raty('#element', { number: 50, score: 50 }).init();
+      var raty = new Raty(document.querySelector('#element'), { number: 50, score: 50 }).init();
 
       // when
       var score = raty.score();

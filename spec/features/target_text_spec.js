@@ -11,7 +11,7 @@ describe('#targetText', function () {
 
   it('set target with none value', function () {
     // given
-    var raty = new Raty('#element', { target: '#hint', targetText: 'none' });
+    var raty = new Raty(document.querySelector('#element', { target: '#hint'), targetText: 'none' });
 
     // when
     raty.init();

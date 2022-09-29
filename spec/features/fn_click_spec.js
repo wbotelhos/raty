@@ -10,13 +10,13 @@ describe('#click', function () {
 
   it('clicks on star', function () {
     // given
-    var raty = new Raty('#element', {
+    var raty = new Raty(document.querySelector('#element'), {
       click: function () {
         this.dataset.clicked = true;
       },
     }).init();
 
-    var stars = raty.self.querySelectorAll('img');
+    var stars = raty.element.querySelectorAll('img');
 
     // when
     raty.click(1);
@@ -28,12 +28,12 @@ describe('#click', function () {
     expect(stars[3].getAttribute('src')).toEqual('star-off.png');
     expect(stars[4].getAttribute('src')).toEqual('star-off.png');
 
-    expect(raty.self.dataset.clicked).toEqual('true');
+    expect(raty.element.dataset.clicked).toEqual('true');
   });
 
   it('receives the score', function () {
     // given
-    var raty = new Raty('#element', {
+    var raty = new Raty(document.querySelector('#element'), {
       click: function (score) {
         this.result = score;
       },
@@ -43,12 +43,12 @@ describe('#click', function () {
     raty.click(1);
 
     // then
-    expect(raty.self.result).toEqual(1);
+    expect(raty.element.result).toEqual(1);
   });
 
   it('receives the event', function () {
     // given
-    var raty = new Raty('#element', {
+    var raty = new Raty(document.querySelector('#element'), {
       click: function (score, evt) {
         this.dataset.type = evt.type;
       },
@@ -58,15 +58,15 @@ describe('#click', function () {
     raty.click(1);
 
     // then
-    expect(raty.self.dataset.type).toEqual('click');
+    expect(raty.element.dataset.type).toEqual('click');
   });
 
   describe('with :readOnly', function () {
     it('does not set the score', function () {
       // given
-      var raty = new Raty('#element', { readOnly: true }).init();
+      var raty = new Raty(document.querySelector('#element'), { readOnly: true }).init();
 
-      var stars = raty.self.querySelectorAll('img');
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       raty.click(1);
@@ -83,7 +83,7 @@ describe('#click', function () {
   context('without :click', function () {
     it('ignores the callback', function () {
       // given
-      var raty = new Raty('#element').init();
+      var raty = new Raty(document.querySelector('#element')).init();
 
       // when
       var lambda = function () {
@@ -103,7 +103,7 @@ describe('#click', function () {
     context('and :targetKeep', function () {
       it('sets the score on target', function () {
         // given
-        var raty = new Raty('#element', {
+        var raty = new Raty(document.querySelector('#element'), {
           target: '#hint',
           targetKeep: true,
           click: function () {},

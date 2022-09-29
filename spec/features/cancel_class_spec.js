@@ -1,13 +1,15 @@
 describe('#cancelClass', function () {
   it('changes the class', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), { cancelButton: true, cancelClass: 'custom-class' });
 
     // when
-    var raty = new Raty('#el', { cancelButton: true, cancelClass: 'custom-class' }).init();
+    raty.init();
 
     // then
-    expect(raty.self.querySelector('.custom-class').alt).toEqual('x');
+    expect(raty.element.querySelector('.custom-class').alt).toEqual('x');
   });
 
   it('accepts data attribute', function () {
@@ -15,7 +17,7 @@ describe('#cancelClass', function () {
     Helper._append('div', { 'data-cancel-class': 'custom' });
 
     // when
-    var raty = new Raty('[data-cancel-class]').init();
+    var raty = new Raty(document.querySelector('[data-cancel-class]')).init();
 
     // then
     expect(raty.opt.cancelClass).toEqual('custom');

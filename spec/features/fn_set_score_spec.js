@@ -7,7 +7,7 @@ describe('#fn_setScore', function () {
     // given
 
     // when
-    var raty = new Raty('#el', { score: 1 }).init();
+    var raty = new Raty(document.querySelector('#el'), { score: 1 }).init();
 
     // then
     expect(raty.score()).toEqual(1);
@@ -16,13 +16,13 @@ describe('#fn_setScore', function () {
   describe('with :readOnly', function () {
     it('does not set the score', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true }).init();
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
 
       // when
       raty.score(5);
 
       // then
-      expect(raty.self.querySelector('input').value).toEqual('');
+      expect(raty.element.querySelector('input').value).toEqual('');
     });
   });
 
@@ -36,7 +36,7 @@ describe('#fn_setScore', function () {
         // given
         var that = this;
 
-        var raty = new Raty('#el', { target: '#target' }).init();
+        var raty = new Raty(document.querySelector('#el'), { target: '#target' }).init();
 
         // when
         var lambda = function () {
@@ -54,7 +54,11 @@ describe('#fn_setScore', function () {
           context('as *true', function () {
             it('sets the value equal :number', function () {
               // given
-              var raty = new Raty('#el', { target: '#target', targetType: 'score', targetKeep: true }).init();
+              var raty = new Raty(document.querySelector('#el'), {
+                target: '#target',
+                targetType: 'score',
+                targetKeep: true,
+              }).init();
 
               // when
               raty.score(6);
@@ -65,7 +69,11 @@ describe('#fn_setScore', function () {
 
             it('sets the :score on target', function () {
               // given
-              var raty = new Raty('#el', { target: '#target', targetType: 'score', targetKeep: true }).init();
+              var raty = new Raty(document.querySelector('#el'), {
+                target: '#target',
+                targetType: 'score',
+                targetKeep: true,
+              }).init();
 
               // when
               raty.score(1);

@@ -5,31 +5,31 @@ describe('stars', function () {
 
   it('starts all off', function () {
     // given / when
-    var raty = new Raty('#el').init();
+    var raty = new Raty(document.querySelector('#el')).init();
 
     // then
-    expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
+    expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-off.png');
   });
 
   context('on click', function () {
     it('changes the score', function () {
       // given
-      var raty = new Raty('#el').init();
-      var stars = raty.self.querySelectorAll('img');
+      var raty = new Raty(document.querySelector('#el')).init();
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       Helper.trigger(Helper.last(stars), 'click');
 
       // then
-      expect(raty.self.querySelector('input').value).toEqual('5');
+      expect(raty.element.querySelector('input').value).toEqual('5');
     });
   });
 
   context('on mouseover', function () {
     it('turns on the stars', function () {
       // given
-      var raty = new Raty('#el').init();
-      var stars = raty.self.querySelectorAll('img');
+      var raty = new Raty(document.querySelector('#el')).init();
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       Helper.trigger(Helper.last(stars), 'mouseover');
@@ -45,12 +45,12 @@ describe('stars', function () {
     context('and mouseout', function () {
       it('turns off all stars', function () {
         // given
-        var raty = new Raty('#el').init();
-        var stars = raty.self.querySelectorAll('img');
+        var raty = new Raty(document.querySelector('#el')).init();
+        var stars = raty.element.querySelectorAll('img');
 
         // when
-        Helper.trigger(raty.self, 'mouseover');
-        Helper.trigger(raty.self, 'mouseout');
+        Helper.trigger(raty.element, 'mouseover');
+        Helper.trigger(raty.element, 'mouseout');
 
         // then
         expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
@@ -64,8 +64,8 @@ describe('stars', function () {
     context('and click', function () {
       it('changes the score', function () {
         // given
-        var raty = new Raty('#el').init();
-        var stars = raty.self.querySelectorAll('img');
+        var raty = new Raty(document.querySelector('#el')).init();
+        var stars = raty.element.querySelectorAll('img');
         var star = Helper.last(stars);
 
         // when
@@ -73,14 +73,14 @@ describe('stars', function () {
         Helper.trigger(star, 'click');
 
         // then
-        expect(raty.self.querySelector('input').value).toEqual('5');
+        expect(raty.element.querySelector('input').value).toEqual('5');
       });
 
       context('and mouseout', function () {
         it('keeps the stars on', function () {
           // given
-          var raty = new Raty('#el').init();
-          var stars = raty.self.querySelectorAll('img');
+          var raty = new Raty(document.querySelector('#el')).init();
+          var stars = raty.element.querySelectorAll('img');
           var star = Helper.last(stars);
 
           // when

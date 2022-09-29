@@ -14,19 +14,19 @@ describe('#targetScore', function () {
 
   it('avoids the creation of default score field', function () {
     // given
-    var raty = new Raty('#element', { targetScore: '#score' });
+    var raty = new Raty(document.querySelector('#element'), { targetScore: '#score' });
 
     // when
     raty.init();
 
     // then
-    expect(raty.self.querySelector('input')).toEqual(null);
+    expect(raty.element.querySelector('input')).toEqual(null);
   });
 
   it('changes the place where score will be setted', function () {
     // given
-    var raty = new Raty('#element', { targetScore: '#score' }).init();
-    var star = raty.self.querySelector('img');
+    var raty = new Raty(document.querySelector('#element'), { targetScore: '#score' }).init();
+    var star = raty.element.querySelector('img');
 
     // when
     Helper.trigger(star, 'click');

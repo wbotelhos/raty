@@ -6,7 +6,7 @@ describe('#init', function () {
   it('calls all necessary methods', function () {
     // given
 
-    var raty = new Raty('#el', { score: 1 });
+    var raty = new Raty(document.querySelector('#el'), { score: 1 });
 
     spyOn(raty, '_executeCallbacks');
     spyOn(raty, '_adjustNumber');
@@ -36,12 +36,12 @@ describe('#init', function () {
     expect(raty._target).toHaveBeenCalledWith('<input>');
     expect(raty._binds).toHaveBeenCalled();
 
-    expect(raty.self.style.cursor).toEqual('pointer');
+    expect(raty.element.style.cursor).toEqual('pointer');
   });
 
   it('returns the raty instance', function () {
     // given
-    var raty = new Raty('#el', { score: 1 });
+    var raty = new Raty(document.querySelector('#el'), { score: 1 });
 
     // when
     var result = raty.init();
@@ -53,7 +53,7 @@ describe('#init', function () {
   context('when *starType is "img"', function () {
     it('does not calls :_adjustStarName', function () {
       // given
-      var raty = new Raty('#el', { starType: 'img' });
+      var raty = new Raty(document.querySelector('#el'), { starType: 'img' });
 
       spyOn(raty, '_adjustStarName');
 
@@ -70,7 +70,7 @@ describe('#init', function () {
       // given
 
       var options = { starType: 'i' };
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       spyOn(raty, '_adjustStarName');
 
@@ -87,7 +87,7 @@ describe('#init', function () {
       // given
 
       var options = { cancelButton: true };
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       spyOn(raty, '_createCancel');
 
@@ -104,7 +104,7 @@ describe('#init', function () {
       // given
 
       var options = { cancelButton: false };
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       spyOn(raty, '_createCancel');
 
@@ -121,7 +121,7 @@ describe('#init', function () {
       // given
 
       var options = { precision: true };
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       spyOn(raty, '_adjustPrecision');
 
@@ -138,7 +138,7 @@ describe('#init', function () {
       // given
 
       var options = { precision: false };
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       spyOn(raty, '_adjustPrecision');
 
@@ -154,7 +154,7 @@ describe('#init', function () {
     it('calls :_lock', function () {
       // given
 
-      var raty = new Raty('#el', { readOnly: true });
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true });
 
       spyOn(raty, '_lock');
 
@@ -168,7 +168,7 @@ describe('#init', function () {
     it('does not call :_binds', function () {
       // given
 
-      var raty = new Raty('#el', { readOnly: true });
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true });
 
       spyOn(raty, '_binds');
 
@@ -182,13 +182,13 @@ describe('#init', function () {
     it('does not set cursor style to pointer', function () {
       // given
 
-      var raty = new Raty('#el', { readOnly: true });
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true });
 
       // when
       raty.init();
 
       // then
-      expect(raty.self.style.cursor).not.toEqual('pointer');
+      expect(raty.element.style.cursor).not.toEqual('pointer');
     });
   });
 
@@ -196,7 +196,7 @@ describe('#init', function () {
     it('does not call :_lock', function () {
       // given
 
-      var raty = new Raty('#el', { readOnly: false });
+      var raty = new Raty(document.querySelector('#el'), { readOnly: false });
 
       spyOn(raty, '_lock');
 
@@ -210,7 +210,7 @@ describe('#init', function () {
     it('calls :_binds', function () {
       // given
 
-      var raty = new Raty('#el', { readOnly: false });
+      var raty = new Raty(document.querySelector('#el'), { readOnly: false });
 
       spyOn(raty, '_binds');
 
@@ -224,13 +224,13 @@ describe('#init', function () {
     it('sets cursor style to pointer', function () {
       // given
 
-      var raty = new Raty('#el', { readOnly: false });
+      var raty = new Raty(document.querySelector('#el'), { readOnly: false });
 
       // when
       raty.init();
 
       // then
-      expect(raty.self.style.cursor).toEqual('pointer');
+      expect(raty.element.style.cursor).toEqual('pointer');
     });
   });
 });

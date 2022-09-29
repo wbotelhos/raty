@@ -8,7 +8,7 @@ describe('#_setPath', function () {
       // given
 
       var options = {};
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       raty.opt.path = null;
 
@@ -25,7 +25,7 @@ describe('#_setPath', function () {
       // given
 
       var options = {};
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       delete raty.opt.path;
 
@@ -42,7 +42,7 @@ describe('#_setPath', function () {
       it('keeps the same value', function () {
         // given
         var options = {};
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         raty.opt.path = 'path/';
 
@@ -58,7 +58,7 @@ describe('#_setPath', function () {
       it('appends a slash', function () {
         // given
         var options = {};
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         raty.opt.path = 'path/';
 

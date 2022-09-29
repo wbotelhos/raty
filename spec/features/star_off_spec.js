@@ -3,13 +3,13 @@ describe('#starOff', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', { starOff: 'star-half.png' });
+    var raty = new Raty(document.querySelector('#el'), { starOff: 'star-half.png' });
 
     // when
     raty.init();
 
     // then
-    var stars = raty.self.querySelectorAll('img');
+    var stars = raty.element.querySelectorAll('img');
 
     expect(Helper.extension(stars[0].src)).toEqual('star-half.png');
     expect(Helper.extension(stars[1].src)).toEqual('star-half.png');
@@ -23,7 +23,7 @@ describe('#starOff', function () {
     Helper._append('div', { 'data-star-off': 'custom' });
 
     // when
-    var raty = new Raty('[data-star-off]');
+    var raty = new Raty(document.querySelector('[data-star-off]'));
 
     // then
     expect(raty.opt.starOff).toEqual('custom');
@@ -34,13 +34,13 @@ describe('#starOff', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { starType: 'i' });
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
       // when
       raty.init();
 
       // then
-      var stars = raty.self.querySelectorAll('i');
+      var stars = raty.element.querySelectorAll('i');
 
       expect(stars[0].tagName).toEqual('I');
       expect(stars[1].tagName).toEqual('I');
@@ -53,13 +53,13 @@ describe('#starOff', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { starType: 'i' });
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
       // when
       raty.init();
 
       // then
-      var stars = raty.self.querySelectorAll('i');
+      var stars = raty.element.querySelectorAll('i');
 
       expect(stars[0].classList.contains('star-off-png')).toEqual(true);
       expect(stars[1].classList.contains('star-off-png')).toEqual(true);
@@ -72,13 +72,13 @@ describe('#starOff', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { starType: 'i' });
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
       // when
       raty.init();
 
       // then
-      var stars = raty.self.querySelectorAll('i');
+      var stars = raty.element.querySelectorAll('i');
 
       expect(stars[0].src).toEqual(undefined);
       expect(stars[1].src).toEqual(undefined);
@@ -91,13 +91,13 @@ describe('#starOff', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { starType: 'i' });
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
       // when
       raty.init();
 
       // then
-      var stars = raty.self.querySelectorAll('i');
+      var stars = raty.element.querySelectorAll('i');
 
       expect(stars[0].getAttribute('data-alt')).toEqual('1');
       expect(stars[1].getAttribute('data-alt')).toEqual('2');
@@ -110,13 +110,13 @@ describe('#starOff', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { starType: 'i' });
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
       // when
       raty.init();
 
       // then
-      var stars = raty.self.querySelectorAll('i');
+      var stars = raty.element.querySelectorAll('i');
 
       expect(stars[0].alt).toEqual(undefined);
       expect(stars[1].alt).toEqual(undefined);

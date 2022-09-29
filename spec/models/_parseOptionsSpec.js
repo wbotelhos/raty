@@ -3,7 +3,7 @@ describe('#_parseOptions', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el');
+    var raty = new Raty(document.querySelector('#el'));
 
     // when
 

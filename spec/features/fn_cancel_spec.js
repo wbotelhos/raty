@@ -6,8 +6,8 @@ describe('#fn_cancel', function () {
   describe('with :readOnly', function () {
     it('does not cancel', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true, score: 5 }).init();
-      var stars = raty.self.querySelectorAll('img');
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true, score: 5 }).init();
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       raty.cancel();
@@ -22,13 +22,13 @@ describe('#fn_cancel', function () {
 
     it('does not remove the score input value', function () {
       // given
-      var raty = new Raty('#el', { readOnly: true, score: 5 }).init();
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true, score: 5 }).init();
 
       // when
       raty.cancel();
 
       // then
-      expect(raty.self.querySelector('input').value).toEqual('5');
+      expect(raty.element.querySelector('input').value).toEqual('5');
     });
   });
 
@@ -36,7 +36,7 @@ describe('#fn_cancel', function () {
     context('as *false', function () {
       it('does not triggers click callback', function () {
         // given
-        var raty = new Raty('#el', {
+        var raty = new Raty(document.querySelector('#el'), {
           score: 1,
           click: function () {
             this.clicked = true;
@@ -47,7 +47,7 @@ describe('#fn_cancel', function () {
         raty.cancel(false);
 
         // then
-        expect(raty.self.clicked).toEqual(undefined);
+        expect(raty.element.clicked).toEqual(undefined);
       });
 
       context('with :target', function () {
@@ -59,7 +59,7 @@ describe('#fn_cancel', function () {
           context('as *true', function () {
             it('sets the :targetText on target', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 cancel: true,
                 target: '#target',
                 targetKeep: true,
@@ -80,7 +80,7 @@ describe('#fn_cancel', function () {
     context('as *true', function () {
       it('triggers the :click callback', function () {
         // given
-        var raty = new Raty('#el', {
+        var raty = new Raty(document.querySelector('#el'), {
           score: 1,
           click: function () {
             this.clicked = true;
@@ -91,7 +91,7 @@ describe('#fn_cancel', function () {
         raty.cancel(true);
 
         // then
-        expect(raty.self.clicked).toEqual(true);
+        expect(raty.element.clicked).toEqual(true);
       });
 
       context('with :target', function () {
@@ -103,7 +103,7 @@ describe('#fn_cancel', function () {
           context('as *true', function () {
             it('sets the :targetText on target', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 cancel: true,
                 target: '#target',
                 targetKeep: true,

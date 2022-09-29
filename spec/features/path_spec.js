@@ -5,13 +5,13 @@ describe('#path', function () {
 
   it('changes the path', function () {
     // given
-    var raty = new Raty('#el', { path: '../demo/images' });
+    var raty = new Raty(document.querySelector('#el'), { path: '../demo/images' });
 
     // when
     raty.init();
 
     // then
-    var stars = raty.self.querySelectorAll('img');
+    var stars = raty.element.querySelectorAll('img');
 
     expect(stars[0].getAttribute('src')).toEqual('../demo/images/star-off.png');
     expect(stars[1].getAttribute('src')).toEqual('../demo/images/star-off.png');
@@ -24,7 +24,7 @@ describe('#path', function () {
     // given
     Helper._append('div', { 'data-path': 'custom' });
 
-    var raty = new Raty('[data-path]');
+    var raty = new Raty(document.querySelector('[data-path]'));
 
     // when
     raty.init();
@@ -36,7 +36,7 @@ describe('#path', function () {
   context('without slash on the final', function () {
     it('receives the slash', function () {
       // given
-      var raty = new Raty('#el', { path: '../demo/images' });
+      var raty = new Raty(document.querySelector('#el'), { path: '../demo/images' });
 
       // when
       raty.init();
@@ -49,7 +49,7 @@ describe('#path', function () {
   context('with slash on the final', function () {
     it('is keeped', function () {
       // given
-      var raty = new Raty('#el', { path: '../demo/images/' });
+      var raty = new Raty(document.querySelector('#el'), { path: '../demo/images/' });
 
       // when
       raty.init();
@@ -62,13 +62,13 @@ describe('#path', function () {
   context('as null', function () {
     it('replace to an empty string', function () {
       // given
-      var raty = new Raty('#el', { path: null });
+      var raty = new Raty(document.querySelector('#el'), { path: null });
 
       // when
       raty.init();
 
       // then
-      var stars = raty.self.querySelectorAll('img');
+      var stars = raty.element.querySelectorAll('img');
 
       expect(stars[0].getAttribute('src')).toEqual('star-off.png');
       expect(stars[1].getAttribute('src')).toEqual('star-off.png');
@@ -81,13 +81,13 @@ describe('#path', function () {
   context('as undefined', function () {
     it('replace to an empty string', function () {
       // given
-      var raty = new Raty('#el');
+      var raty = new Raty(document.querySelector('#el'));
 
       // when
       raty.init();
 
       // then
-      var stars = raty.self.querySelectorAll('img');
+      var stars = raty.element.querySelectorAll('img');
 
       expect(stars[0].getAttribute('src')).toEqual('star-off.png');
       expect(stars[1].getAttribute('src')).toEqual('star-off.png');
@@ -100,26 +100,26 @@ describe('#path', function () {
   context('with :cancel', function () {
     it('changes the path', function () {
       // given
-      var raty = new Raty('#el', { cancelButton: true, path: '../demo/images' });
+      var raty = new Raty(document.querySelector('#el'), { cancelButton: true, path: '../demo/images' });
 
       // when
       raty.init();
 
       // then
-      expect(raty.self.querySelector('.raty-cancel').getAttribute('src')).toEqual('../demo/images/cancel-off.png');
+      expect(raty.element.querySelector('.raty-cancel').getAttribute('src')).toEqual('../demo/images/cancel-off.png');
     });
   });
 
   context('with :iconRange', function () {
     it('changes the path', function () {
       // given
-      var raty = new Raty('#el', { iconRange: [{ range: 1 }], path: '../demo/images' });
+      var raty = new Raty(document.querySelector('#el'), { iconRange: [{ range: 1 }], path: '../demo/images' });
 
       // when
       raty.init();
 
       // then
-      expect(raty.self.querySelector('img').getAttribute('src')).toEqual('../demo/images/star-off.png');
+      expect(raty.element.querySelector('img').getAttribute('src')).toEqual('../demo/images/star-off.png');
     });
   });
 });

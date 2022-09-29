@@ -7,7 +7,7 @@ describe('#_adjustStarName', function () {
     // given
 
     var options = { path: 'path' };
-    var raty = new Raty('#el', options);
+    var raty = new Raty(document.querySelector('#el'), options);
 
     // when
     raty._adjustStarName();
@@ -26,7 +26,7 @@ describe('#_adjustStarName', function () {
       starOff: 'x.x',
       starOn: 'x.x',
     };
-    var raty = new Raty('#el', options);
+    var raty = new Raty(document.querySelector('#el'), options);
 
     // when
     raty._adjustStarName();

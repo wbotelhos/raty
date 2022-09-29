@@ -9,7 +9,7 @@ describe('#_nameForIndex', function () {
 
       var options = {};
       var index = 'double';
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       raty.opt.score = null;
 
@@ -27,7 +27,7 @@ describe('#_nameForIndex', function () {
 
       var options = {};
       var index = 'double';
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       delete raty.opt.score;
 
@@ -47,7 +47,7 @@ describe('#_nameForIndex', function () {
       it('returns :starOff', function () {
         // given
         var options = {};
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         raty.opt.score = score;
 
@@ -66,7 +66,7 @@ describe('#_nameForIndex', function () {
       it('returns :starOff', function () {
         // given
         var options = {};
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         raty.opt.score = score;
 
@@ -85,7 +85,7 @@ describe('#_nameForIndex', function () {
       it('returns :starOff', function () {
         // given
         var options = {};
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         raty.opt.score = score;
 

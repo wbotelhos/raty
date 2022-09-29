@@ -4,13 +4,13 @@ describe('#starType', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { starType: 'i' }).init();
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
 
       // when
       raty.init();
 
       // then
-      expect(raty.self.style.width).toEqual('');
+      expect(raty.element.style.width).toEqual('');
     });
   });
 
@@ -18,7 +18,7 @@ describe('#starType', function () {
     // given
     Helper._append('div', { 'data-star-type': 'b' });
 
-    var raty = new Raty('[data-star-type]').init();
+    var raty = new Raty(document.querySelector('[data-star-type]')).init();
 
     // when
     raty.init();
@@ -32,7 +32,7 @@ describe('#starType', function () {
       // given
       this.el = Helper.create('#el');
 
-      var raty = new Raty('#el', { path: 'path', starType: 'img' });
+      var raty = new Raty(document.querySelector('#el'), { path: 'path', starType: 'img' });
 
       // when
       raty.init();
@@ -46,11 +46,11 @@ describe('#starType', function () {
       this.el = Helper.create('#el');
 
       // when
-      var raty = new Raty('#el', { path: 'path', starType: 'img' }).init();
+      var raty = new Raty(document.querySelector('#el'), { path: 'path', starType: 'img' }).init();
 
       // then
-      var stars = raty.self.querySelectorAll('img');
-      var score = raty.self.querySelector('input');
+      var stars = raty.element.querySelectorAll('img');
+      var score = raty.element.querySelector('input');
 
       expect(stars[0].title).toEqual('bad');
       expect(stars[1].title).toEqual('poor');
@@ -82,7 +82,7 @@ describe('#starType', function () {
       this.el = Helper.create('#el');
 
       // when
-      var raty = new Raty('#el', { path: 'path', starType: 'i' }).init();
+      var raty = new Raty(document.querySelector('#el'), { path: 'path', starType: 'i' }).init();
 
       // then
       expect(raty.opt.path).toEqual('');
@@ -93,11 +93,11 @@ describe('#starType', function () {
       this.el = Helper.create('#el');
 
       // when
-      var raty = new Raty('#el', { starType: 'i' }).init();
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
 
       // then
-      var stars = raty.self.querySelectorAll('i');
-      var score = raty.self.querySelector('input');
+      var stars = raty.element.querySelectorAll('i');
+      var score = raty.element.querySelector('input');
 
       expect(stars[0].title).toEqual('bad');
       expect(stars[1].title).toEqual('poor');
@@ -124,8 +124,8 @@ describe('#starType', function () {
         // given
         this.el = Helper.create('#el');
 
-        var raty = new Raty('#el', { half: true, starType: 'i' }).init();
-        var stars = raty.self.querySelectorAll('i');
+        var raty = new Raty(document.querySelector('#el'), { half: true, starType: 'i' }).init();
+        var stars = raty.element.querySelectorAll('i');
 
         // when
         raty.move(4.5);

@@ -4,7 +4,7 @@ describe('#half', function () {
     Helper._append('div', { 'data-cancel-class': true });
 
     // when
-    var raty = new Raty('[data-cancel-class]');
+    var raty = new Raty(document.querySelector('[data-cancel-class]'));
 
     // then
     expect(raty.opt.cancelClass).toEqual(true);
@@ -19,7 +19,7 @@ describe('#half', function () {
       context('as *false', function () {
         it('rounds down while less the full limit', function () {
           // given
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: false,
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -30,7 +30,7 @@ describe('#half', function () {
           raty.init();
 
           // then
-          var stars = raty.self.querySelectorAll('img');
+          var stars = raty.element.querySelectorAll('img');
 
           expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
           expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
@@ -41,7 +41,7 @@ describe('#half', function () {
 
         it('rounds full when equal the full limit', function () {
           // given
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: false,
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -52,7 +52,7 @@ describe('#half', function () {
           raty.init();
 
           // then
-          var star = raty.self.querySelector('img');
+          var star = raty.element.querySelector('img');
 
           expect(Helper.extension(star.src)).toEqual('star-on.png');
         });
@@ -69,7 +69,7 @@ describe('#half', function () {
       context('into half area', function () {
         it('receives the half value', function () {
           // given
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: true,
           }).init();
@@ -78,12 +78,12 @@ describe('#half', function () {
           Helper.click(this.el, 1, 5);
 
           // then
-          expect(raty.self.querySelector('input').value).toEqual('1.5');
+          expect(raty.element.querySelector('input').value).toEqual('1.5');
         });
 
         it('gives a callback the rounded value', function () {
           // given
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: true,
             click: function (score) {
@@ -100,7 +100,7 @@ describe('#half', function () {
       context('into round area', function () {
         it('receives the rounded value', function () {
           // given
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: true,
           }).init();
@@ -109,12 +109,12 @@ describe('#half', function () {
           Helper.click(this.el, 1, 9);
 
           // then
-          expect(raty.self.querySelector('input').value).toEqual('2');
+          expect(raty.element.querySelector('input').value).toEqual('2');
         });
 
         it('gives a callback the rounded value', function () {
           // given
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: true,
             click: function (score) {
@@ -131,7 +131,7 @@ describe('#half', function () {
       context('into zero position', function () {
         it('receives the half value', function () {
           // given
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: true,
           }).init();
@@ -140,7 +140,7 @@ describe('#half', function () {
           Helper.click(this.el, 1, 0);
 
           // then
-          expect(raty.self.querySelector('input').value).toEqual('1');
+          expect(raty.element.querySelector('input').value).toEqual('1');
         });
       });
     });
@@ -151,7 +151,7 @@ describe('#half', function () {
           // given
 
           // when
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -159,15 +159,15 @@ describe('#half', function () {
           }).init();
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
-          expect(raty.self.querySelector('input').value).toEqual('0.24');
+          expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-off.png');
+          expect(raty.element.querySelector('input').value).toEqual('0.24');
         });
 
         it('ignores half while greater then down limit', function () {
           // given
 
           // when
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -175,15 +175,15 @@ describe('#half', function () {
           }).init();
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
-          expect(raty.self.querySelector('input').value).toEqual('0.26');
+          expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-off.png');
+          expect(raty.element.querySelector('input').value).toEqual('0.26');
         });
 
         it('ignores half while equal full limit, ignoring it', function () {
           // given
 
           // when
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -191,15 +191,15 @@ describe('#half', function () {
           }).init();
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
-          expect(raty.self.querySelector('input').value).toEqual('0.6');
+          expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-on.png');
+          expect(raty.element.querySelector('input').value).toEqual('0.6');
         });
 
         it('ignores half while greater than down limit and less than up limit', function () {
           // given
 
           // when
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -207,15 +207,15 @@ describe('#half', function () {
           }).init();
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
-          expect(raty.self.querySelector('input').value).toEqual('0.75');
+          expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-on.png');
+          expect(raty.element.querySelector('input').value).toEqual('0.75');
         });
 
         it('ignores full while equal or greater than up limit', function () {
           // given
 
           // when
-          var raty = new Raty('#el', {
+          var raty = new Raty(document.querySelector('#el'), {
             half: true,
             halfShow: false,
             round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -223,7 +223,7 @@ describe('#half', function () {
           }).init();
 
           // then
-          expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
+          expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-on.png');
         });
       });
 
@@ -233,7 +233,7 @@ describe('#half', function () {
             // given
 
             // when
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               half: true,
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -241,14 +241,14 @@ describe('#half', function () {
             }).init();
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-off.png');
+            expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-off.png');
           });
 
           it('receives half while greater then down limit', function () {
             // given
 
             // when
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               half: true,
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -256,14 +256,14 @@ describe('#half', function () {
             }).init();
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
+            expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-half.png');
           });
 
           it('receives half while equal full limit, ignoring it', function () {
             // given
 
             // when
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               half: true,
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -271,14 +271,14 @@ describe('#half', function () {
             }).init();
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
+            expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-half.png');
           });
 
           it('receives half while greater than down limit and less than up limit', function () {
             // given
 
             // when
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               half: true,
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -286,14 +286,14 @@ describe('#half', function () {
             }).init();
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
+            expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-half.png');
           });
 
           it('receives full while equal or greater than up limit', function () {
             // given
 
             // when
-            var raty = new Raty('#el', {
+            var raty = new Raty(document.querySelector('#el'), {
               half: true,
               halfShow: true,
               round: { down: 0.25, full: 0.6, up: 0.76 },
@@ -301,7 +301,7 @@ describe('#half', function () {
             }).init();
 
             // then
-            expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-on.png');
+            expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-on.png');
           });
 
           context('with :target', function () {
@@ -316,7 +316,7 @@ describe('#half', function () {
                     // given
 
                     // when
-                    var raty = new Raty('#el', {
+                    var raty = new Raty(document.querySelector('#el'), {
                       half: true,
                       halfShow: true,
                       score: 1.5,
@@ -341,7 +341,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           halfShow: true,
                           hints: hints,
@@ -363,7 +363,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           hints: hints,
                           halfShow: true,
@@ -386,7 +386,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           hints: hints,
                           halfShow: true,
@@ -413,7 +413,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           hints: hints,
                           halfShow: true,
@@ -436,7 +436,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           hints: hints,
                           halfShow: true,
@@ -459,7 +459,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           hints: hints,
                           halfShow: true,
@@ -486,7 +486,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           hints: hints,
                           halfShow: true,
@@ -509,7 +509,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           hints: hints,
                           halfShow: true,
@@ -532,7 +532,7 @@ describe('#half', function () {
                         // given
 
                         // when
-                        var raty = new Raty('#el', {
+                        var raty = new Raty(document.querySelector('#el'), {
                           half: true,
                           hints: hints,
                           halfShow: true,
@@ -562,7 +562,7 @@ describe('#half', function () {
           context('on 1.1', function () {
             it('receives the half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -573,14 +573,14 @@ describe('#half', function () {
               raty.move(1.1);
 
               // then
-              expect(Helper.extension(raty.self.querySelector('img').src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.2', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -591,14 +591,14 @@ describe('#half', function () {
               raty.move(1.2);
 
               // then
-              expect(Helper.extension(raty.self.querySelectorAll('img')[1].src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.element.querySelectorAll('img')[1].src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.3', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -609,14 +609,14 @@ describe('#half', function () {
               raty.move(1.3);
 
               // then
-              expect(Helper.extension(raty.self.querySelectorAll('img')[1].src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.element.querySelectorAll('img')[1].src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.4', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -627,14 +627,14 @@ describe('#half', function () {
               raty.move(1.4);
 
               // then
-              expect(Helper.extension(raty.self.querySelectorAll('img')[1].src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.element.querySelectorAll('img')[1].src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.5', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -645,14 +645,14 @@ describe('#half', function () {
               raty.move(1.5);
 
               // then
-              expect(Helper.extension(raty.self.querySelectorAll('img')[1].src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.element.querySelectorAll('img')[1].src)).toEqual('star-half.png');
             });
           });
 
           context('on 1.6', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -670,7 +670,7 @@ describe('#half', function () {
           context('on 1.7', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -688,7 +688,7 @@ describe('#half', function () {
           context('on 1.8', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -706,7 +706,7 @@ describe('#half', function () {
           context('on 1.9', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -724,7 +724,7 @@ describe('#half', function () {
           context('on 2.0', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -742,7 +742,7 @@ describe('#half', function () {
           context('on 2', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['1,5', '2,0']],
                 target: '#target',
@@ -766,7 +766,7 @@ describe('#half', function () {
           context('on 1.0 fraction', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -784,7 +784,7 @@ describe('#half', function () {
           context('on 1.1 fraction', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -802,7 +802,7 @@ describe('#half', function () {
           context('on 1.2 fraction', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -820,7 +820,7 @@ describe('#half', function () {
           context('on 1.3 fraction', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -838,7 +838,7 @@ describe('#half', function () {
           context('on 1.4 fraction', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -856,7 +856,7 @@ describe('#half', function () {
           context('on 1.5 fraction', function () {
             it('receives half star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -874,7 +874,7 @@ describe('#half', function () {
           context('on 1.6 fraction', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -892,7 +892,7 @@ describe('#half', function () {
           context('on 1.7 fraction', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -910,7 +910,7 @@ describe('#half', function () {
           context('on 1.8 fraction', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',
@@ -928,7 +928,7 @@ describe('#half', function () {
           context('on 1.9 fraction', function () {
             it('receives the full star', function () {
               // given
-              var raty = new Raty('#el', {
+              var raty = new Raty(document.querySelector('#el'), {
                 half: true,
                 hints: [null, ['half', 'integer']],
                 target: '#target',

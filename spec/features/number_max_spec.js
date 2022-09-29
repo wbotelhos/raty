@@ -5,7 +5,7 @@ describe('#numberMax', function () {
 
   it('limits the max of "number" option', function () {
     // given
-    var raty = new Raty('#el', { number: 2, numberMax: 1 });
+    var raty = new Raty(document.querySelector('#el'), { number: 2, numberMax: 1 });
 
     // when
     raty.init();
@@ -16,7 +16,7 @@ describe('#numberMax', function () {
 
   it('limits the min of "number" option', function () {
     // given
-    var raty = new Raty('#el', { number: -1 });
+    var raty = new Raty(document.querySelector('#el'), { number: -1 });
 
     // when
     raty.init();

@@ -6,7 +6,7 @@ describe('#_executeCallbacks', function () {
   context('when options should compute, not evaluate at runtime, the return and it is a function', function () {
     it('uses the given return', function () {
       // given
-      var raty = new Raty('#el', {
+      var raty = new Raty(document.querySelector('#el'), {
         number: function () {
           return 36;
         },
@@ -22,7 +22,7 @@ describe('#_executeCallbacks', function () {
     context('whe there is not return', function () {
       it('is undefined', function () {
         // given
-        var raty = new Raty('#el', { number: function () {} });
+        var raty = new Raty(document.querySelector('#el'), { number: function () {} });
 
         // when
         raty._executeCallbacks();
@@ -35,7 +35,7 @@ describe('#_executeCallbacks', function () {
     context('when options is not a function', function () {
       it('keeps the given value', function () {
         // given
-        var raty = new Raty('#el', { number: 16 });
+        var raty = new Raty(document.querySelector('#el'), { number: 16 });
 
         // when
         raty._executeCallbacks();
@@ -50,7 +50,7 @@ describe('#_executeCallbacks', function () {
     it('keeps the given value', function () {
       // given
 
-      var raty = new Raty('#el', { denied: 'default' });
+      var raty = new Raty(document.querySelector('#el'), { denied: 'default' });
 
       // when
       raty._executeCallbacks();

@@ -11,8 +11,8 @@ describe('#single', function () {
   context('on mouseover', function () {
     it('turns on just one icon', function () {
       // given
-      var raty = new Raty('#element', { single: true }).init();
-      var stars = raty.self.querySelectorAll('img');
+      var raty = new Raty(document.querySelector('#element'), { single: true }).init();
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       Helper.trigger(stars[2], 'mouseover');
@@ -28,7 +28,7 @@ describe('#single', function () {
     context('with :iconRange', function () {
       it('shows just on icon', function () {
         // given
-        var raty = new Raty('#element', {
+        var raty = new Raty(document.querySelector('#element'), {
           iconRange: [
             { range: 2, on: 'star-on.png', off: 'star-off.png' },
             { range: 3, on: 'star-on.png', off: 'star-off.png' },
@@ -38,7 +38,7 @@ describe('#single', function () {
           single: true,
         }).init();
 
-        var stars = raty.self.querySelectorAll('img');
+        var stars = raty.element.querySelectorAll('img');
 
         // when
         Helper.trigger(stars[3], 'mouseover');
@@ -56,8 +56,8 @@ describe('#single', function () {
   context('on click', function () {
     it('turns on the star', function () {
       // given
-      var raty = new Raty('#element', { single: true }).init();
-      var stars = raty.self.querySelectorAll('img');
+      var raty = new Raty(document.querySelector('#element'), { single: true }).init();
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       Helper.trigger(stars[2], 'mouseover');
@@ -74,8 +74,8 @@ describe('#single', function () {
     context('on mouseout', function () {
       it('keeps the score', function () {
         // given
-        var raty = new Raty('#element', { single: true }).init();
-        var stars = raty.self.querySelectorAll('img');
+        var raty = new Raty(document.querySelector('#element'), { single: true }).init();
+        var stars = raty.element.querySelectorAll('img');
 
         // when
         Helper.trigger(stars[2], 'mouseover');
@@ -93,7 +93,7 @@ describe('#single', function () {
       context('and :iconRange', function () {
         it('keeps the score', function () {
           // given
-          var raty = new Raty('#element', {
+          var raty = new Raty(document.querySelector('#element'), {
             single: true,
             iconRange: [
               { range: 2, on: 'a.png', off: 'a-off.png' },
@@ -103,7 +103,7 @@ describe('#single', function () {
             ],
           }).init();
 
-          var stars = raty.self.querySelectorAll('img');
+          var stars = raty.element.querySelectorAll('img');
 
           // when
           Helper.trigger(stars[3], 'mouseover');

@@ -15,7 +15,7 @@ describe('#_starName', function () {
 
       it('returns startOn', function () {
         // given
-        var raty = new Raty('#el');
+        var raty = new Raty(document.querySelector('#el'));
 
         // when
         var star = raty._starName(this.decimal, this.evt);
@@ -32,7 +32,7 @@ describe('#_starName', function () {
 
       it('returns starHalf', function () {
         // given
-        var raty = new Raty('#el');
+        var raty = new Raty(document.querySelector('#el'));
 
         // when
         var star = raty._starName(this.decimal, this.evt);
@@ -49,7 +49,7 @@ describe('#_starName', function () {
 
       it('returns starHalf', function () {
         // given
-        var raty = new Raty('#el');
+        var raty = new Raty(document.querySelector('#el'));
 
         // when
         var star = raty._starName(this.decimal, this.evt);
@@ -77,9 +77,9 @@ describe('#_starName', function () {
 
         it('returns startOn', function () {
           // given
-          var raty = new Raty('#el');
+          var raty = new Raty(document.querySelector('#el'));
 
-          raty.self.isMove = this.isMove;
+          raty.element.isMove = this.isMove;
 
           // when
           var star = raty._starName(this.decimal, this.evt);
@@ -92,9 +92,9 @@ describe('#_starName', function () {
       context('when decimal is equal 0.5', function () {
         it('returns starHalf', function () {
           // given
-          var raty = new Raty('#el');
+          var raty = new Raty(document.querySelector('#el'));
 
-          raty.self.isMove = this.isMove;
+          raty.element.isMove = this.isMove;
 
           // when
           var star = raty._starName(this.decimal, this.evt);
@@ -107,9 +107,9 @@ describe('#_starName', function () {
       context('when decimal is less than 0.5', function () {
         it('returns starHalf', function () {
           // given
-          var raty = new Raty('#el');
+          var raty = new Raty(document.querySelector('#el'));
 
-          raty.self.isMove = this.isMove;
+          raty.element.isMove = this.isMove;
 
           // when
           var star = raty._starName(this.decimal, this.evt);
@@ -133,9 +133,9 @@ describe('#_starName', function () {
 
         it('returns undefined', function () {
           // given
-          var raty = new Raty('#el');
+          var raty = new Raty(document.querySelector('#el'));
 
-          raty.self.isMove = this.isMove;
+          raty.element.isMove = this.isMove;
           raty.opt.round.down = this.roundDown;
 
           // when
@@ -154,9 +154,9 @@ describe('#_starName', function () {
 
         it('returns undefined', function () {
           // given
-          var raty = new Raty('#el');
+          var raty = new Raty(document.querySelector('#el'));
 
-          raty.self.isMove = this.isMove;
+          raty.element.isMove = this.isMove;
           raty.opt.round.down = this.roundDown;
 
           // when
@@ -185,9 +185,9 @@ describe('#_starName', function () {
 
             it('returns starHalf', function () {
               // given
-              var raty = new Raty('#el');
+              var raty = new Raty(document.querySelector('#el'));
 
-              raty.self.isMove = this.isMove;
+              raty.element.isMove = this.isMove;
               raty.opt.halfShow = this.halfShow;
               raty.opt.round.down = this.roundDown;
               raty.opt.round.up = this.roundUp;
@@ -212,9 +212,9 @@ describe('#_starName', function () {
 
               it('returns starOff', function () {
                 // given
-                var raty = new Raty('#el');
+                var raty = new Raty(document.querySelector('#el'));
 
-                raty.self.isMove = this.isMove;
+                raty.element.isMove = this.isMove;
                 raty.opt.halfShow = this.halfShow;
                 raty.opt.round.down = this.roundDown;
                 raty.opt.round.full = this.roundFull;
@@ -235,9 +235,9 @@ describe('#_starName', function () {
 
               it('returns starOn', function () {
                 // given
-                var raty = new Raty('#el');
+                var raty = new Raty(document.querySelector('#el'));
 
-                raty.self.isMove = this.isMove;
+                raty.element.isMove = this.isMove;
                 raty.opt.halfShow = this.halfShow;
                 raty.opt.round.down = this.roundDown;
                 raty.opt.round.full = this.roundFull;
@@ -258,9 +258,9 @@ describe('#_starName', function () {
 
               it('returns starOn', function () {
                 // given
-                var raty = new Raty('#el');
+                var raty = new Raty(document.querySelector('#el'));
 
-                raty.self.isMove = this.isMove;
+                raty.element.isMove = this.isMove;
                 raty.opt.halfShow = this.halfShow;
                 raty.opt.round.down = this.roundDown;
                 raty.opt.round.full = this.roundFull;
@@ -287,9 +287,9 @@ describe('#_starName', function () {
 
               it('returns starOff', function () {
                 // given
-                var raty = new Raty('#el');
+                var raty = new Raty(document.querySelector('#el'));
 
-                raty.self.isMove = this.isMove;
+                raty.element.isMove = this.isMove;
                 raty.opt.halfShow = this.halfShow;
                 raty.opt.round.down = this.roundDown;
                 raty.opt.round.full = this.roundFull;
@@ -310,9 +310,9 @@ describe('#_starName', function () {
 
               it('returns starOn', function () {
                 // given
-                var raty = new Raty('#el');
+                var raty = new Raty(document.querySelector('#el'));
 
-                raty.self.isMove = this.isMove;
+                raty.element.isMove = this.isMove;
                 raty.opt.halfShow = this.halfShow;
                 raty.opt.round.down = this.roundDown;
                 raty.opt.round.full = this.roundFull;
@@ -333,9 +333,9 @@ describe('#_starName', function () {
 
               it('returns starOn', function () {
                 // given
-                var raty = new Raty('#el');
+                var raty = new Raty(document.querySelector('#el'));
 
-                raty.self.isMove = this.isMove;
+                raty.element.isMove = this.isMove;
                 raty.opt.halfShow = this.halfShow;
                 raty.opt.round.down = this.roundDown;
                 raty.opt.round.full = this.roundFull;
@@ -363,9 +363,9 @@ describe('#_starName', function () {
 
             it('returns starOff', function () {
               // given
-              var raty = new Raty('#el');
+              var raty = new Raty(document.querySelector('#el'));
 
-              raty.self.isMove = this.isMove;
+              raty.element.isMove = this.isMove;
               raty.opt.halfShow = this.halfShow;
               raty.opt.round.down = this.roundDown;
               raty.opt.round.full = this.roundFull;
@@ -385,9 +385,9 @@ describe('#_starName', function () {
 
             it('returns starOn', function () {
               // given
-              var raty = new Raty('#el');
+              var raty = new Raty(document.querySelector('#el'));
 
-              raty.self.isMove = this.isMove;
+              raty.element.isMove = this.isMove;
               raty.opt.halfShow = this.halfShow;
               raty.opt.round.down = this.roundDown;
               raty.opt.round.full = this.roundFull;
@@ -407,9 +407,9 @@ describe('#_starName', function () {
 
             it('returns starOn', function () {
               // given
-              var raty = new Raty('#el');
+              var raty = new Raty(document.querySelector('#el'));
 
-              raty.self.isMove = this.isMove;
+              raty.element.isMove = this.isMove;
               raty.opt.halfShow = this.halfShow;
               raty.opt.round.down = this.roundDown;
               raty.opt.round.full = this.roundFull;

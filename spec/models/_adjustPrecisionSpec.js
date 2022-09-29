@@ -7,7 +7,7 @@ describe('#_adjustPrecision', function () {
     // given
 
     var options = { half: false };
-    var raty = new Raty('#el', options);
+    var raty = new Raty(document.querySelector('#el'), options);
 
     // when
     raty._adjustPrecision();

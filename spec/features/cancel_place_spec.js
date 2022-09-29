@@ -4,7 +4,7 @@ describe('#cancelPlace', function () {
     Helper._append('div', { 'data-cancel-place': 'custom' });
 
     // when
-    var raty = new Raty('[data-cancel-place]').init();
+    var raty = new Raty(document.querySelector('[data-cancel-place]')).init();
 
     // then
     expect(raty.opt.cancelPlace).toEqual('custom');
@@ -16,10 +16,10 @@ describe('#cancelPlace', function () {
       this.el = Helper.create('#el');
 
       // when
-      var raty = new Raty('#el', { cancelButton: true, cancelPlace: 'left' }).init();
+      var raty = new Raty(document.querySelector('#el'), { cancelButton: true, cancelPlace: 'left' }).init();
 
       // then
-      expect(raty.self.querySelector('img').classList.contains('raty-cancel')).toEqual(true);
+      expect(raty.element.querySelector('img').classList.contains('raty-cancel')).toEqual(true);
     });
   });
 
@@ -29,10 +29,10 @@ describe('#cancelPlace', function () {
       this.el = Helper.create('#el');
 
       // when
-      var raty = new Raty('#el', { cancelButton: true, cancelPlace: 'right' }).init();
+      var raty = new Raty(document.querySelector('#el'), { cancelButton: true, cancelPlace: 'right' }).init();
 
       // then
-      var stars = raty.self.querySelectorAll('img');
+      var stars = raty.element.querySelectorAll('img');
 
       expect(stars[stars.length - 1].classList.contains('raty-cancel')).toEqual(true);
     });

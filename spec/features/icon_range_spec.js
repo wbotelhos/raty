@@ -10,7 +10,7 @@ describe('#iconRange', function () {
 
   it('uses icon intervals', function () {
     // given
-    var raty = new Raty('#element', {
+    var raty = new Raty(document.querySelector('#element'), {
       iconRange: [
         { range: 2, on: 'star-off.png', off: 'star-off.png' },
         { range: 3, on: 'star-off.png', off: 'cancel-off.png' },
@@ -23,7 +23,7 @@ describe('#iconRange', function () {
     raty.init();
 
     // then
-    var stars = raty.self.querySelectorAll('img');
+    var stars = raty.element.querySelectorAll('img');
 
     expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
     expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
@@ -35,7 +35,7 @@ describe('#iconRange', function () {
   context('when off icon is not especified', function () {
     it('uses the :starOff icon', function () {
       // given
-      var raty = new Raty('#element', {
+      var raty = new Raty(document.querySelector('#element'), {
         iconRange: [
           { range: 2, on: 'star-on.png', off: 'star-off.png' },
           { range: 3, on: 'star-on.png', off: 'star-off.png' },
@@ -48,14 +48,14 @@ describe('#iconRange', function () {
       raty.init();
 
       // then
-      expect(Helper.extension(raty.self.querySelectorAll('img')[4].src)).toEqual('star-off.png');
+      expect(Helper.extension(raty.element.querySelectorAll('img')[4].src)).toEqual('star-off.png');
     });
   });
 
   context('on mouseover', function () {
     it('uses the on icon', function () {
       // given
-      var raty = new Raty('#element', {
+      var raty = new Raty(document.querySelector('#element'), {
         iconRange: [
           { range: 2, on: 'star-on.png', off: 'star-off.png' },
           { range: 3, on: 'star-on.png', off: 'star-off.png' },
@@ -64,7 +64,7 @@ describe('#iconRange', function () {
         ],
       }).init();
 
-      var stars = raty.self.querySelectorAll('img');
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       Helper.trigger(stars[4], 'mouseover');
@@ -80,7 +80,7 @@ describe('#iconRange', function () {
     context('when on icon is not especified', function () {
       it('uses the :starOn icon', function () {
         // given
-        var raty = new Raty('#element', {
+        var raty = new Raty(document.querySelector('#element'), {
           iconRange: [
             { range: 2, off: 'star-off.png', on: 'star-on.png' },
             { range: 3, off: 'star-off.png', on: 'star-on.png' },
@@ -89,7 +89,7 @@ describe('#iconRange', function () {
           ],
         }).init();
 
-        var stars = raty.self.querySelectorAll('img');
+        var stars = raty.element.querySelectorAll('img');
 
         // when
         Helper.trigger(stars[4], 'mouseover');
@@ -107,7 +107,7 @@ describe('#iconRange', function () {
   context('on mouseout', function () {
     it('changes to off icons', function () {
       // given
-      var raty = new Raty('#element', {
+      var raty = new Raty(document.querySelector('#element'), {
         iconRange: [
           { range: 2, on: 'star-on.png', off: 'star-off.png' },
           { range: 3, on: 'star-on.png', off: 'star-off.png' },
@@ -116,11 +116,11 @@ describe('#iconRange', function () {
         ],
       }).init();
 
-      var stars = raty.self.querySelectorAll('img');
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       Helper.trigger(stars[4], 'mouseover');
-      Helper.trigger(raty.self, 'mouseleave');
+      Helper.trigger(raty.element, 'mouseleave');
 
       // then
       expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
@@ -132,7 +132,7 @@ describe('#iconRange', function () {
 
     it('keeps the score value', function () {
       // given
-      var raty = new Raty('#element', {
+      var raty = new Raty(document.querySelector('#element'), {
         iconRange: [
           { range: 2, on: 'star-on.png', off: 'star-off.png' },
           { range: 3, on: 'star-on.png', off: 'star-off.png' },
@@ -143,17 +143,17 @@ describe('#iconRange', function () {
       }).init();
 
       // when
-      Helper.trigger(raty.self.querySelectorAll('img')[4], 'mouseover');
-      Helper.trigger(raty.self, 'mouseleave');
+      Helper.trigger(raty.element.querySelectorAll('img')[4], 'mouseover');
+      Helper.trigger(raty.element, 'mouseleave');
 
       // then
-      expect(raty.self.querySelector('input').value).toEqual('1');
+      expect(raty.element.querySelector('input').value).toEqual('1');
     });
 
     context('when off icon is not especified', function () {
       it('uses the :starOff icon', function () {
         // given
-        var raty = new Raty('#element', {
+        var raty = new Raty(document.querySelector('#element'), {
           iconRange: [
             { range: 2, on: 'star-on.png', off: 'star-off.png' },
             { range: 3, on: 'star-on.png', off: 'star-off.png' },
@@ -162,11 +162,11 @@ describe('#iconRange', function () {
           ],
         }).init();
 
-        var img = raty.self.querySelectorAll('img')[4];
+        var img = raty.element.querySelectorAll('img')[4];
 
         // when
         Helper.trigger(img, 'mouseover');
-        Helper.trigger(raty.self, 'mouseleave');
+        Helper.trigger(raty.element, 'mouseleave');
 
         // then
         expect(Helper.extension(img.src)).toEqual('star-off.png');

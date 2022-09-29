@@ -8,7 +8,7 @@ describe('#_adjustNumber', function () {
       // given
 
       var options = { number: 0 };
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       raty._adjustNumber();
@@ -23,7 +23,7 @@ describe('#_adjustNumber', function () {
       // given
 
       var options = { number: 5, numberMax: 2 };
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       raty._adjustNumber();

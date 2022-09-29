@@ -12,7 +12,7 @@ describe('#_between', function () {
       // given
 
       var options = {};
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var result = raty._between(number, min, max);
@@ -31,7 +31,7 @@ describe('#_between', function () {
       // given
 
       var options = {};
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var result = raty._between(number, min, max);

@@ -10,7 +10,7 @@ describe('#_getDecimal', function () {
       // given
 
       var options = {};
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var decimal = raty._getDecimal(number, 1);
@@ -27,7 +27,7 @@ describe('#_getDecimal', function () {
       it('returns the first fraction', function () {
         // given
         var options = {};
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         // when
         var decimal = raty._getDecimal(number, 1);
@@ -42,7 +42,7 @@ describe('#_getDecimal', function () {
         it('increments the first decimal', function () {
           // given
           var options = {};
-          var raty = new Raty('#el', options);
+          var raty = new Raty(document.querySelector('#el'), options);
 
           // when
           var decimal = raty._getDecimal(number, 1);
@@ -59,7 +59,7 @@ describe('#_getDecimal', function () {
       it('returns the first fraction', function () {
         // given
         var options = {};
-        var raty = new Raty('#el', options);
+        var raty = new Raty(document.querySelector('#el'), options);
 
         // when
         var decimal = raty._getDecimal(number, 2);
@@ -74,7 +74,7 @@ describe('#_getDecimal', function () {
         it('increments the first decimal', function () {
           // given
           var options = {};
-          var raty = new Raty('#el', options);
+          var raty = new Raty(document.querySelector('#el'), options);
 
           // when
           var decimal = raty._getDecimal(number, 2);

@@ -8,7 +8,7 @@ describe('#_adjustedScore', function () {
       // given
       var options = {};
       var score = null;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var value = raty._adjustedScore(score);
@@ -23,7 +23,7 @@ describe('#_adjustedScore', function () {
       // given
       var options = {};
       var score = undefined;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var value = raty._adjustedScore(score);
@@ -38,7 +38,7 @@ describe('#_adjustedScore', function () {
       // given
       var options = { number: 1 };
       var score = -1;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var value = raty._adjustedScore(score);
@@ -53,7 +53,7 @@ describe('#_adjustedScore', function () {
       // given
       var options = { number: 1 };
       var score = 0;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var value = raty._adjustedScore(score);
@@ -68,7 +68,7 @@ describe('#_adjustedScore', function () {
       // given
       var options = { number: 1 };
       var score = 2;
-      var raty = new Raty('#el', options);
+      var raty = new Raty(document.querySelector('#el'), options);
 
       // when
       var value = raty._adjustedScore(score);

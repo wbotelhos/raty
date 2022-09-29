@@ -19,13 +19,13 @@
   <div data-raty></div>
 
   <script>
-    new Raty(document.querySelector('#el'), { path: './images' }).init();
+    new Raty(document.querySelector('#el'), { cancelButton: true, half: true, path: './images' }).init();
 
-    var items = [];
+    // var items = [];
 
-    document.querySelectorAll('[data-raty]').forEach(function(element) {
-      items.push(new Raty(element, { path: './images' }).init());
-    });
+    // document.querySelectorAll('[data-raty]').forEach(function(element) {
+    //   items.push(new Raty(element, { path: './images' }).init());
+    // });
   </script>
 </body>
 </html>

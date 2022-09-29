@@ -3,20 +3,20 @@ describe('#scoreName', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', { scoreName: 'double' });
+    var raty = new Raty(document.querySelector('#el'), { scoreName: 'double' });
 
     // when
     raty.init();
 
     // then
-    expect(raty.self.querySelector('input').name).toEqual('double');
+    expect(raty.element.querySelector('input').name).toEqual('double');
   });
 
   it('accepts callback', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', {
+    var raty = new Raty(document.querySelector('#el'), {
       scoreName: function () {
         return 'double';
       },

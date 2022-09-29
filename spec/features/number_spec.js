@@ -3,33 +3,33 @@ describe('#number', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', { number: 1 });
+    var raty = new Raty(document.querySelector('#el'), { number: 1 });
 
     // when
     raty.init();
 
     // then
-    expect(raty.self.querySelectorAll('img').length).toEqual(1);
+    expect(raty.element.querySelectorAll('img').length).toEqual(1);
   });
 
   it('accepts number as string', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', { number: '1' });
+    var raty = new Raty(document.querySelector('#el'), { number: '1' });
 
     // when
     raty.init();
 
     // then
-    expect(raty.self.querySelectorAll('img').length).toEqual(1);
+    expect(raty.element.querySelectorAll('img').length).toEqual(1);
   });
 
   it('accepts callback', function () {
     // given
     this.el = Helper.create('#el');
 
-    var raty = new Raty('#el', {
+    var raty = new Raty(document.querySelector('#el'), {
       number: function () {
         return 1;
       },
@@ -46,7 +46,7 @@ describe('#number', function () {
     // given
     Helper._append('div', { 'data-number': 3 });
 
-    var raty = new Raty('[data-number]');
+    var raty = new Raty(document.querySelector('[data-number]'));
 
     // when
     raty.init();

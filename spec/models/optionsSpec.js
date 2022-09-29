@@ -5,7 +5,7 @@ describe('options', function () {
 
   it('has the right default values', function () {
     // given
-    var raty = new Raty('#el');
+    var raty = new Raty(document.querySelector('#el'));
 
     // when
     var opt = raty.opt;
