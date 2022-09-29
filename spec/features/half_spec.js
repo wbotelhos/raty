@@ -65,20 +65,21 @@ describe('#half', function () {
       this.el = Helper.create('#el');
     });
 
-    context('on click', function () {
+    // TODO: manual click event is not working on test
+    xcontext('on click', function () {
       context('into half area', function () {
-        xit('receives the half value', function () {
+        it('receives the half value', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), { half: true, halfShow: true }).init();
 
           // when
-          Helper.click(this.el, 1, 5);
+          Helper.click($('#el'), 1, 5);
 
           // then
           expect(raty.element.querySelector('input').value).toEqual('1.5');
         });
 
-        xit('gives a callback the rounded value', function () {
+        it('gives a callback the rounded value', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -90,23 +91,23 @@ describe('#half', function () {
           }).init();
 
           // when
-          Helper.click(this.el, 1, 5);
+          Helper.click($('#el'), 1, 5);
         });
       });
 
       context('into round area', function () {
-        xit('receives the rounded value', function () {
+        it('receives the rounded value', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), { half: true, halfShow: true }).init();
 
           // when
-          Helper.click(this.el, 1, 9);
+          Helper.click($('#el'), 1, 9);
 
           // then
           expect(raty.element.querySelector('input').value).toEqual('2');
         });
 
-        xit('gives a callback the rounded value', function () {
+        it('gives a callback the rounded value', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -118,18 +119,17 @@ describe('#half', function () {
           }).init();
 
           // when
-          Helper.click(this.el, 1, 9);
+          Helper.click($('#el'), 1, 9);
         });
       });
 
-      // TODO: manual lick event is not working on test
       context('into zero position', function () {
-        xit('receives the half value', function () {
+        it('receives the half value', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), { half: true, halfShow: true }).init();
 
           // when
-          Helper.click(this.el, 1, 0);
+          Helper.click($('#el'), 1, 0);
 
           // then
           expect(raty.element.querySelector('input').value).toEqual('1');
@@ -552,7 +552,7 @@ describe('#half', function () {
           });
 
           context('on 1.1', function () {
-            xit('receives the half star', function () {
+            it('receives the half star', function () {
               // given
               var raty = new Raty(document.querySelector('#el'), {
                 half: true,
@@ -562,10 +562,10 @@ describe('#half', function () {
               }).init();
 
               // when
-              raty.move(1.1);
+              raty.move(0.1);
 
               // then
-              expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-half.png');
+              expect(Helper.extension(raty.element.querySelectorAll('img')[0].src)).toEqual('star-half.png');
             });
           });
 
@@ -580,7 +580,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              raty.move(1.2);
+              raty.move(1.1);
 
               // then
               expect(Helper.extension(raty.element.querySelectorAll('img')[1].src)).toEqual('star-half.png');
@@ -757,7 +757,7 @@ describe('#half', function () {
           });
 
           context('on 1.0 fraction', function () {
-            xit('receives half star', function () {
+            it('receives half star', function () {
               // given
               var raty = new Raty(document.querySelector('#el'), {
                 half: true,
@@ -767,7 +767,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 0);
+              Helper.mousemove($('#el'), 1, 0);
 
               // then
               expect(this.target.text()).toEqual('half');
@@ -785,7 +785,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 1);
+              Helper.mousemove($('#el'), 1, 1);
 
               // then
               expect(this.target.text()).toEqual('half');
@@ -803,7 +803,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 2);
+              Helper.mousemove($('#el'), 1, 2);
 
               // then
               expect(this.target.text()).toEqual('half');
@@ -821,7 +821,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 3);
+              Helper.mousemove($('#el'), 1, 3);
 
               // then
               expect(this.target.text()).toEqual('half');
@@ -839,7 +839,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 4);
+              Helper.mousemove($('#el'), 1, 4);
 
               // then
               expect(this.target.text()).toEqual('half');
@@ -857,7 +857,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 5);
+              Helper.mousemove($('#el'), 1, 5);
 
               // then
               expect(this.target.text()).toEqual('half');
@@ -875,7 +875,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 6);
+              Helper.mousemove($('#el'), 1, 6);
 
               // then
               expect(this.target.text()).toEqual('integer');
@@ -893,7 +893,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 7);
+              Helper.mousemove($('#el'), 1, 7);
 
               // then
               expect(this.target.text()).toEqual('integer');
@@ -911,7 +911,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 8);
+              Helper.mousemove($('#el'), 1, 8);
 
               // then
               expect(this.target.text()).toEqual('integer');
@@ -929,7 +929,7 @@ describe('#half', function () {
               }).init();
 
               // when
-              Helper.mousemove(this.el, 1, 9);
+              Helper.mousemove($('#el'), 1, 9);
 
               // then
               expect(this.target.text()).toEqual('integer');

@@ -6,7 +6,7 @@ describe('#hints', function () {
   context('with :halfShow', function () {
     context('as *true', function () {
       context('when null', function () {
-        xit('initializes all with null', function () {
+        it('initializes all with null', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), { halfShow: true, hints: null });
           var expected = [null, null];
@@ -24,7 +24,7 @@ describe('#hints', function () {
       });
 
       context('with empty as group', function () {
-        xit('replicates the empty value', function () {
+        it('replicates the empty value', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), { halfShow: true, hints: [''] });
 
@@ -37,7 +37,7 @@ describe('#hints', function () {
       });
 
       context('the stars', function () {
-        xit('changes the title', function () {
+        it('changes the title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), { halfShow: true, hints: ['1', '/', 'c', '-', '#'] });
 
@@ -55,7 +55,7 @@ describe('#hints', function () {
         });
 
         context('with undefined as group', function () {
-          xit('receives the number of the star', function () {
+          it('receives the number of the star', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), { halfShow: true, hints: [undefined] });
 
@@ -68,7 +68,7 @@ describe('#hints', function () {
         });
 
         context('with null as group', function () {
-          xit('receives the number of star', function () {
+          it('receives the number of star', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), { halfShow: true, hints: [null] });
 
@@ -81,7 +81,7 @@ describe('#hints', function () {
         });
 
         context('with array as group with only half value', function () {
-          xit('receives the last value', function () {
+          it('receives the last value', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), { halfShow: true, hints: [['half']] });
 
@@ -94,7 +94,7 @@ describe('#hints', function () {
         });
 
         context('with array as group with both value', function () {
-          xit('receives the last value', function () {
+          it('receives the last value', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), { halfShow: true, hints: [['half', 'one']] });
 
@@ -107,7 +107,7 @@ describe('#hints', function () {
         });
 
         context('with less hints than stars', function () {
-          xit('receives the score value', function () {
+          it('receives the score value', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), { halfShow: true, hints: ['a', 'b', 'c', 'd'] });
 
@@ -126,7 +126,7 @@ describe('#hints', function () {
         });
 
         context('with more stars than hints', function () {
-          xit('receives the :score value', function () {
+          it('receives the :score value', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), {
               halfShow: true,
@@ -166,7 +166,7 @@ describe('#hints', function () {
       });
 
       context('with undefined value', function () {
-        xit('receives the default corresponding hint', function () {
+        it('receives the default corresponding hint', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), { halfShow: false, hints: [undefined] });
 
@@ -179,7 +179,7 @@ describe('#hints', function () {
       });
 
       context('the stars', function () {
-        xit('changes the hints', function () {
+        it('changes the hints', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), { halfShow: false, hints: ['1', '/', 'c', '-', '#'] });
 
@@ -197,7 +197,7 @@ describe('#hints', function () {
         });
 
         context('with empty value', function () {
-          xit('receives an empty value', function () {
+          it('receives an empty value', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), { halfShow: false, hints: [''] });
 
@@ -210,7 +210,7 @@ describe('#hints', function () {
         });
 
         context('with null value', function () {
-          xit('receives the score', function () {
+          it('receives the score', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), { halfShow: false, hints: [null] });
 
@@ -223,7 +223,7 @@ describe('#hints', function () {
         });
 
         context('with less hints than stars', function () {
-          xit('receives the score value', function () {
+          it('receives the score value', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), { halfShow: false, hints: ['a', 'b', 'c', 'd'] });
 
@@ -242,7 +242,7 @@ describe('#hints', function () {
         });
 
         context('with more stars than hints', function () {
-          xit('receives the :score value', function () {
+          it('receives the :score value', function () {
             // given
             var raty = new Raty(document.querySelector('#el'), {
               halfShow: false,
@@ -270,7 +270,7 @@ describe('#hints', function () {
 
   context('with :half', function () {
     context('and value is null', function () {
-      xit('populates all with null', function () {
+      it('populates all with null', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), { half: true, hints: null });
 
@@ -289,7 +289,7 @@ describe('#hints', function () {
     });
 
     context('and value is an empty array', function () {
-      xit('populates all float arrays with original hint', function () {
+      it('populates all float arrays with original hint', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), { half: true, hints: [] });
 
@@ -307,7 +307,7 @@ describe('#hints', function () {
     });
 
     context('with some integer hint', function () {
-      xit('populates all group with given hint', function () {
+      it('populates all group with given hint', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), { half: true, hints: ['hint'] });
 
@@ -322,7 +322,7 @@ describe('#hints', function () {
     });
 
     context('with some float hint', function () {
-      xit('populates the other with last defined hint', function () {
+      it('populates the other with last defined hint', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), { half: true, hints: [['hint']] });
 
@@ -342,7 +342,7 @@ describe('#hints', function () {
       });
 
       context('on 1.1', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -358,7 +358,7 @@ describe('#hints', function () {
           expect(this.target[0].innerText).toEqual('1,5');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -378,7 +378,7 @@ describe('#hints', function () {
       });
 
       context('on 1.2', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -394,7 +394,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -414,7 +414,7 @@ describe('#hints', function () {
       });
 
       context('on 1.3', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -430,7 +430,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -450,7 +450,7 @@ describe('#hints', function () {
       });
 
       context('on 1.4', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -466,7 +466,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -486,7 +486,7 @@ describe('#hints', function () {
       });
 
       context('on 1.5', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -502,7 +502,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -522,7 +522,7 @@ describe('#hints', function () {
       });
 
       context('on 1.6', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -538,7 +538,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -558,7 +558,7 @@ describe('#hints', function () {
       });
 
       context('on 1.7', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -574,7 +574,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -594,7 +594,7 @@ describe('#hints', function () {
       });
 
       context('on 1.8', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -610,7 +610,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -630,7 +630,7 @@ describe('#hints', function () {
       });
 
       context('on 1.9', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -646,7 +646,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -666,7 +666,7 @@ describe('#hints', function () {
       });
 
       context('on 2.0', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -682,7 +682,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('changes the title to first position', function () {
+        it('changes the title to first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -702,7 +702,7 @@ describe('#hints', function () {
       });
 
       context('on 2', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -719,7 +719,7 @@ describe('#hints', function () {
         });
       });
 
-      xit('changes the title to first position', function () {
+      it('changes the title to first position', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), {
           half: true,
@@ -739,13 +739,13 @@ describe('#hints', function () {
     });
 
     // TODO: mousemove event is not working during test
-    context('on mousemove', function () {
+    xcontext('on mousemove', function () {
       beforeEach(function () {
         this.target = Helper.create('#target');
       });
 
       context('on 1.0 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -755,13 +755,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 0);
+          Helper.mousemove($('#el'), 1, 0);
 
           // then
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -773,7 +773,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 0);
+          Helper.mousemove($('#el'), 1, 0);
 
           // then
           expect(star.title).toEqual('half');
@@ -781,7 +781,7 @@ describe('#hints', function () {
       });
 
       context('on 1.1 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -791,13 +791,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 1);
+          Helper.mousemove($('#el'), 1, 1);
 
           // then
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -809,7 +809,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 1);
+          Helper.mousemove($('#el'), 1, 1);
 
           // then
           expect(star.title).toEqual('half');
@@ -817,7 +817,7 @@ describe('#hints', function () {
       });
 
       context('on 1.2 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -827,13 +827,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 2);
+          Helper.mousemove($('#el'), 1, 2);
 
           // then
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -845,7 +845,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 2);
+          Helper.mousemove($('#el'), 1, 2);
 
           // then
           expect(star.title).toEqual('half');
@@ -853,7 +853,7 @@ describe('#hints', function () {
       });
 
       context('on 1.3 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -863,13 +863,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 3);
+          Helper.mousemove($('#el'), 1, 3);
 
           // then
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -881,7 +881,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 3);
+          Helper.mousemove($('#el'), 1, 3);
 
           // then
           expect(star.title).toEqual('half');
@@ -889,7 +889,7 @@ describe('#hints', function () {
       });
 
       context('on 1.4 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -899,13 +899,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 4);
+          Helper.mousemove($('#el'), 1, 4);
 
           // then
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -917,7 +917,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 4);
+          Helper.mousemove($('#el'), 1, 4);
 
           // then
           expect(star.title).toEqual('half');
@@ -925,7 +925,7 @@ describe('#hints', function () {
       });
 
       context('on 1.5 fraction', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -935,13 +935,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 5);
+          Helper.mousemove($('#el'), 1, 5);
 
           // then
           expect(this.target.text()).toEqual('half');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -953,7 +953,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 5);
+          Helper.mousemove($('#el'), 1, 5);
 
           // then
           expect(star.title).toEqual('half');
@@ -961,7 +961,7 @@ describe('#hints', function () {
       });
 
       context('on 1.6 fraction', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -971,13 +971,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 6);
+          Helper.mousemove($('#el'), 1, 6);
 
           // then
           expect(this.target.text()).toEqual('integer');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -989,7 +989,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 6);
+          Helper.mousemove($('#el'), 1, 6);
 
           // then
           expect(star.title).toEqual('integer');
@@ -997,7 +997,7 @@ describe('#hints', function () {
       });
 
       context('on 1.7 fraction', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1007,13 +1007,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 7);
+          Helper.mousemove($('#el'), 1, 7);
 
           // then
           expect(this.target.text()).toEqual('integer');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1025,7 +1025,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 7);
+          Helper.mousemove($('#el'), 1, 7);
 
           // then
           expect(star.title).toEqual('integer');
@@ -1033,7 +1033,7 @@ describe('#hints', function () {
       });
 
       context('on 1.8 fraction', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1043,13 +1043,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 8);
+          Helper.mousemove($('#el'), 1, 8);
 
           // then
           expect(this.target.text()).toEqual('integer');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1061,7 +1061,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 8);
+          Helper.mousemove($('#el'), 1, 8);
 
           // then
           expect(star.title).toEqual('integer');
@@ -1069,7 +1069,7 @@ describe('#hints', function () {
       });
 
       context('on 1.9 fraction', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1079,13 +1079,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 9);
+          Helper.mousemove($('#el'), 1, 9);
 
           // then
           expect(this.target.text()).toEqual('integer');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1097,7 +1097,7 @@ describe('#hints', function () {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 9);
+          Helper.mousemove($('#el'), 1, 9);
 
           // then
           expect(star.title).toEqual('integer');
@@ -1111,7 +1111,7 @@ describe('#hints', function () {
       });
 
       context('on 1.1', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1128,7 +1128,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1149,7 +1149,7 @@ describe('#hints', function () {
       });
 
       context('on 1.2', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1166,7 +1166,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1187,7 +1187,7 @@ describe('#hints', function () {
       });
 
       context('on 1.3', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1204,7 +1204,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1225,7 +1225,7 @@ describe('#hints', function () {
       });
 
       context('on 1.4', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1242,7 +1242,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1263,7 +1263,7 @@ describe('#hints', function () {
       });
 
       context('on 1.5', function () {
-        xit('receives the first position', function () {
+        it('receives the first position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1280,7 +1280,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the first position as title', function () {
+        it('receives the first position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1301,7 +1301,7 @@ describe('#hints', function () {
       });
 
       context('on 1.6', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1318,7 +1318,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1339,7 +1339,7 @@ describe('#hints', function () {
       });
 
       context('on 1.7', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1356,7 +1356,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1377,7 +1377,7 @@ describe('#hints', function () {
       });
 
       context('on 1.8', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1394,7 +1394,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1415,7 +1415,7 @@ describe('#hints', function () {
       });
 
       context('on 1.9', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1432,7 +1432,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1453,7 +1453,7 @@ describe('#hints', function () {
       });
 
       context('on 2.0', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1470,7 +1470,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1491,7 +1491,7 @@ describe('#hints', function () {
       });
 
       context('on 2', function () {
-        xit('receives the second position', function () {
+        it('receives the second position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1508,7 +1508,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the second position as title', function () {
+        it('receives the second position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             half: true,
@@ -1532,7 +1532,7 @@ describe('#hints', function () {
 
   context('with :precision', function () {
     context('and value is null', function () {
-      xit('populates all with null', function () {
+      it('populates all with null', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), {
           hints: null,
@@ -1556,10 +1556,7 @@ describe('#hints', function () {
     context('and value is an empty array', function () {
       xit('populates all float arrays with original hint', function () {
         // given
-        var raty = new Raty(document.querySelector('#el'), {
-          hints: [],
-          precision: true,
-        });
+        var raty = new Raty(document.querySelector('#el'), { hints: [], precision: true });
 
         // when
         raty.init();
@@ -1619,7 +1616,7 @@ describe('#hints', function () {
     });
 
     context('with some integer hint', function () {
-      xit('populates all group with given hint', function () {
+      it('populates all group with given hint', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), {
           hints: [null, null, 'hint', null, null],
@@ -1656,7 +1653,6 @@ describe('#hints', function () {
         raty.init();
 
         // then
-        debugger;
         expect(raty.opt.hints[0]).toEqual(expectedNull);
         expect(raty.opt.hints[1]).toEqual(expectedNull);
         expect(raty.opt.hints[2]).toEqual(expectedHint);
@@ -1671,7 +1667,7 @@ describe('#hints', function () {
       });
 
       context('on 1.1', function () {
-        xit('receives the [1][0] position', function () {
+        it('receives the [1][0] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1687,7 +1683,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,1');
         });
 
-        xit('receives the [1][0] position as title', function () {
+        it('receives the [1][0] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1705,7 +1701,7 @@ describe('#hints', function () {
       });
 
       context('on 1.2', function () {
-        xit('receives the [1][1] position', function () {
+        it('receives the [1][1] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1721,7 +1717,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,2');
         });
 
-        xit('receives the [1][1] position as title', function () {
+        it('receives the [1][1] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1739,7 +1735,7 @@ describe('#hints', function () {
       });
 
       context('on 1.3', function () {
-        xit('receives the [1][2] position', function () {
+        it('receives the [1][2] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1755,7 +1751,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,3');
         });
 
-        xit('receives the [1][2] position as title', function () {
+        it('receives the [1][2] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1773,7 +1769,7 @@ describe('#hints', function () {
       });
 
       context('on 1.4', function () {
-        xit('receives the [1][3] position', function () {
+        it('receives the [1][3] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1789,7 +1785,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,4');
         });
 
-        xit('receives the [1][3] position as title', function () {
+        it('receives the [1][3] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1807,7 +1803,7 @@ describe('#hints', function () {
       });
 
       context('on 1.5', function () {
-        xit('receives the [1][4] position', function () {
+        it('receives the [1][4] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1823,7 +1819,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the [1][4] position as title', function () {
+        it('receives the [1][4] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1841,7 +1837,7 @@ describe('#hints', function () {
       });
 
       context('on 1.6', function () {
-        xit('receives the [1][5] position', function () {
+        it('receives the [1][5] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1857,7 +1853,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,6');
         });
 
-        xit('receives the [1][5] position as title', function () {
+        it('receives the [1][5] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1875,7 +1871,7 @@ describe('#hints', function () {
       });
 
       context('on 1.7', function () {
-        xit('receives the [1][6] position', function () {
+        it('receives the [1][6] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1891,7 +1887,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,7');
         });
 
-        xit('receives the [1][7] position as title', function () {
+        it('receives the [1][7] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1909,7 +1905,7 @@ describe('#hints', function () {
       });
 
       context('on 1.8', function () {
-        xit('receives the [1][7] position', function () {
+        it('receives the [1][7] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1925,7 +1921,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,8');
         });
 
-        xit('receives the [1][7] position as title', function () {
+        it('receives the [1][7] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1943,7 +1939,7 @@ describe('#hints', function () {
       });
 
       context('on 1.9', function () {
-        xit('receives the [1][8] position', function () {
+        it('receives the [1][8] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1959,7 +1955,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,9');
         });
 
-        xit('receives the [1][8] position as title', function () {
+        it('receives the [1][8] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1977,7 +1973,7 @@ describe('#hints', function () {
       });
 
       context('on 2.0', function () {
-        xit('receives the [1][9] position', function () {
+        it('receives the [1][9] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -1993,7 +1989,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the [1][9] position as title', function () {
+        it('receives the [1][9] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2011,7 +2007,7 @@ describe('#hints', function () {
       });
 
       context('on 2', function () {
-        xit('receives the [1][9] position', function () {
+        it('receives the [1][9] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2027,7 +2023,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the [1][9] position as title', function () {
+        it('receives the [1][9] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2046,13 +2042,13 @@ describe('#hints', function () {
     });
 
     // TODO: mousemove event is not working during test
-    context('on mousemove', function () {
+    xcontext('on mousemove', function () {
       beforeEach(function () {
         this.target = Helper.create('#target');
       });
 
       context('on 1.0 fraction', function () {
-        xit('receives the [1][0] position', function () {
+        it('receives the [1][0] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2062,13 +2058,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 0);
+          Helper.mousemove($('#el'), 1, 0);
 
           // then
           expect(this.target.text()).toEqual('1,1');
         });
 
-        xit('receives the [1][0] position as title', function () {
+        it('receives the [1][0] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2078,7 +2074,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 0);
+          Helper.mousemove($('#el'), 1, 0);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,1');
@@ -2086,7 +2082,7 @@ describe('#hints', function () {
       });
 
       context('on 1.1 fraction', function () {
-        xit('receives the [1][1] position', function () {
+        it('receives the [1][1] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2096,13 +2092,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 1);
+          Helper.mousemove($('#el'), 1, 1);
 
           // then
           expect(this.target.text()).toEqual('1,2');
         });
 
-        xit('receives the [1][1] position as title', function () {
+        it('receives the [1][1] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2112,7 +2108,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 1);
+          Helper.mousemove($('#el'), 1, 1);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,2');
@@ -2120,7 +2116,7 @@ describe('#hints', function () {
       });
 
       context('on 1.2 fraction', function () {
-        xit('receives the [1][2] position', function () {
+        it('receives the [1][2] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2130,13 +2126,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 2);
+          Helper.mousemove($('#el'), 1, 2);
 
           // then
           expect(this.target.text()).toEqual('1,3');
         });
 
-        xit('receives the [1][2] position as title', function () {
+        it('receives the [1][2] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2146,7 +2142,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 2);
+          Helper.mousemove($('#el'), 1, 2);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,3');
@@ -2154,7 +2150,7 @@ describe('#hints', function () {
       });
 
       context('on 1.3 fraction', function () {
-        xit('receives the [1][3] position', function () {
+        it('receives the [1][3] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2164,13 +2160,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 3);
+          Helper.mousemove($('#el'), 1, 3);
 
           // then
           expect(this.target.text()).toEqual('1,4');
         });
 
-        xit('receives the [1][3] position as title', function () {
+        it('receives the [1][3] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2180,7 +2176,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 3);
+          Helper.mousemove($('#el'), 1, 3);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,4');
@@ -2188,7 +2184,7 @@ describe('#hints', function () {
       });
 
       context('on 1.4 fraction', function () {
-        xit('receives the [1][4] position', function () {
+        it('receives the [1][4] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2198,13 +2194,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 4);
+          Helper.mousemove($('#el'), 1, 4);
 
           // then
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the [1][4] position as title', function () {
+        it('receives the [1][4] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2214,7 +2210,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 4);
+          Helper.mousemove($('#el'), 1, 4);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,5');
@@ -2222,7 +2218,7 @@ describe('#hints', function () {
       });
 
       context('on 1.5 fraction', function () {
-        xit('receives the [1][5] position', function () {
+        it('receives the [1][5] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2232,13 +2228,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 5);
+          Helper.mousemove($('#el'), 1, 5);
 
           // then
           expect(this.target.text()).toEqual('1,6');
         });
 
-        xit('receives the [1][5] position as title', function () {
+        it('receives the [1][5] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2248,7 +2244,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 5);
+          Helper.mousemove($('#el'), 1, 5);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,6');
@@ -2256,7 +2252,7 @@ describe('#hints', function () {
       });
 
       context('on 1.6 fraction', function () {
-        xit('receives the [1][6] position', function () {
+        it('receives the [1][6] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2266,13 +2262,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 6);
+          Helper.mousemove($('#el'), 1, 6);
 
           // then
           expect(this.target.text()).toEqual('1,7');
         });
 
-        xit('receives the [1][6] position as title', function () {
+        it('receives the [1][6] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2282,7 +2278,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 6);
+          Helper.mousemove($('#el'), 1, 6);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,7');
@@ -2290,7 +2286,7 @@ describe('#hints', function () {
       });
 
       context('on 1.7 fraction', function () {
-        xit('receives the [1][7] position', function () {
+        it('receives the [1][7] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2300,13 +2296,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 7);
+          Helper.mousemove($('#el'), 1, 7);
 
           // then
           expect(this.target.text()).toEqual('1,8');
         });
 
-        xit('receives the [1][7] position as title', function () {
+        it('receives the [1][7] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2316,7 +2312,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 7);
+          Helper.mousemove($('#el'), 1, 7);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,8');
@@ -2324,7 +2320,7 @@ describe('#hints', function () {
       });
 
       context('on 1.8 fraction', function () {
-        xit('receives the [1][8] position', function () {
+        it('receives the [1][8] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2334,13 +2330,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 8);
+          Helper.mousemove($('#el'), 1, 8);
 
           // then
           expect(this.target.text()).toEqual('1,9');
         });
 
-        xit('receives the [1][8] position as title', function () {
+        it('receives the [1][8] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2350,7 +2346,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 8);
+          Helper.mousemove($('#el'), 1, 8);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,9');
@@ -2358,7 +2354,7 @@ describe('#hints', function () {
       });
 
       context('on 1.9 fraction', function () {
-        xit('receives the [1][9] position', function () {
+        it('receives the [1][9] position', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2368,13 +2364,13 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 9);
+          Helper.mousemove($('#el'), 1, 9);
 
           // then
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the [1][9] position as title', function () {
+        it('receives the [1][9] position as title', function () {
           // given
           var raty = new Raty(document.querySelector('#el'), {
             hints: [null, ['1,1', '1,2', '1,3', '1,4', '1,5', '1,6', '1,7', '1,8', '1,9', '2,0']],
@@ -2384,7 +2380,7 @@ describe('#hints', function () {
           }).init();
 
           // when
-          Helper.mousemove(document.querySelector('#el'), 1, 9);
+          Helper.mousemove($('#el'), 1, 9);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('2,0');
@@ -2398,7 +2394,7 @@ describe('#hints', function () {
       });
 
       context('on 1.1', function () {
-        xit('receives the [1][0] position', function () {
+        it('receives the [1][0] position', function () {
           // given
 
           // when
@@ -2414,7 +2410,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,1');
         });
 
-        xit('receives the [1][0] position as title', function () {
+        it('receives the [1][0] position as title', function () {
           // given
 
           // when
@@ -2432,7 +2428,7 @@ describe('#hints', function () {
       });
 
       context('on 1.2', function () {
-        xit('receives the [1][1] position', function () {
+        it('receives the [1][1] position', function () {
           // given
 
           // when
@@ -2448,7 +2444,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,2');
         });
 
-        xit('receives the [1][1] position as title', function () {
+        it('receives the [1][1] position as title', function () {
           // given
 
           // when
@@ -2466,7 +2462,7 @@ describe('#hints', function () {
       });
 
       context('on 1.3', function () {
-        xit('receives the [1][2] position', function () {
+        it('receives the [1][2] position', function () {
           // given
 
           // when
@@ -2482,7 +2478,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,3');
         });
 
-        xit('receives the [1][2] position as title', function () {
+        it('receives the [1][2] position as title', function () {
           // given
 
           // when
@@ -2500,7 +2496,7 @@ describe('#hints', function () {
       });
 
       context('on 1.4', function () {
-        xit('receives the [1][3] position', function () {
+        it('receives the [1][3] position', function () {
           // given
 
           // when
@@ -2516,7 +2512,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,4');
         });
 
-        xit('receives the [1][3] position as title', function () {
+        it('receives the [1][3] position as title', function () {
           // given
 
           // when
@@ -2534,7 +2530,7 @@ describe('#hints', function () {
       });
 
       context('on 1.5', function () {
-        xit('receives the [1][4] position', function () {
+        it('receives the [1][4] position', function () {
           // given
 
           // when
@@ -2550,7 +2546,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,5');
         });
 
-        xit('receives the [1][4] position as title', function () {
+        it('receives the [1][4] position as title', function () {
           // given
 
           // when
@@ -2568,7 +2564,7 @@ describe('#hints', function () {
       });
 
       context('on 1.6', function () {
-        xit('receives the [1][5] position', function () {
+        it('receives the [1][5] position', function () {
           // given
 
           // when
@@ -2584,7 +2580,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,6');
         });
 
-        xit('receives the [1][5] position as title', function () {
+        it('receives the [1][5] position as title', function () {
           // given
 
           // when
@@ -2602,7 +2598,7 @@ describe('#hints', function () {
       });
 
       context('on 1.7', function () {
-        xit('receives the [1][6] position', function () {
+        it('receives the [1][6] position', function () {
           // given
 
           // when
@@ -2618,7 +2614,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,7');
         });
 
-        xit('receives the [1][6] position as title', function () {
+        it('receives the [1][6] position as title', function () {
           // given
 
           // when
@@ -2636,7 +2632,7 @@ describe('#hints', function () {
       });
 
       context('on 1.8', function () {
-        xit('receives the [1][7] position', function () {
+        it('receives the [1][7] position', function () {
           // given
 
           // when
@@ -2652,7 +2648,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,8');
         });
 
-        xit('receives the [1][7] position as title', function () {
+        it('receives the [1][7] position as title', function () {
           // given
 
           // when
@@ -2670,7 +2666,7 @@ describe('#hints', function () {
       });
 
       context('on 1.9', function () {
-        xit('receives the [1][8] position', function () {
+        it('receives the [1][8] position', function () {
           // given
 
           // when
@@ -2686,7 +2682,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('1,9');
         });
 
-        xit('receives the [1][8] position as title', function () {
+        it('receives the [1][8] position as title', function () {
           // given
 
           // when
@@ -2704,7 +2700,7 @@ describe('#hints', function () {
       });
 
       context('on 1.0', function () {
-        xit('receives the [1][9] position', function () {
+        it('receives the [1][9] position', function () {
           // given
 
           // when
@@ -2720,7 +2716,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the [1][9] position as title', function () {
+        it('receives the [1][9] position as title', function () {
           // given
 
           // when
@@ -2738,7 +2734,7 @@ describe('#hints', function () {
       });
 
       context('on 2', function () {
-        xit('receives the [1][9] position', function () {
+        it('receives the [1][9] position', function () {
           // given
 
           // when
@@ -2754,7 +2750,7 @@ describe('#hints', function () {
           expect(this.target.text()).toEqual('2,0');
         });
 
-        xit('receives the [1][9] position as title', function () {
+        it('receives the [1][9] position as title', function () {
           // given
 
           // when
@@ -2773,7 +2769,7 @@ describe('#hints', function () {
     });
 
     context('on leave', function () {
-      xit('reset all stars to the last hint', function () {
+      it('reset all stars to the last hint', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), {
           hints: null,
