@@ -13,7 +13,7 @@ describe('#move', function () {
     raty.move(1);
 
     // then
-    expect(raty.element.isMove).toEqual(false);
+    expect(raty.isMove).toEqual(false);
   });
 
   describe('with interger score', function () {
