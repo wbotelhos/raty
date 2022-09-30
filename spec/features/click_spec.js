@@ -3,26 +3,10 @@ describe('#click', function () {
     this.el = Helper.create('#el');
   });
 
-  it('is called on star click', function () {
-    // given
-    var raty = new Raty(document.querySelector('#el'), {
-      click: function () {
-        this.called = true;
-      },
-    }).init();
-
-    var star = Helper.last(raty.element.querySelectorAll('img'));
-
-    // when
-    Helper.trigger(star, 'click');
-
-    // then
-    expect(raty.called).toEqual(true);
-  });
-
   it('has "this" scope as the object instance ', function () {
     // given
     var raty = new Raty(document.querySelector('#el'), {
+      cancelButton: true,
       click: function () {
         this.result = this;
       },
@@ -37,7 +21,7 @@ describe('#click', function () {
     expect(raty.result).toBe(raty);
   });
 
-  it('receives the score as argument', function () {
+  it('receives the score as integer', function () {
     // given
     var raty = new Raty(document.querySelector('#el'), {
       click: function (score) {
@@ -51,6 +35,40 @@ describe('#click', function () {
     Helper.trigger(star, 'click');
 
     expect(raty.result).toEqual(5);
+  });
+
+  it('receives the element', function () {
+    // given
+    var raty = new Raty(document.querySelector('#el'), {
+      click: function (_score, element) {
+        this.result = element;
+      },
+    }).init();
+
+    var star = Helper.last(raty.element.querySelectorAll('img'));
+
+    // when
+    Helper.trigger(star, 'click');
+
+    // then
+    expect(raty.result).toEqual(document.querySelector('#el'));
+  });
+
+  it('receives the mouse event', function () {
+    // given
+    var raty = new Raty(document.querySelector('#el'), {
+      click: function (_score, _element, evt) {
+        this.result = evt;
+      },
+    }).init();
+
+    var star = Helper.last(raty.element.querySelectorAll('img'));
+
+    // when
+    Helper.trigger(star, 'click');
+
+    // then
+    expect(raty.result.type).toEqual('click');
   });
 
   context('with return as undefined', function () {
@@ -170,12 +188,12 @@ describe('#click', function () {
   });
 
   context('with :cancel', function () {
-    it('executes the callback', function () {
+    it('has "this" scope as the object instance ', function () {
       // given
       var raty = new Raty(document.querySelector('#el'), {
         cancelButton: true,
         click: function () {
-          this.called = true;
+          this.result = this;
         },
       }).init();
 
@@ -184,7 +202,61 @@ describe('#click', function () {
       // when
       Helper.trigger(cancel, 'click');
 
-      expect(raty.called).toEqual(true);
+      // then
+      expect(raty.result).toBe(raty);
+    });
+
+    it('receives the score as null', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        click: function (score) {
+          this.result = score;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'click');
+
+      expect(raty.result).toEqual(null);
+    });
+
+    it('receives the element', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        click: function (_score, element) {
+          this.result = element;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'click');
+
+      // then
+      expect(raty.result).toEqual(document.querySelector('#el'));
+    });
+
+    it('receives the mouse event', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        click: function (_score, _element, evt) {
+          this.result = evt;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'click');
+
+      // then
+      expect(raty.result.type).toEqual('click');
     });
   });
 
