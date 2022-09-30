@@ -105,3 +105,25 @@ new Raty(document.querySelector('div')).readOnly(boolean);
 new Raty(document.querySelector('div')).cancel(boolean);
 new Raty(document.querySelector('div')).move(number);
 ```
+
+7. Replace initialize callbacks:
+
+```js
+// From
+
+number: function() { this == 'element' };
+readOnly: function() { this == 'element' };
+score: function() { this == 'element' };
+scoreName: function() { this == 'element' };
+target: function() { this == 'element' };
+path: function() { this == 'element' };
+
+// To
+
+number: function(element) { this == 'new Raty()'; };
+readOnly: function(element) { this == 'new Raty()'; };
+score: function(element) { this == 'new Raty()'; };
+scoreName: function(element) { this == 'new Raty()'; };
+target: function(element) { this == 'new Raty()'; };
+path: function(element) { this == 'new Raty()'; };
+```
