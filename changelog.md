@@ -6,6 +6,7 @@
 - The global configuration `$.raty.option = 'value'` was removed;
 - The callback `click`, `mouseover` and `mouseout` now has the `this` scope being the `Raty` class instance and the following arguments: `score, element, event`;
 - The functions now is called from the `Raty` instance;
+- When `click` **function** is called, we don't really have an original event, so instead to receive a fake event `new Event('click')`, an `undefined` value is provided.
 
 ### Update
 

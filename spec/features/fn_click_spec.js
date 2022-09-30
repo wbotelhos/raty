@@ -12,7 +12,7 @@ describe('#click', function () {
     // given
     var raty = new Raty(document.querySelector('#element'), {
       click: function () {
-        this.dataset.clicked = true;
+        this.clicked = true;
       },
     }).init();
 
@@ -28,7 +28,7 @@ describe('#click', function () {
     expect(stars[3].getAttribute('src')).toEqual('star-off.png');
     expect(stars[4].getAttribute('src')).toEqual('star-off.png');
 
-    expect(raty.element.dataset.clicked).toEqual('true');
+    expect(raty.clicked).toEqual(true);
   });
 
   it('receives the score', function () {
@@ -43,14 +43,14 @@ describe('#click', function () {
     raty.click(1);
 
     // then
-    expect(raty.element.result).toEqual(1);
+    expect(raty.result).toEqual(1);
   });
 
-  it('receives the event', function () {
+  it('does not have an event', function () {
     // given
     var raty = new Raty(document.querySelector('#element'), {
-      click: function (score, evt) {
-        this.dataset.type = evt.type;
+      click: function (_score, _element, evt) {
+        this.evt = evt;
       },
     }).init();
 
@@ -58,7 +58,7 @@ describe('#click', function () {
     raty.click(1);
 
     // then
-    expect(raty.element.dataset.type).toEqual('click');
+    expect(raty.evt).toEqual(undefined);
   });
 
   describe('with :readOnly', function () {

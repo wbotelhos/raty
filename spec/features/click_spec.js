@@ -17,10 +17,10 @@ describe('#click', function () {
     Helper.trigger(star, 'click');
 
     // then
-    expect(raty.element.called).toEqual(true);
+    expect(raty.called).toEqual(true);
   });
 
-  it('has "this" as context', function () {
+  it('has "this" scope as the object instance ', function () {
     // given
     var raty = new Raty(document.querySelector('#el'), {
       click: function () {
@@ -34,7 +34,7 @@ describe('#click', function () {
     Helper.trigger(star, 'click');
 
     // then
-    expect(raty.element.result).toBe(document.querySelector('#el'));
+    expect(raty.result).toBe(raty);
   });
 
   it('receives the score as argument', function () {
@@ -50,7 +50,7 @@ describe('#click', function () {
     // when
     Helper.trigger(star, 'click');
 
-    expect(raty.element.result).toEqual(5);
+    expect(raty.result).toEqual(5);
   });
 
   context('with return as undefined', function () {
@@ -184,7 +184,7 @@ describe('#click', function () {
       // when
       Helper.trigger(cancel, 'click');
 
-      expect(raty.element.called).toEqual(true);
+      expect(raty.called).toEqual(true);
     });
   });
 

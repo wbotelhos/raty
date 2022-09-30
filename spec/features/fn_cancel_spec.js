@@ -70,7 +70,7 @@ describe('#fn_cancel', function () {
               raty.cancel();
 
               // then
-              expect(this.target.text()).toEqual('targetText');
+              expect(document.querySelector('#target').innerText).toEqual('targetText');
             });
           });
         });
@@ -91,7 +91,7 @@ describe('#fn_cancel', function () {
         raty.cancel(true);
 
         // then
-        expect(raty.element.clicked).toEqual(true);
+        expect(raty.clicked).toEqual(true);
       });
 
       context('with :target', function () {
