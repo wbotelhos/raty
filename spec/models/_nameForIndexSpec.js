@@ -1,6 +1,6 @@
 describe('#_nameForIndex', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
   context('when score is null', function () {

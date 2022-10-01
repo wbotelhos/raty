@@ -1,6 +1,6 @@
 describe('#init', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
   it('calls all necessary methods', function () {

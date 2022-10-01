@@ -1,13 +1,12 @@
 describe('#mouseout', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
   it('has "this" scope as the object instance ', function () {
     // given
     var raty = new Raty(document.querySelector('#el'), {
       mouseout: function () {
-        debugger;
         this.result = this;
       },
     }).init();
@@ -105,7 +104,6 @@ describe('#mouseout', function () {
       var raty = new Raty(document.querySelector('#el'), {
         cancelButton: true,
         mouseout: function () {
-          debugger;
           this.result = this;
         },
       }).init();

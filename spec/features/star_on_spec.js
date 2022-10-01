@@ -12,7 +12,7 @@ describe('#starOn', function () {
 
   context('on mouseover', function () {
     beforeEach(function () {
-      this.el = Helper.create('#el');
+      Helper.create('#el');
     });
 
     it('changes the stars on', function () {

@@ -1,7 +1,7 @@
 describe('#score', function () {
   it('can be initialized on bind', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), { score: 1 });
 
@@ -14,7 +14,7 @@ describe('#score', function () {
 
   it('turns on stars', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), { score: 5 });
 
@@ -25,12 +25,15 @@ describe('#score', function () {
     expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-on.png');
   });
 
-  it('accepts callback', function () {
+  it('accepts callback return and has the correct arguments', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), {
-      score: function () {
+      score: function (element) {
+        this._this = this;
+        this._element = element;
+
         return 1;
       },
     });
@@ -40,6 +43,8 @@ describe('#score', function () {
 
     // then
     expect(raty.opt.score).toEqual(1);
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
   });
 
   it('accepts data attribute', function () {
@@ -56,7 +61,7 @@ describe('#score', function () {
   context('with negative number', function () {
     it('does not set the score', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { score: -1 });
 
@@ -71,7 +76,7 @@ describe('#score', function () {
   context('with :readOnly', function () {
     it('becomes readOnly too', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { readOnly: true });
 
@@ -86,7 +91,7 @@ describe('#score', function () {
   context('with value greater then numbers', function () {
     it('receives the number of star as value', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { score: 100 });
 

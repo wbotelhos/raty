@@ -1,7 +1,7 @@
 describe('#starOff', function () {
   it('changes the stars off', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), { starOff: 'star-half.png' });
 
@@ -32,7 +32,7 @@ describe('#starOff', function () {
   context('with :starType', function () {
     it('uses the given element', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
@@ -51,7 +51,7 @@ describe('#starOff', function () {
 
     it('normalizes the class name', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
@@ -70,7 +70,7 @@ describe('#starOff', function () {
 
     it('does not create the "src" attribute', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
@@ -89,7 +89,7 @@ describe('#starOff', function () {
 
     it('creates the "data-alt" attribute', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 
@@ -108,7 +108,7 @@ describe('#starOff', function () {
 
     it('does not create the "alt" attribute', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { starType: 'i' });
 

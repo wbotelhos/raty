@@ -1,7 +1,7 @@
 describe('#_parseOptions', function () {
   it('parses options', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'));
 

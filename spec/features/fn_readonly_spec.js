@@ -1,6 +1,6 @@
 describe('#fn readOnly', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
   context('on true', function () {
@@ -93,7 +93,9 @@ describe('#fn readOnly', function () {
     context('with external bind on wrapper', function () {
       it('is kept', function () {
         // given
-        this.el.on('click', function () {
+        var el = document.querySelector('#el');
+
+        el.addEventListener('click', function () {
           this.dataset.trigged = true;
         });
 
@@ -102,10 +104,10 @@ describe('#fn readOnly', function () {
         raty.readOnly(true);
 
         // when
-        Helper.trigger(this.el[0], 'click');
+        Helper.trigger(el, 'click');
 
         // then
-        expect(this.el[0].dataset.trigged).toEqual('true');
+        expect(el.dataset.trigged).toEqual('true');
       });
     });
 
@@ -114,10 +116,9 @@ describe('#fn readOnly', function () {
         // given
         var raty = new Raty(document.querySelector('#el')).init();
         var star = raty.element.querySelector('img');
-        var that = this;
 
         star.addEventListener('click', function () {
-          that.el.data('trigged', true);
+          this.dataset.trigged = true;
         });
 
         raty.readOnly(true);
@@ -126,7 +127,7 @@ describe('#fn readOnly', function () {
         Helper.trigger(star, 'click');
 
         // then
-        expect(that.el.data('trigged')).toEqual(true);
+        expect(star.dataset.trigged).toEqual('true');
       });
     });
 

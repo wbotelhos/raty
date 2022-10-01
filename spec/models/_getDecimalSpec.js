@@ -1,6 +1,6 @@
 describe('#_getDecimal', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
   context('when number is an integer', function () {

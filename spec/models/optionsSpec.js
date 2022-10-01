@@ -1,6 +1,6 @@
 describe('options', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
   it('has the right default values', function () {

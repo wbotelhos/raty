@@ -1,35 +1,31 @@
 describe('#target', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
+  });
+
+  it('accepts callback return and has the correct arguments', function () {
+    // given
+    Helper.create('#target');
+
+    var raty = new Raty(document.querySelector('#el'), {
+      target: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return '#target';
+      },
+    });
+
+    // when
+    raty.init();
+
+    // then
+    expect(raty.opt.target).toEqual('#target');
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
   });
 
   context('on mouseover', function () {
-    context('with callback', function () {
-      beforeEach(function () {
-        this.el[0].setAttribute('data-target-selector', '#target');
-
-        this.target = Helper.target('#target');
-      });
-
-      it('accepts the return as value', function () {
-        // given
-        var raty = new Raty(document.querySelector('#el'), {
-          target: function () {
-            return this.getAttribute('data-target-selector');
-          },
-        }).init();
-
-        var star = Helper.last(raty.element.querySelectorAll('img'));
-
-        // when
-        Helper.trigger(star, 'mouseover');
-
-        // then
-
-        expect(this.target[0].innerHTML).toEqual('gorgeous');
-      });
-    });
-
     context('as div', function () {
       beforeEach(function () {
         this.target = Helper.target('#target');

@@ -1,7 +1,29 @@
 describe('#number', function () {
+  it('accepts callback return and has the correct arguments', function () {
+    // given
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), {
+      number: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return 10;
+      },
+    });
+
+    // when
+    raty.init();
+
+    // then
+    expect(raty.element.querySelectorAll('img').length).toEqual(10);
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
+  });
+
   it('changes the number of stars', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), { number: 1 });
 
@@ -14,7 +36,7 @@ describe('#number', function () {
 
   it('accepts number as string', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), { number: '1' });
 
@@ -27,7 +49,7 @@ describe('#number', function () {
 
   it('accepts callback', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), {
       number: function () {

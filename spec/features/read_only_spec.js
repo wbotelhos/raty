@@ -12,9 +12,31 @@ describe('#readOnly', function () {
     expect(raty.opt.readonly).toEqual(true);
   });
 
+  it('accepts callback return and has the correct arguments', function () {
+    // given
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), {
+      readOnly: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return true;
+      },
+    });
+
+    // when
+    raty.init();
+
+    // then
+    expect(raty.element.querySelector('input').readOnly).toEqual(true);
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
+  });
+
   context('on true', function () {
     beforeEach(function () {
-      this.el = Helper.create('#el');
+      Helper.create('#el');
     });
 
     it('sets score as readonly', function () {
@@ -30,14 +52,15 @@ describe('#readOnly', function () {
 
     it('removes the pointer cursor', function () {
       // given
-      var raty = new Raty(document.querySelector('#el'), { readOnly: true });
+      var el = document.querySelector('#el');
+      var raty = new Raty(el, { readOnly: true });
 
       // when
       raty.init();
 
       // then
-      expect(this.el).not.toHaveCss({ cursor: 'pointer' });
-      expect(this.el).not.toHaveCss({ cursor: 'default' });
+      expect(el).not.toHaveCss({ cursor: 'pointer' });
+      expect(el).not.toHaveCss({ cursor: 'default' });
     });
 
     context('without rating', function () {
@@ -103,17 +126,19 @@ describe('#readOnly', function () {
     context('with external bind on wrapper', function () {
       it('is kept', function () {
         // given
-        this.el.on('click', function () {
-          $(this).data('trigged', true);
+        var el = document.querySelector('#el');
+
+        el.addEventListener('click', function () {
+          this.dataset.trigged = true;
         });
 
         var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
 
         // when
-        this.el.click();
+        el.click();
 
         // then
-        expect(this.el.data('trigged')).toEqual(true);
+        expect(el.dataset.trigged).toEqual('true');
       });
     });
 
@@ -122,17 +147,16 @@ describe('#readOnly', function () {
         // given
         var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
         var star = raty.element.querySelector('img');
-        var that = this;
 
         star.addEventListener('click', function () {
-          that.el.data('trigged', true);
+          this.dataset.trigged = true;
         });
 
         // when
         Helper.trigger(star, 'click');
 
         // then
-        expect(that.el.data('trigged')).toEqual(true);
+        expect(star.dataset.trigged).toEqual('true');
       });
     });
 
@@ -259,7 +283,7 @@ describe('#readOnly', function () {
 
   context('on false', function () {
     beforeEach(function () {
-      this.el = Helper.create('#el');
+      Helper.create('#el');
     });
 
     it('removes the :readOnly of the score', function () {
@@ -277,13 +301,14 @@ describe('#readOnly', function () {
 
     it('applies the pointer cursor on wrapper', function () {
       // given
-      var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
+      var el = document.querySelector('#el');
+      var raty = new Raty(el, { readOnly: true }).init();
 
       // when
       raty.readOnly(false);
 
       // then
-      expect(this.el).toHaveCss({ cursor: 'pointer' });
+      expect(el).toHaveCss({ cursor: 'pointer' });
     });
 
     it('Removes the :noRatedMsg from stars', function () {

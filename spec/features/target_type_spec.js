@@ -1,6 +1,6 @@
 describe('#targetType', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     this.target = Helper.target('#target');
   });

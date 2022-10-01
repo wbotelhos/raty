@@ -1,6 +1,6 @@
 describe('#mouseover', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
   it('has "this" scope as the object instance ', function () {

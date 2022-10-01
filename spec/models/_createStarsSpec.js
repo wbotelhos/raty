@@ -1,6 +1,6 @@
 describe('#_createStars', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
   });
 
   context('with :number as 3', function () {

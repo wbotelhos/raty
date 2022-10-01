@@ -12,7 +12,7 @@ describe('#half', function () {
 
   context('as *false', function () {
     beforeEach(function () {
-      this.el = Helper.create('#el');
+      Helper.create('#el');
     });
 
     context('and :halfShow', function () {
@@ -62,7 +62,7 @@ describe('#half', function () {
 
   context('as *true', function () {
     beforeEach(function () {
-      this.el = Helper.create('#el');
+      Helper.create('#el');
     });
 
     // TODO: manual click event is not working on test

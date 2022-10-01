@@ -1,6 +1,6 @@
 describe('#precision', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el', 'div', { 'data-target': '#target' });
+    Helper.create('#el', 'div', { 'data-target': '#target' });
     this.target = Helper.create('#target');
   });
 

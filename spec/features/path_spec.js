@@ -1,6 +1,26 @@
 describe('#path', function () {
   beforeEach(function () {
-    this.el = Helper.create('#el');
+    Helper.create('#el');
+  });
+
+  it('accepts callback return and has the correct arguments', function () {
+    // given
+    var raty = new Raty(document.querySelector('#el'), {
+      path: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return 'path';
+      },
+    });
+
+    // when
+    raty.init();
+
+    // then
+    expect(raty.opt.path).toEqual('path/');
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
   });
 
   it('changes the path', function () {

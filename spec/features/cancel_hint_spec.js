@@ -1,7 +1,7 @@
 describe('#cancelHint', function () {
   it('changes the cancel hint', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     // when
     var raty = new Raty(document.querySelector('#el'), {

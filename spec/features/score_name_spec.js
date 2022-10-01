@@ -1,7 +1,7 @@
 describe('#scoreName', function () {
   it('changes the score field name', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), { scoreName: 'double' });
 
@@ -12,13 +12,16 @@ describe('#scoreName', function () {
     expect(raty.element.querySelector('input').name).toEqual('double');
   });
 
-  it('accepts callback', function () {
+  it('accepts callback return and has the correct arguments', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     var raty = new Raty(document.querySelector('#el'), {
-      scoreName: function () {
-        return 'double';
+      scoreName: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return 'name';
       },
     });
 
@@ -26,6 +29,8 @@ describe('#scoreName', function () {
     raty.init();
 
     // then
-    expect(raty.opt.scoreName).toEqual('double');
+    expect(raty.opt.scoreName).toEqual('name');
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
   });
 });

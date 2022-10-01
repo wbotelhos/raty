@@ -1,7 +1,7 @@
 describe('#cancel', function () {
   it('creates the element', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
 
     // when
     var raty = new Raty(document.querySelector('#el'), { cancelButton: true }).init();
@@ -29,7 +29,7 @@ describe('#cancel', function () {
   context('on mouseover', function () {
     it('turns on', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true }).init();
       var cancel = raty.element.querySelector('.raty-cancel');
@@ -43,7 +43,7 @@ describe('#cancel', function () {
 
     it('keeps the :cancelClass', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true }).init();
 
@@ -59,7 +59,7 @@ describe('#cancel', function () {
     context('with stars on', function () {
       it('turns off the stars', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { score: 3, cancelButton: true }).init();
 
@@ -81,7 +81,7 @@ describe('#cancel', function () {
     context('with :starType', function () {
       it('uses the given element', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
         var cancel = raty.element.querySelector('.raty-cancel');
@@ -95,7 +95,7 @@ describe('#cancel', function () {
 
       it('keeps the :cancelClass', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
         var cancel = raty.element.querySelector('.raty-cancel');
@@ -109,7 +109,7 @@ describe('#cancel', function () {
 
       it('sets class replacing dot to hiphen', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
         var cancel = raty.element.querySelector('.raty-cancel');
@@ -123,7 +123,7 @@ describe('#cancel', function () {
 
       it('does not set "src" attribute', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
         var cancel = raty.element.querySelector('.raty-cancel');
@@ -137,7 +137,7 @@ describe('#cancel', function () {
 
       it('sets "data-alt" attribute', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
         var cancel = raty.element.querySelector('.raty-cancel');
@@ -151,7 +151,7 @@ describe('#cancel', function () {
 
       it('does not set "alt" attribute', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
         var cancel = raty.element.querySelector('.raty-cancel');
@@ -168,7 +168,7 @@ describe('#cancel', function () {
   context('on mouseleave', function () {
     it('turns off', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true }).init();
       var cancel = raty.element.querySelector('.raty-cancel');
@@ -182,7 +182,7 @@ describe('#cancel', function () {
 
     it('keeps the :cancelClass', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true }).init();
       var cancel = raty.element.querySelector('.raty-cancel');
@@ -197,7 +197,7 @@ describe('#cancel', function () {
     context('with stars turned on', function () {
       it('turns on the star again', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { score: 5, cancelButton: true }).init();
         var cancel = raty.element.querySelector('.raty-cancel');
@@ -215,7 +215,7 @@ describe('#cancel', function () {
   context('on click', function () {
     it('cancel the rating', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true, score: 1 }).init();
       var cancel = raty.element.querySelector('.raty-cancel');
@@ -240,7 +240,7 @@ describe('#cancel', function () {
   context('when starts :readOnly', function () {
     it('starts hidden', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true, readOnly: true }).init();
       var cancel = raty.element.querySelector('.raty-cancel');
@@ -255,7 +255,7 @@ describe('#cancel', function () {
     context('on click', function () {
       it('does not cancel the rating', function () {
         // given
-        this.el = Helper.create('#el');
+        Helper.create('#el');
 
         var raty = new Raty(document.querySelector('#el'), { cancelButton: true, readOnly: true, score: 5 }).init();
         var cancel = raty.element.querySelector('.raty-cancel');
@@ -276,7 +276,7 @@ describe('#cancel', function () {
   context('when become :readOnly', function () {
     it('becomes hidden', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true }).init();
 
@@ -291,7 +291,7 @@ describe('#cancel', function () {
   context('with :starType', function () {
     it('uses the given element', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       // when
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
@@ -302,7 +302,7 @@ describe('#cancel', function () {
 
     it('keeps the :cancelClass', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
       var cancel = raty.element.querySelector('.raty-cancel');
@@ -316,7 +316,7 @@ describe('#cancel', function () {
 
     it('sets class replacing dot to hiphen', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       // when
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
@@ -327,7 +327,7 @@ describe('#cancel', function () {
 
     it('does not set "src" attribute', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       // when
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
@@ -338,7 +338,7 @@ describe('#cancel', function () {
 
     it('sets "data-alt" attribute', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       // when
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
@@ -349,7 +349,7 @@ describe('#cancel', function () {
 
     it('does not set "alt" attribute', function () {
       // given
-      this.el = Helper.create('#el');
+      Helper.create('#el');
 
       // when
       var raty = new Raty(document.querySelector('#el'), { cancelButton: true, starType: 'i' }).init();
