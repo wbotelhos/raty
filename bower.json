@@ -3,9 +3,6 @@
     "Washington Botelho <wbotelhos@gmail.com> (https://www.wbotelhos.com)"
   ],
   "description": "Raty - A Star Rating Plugin",
-  "devDependencies": {
-    "jquery": "^3.5.1"
-  },
   "homepage": "https://github.com/wbotelhos/raty",
   "ignore": [
     "**/.*",
