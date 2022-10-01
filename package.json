@@ -9,19 +9,17 @@
   "demos": [
     "demo/index.html"
   ],
-  "dependencies": {
+  "description": "Raty - A Star Rating Plugin",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
     "@babel/plugin-transform-modules-amd": "^7.18.6",
     "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "@babel/plugin-transform-modules-systemjs": "^7.19.0",
     "@babel/plugin-transform-modules-umd": "^7.18.6",
-    "babel-plugin-remove-import-export": "^1.1.1",
-    "babel-preset-minify": "^0.5.2"
-  },
-  "description": "Raty - A Star Rating Plugin",
-  "devDependencies": {
-    "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.3",
     "@babel/register": "^7.18.9",
+    "babel-plugin-remove-import-export": "^1.1.1",
+    "babel-preset-minify": "^0.5.2",
     "eslint": "^8.24.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
