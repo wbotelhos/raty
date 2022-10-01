@@ -6,7 +6,7 @@ describe('#cancelOff', function () {
     var raty = new Raty(document.querySelector('#el'), {
       cancelButton: true,
       cancelOff: 'star-half.png',
-      path: '../lib/images',
+      path: '../src/images',
     });
 
     // when
@@ -22,7 +22,7 @@ describe('#cancelOff', function () {
     // given
     Helper._append('div', { 'data-cancel-off': 'custom.png' });
 
-    var raty = new Raty(document.querySelector('[data-cancel-off]'), { cancelButton: true, path: '../lib/images' });
+    var raty = new Raty(document.querySelector('[data-cancel-off]'), { cancelButton: true, path: '../src/images' });
 
     // when
     raty.init();

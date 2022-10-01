@@ -53,7 +53,7 @@
     "voto"
   ],
   "license": "MIT",
-  "main": "lib/raty.js",
+  "main": "build/raty.js",
   "maintainers": [
     "Washington Botelho <wbotelhos@gmail.com> (https://www.wbotelhos.com)"
   ],

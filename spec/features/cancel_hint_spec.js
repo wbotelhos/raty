@@ -7,7 +7,7 @@ describe('#cancelHint', function () {
     var raty = new Raty(document.querySelector('#el'), {
       cancelButton: true,
       cancelHint: 'double',
-      path: '../lib/images',
+      path: '../src/images',
     }).init();
 
     // then
@@ -19,7 +19,7 @@ describe('#cancelHint', function () {
     Helper._append('div', { 'data-cancel-hint': 'custom' });
 
     // when
-    var raty = new Raty(document.querySelector('[data-cancel-hint]'), { path: '../lib/images' }).init();
+    var raty = new Raty(document.querySelector('[data-cancel-hint]'), { path: '../src/images' }).init();
 
     // then
     expect(raty.opt.cancelHint).toEqual('custom');

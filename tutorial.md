@@ -543,7 +543,7 @@ new Raty(document.querySelector('div'), { single: true });
 
 # Star Type
 
-Let you to change the star element type. Changing it from `img` to `i`, for example, changes from an image to a glyph. There is a sample stylesheet (`lib/raty.css`) using a sample fonts (`lib/fonts/raty.[eot|svg|ttf|woff]`).
+Let you to change the star element type. Changing it from `img` to `i`, for example, changes from an image to a glyph. There is a sample stylesheet (`src/raty.css`) using a sample fonts (`src/fonts/raty.[eot|svg|ttf|woff]`).
 
 To be easier to use, we replaced the dot (.) extension to a hyphen (-), so you do not need to change the original names, just set the names to your fonts.
 
