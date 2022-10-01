@@ -1,0 +1,25 @@
+name: Tests
+on: [pull_request, push]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Versions
+        run: |
+          node -v
+          google-chrome --version
+          chromedriver -v
+
+      - name: Yarn Install
+        run: yarn --frozen-lockfile
+
+      - name: Yarn Test
+        uses: GabrielBB/xvfb-action@v1
+
+        with:
+          run: yarn test

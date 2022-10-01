@@ -1,86 +1,82 @@
-describe('#fn_setScore', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
+describe('#fn_setScore', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('sets the score', function() {
+  it('sets the score', function () {
     // given
 
     // when
-    this.el.raty({ score: 1 });
+    var raty = new Raty(document.querySelector('#el'), { score: 1 }).init();
 
     // then
-    expect(this.el.data('raty').score()).toEqual(1);
+    expect(raty.score()).toEqual(1);
   });
 
-  describe('with :readOnly', function() {
-    it ('does not set the score', function() {
+  describe('with :readOnly', function () {
+    it('does not set the score', function () {
       // given
-      this.el.raty({ readOnly: true });
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true }).init();
 
       // when
-      this.el.data('raty').score(5);
+      raty.score(5);
 
       // then
-      expect(this.el.children('input')).toHaveValue('');
+      expect(raty.element.querySelector('input').value).toEqual('');
     });
   });
 
-  context('with :target', function() {
-    beforeEach(function() {
+  context('with :target', function () {
+    beforeEach(function () {
       this.target = Helper.create('#target');
     });
 
-    context('and :score greater then :number', function() {
-      it ('does not throw error', function() {
+    context('and :score greater then :number', function () {
+      it('does not throw error', function () {
         // given
         var that = this;
 
-        this.el.raty({ target: '#target' });
+        var raty = new Raty(document.querySelector('#el'), { target: '#target' }).init();
 
         // when
-        var lambda = function() { that.el.data('raty').score(6); };
+        var lambda = function () {
+          raty.score(6);
+        };
 
         // then
         expect(lambda).not.toThrow();
       });
     });
 
-    context('and :targetType', function() {
-      context('as *score', function() {
-        context('and :targetKeep', function() {
-          context('as *true', function() {
-            it ('sets the value equal :number', function() {
+    context('and :targetType', function () {
+      context('as *score', function () {
+        context('and :targetKeep', function () {
+          context('as *true', function () {
+            it('sets the value equal :number', function () {
               // given
-              this.el.raty({
-                target     : '#target',
-                targetType : 'score',
-                targetKeep : true
-              });
+              var raty = new Raty(document.querySelector('#el'), {
+                target: '#target',
+                targetType: 'score',
+                targetKeep: true,
+              }).init();
 
               // when
-              this.el.data('raty').score(6);
+              raty.score(6);
 
               // then
-              expect(this.target.text()).toEqual(this.el.data('raty').opt.number.toString());
+              expect(this.target.text()).toEqual(raty.opt.number.toString());
             });
 
-            it ('sets the :score on target', function() {
+            it('sets the :score on target', function () {
               // given
-              this.el.raty({
-                target     : '#target',
-                targetType : 'score',
-                targetKeep : true
-              });
+              var raty = new Raty(document.querySelector('#el'), {
+                target: '#target',
+                targetType: 'score',
+                targetKeep: true,
+              }).init();
 
               // when
-              this.el.data('raty').score(1);
+              raty.score(1);
 
               // then
               expect(this.target.text()).toEqual('1');

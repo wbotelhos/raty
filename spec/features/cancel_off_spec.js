@@ -1,35 +1,35 @@
-describe('#cancelOff', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-  });
-
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('changes the icon', function() {
+describe('#cancelOff', function () {
+  it('changes the icon', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), {
+      cancelButton: true,
+      cancelOff: 'star-half.png',
+      path: '../src/images',
+    });
 
     // when
-    this.el.raty({ cancelButton: true, cancelOff: 'star-half.png' });
+    raty.init();
 
     // then
-    var cancel = this.el.children('.raty-cancel');
+    var cancel = raty.element.querySelector('.raty-cancel');
 
-    expect(cancel).toHaveAttr('src', '../lib/images/star-half.png');
+    expect(Helper.extension(cancel.src)).toEqual('star-half.png');
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    this.el = Helper._append('div', { 'data-cancel-off': 'custom.png' });
+    Helper._append('div', { 'data-cancel-off': 'custom.png' });
+
+    var raty = new Raty(document.querySelector('[data-cancel-off]'), { cancelButton: true, path: '../src/images' });
 
     // when
-    this.el.raty({ cancelButton: true });
+    raty.init();
 
     // then
-    var cancel = this.el.children('.raty-cancel');
+    var cancel = raty.element.querySelector('.raty-cancel');
 
-    expect(cancel).toHaveAttr('src', '../lib/images/custom.png');
+    expect(Helper.extension(cancel.src)).toEqual('custom.png');
   });
 });

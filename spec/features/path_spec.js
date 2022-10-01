@@ -1,108 +1,145 @@
-describe('#path', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
+describe('#path', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('changes the path', function() {
+  it('accepts callback return and has the correct arguments', function () {
     // given
+    var raty = new Raty(document.querySelector('#el'), {
+      path: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return 'path';
+      },
+    });
 
     // when
-    this.el.raty({ path: '../demo/images' });
+    raty.init();
 
     // then
-    expect(this.el.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
+    expect(raty.opt.path).toEqual('path/');
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
   });
 
-  it ('accepts data attribute', function() {
+  it('changes the path', function () {
     // given
-    var el = Helper._append('div', { 'data-path': 'custom' });
+    var raty = new Raty(document.querySelector('#el'), { path: '../demo/images' });
 
     // when
-    el.raty();
+    raty.init();
 
     // then
-    expect(el.data('raty').opt.path).toEqual('custom/');
+    var stars = raty.element.querySelectorAll('img');
+
+    expect(stars[0].getAttribute('src')).toEqual('../demo/images/star-off.png');
+    expect(stars[1].getAttribute('src')).toEqual('../demo/images/star-off.png');
+    expect(stars[2].getAttribute('src')).toEqual('../demo/images/star-off.png');
+    expect(stars[3].getAttribute('src')).toEqual('../demo/images/star-off.png');
+    expect(stars[4].getAttribute('src')).toEqual('../demo/images/star-off.png');
   });
 
-  context('without slash on the final', function() {
-    it ('receives the slash', function() {
+  it('accepts data attribute', function () {
+    // given
+    Helper._append('div', { 'data-path': 'custom' });
+
+    var raty = new Raty(document.querySelector('[data-path]'));
+
+    // when
+    raty.init();
+
+    // then
+    expect(raty.opt.path).toEqual('custom/');
+  });
+
+  context('without slash on the final', function () {
+    it('receives the slash', function () {
       // given
+      var raty = new Raty(document.querySelector('#el'), { path: '../demo/images' });
 
       // when
-      this.el.raty({ path: '../demo/images' });
+      raty.init();
 
       // then
-      expect(this.el.data('raty').opt.path).toEqual('../demo/images/');
+      expect(raty.opt.path).toEqual('../demo/images/');
     });
   });
 
-  context('with slash on the final', function() {
-    it ('is keeped', function() {
+  context('with slash on the final', function () {
+    it('is keeped', function () {
       // given
+      var raty = new Raty(document.querySelector('#el'), { path: '../demo/images/' });
 
       // when
-      this.el.raty({ path: '../demo/images/' });
+      raty.init();
 
       // then
-      expect(this.el.data('raty').opt.path).toEqual('../demo/images/');
+      expect(raty.opt.path).toEqual('../demo/images/');
     });
   });
 
-  context('as null', function() {
-    it ('replace to an empty string', function() {
+  context('as null', function () {
+    it('replace to an empty string', function () {
       // given
+      var raty = new Raty(document.querySelector('#el'), { path: null });
 
       // when
-      this.el.raty({ path: null });
+      raty.init();
 
       // then
-      expect(this.el.children('img')).toHaveAttr('src', 'star-off.png');
+      var stars = raty.element.querySelectorAll('img');
+
+      expect(stars[0].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[1].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[2].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[3].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[4].getAttribute('src')).toEqual('star-off.png');
     });
   });
 
-  context('as undefined', function() {
-    beforeEach(function() {
-      $.raty.path = undefined;
-    });
-
-    it ('replace to an empty string', function() {
+  context('as undefined', function () {
+    it('replace to an empty string', function () {
       // given
+      var raty = new Raty(document.querySelector('#el'));
 
       // when
-      this.el.raty();
+      raty.init();
 
       // then
-      expect(this.el.children('img')).toHaveAttr('src', 'star-off.png');
-    });
-  });
+      var stars = raty.element.querySelectorAll('img');
 
-  context('with :cancel', function() {
-    it ('changes the path', function() {
-      // given
-
-      // when
-      this.el.raty({ cancelButton: true, path: '../demo/images' });
-
-      // then
-      expect(this.el.children('.raty-cancel')).toHaveAttr('src', '../demo/images/cancel-off.png');
+      expect(stars[0].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[1].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[2].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[3].getAttribute('src')).toEqual('star-off.png');
+      expect(stars[4].getAttribute('src')).toEqual('star-off.png');
     });
   });
 
-  context('with :iconRange', function() {
-    it ('changes the path', function() {
+  context('with :cancel', function () {
+    it('changes the path', function () {
       // given
+      var raty = new Raty(document.querySelector('#el'), { cancelButton: true, path: '../demo/images' });
 
       // when
-      this.el.raty({ iconRange: [{ range: 1 }], path: '../demo/images' });
+      raty.init();
 
       // then
-      expect(this.el.children('img')).toHaveAttr('src', '../demo/images/star-off.png');
+      expect(raty.element.querySelector('.raty-cancel').getAttribute('src')).toEqual('../demo/images/cancel-off.png');
+    });
+  });
+
+  context('with :iconRange', function () {
+    it('changes the path', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), { iconRange: [{ range: 1 }], path: '../demo/images' });
+
+      // when
+      raty.init();
+
+      // then
+      expect(raty.element.querySelector('img').getAttribute('src')).toEqual('../demo/images/star-off.png');
     });
   });
 });

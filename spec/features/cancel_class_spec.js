@@ -1,27 +1,25 @@
-describe('#cancelClass', function() {
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('changes the class', function() {
+describe('#cancelClass', function () {
+  it('changes the class', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), { cancelButton: true, cancelClass: 'custom-class' });
 
     // when
-    this.el.raty({ cancelButton: true, cancelClass: 'custom-class' });
+    raty.init();
 
     // then
-    expect(this.el.find('.custom-class').attr('alt')).toEqual('x');
+    expect(raty.element.querySelector('.custom-class').alt).toEqual('x');
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    this.el = Helper._append('div', { 'data-cancel-class': 'custom' });
+    Helper._append('div', { 'data-cancel-class': 'custom' });
 
     // when
-    this.el.raty();
+    var raty = new Raty(document.querySelector('[data-cancel-class]')).init();
 
     // then
-    expect(this.el.data('raty').opt.cancelClass).toEqual('custom');
+    expect(raty.opt.cancelClass).toEqual('custom');
   });
 });

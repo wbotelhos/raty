@@ -1,84 +1,95 @@
-describe('#targetType', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
+describe('#targetType', function () {
+  beforeEach(function () {
+    Helper.create('#el');
 
-    this.el     = Helper.create('#el');
     this.target = Helper.target('#target');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  context('target missing', function() {
-    it ('throws error', function() {
+  context('target missing', function () {
+    it('throws error', function () {
       // given
       var that = this;
 
       // when
-      var lambda = function() { that.el.raty({ target: '#missing' }); };
+      var lambda = function () {
+        var raty = new Raty(document.querySelector('#el'), { target: '#missing' }).init();
+      };
 
       // then
       expect(lambda).toThrow(new Error('Target selector invalid or missing!'));
     });
   });
 
-  context('as *hint', function() {
-    it ('receives the hint', function() {
+  context('as *hint', function () {
+    it('receives the hint', function () {
       // given
-      this.el.raty({ target: '#' + this.target[0].id, targetType: 'hint' });
+      var raty = new Raty(document.querySelector('#el'), {
+        target: '#' + this.target[0].id,
+        targetType: 'hint',
+      }).init();
 
-      var star = this.el.children('img:last');
+      var star = Helper.last(raty.element.querySelectorAll('img'));
 
       // when
-      star.trigger('mouseover');
+      Helper.trigger(star, 'mouseover');
 
       // then
-      expect(this.target).toHaveHtml('gorgeous');
+      expect(this.target[0].innerHTML).toEqual('gorgeous');
     });
 
-    context('with :cancel', function() {
-      it ('receives the :cancelHint', function() {
+    context('with :cancel', function () {
+      it('receives the :cancelHint', function () {
         // given
-        this.el.raty({ cancelButton: true, target: '#' + this.target[0].id, targetType: 'hint' });
+        var raty = new Raty(document.querySelector('#el'), {
+          cancelButton: true,
+          target: '#' + this.target[0].id,
+          targetType: 'hint',
+        }).init();
 
-        var cancel = this.el.children('.raty-cancel');
+        var cancel = raty.element.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(this.target).toHaveHtml('Cancel this rating!');
+        expect(this.target[0].innerHTML).toEqual('Cancel this rating!');
       });
     });
   });
 
-  context('as *score', function() {
-    it ('receives the score', function() {
+  context('as *score', function () {
+    it('receives the score', function () {
       // given
-      this.el.raty({ target: '#' + this.target[0].id, targetType: 'score' });
+      var raty = new Raty(document.querySelector('#el'), {
+        target: '#' + this.target[0].id,
+        targetType: 'score',
+      }).init();
 
-      var star = this.el.children('img:last');
+      var star = Helper.last(raty.element.querySelectorAll('img'));
 
       // when
-      star.trigger('mouseover');
+      Helper.trigger(star, 'mouseover');
 
       // then
       expect(this.target).toHaveHtml(5);
     });
 
-    context('with :cancel', function() {
-      it ('receives the :cancelHint', function() {
+    context('with :cancel', function () {
+      it('receives the :cancelHint', function () {
         // given
-        this.el.raty({ cancelButton: true, target: '#' + this.target[0].id, targetType: 'score' });
+        var raty = new Raty(document.querySelector('#el'), {
+          cancelButton: true,
+          target: '#' + this.target[0].id,
+          targetType: 'score',
+        }).init();
 
-        var cancel = this.el.children('.raty-cancel');
+        var cancel = raty.element.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseover');
+        Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(this.target).toHaveHtml('Cancel this rating!');
+        expect(this.target[0].innerHTML).toEqual('Cancel this rating!');
       });
     });
   });

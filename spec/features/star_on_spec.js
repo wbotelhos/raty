@@ -1,46 +1,44 @@
-describe('#starOn', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
-  });
-
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('accepts data attribute', function() {
+describe('#starOn', function () {
+  it('accepts data attribute', function () {
     // given
-    var el = Helper._append('div', { 'data-star-on': 'custom' });
+    Helper._append('div', { 'data-star-on': 'custom' });
 
     // when
-    el.raty();
+    var raty = new Raty(document.querySelector('[data-star-on]')).init();
 
     // then
-    expect(el.data('raty').opt.starOn).toEqual('custom');
+    expect(raty.opt.starOn).toEqual('custom');
   });
 
-  context('on mouseover', function() {
-    it ('changes the stars on', function() {
-      // given
-      var self  = this.el.raty({ starOn: 'star-half.png' });
-      var stars = self.children('img');
-
-      // when
-      stars.last().trigger('mouseover');
-
-      // then
-      expect(stars).toHaveAttr('src', '../lib/images/star-half.png');
+  context('on mouseover', function () {
+    beforeEach(function () {
+      Helper.create('#el');
     });
 
-    context('with :starType', function() {
-      it ('uses the given element', function() {
+    it('changes the stars on', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), { starOn: 'star-half.png' }).init();
+      var stars = raty.element.querySelectorAll('img');
+
+      // when
+      Helper.trigger(Helper.last(stars), 'mouseover');
+
+      // then
+      expect(Helper.extension(stars[0].src)).toEqual('star-half.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-half.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-half.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-half.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-half.png');
+    });
+
+    context('with :starType', function () {
+      it('uses the given element', function () {
         // given
-        var self  = this.el.raty({ starType: 'i' });
-        var stars = self.children('i');
+        var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
+        var stars = raty.element.querySelectorAll('i');
 
         // when
-        stars.last().trigger('mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars[0].tagName).toEqual('I');
@@ -50,49 +48,49 @@ describe('#starOn', function() {
         expect(stars[4].tagName).toEqual('I');
       });
 
-      it ('normalizes the class name', function() {
+      it('normalizes the class name', function () {
         // given
-        var self  = this.el.raty({ starType: 'i' });
-        var stars = self.children('i');
+        var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
+        var stars = raty.element.querySelectorAll('i');
 
         // when
-        stars.last().trigger('mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars).toHaveClass('star-on-png');
       });
 
-      it ('does not create "src" attribute', function() {
+      it('does not create "src" attribute', function () {
         // given
-        var self  = this.el.raty({ starType: 'i' });
-        var stars = self.children('i');
+        var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
+        var stars = raty.element.querySelectorAll('i');
 
         // when
-        stars.last().trigger('mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars).not.toHaveAttr('src');
       });
 
-      it ('creates "data-alt" attribute', function() {
+      it('creates "data-alt" attribute', function () {
         // given
-        var self  = this.el.raty({ starType: 'i' });
-        var stars = self.children('i');
+        var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
+        var stars = raty.element.querySelectorAll('i');
 
         // when
-        stars.last().trigger('mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars).toHaveAttr('data-alt');
       });
 
-      it ('does not create "alt" attribute', function() {
+      it('does not create "alt" attribute', function () {
         // given
-        var self  = this.el.raty({ starType: 'i' });
-        var stars = self.children('i');
+        var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
+        var stars = raty.element.querySelectorAll('i');
 
         // when
-        stars.last().trigger('mouseover');
+        Helper.trigger(Helper.last(stars), 'mouseover');
 
         // then
         expect(stars).not.toHaveAttr('alt');

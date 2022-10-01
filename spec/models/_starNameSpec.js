@@ -1,61 +1,58 @@
-describe('#_starName', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
+describe('#_starName', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  context ('when event is given', function() {
-    beforeEach(function() {
+  context('when event is given', function () {
+    beforeEach(function () {
       this.evt = document.createEvent('MouseEvents');
     });
 
-    context ('when decimal is bigger than 0.5', function() {
-      beforeEach(function() {
-        this.decimal = .51;
+    context('when decimal is bigger than 0.5', function () {
+      beforeEach(function () {
+        this.decimal = 0.51;
       });
 
-      it ('returns startOn', function() {
+      it('returns startOn', function () {
         // given
-        var element  = this.el[0];
-        var instance = new $.raty.Raty(element);
+        var raty = new Raty(document.querySelector('#el'));
 
         // when
-        var star = instance._starName(this.decimal, this.evt);
+        var star = raty._starName(this.decimal, this.evt);
 
         // then
         expect(star).toEqual('starOn');
       });
     });
 
-    context ('when decimal is equal 0.5', function() {
-      beforeEach(function() {
-        this.decimal = .5;
+    context('when decimal is equal 0.5', function () {
+      beforeEach(function () {
+        this.decimal = 0.5;
       });
 
-      it ('returns starHalf', function() {
+      it('returns starHalf', function () {
         // given
-        var element  = this.el[0];
-        var instance = new $.raty.Raty(element);
+        var raty = new Raty(document.querySelector('#el'));
 
         // when
-        var star = instance._starName(this.decimal, this.evt);
+        var star = raty._starName(this.decimal, this.evt);
 
         // then
         expect(star).toEqual('starHalf');
       });
     });
 
-    context ('when decimal is less than 0.5', function() {
-      beforeEach(function() {
-        this.decimal = .49;
+    context('when decimal is less than 0.5', function () {
+      beforeEach(function () {
+        this.decimal = 0.49;
       });
 
-      it ('returns starHalf', function() {
+      it('returns starHalf', function () {
         // given
-        var element  = this.el[0];
-        var instance = new $.raty.Raty(element);
+        var raty = new Raty(document.querySelector('#el'));
 
         // when
-        var star = instance._starName(this.decimal, this.evt);
+        var star = raty._starName(this.decimal, this.evt);
 
         // then
         expect(star).toEqual('starHalf');
@@ -63,62 +60,59 @@ describe('#_starName', function() {
     });
   });
 
-  context ('when event is not given', function() {
-    beforeEach(function() {
+  context('when event is not given', function () {
+    beforeEach(function () {
       this.evt = undefined;
     });
 
-    context ('when move function is triggered', function() {
-      beforeEach(function() {
+    context('when move function is triggered', function () {
+      beforeEach(function () {
         this.isMove = true;
       });
 
-      context ('when decimal is bigger than 0.5', function() {
-        beforeEach(function() {
-          this.decimal = .51;
+      context('when decimal is bigger than 0.5', function () {
+        beforeEach(function () {
+          this.decimal = 0.51;
         });
 
-        it ('returns startOn', function() {
+        it('returns startOn', function () {
           // given
-          var element  = this.el[0];
-          var instance = new $.raty.Raty(element);
+          var raty = new Raty(document.querySelector('#el'));
 
-          instance.isMove = this.isMove;
+          raty.isMove = this.isMove;
 
           // when
-          var star = instance._starName(this.decimal, this.evt);
+          var star = raty._starName(this.decimal, this.evt);
 
           // then
           expect(star).toEqual('starOn');
         });
       });
 
-      context ('when decimal is equal 0.5', function() {
-        it ('returns starHalf', function() {
+      context('when decimal is equal 0.5', function () {
+        it('returns starHalf', function () {
           // given
-          var element  = this.el[0];
-          var instance = new $.raty.Raty(element);
+          var raty = new Raty(document.querySelector('#el'));
 
-          instance.isMove = this.isMove;
+          raty.isMove = this.isMove;
 
           // when
-          var star = instance._starName(this.decimal, this.evt);
+          var star = raty._starName(this.decimal, this.evt);
 
           // then
           expect(star).toEqual('starHalf');
         });
       });
 
-      context ('when decimal is less than 0.5', function() {
-        it ('returns starHalf', function() {
+      context('when decimal is less than 0.5', function () {
+        it('returns starHalf', function () {
           // given
-          var element  = this.el[0];
-          var instance = new $.raty.Raty(element);
+          var raty = new Raty(document.querySelector('#el'));
 
-          instance.isMove = this.isMove;
+          raty.isMove = this.isMove;
 
           // when
-          var star = instance._starName(this.decimal, this.evt);
+          var star = raty._starName(this.decimal, this.evt);
 
           // then
           expect(star).toEqual('starHalf');
@@ -126,160 +120,154 @@ describe('#_starName', function() {
       });
     });
 
-    context ('when move function is not triggered', function() {
-      beforeEach(function() {
+    context('when move function is not triggered', function () {
+      beforeEach(function () {
         this.isMove = false;
       });
 
-      context ('when decimal is less than option round.down', function() {
-        beforeEach(function() {
-          this.decimal   = .51;
-          this.roundDown = this.decimal + .1;
+      context('when decimal is less than option round.down', function () {
+        beforeEach(function () {
+          this.decimal = 0.51;
+          this.roundDown = this.decimal + 0.1;
         });
 
-        it ('returns undefined', function() {
+        it('returns undefined', function () {
           // given
-          var element  = this.el[0];
-          var instance = new $.raty.Raty(element);
+          var raty = new Raty(document.querySelector('#el'));
 
-          instance.isMove           = this.isMove;
-          instance.opt.round.down = this.roundDown;
+          raty.isMove = this.isMove;
+          raty.opt.round.down = this.roundDown;
 
           // when
-          var star = instance._starName(this.decimal, this.evt);
+          var star = raty._starName(this.decimal, this.evt);
 
           // then
           expect(star).toEqual(undefined);
         });
       });
 
-      context ('when decimal is equal option round.down', function() {
-        beforeEach(function() {
-          this.decimal   = .51;
+      context('when decimal is equal option round.down', function () {
+        beforeEach(function () {
+          this.decimal = 0.51;
           this.roundDown = this.decimal;
         });
 
-        it ('returns undefined', function() {
+        it('returns undefined', function () {
           // given
-          var element  = this.el[0];
-          var instance = new $.raty.Raty(element);
+          var raty = new Raty(document.querySelector('#el'));
 
-          instance.isMove           = this.isMove;
-          instance.opt.round.down = this.roundDown;
+          raty.isMove = this.isMove;
+          raty.opt.round.down = this.roundDown;
 
           // when
-          var star = instance._starName(this.decimal, this.evt);
+          var star = raty._starName(this.decimal, this.evt);
 
           // then
           expect(star).toEqual(undefined);
         });
       });
 
-      context ('when decimal is bigger than option round.down', function() {
-        beforeEach(function() {
-          this.roundDown = .50;
-          this.decimal   = this.roundDown + .1;
+      context('when decimal is bigger than option round.down', function () {
+        beforeEach(function () {
+          this.roundDown = 0.5;
+          this.decimal = this.roundDown + 0.1;
         });
 
-        context ('when option halfShow is enabled', function() {
-          beforeEach(function() {
+        context('when option halfShow is enabled', function () {
+          beforeEach(function () {
             this.halfShow = true;
           });
 
-          context ('when decimal is less than options round.up', function() {
-            beforeEach(function() {
-              this.roundUp = this.decimal + .1;
+          context('when decimal is less than options round.up', function () {
+            beforeEach(function () {
+              this.roundUp = this.decimal + 0.1;
             });
 
-            it ('returns starHalf', function() {
+            it('returns starHalf', function () {
               // given
-              var element  = this.el[0];
-              var instance = new $.raty.Raty(element);
+              var raty = new Raty(document.querySelector('#el'));
 
-              instance.isMove           = this.isMove;
-              instance.opt.halfShow   = this.halfShow;
-              instance.opt.round.down = this.roundDown;
-              instance.opt.round.up   = this.roundUp;
+              raty.isMove = this.isMove;
+              raty.opt.halfShow = this.halfShow;
+              raty.opt.round.down = this.roundDown;
+              raty.opt.round.up = this.roundUp;
 
               // when
-              var star = instance._starName(this.decimal, this.evt);
+              var star = raty._starName(this.decimal, this.evt);
 
               // then
               expect(star).toEqual('starHalf');
             });
           });
 
-          context ('when decimal is equal options round.up', function() {
-            beforeEach(function() {
+          context('when decimal is equal options round.up', function () {
+            beforeEach(function () {
               this.roundUp = this.decimal;
             });
 
-            context ('when decimal is less than options round.full', function() {
-              beforeEach(function() {
-                this.roundFull = this.decimal + .1;
+            context('when decimal is less than options round.full', function () {
+              beforeEach(function () {
+                this.roundFull = this.decimal + 0.1;
               });
 
-              it ('returns starOff', function() {
+              it('returns starOff', function () {
                 // given
-                var element  = this.el[0];
-                var instance = new $.raty.Raty(element);
+                var raty = new Raty(document.querySelector('#el'));
 
-                instance.isMove           = this.isMove;
-                instance.opt.halfShow   = this.halfShow;
-                instance.opt.round.down = this.roundDown;
-                instance.opt.round.full = this.roundFull;
-                instance.opt.round.up   = this.roundUp;
+                raty.isMove = this.isMove;
+                raty.opt.halfShow = this.halfShow;
+                raty.opt.round.down = this.roundDown;
+                raty.opt.round.full = this.roundFull;
+                raty.opt.round.up = this.roundUp;
 
                 // when
-                var star = instance._starName(this.decimal, this.evt);
+                var star = raty._starName(this.decimal, this.evt);
 
                 // then
                 expect(star).toEqual('starOff');
               });
             });
 
-            context ('when decimal is equal options round.full', function() {
-              beforeEach(function() {
+            context('when decimal is equal options round.full', function () {
+              beforeEach(function () {
                 this.roundFull = this.decimal;
               });
 
-              it ('returns starOn', function() {
+              it('returns starOn', function () {
                 // given
-                var element  = this.el[0];
-                var instance = new $.raty.Raty(element);
+                var raty = new Raty(document.querySelector('#el'));
 
-                instance.isMove           = this.isMove;
-                instance.opt.halfShow   = this.halfShow;
-                instance.opt.round.down = this.roundDown;
-                instance.opt.round.full = this.roundFull;
-                instance.opt.round.up   = this.roundUp;
+                raty.isMove = this.isMove;
+                raty.opt.halfShow = this.halfShow;
+                raty.opt.round.down = this.roundDown;
+                raty.opt.round.full = this.roundFull;
+                raty.opt.round.up = this.roundUp;
 
                 // when
-                var star = instance._starName(this.decimal, this.evt);
+                var star = raty._starName(this.decimal, this.evt);
 
                 // then
                 expect(star).toEqual('starOn');
               });
             });
 
-            context ('when decimal is bigger than options round.full', function() {
-              beforeEach(function() {
-                this.roundFull = this.decimal - .1;
+            context('when decimal is bigger than options round.full', function () {
+              beforeEach(function () {
+                this.roundFull = this.decimal - 0.1;
               });
 
-              it ('returns starOn', function() {
+              it('returns starOn', function () {
                 // given
-                var element  = this.el[0];
-                var instance = new $.raty.Raty(element);
+                var raty = new Raty(document.querySelector('#el'));
 
-                instance.isMove           = this.isMove;
-                instance.opt.halfShow   = this.halfShow;
-                instance.opt.round.down = this.roundDown;
-                instance.opt.round.full = this.roundFull;
-                instance.opt.round.up   = this.roundUp;
+                raty.isMove = this.isMove;
+                raty.opt.halfShow = this.halfShow;
+                raty.opt.round.down = this.roundDown;
+                raty.opt.round.full = this.roundFull;
+                raty.opt.round.up = this.roundUp;
 
                 // when
-                var star = instance._starName(this.decimal, this.evt);
+                var star = raty._starName(this.decimal, this.evt);
 
                 // then
                 expect(star).toEqual('starOn');
@@ -287,77 +275,74 @@ describe('#_starName', function() {
             });
           });
 
-          context ('when decimal is bigger than options round.up', function() {
-            beforeEach(function() {
-              this.roundUp = this.decimal - .1;
+          context('when decimal is bigger than options round.up', function () {
+            beforeEach(function () {
+              this.roundUp = this.decimal - 0.1;
             });
 
-            context ('when decimal is less than options round.full', function() {
-              beforeEach(function() {
-                this.roundFull = this.decimal + .1;
+            context('when decimal is less than options round.full', function () {
+              beforeEach(function () {
+                this.roundFull = this.decimal + 0.1;
               });
 
-              it ('returns starOff', function() {
+              it('returns starOff', function () {
                 // given
-                var element  = this.el[0];
-                var instance = new $.raty.Raty(element);
+                var raty = new Raty(document.querySelector('#el'));
 
-                instance.isMove           = this.isMove;
-                instance.opt.halfShow   = this.halfShow;
-                instance.opt.round.down = this.roundDown;
-                instance.opt.round.full = this.roundFull;
-                instance.opt.round.up   = this.roundUp;
+                raty.isMove = this.isMove;
+                raty.opt.halfShow = this.halfShow;
+                raty.opt.round.down = this.roundDown;
+                raty.opt.round.full = this.roundFull;
+                raty.opt.round.up = this.roundUp;
 
                 // when
-                var star = instance._starName(this.decimal, this.evt);
+                var star = raty._starName(this.decimal, this.evt);
 
                 // then
                 expect(star).toEqual('starOff');
               });
             });
 
-            context ('when decimal is equal options round.full', function() {
-              beforeEach(function() {
+            context('when decimal is equal options round.full', function () {
+              beforeEach(function () {
                 this.roundFull = this.decimal;
               });
 
-              it ('returns starOn', function() {
+              it('returns starOn', function () {
                 // given
-                var element  = this.el[0];
-                var instance = new $.raty.Raty(element);
+                var raty = new Raty(document.querySelector('#el'));
 
-                instance.isMove           = this.isMove;
-                instance.opt.halfShow   = this.halfShow;
-                instance.opt.round.down = this.roundDown;
-                instance.opt.round.full = this.roundFull;
-                instance.opt.round.up   = this.roundUp;
+                raty.isMove = this.isMove;
+                raty.opt.halfShow = this.halfShow;
+                raty.opt.round.down = this.roundDown;
+                raty.opt.round.full = this.roundFull;
+                raty.opt.round.up = this.roundUp;
 
                 // when
-                var star = instance._starName(this.decimal, this.evt);
+                var star = raty._starName(this.decimal, this.evt);
 
                 // then
                 expect(star).toEqual('starOn');
               });
             });
 
-            context ('when decimal is bigger than options round.full', function() {
-              beforeEach(function() {
-                this.roundFull = this.decimal - .1;
+            context('when decimal is bigger than options round.full', function () {
+              beforeEach(function () {
+                this.roundFull = this.decimal - 0.1;
               });
 
-              it ('returns starOn', function() {
+              it('returns starOn', function () {
                 // given
-                var element  = this.el[0];
-                var instance = new $.raty.Raty(element);
+                var raty = new Raty(document.querySelector('#el'));
 
-                instance.isMove           = this.isMove;
-                instance.opt.halfShow   = this.halfShow;
-                instance.opt.round.down = this.roundDown;
-                instance.opt.round.full = this.roundFull;
-                instance.opt.round.up   = this.roundUp;
+                raty.isMove = this.isMove;
+                raty.opt.halfShow = this.halfShow;
+                raty.opt.round.down = this.roundDown;
+                raty.opt.round.full = this.roundFull;
+                raty.opt.round.up = this.roundUp;
 
                 // when
-                var star = instance._starName(this.decimal, this.evt);
+                var star = raty._starName(this.decimal, this.evt);
 
                 // then
                 expect(star).toEqual('starOn');
@@ -366,74 +351,71 @@ describe('#_starName', function() {
           });
         });
 
-        context ('when option halfShow is not enabled', function() {
-          beforeEach(function() {
+        context('when option halfShow is not enabled', function () {
+          beforeEach(function () {
             this.halfShow = false;
           });
 
-          context ('when decimal is less than options round.full', function() {
-            beforeEach(function() {
-              this.roundFull = this.decimal + .1;
+          context('when decimal is less than options round.full', function () {
+            beforeEach(function () {
+              this.roundFull = this.decimal + 0.1;
             });
 
-            it ('returns starOff', function() {
+            it('returns starOff', function () {
               // given
-              var element  = this.el[0];
-              var instance = new $.raty.Raty(element);
+              var raty = new Raty(document.querySelector('#el'));
 
-              instance.isMove           = this.isMove;
-              instance.opt.halfShow   = this.halfShow;
-              instance.opt.round.down = this.roundDown;
-              instance.opt.round.full = this.roundFull;
+              raty.isMove = this.isMove;
+              raty.opt.halfShow = this.halfShow;
+              raty.opt.round.down = this.roundDown;
+              raty.opt.round.full = this.roundFull;
 
               // when
-              var star = instance._starName(this.decimal, this.evt);
+              var star = raty._starName(this.decimal, this.evt);
 
               // then
               expect(star).toEqual('starOff');
             });
           });
 
-          context ('when decimal is equal options round.full', function() {
-            beforeEach(function() {
+          context('when decimal is equal options round.full', function () {
+            beforeEach(function () {
               this.roundFull = this.decimal;
             });
 
-            it ('returns starOn', function() {
+            it('returns starOn', function () {
               // given
-              var element  = this.el[0];
-              var instance = new $.raty.Raty(element);
+              var raty = new Raty(document.querySelector('#el'));
 
-              instance.isMove           = this.isMove;
-              instance.opt.halfShow   = this.halfShow;
-              instance.opt.round.down = this.roundDown;
-              instance.opt.round.full = this.roundFull;
+              raty.isMove = this.isMove;
+              raty.opt.halfShow = this.halfShow;
+              raty.opt.round.down = this.roundDown;
+              raty.opt.round.full = this.roundFull;
 
               // when
-              var star = instance._starName(this.decimal, this.evt);
+              var star = raty._starName(this.decimal, this.evt);
 
               // then
               expect(star).toEqual('starOn');
             });
           });
 
-          context ('when decimal is bigger than options round.full', function() {
-            beforeEach(function() {
-              this.roundFull = this.decimal - .1;
+          context('when decimal is bigger than options round.full', function () {
+            beforeEach(function () {
+              this.roundFull = this.decimal - 0.1;
             });
 
-            it ('returns starOn', function() {
+            it('returns starOn', function () {
               // given
-              var element  = this.el[0];
-              var instance = new $.raty.Raty(element);
+              var raty = new Raty(document.querySelector('#el'));
 
-              instance.isMove           = this.isMove;
-              instance.opt.halfShow   = this.halfShow;
-              instance.opt.round.down = this.roundDown;
-              instance.opt.round.full = this.roundFull;
+              raty.isMove = this.isMove;
+              raty.opt.halfShow = this.halfShow;
+              raty.opt.round.down = this.roundDown;
+              raty.opt.round.full = this.roundFull;
 
               // when
-              var star = instance._starName(this.decimal, this.evt);
+              var star = raty._starName(this.decimal, this.evt);
 
               // then
               expect(star).toEqual('starOn');

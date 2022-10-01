@@ -1,61 +1,62 @@
-describe('#_executeCallbacks', function() {
-  beforeEach(function() {
-    this.el = Helper.create('#el');
+describe('#_executeCallbacks', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  context('when options should compute, not evaluate at runtime, the return and it is a function', function() {
-    it ('uses the given return', function() {
+  context('when options should compute, not evaluate at runtime, the return and it is a function', function () {
+    it('uses the given return', function () {
       // given
-      var element  = this.el[0];
-      var instance = new $.raty.Raty(element, { number: function() { return 36; } });
+      var raty = new Raty(document.querySelector('#el'), {
+        number: function () {
+          return 36;
+        },
+      });
 
       // when
-      instance._executeCallbacks();
+      raty._executeCallbacks();
 
       // then
-      expect(instance.opt.number).toEqual(36);
+      expect(raty.opt.number).toEqual(36);
     });
 
-    context('whe there is not return', function() {
-      it ('is undefined', function() {
+    context('whe there is not return', function () {
+      it('is undefined', function () {
         // given
-        var element  = this.el[0];
-        var instance = new $.raty.Raty(element, { number: function() {} });
+        var raty = new Raty(document.querySelector('#el'), { number: function () {} });
 
         // when
-        instance._executeCallbacks();
+        raty._executeCallbacks();
 
         // then
-        expect(instance.opt.number).toBeUndefined();
+        expect(raty.opt.number).toEqual(undefined);
       });
     });
 
-    context('when options is not a function', function() {
-      it ('keeps the given value', function() {
+    context('when options is not a function', function () {
+      it('keeps the given value', function () {
         // given
-        var element  = this.el[0];
-        var instance = new $.raty.Raty(element, { number: 16 });
+        var raty = new Raty(document.querySelector('#el'), { number: 16 });
 
         // when
-        instance._executeCallbacks();
+        raty._executeCallbacks();
 
         // then
-        expect(instance.opt.number).toEqual(16);
+        expect(raty.opt.number).toEqual(16);
       });
     });
   });
 
-  context('when options is not no allow list', function() {
-    it ('keeps the given value', function() {
+  context('when options is not no allow list', function () {
+    it('keeps the given value', function () {
       // given
-      var element  = this.el[0];
-      var instance = new $.raty.Raty(element, { denied: 'default' });
+
+      var raty = new Raty(document.querySelector('#el'), { denied: 'default' });
 
       // when
-      instance._executeCallbacks();
+      raty._executeCallbacks();
 
       // then
-      expect(instance.opt.denied).toEqual('default');
+      expect(raty.opt.denied).toEqual('default');
     });
   });
 });

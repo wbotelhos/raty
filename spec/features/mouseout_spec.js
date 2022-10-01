@@ -1,129 +1,197 @@
-describe('#mouseout', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
+describe('#mouseout', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('receives the mouse event', function() {
+  it('has "this" scope as the object instance ', function () {
     // given
-    this.el.raty({
-      mouseout: function(score, evt) {
-        this.result = evt;
-      }
-    });
-
-    var star = this.el.children('img:last');
+    var raty = new Raty(document.querySelector('#el'), {
+      mouseout: function () {
+        this.result = this;
+      },
+    }).init();
 
     // when
-    star.trigger('mouseout');
+    Helper.trigger(raty.element, 'mouseleave');
 
     // then
-    expect(this.el[0].result.type).toEqual('mouseout');
+    expect(raty.result).toBe(raty);
   });
 
-  context('without score', function() {
-    it ('receives undefined', function() {
+  it('receives the score as integer', function () {
+    // given
+    var raty = new Raty(document.querySelector('#el'), {
+      mouseout: function (score) {
+        this.result = score;
+      },
+      score: 4,
+    }).init();
+
+    // when
+    Helper.trigger(raty.element, 'mouseleave');
+
+    expect(raty.result).toEqual(4);
+  });
+
+  it('receives the element', function () {
+    // given
+    var raty = new Raty(document.querySelector('#el'), {
+      mouseout: function (_score, element) {
+        this.result = element;
+      },
+    }).init();
+
+    // when
+    Helper.trigger(raty.element, 'mouseleave');
+
+    // then
+    expect(raty.result).toEqual(document.querySelector('#el'));
+  });
+
+  it('receives the mouse event', function () {
+    // given
+    var raty = new Raty(document.querySelector('#el'), {
+      mouseout: function (_score, _element, evt) {
+        this.result = evt;
+      },
+    }).init();
+
+    // when
+    Helper.trigger(raty.element, 'mouseleave');
+
+    // then
+    expect(raty.result.type).toEqual('mouseleave');
+  });
+
+  context('without score', function () {
+    it('receives undefined', function () {
       // given
-      this.el.raty({
-        cancelButton: true,
-        mouseout: function(score) {
+      var raty = new Raty(document.querySelector('#el'), {
+        mouseout: function (score) {
           this.result = score;
-        }
-      });
-
-      var star = this.el.children('img:last');
+        },
+      }).init();
 
       // when
-      star.trigger('mouseout');
+      Helper.trigger(raty.element, 'mouseleave');
 
       // then
-      expect(this.el[0].result).toBeUndefined();
+      expect(raty.result).toEqual(undefined);
     });
   });
 
-  context('with score', function() {
-    it ('receives the score value as number', function() {
+  context('with score', function () {
+    it('receives the score value as number', function () {
       // given
-      this.el.raty({
-        score    : 1,
-        mouseout : function(score) {
+      var raty = new Raty(document.querySelector('#el'), {
+        score: 1,
+        mouseout: function (score) {
           this.result = score;
-        }
-      });
-
-      var star = this.el.children('img:last');
+        },
+      }).init();
 
       // when
-      star.trigger('mouseout');
+      Helper.trigger(raty.element, 'mouseleave');
 
       // then
-      expect(typeof this.el[0].result).toEqual('number');
+      expect(typeof raty.result).toEqual('number');
     });
   });
 
-  context('when acts on :cancel', function() {
-    it ('receives the event', function() {
+  context('when acts on :cancel', function () {
+    it('has "this" scope as the object instance ', function () {
       // given
-      this.el.raty({
+      var raty = new Raty(document.querySelector('#el'), {
         cancelButton: true,
-        mouseout: function(_, evt) {
-          this.evt = evt;
-        }
-      });
+        mouseout: function () {
+          this.result = this;
+        },
+      }).init();
 
-      var cancel = this.el.children('.raty-cancel');
+      var cancel = raty.element.querySelector('.raty-cancel');
 
       // when
-      cancel.trigger('mouseout');
+      Helper.trigger(cancel, 'mouseleave');
 
       // then
-      expect(this.el[0].evt.type).toEqual('mouseout');
+      expect(raty.result).toBe(raty);
     });
 
-    context('without score', function() {
-      it ('receives undefined', function() {
+    context('without score', function () {
+      it('receives undefined', function () {
         // given
-        this.el.raty({
+        var raty = new Raty(document.querySelector('#el'), {
           cancelButton: true,
-          mouseout: function(score) {
+          mouseout: function (score) {
             this.result = score;
-          }
-        });
+          },
+        }).init();
 
-        var cancel = this.el.children('.raty-cancel');
+        var cancel = raty.element.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseout');
+        Helper.trigger(cancel, 'mouseleave');
 
         // then
-        expect(this.el[0].result).toBeUndefined();
+        expect(raty.result).toEqual(undefined);
       });
     });
 
-    context('with score', function() {
-      it ('receives the score value as number', function() {
+    context('with score', function () {
+      it('receives the score value as number', function () {
         // given
-        this.el.raty({
+        var raty = new Raty(document.querySelector('#el'), {
           score: 1,
           cancelButton: true,
-          mouseout: function(score) {
+          mouseout: function (score) {
             this.result = score;
-          }
-        });
+          },
+        }).init();
 
-        var cancel = this.el.children('.raty-cancel');
+        var cancel = raty.element.querySelector('.raty-cancel');
 
         // when
-        cancel.trigger('mouseout');
+        Helper.trigger(cancel, 'mouseleave');
 
         // then
-        expect(typeof this.el[0].result).toEqual('number');
+        expect(raty.result).toEqual(1);
       });
+    });
+
+    it('receives the element', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        mouseout: function (_score, element) {
+          this.result = element;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'mouseleave');
+
+      // then
+      expect(raty.result).toEqual(document.querySelector('#el'));
+    });
+
+    it('receives the mouse event', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        mouseout: function (_score, _element, evt) {
+          this.result = evt;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'mouseleave');
+
+      // then
+      expect(raty.result.type).toEqual('mouseleave');
     });
   });
 });

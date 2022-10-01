@@ -1,35 +1,31 @@
-describe('#iconRangeSame', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
+describe('#iconRangeSame', function () {
+  beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     $('#element').remove();
     $('#hint').remove();
   });
 
-  describe('when first star is chosen', function() {
-    it ('repeats the range icon', function() {
+  describe('when first star is chosen', function () {
+    it('repeats the range icon', function () {
       // given
-      var self = $('#element');
-
-      self.raty({
+      var raty = new Raty(document.querySelector('#element'), {
         iconRangeSame: true,
 
         iconRange: [
-          { range: 2, on: 'star-on.png',  off: 'star-off.png' },
+          { range: 2, on: 'star-on.png', off: 'star-off.png' },
           { range: 3, on: 'star-off.png', off: 'star-off.png' },
           { range: 4, on: 'star-off.png', off: 'star-off.png' },
-          { range: 5, on: 'star-on.png',  off: 'star-off.png' }
-        ]
-      });
+          { range: 5, on: 'star-on.png', off: 'star-off.png' },
+        ],
+      }).init();
 
-      var stars = self.children('img');
+      var stars = raty.element.querySelectorAll('img');
 
       // when
-      stars[0].dispatchEvent(new MouseEvent('mouseover'));
+      Helper.trigger(stars[0], 'mouseover');
 
       // then
       expect(stars[0].src).toMatch('star-on.png');
@@ -40,23 +36,21 @@ describe('#iconRangeSame', function() {
     });
   });
 
-  describe('when a middle star is chosen', function() {
-    it ('repeats the range icon', function() {
+  describe('when a middle star is chosen', function () {
+    it('repeats the range icon', function () {
       // given
-      var self = $('#element');
-
-      self.raty({
+      var raty = new Raty(document.querySelector('#element'), {
         iconRangeSame: true,
 
         iconRange: [
-          { range: 2, on: 'star-on.png',  off: 'star-off.png' },
+          { range: 2, on: 'star-on.png', off: 'star-off.png' },
           { range: 3, on: 'star-off.png', off: 'star-off.png' },
           { range: 4, on: 'star-off.png', off: 'star-off.png' },
-          { range: 5, on: 'star-on.png',  off: 'star-off.png' }
-        ]
-      });
+          { range: 5, on: 'star-on.png', off: 'star-off.png' },
+        ],
+      }).init();
 
-      var stars = self.children('img');
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       stars[1].dispatchEvent(new MouseEvent('mouseover'));
@@ -70,23 +64,21 @@ describe('#iconRangeSame', function() {
     });
   });
 
-  describe('when the last star is chosen', function() {
-    it ('repeats the range icon', function() {
+  describe('when the last star is chosen', function () {
+    it('repeats the range icon', function () {
       // given
-      var self = $('#element');
-
-      self.raty({
+      var raty = new Raty(document.querySelector('#element'), {
         iconRangeSame: true,
 
         iconRange: [
-          { range: 2, on: 'star-on.png',  off: 'star-off.png' },
+          { range: 2, on: 'star-on.png', off: 'star-off.png' },
           { range: 3, on: 'star-off.png', off: 'star-off.png' },
           { range: 4, on: 'star-off.png', off: 'star-off.png' },
-          { range: 5, on: 'star-on.png',  off: 'star-off.png' }
-        ]
-      });
+          { range: 5, on: 'star-on.png', off: 'star-off.png' },
+        ],
+      }).init();
 
-      var stars = self.children('img');
+      var stars = raty.element.querySelectorAll('img');
 
       // when
       stars[4].dispatchEvent(new MouseEvent('mouseover'));
@@ -100,29 +92,27 @@ describe('#iconRangeSame', function() {
     });
   });
 
-  describe('when mouse out', function() {
-    describe('after mouse over', function() {
-      it ('removes the range icon', function() {
+  describe('when mouse out', function () {
+    describe('after mouse over', function () {
+      it('removes the range icon', function () {
         // given
-        var self = $('#element');
-
-        self.raty({
+        var raty = new Raty(document.querySelector('#element'), {
           iconRangeSame: true,
 
           iconRange: [
-            { range: 2, on: 'star-on.png',  off: 'star-off.png' },
+            { range: 2, on: 'star-on.png', off: 'star-off.png' },
             { range: 3, on: 'star-off.png', off: 'star-off.png' },
             { range: 4, on: 'star-off.png', off: 'star-off.png' },
-            { range: 5, on: 'star-on.png',  off: 'star-off.png' }
-          ]
-        });
+            { range: 5, on: 'star-on.png', off: 'star-off.png' },
+          ],
+        }).init();
 
-        var stars = self.children('img');
+        var stars = raty.element.querySelectorAll('img');
 
-        stars[4].dispatchEvent(new MouseEvent('mouseover'));
+        Helper.trigger(stars[4], 'mouseover');
 
         // when
-        self[0].dispatchEvent(new MouseEvent('mouseout'));
+        Helper.trigger(raty.element, 'mouseleave');
 
         // then
         expect(stars[0].src).toMatch('star-off.png');
@@ -133,28 +123,26 @@ describe('#iconRangeSame', function() {
       });
     });
 
-    describe('after rating', function() {
-      it ('keeps the selection', function() {
+    describe('after rating', function () {
+      it('keeps the selection', function () {
         // given
-        var self = $('#element');
-
-        self.raty({
+        var raty = new Raty(document.querySelector('#element'), {
           iconRangeSame: true,
 
           iconRange: [
-            { range: 2, on: 'star-on.png',  off: 'star-off.png' },
+            { range: 2, on: 'star-on.png', off: 'star-off.png' },
             { range: 3, on: 'star-off.png', off: 'star-off.png' },
             { range: 4, on: 'star-off.png', off: 'star-off.png' },
-            { range: 5, on: 'star-on.png',  off: 'star-off.png' }
-          ]
-        });
+            { range: 5, on: 'star-on.png', off: 'star-off.png' },
+          ],
+        }).init();
 
-        var stars = self.children('img');
+        var stars = raty.element.querySelectorAll('img');
 
-        stars[4].dispatchEvent(new MouseEvent('click'));
+        Helper.trigger(stars[4], 'click');
 
         // when
-        self[0].dispatchEvent(new MouseEvent('mouseout'));
+        Helper.trigger(raty.element, 'mouseleave');
 
         // then
         expect(stars[0].src).toMatch('star-on.png');
@@ -166,14 +154,12 @@ describe('#iconRangeSame', function() {
     });
   });
 
-  describe('with cancel option', function() {
-    describe('after rating', function() {
-      describe('when mouse over', function() {
-        it ('removes the range icon', function() {
+  describe('with cancel option', function () {
+    describe('after rating', function () {
+      describe('when mouse over', function () {
+        it('removes the range icon', function () {
           // given
-          var self = $('#element');
-
-          self.raty({
+          var raty = new Raty(document.querySelector('#element'), {
             cancelButton: true,
             iconRangeSame: true,
 
@@ -181,11 +167,11 @@ describe('#iconRangeSame', function() {
               { range: 2, on: 'star-on.png', off: 'star-off.png' },
               { range: 3, on: 'star-on.png', off: 'star-off.png' },
               { range: 4, on: 'star-on.png', off: 'star-off.png' },
-              { range: 5, on: 'star-on.png', off: 'star-off.png' }
-            ]
-          });
+              { range: 5, on: 'star-on.png', off: 'star-off.png' },
+            ],
+          }).init();
 
-          var stars = self.children('img:not(.raty-cancel)');
+          var stars = raty.element.querySelectorAll('img:not(.raty-cancel)');
 
           stars[4].click();
 
@@ -201,12 +187,10 @@ describe('#iconRangeSame', function() {
         });
       });
 
-      describe('when mouse over and out', function() {
-        it ('puts the selection back', function() {
+      describe('when mouse over and out', function () {
+        it('puts the selection back', function () {
           // given
-          var self = $('#element');
-
-          self.raty({
+          var raty = new Raty(document.querySelector('#element'), {
             cancelButton: true,
             iconRangeSame: true,
 
@@ -214,11 +198,11 @@ describe('#iconRangeSame', function() {
               { range: 2, on: 'star-on.png', off: 'star-off.png' },
               { range: 3, on: 'star-on.png', off: 'star-off.png' },
               { range: 4, on: 'star-on.png', off: 'star-off.png' },
-              { range: 5, on: 'star-on.png', off: 'star-off.png' }
-            ]
-          });
+              { range: 5, on: 'star-on.png', off: 'star-off.png' },
+            ],
+          }).init();
 
-          var stars = self.children('img:not(.raty-cancel)');
+          var stars = raty.element.querySelectorAll('img:not(.raty-cancel)');
 
           stars[4].click();
 
@@ -227,7 +211,7 @@ describe('#iconRangeSame', function() {
           cancel.dispatchEvent(new MouseEvent('mouseover'));
 
           // when
-          self[0].dispatchEvent(new MouseEvent('mouseout'));
+          Helper.trigger(raty.element, 'mouseleave');
 
           // then
           expect(stars[0].src).toMatch('star-on.png');
@@ -238,12 +222,10 @@ describe('#iconRangeSame', function() {
         });
       });
 
-      describe('when click on cancel button and mouse out', function() {
-        it ('removes the range icon', function() {
+      describe('when click on cancel button and mouse out', function () {
+        it('removes the range icon', function () {
           // given
-          var self = $('#element');
-
-          self.raty({
+          var raty = new Raty(document.querySelector('#element'), {
             cancelButton: true,
             iconRangeSame: true,
 
@@ -251,17 +233,18 @@ describe('#iconRangeSame', function() {
               { range: 2, on: 'star-on.png', off: 'star-off.png' },
               { range: 3, on: 'star-on.png', off: 'star-off.png' },
               { range: 4, on: 'star-on.png', off: 'star-off.png' },
-              { range: 5, on: 'star-on.png', off: 'star-off.png' }
-            ]
-          });
+              { range: 5, on: 'star-on.png', off: 'star-off.png' },
+            ],
+          }).init();
 
-          var stars = self.children('img:not(.raty-cancel)');
+          var stars = raty.element.querySelectorAll('img:not(.raty-cancel)');
 
           stars[4].click();
 
           // when
           document.querySelector('.raty-cancel').click();
-          self[0].dispatchEvent(new MouseEvent('mouseout'));
+
+          Helper.trigger(raty.element, 'mouseleave');
 
           // then
           expect(stars[0].src).toMatch('star-off.png');
@@ -274,12 +257,10 @@ describe('#iconRangeSame', function() {
     });
   });
 
-  describe('when call cancel method', function() {
-    it ('removes the range icon', function() {
+  describe('when call cancel method', function () {
+    it('removes the range icon', function () {
       // given
-      var self = $('#element');
-
-      self.raty({
+      var raty = new Raty(document.querySelector('#element'), {
         cancelButton: true,
         iconRangeSame: true,
 
@@ -287,16 +268,16 @@ describe('#iconRangeSame', function() {
           { range: 2, on: 'star-on.png', off: 'star-off.png' },
           { range: 3, on: 'star-on.png', off: 'star-off.png' },
           { range: 4, on: 'star-on.png', off: 'star-off.png' },
-          { range: 5, on: 'star-on.png', off: 'star-off.png' }
-        ]
-      });
+          { range: 5, on: 'star-on.png', off: 'star-off.png' },
+        ],
+      }).init();
 
-      var stars = self.children('img:not(.raty-cancel)');
+      var stars = raty.element.querySelectorAll('img:not(.raty-cancel)');
 
       stars[4].click();
 
       // when
-      self.data('raty').cancel();
+      raty.cancel();
 
       // then
       expect(stars[0].src).toMatch('star-off.png');

@@ -1,65 +1,204 @@
-describe('#mouseover', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
+describe('#mouseover', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('receives the score as int', function() {
+  it('has "this" scope as the object instance ', function () {
     // given
-    this.el.raty({
-      mouseover: function(score) {
+    var raty = new Raty(document.querySelector('#el'), {
+      cancelButton: true,
+      mouseover: function () {
+        this.result = this;
+      },
+    }).init();
+
+    var star = Helper.last(raty.element.querySelectorAll('img'));
+
+    // when
+    Helper.trigger(star, 'mouseover');
+
+    // then
+    expect(raty.result).toBe(raty);
+  });
+
+  it('receives the score as integer', function () {
+    // given
+    var raty = new Raty(document.querySelector('#el'), {
+      mouseover: function (score) {
         this.result = score;
-      }
-    });
+      },
+    }).init();
 
-    var star = this.el.children('img:last');
+    var star = Helper.last(raty.element.querySelectorAll('img'));
 
     // when
-    star.trigger('mouseover');
+    Helper.trigger(star, 'mouseover');
 
-    // then
-    expect(this.el[0].result).toEqual(5);
+    expect(raty.result).toEqual(5);
   });
 
-  it ('receives the mouse event', function() {
+  it('receives the element', function () {
     // given
-    this.el.raty({
-      mouseover: function(_, evt) {
-        this.result = evt;
-      }
-    });
+    var raty = new Raty(document.querySelector('#el'), {
+      mouseover: function (_score, element) {
+        this.result = element;
+      },
+    }).init();
 
-    var star = this.el.children('img:last');
+    var star = Helper.last(raty.element.querySelectorAll('img'));
 
     // when
-    star.trigger('mouseover');
+    Helper.trigger(star, 'mouseover');
 
     // then
-    expect(this.el[0].result.type).toEqual('mouseover');
+    expect(raty.result).toEqual(document.querySelector('#el'));
   });
 
-  context('with :cancel', function() {
-    it ('receives null as score', function() {
-      // given
-      this.el.raty({
-        cancelButton: true,
-        mouseover: function(score) {
-          this.result = score;
-        }
-      });
+  it('receives the mouse event', function () {
+    // given
+    var raty = new Raty(document.querySelector('#el'), {
+      mouseover: function (_score, _element, evt) {
+        this.result = evt;
+      },
+    }).init();
 
-      var cancel = this.el.children('.raty-cancel');
+    var star = Helper.last(raty.element.querySelectorAll('img'));
+
+    // when
+    Helper.trigger(star, 'mouseover');
+
+    // then
+    expect(raty.result.type).toEqual('mouseover');
+  });
+
+  context('with return as undefined', function () {
+    it('executes mouseover behavior', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        mouseover: function () {},
+      }).init();
+
+      var stars = raty.element.querySelectorAll('img');
 
       // when
-      cancel.trigger('mouseover');
+      Helper.trigger(stars[0], 'mouseover');
 
       // then
-      expect(this.el[0].result).toBeNull();
+      expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
+    });
+
+    it('turns on the stars', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        mouseover: function () {},
+      }).init();
+
+      var stars = raty.element.querySelectorAll('img');
+
+      // when
+      Helper.trigger(stars[0], 'mouseover');
+
+      // then
+      expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
+    });
+  });
+
+  context('with :cancel', function () {
+    it('has "this" scope as the object instance ', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        mouseover: function () {
+          this.result = this;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'mouseover');
+
+      // then
+      expect(raty.result).toBe(raty);
+    });
+
+    it('receives the score as null', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        mouseover: function (score) {
+          this.result = score;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'mouseover');
+
+      expect(raty.result).toEqual(null);
+    });
+
+    it('receives the element', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        mouseover: function (_score, element) {
+          this.result = element;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'mouseover');
+
+      // then
+      expect(raty.result).toEqual(document.querySelector('#el'));
+    });
+
+    it('receives the mouse event', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el'), {
+        cancelButton: true,
+        mouseover: function (_score, _element, evt) {
+          this.result = evt;
+        },
+      }).init();
+
+      var cancel = raty.element.querySelector('.raty-cancel');
+
+      // when
+      Helper.trigger(cancel, 'mouseover');
+
+      // then
+      expect(raty.result.type).toEqual('mouseover');
+    });
+  });
+
+  context('on mouseover without mouseover', function () {
+    it('changes the stars to on', function () {
+      // given
+      var raty = new Raty(document.querySelector('#el')).init();
+      var stars = raty.element.querySelectorAll('img');
+
+      // when
+      Helper.trigger(Helper.last(stars), 'mouseover');
+
+      // then
+      expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
     });
   });
 });

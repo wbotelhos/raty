@@ -1,88 +1,105 @@
-describe('#score', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
-  });
-
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('can be initialized on bind', function() {
+describe('#score', function () {
+  it('can be initialized on bind', function () {
     // given
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), { score: 1 });
 
     // when
-    this.el.raty({ score: 1 });
+    raty.init();
 
     // then
-    expect(this.el.children('input')).toHaveValue('1');
+    expect(raty.element.querySelector('input').value).toEqual('1');
   });
 
-  it ('turns on stars', function() {
+  it('turns on stars', function () {
     // given
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), { score: 5 });
 
     // when
-    this.el.raty({ score: 5 });
+    raty.init();
 
     // then
-    expect(this.el.children('img')).toHaveAttr('src', '../lib/images/star-on.png');
+    expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-on.png');
   });
 
-  it ('accepts callback', function() {
+  it('accepts callback return and has the correct arguments', function () {
     // given
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), {
+      score: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return 1;
+      },
+    });
 
     // when
-    this.el.raty({ score: function() { return 1; } });
+    raty.init();
 
     // then
-    expect(this.el.data('raty').opt.score).toEqual(1);
+    expect(raty.opt.score).toEqual(1);
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    var el = Helper._append('div', { 'data-score': 3 });
+    Helper._append('div', { 'data-score': 3 });
 
     // when
-    el.raty();
+    var raty = new Raty(document.querySelector('[data-score]'));
 
     // then
-    expect(el.data('raty').opt.score).toEqual(3);
+    expect(raty.opt.score).toEqual(3);
   });
 
-  context('with negative number', function() {
-    it ('does not set the score', function() {
+  context('with negative number', function () {
+    it('does not set the score', function () {
       // given
+      Helper.create('#el');
+
+      var raty = new Raty(document.querySelector('#el'), { score: -1 });
 
       // when
-      this.el.raty({ score: -1 });
+      raty.init();
 
       // then
-      expect(this.el.children('input')).toHaveValue('');
+      expect(raty.element.querySelector('input').value).toEqual('');
     });
   });
 
-  context('with :readOnly', function() {
-    it ('becomes readOnly too', function() {
+  context('with :readOnly', function () {
+    it('becomes readOnly too', function () {
       // given
+      Helper.create('#el');
+
+      var raty = new Raty(document.querySelector('#el'), { readOnly: true });
 
       // when
-      this.el.raty({ readOnly: true });
+      raty.init();
 
       // then
-      expect(this.el.children('input')).toHaveAttr('readonly', 'readonly');
+      expect(raty.element.querySelector('input').readOnly).toEqual(true);
     });
   });
 
-  context('with value greater then numbers', function() {
-    it ('receives the number of star as value', function() {
+  context('with value greater then numbers', function () {
+    it('receives the number of star as value', function () {
       // given
+      Helper.create('#el');
+
+      var raty = new Raty(document.querySelector('#el'), { score: 100 });
 
       // when
-      this.el.raty({ score: 100 });
+      raty.init();
 
       // then
-      expect(this.el.data('raty').opt.score).toEqual(this.el.data('raty').opt.number);
+      expect(raty.opt.score).toEqual(raty.opt.number);
     });
   });
 });

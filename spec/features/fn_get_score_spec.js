@@ -1,86 +1,84 @@
-describe('get #score', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
+describe('get #score', function () {
+  beforeEach(function () {
     $('body').append('<div id="element"></div>');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     $('#element').remove();
     $('#hint').remove();
   });
 
-  it ('accepts number as string', function() {
+  it('accepts number as string', function () {
     // given
-    var self = $('#element');
+    var raty = new Raty(document.querySelector('#element'), { score: '1' });
 
     // when
-    self.raty({ score: '1' });
+    raty.init();
 
     // then
-    expect(self.children('input')).toHaveValue('1');
+    expect(raty.element.querySelector('input').value).toEqual('1');
   });
 
-  it ('accepts float string', function() {
+  it('accepts float string', function () {
     // given
-    var self = $('#element');
+    var raty = new Raty(document.querySelector('#element'), { score: '1.5' });
 
     // when
-    self.raty({ score: '1.5' });
+    raty.init();
 
     // then
-    expect(self.children('input')).toHaveValue('1.5');
+    expect(raty.element.querySelector('input').value).toEqual('1.5');
   });
 
-  context('with integer score', function() {
-    it ('gets as int', function() {
+  context('with integer score', function () {
+    it('gets as int', function () {
       // given
-      var self = $('#element').raty({ score: 1 });
+      var raty = new Raty(document.querySelector('#element'), { score: 1 }).init();
 
       // when
-      var score = self.data('raty').score();
+      var score = raty.score();
 
       // then
       expect(score).toEqual(1);
     });
   });
 
-  context('with float score', function() {
-    it ('gets as float', function() {
+  context('with float score', function () {
+    it('gets as float', function () {
       // given
-      var self = $('#element').raty({ score: 1.5 });
+      var raty = new Raty(document.querySelector('#element'), { score: 1.5 }).init();
 
       // when
-      var score = self.data('raty').score();
+      var score = raty.score();
 
       // then
       expect(score).toEqual(1.5);
     });
   });
 
-  context('with score zero', function() {
-    it('returns an undefined value because it does not exist', function() {
+  context('with score zero', function () {
+    it('returns an undefined value because it does not exist', function () {
       // given
-      var self = $('#element').raty({ score: 0 });
+      var raty = new Raty(document.querySelector('#element'), { score: 0 }).init();
 
       // when
-      var score = self.data('raty').score();
+      var score = raty.score();
 
       // then
-      expect(score).toBeUndefined();
+      expect(score).toEqual(undefined);
     });
   });
 
-  context('with score greater than :numberMax', function() {
-    it ('gets the max', function() {
+  context('with score greater than :numberMax', function () {
+    it('gets the max', function () {
       // given
-      var self = $('#element').raty({ number: 50, score: 50 });
+      var raty = new Raty(document.querySelector('#element'), { number: 50, score: 50 }).init();
 
       // when
-      var score = self.data('raty').score();
+      var score = raty.score();
 
       // then
-      expect(score).toEqual(self.data('raty').opt.numberMax);
+      expect(score).toEqual(raty.opt.numberMax);
     });
   });
 });

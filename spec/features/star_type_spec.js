@@ -1,135 +1,141 @@
-describe('#starType', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
-  });
-
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  context('when actived', function() {
-    it('disable the width property', function() {
+describe('#starType', function () {
+  context('when actived', function () {
+    it('disable the width property', function () {
       // given
-      var self = this.el;
+      Helper.create('#el');
+
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
 
       // when
-      self.raty({ starType: 'i' });
+      raty.init();
 
       // then
-      expect(self[0].style.width).toEqual('');
+      expect(raty.element.style.width).toEqual('');
     });
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    var el = Helper._append('div', { 'data-star-type': 'b' });
+    Helper._append('div', { 'data-star-type': 'b' });
+
+    var raty = new Raty(document.querySelector('[data-star-type]')).init();
 
     // when
-    el.raty();
+    raty.init();
 
     // then
-    expect(el.data('raty').opt.starType).toEqual('b');
+    expect(raty.opt.starType).toEqual('b');
   });
 
-  context('when is "img"', function() {
-    it ('does not changes the :path to blank', function() {
+  context('when is "img"', function () {
+    it('does not changes the :path to blank', function () {
       // given
+      Helper.create('#el');
+
+      var raty = new Raty(document.querySelector('#el'), { path: 'path', starType: 'img' });
 
       // when
-      this.el.raty({ path: 'path', starType: 'i' });
+      raty.init();
 
       // then
-      expect(this.el.data('raty').opt.path).toEqual('');
+      expect(raty.opt.path).toEqual('path/');
     });
 
-    it ('creates the default markup', function() {
+    it('creates the default markup', function () {
       // given
+      Helper.create('#el');
 
       // when
-      this.el.raty();
+      var raty = new Raty(document.querySelector('#el'), { path: 'path', starType: 'img' }).init();
 
       // then
-      var stars = this.el.children('img');
-      var score = this.el.children('input');
+      var stars = raty.element.querySelectorAll('img');
+      var score = raty.element.querySelector('input');
 
-      expect(stars.eq(0)).toHaveAttr('title', 'bad');
-      expect(stars.eq(1)).toHaveAttr('title', 'poor');
-      expect(stars.eq(2)).toHaveAttr('title', 'regular');
-      expect(stars.eq(3)).toHaveAttr('title', 'good');
-      expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
+      expect(stars[0].title).toEqual('bad');
+      expect(stars[1].title).toEqual('poor');
+      expect(stars[2].title).toEqual('regular');
+      expect(stars[3].title).toEqual('good');
+      expect(stars[4].title).toEqual('gorgeous');
 
-      expect(stars.eq(0)).toHaveAttr('alt', '1');
-      expect(stars.eq(1)).toHaveAttr('alt', '2');
-      expect(stars.eq(2)).toHaveAttr('alt', '3');
-      expect(stars.eq(3)).toHaveAttr('alt', '4');
-      expect(stars.eq(4)).toHaveAttr('alt', '5');
+      expect(stars[0].alt).toEqual('1');
+      expect(stars[1].alt).toEqual('2');
+      expect(stars[2].alt).toEqual('3');
+      expect(stars[3].alt).toEqual('4');
+      expect(stars[4].alt).toEqual('5');
 
-      expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
-      expect(score).toHaveAttr('type', 'hidden');
-      expect(score).toHaveAttr('name', 'score');
-      expect(score.val()).toEqual('');
+      expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
+
+      expect(score.type).toEqual('hidden');
+      expect(score.name).toEqual('score');
+      expect(score.value).toEqual('');
     });
   });
 
-  context('when is other element', function() {
-    it ('changes the :path to blank', function() {
+  context('when is other element', function () {
+    it('changes the :path to blank', function () {
       // given
+      Helper.create('#el');
 
       // when
-      this.el.raty({ path: 'path', starType: 'i' });
+      var raty = new Raty(document.querySelector('#el'), { path: 'path', starType: 'i' }).init();
 
       // then
-      expect(this.el.data('raty').opt.path).toEqual('');
+      expect(raty.opt.path).toEqual('');
     });
 
-    it ('creates the default markup', function() {
+    it('creates the default markup', function () {
       // given
+      Helper.create('#el');
 
       // when
-      this.el.raty({ starType: 'i' });
+      var raty = new Raty(document.querySelector('#el'), { starType: 'i' }).init();
 
       // then
-      var stars = this.el.children('i');
-      var score = this.el.children('input');
+      var stars = raty.element.querySelectorAll('i');
+      var score = raty.element.querySelector('input');
 
-      expect(stars.eq(0)).toHaveAttr('title', 'bad');
-      expect(stars.eq(1)).toHaveAttr('title', 'poor');
-      expect(stars.eq(2)).toHaveAttr('title', 'regular');
-      expect(stars.eq(3)).toHaveAttr('title', 'good');
-      expect(stars.eq(4)).toHaveAttr('title', 'gorgeous');
+      expect(stars[0].title).toEqual('bad');
+      expect(stars[1].title).toEqual('poor');
+      expect(stars[2].title).toEqual('regular');
+      expect(stars[3].title).toEqual('good');
+      expect(stars[4].title).toEqual('gorgeous');
 
-      expect(stars.eq(0)).toHaveAttr('data-alt', '1');
-      expect(stars.eq(1)).toHaveAttr('data-alt', '2');
-      expect(stars.eq(2)).toHaveAttr('data-alt', '3');
-      expect(stars.eq(3)).toHaveAttr('data-alt', '4');
-      expect(stars.eq(4)).toHaveAttr('data-alt', '5');
+      expect(stars[0].dataset.alt).toEqual('1');
+      expect(stars[1].dataset.alt).toEqual('2');
+      expect(stars[2].dataset.alt).toEqual('3');
+      expect(stars[3].dataset.alt).toEqual('4');
+      expect(stars[4].dataset.alt).toEqual('5');
 
       expect(stars).not.toHaveAttr('alt');
       expect(stars).not.toHaveAttr('src');
 
-      expect(score).toHaveAttr('type', 'hidden');
-      expect(score).toHaveAttr('name', 'score');
-      expect(score.val()).toEqual('');
+      expect(score.type).toEqual('hidden');
+      expect(score.name).toEqual('score');
+      expect(score.value).toEqual('');
     });
 
-    context('with :half true', function() {
-      it ('fills half star', function() {
+    context('with :half true', function () {
+      it('fills half star', function () {
         // given
-        this.el.raty({ half: true, starType: 'i' });
+        Helper.create('#el');
 
-        var stars = this.el.children('i');
+        var raty = new Raty(document.querySelector('#el'), { half: true, starType: 'i' }).init();
+        var stars = raty.element.querySelectorAll('i');
 
         // when
-        this.el.data('raty').move(4.5);
+        raty.move(4.5);
 
         // then
-        expect(stars[0]).toHaveClass('star-on-png');
-        expect(stars[1]).toHaveClass('star-on-png');
-        expect(stars[2]).toHaveClass('star-on-png');
-        expect(stars[3]).toHaveClass('star-on-png');
-        expect(stars[4]).toHaveClass('star-half-png');
+        expect(stars[0].classList.contains('star-on-png')).toEqual(true);
+        expect(stars[1].classList.contains('star-on-png')).toEqual(true);
+        expect(stars[2].classList.contains('star-on-png')).toEqual(true);
+        expect(stars[3].classList.contains('star-on-png')).toEqual(true);
+        expect(stars[4].classList.contains('star-half-png')).toEqual(true);
       });
     });
   });

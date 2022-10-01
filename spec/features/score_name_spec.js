@@ -1,31 +1,36 @@
-describe('#scoreName', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-  });
-
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('changes the score field name', function() {
+describe('#scoreName', function () {
+  it('changes the score field name', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), { scoreName: 'double' });
 
     // when
-    this.el.raty({ scoreName: 'double' });
+    raty.init();
 
     // then
-    expect(this.el.children('input')).toHaveAttr('name', 'double');
+    expect(raty.element.querySelector('input').name).toEqual('double');
   });
 
-  it ('accepts callback', function() {
+  it('accepts callback return and has the correct arguments', function () {
     // given
-    this.el = Helper.create('#el');
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), {
+      scoreName: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return 'name';
+      },
+    });
 
     // when
-    this.el.raty({ scoreName: function() { return 'double'; } });
+    raty.init();
 
     // then
-    expect(this.el.data('raty').opt.scoreName).toEqual('double');
+    expect(raty.opt.scoreName).toEqual('name');
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
   });
 });

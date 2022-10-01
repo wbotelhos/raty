@@ -1,33 +1,27 @@
-describe('#numberMax', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
+describe('#numberMax', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('limits the max of "number" option', function() {
+  it('limits the max of "number" option', function () {
     // given
-    var self = this.el;
+    var raty = new Raty(document.querySelector('#el'), { number: 2, numberMax: 1 });
 
     // when
-    self.raty({ number: 2, numberMax: 1 });
+    raty.init();
 
     // then
-    expect(self.data('raty').opt.number).toEqual(1);
+    expect(raty.opt.number).toEqual(1);
   });
 
-  it ('limits the min of "number" option', function() {
+  it('limits the min of "number" option', function () {
     // given
-    var self = this.el;
+    var raty = new Raty(document.querySelector('#el'), { number: -1 });
 
     // when
-    self.raty({ number: -1 });
+    raty.init();
 
     // then
-    expect(self.data('raty').opt.number).toEqual(1);
+    expect(raty.opt.number).toEqual(1);
   });
 });

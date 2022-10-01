@@ -1,79 +1,79 @@
-describe('#precision', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el     = Helper.create('#el', 'div', { 'data-target': '#target' });
-    this.target = Helper.target('#target');
+describe('#precision', function () {
+  beforeEach(function () {
+    Helper.create('#el', 'div', { 'data-target': '#target' });
+    this.target = Helper.create('#target');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('enables the :half options', function() {
+  it('enables the :half options', function () {
     // given
+    Helper.create('#el', 'div', { 'data-target': '#target' });
+
+    var raty = new Raty(document.querySelector('#el'), { precision: true });
 
     // when
-    this.el.raty({ precision: true });
+    raty.init();
 
     // then
-    expect(this.el.data('raty').opt.half).toBeTruthy();
+    expect(raty.opt.half).toEqual(true);
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts data attribute', function () {
     // given
-    var el = Helper._append('div', { 'data-precision': true });
+    Helper._append('div', { 'data-precision': true });
+
+    var raty = new Raty(document.querySelector('[data-precision]'));
 
     // when
-    el.raty();
+    raty.init();
 
     // then
-    expect(el.data('raty').opt.precision).toEqual(true);
+    expect(raty.opt.precision).toEqual(true);
   });
 
-  context('with :target', function() {
-    context('and :targetKeep', function() {
-      context('and :targetType as score', function() {
-        context('on :score', function() {
-          it ('sets the float with one fractional number', function() {
+  context('with :target', function () {
+    context('and :targetKeep', function () {
+      context('and :targetType as score', function () {
+        context('on :score', function () {
+          it('sets the float with one fractional number', function () {
             // given
-
-            // when
-            this.el.raty({
-              precision  : true,
-              score      : 1.2,
-              targetKeep : true,
-              targetType : 'score',
-              target     : function() {
+            var raty = new Raty(document.querySelector('#el'), {
+              precision: true,
+              score: 1.2,
+              targetKeep: true,
+              targetType: 'score',
+              target: function () {
                 return this.getAttribute('data-target');
-              }
+              },
             });
 
+            // when
+            raty.init();
+
             // then
-            expect(this.target).toHaveHtml('1.2');
+            expect(this.target[0].innerHTML).toEqual('1.2');
           });
         });
 
-        context('on mouseover', function() {
-          it ('sets the float with one fractional number', function(done) {
+        context('on mouseover', function () {
+          it('sets the float with one fractional number', function (done) {
             // given
+            var raty = new Raty(document.querySelector('#el'), {
+              precision: true,
+              targetKeep: true,
+              targetType: 'score',
+              target: function () {
+                return this.getAttribute('data-target');
+              },
+            }).init();
+
             var that = this;
 
-            this.el.raty({
-              precision  : true,
-              targetKeep : true,
-              targetType : 'score',
-              target     : function() {
-                return this.getAttribute('data-target');
-              }
-            });
-
-            setTimeout(function() {
+            setTimeout(function () {
               // when
-              that.el.data('raty').move(1.23);
+              raty.move(1.23);
 
               // then
-              expect(that.target).toHaveHtml('1.2');
+              expect(that.target[0].innerHTML).toEqual('1.2');
 
               done();
             }, 100);
@@ -81,184 +81,190 @@ describe('#precision', function() {
         });
       });
 
-      context('and :targetType as hint', function() {
-        context('on :score', function() {
-          context('with one float digit', function() {
-            it ('gets the [integer][float] position of :hints', function() {
+      context('and :targetType as hint', function () {
+        context('on :score', function () {
+          context('with one float digit', function () {
+            it('gets the [integer][float] position of :hints', function () {
               // given
-
-              // when
-              this.el.raty({
-                hints      : ['first', ['second']],
-                precision  : true,
-                score      : 1.1,
-                targetKeep : true,
-                targetType : 'hint',
-                target     : function() {
+              var raty = new Raty(document.querySelector('#el'), {
+                hints: ['first', ['second']],
+                precision: true,
+                score: 1.1,
+                targetKeep: true,
+                targetType: 'hint',
+                target: function () {
                   return this.getAttribute('data-target');
                 },
               });
 
+              // when
+              raty.init();
+
               // then
-              expect(this.target).toHaveHtml('second');
+              expect(this.target[0].innerHTML).toEqual('second');
             });
           });
 
-          context('with integer digit is zero', function() {
-            it ('gets the [integer][last item] position of :hints', function() {
+          context('with integer digit is zero', function () {
+            it('gets the [integer][last item] position of :hints', function () {
               // given
-
-              // when
-              this.el.raty({
-                hints      : ['first', 'second'],
-                precision  : true,
-                score      : 0,
-                targetKeep : true,
-                targetType : 'hint',
-                target     : function() {
+              var raty = new Raty(document.querySelector('#el'), {
+                hints: ['first', 'second'],
+                precision: true,
+                score: 0,
+                targetKeep: true,
+                targetType: 'hint',
+                target: function () {
                   return this.getAttribute('data-target');
                 },
               });
 
+              // when
+              raty.init();
+
               // then
-              expect(this.target).toHaveHtml('first');
+              expect(this.target[0].innerHTML).toEqual('first');
             });
           });
 
-          context('with float digit is zero', function() {
-            it ('gets the [integer][last item] position of :hints', function() {
+          context('with float digit is zero', function () {
+            it('gets the [integer][last item] position of :hints', function () {
               // given
-
-              // when
-              this.el.raty({
-                hints      : ['first', 'second'],
-                precision  : true,
-                score      : 1.0,
-                targetKeep : true,
-                targetType : 'hint',
-                target     : function() {
+              var raty = new Raty(document.querySelector('#el'), {
+                hints: ['first', 'second'],
+                precision: true,
+                score: 1.0,
+                targetKeep: true,
+                targetType: 'hint',
+                target: function () {
                   return this.getAttribute('data-target');
                 },
               });
 
+              // when
+              raty.init();
+
               // then
-              expect(this.target).toHaveHtml('first');
+              expect(this.target[0].innerHTML).toEqual('first');
             });
           });
 
-          context('with one float digit as string', function() {
-            it ('gets the [integer][float.fixed(1) without decimates] position of :hints', function() {
+          context('with one float digit as string', function () {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
-
-              // when
-              this.el.raty({
-                hints      : ['first', ['second']],
-                precision  : true,
-                score      : '1.1',
-                targetKeep : true,
-                targetType : 'hint',
-                target     : function() {
+              var raty = new Raty(document.querySelector('#el'), {
+                hints: ['first', ['second']],
+                precision: true,
+                score: '1.1',
+                targetKeep: true,
+                targetType: 'hint',
+                target: function () {
                   return this.getAttribute('data-target');
                 },
               });
 
+              // when
+              raty.init();
+
               // then
-              expect(this.target).toHaveHtml('second');
+              expect(this.target[0].innerHTML).toEqual('second');
             });
           });
 
-          context('with two float digits', function() {
-            it ('gets the [integer][float.fixed(1) without decimates] position of :hints', function() {
+          context('with two float digits', function () {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
-
-              // when
-              this.el.raty({
-                hints      : ['first', ['second']],
-                precision  : true,
-                score      : 1.19,
-                targetKeep : true,
-                targetType : 'hint',
-                target     : function() {
+              var raty = new Raty(document.querySelector('#el'), {
+                hints: ['first', ['second']],
+                precision: true,
+                score: 1.19,
+                targetKeep: true,
+                targetType: 'hint',
+                target: function () {
                   return this.getAttribute('data-target');
                 },
               });
 
+              // when
+              raty.init();
+
               // then
-              expect(this.target).toHaveHtml('second');
+              expect(this.target[0].innerHTML).toEqual('second');
             });
           });
 
-          context('with two float digits as string', function() {
-            it ('gets the [integer][float.fixed(1) without decimates] position of :hints', function() {
+          context('with two float digits as string', function () {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function () {
               // given
-
-              // when
-              this.el.raty({
-                hints      : ['first', ['second']],
-                precision  : true,
-                score      : '1.19',
-                targetKeep : true,
-                targetType : 'hint',
-                target     : function() {
+              var raty = new Raty(document.querySelector('#el'), {
+                hints: ['first', ['second']],
+                precision: true,
+                score: '1.19',
+                targetKeep: true,
+                targetType: 'hint',
+                target: function () {
                   return this.getAttribute('data-target');
                 },
               });
 
+              // when
+              raty.init();
+
               // then
-              expect(this.target).toHaveHtml('second');
+              expect(this.target[0].innerHTML).toEqual('second');
             });
           });
         });
 
-        context('on mouseover', function() {
-          context('with one float digit', function() {
-            it ('gets the [integer][float.fixed(1) without decimates] position of :hints', function(done) {
+        context('on mouseover', function () {
+          context('with one float digit', function () {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
               // given
-              var that = this;
-
-              this.el.raty({
-                hints      : ['first', ['second']],
-                precision  : true,
-                targetKeep : true,
-                targetType : 'hint',
-                target     : function() {
+              var raty = new Raty(document.querySelector('#el'), {
+                hints: ['first', ['second']],
+                precision: true,
+                targetKeep: true,
+                targetType: 'hint',
+                target: function () {
                   return this.getAttribute('data-target');
                 },
-              });
+              }).init();
 
-              setTimeout(function() {
+              var that = this;
+
+              setTimeout(function () {
                 // when
-                that.el.data('raty').move(1.1);
+                raty.move(1.1);
 
                 // then
-                expect(that.target).toHaveHtml('second');
+                expect(that.target[0].innerHTML).toEqual('second');
 
                 done();
               }, 100);
             });
           });
 
-          context('with two float digits', function() {
-            it ('gets the [integer][float.fixed(1) without decimates] position of :hints', function(done) {
+          context('with two float digits', function () {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', function (done) {
               // given
-              var that = this;
-
-              this.el.raty({
-                hints      : ['first', ['second']],
-                precision  : true,
-                targetKeep : true,
-                targetType : 'hint',
-                target     : function() {
+              var raty = new Raty(document.querySelector('#el'), {
+                hints: ['first', ['second']],
+                precision: true,
+                targetKeep: true,
+                targetType: 'hint',
+                target: function () {
                   return this.getAttribute('data-target');
                 },
-              });
+              }).init();
 
-              setTimeout(function() {
+              var that = this;
+
+              setTimeout(function () {
                 // when
-                that.el.data('raty').move(1.19);
+                raty.move(1.19);
 
                 // then
-                expect(that.target).toHaveHtml('second');
+                expect(that.target[0].innerHTML).toEqual('second');
 
                 done();
               }, 100);
@@ -266,32 +272,26 @@ describe('#precision', function() {
           });
         });
 
-        context('with :cancel', function() {
-          it ('shows :cancelHint', function(done) {
+        context('with :cancel', function () {
+          it('shows :cancelHint', function () {
             // given
-            var that = this;
-
-            this.el.raty({
+            var raty = new Raty(document.querySelector('#el'), {
               cancelButton: true,
               precision: true,
               targetKeep: true,
               targetType: 'hint',
-              target: function() {
+              target: function () {
                 return this.getAttribute('data-target');
-              }
-            });
+              },
+            }).init();
 
-            var cancel = this.el.children('.' + this.el.data('raty').opt.cancelClass);
+            var cancel = raty.element.querySelector('img');
 
-            setTimeout(function() {
-              // when
-              cancel.trigger('mouseover');
+            // when
+            Helper.trigger(cancel, 'mouseover');
 
-              // then
-              expect(that.target).toHaveHtml(that.el.data('raty').opt.cancelHint);
-
-              done();
-            }, 100);
+            // then
+            expect(this.target).toHaveHtml(raty.opt.cancelHint);
           });
         });
       });

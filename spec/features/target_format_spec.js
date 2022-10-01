@@ -1,88 +1,94 @@
-describe('#targetFormat', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
+describe('#targetFormat', function () {
+  beforeEach(function () {
+    var body = $('body');
 
-    $('body').append('<div id="element"></div>');
-    $('body').append('<div id="hint"></div>');
+    body.append('<div id="element"></div>');
+    body.append('<div id="hint"></div>');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     $('#element').remove();
     $('#hint').remove();
   });
 
-  it ('stars empty', function() {
+  it('stars empty', function () {
     // given
-    var self = $('#element');
+    var raty = new Raty(document.querySelector('#element', { target: '#hint', targetFormat: 'score: {score}' })).init();
 
     // when
-    self.raty({ target: '#hint', targetFormat: 'score: {score}' });
+    raty.init();
 
     // then
-    expect($('#hint')).toBeEmpty();
+    expect(document.querySelector('#hint').innerHTML).toEqual('');
   });
 
-  context('on mouseover', function() {
-    it ('set target with format on mouseover', function() {
+  context('on mouseover', function () {
+    it('set target with format on mouseover', function () {
       // given
-      var self = $('#element').raty({ target: '#hint', targetFormat: 'score: {score}' });
+      var raty = new Raty(document.querySelector('#element'), {
+        target: '#hint',
+        targetFormat: 'score: {score}',
+      }).init();
 
       // when
-      self.children('img:first').trigger('mouseover');
+      Helper.trigger(raty.element.querySelector('img'), 'mouseover');
 
       // then
-      expect($('#hint')).toHaveHtml('score: bad');
+      expect(document.querySelector('#hint').innerHTML).toEqual('score: bad');
     });
   });
 
-  context('on mouseout', function() {
-    it ('clears the target', function() {
+  context('on mouseout', function () {
+    it('clears the target', function () {
       // given
-      var self = $('#element').raty({
-        target      : '#hint',
-        targetFormat: 'score: {score}'
-      });
+      var raty = new Raty(document.querySelector('#element'), {
+        target: '#hint',
+        targetFormat: 'score: {score}',
+      }).init();
 
       // when
-      self.children('img:first').trigger('mouseover').trigger('mouseout');
+      Helper.trigger(raty.element, 'mouseover');
+      Helper.trigger(raty.element, 'mouseleave');
 
       // then
-      expect($('#hint')).toBeEmpty();
+      expect(document.querySelector('#hint').innerText).toEqual('');
     });
 
-    context('with :targetKeep', function() {
-      context('without score', function() {
-        it ('clears the target', function() {
+    context('with :targetKeep', function () {
+      context('without score', function () {
+        it('clears the target', function () {
           // given
-          var self = $('#element').raty({
-            target      : '#hint',
+          var raty = new Raty(document.querySelector('#element'), {
+            target: '#hint',
             targetFormat: 'score: {score}',
-            targetKeep  : true
-          });
+            targetKeep: true,
+          }).init();
 
           // when
-          self.children('img:first').trigger('mouseover').trigger('mouseleave');
+          Helper.trigger(raty.element, 'mouseover');
+          Helper.trigger(raty.element, 'mouseleave');
 
           // then
-          expect($('#hint')).toBeEmpty();
+          expect(document.querySelector('#hint').innerHTML).toEqual('');
         });
       });
 
-      context('with score', function() {
-        it ('keeps the template', function() {
+      context('with score', function () {
+        it('keeps the template', function () {
           // given
-          var self = $('#element').raty({
-            score       : 1,
-            target      : '#hint',
+          var raty = new Raty(document.querySelector('#element'), {
+            score: 1,
+            target: '#hint',
             targetFormat: 'score: {score}',
-            targetKeep  : true
-          });
+            targetKeep: true,
+          }).init();
 
           // when
-          self.children('img:first').trigger('mouseover').trigger('mouseleave');
+          Helper.trigger(raty.element, 'mouseover');
+          Helper.trigger(raty.element, 'mouseleave');
 
           // then
-          expect($('#hint')).toHaveHtml('score: bad');
+          expect(document.querySelector('#hint').innerHTML).toEqual('score: bad');
         });
       });
     });

@@ -1,90 +1,99 @@
-describe('stars', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
+describe('stars', function () {
+  beforeEach(function () {
+    Helper.create('#el');
   });
 
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('starts all off', function() {
-    // given
-    var self = this.el;
-
-    // when
-    self.raty();
+  it('starts all off', function () {
+    // given / when
+    var raty = new Raty(document.querySelector('#el')).init();
 
     // then
-    expect(self.children('img')).toHaveAttr('src', '../lib/images/star-off.png');
+    expect(Helper.extension(raty.element.querySelector('img').src)).toEqual('star-off.png');
   });
 
-  context('on click', function() {
-    it ('changes the score', function() {
+  context('on click', function () {
+    it('changes the score', function () {
       // given
-      var self  = this.el.raty();
-      var stars = self.children('img');
+      var raty = new Raty(document.querySelector('#el')).init();
+      var stars = raty.element.querySelectorAll('img');
 
       // when
-      stars.last().trigger('click');
+      Helper.trigger(Helper.last(stars), 'click');
 
       // then
-      expect(self.children('input')).toHaveValue('5');
+      expect(raty.element.querySelector('input').value).toEqual('5');
     });
   });
 
-  context('on mouseover', function() {
-    it ('turns on the stars', function() {
+  context('on mouseover', function () {
+    it('turns on the stars', function () {
       // given
-      var self  = this.el.raty();
-      var stars = self.children('img');
+      var raty = new Raty(document.querySelector('#el')).init();
+      var stars = raty.element.querySelectorAll('img');
 
       // when
-      stars.last().trigger('mouseover');
+      Helper.trigger(Helper.last(stars), 'mouseover');
 
       // then
-      expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+      expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[1].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+      expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
     });
 
-    context('and mouseout', function() {
-      it ('turns off all stars', function() {
+    context('and mouseout', function () {
+      it('turns off all stars', function () {
         // given
-        var self  = this.el.raty();
-        var stars = self.children('img');
+        var raty = new Raty(document.querySelector('#el')).init();
+        var stars = raty.element.querySelectorAll('img');
 
         // when
-        stars.last().trigger('mouseover').trigger('mouseout');
+        Helper.trigger(raty.element, 'mouseover');
+        Helper.trigger(raty.element, 'mouseout');
 
         // then
-        expect(stars).toHaveAttr('src', '../lib/images/star-off.png');
+        expect(Helper.extension(stars[0].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[1].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[2].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[3].src)).toEqual('star-off.png');
+        expect(Helper.extension(stars[4].src)).toEqual('star-off.png');
       });
     });
 
-    context('and click', function() {
-      it ('changes the score', function() {
+    context('and click', function () {
+      it('changes the score', function () {
         // given
-        var self  = this.el.raty();
-        var stars = self.children('img');
+        var raty = new Raty(document.querySelector('#el')).init();
+        var stars = raty.element.querySelectorAll('img');
+        var star = Helper.last(stars);
 
         // when
-        stars.last().trigger('mouseover').trigger('click');
+        Helper.trigger(star, 'mouseover');
+        Helper.trigger(star, 'click');
 
         // then
-        expect(self.children('input')).toHaveValue('5');
+        expect(raty.element.querySelector('input').value).toEqual('5');
       });
 
-      context('and mouseout', function() {
-        it ('keeps the stars on', function() {
+      context('and mouseout', function () {
+        it('keeps the stars on', function () {
           // given
-          var self  = this.el.raty();
-          var stars = self.children('img');
+          var raty = new Raty(document.querySelector('#el')).init();
+          var stars = raty.element.querySelectorAll('img');
+          var star = Helper.last(stars);
 
           // when
-          stars.last().trigger('mouseover').trigger('click').trigger('mouseout');
+          Helper.trigger(star, 'mouseover');
+          Helper.trigger(star, 'click');
+          Helper.trigger(star, 'mouseout');
 
           // then
-          expect(stars).toHaveAttr('src', '../lib/images/star-on.png');
+          expect(Helper.extension(stars[0].src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[1].src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[2].src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[3].src)).toEqual('star-on.png');
+          expect(Helper.extension(stars[4].src)).toEqual('star-on.png');
         });
       });
     });

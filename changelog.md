@@ -1,3 +1,18 @@
+## v4.0.0
+
+### Break Change
+
+- The jQuery dependency was dropped, so the syntax to start Raty was changed, check the [UPGRADE.md](https://github.com/wbotelhos/raty/blob/master/UPGRADE.md);
+- The global configuration `$.raty.option = 'value'` was removed;
+- The callback `click`, `mouseover` and `mouseout` now has the `this` scope being the `Raty` class instance and the following arguments: `score, element, event`;
+- The callback `number`, `readOnly`, `score`, `scoreName`, `target`, and `path`, now has the `this` scope being the `Raty` class instance and the single argument: `element`;
+- The functions now is called from the `Raty` instance;
+- When `click` **function** is called, we don't really have an original event, so instead to receive a fake event `new Event('click')`, an `undefined` value is provided.
+
+### Update
+
+- The read only function now uses `pointerEvents` over unbind the listeners;
+
 ## v3.1.1
 
 ### Bugfix

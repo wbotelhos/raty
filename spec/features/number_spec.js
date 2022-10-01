@@ -1,52 +1,79 @@
-describe('#number', function() {
-  beforeEach(function() {
-    $.raty.path = '../lib/images';
-
-    this.el = Helper.create('#el');
-  });
-
-  afterEach(function() {
-    Helper.clear();
-  });
-
-  it ('changes the number of stars', function() {
+describe('#number', function () {
+  it('accepts callback return and has the correct arguments', function () {
     // given
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), {
+      number: function (element) {
+        this._this = this;
+        this._element = element;
+
+        return 10;
+      },
+    });
 
     // when
-    this.el.raty({ number: 1 });
+    raty.init();
 
     // then
-    expect(this.el.children('img').length).toEqual(1);
+    expect(raty.element.querySelectorAll('img').length).toEqual(10);
+    expect(raty._this).toBe(raty);
+    expect(raty._element).toEqual(document.querySelector('#el'));
   });
 
-  it ('accepts number as string', function() {
+  it('changes the number of stars', function () {
     // given
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), { number: 1 });
 
     // when
-    this.el.raty({ number: '1' });
+    raty.init();
 
     // then
-    expect(this.el.children('img').length).toEqual(1);
+    expect(raty.element.querySelectorAll('img').length).toEqual(1);
   });
 
-  it ('accepts callback', function() {
+  it('accepts number as string', function () {
     // given
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), { number: '1' });
 
     // when
-    this.el.raty({ number: function() { return 1; } });
+    raty.init();
 
     // then
-    expect(this.el.data('raty').opt.number).toEqual(1);
+    expect(raty.element.querySelectorAll('img').length).toEqual(1);
   });
 
-  it ('accepts data attribute', function() {
+  it('accepts callback', function () {
     // given
-    var el = Helper._append('div', { 'data-number': 3 });
+    Helper.create('#el');
+
+    var raty = new Raty(document.querySelector('#el'), {
+      number: function () {
+        return 1;
+      },
+    });
 
     // when
-    el.raty();
+    raty.init();
 
     // then
-    expect(el.data('raty').opt.number).toEqual(3);
+    expect(raty.opt.number).toEqual(1);
+  });
+
+  it('accepts data attribute', function () {
+    // given
+    Helper._append('div', { 'data-number': 3 });
+
+    var raty = new Raty(document.querySelector('[data-number]'));
+
+    // when
+    raty.init();
+
+    // then
+    expect(raty.opt.number).toEqual(3);
   });
 });
