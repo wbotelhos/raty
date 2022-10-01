@@ -28,10 +28,10 @@
   ],
   "license": "MIT",
   "main": [
-    "lib/raty.js",
-    "lib/raty.css",
-    "lib/fonts/*",
-    "lib/images/*"
+    "src/raty.js",
+    "src/raty.css",
+    "src/fonts/*",
+    "src/images/*"
   ],
   "name": "raty"
 }
