@@ -19,8 +19,8 @@
   },
   "description": "Raty - A Star Rating Plugin",
   "devDependencies": {
-    "@babel/core": "^7.19.1",
-    "@babel/preset-env": "^7.19.1",
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.3",
     "@babel/register": "^7.18.9",
     "eslint": "^8.24.0",
     "gulp": "^4.0.2",
@@ -53,7 +53,7 @@
     "voto"
   ],
   "license": "MIT",
-  "main": "build/raty.js",
+  "main": "src/raty.js",
   "maintainers": [
     "Washington Botelho <wbotelhos@gmail.com> (https://www.wbotelhos.com)"
   ],
