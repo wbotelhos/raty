@@ -9,6 +9,11 @@
 
 It's **Rating**: https://github.com/wbotelhos/rating :star:
 
+## Help
+
+- Check the [Tutorial](https://github.com/wbotelhos/raty/blob/main/tutorial.md) to learn about all available features.
+- If you're migrating from `v3` to `v4` check the [Upgrade](https://github.com/wbotelhos/raty/blob/main/UPGRADE.md) document.
+
 ## Usage with Image
 
 - raty.js
