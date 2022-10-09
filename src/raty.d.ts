@@ -50,6 +50,10 @@ export declare class Raty {
   readOnly(readOnly: boolean): void;
 
   score(): number;
+  score(score: number): void
 
   setScore(score: number): void;
+  getScore(): number;
+
+  init(): Raty
 }
