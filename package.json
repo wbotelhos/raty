@@ -52,6 +52,7 @@
   ],
   "license": "MIT",
   "main": "src/raty.js",
+  "types": "src/raty.d.ts",
   "maintainers": [
     "Washington Botelho <wbotelhos@gmail.com> (https://www.wbotelhos.com)"
   ],
