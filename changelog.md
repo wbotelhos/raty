@@ -1,3 +1,9 @@
+## v4.1.0
+
+### News
+
+- Adds TypesScript Types; [#241](https://github.com/wbotelhos/raty/pull/241) by [Fyzu](https://github.com/Fyzu)
+
 ## v4.0.0
 
 ### Break Change
