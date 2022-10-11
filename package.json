@@ -6,9 +6,6 @@
   "contributors": [
     "Washington Botelho <wbotelhos@gmail.com> (https://www.wbotelhos.com)"
   ],
-  "demos": [
-    "demo/index.html"
-  ],
   "description": "Raty - A Star Rating Plugin",
   "devDependencies": {
     "@babel/core": "^7.19.3",
