@@ -713,7 +713,7 @@ class Raty {
   _setTitle(score, evt) {
     if (score) {
       const integer = parseInt(Math.ceil(score), 10);
-      const star = this.stars[integer - 1];
+      const star = this.stars.item(integer - 1);
 
       star.title = this._getHint(score, evt);
     }
