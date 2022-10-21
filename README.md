@@ -1,4 +1,4 @@
-# Raty - A Star Rating Plugin
+# Raty - A Star Rating Plugin.
 
 [![Tests](https://github.com/wbotelhos/raty/workflows/Tests/badge.svg)](https://github.com/wbotelhos/raty/actions/workflows/tests.yml)
 [![NPM Version](https://badge.fury.io/js/raty-js.svg)](https://badge.fury.io/js/raty-js)
