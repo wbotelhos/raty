@@ -1,6 +1,6 @@
 describe('#precision', () => {
-  jest.useFakeTimers()
-    
+  jest.useFakeTimers();
+
   let testContext;
 
   beforeEach(() => {
@@ -58,12 +58,12 @@ describe('#precision', () => {
             raty.init();
 
             // then
-            expect(testContext.target[0].innerHTML).toEqual('1.2');
+            expect(testContext.target.innerHTML).toEqual('1.2');
           });
         });
 
         context('on mouseover', function () {
-          it('sets the float with one fractional number', done => {
+          it('sets the float with one fractional number', (done) => {
             // given
             var raty = new Raty(document.querySelector('#el'), {
               precision: true,
@@ -79,12 +79,12 @@ describe('#precision', () => {
               raty.move(1.23);
 
               // then
-              expect(testContext.target[0].innerHTML).toEqual('1.2');
+              expect(testContext.target.innerHTML).toEqual('1.2');
 
               done();
             }, 100);
-            
-            jest.runAllTimers()
+
+            jest.runAllTimers();
           });
         });
       });
@@ -109,7 +109,7 @@ describe('#precision', () => {
               raty.init();
 
               // then
-              expect(testContext.target[0].innerHTML).toEqual('second');
+              expect(testContext.target.innerHTML).toEqual('second');
             });
           });
 
@@ -131,7 +131,7 @@ describe('#precision', () => {
               raty.init();
 
               // then
-              expect(testContext.target[0].innerHTML).toEqual('first');
+              expect(testContext.target.innerHTML).toEqual('first');
             });
           });
 
@@ -153,7 +153,7 @@ describe('#precision', () => {
               raty.init();
 
               // then
-              expect(testContext.target[0].innerHTML).toEqual('first');
+              expect(testContext.target.innerHTML).toEqual('first');
             });
           });
 
@@ -175,7 +175,7 @@ describe('#precision', () => {
               raty.init();
 
               // then
-              expect(testContext.target[0].innerHTML).toEqual('second');
+              expect(testContext.target.innerHTML).toEqual('second');
             });
           });
 
@@ -197,7 +197,7 @@ describe('#precision', () => {
               raty.init();
 
               // then
-              expect(testContext.target[0].innerHTML).toEqual('second');
+              expect(testContext.target.innerHTML).toEqual('second');
             });
           });
 
@@ -219,14 +219,14 @@ describe('#precision', () => {
               raty.init();
 
               // then
-              expect(testContext.target[0].innerHTML).toEqual('second');
+              expect(testContext.target.innerHTML).toEqual('second');
             });
           });
         });
 
         context('on mouseover', function () {
           context('with one float digit', function () {
-            it('gets the [integer][float.fixed(1) without decimates] position of :hints', done => {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', (done) => {
               // given
               var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', ['second']],
@@ -243,17 +243,17 @@ describe('#precision', () => {
                 raty.move(1.1);
 
                 // then
-                expect(testContext.target[0].innerHTML).toEqual('second');
+                expect(testContext.target.innerHTML).toEqual('second');
 
                 done();
               }, 100);
-                
-              jest.runAllTimers()
+
+              jest.runAllTimers();
             });
           });
 
           context('with two float digits', function () {
-            it('gets the [integer][float.fixed(1) without decimates] position of :hints', done => {
+            it('gets the [integer][float.fixed(1) without decimates] position of :hints', (done) => {
               // given
               var raty = new Raty(document.querySelector('#el'), {
                 hints: ['first', ['second']],
@@ -270,12 +270,12 @@ describe('#precision', () => {
                 raty.move(1.19);
 
                 // then
-                expect(testContext.target[0].innerHTML).toEqual('second');
+                expect(testContext.target.innerHTML).toEqual('second');
 
                 done();
               }, 100);
-                
-              jest.runAllTimers()
+
+              jest.runAllTimers();
             });
           });
         });
@@ -299,7 +299,7 @@ describe('#precision', () => {
             Helper.trigger(cancel, 'mouseover');
 
             // then
-            expect(testContext.target[0]).toContainHTML(raty.opt.cancelHint);
+            expect(testContext.target).toContainHTML(raty.opt.cancelHint);
           });
         });
       });

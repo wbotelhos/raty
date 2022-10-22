@@ -70,7 +70,7 @@ describe('#fn_setScore', () => {
               raty.score(6);
 
               // then
-              expect(testContext.target.text()).toEqual(raty.opt.number.toString());
+              expect(testContext.target.textContent).toEqual(raty.opt.number.toString());
             });
 
             it('sets the :score on target', () => {
@@ -85,7 +85,7 @@ describe('#fn_setScore', () => {
               raty.score(1);
 
               // then
-              expect(testContext.target.text()).toEqual('1');
+              expect(testContext.target.textContent).toEqual('1');
             });
           });
         });

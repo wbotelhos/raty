@@ -1,11 +1,12 @@
 describe('#click', () => {
   beforeEach(() => {
-    $('body').append('<div id="element"></div>');
+    var element = document.createElement('div');
+    element.id = 'element';
+    document.querySelector(`body`).appendChild(element);
   });
 
   afterEach(() => {
-    $('#element').remove();
-    $('#hint').remove();
+    document.querySelector('#element').remove();
   });
 
   it('clicks on star', () => {
@@ -97,7 +98,13 @@ describe('#click', () => {
 
   context('with :target', function () {
     beforeEach(() => {
-      $('body').append('<div id="hint"></div>');
+      var hint = document.createElement('div');
+      hint.id = 'hint';
+      document.querySelector(`body`).appendChild(hint);
+    });
+
+    afterEach(() => {
+      document.querySelector('#hint').remove();
     });
 
     context('and :targetKeep', function () {
@@ -113,7 +120,7 @@ describe('#click', () => {
         raty.click(1);
 
         // then
-        expect($('#hint')[0].innerHTML).toEqual('bad');
+        expect(document.querySelector('#hint').innerHTML).toEqual('bad');
       });
     });
   });

@@ -361,7 +361,7 @@ describe('#hints', () => {
           raty.move(1.1);
 
           // then
-          expect(testContext.target[0].textContent).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('changes the title to first position', () => {
@@ -397,7 +397,7 @@ describe('#hints', () => {
           raty.move(1.2);
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('changes the title to first position', () => {
@@ -433,7 +433,7 @@ describe('#hints', () => {
           raty.move(1.3);
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('changes the title to first position', () => {
@@ -469,7 +469,7 @@ describe('#hints', () => {
           raty.move(1.4);
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('changes the title to first position', () => {
@@ -505,7 +505,7 @@ describe('#hints', () => {
           raty.move(1.5);
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('changes the title to first position', () => {
@@ -541,7 +541,7 @@ describe('#hints', () => {
           raty.move(1.6);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('changes the title to first position', () => {
@@ -577,7 +577,7 @@ describe('#hints', () => {
           raty.move(1.7);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('changes the title to first position', () => {
@@ -613,7 +613,7 @@ describe('#hints', () => {
           raty.move(1.8);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('changes the title to first position', () => {
@@ -649,7 +649,7 @@ describe('#hints', () => {
           raty.move(1.9);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('changes the title to first position', () => {
@@ -685,7 +685,7 @@ describe('#hints', () => {
           raty.move(2.0);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('changes the title to first position', () => {
@@ -721,7 +721,7 @@ describe('#hints', () => {
           raty.move(2);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
       });
 
@@ -761,10 +761,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 0);
+          Helper.mousemove(document.querySelector('#el'), 1, 0);
 
           // then
-          expect(testContext.target.text()).toEqual('half');
+          expect(testContext.target.textContent).toEqual('half');
         });
 
         it('receives the first position as title', () => {
@@ -779,7 +779,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 0);
+          Helper.mousemove(document.querySelector('#el'), 1, 0);
 
           // then
           expect(star.title).toEqual('half');
@@ -797,10 +797,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 1);
+          Helper.mousemove(document.querySelector('#el'), 1, 1);
 
           // then
-          expect(testContext.target.text()).toEqual('half');
+          expect(testContext.target.textContent).toEqual('half');
         });
 
         it('receives the first position as title', () => {
@@ -815,7 +815,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 1);
+          Helper.mousemove(document.querySelector('#el'), 1, 1);
 
           // then
           expect(star.title).toEqual('half');
@@ -833,10 +833,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 2);
+          Helper.mousemove(document.querySelector('#el'), 1, 2);
 
           // then
-          expect(testContext.target.text()).toEqual('half');
+          expect(testContext.target.textContent).toEqual('half');
         });
 
         it('receives the first position as title', () => {
@@ -851,7 +851,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 2);
+          Helper.mousemove(document.querySelector('#el'), 1, 2);
 
           // then
           expect(star.title).toEqual('half');
@@ -869,10 +869,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 3);
+          Helper.mousemove(document.querySelector('#el'), 1, 3);
 
           // then
-          expect(testContext.target.text()).toEqual('half');
+          expect(testContext.target.textContent).toEqual('half');
         });
 
         it('receives the first position as title', () => {
@@ -887,7 +887,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 3);
+          Helper.mousemove(document.querySelector('#el'), 1, 3);
 
           // then
           expect(star.title).toEqual('half');
@@ -905,10 +905,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 4);
+          Helper.mousemove(document.querySelector('#el'), 1, 4);
 
           // then
-          expect(testContext.target.text()).toEqual('half');
+          expect(testContext.target.textContent).toEqual('half');
         });
 
         it('receives the first position as title', () => {
@@ -923,7 +923,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 4);
+          Helper.mousemove(document.querySelector('#el'), 1, 4);
 
           // then
           expect(star.title).toEqual('half');
@@ -941,10 +941,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 5);
+          Helper.mousemove(document.querySelector('#el'), 1, 5);
 
           // then
-          expect(testContext.target.text()).toEqual('half');
+          expect(testContext.target.textContent).toEqual('half');
         });
 
         it('receives the first position as title', () => {
@@ -959,7 +959,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 5);
+          Helper.mousemove(document.querySelector('#el'), 1, 5);
 
           // then
           expect(star.title).toEqual('half');
@@ -977,10 +977,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 6);
+          Helper.mousemove(document.querySelector('#el'), 1, 6);
 
           // then
-          expect(testContext.target.text()).toEqual('integer');
+          expect(testContext.target.textContent).toEqual('integer');
         });
 
         it('receives the second position as title', () => {
@@ -995,7 +995,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 6);
+          Helper.mousemove(document.querySelector('#el'), 1, 6);
 
           // then
           expect(star.title).toEqual('integer');
@@ -1013,10 +1013,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 7);
+          Helper.mousemove(document.querySelector('#el'), 1, 7);
 
           // then
-          expect(testContext.target.text()).toEqual('integer');
+          expect(testContext.target.textContent).toEqual('integer');
         });
 
         it('receives the second position as title', () => {
@@ -1031,7 +1031,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 7);
+          Helper.mousemove(document.querySelector('#el'), 1, 7);
 
           // then
           expect(star.title).toEqual('integer');
@@ -1049,10 +1049,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 8);
+          Helper.mousemove(document.querySelector('#el'), 1, 8);
 
           // then
-          expect(testContext.target.text()).toEqual('integer');
+          expect(testContext.target.textContent).toEqual('integer');
         });
 
         it('receives the second position as title', () => {
@@ -1067,7 +1067,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 8);
+          Helper.mousemove(document.querySelector('#el'), 1, 8);
 
           // then
           expect(star.title).toEqual('integer');
@@ -1085,10 +1085,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 9);
+          Helper.mousemove(document.querySelector('#el'), 1, 9);
 
           // then
-          expect(testContext.target.text()).toEqual('integer');
+          expect(testContext.target.textContent).toEqual('integer');
         });
 
         it('receives the second position as title', () => {
@@ -1103,7 +1103,7 @@ describe('#hints', () => {
           var star = raty.element.querySelectorAll('img')[1];
 
           // when
-          Helper.mousemove($('#el'), 1, 9);
+          Helper.mousemove(document.querySelector('#el'), 1, 9);
 
           // then
           expect(star.title).toEqual('integer');
@@ -1131,7 +1131,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('receives the first position as title', () => {
@@ -1169,7 +1169,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('receives the first position as title', () => {
@@ -1207,7 +1207,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('receives the first position as title', () => {
@@ -1245,7 +1245,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('receives the first position as title', () => {
@@ -1283,7 +1283,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('receives the first position as title', () => {
@@ -1321,7 +1321,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the second position as title', () => {
@@ -1359,7 +1359,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the second position as title', () => {
@@ -1397,7 +1397,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the second position as title', () => {
@@ -1435,7 +1435,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the second position as title', () => {
@@ -1473,7 +1473,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the second position as title', () => {
@@ -1511,7 +1511,7 @@ describe('#hints', () => {
           raty.init();
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the second position as title', () => {
@@ -1686,7 +1686,7 @@ describe('#hints', () => {
           raty.move(1.1);
 
           // then
-          expect(testContext.target.text()).toEqual('1,1');
+          expect(testContext.target.textContent).toEqual('1,1');
         });
 
         it('receives the [1][0] position as title', () => {
@@ -1720,7 +1720,7 @@ describe('#hints', () => {
           raty.move(1.2);
 
           // then
-          expect(testContext.target.text()).toEqual('1,2');
+          expect(testContext.target.textContent).toEqual('1,2');
         });
 
         it('receives the [1][1] position as title', () => {
@@ -1754,7 +1754,7 @@ describe('#hints', () => {
           raty.move(1.3);
 
           // then
-          expect(testContext.target.text()).toEqual('1,3');
+          expect(testContext.target.textContent).toEqual('1,3');
         });
 
         it('receives the [1][2] position as title', () => {
@@ -1788,7 +1788,7 @@ describe('#hints', () => {
           raty.move(1.4);
 
           // then
-          expect(testContext.target.text()).toEqual('1,4');
+          expect(testContext.target.textContent).toEqual('1,4');
         });
 
         it('receives the [1][3] position as title', () => {
@@ -1822,7 +1822,7 @@ describe('#hints', () => {
           raty.move(1.5);
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('receives the [1][4] position as title', () => {
@@ -1856,7 +1856,7 @@ describe('#hints', () => {
           raty.move(1.6);
 
           // then
-          expect(testContext.target.text()).toEqual('1,6');
+          expect(testContext.target.textContent).toEqual('1,6');
         });
 
         it('receives the [1][5] position as title', () => {
@@ -1890,7 +1890,7 @@ describe('#hints', () => {
           raty.move(1.7);
 
           // then
-          expect(testContext.target.text()).toEqual('1,7');
+          expect(testContext.target.textContent).toEqual('1,7');
         });
 
         it('receives the [1][7] position as title', () => {
@@ -1924,7 +1924,7 @@ describe('#hints', () => {
           raty.move(1.8);
 
           // then
-          expect(testContext.target.text()).toEqual('1,8');
+          expect(testContext.target.textContent).toEqual('1,8');
         });
 
         it('receives the [1][7] position as title', () => {
@@ -1958,7 +1958,7 @@ describe('#hints', () => {
           raty.move(1.9);
 
           // then
-          expect(testContext.target.text()).toEqual('1,9');
+          expect(testContext.target.textContent).toEqual('1,9');
         });
 
         it('receives the [1][8] position as title', () => {
@@ -1992,7 +1992,7 @@ describe('#hints', () => {
           raty.move(2.0);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the [1][9] position as title', () => {
@@ -2026,7 +2026,7 @@ describe('#hints', () => {
           raty.move(2);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the [1][9] position as title', () => {
@@ -2064,10 +2064,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 0);
+          Helper.mousemove(document.querySelector('#el'), 1, 0);
 
           // then
-          expect(testContext.target.text()).toEqual('1,1');
+          expect(testContext.target.textContent).toEqual('1,1');
         });
 
         it('receives the [1][0] position as title', () => {
@@ -2080,7 +2080,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 0);
+          Helper.mousemove(document.querySelector('#el'), 1, 0);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,1');
@@ -2098,10 +2098,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 1);
+          Helper.mousemove(document.querySelector('#el'), 1, 1);
 
           // then
-          expect(testContext.target.text()).toEqual('1,2');
+          expect(testContext.target.textContent).toEqual('1,2');
         });
 
         it('receives the [1][1] position as title', () => {
@@ -2114,7 +2114,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 1);
+          Helper.mousemove(document.querySelector('#el'), 1, 1);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,2');
@@ -2132,10 +2132,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 2);
+          Helper.mousemove(document.querySelector('#el'), 1, 2);
 
           // then
-          expect(testContext.target.text()).toEqual('1,3');
+          expect(testContext.target.textContent).toEqual('1,3');
         });
 
         it('receives the [1][2] position as title', () => {
@@ -2148,7 +2148,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 2);
+          Helper.mousemove(document.querySelector('#el'), 1, 2);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,3');
@@ -2166,10 +2166,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 3);
+          Helper.mousemove(document.querySelector('#el'), 1, 3);
 
           // then
-          expect(testContext.target.text()).toEqual('1,4');
+          expect(testContext.target.textContent).toEqual('1,4');
         });
 
         it('receives the [1][3] position as title', () => {
@@ -2182,7 +2182,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 3);
+          Helper.mousemove(document.querySelector('#el'), 1, 3);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,4');
@@ -2200,10 +2200,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 4);
+          Helper.mousemove(document.querySelector('#el'), 1, 4);
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('receives the [1][4] position as title', () => {
@@ -2216,7 +2216,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 4);
+          Helper.mousemove(document.querySelector('#el'), 1, 4);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,5');
@@ -2234,10 +2234,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 5);
+          Helper.mousemove(document.querySelector('#el'), 1, 5);
 
           // then
-          expect(testContext.target.text()).toEqual('1,6');
+          expect(testContext.target.textContent).toEqual('1,6');
         });
 
         it('receives the [1][5] position as title', () => {
@@ -2250,7 +2250,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 5);
+          Helper.mousemove(document.querySelector('#el'), 1, 5);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,6');
@@ -2268,10 +2268,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 6);
+          Helper.mousemove(document.querySelector('#el'), 1, 6);
 
           // then
-          expect(testContext.target.text()).toEqual('1,7');
+          expect(testContext.target.textContent).toEqual('1,7');
         });
 
         it('receives the [1][6] position as title', () => {
@@ -2284,7 +2284,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 6);
+          Helper.mousemove(document.querySelector('#el'), 1, 6);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,7');
@@ -2302,10 +2302,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 7);
+          Helper.mousemove(document.querySelector('#el'), 1, 7);
 
           // then
-          expect(testContext.target.text()).toEqual('1,8');
+          expect(testContext.target.textContent).toEqual('1,8');
         });
 
         it('receives the [1][7] position as title', () => {
@@ -2318,7 +2318,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 7);
+          Helper.mousemove(document.querySelector('#el'), 1, 7);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,8');
@@ -2336,10 +2336,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 8);
+          Helper.mousemove(document.querySelector('#el'), 1, 8);
 
           // then
-          expect(testContext.target.text()).toEqual('1,9');
+          expect(testContext.target.textContent).toEqual('1,9');
         });
 
         it('receives the [1][8] position as title', () => {
@@ -2352,7 +2352,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 8);
+          Helper.mousemove(document.querySelector('#el'), 1, 8);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('1,9');
@@ -2370,10 +2370,10 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 9);
+          Helper.mousemove(document.querySelector('#el'), 1, 9);
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the [1][9] position as title', () => {
@@ -2386,7 +2386,7 @@ describe('#hints', () => {
           }).init();
 
           // when
-          Helper.mousemove($('#el'), 1, 9);
+          Helper.mousemove(document.querySelector('#el'), 1, 9);
 
           // then
           expect(raty.element.querySelectorAll('img')[1].title).toEqual('2,0');
@@ -2413,7 +2413,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,1');
+          expect(testContext.target.textContent).toEqual('1,1');
         });
 
         it('receives the [1][0] position as title', () => {
@@ -2447,7 +2447,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,2');
+          expect(testContext.target.textContent).toEqual('1,2');
         });
 
         it('receives the [1][1] position as title', () => {
@@ -2481,7 +2481,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,3');
+          expect(testContext.target.textContent).toEqual('1,3');
         });
 
         it('receives the [1][2] position as title', () => {
@@ -2515,7 +2515,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,4');
+          expect(testContext.target.textContent).toEqual('1,4');
         });
 
         it('receives the [1][3] position as title', () => {
@@ -2549,7 +2549,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,5');
+          expect(testContext.target.textContent).toEqual('1,5');
         });
 
         it('receives the [1][4] position as title', () => {
@@ -2583,7 +2583,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,6');
+          expect(testContext.target.textContent).toEqual('1,6');
         });
 
         it('receives the [1][5] position as title', () => {
@@ -2617,7 +2617,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,7');
+          expect(testContext.target.textContent).toEqual('1,7');
         });
 
         it('receives the [1][6] position as title', () => {
@@ -2651,7 +2651,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,8');
+          expect(testContext.target.textContent).toEqual('1,8');
         });
 
         it('receives the [1][7] position as title', () => {
@@ -2685,7 +2685,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('1,9');
+          expect(testContext.target.textContent).toEqual('1,9');
         });
 
         it('receives the [1][8] position as title', () => {
@@ -2719,7 +2719,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the [1][9] position as title', () => {
@@ -2753,7 +2753,7 @@ describe('#hints', () => {
           }).init();
 
           // then
-          expect(testContext.target.text()).toEqual('2,0');
+          expect(testContext.target.textContent).toEqual('2,0');
         });
 
         it('receives the [1][9] position as title', () => {

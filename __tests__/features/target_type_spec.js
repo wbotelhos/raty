@@ -30,7 +30,7 @@ describe('#targetType', () => {
     it('receives the hint', () => {
       // given
       var raty = new Raty(document.querySelector('#el'), {
-        target: '#' + testContext.target[0].id,
+        target: '#' + testContext.target.id,
         targetType: 'hint',
       }).init();
 
@@ -40,7 +40,7 @@ describe('#targetType', () => {
       Helper.trigger(star, 'mouseover');
 
       // then
-      expect(testContext.target[0].innerHTML).toEqual('gorgeous');
+      expect(testContext.target.innerHTML).toEqual('gorgeous');
     });
 
     context('with :cancel', function () {
@@ -48,7 +48,7 @@ describe('#targetType', () => {
         // given
         var raty = new Raty(document.querySelector('#el'), {
           cancelButton: true,
-          target: '#' + testContext.target[0].id,
+          target: '#' + testContext.target.id,
           targetType: 'hint',
         }).init();
 
@@ -58,7 +58,7 @@ describe('#targetType', () => {
         Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(testContext.target[0].innerHTML).toEqual('Cancel this rating!');
+        expect(testContext.target.innerHTML).toEqual('Cancel this rating!');
       });
     });
   });
@@ -67,7 +67,7 @@ describe('#targetType', () => {
     it('receives the score', () => {
       // given
       var raty = new Raty(document.querySelector('#el'), {
-        target: '#' + testContext.target[0].id,
+        target: '#' + testContext.target.id,
         targetType: 'score',
       }).init();
 
@@ -77,7 +77,7 @@ describe('#targetType', () => {
       Helper.trigger(star, 'mouseover');
 
       // then
-      expect(testContext.target[0]).toContainHTML('5');
+      expect(testContext.target).toContainHTML('5');
     });
 
     context('with :cancel', function () {
@@ -85,7 +85,7 @@ describe('#targetType', () => {
         // given
         var raty = new Raty(document.querySelector('#el'), {
           cancelButton: true,
-          target: '#' + testContext.target[0].id,
+          target: '#' + testContext.target.id,
           targetType: 'score',
         }).init();
 
@@ -95,7 +95,7 @@ describe('#targetType', () => {
         Helper.trigger(cancel, 'mouseover');
 
         // then
-        expect(testContext.target[0].innerHTML).toEqual('Cancel this rating!');
+        expect(testContext.target.innerHTML).toEqual('Cancel this rating!');
       });
     });
   });

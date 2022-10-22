@@ -1,6 +1,10 @@
 describe('markup', () => {
   beforeEach(() => {
-    $('body').append('<div data-raty></div><div data-raty></div>');
+    var element = document.createElement('div');
+    element.dataset.raty = undefined;
+    var element1 = element.cloneNode();
+    document.querySelector(`body`).appendChild(element);
+    document.querySelector(`body`).appendChild(element1);
   });
 
   it('creates the default markup', () => {
