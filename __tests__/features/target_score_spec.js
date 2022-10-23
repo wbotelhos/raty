@@ -6,14 +6,24 @@ describe('#targetScore', () => {
   });
 
   beforeEach(() => {
-    $('body').append('<div id="element"></div>');
+    var element = document.createElement('div');
+    element.id = 'element';
 
-    testContext.scoreField = $('<input id="score" type="text" />').appendTo('body');
+    const body = document.querySelector(`body`);
+
+    body.appendChild(element);
+
+    var score = document.createElement('input');
+    score.type = 'text';
+    score.id = 'score';
+
+    body.appendChild(score);
+
+    testContext.scoreField = score;
   });
 
   afterEach(() => {
-    $('#element').remove();
-    $('#hint').remove();
+    document.querySelector('#element').remove();
 
     testContext.scoreField.remove();
   });

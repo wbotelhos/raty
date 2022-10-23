@@ -26,9 +26,8 @@
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
     "jest": "^29.1.2",
-    "jest-extended": "^3.1.0",
-    "jquery": "^3.6.1",
-    "jest-environment-jsdom": "^29.1.2"
+    "jest-environment-jsdom": "^29.1.2",
+    "jest-extended": "^3.1.0"
   },
   "directories": {
     "lib": "lib",

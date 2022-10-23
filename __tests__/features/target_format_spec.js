@@ -1,14 +1,16 @@
 describe('#targetFormat', () => {
   beforeEach(() => {
-    var body = $('body');
-
-    body.append('<div id="element"></div>');
-    body.append('<div id="hint"></div>');
+    var element = document.createElement('div');
+    element.id = 'element';
+    var hint = document.createElement('div');
+    hint.id = 'hint';
+    document.querySelector(`body`).appendChild(element);
+    document.querySelector(`body`).appendChild(hint);
   });
 
   afterEach(() => {
-    $('#element').remove();
-    $('#hint').remove();
+    document.querySelector('#element').remove();
+    document.querySelector('#hint').remove();
   });
 
   it('stars empty', () => {

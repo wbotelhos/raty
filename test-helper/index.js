@@ -1,30 +1,38 @@
-const $ = require('jquery');
-require('@testing-library/jest-dom') 
+require('@testing-library/jest-dom');
 
-global.$ = $;
-global.jQuery = $;
-
-global.Raty = require('../src/raty').default
+global.Raty = require('../src/raty').default;
 
 global.context = function context(description, spec) {
   // eslint-disable-line no-redeclare, no-unused-vars
   describe(description, spec);
-}
+};
 
 global.xcontext = function xcontext(description, spec) {
   // eslint-disable-line no-redeclare, no-unused-vars
   xdescribe(description, spec);
-}
+};
 
 afterEach(() => {
   document.body.innerHTML = '';
 });
 
+function camelize(str) {
+  return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+}
+
+function setAttributes(el, attrs) {
+  for (var key in attrs) {
+    if (key.startsWith('data-')) {
+      el.dataset[camelize(key.replace('data-', ''))] = attrs[key];
+    } else el.setAttribute(key, attrs[key]);
+  }
+}
+
 global.Helper = {
   clear: function () {
     if (this.ids) {
       for (var i = 0; i < this.ids.length; i++) {
-        $(this.ids[i]).remove();
+        document.querySelector(this.ids[i]).remove();
       }
     }
   },
@@ -71,11 +79,11 @@ global.Helper = {
   },
 
   mouseData: function (el, integer, decimal) {
-    var stars = el.children('img:not(.raty-cancel)');
-    var star = stars.eq(integer);
-    var width = star[0].width || parseFloat(star.css('font-size'));
+    var stars = el.querySelectorAll('img:not(.raty-cancel)');
+    var star = stars[integer];
+    var width = star.offsetWidth || parseFloat(getComputedStyle(star).fontSize);
     var fraction = width / 10;
-    var left = star.offset().left;
+    var left = start.getBoundingClientRect().left + window.scrollX;
     var pageX = left + fraction * decimal + 0.1;
 
     // if (console && console.log) {
@@ -100,7 +108,7 @@ global.Helper = {
 
   mouseTrigger: function (action, el, integer, decimal) {
     var data = this.mouseData(el, integer, decimal);
-    var evt = $.Event(action, { pageX: data.pageX });
+    const evt = new Event(action, { pageX: data.pageX });
 
     data.el.trigger(evt);
   },
@@ -115,11 +123,13 @@ global.Helper = {
     var data = this._data(id);
     var attrs = this._attrs(data, options);
 
+    const element = this._append(type, attrs);
+
     if (type === 'select') {
-      attrs.html = this._select();
+      element.insertAdjacentHTML('beforeend', this._select());
     }
 
-    return this._append(type, attrs);
+    return element;
   },
 
   trigger: function (el, eventName) {
@@ -131,7 +141,12 @@ global.Helper = {
   // eslint-disable-line no-redeclare, no-unused-vars
   // Appends the element into the test document body using the mounted attrs.
   _append: function (type, attrs) {
-    return $('<' + type + '/>', attrs).appendTo('body');
+    const element = document.createElement(type);
+    setAttributes(element, attrs);
+
+    document.querySelector(`body`).appendChild(element);
+
+    return element;
   },
 
   // Build ID and class attribute for the created element like `<div id="any"></div>`.

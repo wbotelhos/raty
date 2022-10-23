@@ -79,7 +79,7 @@ describe('#half', () => {
           var raty = new Raty(document.querySelector('#el'), { half: true, halfShow: true }).init();
 
           // when
-          Helper.click($('#el'), 1, 5);
+          Helper.click(document.querySelector('#el'), 1, 5);
 
           // then
           expect(raty.element.querySelector('input').value).toEqual('1.5');
@@ -97,7 +97,7 @@ describe('#half', () => {
           }).init();
 
           // when
-          Helper.click($('#el'), 1, 5);
+          Helper.click(document.querySelector('#el'), 1, 5);
         });
       });
 
@@ -107,7 +107,7 @@ describe('#half', () => {
           var raty = new Raty(document.querySelector('#el'), { half: true, halfShow: true }).init();
 
           // when
-          Helper.click($('#el'), 1, 9);
+          Helper.click(document.querySelector('#el'), 1, 9);
 
           // then
           expect(raty.element.querySelector('input').value).toEqual('2');
@@ -125,7 +125,7 @@ describe('#half', () => {
           }).init();
 
           // when
-          Helper.click($('#el'), 1, 9);
+          Helper.click(document.querySelector('#el'), 1, 9);
         });
       });
 
@@ -135,7 +135,7 @@ describe('#half', () => {
           var raty = new Raty(document.querySelector('#el'), { half: true, halfShow: true }).init();
 
           // when
-          Helper.click($('#el'), 1, 0);
+          Helper.click(document.querySelector('#el'), 1, 0);
 
           // then
           expect(raty.element.querySelector('input').value).toEqual('1');
@@ -324,7 +324,7 @@ describe('#half', () => {
                     }).init();
 
                     // then
-                    expect(testContext.target[0].innerHTML).toEqual('1.5');
+                    expect(testContext.target.innerHTML).toEqual('1.5');
                   });
                 });
 
@@ -350,7 +350,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('two');
+                        expect(testContext.target.innerHTML).toEqual('two');
                       });
                     });
 
@@ -373,7 +373,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('two');
+                        expect(testContext.target.innerHTML).toEqual('two');
                       });
                     });
 
@@ -396,7 +396,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('one and half');
+                        expect(testContext.target.innerHTML).toEqual('one and half');
                       });
                     });
                   });
@@ -423,7 +423,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('two');
+                        expect(testContext.target.innerHTML).toEqual('two');
                       });
                     });
 
@@ -446,7 +446,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('two');
+                        expect(testContext.target.innerHTML).toEqual('two');
                       });
                     });
 
@@ -469,7 +469,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('two');
+                        expect(testContext.target.innerHTML).toEqual('two');
                       });
                     });
                   });
@@ -496,7 +496,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('two');
+                        expect(testContext.target.innerHTML).toEqual('two');
                       });
                     });
 
@@ -519,7 +519,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('two');
+                        expect(testContext.target.innerHTML).toEqual('two');
                       });
                     });
 
@@ -542,7 +542,7 @@ describe('#half', () => {
                         }).init();
 
                         // then
-                        expect(testContext.target[0].innerHTML).toEqual('two');
+                        expect(testContext.target.innerHTML).toEqual('two');
                       });
                     });
                   });
@@ -661,7 +661,7 @@ describe('#half', () => {
               raty.move(1.6);
 
               // then
-              expect(testContext.target.text()).toEqual('2,0');
+              expect(testContext.target.textContent).toEqual('2,0');
             });
           });
 
@@ -679,7 +679,7 @@ describe('#half', () => {
               raty.move(1.7);
 
               // then
-              expect(testContext.target.text()).toEqual('2,0');
+              expect(testContext.target.textContent).toEqual('2,0');
             });
           });
 
@@ -697,7 +697,7 @@ describe('#half', () => {
               raty.move(1.8);
 
               // then
-              expect(testContext.target.text()).toEqual('2,0');
+              expect(testContext.target.textContent).toEqual('2,0');
             });
           });
 
@@ -715,7 +715,7 @@ describe('#half', () => {
               raty.move(1.9);
 
               // then
-              expect(testContext.target.text()).toEqual('2,0');
+              expect(testContext.target.textContent).toEqual('2,0');
             });
           });
 
@@ -733,7 +733,7 @@ describe('#half', () => {
               raty.move(2.0);
 
               // then
-              expect(testContext.target.text()).toEqual('2,0');
+              expect(testContext.target.textContent).toEqual('2,0');
             });
           });
 
@@ -751,7 +751,7 @@ describe('#half', () => {
               raty.move(2);
 
               // then
-              expect(testContext.target.text()).toEqual('2,0');
+              expect(testContext.target.textContent).toEqual('2,0');
             });
           });
         });
@@ -773,10 +773,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 0);
+              Helper.mousemove(document.querySelector('#el'), 1, 0);
 
               // then
-              expect(testContext.target.text()).toEqual('half');
+              expect(testContext.target.textContent).toEqual('half');
             });
           });
 
@@ -791,10 +791,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 1);
+              Helper.mousemove(document.querySelector('#el'), 1, 1);
 
               // then
-              expect(testContext.target.text()).toEqual('half');
+              expect(testContext.target.textContent).toEqual('half');
             });
           });
 
@@ -809,10 +809,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 2);
+              Helper.mousemove(document.querySelector('#el'), 1, 2);
 
               // then
-              expect(testContext.target.text()).toEqual('half');
+              expect(testContext.target.textContent).toEqual('half');
             });
           });
 
@@ -827,10 +827,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 3);
+              Helper.mousemove(document.querySelector('#el'), 1, 3);
 
               // then
-              expect(testContext.target.text()).toEqual('half');
+              expect(testContext.target.textContent).toEqual('half');
             });
           });
 
@@ -845,10 +845,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 4);
+              Helper.mousemove(document.querySelector('#el'), 1, 4);
 
               // then
-              expect(testContext.target.text()).toEqual('half');
+              expect(testContext.target.textContent).toEqual('half');
             });
           });
 
@@ -863,10 +863,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 5);
+              Helper.mousemove(document.querySelector('#el'), 1, 5);
 
               // then
-              expect(testContext.target.text()).toEqual('half');
+              expect(testContext.target.textContent).toEqual('half');
             });
           });
 
@@ -881,10 +881,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 6);
+              Helper.mousemove(document.querySelector('#el'), 1, 6);
 
               // then
-              expect(testContext.target.text()).toEqual('integer');
+              expect(testContext.target.textContent).toEqual('integer');
             });
           });
 
@@ -899,10 +899,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 7);
+              Helper.mousemove(document.querySelector('#el'), 1, 7);
 
               // then
-              expect(testContext.target.text()).toEqual('integer');
+              expect(testContext.target.textContent).toEqual('integer');
             });
           });
 
@@ -917,10 +917,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 8);
+              Helper.mousemove(document.querySelector('#el'), 1, 8);
 
               // then
-              expect(testContext.target.text()).toEqual('integer');
+              expect(testContext.target.textContent).toEqual('integer');
             });
           });
 
@@ -935,10 +935,10 @@ describe('#half', () => {
               }).init();
 
               // when
-              Helper.mousemove($('#el'), 1, 9);
+              Helper.mousemove(document.querySelector('#el'), 1, 9);
 
               // then
-              expect(testContext.target.text()).toEqual('integer');
+              expect(testContext.target.textContent).toEqual('integer');
             });
           });
         });

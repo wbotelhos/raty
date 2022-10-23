@@ -133,7 +133,7 @@ module.exports = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-//   setupFiles: ['./__tests__/helper.js'],
+  //   setupFiles: ['./__tests__/helper.js'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: ['./test-helper/index.js'],
@@ -145,7 +145,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -154,14 +154,12 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-//   testMatch: [
-//     './__tests__/**/*[sS]pec.js'
-//   ],
+  //   testMatch: [
+  //     './__tests__/**/*[sS]pec.js'
+  //   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: [
-      "/node_modules/"
-  ],
+  testPathIgnorePatterns: ['/node_modules/'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -176,9 +174,9 @@ module.exports = {
   // transform: undefined,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-//   transformIgnorePatterns: [
-//     "/node_modules/"
-//   ],
+  //   transformIgnorePatterns: [
+  //     "/node_modules/"
+  //   ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
@@ -187,7 +185,7 @@ module.exports = {
   // verbose: undefined,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
-//   watchPathIgnorePatterns: ['__tests__/features/*.js'],
+  //   watchPathIgnorePatterns: ['__tests__/features/*.js'],
 
   // Whether to use watchman for file crawling
   // watchman: true,

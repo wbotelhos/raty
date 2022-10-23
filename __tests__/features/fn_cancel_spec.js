@@ -120,7 +120,7 @@ describe('#fn_cancel', () => {
               raty.cancel(true);
 
               // then
-              expect(testContext.target.text()).toEqual('targetText');
+              expect(testContext.target.textContent).toEqual('targetText');
             });
           });
         });

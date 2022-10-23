@@ -1,11 +1,12 @@
 describe('#single', () => {
   beforeEach(() => {
-    $('body').append('<div id="element"></div>');
+    var element = document.createElement('div');
+    element.id = 'element';
+    document.querySelector(`body`).appendChild(element);
   });
 
   afterEach(() => {
-    $('#element').remove();
-    $('#hint').remove();
+    document.querySelector('#element').remove();
   });
 
   context('on mouseover', function () {
