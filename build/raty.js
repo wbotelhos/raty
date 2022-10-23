@@ -553,7 +553,6 @@ class Raty {
     } else {
       target.textContent = score;
     }
-    console.log(target.value);
   }
 
   _setTitle(score, evt) {

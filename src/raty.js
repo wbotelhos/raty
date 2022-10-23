@@ -707,7 +707,6 @@ class Raty {
     } else {
       target.textContent = score;
     }
-    console.log(target.value);
   }
 
   // TODO: model spec
