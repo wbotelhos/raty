@@ -19,7 +19,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Yarn Test
-        uses: GabrielBB/xvfb-action@v1
+        uses: coactions/setup-xvfb@v1
 
         with:
           run: yarn test
