@@ -1,0 +1,6 @@
+exclude_patterns:
+  - "__tests__/"
+  - ".github/"
+  - "**/node_modules/"
+  - "build/"
+  - "gulpfile.js"
