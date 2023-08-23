@@ -1,3 +1,16 @@
+## v4.2.0
+
+### Update
+
+- Drops Jasmine and Karma in favor of Jest and JSDOM; [#242](https://github.com/wbotelhos/raty/pull/242) by [bukhtiyarov-a-v](https://github.com/bukhtiyarov-a-v)
+- Updates the README; [#245](https://github.com/wbotelhos/raty/pull/245) by [Jaskaran-Techno](https://github.com/Jaskaran-Techno)
+- Drops jQuery from tests and so from the entire project; [#246](https://github.com/wbotelhos/raty/pull/246) by [bukhtiyarov-a-v](https://github.com/bukhtiyarov-a-v)
+- Fixes error when `half` option is `true`; [#249](https://github.com/wbotelhos/raty/pull/249) by [fono09](https://github.com/fono09)
+
+### Bugfix
+
+- Adds TypesScript Types; [#241](https://github.com/wbotelhos/raty/pull/241) by [Fyzu](https://github.com/Fyzu)
+
 ## v4.1.0
 
 ### News
@@ -8,7 +21,7 @@
 
 ### Break Change
 
-- The jQuery dependency was dropped, so the syntax to start Raty was changed, check the [UPGRADE.md](https://github.com/wbotelhos/raty/blob/master/UPGRADE.md);
+- The jQuery dependency was dropped, so the syntax to start Raty was changed, check the [UPGRADE.md](https://github.com/wbotelhos/raty/blob/main/UPGRADE.md);
 - The global configuration `$.raty.option = 'value'` was removed;
 - The callback `click`, `mouseover` and `mouseout` now has the `this` scope being the `Raty` class instance and the following arguments: `score, element, event`;
 - The callback `number`, `readOnly`, `score`, `scoreName`, `target`, and `path`, now has the `this` scope being the `Raty` class instance and the single argument: `element`;

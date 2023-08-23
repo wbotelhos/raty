@@ -1,12 +1,9 @@
 /*!
  * Raty - A Star Rating Plugin
  *
- * The MIT License
- *
- * author:  Washington Botelho
- * github:  wbotelhos/raty
- * version: 4.1.0
- *
+ * author: Washington Botelho
+ * github: wbotelhos/raty
+ * version: 4.2.0
  */
 class Raty {
   /**
