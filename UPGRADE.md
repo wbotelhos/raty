@@ -7,7 +7,8 @@
 $('[data-raty]').raty({ cancel: true });
 
 // To
-new Raty(document.querySelector('[data-raty]'), { cancel: true });
+const raty = new Raty(document.querySelector('[data-raty]'), { cancel: true });
+raty.init();
 ```
 
 2. Replace your global configuration to a local configuration:
