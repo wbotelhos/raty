@@ -1,3 +1,10 @@
+## v4.3.0
+
+### Update
+
+- Adds missing builded files
+- Updates UPGRADE.md guide by [markvantilburg](https://github.com/markvantilburg)
+
 ## v4.2.0
 
 ### Update
