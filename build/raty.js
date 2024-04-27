@@ -58,7 +58,6 @@ class Raty {
       this.scoreField.removeAttribute('value');
     }
   }
-
   click(score) {
     if (!this._isReadOnly()) {
       score = this._adjustedScore(score);
@@ -69,7 +68,6 @@ class Raty {
       this._target(score);
     }
   }
-
   move(score) {
     var integer = parseInt(score, 10);
     var decimal = this._getDecimal(score, 1);
@@ -87,7 +85,6 @@ class Raty {
     star.dispatchEvent(evt);
     this.isMove = false;
   }
-
   readOnly(readonly) {
     if (this._isReadOnly() !== readonly) {
       if (readonly) {
@@ -144,7 +141,6 @@ class Raty {
     }
     return this;
   }
-
   _adjustedScore(score) {
     if (score || score === 0) {
       return this._between(score, 0, this.opt.number);
@@ -187,7 +183,6 @@ class Raty {
       this.opt[replaces[i]] = this.opt[replaces[i]].replace('.', '-');
     }
   }
-
   _apply(score) {
     this._fill(score);
     if (score) {
@@ -215,7 +210,6 @@ class Raty {
   _between(value, min, max) {
     return Math.min(Math.max(parseFloat(value), min), max);
   }
-
   _binds() {
     if (this.cancelButton) {
       this._bindOverCancel();
@@ -226,7 +220,6 @@ class Raty {
     this._bindClick();
     this._bindOut();
   }
-
   _bindClick() {
     this.stars.forEach(value => {
       value.addEventListener('click', evt => {
@@ -247,7 +240,6 @@ class Raty {
       });
     });
   }
-
   _bindClickCancel() {
     this.cancelButton.addEventListener('click', evt => {
       this.scoreField.removeAttribute('value');
@@ -256,7 +248,6 @@ class Raty {
       }
     });
   }
-
   _bindOut() {
     this.element.addEventListener('mouseleave', evt => {
       const score = +this.scoreField.value || undefined;
@@ -268,7 +259,6 @@ class Raty {
       }
     });
   }
-
   _bindOutCancel() {
     this.cancelButton.addEventListener('mouseleave', evt => {
       let icon = this.opt.cancelOff;
@@ -282,7 +272,6 @@ class Raty {
       }
     });
   }
-
   _bindOver() {
     const action = this.opt.half ? 'mousemove' : 'mouseover';
     this.stars.forEach(value => {
@@ -301,7 +290,6 @@ class Raty {
       });
     });
   }
-
   _bindOverCancel() {
     this.cancelButton.addEventListener('mouseover', evt => {
       if (this._isReadOnly()) {
@@ -326,7 +314,6 @@ class Raty {
       }
     });
   }
-
   _buildScoreField() {
     const input = document.createElement('input');
     input.name = this.opt.scoreName;
@@ -334,7 +321,6 @@ class Raty {
     this.element.appendChild(input);
     return input;
   }
-
   _createCancel() {
     const button = document.createElement(this.opt.starType);
     const icon = this.opt.path + this.opt.cancelOff;
@@ -345,7 +331,6 @@ class Raty {
       button.setAttribute('src', icon);
     } else {
       button.classList.add(icon);
-
       button.setAttribute('data-alt', 'x');
     }
     if (this.opt.cancelPlace === 'left') {
@@ -357,7 +342,6 @@ class Raty {
     }
     this.cancelButton = button;
   }
-
   _createScore() {
     this.scoreField = document.querySelector(this.opt.targetScore) || this._buildScoreField();
   }
@@ -375,7 +359,6 @@ class Raty {
     }
     this.stars = this.element.querySelectorAll(this.opt.starType);
   }
-
   _error(message) {
     throw new Error(message);
   }
@@ -392,7 +375,6 @@ class Raty {
       }
     }
   }
-
   _fill(score) {
     let hash = 0;
     if (this.opt.iconRangeSame && this.opt.iconRange) {
@@ -430,21 +412,18 @@ class Raty {
     }
     return result;
   }
-
   _getRangeIcon(irange, turnOn) {
     return turnOn ? irange.on || this.opt.starOn : irange.off || this.opt.starOff;
   }
-
   _getScoreByPosition(evt, icon) {
     let score = parseInt(icon.alt || icon.getAttribute('data-alt'), 10);
     if (this.opt.half) {
       const size = this._getWidth();
-      const percent = parseFloat((evt.pageX - icon.offsetLeft) / size);
+      const percent = parseFloat((evt.pageX - icon.getBoundingClientRect().x) / size);
       score = score - 1 + percent;
     }
     return score;
   }
-
   _getHint(score, evt) {
     if (score !== 0 && !score) {
       return this.opt.noRatedMsg;
@@ -465,7 +444,6 @@ class Raty {
     }
     return hint === '' ? '' : hint || score;
   }
-
   _getWidth() {
     const width = parseFloat(this.stars[0].offsetWidth) || 16;
     if (!width) {
@@ -478,7 +456,6 @@ class Raty {
       true: true
     }[this.element.dataset.readOnly] || false;
   }
-
   _lock() {
     const hint = this._getHint(this.scoreField.value);
     this.element.style.pointerEvents = 'none';
@@ -495,7 +472,6 @@ class Raty {
   _nameForIndex(i) {
     return this.opt.score && this.opt.score >= i ? 'starOn' : 'starOff';
   }
-
   _resetTitle() {
     for (let i = 0; i < this.opt.number; i++) {
       this.stars[i].title = this._getHint(i + 1);
@@ -515,7 +491,6 @@ class Raty {
       return acc;
     }, {});
   }
-
   _roundHalfScore(score) {
     const integer = parseInt(score, 10);
     let decimal = this._getDecimal(score, 1);
@@ -524,7 +499,6 @@ class Raty {
     }
     return integer + decimal;
   }
-
   _roundStars(score, evt) {
     const name = this._starName(score, evt);
     if (name) {
@@ -533,7 +507,6 @@ class Raty {
       star && this._setIcon(star, icon);
     }
   }
-
   _setIcon(star, icon) {
     star[this.opt.starType === 'img' ? 'src' : 'className'] = this.opt.path + icon;
   }
@@ -543,7 +516,6 @@ class Raty {
       this.opt.path += '/';
     }
   }
-
   _setTarget(target, score) {
     if (score) {
       score = this.opt.targetFormat.toString().replace('{score}', score);
@@ -554,7 +526,6 @@ class Raty {
       target.textContent = score;
     }
   }
-
   _setTitle(score, evt) {
     if (score) {
       const integer = parseInt(Math.ceil(score), 10);
@@ -578,7 +549,6 @@ class Raty {
     }
     return 'starOn';
   }
-
   _target(score, evt) {
     if (this.opt.target) {
       const target = document.querySelector(this.opt.target);
@@ -604,11 +574,9 @@ class Raty {
       this._setTarget(target, score);
     }
   }
-
   _turnOn(i, score) {
     return this.opt.single ? i === score : i <= score;
   }
-
   _unlock() {
     this.element.style.cursor = 'pointer';
     this.element.style.pointerEvents = 'auto';
