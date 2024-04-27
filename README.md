@@ -27,7 +27,9 @@ It's **Rating**: https://github.com/wbotelhos/rating :star:
 ```
 
 ```js
-new Raty(document.querySelector('[data-raty]'));
+const raty = new Raty(document.querySelector('[data-raty]'));
+
+raty.init();
 ```
 
 ## Usage with Font
@@ -90,7 +92,7 @@ new Raty(document.querySelector('[data-raty]'), { starType: 'i' });
 
 ## Functions
 
-To call some function, first save the Raty instance on a variable and then call the functions:
+To call some function, first, save the Raty instance on a variable and then call the functions:
 
 ```js
 var raty = new Raty(document.querySelector('[data-raty]'));
@@ -104,3 +106,15 @@ var raty = new Raty(document.querySelector('[data-raty]'));
 |`raty.readOnly(boolean)`|Change the read-only state.                                |
 |`raty.cancel(boolean)`  |Cancel the rating. The last param force the click callback.|
 |`raty.move(number)`     |Move the mouse to the given score point position.          |
+
+## Build
+
+```sh
+gulp 'amd'
+gulp 'umd'
+gulp 'commonjs'
+gulp 'systemjs'
+gulp 'es6'
+gulp 'es5'
+gulp 'es5-test'
+```
